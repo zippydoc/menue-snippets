@@ -1,0 +1,414 @@
+{
+  "output": {
+    "type": "fieldset",
+    "label": "Define Output Table",
+    "repeat": false,
+    "fields": {
+      "output.prefix_rule": {
+        "type": "select",
+        "label": "Prefix",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto'",
+        "val": "empty",
+        "options": {
+          "empty": {
+            "label": "-"
+          },
+          "script_name": {
+            "label": "Script Name"
+          },
+          "date_string_type1": {
+            "label": "Date: dd_mm_yyyy"
+          },
+          "date_string_type2": {
+            "label": "Date: yyyy_mm_dd"
+          },
+          "time_string": {
+            "label": "Time: h_min_sec"
+          },
+          "datetime_string": {
+            "label": "Date_Time"
+          },
+          "custom": {
+            "label": "Custom"
+          }
+        }
+      },
+      "output.prefix_text": {
+        "type": "text",
+        "label": "Prefix Text",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.prefix_rule=='custom' && output.core_rule!='auto'",
+        "minLength": 1,
+        "maxLength": 31,
+        "val": ""
+      },
+      "output.core_delimiter": {
+        "type": "text",
+        "label": "Delimiter",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto' && output.prefix_rule!='empty'",
+        "val": "_",
+        "width": "50px"
+      },
+      "output.core_rule": {
+        "type": "select",
+        "label": "Table Name",
+        "show_if": "options.is_generate_holiday_table=='add_column'",
+        "val": "auto",
+        "options": {
+          "auto": {
+            "label": "Auto"
+          },
+          "input_table_name": {
+            "label": "Input Table Name"
+          },
+          "script_name": {
+            "label": "Script Name"
+          },
+          "custom": {
+            "label": "Custom"
+          }
+        }
+      },
+      "output.core_text": {
+        "type": "text",
+        "label": "Output Table Name",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule=='custom'",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 31,
+        "val": ""
+      },
+      "output.suffix_delimiter": {
+        "type": "text",
+        "label": "Delimiter",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto'",
+        "val": "_",
+        "width": "50px"
+      },
+      "output.suffix_rule": {
+        "type": "select",
+        "label": "Suffix",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto'",
+        "val": "script_name",
+        "options": {
+          "empty": {
+            "label": "-"
+          },
+          "script_name": {
+            "label": "Script Name"
+          },
+          "date_string_type1": {
+            "label": "Date: dd_mm_yyyy"
+          },
+          "date_string_type2": {
+            "label": "Date: yyyy_mm_dd"
+          },
+          "time_string": {
+            "label": "Time: h_min_sec"
+          },
+          "datetime_string": {
+            "label": "Date_Time"
+          },
+          "custom": {
+            "label": "Custom"
+          }
+        }
+      },
+      "output.suffix_text": {
+        "type": "text",
+        "label": "Suffix Text",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.suffix_rule=='custom' && output.core_rule!='auto'",
+        "minLength": 1,
+        "maxLength": 31,
+        "val": "",
+        "breakLine": true
+      },
+      "output.generate_prefix_rule": {
+        "type": "select",
+        "label": "Prefix",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto'",
+        "val": "empty",
+        "options": {
+          "empty": {
+            "label": "-"
+          },
+          "script_name": {
+            "label": "Script Name"
+          },
+          "date_string_type1": {
+            "label": "Date: dd_mm_yyyy"
+          },
+          "date_string_type2": {
+            "label": "Date: yyyy_mm_dd"
+          },
+          "time_string": {
+            "label": "Time: h_min_sec"
+          },
+          "datetime_string": {
+            "label": "Date_Time"
+          },
+          "custom": {
+            "label": "Custom"
+          }
+        }
+      },
+      "output.generate_prefix_text": {
+        "type": "text",
+        "label": "Prefix Text",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_prefix_rule=='custom' && output.generate_core_rule!='auto'",
+        "minLength": 1,
+        "maxLength": 31,
+        "val": ""
+      },
+      "output.generate_core_delimiter": {
+        "type": "text",
+        "label": "Delimiter",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto' && output.generate_prefix_rule!='empty'",
+        "val": "_",
+        "width": "50px"
+      },
+      "output.generate_core_rule": {
+        "type": "select",
+        "label": "Table Name",
+        "show_if": "options.is_generate_holiday_table=='generate_table'",
+        "val": "auto",
+        "options": {
+          "auto": {
+            "label": "Auto"
+          },
+          "script_name": {
+            "label": "Script Name"
+          },
+          "custom": {
+            "label": "Custom"
+          }
+        }
+      },
+      "output.generate_core_text": {
+        "type": "text",
+        "label": "Output Table Name",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule=='custom'",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 31,
+        "val": ""
+      },
+      "output.generate_suffix_delimiter": {
+        "type": "text",
+        "label": "Delimiter",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto'",
+        "val": "_",
+        "width": "50px"
+      },
+      "output.generate_suffix_rule": {
+        "type": "select",
+        "label": "Suffix",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto'",
+        "val": "script_name",
+        "options": {
+          "empty": {
+            "label": "-"
+          },
+          "script_name": {
+            "label": "Script Name"
+          },
+          "date_string_type1": {
+            "label": "Date: dd_mm_yyyy"
+          },
+          "date_string_type2": {
+            "label": "Date: yyyy_mm_dd"
+          },
+          "time_string": {
+            "label": "Time: h_min_sec"
+          },
+          "datetime_string": {
+            "label": "Date_Time"
+          },
+          "custom": {
+            "label": "Custom"
+          }
+        }
+      },
+      "output.generate_suffix_text": {
+        "type": "text",
+        "label": "Suffix Text",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_suffix_rule=='custom' && output.generate_core_rule!='auto'",
+        "minLength": 1,
+        "maxLength": 31,
+        "val": "",
+        "breakLine": true
+      },
+      "output.timezone": {
+        "type": "select",
+        "label": "Timezone",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+        "val": "Europe/Berlin",
+        "required": true,
+        "options": {
+          "Europe/Amsterdam": {
+            "label": "Europe/Amsterdam"
+          },
+          "Europe/Berlin": {
+            "label": "Europe/Berlin"
+          },
+          "Europe/Helsinki": {
+            "label": "Europe/Helsinki"
+          },
+          "Europe/London": {
+            "label": "Europe/London"
+          },
+          "Europe/Luxembourg": {
+            "label": "Europe/Luxembourg"
+          },
+          "Europe/Oslo": {
+            "label": "Europe/Oslo"
+          },
+          "Europe/Paris": {
+            "label": "Europe/Paris"
+          },
+          "Europe/Rome": {
+            "label": "Europe/Rome"
+          },
+          "US/Alaska": {
+            "label": "US/Alaska"
+          },
+          "US/Central": {
+            "label": "US/Central"
+          },
+          "US/Eastern": {
+            "label": "US/Eastern"
+          },
+          "US/Pacific": {
+            "label": "US/Pacific"
+          }
+        },
+        "breakLine": true
+      },
+      "output.generate_timezone": {
+        "type": "select",
+        "label": "Timezone",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.core_rule!='auto' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+        "val": "Europe/Berlin",
+        "required": true,
+        "options": {
+          "Europe/Amsterdam": {
+            "label": "Europe/Amsterdam"
+          },
+          "Europe/Berlin": {
+            "label": "Europe/Berlin"
+          },
+          "Europe/Helsinki": {
+            "label": "Europe/Helsinki"
+          },
+          "Europe/London": {
+            "label": "Europe/London"
+          },
+          "Europe/Luxembourg": {
+            "label": "Europe/Luxembourg"
+          },
+          "Europe/Oslo": {
+            "label": "Europe/Oslo"
+          },
+          "Europe/Paris": {
+            "label": "Europe/Paris"
+          },
+          "Europe/Rome": {
+            "label": "Europe/Rome"
+          },
+          "US/Alaska": {
+            "label": "US/Alaska"
+          },
+          "US/Central": {
+            "label": "US/Central"
+          },
+          "US/Eastern": {
+            "label": "US/Eastern"
+          },
+          "US/Pacific": {
+            "label": "US/Pacific"
+          }
+        },
+        "breakLine": true
+      },
+      "output.select_output_columns": {
+        "type": "checkbox",
+        "label": "Select Output Columns",
+        "show_if": "options.is_generate_holiday_table=='add_column'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "output_columns": {
+        "type": "fieldset",
+        "label": "Select OutputColumns",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.select_output_columns=='true'",
+        "repeat": true,
+        "fields": {
+          "field_name": {
+            "type": "select",
+            "label": "Select Column",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "order": {
+            "type": "select",
+            "label": "Order",
+            "options": {
+              "-": {
+                "label": "-"
+              },
+              "asc": {
+                "label": "Asc"
+              },
+              "desc": {
+                "label": "Desc"
+              }
+            },
+            "val": "-"
+          },
+          "is_rename": {
+            "type": "checkbox",
+            "label": "Rename",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "rename": {
+            "show_if": "this.is_rename == 'true'",
+            "type": "text",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 255,
+            "label": "New Column Name",
+            "style": "margin-left: 10px"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        },
+        "breakLine": true,
+        "style": "margin-bottom: 20px"
+      },
+      "output.add_tag": {
+        "type": "checkbox",
+        "label": "Add Tag",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "output.tag_name": {
+        "type": "text",
+        "label": "Tag Name",
+        "show_if": "output.add_tag=='true'",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 255,
+        "val": "",
+        "breakLine": true,
+        "style": "margin-left: 15px"
+      }
+    }
+  }
+}
