@@ -18,20 +18,33 @@
           "expand_date": {
             "label": "Expand date"
           },
-          "compress_date": {
-            "label": "Compress date"
+          "convert_date_range": {
+            "label": "Convert date range"
           }
         },
-        "val": "format_conversion",
-        "breakLine": true
+        "val": "format_conversion"
       },
-      "fields_to_convert.field_name": {
+      "date_range_convert_type": {
         "type": "select",
-        "label": "Column to convert",
-        "table": "input_table",
-        "bind": "COLUMNS",
+        "label": "Range Convert Type",
+        "show_if": "convert_type=='convert_date_range'",
         "required": true,
-        "width": "100%"
+        "options": {
+          "begin_of_month": {
+            "label": "Begin of month"
+          },
+          "end_of_month": {
+            "label": "End of month"
+          },
+          "begin_of_range": {
+            "label": "Begin of range"
+          },
+          "end_of_range": {
+            "label": "End of range"
+          }
+        },
+        "val": "begin_of_month",
+        "breakLine": true
       },
       "fields_to_convert.new_field_name": {
         "type": "text",
