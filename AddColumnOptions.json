@@ -1,0 +1,471 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "New Column Options",
+    "repeat": false,
+    "fields": {
+      "new_column_name": {
+        "type": "text",
+        "label": "New Column Name",
+        "val": "NewColumn",
+        "required": true
+      },
+      "column_value_type": {
+        "type": "select",
+        "label": "Column Value Type",
+        "required": true,
+        "options": {
+          "static_value": {
+            "label": "Static Value"
+          },
+          "formula": {
+            "label": "Formula"
+          },
+          "if": {
+            "label": "IF"
+          },
+          "switch": {
+            "label": "SWITCH"
+          }
+        },
+        "val": "static_value"
+      },
+      "static_value": {
+        "type": "text",
+        "label": "Input Value",
+        "show_if": "column_value_type=='static_value'",
+        "val": "",
+        "width": "100%"
+      },
+      "value_formula": {
+        "type": "text",
+        "label": "Input Formula, e.g. [Column1] + 2 * [Column3] / ([Column5] + 3 * [Column3] - [Column1])",
+        "show_if": "column_value_type=='formula'",
+        "val": "",
+        "width": "100%"
+      },
+      "if_then_box": {
+        "type": "fieldset",
+        "label": "IF THEN",
+        "show_if": "column_value_type=='if'",
+        "repeat": true,
+        "fields": {
+          "if_condition": {
+            "type": "fieldset",
+            "label": "IF",
+            "repeat": true,
+            "fields": {
+              "initial_op": {
+                "type": "select",
+                "label": "Select Logic Operator",
+                "required": true,
+                "show_if" :  "$index == 0",
+                "options": {
+                  "if": {
+                    "label": "if"
+                  },
+                  "if_not": {
+                    "label": "if not"
+                  }
+                },
+                "val": "if"
+              },
+              "op": {
+                "type": "select",
+                "label": "Select Logic Operator",
+                "show_if" :  "$index > 0",
+                "options": {
+                  "and": {
+                    "label": "and"
+                  },
+                  "or": {
+                    "label": "or"
+                  },
+                  "and_not": {
+                    "label": "and not"
+                  },
+                  "or_not": {
+                    "label": "or not"
+                  }
+                },
+                "val": "and"
+              },
+              "column": {
+                "type": "select",
+                "label": "Select Column",
+                "table": "input_table",
+                "bind": "COLUMNS",
+                "required": true
+              },
+              "condition": {
+                "type": "select",
+                "label": "Select Operator",
+                "required": true,
+                "options": {
+                  "CONTAINS": {
+                    "label": "contains"
+                  },
+                  "CONTAINED IN STRING": {
+                    "label": "contained in"
+                  },
+                  "=": {
+                    "label": "equal"
+                  },
+                  ">": {
+                    "label": "greater than"
+                  },
+                  ">=": {
+                    "label": "greater or equal"
+                  },
+                  "<": {
+                    "label": "smaller than"
+                  },
+                  "<=": {
+                    "label": "smaller or equal"
+                  },
+                  "EMPTY": {
+                    "label": "is empty"
+                  },
+                  "BLANK": {
+                    "label": "is blank"
+                  },
+                  "IS NULL": {
+                    "label": "is null"
+                  },
+                  "REGEX MATCH": {
+                    "label": "regex match"
+                  },
+                  "CONTAINED IN TABLE": {
+                    "label": "in table"
+                  },
+                  "IN REGEX TABLE": {
+                    "label": "in regex table"
+                  },
+                  "DATE": {
+                    "label": "date"
+                  }
+                },
+                "val": "="
+              },
+              "date_condition": {
+                "type": "select",
+                "label": "Select Date Operator",
+                "required": true,
+                "show_if": "this.condition == 'DATE'",
+                "options": {
+                  "<": {
+                    "label": "prior"
+                  },
+                  "<=": {
+                    "label": "prior or equal"
+                  },
+                  "=": {
+                    "label": "equal"
+                  },
+                  ">": {
+                    "label": "after"
+                  },
+                  ">=": {
+                    "label": "after or equal"
+                  }
+                },
+                "val": "="
+              },
+              "case_sensitive": {
+                "type": "select",
+                "label": "Select Case Sensitive",
+                "required": true,
+                "show_if": "this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "options": {
+                  "yes": {
+                    "label": "case sensitive"
+                  },
+                  "no": {
+                    "label": "case insensitive"
+                  }
+                },
+                "val": "yes"
+              },
+              "date_value": {
+                "type": "date",
+                "label": "Select Date",
+                "show_if": "this.condition=='DATE'",
+                "val": "1/31/2020",
+                "required": true
+              },
+              "value": {
+                "type": "text",
+                "label": "Input Value",
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "val": "",
+                "required": true
+              },
+              "compare_table": {
+                "type": "select",
+                "label": "Select Table",
+                "bind": "TABLES",
+                "empty": "",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "required": true
+              },
+              "compare_column": {
+                "type": "select",
+                "label": "Select Column",
+                "table": "this.compare_table",
+                "bind": "COLUMNS",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "required": true
+              },
+              "delete": {
+                "type": "button",
+                "label": "Delete",
+                "function": "DELETE_ROW"
+              }
+            }
+          },
+          "if_value_box": {
+            "type": "fieldset",
+            "label": "THEN",
+            "repeat": false,
+            "fields": {
+              "value_type": {
+                "type": "select",
+                "label": "Select Type",
+                "required": true,
+                "options": {
+                  "static_value": {
+                    "label": "Static Value"
+                  },
+                  "formula": {
+                    "label": "Formula"
+                  },
+                  "composition": {
+                    "label": "Composition"
+                  }
+                },
+                "val": "static_value",
+                "breakLine": true
+              },
+              "if_value_static_value": {
+                "type": "text",
+                "label": "Input Static Value",
+                "show_if": "value_type=='static_value'",
+                "val": "",
+                "width": "100%"
+              },
+              "if_value_formula": {
+                "type": "text",
+                "label": "Input Formula, e.g. [Column1] + 2 * [Column3] / ([Column5] + 3 * [Column3] - [Column1])",
+                "show_if": "value_type=='formula'",
+                "val": "",
+                "width": "100%"
+              },
+              "if_value_composition": {
+                "type": "fieldset",
+                "label": "Formula",
+                "show_if": "value_type=='composition'",
+                "repeat": true,
+                "fields": {
+                  "initial_op": {
+                    "type": "select",
+                    "label": "",
+                    "show_if" :  "$index == 0",
+                    "options": {
+                      "=": {
+                        "label": "="
+                      }
+                    },
+                    "val": "="
+                  },
+                  "op": {
+                    "type": "select",
+                    "label": "Select Operator",
+                    "show_if" :  "$index > 0",
+                    "options": {
+                      "+": {
+                        "label": "+"
+                      },
+                      "-": {
+                        "label": "-"
+                      },
+                      "*": {
+                        "label": "*"
+                      },
+                      "/": {
+                        "label": "/"
+                      },
+                      "(": {
+                        "label": "("
+                      },
+                      ")": {
+                        "label": ")"
+                      }
+                    },
+                    "val": "+"
+                  },
+                  "node_type": {
+                    "type": "select",
+                    "label": "Value Type",
+                    "required": true,
+                    "options": {
+                      "column_value": {
+                        "label": "Column Value"
+                      },
+                      "constant": {
+                        "label": "Constant Value"
+                      }
+                    },
+                    "val": "column_value"
+                  },
+                  "column": {
+                    "type": "select",
+                    "label": "Select Column",
+                    "show_if": "this.node_type == 'column_value'",
+                    "table": "input_table",
+                    "bind": "COLUMNS"
+                  },
+                  "constant": {
+                    "type": "text",
+                    "label": "Input Numeric Constant",
+                    "show_if": "this.node_type == 'constant'",
+                    "val": "1"
+                  },
+                  "delete": {
+                    "type": "button",
+                    "label": "Delete",
+                    "function": "DELETE_ROW"
+                  }
+                }
+              }
+            }
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "else_box": {
+        "type": "fieldset",
+        "label": "ELSE",
+        "show_if": "column_value_type=='if'",
+        "repeat": false,
+        "fields": {
+          "else_value_type": {
+            "type": "select",
+            "label": "Select Type",
+            "required": true,
+            "options": {
+              "static_value": {
+                "label": "Static Value"
+              },
+              "formula": {
+                "label": "Formula"
+              },
+              "composition": {
+                "label": "Composition"
+              }
+            },
+            "val": "static_value",
+            "breakLine": true
+          },
+          "else_value_static_value": {
+            "type": "text",
+            "label": "Input Static Value",
+            "show_if": "else_value_type=='static_value'",
+            "val": "",
+            "width": "100%"
+          },
+          "else_value_formula": {
+            "type": "text",
+            "label": "Input Formula, e.g. [Column1] + 2 * [Column3] / ([Column5] + 3 * [Column3] - [Column1])",
+            "show_if": "else_value_type=='formula'",
+            "val": "",
+            "width": "100%"
+          },
+          "else_value_composition": {
+            "type": "fieldset",
+            "label": "Formula",
+            "show_if": "else_value_type=='composition'",
+            "repeat": true,
+            "fields": {
+              "initial_op": {
+                "type": "select",
+                "label": "",
+                "show_if" :  "$index == 0",
+                "options": {
+                  "=": {
+                    "label": "="
+                  }
+                },
+                "val": "="
+              },
+              "op": {
+                "type": "select",
+                "label": "Select Operator",
+                "show_if" :  "$index > 0",
+                "options": {
+                  "+": {
+                    "label": "+"
+                  },
+                  "-": {
+                    "label": "-"
+                  },
+                  "*": {
+                    "label": "*"
+                  },
+                  "/": {
+                    "label": "/"
+                  },
+                  "(": {
+                    "label": "("
+                  },
+                  ")": {
+                    "label": ")"
+                  }
+                },
+                "val": "+"
+              },
+              "node_type": {
+                "type": "select",
+                "label": "Value Type",
+                "required": true,
+                "options": {
+                  "column_value": {
+                    "label": "Column Value"
+                  },
+                  "constant": {
+                    "label": "Constant Value"
+                  }
+                },
+                "val": "column_value"
+              },
+              "column": {
+                "type": "select",
+                "label": "Select Column",
+                "show_if": "this.node_type == 'column_value'",
+                "table": "input_table",
+                "bind": "COLUMNS"
+              },
+              "constant": {
+                "type": "text",
+                "label": "Input Numeric Constant",
+                "show_if": "this.node_type == 'constant'",
+                "val": "1"
+              },
+              "delete": {
+                "type": "button",
+                "label": "Delete",
+                "function": "DELETE_ROW"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "debug": {
+    "type": "debug"
+  }
+}
