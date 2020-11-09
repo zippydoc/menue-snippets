@@ -4,13 +4,13 @@
     "label": "New Column Options",
     "repeat": false,
     "fields": {
-      "new_column_name": {
+      "options.new_column_name": {
         "type": "text",
         "label": "New Column Name",
         "val": "NewColumn",
         "required": true
       },
-      "column_value_type": {
+      "options.column_value_type": {
         "type": "select",
         "label": "Column Value Type",
         "required": true,
@@ -24,21 +24,21 @@
         },
         "val": "static_value"
       },
-      "static_value": {
+      "options.static_value": {
         "type": "text",
         "label": "Input Value",
-        "show_if": "column_value_type=='static_value'",
+        "show_if": "options.column_value_type=='static_value'",
         "val": "",
         "width": "100%"
       },
-      "value_formula": {
+      "options.value_formula": {
         "type": "text",
         "label": "Input Formula, e.g. [Column1] + 2 * [Column3] / ([Column5] + 3 * [Column3] - [Column1])",
-        "show_if": "column_value_type=='formula'",
+        "show_if": "options.column_value_type=='formula'",
         "val": "",
         "width": "100%"
       },
-      "use_filter": {
+      "options.use_filter": {
         "type": "checkbox",
         "label": "Use Filter",
         "val": "false",
@@ -46,10 +46,10 @@
         "isOff": "false",
         "breakLine": true
       },
-      "apply_to_record": {
+      "options.apply_to_record": {
         "type": "checkbox",
         "label": "Apply to Record",
-        "show_if": "use_filter=='true'",
+        "show_if": "options.use_filter=='true'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -58,10 +58,10 @@
       "apply_to_group_box": {
         "type": "fieldset",
         "label": "Apply to Group",
-        "show_if": "use_filter=='true' && apply_to_record=='false'",
+        "show_if": "options.use_filter=='true' && options.apply_to_record=='false'",
         "repeat": false,
         "fields": {
-          "apply_to_group_columns": {
+          "options.apply_to_group_columns": {
             "type": "select",
             "label": "Select Group Columns",
             "required": true,
@@ -73,10 +73,10 @@
           }
         }
       },
-      "filter": {
+      "options.filter": {
         "type": "fieldset",
         "label": "Add Filter Conditions",
-        "show_if": "use_filter=='true'",
+        "show_if": "options.use_filter=='true'",
         "repeat": true,
         "fields": {
           "initial_op": {
