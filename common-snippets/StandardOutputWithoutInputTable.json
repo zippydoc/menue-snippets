@@ -164,30 +164,85 @@
         },
         "breakLine": true
       },
-      "output.add_tag": {
+      "output.set_options": {
         "type": "checkbox",
-        "label": "Add Tag",
+        "label": "Output Options",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
-      "output.tag_name": {
-        "type": "text",
-        "label": "Tag Name",
-        "show_if": "output.add_tag=='true'",
-        "required": true,
-        "minLength": 1,
-        "maxLength": 255,
-        "val": "",
-        "breakLine": true,
-        "style": "margin-left: 15px"
-      },
-      "output.visible_in_flow_only": {
-        "type": "checkbox",
-        "label": "Visible in this Flow Only",
-        "val": "true",
-        "isOn": "true",
-        "isOff": "false"
+      "output_options_box": {
+        "type": "fieldset",
+        "label": "Output Options",
+        "show_if": "output.set_options=='true'",
+        "repeat": false,
+        "fields": {
+          "output.options.location": {
+            "type": "text",
+            "label": "Specify Location",
+            "val": "A1",
+            "breakLine": true
+          },
+          "output.options.table_mode": {
+            "type": "select",
+            "val": "content_only_table",
+            "options": {
+              "content_only_table": {
+                "label": "Content Only Table"
+              },
+              "fully_formatted_table": {
+                "label": "Fully Formatted Table"
+              }
+            },
+            "breakLine": true
+          },
+          "output.options.formatted_as_table": {
+            "type": "checkbox",
+            "label": "Formatted as Table",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "output.add_tag": {
+            "type": "checkbox",
+            "label": "Add Tag",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "output.tag_name": {
+            "type": "text",
+            "label": "Tag Name",
+            "show_if": "output.add_tag=='true'",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 255,
+            "val": "",
+            "breakLine": true,
+            "style": "margin-left: 15px"
+          },
+          "output.options.set_visibility": {
+            "type": "checkbox",
+            "label": "Visibility",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "output.options.visibility": {
+            "type": "select",
+            "show_if": "output.options.set_visibility=='true'",
+            "val": "current_flow",
+            "options": {
+              "current_flow": {
+                "label": "Current Flow"
+              },
+              "all_flow": {
+                "label": "All Flows"
+              }
+            }
+          }
+        }
       }
     }
   }
