@@ -7,7 +7,7 @@
       "output.prefix_rule": {
         "type": "select",
         "label": "Prefix",
-        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto'",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='custom' && output.core_rule!='auto'",
         "val": "empty",
         "options": {
           "empty": {
@@ -36,7 +36,7 @@
       "output.prefix_text": {
         "type": "text",
         "label": "Prefix Text",
-        "show_if": "options.is_generate_holiday_table=='add_column' && output.prefix_rule=='custom' && output.core_rule!='auto'",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='custom' && output.prefix_rule=='custom' && output.core_rule!='auto'",
         "minLength": 1,
         "maxLength": 31,
         "val": ""
@@ -44,7 +44,7 @@
       "output.core_delimiter": {
         "type": "text",
         "label": "Delimiter",
-        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto' && output.prefix_rule!='empty'",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='custom' && output.core_rule!='auto' && output.prefix_rule!='empty'",
         "val": "_",
         "width": "50px"
       },
@@ -57,14 +57,14 @@
           "auto": {
             "label": "Auto"
           },
+          "custom": {
+            "label": "Custom"
+          },
           "input_table_name": {
             "label": "Input Table Name"
           },
           "script_name": {
             "label": "Script Name"
-          },
-          "custom": {
-            "label": "Custom"
           }
         }
       },
@@ -80,14 +80,14 @@
       "output.suffix_delimiter": {
         "type": "text",
         "label": "Delimiter",
-        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto'",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='custom' && output.core_rule!='auto'",
         "val": "_",
         "width": "50px"
       },
       "output.suffix_rule": {
         "type": "select",
         "label": "Suffix",
-        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto'",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='custom' && output.core_rule!='auto'",
         "val": "script_name",
         "options": {
           "empty": {
@@ -116,7 +116,7 @@
       "output.suffix_text": {
         "type": "text",
         "label": "Suffix Text",
-        "show_if": "options.is_generate_holiday_table=='add_column' && output.suffix_rule=='custom' && output.core_rule!='auto'",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='custom' && output.suffix_rule=='custom' && output.core_rule!='auto'",
         "minLength": 1,
         "maxLength": 31,
         "val": "",
@@ -125,7 +125,7 @@
       "output.generate_prefix_rule": {
         "type": "select",
         "label": "Prefix",
-        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto'",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='custom' && output.generate_core_rule!='auto'",
         "val": "empty",
         "options": {
           "empty": {
@@ -154,7 +154,7 @@
       "output.generate_prefix_text": {
         "type": "text",
         "label": "Prefix Text",
-        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_prefix_rule=='custom' && output.generate_core_rule!='auto'",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='custom' && output.generate_prefix_rule=='custom' && output.generate_core_rule!='auto'",
         "minLength": 1,
         "maxLength": 31,
         "val": ""
@@ -162,7 +162,7 @@
       "output.generate_core_delimiter": {
         "type": "text",
         "label": "Delimiter",
-        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto' && output.generate_prefix_rule!='empty'",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='custom' && output.generate_core_rule!='auto' && output.generate_prefix_rule!='empty'",
         "val": "_",
         "width": "50px"
       },
@@ -175,11 +175,11 @@
           "auto": {
             "label": "Auto"
           },
-          "script_name": {
-            "label": "Script Name"
-          },
           "custom": {
             "label": "Custom"
+          },
+          "script_name": {
+            "label": "Script Name"
           }
         }
       },
@@ -195,14 +195,14 @@
       "output.generate_suffix_delimiter": {
         "type": "text",
         "label": "Delimiter",
-        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto'",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='custom' && output.generate_core_rule!='auto'",
         "val": "_",
         "width": "50px"
       },
       "output.generate_suffix_rule": {
         "type": "select",
         "label": "Suffix",
-        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto'",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='custom' && output.generate_core_rule!='auto'",
         "val": "script_name",
         "options": {
           "empty": {
@@ -231,7 +231,7 @@
       "output.generate_suffix_text": {
         "type": "text",
         "label": "Suffix Text",
-        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_suffix_rule=='custom' && output.generate_core_rule!='auto'",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='custom' && output.generate_suffix_rule=='custom' && output.generate_core_rule!='auto'",
         "minLength": 1,
         "maxLength": 31,
         "val": "",
@@ -240,7 +240,7 @@
       "output.timezone": {
         "type": "select",
         "label": "Timezone",
-        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='custom' && output.core_rule!='auto' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
         "val": "Europe/Berlin",
         "required": true,
         "options": {
@@ -286,7 +286,7 @@
       "output.generate_timezone": {
         "type": "select",
         "label": "Timezone",
-        "show_if": "options.is_generate_holiday_table=='generate_table' && output.core_rule!='auto' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+        "show_if": "options.is_generate_holiday_table=='generate_table' output.generate_core_rule!='custom' && && output.core_rule!='auto' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
         "val": "Europe/Berlin",
         "required": true,
         "options": {
