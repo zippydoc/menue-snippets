@@ -4,17 +4,43 @@
     "label": "Define Output Table",
     "repeat": false,
     "fields": {
+      "output.type": {
+        "type": "select",
+        "label": "Table Name",
+        "val": "auto",
+        "options": {
+          "auto": {
+            "label": "Auto"
+          },
+          "custom": {
+            "label": "Custom"
+          },
+          "compose": {
+            "label": "Compose"
+          }
+        }
+      },
+      "output.custom_text": {
+        "type": "text",
+        "label": "Output Table Name",
+        "show_if": "output.type=='custom'",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 31,
+        "val": "",
+        "breakLine": true
+      },
       "output.prefix_rule": {
         "type": "select",
         "label": "Prefix",
-        "show_if": "output.core_rule!='custom' && output.core_rule!='auto'",
+        "show_if": "output.type=='compose'",
         "val": "empty",
         "options": {
           "empty": {
             "label": "-"
           },
           "script_name": {
-            "label": "Script Name"
+            "label": "Task Name"
           },
           "date_string_type1": {
             "label": "Date: dd_mm_yyyy"
@@ -36,7 +62,7 @@
       "output.prefix_text": {
         "type": "text",
         "label": "Prefix Text",
-        "show_if": "output.core_rule!='custom' && output.prefix_rule=='custom' && output.core_rule!='auto'",
+        "show_if": "output.type=='compose' && output.prefix_rule=='custom'",
         "minLength": 1,
         "maxLength": 31,
         "val": ""
@@ -44,30 +70,28 @@
       "output.core_delimiter": {
         "type": "text",
         "label": "Delimiter",
-        "show_if": "output.core_rule!='custom' && output.core_rule!='auto' && output.prefix_rule!='empty'",
+        "show_if": "output.type=='compose' && output.prefix_rule!='empty'",
         "val": "_",
         "width": "50px"
       },
       "output.core_rule": {
         "type": "select",
         "label": "Table Name",
-        "val": "auto",
+        "show_if": "output.type=='compose'",
+        "val": "script_name",
         "options": {
-          "auto": {
-            "label": "Auto"
+          "script_name": {
+            "label": "Task Name"
           },
           "custom": {
             "label": "Custom"
-          },
-          "script_name": {
-            "label": "Script Name"
           }
         }
       },
       "output.core_text": {
         "type": "text",
         "label": "Output Table Name",
-        "show_if": "output.core_rule=='custom'",
+        "show_if": "output.type=='compose' && output.core_rule=='custom'",
         "required": true,
         "minLength": 1,
         "maxLength": 31,
@@ -76,21 +100,21 @@
       "output.suffix_delimiter": {
         "type": "text",
         "label": "Delimiter",
-        "show_if": "output.core_rule!='custom' && output.core_rule!='auto'",
+        "show_if": "output.type=='compose'",
         "val": "_",
         "width": "50px"
       },
       "output.suffix_rule": {
         "type": "select",
         "label": "Suffix",
-        "show_if": "output.core_rule!='custom' && output.core_rule!='auto'",
+        "show_if": "output.type=='compose'",
         "val": "script_name",
         "options": {
           "empty": {
             "label": "-"
           },
           "script_name": {
-            "label": "Script Name"
+            "label": "Task Name"
           },
           "date_string_type1": {
             "label": "Date: dd_mm_yyyy"
@@ -112,7 +136,7 @@
       "output.suffix_text": {
         "type": "text",
         "label": "Suffix Text",
-        "show_if": "output.core_rule!='custom' && output.suffix_rule=='custom' && output.core_rule!='auto'",
+        "show_if": "output.type=='compose' && output.suffix_rule=='custom'",
         "minLength": 1,
         "maxLength": 31,
         "val": "",
@@ -121,7 +145,7 @@
       "output.timezone": {
         "type": "select",
         "label": "Timezone",
-        "show_if": "output.core_rule!='custom' && output.core_rule!='auto' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+        "show_if": "output.type=='compose' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
         "val": "Europe/Berlin",
         "required": true,
         "options": {
@@ -185,16 +209,16 @@
           },
           "output.options.table_mode": {
             "type": "select",
-            "val": "content_only_table",
+            "label": "Paste",
+            "val": "content_only",
             "options": {
-              "content_only_table": {
-                "label": "Content Only Table"
+              "content_only": {
+                "label": "Content Only"
               },
-              "fully_formatted_table": {
-                "label": "Fully Formatted Table"
+              "fully_formatted": {
+                "label": "Fully Formatted"
               }
-            },
-            "breakLine": true
+            }
           },
           "output.options.formatted_as_table": {
             "type": "checkbox",
@@ -222,16 +246,9 @@
             "breakLine": true,
             "style": "margin-left: 15px"
           },
-          "output.options.set_visibility": {
-            "type": "checkbox",
-            "label": "Visibility",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
-          },
           "output.options.visibility": {
             "type": "select",
-            "show_if": "output.options.set_visibility=='true'",
+            "label": "Visibility",
             "val": "current_flow",
             "options": {
               "current_flow": {
