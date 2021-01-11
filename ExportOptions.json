@@ -9,8 +9,25 @@
         "val": "database",
         "values": {
           "database": "Export to Database",
-          "csv": "Export to .csv"
-        },
+          "file": "Export to file"
+        }
+      },
+      "options.export_series": {
+        "type": "checkbox",
+        "label": "Export Series",
+        "show_if": "options.to=='file'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "file_name_column": {
+        "type": "select",
+        "label": "Select File Name Column",
+        "show_if": "options.to=='file' && options.export_series=='true'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
         "breakLine": true
       },
       "postgresql_db_credential_box": {
@@ -94,6 +111,25 @@
         },
         "val": "github",
         "required": true
+      },
+      "options.export_format": {
+        "type": "select",
+        "label": "Export Format",
+        "show_if": "options.to=='file'",
+        "options": {
+          "csv_file": {
+            "label": "Csv file(s)"
+          },
+          "word_by_word": {
+            "label": "Word by Word"
+          },
+          "line_by_line": {
+            "label": "Line by Line"
+          }
+        },
+        "val": "csv_file",
+        "required": true,
+        "breakLine": true
       },
       "options.is_github_private": {
         "type": "checkbox",
