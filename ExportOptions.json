@@ -5,12 +5,35 @@
     "repeat": false,
     "fields": {
       "options.to": {
-        "type": "radio",
-        "val": "database",
-        "values": {
-          "database": "Export to Database",
-          "csv": "Export to .csv"
+        "type": "select",
+        "label": "Type",
+        "options": {
+          "database": {
+            "label": "Export to database"
+          },
+          "file": {
+            "label": "Export to file"
+          }
         },
+        "val": "database",
+        "required": true
+      },
+      "options.export_series": {
+        "type": "checkbox",
+        "label": "Export Series",
+        "show_if": "options.to=='file'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.file_name_column": {
+        "type": "select",
+        "label": "Select File Name Column",
+        "show_if": "options.to=='file' && options.export_series=='true'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
         "breakLine": true
       },
       "postgresql_db_credential_box": {
@@ -86,7 +109,7 @@
       "options.webservice": {
         "type": "select",
         "label": "Select Webservice",
-        "show_if": "options.to=='csv'",
+        "show_if": "options.to=='file'",
         "options": {
           "github": {
             "label": "Github"
@@ -95,19 +118,29 @@
         "val": "github",
         "required": true
       },
-      "options.is_github_private": {
-        "type": "checkbox",
-        "label": "Repository is private",
-        "show_if": "options.to=='csv'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
+      "options.export_format": {
+        "type": "select",
+        "label": "Export Format",
+        "show_if": "options.to=='file'",
+        "options": {
+          "csv_file": {
+            "label": "Csv file(s)"
+          },
+          "word_by_word": {
+            "label": "Word by Word"
+          },
+          "line_by_line": {
+            "label": "Line by Line"
+          }
+        },
+        "val": "csv_file",
+        "required": true,
         "breakLine": true
       },
       "options.github_token": {
         "type": "text",
         "label": "Specify the github personal access token that has write permission:",
-        "show_if": "options.to=='csv' && options.is_github_private=='true'",
+        "show_if": "options.to=='file'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -115,7 +148,7 @@
       "options.github_url": {
         "type": "text",
         "label": "Enter link e.g. https://github.com/zippydoc/test",
-        "show_if": "options.to=='csv'",
+        "show_if": "options.to=='file'",
         "required": true,
         "width": "100%",
         "breakLine": true
