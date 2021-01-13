@@ -32,6 +32,9 @@
           },
           "regex": {
             "label": "Regular Expression"
+          },
+          "replacement_table": {
+            "label": "Replacement Table"
           }
         },
         "val": "user_specified_value",
@@ -53,10 +56,17 @@
         "val": "(.*),(.*),(.*)\\s(\\d{5})(-\\d{4})?",
         "style": "min-width: 200px"
       },
+      "incoming_value_to_replace.table": {
+        "type": "select",
+        "label": "Replacement Table",
+        "show_if": "incoming_value_to_replace.type=='replacement_table'",
+        "bind": "TABLES",
+        "required": true
+      },
       "incoming_value_to_replace.partial_match": {
         "type": "checkbox",
         "label": "Partial Match",
-        "show_if": "incoming_value_to_replace.type=='user_specified_value'",
+        "show_if": "incoming_value_to_replace.type=='user_specified_value' || incoming_value_to_replace.type=='replacement_table'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -65,7 +75,7 @@
       "replace_with.value_type": {
         "type": "select",
         "label": "Replace With",
-        "show_if": "incoming_value_to_replace.type!='regex'",
+        "show_if": "incoming_value_to_replace.type!='regex' && incoming_value_to_replace.type!='replacement_table'",
         "options": {
           "user_specified_value": {
             "label": "Custom Value"
@@ -92,26 +102,26 @@
       "replace_with.value": {
         "type": "text",
         "label": "Replace With Value",
-        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='user_specified_value'",
+        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='user_specified_value' && incoming_value_to_replace.type!='replacement_table'",
         "val": ""
       },
       "replace_with.regex_value": {
         "type": "text",
         "label": "Replace With Value",
-        "show_if": "incoming_value_to_replace.type=='regex'",
+        "show_if": "incoming_value_to_replace.type=='regex' && incoming_value_to_replace.type!='replacement_table'",
         "val": "\\4: \\2, \\3"
       },
       "replace_with.table": {
         "type": "select",
         "label": "Select Table",
-        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table'",
+        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table' && incoming_value_to_replace.type!='replacement_table'",
         "bind": "TABLES",
         "required": true
       },
       "replace_with.column": {
         "type": "select",
         "label": "Select Column",
-        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table'",
+        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table' && incoming_value_to_replace.type!='replacement_table'",
         "table": "replace_with.table",
         "bind": "COLUMNS",
         "required": true,
@@ -336,7 +346,7 @@
       "use_replace_table_filter": {
         "type": "checkbox",
         "label": "Use Filter on \"Replace With\" Table",
-        "show_if": "replace_with.value_type=='table'",
+        "show_if": "incoming_value_to_replace.type!='replacement_table' && replace_with.value_type=='table'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -345,7 +355,7 @@
       "replace_table_filter_option.apply_to_record": {
         "type": "checkbox",
         "label": "Apply to Record on \"Replace With\" Table",
-        "show_if": "replace_with.value_type=='table' && use_replace_table_filter=='true'",
+        "show_if": "incoming_value_to_replace.type!='replacement_table' && replace_with.value_type=='table' && use_replace_table_filter=='true'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -354,7 +364,7 @@
       "replace_table_filter_option_apply_to_group_box": {
         "type": "fieldset",
         "label": "Apply to Group on \"Replace With\" Table",
-        "show_if": "replace_with.value_type=='table' && use_replace_table_filter=='true' && replace_table_filter_option.apply_to_record=='false'",
+        "show_if": "incoming_value_to_replace.type!='replacement_table' && replace_with.value_type=='table' && use_replace_table_filter=='true' && replace_table_filter_option.apply_to_record=='false'",
         "repeat": false,
         "fields": {
           "apply_to_group_columns": {
@@ -372,7 +382,7 @@
       "replace_table_filter_option.filter": {
         "type": "fieldset",
         "label": "Add Filter Conditions on \"Replace With\" Table",
-        "show_if": "replace_with.value_type=='table' && use_replace_table_filter=='true'",
+        "show_if": "incoming_value_to_replace.type!='replacement_table' && replace_with.value_type=='table' && use_replace_table_filter=='true'",
         "repeat": true,
         "fields": {
           "initial_op": {
