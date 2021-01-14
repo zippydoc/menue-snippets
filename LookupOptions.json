@@ -14,6 +14,9 @@
           },
           "apply_lookup_table": {
             "label": "Apply Lookup-Table"
+          },
+          "apply_regex_table": {
+            "label": "Apply Regex-Table"
           }
         },
         "val": "generate_lookup_table",
@@ -46,18 +49,34 @@
       "options.partial_match": {
         "type": "checkbox",
         "label": "Partial Match",
-        "show_if": "options.task_type=='apply_lookup_table' && options.regex=='false'",
+        "show_if": "options.task_type=='apply_lookup_table'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
-      "options.regex": {
+      "options.case_sensitive": {
         "type": "checkbox",
-        "label": "Regular Expression",
+        "label": "Case Sensitive",
         "show_if": "options.task_type=='apply_lookup_table'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
+        "breakLine": true
+      },
+      "options.use_delimiter": {
+        "type": "checkbox",
+        "label": "Custom Delimiter",
+        "show_if": "options.task_type=='apply_lookup_table'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.delimiter": {
+        "type": "text",
+        "label": "Input Delimiter",
+        "show_if": "options.task_type=='generate_lookup_table' && options.use_delimiter=='true'",
+        "val": ";",
+        "required": true,
         "breakLine": true
       },
       "options.input_table.use_filter": {
