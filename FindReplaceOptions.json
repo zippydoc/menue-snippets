@@ -56,11 +56,27 @@
         "val": "(.*),(.*),(.*)\\s(\\d{5})(-\\d{4})?",
         "style": "min-width: 200px"
       },
-      "incoming_value_to_replace.table": {
+      "replace_table.table_id": {
         "type": "select",
         "label": "Replacement Table",
         "show_if": "incoming_value_to_replace.type=='replacement_table'",
         "bind": "TABLES",
+        "required": true
+      },
+      "replace_table.find_column": {
+        "type": "select",
+        "label": "Select Find Column",
+        "show_if": "incoming_value_to_replace.type=='replacement_table'",
+        "table": "replace_table.table_id",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "replace_table.replace_with_column": {
+        "type": "select",
+        "label": "Select Replace with Column",
+        "show_if": "incoming_value_to_replace.type=='replacement_table'",
+        "table": "replace_table.table_id",
+        "bind": "COLUMNS",
         "required": true
       },
       "incoming_value_to_replace.partial_match": {
