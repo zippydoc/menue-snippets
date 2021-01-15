@@ -41,7 +41,7 @@
       "options.lookup_table_id": {
         "type": "select",
         "label": "Lookup Table",
-        "show_if": "options.task_type=='apply_lookup_table'",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
         "bind": "TABLES",
         "empty": "",
         "required": true
@@ -66,7 +66,7 @@
       "options.use_delimiter": {
         "type": "checkbox",
         "label": "Custom Delimiter",
-        "show_if": "options.task_type=='apply_lookup_table'",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -74,7 +74,7 @@
       "options.delimiter": {
         "type": "text",
         "label": "Input Delimiter",
-        "show_if": "options.task_type=='apply_lookup_table' && options.use_delimiter=='true'",
+        "show_if": "(options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table') && options.use_delimiter=='true'",
         "val": ";",
         "required": true,
         "breakLine": true
@@ -82,7 +82,7 @@
       "options.input_table.use_filter": {
         "type": "checkbox",
         "label": "Use Filter for Input table",
-        "show_if": "options.task_type=='apply_lookup_table'",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -91,7 +91,7 @@
       "options.input_table.apply_to_record": {
         "type": "checkbox",
         "label": "Apply to Record for Input table filter",
-        "show_if": "options.task_type=='apply_lookup_table' && options.input_table.use_filter=='true'",
+        "show_if": "(options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table') && options.input_table.use_filter=='true'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -100,7 +100,7 @@
       "input_table_apply_to_group_box": {
         "type": "fieldset",
         "label": "Apply to Group of Input table",
-        "show_if": "options.task_type=='apply_lookup_table' && options.input_table.use_filter=='true' && options.input_table.apply_to_record=='false'",
+        "show_if": "(options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table') && options.input_table.use_filter=='true' && options.input_table.apply_to_record=='false'",
         "repeat": false,
         "fields": {
           "options.input_table.apply_to_group_columns": {
@@ -118,7 +118,7 @@
       "options.input_table.filter": {
         "type": "fieldset",
         "label": "Add Filter Conditions for Input table",
-        "show_if": "options.task_type=='apply_lookup_table' && options.input_table.use_filter=='true'",
+        "show_if": "(options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table') && options.input_table.use_filter=='true'",
         "repeat": true,
         "fields": {
           "initial_op": {
@@ -299,7 +299,7 @@
       "options.lookup_table.use_filter": {
         "type": "checkbox",
         "label": "Use Filter for Lookup table",
-        "show_if": "options.task_type=='apply_lookup_table'",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -309,7 +309,7 @@
       "options.lookup_table.apply_to_record": {
         "type": "checkbox",
         "label": "Apply to Record for Lookup table filter",
-        "show_if": "options.task_type=='apply_lookup_table' && options.lookup_table.use_filter=='true'",
+        "show_if": "(options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table') && options.lookup_table.use_filter=='true'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -318,7 +318,7 @@
       "lookup_table_apply_to_group_box": {
         "type": "fieldset",
         "label": "Apply to Group of Lookup table",
-        "show_if": "options.task_type=='apply_lookup_table' && options.lookup_table.use_filter=='true' && options.lookup_table.apply_to_record=='false'",
+        "show_if": "(options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table') && options.lookup_table.use_filter=='true' && options.lookup_table.apply_to_record=='false'",
         "repeat": false,
         "fields": {
           "options.lookup_table.apply_to_group_columns": {
@@ -336,7 +336,7 @@
       "options.lookup_table.filter": {
         "type": "fieldset",
         "label": "Add Filter Conditions for Lookup table",
-        "show_if": "options.task_type=='apply_lookup_table' && options.lookup_table.use_filter=='true'",
+        "show_if": "(options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table') && options.lookup_table.use_filter=='true'",
         "repeat": true,
         "fields": {
           "initial_op": {
