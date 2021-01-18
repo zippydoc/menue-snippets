@@ -10,7 +10,25 @@
         "values": {
           "add_one_row": "Add one row",
           "add_one_row_for_each_selected_row": "Add one row for each selected row"
+        }
+      },
+      "options.adding_position": {
+        "type": "select",
+        "label": "Select Position",
+        "required": true,
+        "show_if": "options.type == 'add_one_row_for_each_selected_row'",
+        "options": {
+          "above_selected_row": {
+            "label": "above selected row"
+          },
+          "below_selected_row": {
+            "label": "below selected row"
+          },
+          "at_table_end": {
+            "label": "at table end"
+          }
         },
+        "val": "if",
         "breakLine": true
       },
       "options.use_filter": {
@@ -247,6 +265,9 @@
             "label": "Formula Type",
             "required": true,
             "options": {
+              "copy_selected": {
+                "label": "Copy Selected"
+              },
               "static_value": {
                 "label": "Static Value"
               },
@@ -257,7 +278,7 @@
                 "label": "Text Formula"
               }
             },
-            "val": "static_value"
+            "val": "copy_selected"
           },
           "static_value": {
             "type": "text",
