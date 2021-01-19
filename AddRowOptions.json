@@ -28,7 +28,7 @@
       "options.use_filter": {
         "type": "checkbox",
         "label": "Use Filter",
-        "show_if": "options.type=='add_one_row_for_each_selected_row'",
+        "show_if": "options.type!='add_single_row_at_table_end'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -37,7 +37,7 @@
       "options.apply_to_record": {
         "type": "checkbox",
         "label": "Apply to Record",
-        "show_if": "options.type=='add_one_row_for_each_selected_row' && options.use_filter=='true'",
+        "show_if": "options.type!='add_single_row_at_table_end' && options.use_filter=='true'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -46,7 +46,7 @@
       "apply_to_group_box": {
         "type": "fieldset",
         "label": "Apply to Group",
-        "show_if": "options.type=='add_one_row_for_each_selected_row' && options.use_filter=='true' && options.apply_to_record=='false'",
+        "show_if": "options.type!='add_single_row_at_table_end' && options.use_filter=='true' && options.apply_to_record=='false'",
         "repeat": false,
         "fields": {
           "options.apply_to_group_columns": {
@@ -64,7 +64,7 @@
       "options.filter": {
         "type": "fieldset",
         "label": "Add Filter Conditions",
-        "show_if": "options.type=='add_one_row_for_each_selected_row' && options.use_filter=='true'",
+        "show_if": "options.type!='add_single_row_at_table_end' && options.use_filter=='true'",
         "repeat": true,
         "fields": {
           "initial_op": {
