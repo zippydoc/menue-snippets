@@ -20,15 +20,27 @@
           },
           "add_single_row_at_table_end": {
             "label": "Add single row at table end"
+          },
+          "add_row_after_each_group": {
+            "label": "Add row after each group"
           }
         },
         "val": "add_rows_below_selected_row",
         "breakLine": true
       },
+      "options.group_column": {
+        "type": "select",
+        "label": "Group Column",
+        "show_if": "options.type=='add_row_after_each_group'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
       "options.use_filter": {
         "type": "checkbox",
         "label": "Use Filter",
-        "show_if": "options.type!='add_single_row_at_table_end'",
+        "show_if": "options.type=='add_rows_below_selected_row' || options.type=='add_rows_above_selected_row' || options.type=='add_rows_at_table_end'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
