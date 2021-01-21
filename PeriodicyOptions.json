@@ -4,9 +4,28 @@
     "label": "Select Transaction Options",
     "repeat": false,
     "fields": {
+      "options.type": {
+        "type": "radio",
+        "val": "generate",
+        "values": {
+          "generate": "Generate Periodicy Example",
+          "process": "Process Periodicy Table"
+        },
+        "breakLine": true
+      },
+      "options.standard_table": {
+        "type": "checkbox",
+        "label": "Standard Periodicy Table",
+        "show_if": "options.type=='process'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "options.initial_date": {
         "type": "select",
         "label": "Initial Date",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
@@ -14,6 +33,7 @@
       "options.period": {
         "type": "select",
         "label": "Periodicy (e.g. Monthly, Quarterly)",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
@@ -21,6 +41,7 @@
       "options.final_date": {
         "type": "select",
         "label": "Final Date",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
         "breakLine": true
@@ -28,18 +49,21 @@
       "options.volume": {
         "type": "select",
         "label": "Amount",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth": {
         "type": "select",
         "label": "Growth Rate",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth_period": {
         "type": "select",
         "label": "Growth Period",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
         "options": {
           "selected_period": {
             "label": "Equal to Periodicy"
@@ -65,7 +89,15 @@
       "options.growth_period_column": {
         "type": "select",
         "label": "Growth Period Column",
-        "show_if": "options.growth_period=='column'",
+        "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.growth_pattern_column": {
+        "type": "select",
+        "label": "Growth Pattern Column",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
         "breakLine": true
@@ -73,6 +105,7 @@
       "options.end_date": {
         "type": "date",
         "label": "End Date of Table",
+        "show_if": "options.type=='process'",
         "val": "",
         "required": true,
         "style": "width: 300px"
