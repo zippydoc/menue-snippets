@@ -91,7 +91,7 @@
       "options.input_table.apply_to_record": {
         "type": "checkbox",
         "label": "Apply to Record for Input table filter",
-        "show_if": "options.task_type=='apply_lookup_table' && options.input_table.use_filter=='true'",
+        "show_if": "options.input_table.use_filter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -100,7 +100,7 @@
       "input_table_apply_to_group_box": {
         "type": "fieldset",
         "label": "Apply to Group of Input table",
-        "show_if": "options.task_type=='apply_lookup_table' && options.input_table.use_filter=='true' && options.input_table.apply_to_record=='false'",
+        "show_if": "options.input_table.use_filter=='true' && options.input_table.apply_to_record=='false' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
         "repeat": false,
         "fields": {
           "options.input_table.apply_to_group_columns": {
@@ -118,7 +118,7 @@
       "options.input_table.filter": {
         "type": "fieldset",
         "label": "Add Filter Conditions for Input table",
-        "show_if": "options.task_type=='apply_lookup_table' && options.input_table.use_filter=='true'",
+        "show_if": "options.input_table.use_filter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
         "repeat": true,
         "fields": {
           "initial_op": {
