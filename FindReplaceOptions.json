@@ -362,7 +362,7 @@
       "use_replace_table_filter": {
         "type": "checkbox",
         "label": "Use Filter on \"Replace With\" Table",
-        "show_if": "incoming_value_to_replace.type!='replacement_table' && replace_with.value_type=='table'",
+        "show_if": "incoming_value_to_replace.type=='replacement_table' || (incoming_value_to_replace.type!='regex' && replace_with.value_type=='table')",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -371,7 +371,7 @@
       "replace_table_filter_option.apply_to_record": {
         "type": "checkbox",
         "label": "Apply to Record on \"Replace With\" Table",
-        "show_if": "incoming_value_to_replace.type!='replacement_table' && replace_with.value_type=='table' && use_replace_table_filter=='true'",
+        "show_if": "use_replace_table_filter=='true' && (incoming_value_to_replace.type=='replacement_table' || (incoming_value_to_replace.type!='regex' && replace_with.value_type=='table'))",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -380,7 +380,7 @@
       "replace_table_filter_option_apply_to_group_box": {
         "type": "fieldset",
         "label": "Apply to Group on \"Replace With\" Table",
-        "show_if": "incoming_value_to_replace.type!='replacement_table' && replace_with.value_type=='table' && use_replace_table_filter=='true' && replace_table_filter_option.apply_to_record=='false'",
+        "show_if": "use_replace_table_filter=='true' && replace_table_filter_option.apply_to_record=='false' && (incoming_value_to_replace.type=='replacement_table' || (incoming_value_to_replace.type!='regex' && replace_with.value_type=='table'))",
         "repeat": false,
         "fields": {
           "replace_table_filter_option.apply_to_group_columns": {
@@ -398,7 +398,7 @@
       "replace_table_filter_option.filter": {
         "type": "fieldset",
         "label": "Add Filter Conditions on \"Replace With\" Table",
-        "show_if": "incoming_value_to_replace.type!='replacement_table' && replace_with.value_type=='table' && use_replace_table_filter=='true'",
+        "show_if": "use_replace_table_filter=='true' && (incoming_value_to_replace.type=='replacement_table' || (incoming_value_to_replace.type!='regex' && replace_with.value_type=='table'))",
         "repeat": true,
         "fields": {
           "initial_op": {
