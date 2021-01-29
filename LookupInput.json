@@ -2,8 +2,17 @@
   "columns": {
     "type": "select",
     "label": "Select column(s)",
+    "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
     "table": "input_table",
     "multiple": true,
+    "bind": "COLUMNS",
+    "required": true
+  },
+  "column_for_generate": {
+    "type": "select",
+    "label": "Select column",
+    "show_if": "options.task_type=='generate_lookup_table'",
+    "table": "input_table",
     "bind": "COLUMNS",
     "required": true
   }
