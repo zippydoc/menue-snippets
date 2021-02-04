@@ -9,6 +9,9 @@
         "label": "Task Type",
         "required": true,
         "options": {
+          "label_duplicates": {
+            "label": "Label Duplicates"
+          },
           "generate_lookup_table": {
             "label": "Generate Lookup-Table"
           },
@@ -19,13 +22,13 @@
             "label": "Apply Regex-Table"
           }
         },
-        "val": "generate_lookup_table",
+        "val": "label_duplicates",
         "breakLine": true
       },
       "options.minimum_number_of_matching_characters": {
         "type": "text",
         "label": "Minimum Number of matching Characters",
-        "show_if": "options.task_type=='generate_lookup_table'",
+        "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='label_duplicates'",
         "val": "3",
         "required": true,
         "style": "min-width: 240px"
@@ -33,7 +36,7 @@
       "options.minimum_number_of_duplicates": {
         "type": "text",
         "label": "Minimum Number of duplicates",
-        "show_if": "options.task_type=='generate_lookup_table'",
+        "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='label_duplicates'",
         "val": "2",
         "required": true,
         "style": "min-width: 240px",
