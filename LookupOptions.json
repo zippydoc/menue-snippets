@@ -25,22 +25,108 @@
         "val": "label_duplicates",
         "breakLine": true
       },
-      "options.minimum_number_of_matching_characters": {
-        "type": "text",
-        "label": "Minimum Number of matching Characters",
-        "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='label_duplicates'",
-        "val": "3",
+      "options.generating_method": {
+        "type": "select",
+        "label": "Generating Method",
         "required": true,
-        "style": "min-width: 240px"
+        "options": {
+          "duplicate_pattern": {
+            "label": "Duplicate Patterns"
+          },
+          "number_range": {
+            "label": "Number Ranges"
+          }
+        },
+        "val": "duplicate_pattern"
       },
-      "options.minimum_number_of_duplicates": {
-        "type": "text",
-        "label": "Minimum Number of duplicates",
-        "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='label_duplicates'",
-        "val": "2",
-        "required": true,
-        "style": "min-width: 240px",
-        "breakLine": true
+      "duplicate_option_box": {
+        "type": "fieldset",
+        "label": "Duplicate Patterns",
+        "show_if": "options.generating_method=='duplicate_pattern'",
+        "repeat": false,
+        "fields": {
+          "options.minimum_number_of_matching_characters": {
+            "type": "text",
+            "label": "Minimum Number of matching Characters",
+            "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='label_duplicates'",
+            "val": "3",
+            "required": true,
+            "style": "min-width: 240px"
+          },
+          "options.minimum_number_of_duplicates": {
+            "type": "text",
+            "label": "Minimum Number of duplicates",
+            "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='label_duplicates'",
+            "val": "2",
+            "required": true,
+            "style": "min-width: 240px",
+            "breakLine": true
+          }
+        }
+      },
+      "number_range_option_box": {
+        "type": "fieldset",
+        "label": "Number Ranges",
+        "show_if": "options.generating_method=='number_range'",
+        "repeat": false,
+        "fields": {
+          "options.number_range.range_type": {
+            "type": "select",
+            "label": "Range Type",
+            "required": true,
+            "options": {
+              "equal_interval": {
+                "label": "N Equal Intervals"
+              },
+              "equal_range": {
+                "label": "Equal Range"
+              },
+              "custom_range": {
+                "label": "Custom Range"
+              }
+            },
+            "val": "equal_interval"
+          },
+          "options.number_range.n": {
+            "type": "text",
+            "label": "N",
+            "show_if": "options.number_range.range_type=='equal_interval' || options.number_range.range_type=='equal_range'",
+            "val": "3",
+            "required": true
+          },
+          "options.number_range.start_value": {
+            "type": "text",
+            "label": "Start Value",
+            "show_if": "options.number_range.range_type=='equal_range'",
+            "val": "0",
+            "required": true
+          },
+          "custom_number_range_box": {
+            "type": "fieldset",
+            "label": "Add Filter Conditions",
+            "show_if": "options.number_range.range_type=='custom_range'",
+            "repeat": true,
+            "fields": {
+              "options.number_range.custom_range.pattern": {
+                "type": "text",
+                "label": "Pattern",
+                "val": "0<=x<10",
+                "required": true
+              },
+              "options.number_range.custom_range.label": {
+                "type": "text",
+                "label": "Label",
+                "val": "positive10",
+                "required": true
+              },
+              "delete": {
+                "type": "button",
+                "label": "Delete",
+                "function": "DELETE_ROW"
+              }
+            }
+          }
+        }
       },
       "options.lookup_table_id": {
         "type": "select",
@@ -550,6 +636,15 @@
         "width": "100%",
         "table": "input_table",
         "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.use_range_operator": {
+        "type": "checkbox",
+        "label": "Use range operators <,=,>",
+        "show_if": "options.task_type=='apply_lookup_table'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
         "breakLine": true
       }
     }
