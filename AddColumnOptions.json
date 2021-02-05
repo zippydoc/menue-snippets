@@ -29,6 +29,9 @@
           },
           "standard_functions": {
             "label": "Standard Functions"
+          },
+          "group_counter": {
+            "label": "Group Counter"
           }
         },
         "val": "static_value"
@@ -133,6 +136,33 @@
         "bind": "COLUMNS",
         "required": true
       },
+      "options.group_counter.type": {
+        "type": "select",
+        "label": "When",
+        "show_if": "options.column_value_type=='group_counter'",
+        "required": true,
+        "options": {
+          "starts_with": {
+            "label": "STARTS WITH"
+          },
+          "ends_with": {
+            "label": "ENDS WITH"
+          },
+          "starts_with_regex": {
+            "label": "STARTS WITH REGEX"
+          },
+          "ends_with_regex": {
+            "label": "ENDS WITH REGEX"
+          }
+        },
+        "val": "starts_with"
+      },
+      "options.group_counter.value": {
+        "type": "text",
+        "label": "Input Value",
+        "show_if": "options.column_value_type=='group_counter'",
+        "val": "."
+      },
       "options.static_value": {
         "type": "text",
         "label": "Input Value",
@@ -188,7 +218,7 @@
       },
       "options.apply_to_group.group_columns": {
         "type": "select",
-        "label": "Group column(s)",
+        "label": "Group Column(s)",
         "show_if": "options.apply_to_group.enabled == 'true' && (options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula')",
         "table": "input_table",
         "bind": "COLUMNS",
