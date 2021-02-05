@@ -23,9 +23,185 @@
           },
           "text_formula": {
             "label": "Text Formula"
+          },
+          "group_functions": {
+            "label": "Group Functions"
+          },
+          "standard_functions": {
+            "label": "Standard Functions"
+          },
+          "group_counter": {
+            "label": "Group Counter"
           }
         },
         "val": "static_value"
+      },
+      "options.group_functions.group_columns": {
+        "type": "select",
+        "label": "Group Column(s)",
+        "show_if": "options.column_value_type=='group_functions'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "multiple": true,
+        "required": true
+      },
+      "options.group_functions.function": {
+        "type": "select",
+        "label": "Function",
+        "show_if": "options.column_value_type=='group_functions'",
+        "required": true,
+        "options": {
+          "sum": {
+            "label": "Sum"
+          },
+          "average": {
+            "label": "Average"
+          },
+          "median": {
+            "label": "Median"
+          },
+          "standard_deviation": {
+            "label": "Standard Deviation"
+          },
+          "variance": {
+            "label": "Variance"
+          }
+        },
+        "val": "sum"
+      },
+      "options.group_functions.value_column": {
+        "type": "select",
+        "label": "Value Column",
+        "show_if": "options.column_value_type=='group_functions'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.standard_functions.function": {
+        "type": "select",
+        "label": "Function",
+        "show_if": "options.column_value_type=='standard_functions'",
+        "required": true,
+        "options": {
+          "sum": {
+            "label": "Sum"
+          },
+          "average": {
+            "label": "Average"
+          },
+          "median": {
+            "label": "Median"
+          },
+          "max": {
+            "label": "Max"
+          },
+          "min": {
+            "label": "Min"
+          },
+          "standard_deviation": {
+            "label": "Standard Deviation"
+          },
+          "product": {
+            "label": "Product"
+          },
+          "quota": {
+            "label": "Quota"
+          },
+          "trailing_row_n_average": {
+            "label": "Trailing Row-N Average"
+          },
+          "index_from_row_n": {
+            "label": "Index from Row-N"
+          },
+          "growth": {
+            "label": "Growth"
+          }
+        },
+        "val": "sum"
+      },
+      "options.standard_functions.group_columns": {
+        "type": "select",
+        "label": "Select Column(s)",
+        "show_if": "options.column_value_type=='standard_functions' && (options.standard_functions.function=='sum' || options.standard_functions.function=='average' || options.standard_functions.function=='median' || options.standard_functions.function=='max' || options.standard_functions.function=='min' || options.standard_functions.function=='standard_deviation' || options.standard_functions.function=='product')",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "multiple": true,
+        "required": true
+      },
+      "options.standard_functions.column_a": {
+        "type": "select",
+        "label": "Column A",
+        "show_if": "options.column_value_type=='standard_functions' && options.standard_functions.function=='quota'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.standard_functions.column_b": {
+        "type": "select",
+        "label": "Column B",
+        "show_if": "options.column_value_type=='standard_functions' && options.standard_functions.function=='quota'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.standard_functions.n_value": {
+        "type": "text",
+        "label": "N (integer value)",
+        "show_if": "options.column_value_type=='standard_functions' && (options.standard_functions.function=='trailing_row_n_average' || options.standard_functions.function=='index_from_row_n')",
+        "val": "1",
+        "required": true
+      },
+      "options.group_counter.type": {
+        "type": "select",
+        "label": "When",
+        "show_if": "options.column_value_type=='group_counter'",
+        "required": true,
+        "options": {
+          "starts_with": {
+            "label": "STARTS WITH"
+          },
+          "ends_with": {
+            "label": "ENDS WITH"
+          },
+          "starts_with_regex": {
+            "label": "STARTS WITH REGEX"
+          },
+          "ends_with_regex": {
+            "label": "ENDS WITH REGEX"
+          }
+        },
+        "val": "starts_with"
+      },
+      "options.group_counter.value": {
+        "type": "text",
+        "label": "Input Value",
+        "show_if": "options.column_value_type=='group_counter'",
+        "val": ".",
+        "breakLine": true
+      },
+      "options.group_counter.inc_dec_square_bracket": {
+        "type": "checkbox",
+        "label": "Increase/Decrease with []",
+        "show_if": "options.column_value_type=='group_counter'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.group_counter.inc_dec_curly_bracket": {
+        "type": "checkbox",
+        "label": "Increase/Decrease with {}",
+        "show_if": "options.column_value_type=='group_counter'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.group_counter.inc_dec_parenthesis": {
+        "type": "checkbox",
+        "label": "Increase/Decrease with ()",
+        "show_if": "options.column_value_type=='group_counter'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
       },
       "options.static_value": {
         "type": "text",
@@ -51,6 +227,7 @@
       "options.use_multi_row": {
         "type": "checkbox",
         "label": "Multi-Row Options",
+        "show_if": "options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -58,7 +235,7 @@
       "options.if_row_not_exist": {
         "type": "select",
         "label": "If referred row not exist",
-        "show_if": "options.use_multi_row=='true'",
+        "show_if": "options.use_multi_row=='true' && (options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula')",
         "required": true,
         "options": {
           "empty": {
@@ -69,6 +246,24 @@
           }
         },
         "val": "empty",
+        "breakLine": true
+      },
+      "options.apply_to_group.enabled": {
+        "type": "checkbox",
+        "label": "Apply to Group",
+        "show_if": "options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.apply_to_group.group_columns": {
+        "type": "select",
+        "label": "Group Column(s)",
+        "show_if": "options.apply_to_group.enabled == 'true' && (options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula')",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "multiple": true,
+        "required": true,
         "breakLine": true
       },
       "options.use_filter": {
