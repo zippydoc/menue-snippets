@@ -27,8 +27,11 @@
           "group_functions": {
             "label": "Group Functions"
           },
-          "standard_functions": {
-            "label": "Standard Functions"
+          "multi_column_functions": {
+            "label": "Multi-Column Functions"
+          },
+          "multi_row_functions": {
+            "label": "Multi-Row Functions"
           },
           "group_counter": {
             "label": "Group Counter"
@@ -77,10 +80,10 @@
         "bind": "COLUMNS",
         "required": true
       },
-      "options.standard_functions.function": {
+      "options.multi_column_functions.function": {
         "type": "select",
         "label": "Function",
-        "show_if": "options.column_value_type=='standard_functions'",
+        "show_if": "options.column_value_type=='multi_column_functions'",
         "required": true,
         "options": {
           "sum": {
@@ -107,6 +110,43 @@
           "quota": {
             "label": "Quota"
           },
+          "growth": {
+            "label": "Growth"
+          }
+        },
+        "val": "sum"
+      },
+      "options.multi_column_functions.sel_columns": {
+        "type": "select",
+        "label": "Select Column(s)",
+        "show_if": "options.column_value_type=='multi_column_functions' && (options.multi_column_functions.function=='sum' || options.multi_column_functions.function=='average' || options.multi_column_functions.function=='median' || options.multi_column_functions.function=='max' || options.multi_column_functions.function=='min' || options.multi_column_functions.function=='standard_deviation' || options.multi_column_functions.function=='product')",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "multiple": true,
+        "required": true
+      },
+      "options.multi_column_functions.column_a": {
+        "type": "select",
+        "label": "Column A",
+        "show_if": "options.column_value_type=='multi_column_functions' && options.multi_column_functions.function=='quota'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.multi_column_functions.column_b": {
+        "type": "select",
+        "label": "Column B",
+        "show_if": "options.column_value_type=='multi_column_functions' && options.multi_column_functions.function=='quota'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.multi_row_functions.function": {
+        "type": "select",
+        "label": "Function",
+        "show_if": "options.column_value_type=='multi_row_functions'",
+        "required": true,
+        "options": {
           "trailing_row_n_average": {
             "label": "Trailing Row-N Average"
           },
@@ -117,37 +157,12 @@
             "label": "Growth"
           }
         },
-        "val": "sum"
+        "val": "trailing_row_n_average"
       },
-      "options.standard_functions.group_columns": {
-        "type": "select",
-        "label": "Select Column(s)",
-        "show_if": "options.column_value_type=='standard_functions' && (options.standard_functions.function=='sum' || options.standard_functions.function=='average' || options.standard_functions.function=='median' || options.standard_functions.function=='max' || options.standard_functions.function=='min' || options.standard_functions.function=='standard_deviation' || options.standard_functions.function=='product')",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "multiple": true,
-        "required": true
-      },
-      "options.standard_functions.column_a": {
-        "type": "select",
-        "label": "Column A",
-        "show_if": "options.column_value_type=='standard_functions' && options.standard_functions.function=='quota'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true
-      },
-      "options.standard_functions.column_b": {
-        "type": "select",
-        "label": "Column B",
-        "show_if": "options.column_value_type=='standard_functions' && options.standard_functions.function=='quota'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true
-      },
-      "options.standard_functions.n_value": {
+      "options.multi_row_functions.n_value": {
         "type": "text",
         "label": "N (integer value)",
-        "show_if": "options.column_value_type=='standard_functions' && (options.standard_functions.function=='trailing_row_n_average' || options.standard_functions.function=='index_from_row_n')",
+        "show_if": "options.column_value_type=='multi_row_functions' && (options.multi_column_functions.function=='trailing_row_n_average' || options.multi_column_functions.function=='index_from_row_n')",
         "val": "1",
         "required": true
       },
