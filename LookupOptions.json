@@ -22,8 +22,7 @@
             "label": "Apply Regex-Table"
           }
         },
-        "val": "label_duplicates",
-        "breakLine": true
+        "val": "label_duplicates"
       },
       "options.generating_method": {
         "type": "select",
@@ -89,30 +88,30 @@
           "options.number_range.n_value": {
             "type": "text",
             "label": "N",
-            "show_if": "options.number_range.range_type=='equal_interval' || options.number_range.range_type=='equal_range'",
+            "show_if": "options.number_range.range_type=='equal_interval'",
             "val": "3",
             "required": true
           },
-          "options.number_range.start_value": {
+          "options.number_range.range_value": {
             "type": "text",
-            "label": "Start Value",
+            "label": "N",
             "show_if": "options.number_range.range_type=='equal_range'",
-            "val": "0",
+            "val": "10",
             "required": true
           },
-          "custom_number_range_box": {
+          "options.number_range.custom_ranges": {
             "type": "fieldset",
-            "label": "Add Filter Conditions",
+            "label": "Add Custom Range Pattern",
             "show_if": "options.number_range.range_type=='custom_range'",
             "repeat": true,
             "fields": {
-              "options.number_range.custom_range.pattern": {
+              "pattern": {
                 "type": "text",
                 "label": "Pattern",
                 "val": "0<=x<10",
                 "required": true
               },
-              "options.number_range.custom_range.label": {
+              "label": {
                 "type": "text",
                 "label": "Label",
                 "val": "positive10",
