@@ -41,7 +41,7 @@
             },
             "val": "multi_column_functions"
           },
-          "multi_column_functions.function": {
+          "multi_column_functions__function": {
             "type": "select",
             "label": "Function",
             "show_if": "this.task_type=='multi_column_functions'",
@@ -83,39 +83,39 @@
             },
             "val": "sum"
           },
-          "multi_column_functions.sel_columns": {
+          "multi_column_functions__sel_columns": {
             "type": "select",
             "label": "Select Column(s)",
-            "show_if": "this.task_type=='multi_column_functions' && (this.multi_column_functions.function=='sum' || this.multi_column_functions.function=='average' || this.multi_column_functions.function=='median' || this.multi_column_functions.function=='max' || this.multi_column_functions.function=='min' || this.multi_column_functions.function=='standard_deviation' || this.multi_column_functions.function=='product')",
+            "show_if": "this.task_type=='multi_column_functions' && (this.multi_column_functions__function=='sum' || this.multi_column_functions__function=='average' || this.multi_column_functions__function=='median' || this.multi_column_functions__function=='max' || this.multi_column_functions__function=='min' || this.multi_column_functions__function=='standard_deviation' || this.multi_column_functions__function=='product')",
             "table": "input_table",
             "bind": "COLUMNS",
             "multiple": true,
             "required": true
           },
-          "multi_column_functions.column_a": {
+          "multi_column_functions__column_a": {
             "type": "select",
             "label": "Column A",
-            "show_if": "this.task_type=='multi_column_functions' && this.multi_column_functions.function=='quota'",
+            "show_if": "this.task_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
-          "multi_column_functions.column_b": {
+          "multi_column_functions__column_b": {
             "type": "select",
             "label": "Column B",
-            "show_if": "this.task_type=='multi_column_functions' && this.multi_column_functions.function=='quota'",
+            "show_if": "this.task_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
-          "multi_column_functions.n_value": {
+          "multi_column_functions__n_value": {
             "type": "text",
             "label": "N (positive integer)",
-            "show_if": "this.task_type=='multi_column_functions' && this.multi_column_functions.function=='compound_growth'",
+            "show_if": "this.task_type=='multi_column_functions' && this.multi_column_functions__function=='compound_growth'",
             "val": "1",
             "required": true
           },
-          "multi_row_functions.function": {
+          "multi_row_functions__function": {
             "type": "select",
             "label": "Function",
             "show_if": "this.task_type=='multi_row_functions'",
@@ -133,22 +133,22 @@
             },
             "val": "trailing_row_n_average"
           },
-          "multi_row_functions.sel_column": {
+          "multi_row_functions__sel_column": {
             "type": "select",
             "label": "Column",
-            "show_if": "this.task_type=='multi_row_functions' && (this.multi_row_functions.function=='trailing_row_n_average' || this.multi_row_functions.function=='index_from_row_n')",
+            "show_if": "this.task_type=='multi_row_functions' && (this.multi_row_functions__function=='trailing_row_n_average' || this.multi_row_functions__function=='index_from_row_n')",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
-          "multi_row_functions.n_value": {
+          "multi_row_functions__n_value": {
             "type": "text",
             "label": "N (positive integer)",
-            "show_if": "this.task_type=='multi_row_functions' && (this.multi_row_functions.function=='trailing_row_n_average' || this.multi_row_functions.function=='index_from_row_n')",
+            "show_if": "this.task_type=='multi_row_functions' && (this.multi_row_functions__function=='trailing_row_n_average' || this.multi_row_functions__function=='index_from_row_n')",
             "val": "1",
             "required": true
           },
-          "group_counter.type": {
+          "group_counter__type": {
             "type": "select",
             "label": "When",
             "show_if": "this.task_type=='group_counter'",
@@ -169,14 +169,14 @@
             },
             "val": "starts_with"
           },
-          "group_counter.value": {
+          "group_counter__value": {
             "type": "text",
             "label": "Input Value",
             "show_if": "this.task_type=='group_counter'",
             "val": ".",
             "breakLine": true
           },
-          "group_counter.inc_dec_square_bracket": {
+          "group_counter__inc_dec_square_bracket": {
             "type": "checkbox",
             "label": "Increase/Decrease with []",
             "show_if": "this.task_type=='group_counter'",
@@ -184,7 +184,7 @@
             "isOn": "true",
             "isOff": "false"
           },
-          "group_counter.inc_dec_curly_bracket": {
+          "group_counter__inc_dec_curly_bracket": {
             "type": "checkbox",
             "label": "Increase/Decrease with {}",
             "show_if": "this.task_type=='group_counter'",
@@ -192,7 +192,7 @@
             "isOn": "true",
             "isOff": "false"
           },
-          "group_counter.inc_dec_parenthesis": {
+          "group_counter__inc_dec_parenthesis": {
             "type": "checkbox",
             "label": "Increase/Decrease with ()",
             "show_if": "this.task_type=='group_counter'",
@@ -245,7 +245,7 @@
             "val": "empty",
             "breakLine": true
           },
-          "apply_to_group.enabled": {
+          "apply_to_group__enabled": {
             "type": "checkbox",
             "label": "Apply to Group",
             "show_if": "this.task_type!='static_value'",
@@ -256,7 +256,7 @@
           "apply_to_group.group_columns": {
             "type": "select",
             "label": "Group Column(s)",
-            "show_if": "this.apply_to_group.enabled == 'true' && this.task_type!='static_value'",
+            "show_if": "this.apply_to_group__enabled == 'true' && this.task_type!='static_value'",
             "table": "input_table",
             "bind": "COLUMNS",
             "multiple": true,
