@@ -10,9 +10,9 @@
         "val": "NewColumn",
         "required": true
       },
-      "options.column_value_type": {
+      "options.task_type": {
         "type": "select",
-        "label": "Column Value Type",
+        "label": "Task Type",
         "required": true,
         "options": {
           "static_value": {
@@ -28,21 +28,21 @@
             "label": "Group Functions"
           },
           "multi_column_functions": {
-            "label": "Multi-Column Functions"
+            "label": "Multi-Column"
           },
           "multi_row_functions": {
-            "label": "Multi-Row Functions"
+            "label": "Multi-Row"
           },
           "group_counter": {
             "label": "Group Counter"
           }
         },
-        "val": "static_value"
+        "val": "multi_column_functions"
       },
       "options.group_functions.group_columns": {
         "type": "select",
         "label": "Group Column(s)",
-        "show_if": "options.column_value_type=='group_functions'",
+        "show_if": "options.task_type=='group_functions'",
         "table": "input_table",
         "bind": "COLUMNS",
         "multiple": true,
@@ -51,7 +51,7 @@
       "options.group_functions.function": {
         "type": "select",
         "label": "Function",
-        "show_if": "options.column_value_type=='group_functions'",
+        "show_if": "options.task_type=='group_functions'",
         "required": true,
         "options": {
           "sum": {
@@ -75,7 +75,7 @@
       "options.group_functions.value_column": {
         "type": "select",
         "label": "Value Column",
-        "show_if": "options.column_value_type=='group_functions'",
+        "show_if": "options.task_type=='group_functions'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
@@ -83,7 +83,7 @@
       "options.multi_column_functions.function": {
         "type": "select",
         "label": "Function",
-        "show_if": "options.column_value_type=='multi_column_functions'",
+        "show_if": "options.task_type=='multi_column_functions'",
         "required": true,
         "options": {
           "sum": {
@@ -119,7 +119,7 @@
       "options.multi_column_functions.sel_columns": {
         "type": "select",
         "label": "Select Column(s)",
-        "show_if": "options.column_value_type=='multi_column_functions' && (options.multi_column_functions.function=='sum' || options.multi_column_functions.function=='average' || options.multi_column_functions.function=='median' || options.multi_column_functions.function=='max' || options.multi_column_functions.function=='min' || options.multi_column_functions.function=='standard_deviation' || options.multi_column_functions.function=='product')",
+        "show_if": "options.task_type=='multi_column_functions' && (options.multi_column_functions.function=='sum' || options.multi_column_functions.function=='average' || options.multi_column_functions.function=='median' || options.multi_column_functions.function=='max' || options.multi_column_functions.function=='min' || options.multi_column_functions.function=='standard_deviation' || options.multi_column_functions.function=='product')",
         "table": "input_table",
         "bind": "COLUMNS",
         "multiple": true,
@@ -128,7 +128,7 @@
       "options.multi_column_functions.column_a": {
         "type": "select",
         "label": "Column A",
-        "show_if": "options.column_value_type=='multi_column_functions' && options.multi_column_functions.function=='quota'",
+        "show_if": "options.task_type=='multi_column_functions' && options.multi_column_functions.function=='quota'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
@@ -136,7 +136,7 @@
       "options.multi_column_functions.column_b": {
         "type": "select",
         "label": "Column B",
-        "show_if": "options.column_value_type=='multi_column_functions' && options.multi_column_functions.function=='quota'",
+        "show_if": "options.task_type=='multi_column_functions' && options.multi_column_functions.function=='quota'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
@@ -144,7 +144,7 @@
       "options.multi_row_functions.function": {
         "type": "select",
         "label": "Function",
-        "show_if": "options.column_value_type=='multi_row_functions'",
+        "show_if": "options.task_type=='multi_row_functions'",
         "required": true,
         "options": {
           "trailing_row_n_average": {
@@ -159,17 +159,25 @@
         },
         "val": "trailing_row_n_average"
       },
+      "options.multi_row_functions.sel_column": {
+        "type": "select",
+        "label": "Column",
+        "show_if": "options.task_type=='multi_row_functions' && (options.multi_row_functions.function=='trailing_row_n_average' || options.multi_row_functions.function=='index_from_row_n')",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
       "options.multi_row_functions.n_value": {
         "type": "text",
         "label": "N (integer value)",
-        "show_if": "options.column_value_type=='multi_row_functions' && (options.multi_column_functions.function=='trailing_row_n_average' || options.multi_column_functions.function=='index_from_row_n')",
+        "show_if": "options.task_type=='multi_row_functions' && (options.multi_row_functions.function=='trailing_row_n_average' || options.multi_row_functions.function=='index_from_row_n')",
         "val": "1",
         "required": true
       },
       "options.group_counter.type": {
         "type": "select",
         "label": "When",
-        "show_if": "options.column_value_type=='group_counter'",
+        "show_if": "options.task_type=='group_counter'",
         "required": true,
         "options": {
           "starts_with": {
@@ -190,14 +198,14 @@
       "options.group_counter.value": {
         "type": "text",
         "label": "Input Value",
-        "show_if": "options.column_value_type=='group_counter'",
+        "show_if": "options.task_type=='group_counter'",
         "val": ".",
         "breakLine": true
       },
       "options.group_counter.inc_dec_square_bracket": {
         "type": "checkbox",
         "label": "Increase/Decrease with []",
-        "show_if": "options.column_value_type=='group_counter'",
+        "show_if": "options.task_type=='group_counter'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -205,7 +213,7 @@
       "options.group_counter.inc_dec_curly_bracket": {
         "type": "checkbox",
         "label": "Increase/Decrease with {}",
-        "show_if": "options.column_value_type=='group_counter'",
+        "show_if": "options.task_type=='group_counter'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -213,7 +221,7 @@
       "options.group_counter.inc_dec_parenthesis": {
         "type": "checkbox",
         "label": "Increase/Decrease with ()",
-        "show_if": "options.column_value_type=='group_counter'",
+        "show_if": "options.task_type=='group_counter'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -221,28 +229,28 @@
       "options.static_value": {
         "type": "text",
         "label": "Input Value",
-        "show_if": "options.column_value_type=='static_value'",
+        "show_if": "options.task_type=='static_value'",
         "val": "",
         "width": "100%"
       },
       "options.numeric_formula": {
         "type": "text",
         "label": "Input Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
-        "show_if": "options.column_value_type=='numeric_formula'",
+        "show_if": "options.task_type=='numeric_formula'",
         "val": "",
         "width": "100%"
       },
       "options.text_formula": {
         "type": "text",
         "label": "Input Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
-        "show_if": "options.column_value_type=='text_formula'",
+        "show_if": "options.task_type=='text_formula'",
         "val": "",
         "width": "100%"
       },
       "options.use_multi_row": {
         "type": "checkbox",
         "label": "Multi-Row Options",
-        "show_if": "options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula'",
+        "show_if": "options.task_type=='numeric_formula' || options.task_type=='text_formula'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -250,7 +258,7 @@
       "options.if_row_not_exist": {
         "type": "select",
         "label": "If referred row not exist",
-        "show_if": "options.use_multi_row=='true' && (options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula')",
+        "show_if": "options.use_multi_row=='true' && (options.task_type=='numeric_formula' || options.task_type=='text_formula')",
         "required": true,
         "options": {
           "empty": {
@@ -266,7 +274,7 @@
       "options.apply_to_group.enabled": {
         "type": "checkbox",
         "label": "Apply to Group",
-        "show_if": "options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula'",
+        "show_if": "options.task_type!='static_value'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -274,7 +282,7 @@
       "options.apply_to_group.group_columns": {
         "type": "select",
         "label": "Group Column(s)",
-        "show_if": "options.apply_to_group.enabled == 'true' && (options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula')",
+        "show_if": "options.apply_to_group.enabled == 'true' && (options.task_type=='numeric_formula' || options.task_type=='text_formula')",
         "table": "input_table",
         "bind": "COLUMNS",
         "multiple": true,
