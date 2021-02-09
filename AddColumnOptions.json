@@ -110,8 +110,14 @@
           "quota": {
             "label": "Quota"
           },
-          "growth": {
-            "label": "Growth"
+          "absolute_growth": {
+            "label": "Absolute Growth"
+          },
+          "relative_growth": {
+            "label": "Relative Growth"
+          },
+          "compound_growth": {
+            "label": "Compound Growth"
           }
         },
         "val": "sum"
@@ -139,6 +145,13 @@
         "show_if": "options.task_type=='multi_column_functions' && options.multi_column_functions.function=='quota'",
         "table": "input_table",
         "bind": "COLUMNS",
+        "required": true
+      },
+      "options.multi_column_functions.n_value": {
+        "type": "text",
+        "label": "N (positive integer)",
+        "show_if": "options.task_type=='multi_column_functions' && options.multi_column_functions.function=='compound_growth'",
+        "val": "1",
         "required": true
       },
       "options.multi_row_functions.function": {
@@ -169,7 +182,7 @@
       },
       "options.multi_row_functions.n_value": {
         "type": "text",
-        "label": "N (integer value)",
+        "label": "N (positive integer)",
         "show_if": "options.task_type=='multi_row_functions' && (options.multi_row_functions.function=='trailing_row_n_average' || options.multi_row_functions.function=='index_from_row_n')",
         "val": "1",
         "required": true
@@ -282,7 +295,7 @@
       "options.apply_to_group.group_columns": {
         "type": "select",
         "label": "Group Column(s)",
-        "show_if": "options.apply_to_group.enabled == 'true' && (options.task_type=='numeric_formula' || options.task_type=='text_formula')",
+        "show_if": "options.apply_to_group.enabled == 'true' && options.task_type!='static_value'",
         "table": "input_table",
         "bind": "COLUMNS",
         "multiple": true,
