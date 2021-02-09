@@ -4,259 +4,271 @@
     "label": "New Column Options",
     "repeat": false,
     "fields": {
-      "options.new_column_name": {
-        "type": "text",
-        "label": "New Column Name",
-        "val": "NewColumn",
-        "required": true
-      },
-      "options.task_type": {
-        "type": "select",
-        "label": "Task Type",
-        "required": true,
-        "options": {
+      "options.add_columns": {
+        "type": "fieldset",
+        "label": "Add New Columns",
+        "repeat": true,
+        "fields": {
+          "new_column_name": {
+            "type": "text",
+            "label": "New Column Name",
+            "val": "NewColumn",
+            "required": true
+          },
+          "task_type": {
+            "type": "select",
+            "label": "Task Type",
+            "required": true,
+            "options": {
+              "static_value": {
+                "label": "Static Value"
+              },
+              "numeric_formula": {
+                "label": "Numeric Formula"
+              },
+              "text_formula": {
+                "label": "Text Formula"
+              },
+              "multi_column_functions": {
+                "label": "Multi-Column"
+              },
+              "multi_row_functions": {
+                "label": "Multi-Row"
+              },
+              "group_counter": {
+                "label": "Group Counter"
+              }
+            },
+            "val": "multi_column_functions"
+          },
+          "multi_column_functions.function": {
+            "type": "select",
+            "label": "Function",
+            "show_if": "this.task_type=='multi_column_functions'",
+            "required": true,
+            "options": {
+              "sum": {
+                "label": "Sum"
+              },
+              "average": {
+                "label": "Average"
+              },
+              "median": {
+                "label": "Median"
+              },
+              "max": {
+                "label": "Max"
+              },
+              "min": {
+                "label": "Min"
+              },
+              "standard_deviation": {
+                "label": "Standard Deviation"
+              },
+              "product": {
+                "label": "Product"
+              },
+              "quota": {
+                "label": "Quota"
+              },
+              "absolute_growth": {
+                "label": "Absolute Growth"
+              },
+              "relative_growth": {
+                "label": "Relative Growth"
+              },
+              "compound_growth": {
+                "label": "Compound Growth"
+              }
+            },
+            "val": "sum"
+          },
+          "multi_column_functions.sel_columns": {
+            "type": "select",
+            "label": "Select Column(s)",
+            "show_if": "this.task_type=='multi_column_functions' && (this.multi_column_functions.function=='sum' || this.multi_column_functions.function=='average' || this.multi_column_functions.function=='median' || this.multi_column_functions.function=='max' || this.multi_column_functions.function=='min' || this.multi_column_functions.function=='standard_deviation' || this.multi_column_functions.function=='product')",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "multiple": true,
+            "required": true
+          },
+          "multi_column_functions.column_a": {
+            "type": "select",
+            "label": "Column A",
+            "show_if": "this.task_type=='multi_column_functions' && this.multi_column_functions.function=='quota'",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "multi_column_functions.column_b": {
+            "type": "select",
+            "label": "Column B",
+            "show_if": "this.task_type=='multi_column_functions' && this.multi_column_functions.function=='quota'",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "multi_column_functions.n_value": {
+            "type": "text",
+            "label": "N (positive integer)",
+            "show_if": "this.task_type=='multi_column_functions' && this.multi_column_functions.function=='compound_growth'",
+            "val": "1",
+            "required": true
+          },
+          "multi_row_functions.function": {
+            "type": "select",
+            "label": "Function",
+            "show_if": "this.task_type=='multi_row_functions'",
+            "required": true,
+            "options": {
+              "trailing_row_n_average": {
+                "label": "Trailing Row-N Average"
+              },
+              "index_from_row_n": {
+                "label": "Index from Row-N"
+              },
+              "growth": {
+                "label": "Growth"
+              }
+            },
+            "val": "trailing_row_n_average"
+          },
+          "multi_row_functions.sel_column": {
+            "type": "select",
+            "label": "Column",
+            "show_if": "this.task_type=='multi_row_functions' && (this.multi_row_functions.function=='trailing_row_n_average' || this.multi_row_functions.function=='index_from_row_n')",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "multi_row_functions.n_value": {
+            "type": "text",
+            "label": "N (positive integer)",
+            "show_if": "this.task_type=='multi_row_functions' && (this.multi_row_functions.function=='trailing_row_n_average' || this.multi_row_functions.function=='index_from_row_n')",
+            "val": "1",
+            "required": true
+          },
+          "group_counter.type": {
+            "type": "select",
+            "label": "When",
+            "show_if": "this.task_type=='group_counter'",
+            "required": true,
+            "options": {
+              "starts_with": {
+                "label": "STARTS WITH"
+              },
+              "ends_with": {
+                "label": "ENDS WITH"
+              },
+              "starts_with_regex": {
+                "label": "STARTS WITH REGEX"
+              },
+              "ends_with_regex": {
+                "label": "ENDS WITH REGEX"
+              }
+            },
+            "val": "starts_with"
+          },
+          "group_counter.value": {
+            "type": "text",
+            "label": "Input Value",
+            "show_if": "this.task_type=='group_counter'",
+            "val": ".",
+            "breakLine": true
+          },
+          "group_counter.inc_dec_square_bracket": {
+            "type": "checkbox",
+            "label": "Increase/Decrease with []",
+            "show_if": "this.task_type=='group_counter'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "group_counter.inc_dec_curly_bracket": {
+            "type": "checkbox",
+            "label": "Increase/Decrease with {}",
+            "show_if": "this.task_type=='group_counter'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "group_counter.inc_dec_parenthesis": {
+            "type": "checkbox",
+            "label": "Increase/Decrease with ()",
+            "show_if": "this.task_type=='group_counter'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
           "static_value": {
-            "label": "Static Value"
+            "type": "text",
+            "label": "Input Value",
+            "show_if": "this.task_type=='static_value'",
+            "val": "",
+            "width": "100%"
           },
           "numeric_formula": {
-            "label": "Numeric Formula"
+            "type": "text",
+            "label": "Input Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
+            "show_if": "this.task_type=='numeric_formula'",
+            "val": "",
+            "width": "100%"
           },
           "text_formula": {
-            "label": "Text Formula"
+            "type": "text",
+            "label": "Input Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
+            "show_if": "this.task_type=='text_formula'",
+            "val": "",
+            "width": "100%"
           },
-          "multi_column_functions": {
-            "label": "Multi-Column"
+          "use_multi_row": {
+            "type": "checkbox",
+            "label": "Multi-Row Options",
+            "show_if": "this.task_type=='numeric_formula' || this.task_type=='text_formula'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
           },
-          "multi_row_functions": {
-            "label": "Multi-Row"
+          "if_row_not_exist": {
+            "type": "select",
+            "label": "If referred row not exist",
+            "show_if": "this.use_multi_row=='true' && (this.task_type=='numeric_formula' || this.task_type=='text_formula')",
+            "required": true,
+            "options": {
+              "empty": {
+                "label": "Empty or 0"
+              },
+              "closest": {
+                "label": "Closest Row Value"
+              }
+            },
+            "val": "empty",
+            "breakLine": true
           },
-          "group_counter": {
-            "label": "Group Counter"
+          "apply_to_group.enabled": {
+            "type": "checkbox",
+            "label": "Apply to Group",
+            "show_if": "this.task_type!='static_value'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "apply_to_group.group_columns": {
+            "type": "select",
+            "label": "Group Column(s)",
+            "show_if": "this.apply_to_group.enabled == 'true' && this.task_type!='static_value'",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "multiple": true,
+            "required": true,
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
           }
-        },
-        "val": "multi_column_functions"
-      },
-      "options.multi_column_functions.function": {
-        "type": "select",
-        "label": "Function",
-        "show_if": "options.task_type=='multi_column_functions'",
-        "required": true,
-        "options": {
-          "sum": {
-            "label": "Sum"
-          },
-          "average": {
-            "label": "Average"
-          },
-          "median": {
-            "label": "Median"
-          },
-          "max": {
-            "label": "Max"
-          },
-          "min": {
-            "label": "Min"
-          },
-          "standard_deviation": {
-            "label": "Standard Deviation"
-          },
-          "product": {
-            "label": "Product"
-          },
-          "quota": {
-            "label": "Quota"
-          },
-          "absolute_growth": {
-            "label": "Absolute Growth"
-          },
-          "relative_growth": {
-            "label": "Relative Growth"
-          },
-          "compound_growth": {
-            "label": "Compound Growth"
-          }
-        },
-        "val": "sum"
-      },
-      "options.multi_column_functions.sel_columns": {
-        "type": "select",
-        "label": "Select Column(s)",
-        "show_if": "options.task_type=='multi_column_functions' && (options.multi_column_functions.function=='sum' || options.multi_column_functions.function=='average' || options.multi_column_functions.function=='median' || options.multi_column_functions.function=='max' || options.multi_column_functions.function=='min' || options.multi_column_functions.function=='standard_deviation' || options.multi_column_functions.function=='product')",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "multiple": true,
-        "required": true
-      },
-      "options.multi_column_functions.column_a": {
-        "type": "select",
-        "label": "Column A",
-        "show_if": "options.task_type=='multi_column_functions' && options.multi_column_functions.function=='quota'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true
-      },
-      "options.multi_column_functions.column_b": {
-        "type": "select",
-        "label": "Column B",
-        "show_if": "options.task_type=='multi_column_functions' && options.multi_column_functions.function=='quota'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true
-      },
-      "options.multi_column_functions.n_value": {
-        "type": "text",
-        "label": "N (positive integer)",
-        "show_if": "options.task_type=='multi_column_functions' && options.multi_column_functions.function=='compound_growth'",
-        "val": "1",
-        "required": true
-      },
-      "options.multi_row_functions.function": {
-        "type": "select",
-        "label": "Function",
-        "show_if": "options.task_type=='multi_row_functions'",
-        "required": true,
-        "options": {
-          "trailing_row_n_average": {
-            "label": "Trailing Row-N Average"
-          },
-          "index_from_row_n": {
-            "label": "Index from Row-N"
-          },
-          "growth": {
-            "label": "Growth"
-          }
-        },
-        "val": "trailing_row_n_average"
-      },
-      "options.multi_row_functions.sel_column": {
-        "type": "select",
-        "label": "Column",
-        "show_if": "options.task_type=='multi_row_functions' && (options.multi_row_functions.function=='trailing_row_n_average' || options.multi_row_functions.function=='index_from_row_n')",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true
-      },
-      "options.multi_row_functions.n_value": {
-        "type": "text",
-        "label": "N (positive integer)",
-        "show_if": "options.task_type=='multi_row_functions' && (options.multi_row_functions.function=='trailing_row_n_average' || options.multi_row_functions.function=='index_from_row_n')",
-        "val": "1",
-        "required": true
-      },
-      "options.group_counter.type": {
-        "type": "select",
-        "label": "When",
-        "show_if": "options.task_type=='group_counter'",
-        "required": true,
-        "options": {
-          "starts_with": {
-            "label": "STARTS WITH"
-          },
-          "ends_with": {
-            "label": "ENDS WITH"
-          },
-          "starts_with_regex": {
-            "label": "STARTS WITH REGEX"
-          },
-          "ends_with_regex": {
-            "label": "ENDS WITH REGEX"
-          }
-        },
-        "val": "starts_with"
-      },
-      "options.group_counter.value": {
-        "type": "text",
-        "label": "Input Value",
-        "show_if": "options.task_type=='group_counter'",
-        "val": ".",
-        "breakLine": true
-      },
-      "options.group_counter.inc_dec_square_bracket": {
-        "type": "checkbox",
-        "label": "Increase/Decrease with []",
-        "show_if": "options.task_type=='group_counter'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.group_counter.inc_dec_curly_bracket": {
-        "type": "checkbox",
-        "label": "Increase/Decrease with {}",
-        "show_if": "options.task_type=='group_counter'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.group_counter.inc_dec_parenthesis": {
-        "type": "checkbox",
-        "label": "Increase/Decrease with ()",
-        "show_if": "options.task_type=='group_counter'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.static_value": {
-        "type": "text",
-        "label": "Input Value",
-        "show_if": "options.task_type=='static_value'",
-        "val": "",
-        "width": "100%"
-      },
-      "options.numeric_formula": {
-        "type": "text",
-        "label": "Input Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
-        "show_if": "options.task_type=='numeric_formula'",
-        "val": "",
-        "width": "100%"
-      },
-      "options.text_formula": {
-        "type": "text",
-        "label": "Input Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
-        "show_if": "options.task_type=='text_formula'",
-        "val": "",
-        "width": "100%"
-      },
-      "options.use_multi_row": {
-        "type": "checkbox",
-        "label": "Multi-Row Options",
-        "show_if": "options.task_type=='numeric_formula' || options.task_type=='text_formula'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.if_row_not_exist": {
-        "type": "select",
-        "label": "If referred row not exist",
-        "show_if": "options.use_multi_row=='true' && (options.task_type=='numeric_formula' || options.task_type=='text_formula')",
-        "required": true,
-        "options": {
-          "empty": {
-            "label": "Empty or 0"
-          },
-          "closest": {
-            "label": "Closest Row Value"
-          }
-        },
-        "val": "empty",
-        "breakLine": true
-      },
-      "options.apply_to_group.enabled": {
-        "type": "checkbox",
-        "label": "Apply to Group",
-        "show_if": "options.task_type!='static_value'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.apply_to_group.group_columns": {
-        "type": "select",
-        "label": "Group Column(s)",
-        "show_if": "options.apply_to_group.enabled == 'true' && options.task_type!='static_value'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "multiple": true,
-        "required": true,
-        "breakLine": true
+        }
       },
       "options.use_filter": {
         "type": "checkbox",
