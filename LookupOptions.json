@@ -24,10 +24,10 @@
         },
         "val": "label_duplicates"
       },
-      "options.generating_method": {
+      "options.pattern_type": {
         "type": "select",
-        "label": "Generating Method",
-        "show_if": "options.task_type=='generate_lookup_table'",
+        "label": "Pattern Type",
+        "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='apply_lookup_table'",
         "required": true,
         "options": {
           "duplicate_pattern": {
@@ -42,7 +42,7 @@
       "duplicate_option_box": {
         "type": "fieldset",
         "label": "Duplicate Patterns Option",
-        "show_if": "options.task_type=='label_duplicates' || (options.task_type=='generate_lookup_table' && options.generating_method=='duplicate_pattern')",
+        "show_if": "options.task_type=='label_duplicates' || (options.task_type=='generate_lookup_table' && options.pattern_type=='duplicate_pattern')",
         "repeat": false,
         "fields": {
           "options.minimum_number_of_matching_characters": {
@@ -65,7 +65,7 @@
       "number_range_option_box": {
         "type": "fieldset",
         "label": "Number Ranges Option",
-        "show_if": "options.task_type=='generate_lookup_table' && options.generating_method=='number_range'",
+        "show_if": "options.task_type=='generate_lookup_table' && options.pattern_type=='number_range'",
         "repeat": false,
         "fields": {
           "options.number_range.range_type": {
@@ -124,7 +124,8 @@
               }
             }
           }
-        }
+        },
+        "breakLine": true
       },
       "options.lookup_table_id": {
         "type": "select",
@@ -137,7 +138,7 @@
       "options.partial_match": {
         "type": "checkbox",
         "label": "Partial Match",
-        "show_if": "options.task_type=='apply_lookup_table'",
+        "show_if": "options.task_type=='apply_lookup_table' && options.pattern_type=='duplicate_pattern'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -145,7 +146,7 @@
       "options.case_sensitive": {
         "type": "checkbox",
         "label": "Case Sensitive",
-        "show_if": "options.task_type=='apply_lookup_table'",
+        "show_if": "options.task_type=='apply_lookup_table' && options.pattern_type=='duplicate_pattern'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
