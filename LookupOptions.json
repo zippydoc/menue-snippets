@@ -20,6 +20,12 @@
           },
           "apply_regex_table": {
             "label": "Apply Regex-Table"
+          },
+          "apply_lookup_table_to_cells": {
+            "label": "Apply Lookup-Table to Cells"
+          },
+          "apply_regex_table_to_cells": {
+            "label": "Apply Regex-Table to Cells"
           }
         },
         "val": "label_duplicates"
@@ -27,14 +33,14 @@
       "options.pattern_type": {
         "type": "select",
         "label": "Pattern Type",
-        "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='apply_lookup_table'",
+        "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
         "required": true,
         "options": {
           "duplicate_pattern": {
-            "label": "Duplicate Patterns"
+            "label": "Word Pattern"
           },
           "number_range": {
-            "label": "Number Ranges"
+            "label": "Number Ranges(use operators <,=,>)"
           }
         },
         "val": "duplicate_pattern"
@@ -130,7 +136,7 @@
       "options.lookup_table_id": {
         "type": "select",
         "label": "Lookup Table",
-        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
         "bind": "TABLES",
         "empty": "",
         "required": true
@@ -138,7 +144,7 @@
       "options.partial_match": {
         "type": "checkbox",
         "label": "Partial Match",
-        "show_if": "options.task_type=='apply_lookup_table' && options.pattern_type=='duplicate_pattern'",
+        "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -146,7 +152,7 @@
       "options.case_sensitive": {
         "type": "checkbox",
         "label": "Case Sensitive",
-        "show_if": "options.task_type=='apply_lookup_table' && options.pattern_type=='duplicate_pattern'",
+        "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -155,7 +161,7 @@
       "options.use_delimiter": {
         "type": "checkbox",
         "label": "Custom Delimiter",
-        "show_if": "options.task_type=='apply_lookup_table'",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -163,7 +169,7 @@
       "options.delimiter": {
         "type": "text",
         "label": "Input Delimiter",
-        "show_if": "options.task_type=='apply_lookup_table' && options.use_delimiter=='true'",
+        "show_if": "options.use_delimiter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
         "val": ";",
         "required": true,
         "breakLine": true
@@ -171,7 +177,7 @@
       "options.input_table.use_filter": {
         "type": "checkbox",
         "label": "Use Filter for Input table",
-        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -180,7 +186,7 @@
       "input_table_filter_box": {
         "type": "fieldset",
         "label": "Input Table Filter Options",
-        "show_if": "options.input_table.use_filter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
+        "show_if": "options.input_table.use_filter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
         "repeat": false,
         "fields": {
           "options.input_table.filter": {
@@ -395,7 +401,7 @@
       "options.lookup_table.use_filter": {
         "type": "checkbox",
         "label": "Use Filter for Lookup table",
-        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -405,7 +411,7 @@
       "lookup_table_filter_box": {
         "type": "fieldset",
         "label": "Lookup Table Filter Options",
-        "show_if": "options.lookup_table.use_filter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
+        "show_if": "options.lookup_table.use_filter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
         "repeat": false,
         "fields": {
           "options.lookup_table.filter": {
@@ -635,15 +641,6 @@
         "width": "100%",
         "table": "input_table",
         "bind": "COLUMNS",
-        "breakLine": true
-      },
-      "options.use_range_operator": {
-        "type": "checkbox",
-        "label": "Use range operators <,=,>",
-        "show_if": "options.task_type=='apply_lookup_table'",
-        "val": "true",
-        "isOn": "true",
-        "isOff": "false",
         "breakLine": true
       }
     }
