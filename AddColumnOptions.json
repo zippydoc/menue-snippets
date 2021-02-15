@@ -37,7 +37,7 @@
                 "label": "Multi-Row"
               },
               "group_counter": {
-                "label": "Group Counter"
+                "label": "Group Label"
               }
             },
             "val": "multi_column_functions"
@@ -155,12 +155,45 @@
             "label": "N (positive integer)",
             "show_if": "this.task_type=='multi_row_functions' && (this.multi_row_functions__function=='trailing_row_n_average' || this.multi_row_functions__function=='index_from_row_n')",
             "val": "1",
-            "required": true
+            "required": true,
+            "breakLine": true
+          },
+          "group_counter__inc_dec_curly_bracket": {
+            "type": "checkbox",
+            "label": "Increase/Decrease with {}",
+            "show_if": "this.task_type=='group_counter'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "group_counter__inc_dec_square_bracket": {
+            "type": "checkbox",
+            "label": "Increase/Decrease with []",
+            "show_if": "this.task_type=='group_counter'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "group_counter__inc_dec_parenthesis": {
+            "type": "checkbox",
+            "label": "Increase/Decrease with ()",
+            "show_if": "this.task_type=='group_counter'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "group_counter__custom": {
+            "type": "checkbox",
+            "label": "Customized Group Counter",
+            "show_if": "this.task_type=='group_counter'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
           },
           "group_counter__column": {
             "type": "select",
             "label": "Column",
-            "show_if": "this.task_type=='group_counter'",
+            "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true'",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
@@ -168,7 +201,7 @@
           "group_counter__type": {
             "type": "select",
             "label": "When",
-            "show_if": "this.task_type=='group_counter'",
+            "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true'",
             "required": true,
             "options": {
               "starts_with": {
@@ -186,34 +219,41 @@
             },
             "val": "starts_with"
           },
+          "group_counter__if_end_of_string_start_labeling_with_next_record": {
+            "type": "checkbox",
+            "label": "If End-Of-String start labeling with next record",
+            "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true' && this.group_counter__type=='starts_with'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "group_counter__if_begin_of_string_start_labeling_with_previous_record": {
+            "type": "checkbox",
+            "label": "If Begin-Of-String start labeling with previous record",
+            "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true' && this.group_counter__type=='ends_with'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
           "group_counter__value": {
             "type": "text",
             "label": "Input Value",
-            "show_if": "this.task_type=='group_counter'",
+            "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true'",
             "val": ".",
             "breakLine": true
           },
-          "group_counter__inc_dec_square_bracket": {
-            "type": "checkbox",
-            "label": "Increase/Decrease with []",
-            "show_if": "this.task_type=='group_counter'",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
+          "group_counter__label": {
+            "type": "text",
+            "label": "Input Label",
+            "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true'",
+            "val": "sentence",
+            "breakLine": true
           },
-          "group_counter__inc_dec_curly_bracket": {
+          "group_counter__always_include": {
             "type": "checkbox",
-            "label": "Increase/Decrease with {}",
-            "show_if": "this.task_type=='group_counter'",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "group_counter__inc_dec_parenthesis": {
-            "type": "checkbox",
-            "label": "Increase/Decrease with ()",
-            "show_if": "this.task_type=='group_counter'",
-            "val": "false",
+            "label": "Always include",
+            "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true'",
+            "val": "true",
             "isOn": "true",
             "isOff": "false"
           },
