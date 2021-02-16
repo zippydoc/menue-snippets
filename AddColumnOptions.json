@@ -15,7 +15,7 @@
             "val": "NewColumn",
             "required": true
           },
-          "new_column_value_format": {
+          "format__category": {
             "type": "select",
             "label": "Format",
             "required": true,
@@ -23,22 +23,28 @@
               "standard": {
                 "label": "Standard"
               },
-              "text": {
-                "label": "Text"
-              },
               "number": {
                 "label": "Number"
               },
               "percentage": {
                 "label": "Percentage"
+              },
+              "text": {
+                "label": "Text"
+              },
+              "date": {
+                "label": "Date"
+              },
+              "currency": {
+                "label": "Currency"
               }
             },
             "val": "standard"
           },
-          "rounding": {
+          "format__rounding": {
             "type": "select",
             "label": "Rounding",
-            "show_if": "this.new_column_value_format=='number' || this.new_column_value_format=='percentage'",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
@@ -75,7 +81,51 @@
                 "label": "9 digits"
               }
             },
-            "val": "no_rounding",
+            "val": "no_rounding"
+          },
+          "format__use_1000_separator": {
+            "type": "checkbox",
+            "label": "Use 1000 Separator(.)",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "format__currency_symbol": {
+            "type": "select",
+            "label": "Symbol",
+            "show_if": "this.format__category=='currency'",
+            "required": true,
+            "options": {
+              "dollar": {
+                "label": "$"
+              },
+              "euro": {
+                "label": "€"
+              },
+              "pound": {
+                "label": "£"
+              }
+            },
+            "val": "dollar"
+          },
+          "format__date_format": {
+            "type": "select",
+            "label": "Type",
+            "show_if": "this.format__category=='date'",
+            "required": true,
+            "options": {
+              "mm/dd/yyyy": {
+                "label": "3/14/2012"
+              },
+              "D, M dd, Y": {
+                "label": "Wednesday, March 14, 2012"
+              },
+              "yyyy-mm-dd": {
+                "label": "2012-03-14"
+              }
+            },
+            "val": "mm/dd/yyyy",
             "breakLine": true
           },
           "task_type": {
