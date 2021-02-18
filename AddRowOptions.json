@@ -281,7 +281,7 @@
                 "label": "Custom"
               }
             },
-            "val": "multi_column_function"
+            "val": "multi_column_functions"
           },
           "multi_column_functions__sel_columns": {
             "type": "select",
@@ -295,6 +295,7 @@
           "custom_functions__target_cells": {
             "type": "fieldset",
             "label": "Define Target Cells",
+            "show_if": "this.function_type=='custom_functions'",
             "repeat": true,
             "fields": {
               "column": {
@@ -397,6 +398,7 @@
           "custom_functions__set_date_column": {
             "type": "checkbox",
             "label": "Select Date Column",
+            "show_if": "this.function_type=='custom_functions'",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -406,7 +408,7 @@
           "custom_functions__date_column": {
             "type": "select",
             "label": "Select Date Column",
-            "show_if": "options.set_date_column=='true'",
+            "show_if": "this.function_type=='custom_functions' && this.custom_functions__set_date_column=='true'",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
@@ -414,14 +416,14 @@
           "custom_functions__period_shift__number": {
             "type": "text",
             "label": "Period Shift",
-            "show_if": "options.set_date_column=='true'",
+            "show_if": "this.function_type=='custom_functions' && this.custom_functions__set_date_column=='true'",
             "required": true,
             "val": "0"
           },
           "custom_functions__period_shift__period": {
             "type": "select",
             "label": "Select Period",
-            "show_if": "options.set_date_column=='true'",
+            "show_if": "this.function_type=='custom_functions' && this.custom_functions__set_date_column=='true'",
             "options": {
               "day": {
                 "label": "Days"
