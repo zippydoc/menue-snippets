@@ -283,15 +283,6 @@
             },
             "val": "multi_column_functions"
           },
-          "multi_column_functions__sel_columns": {
-            "type": "select",
-            "label": "Select Column(s)",
-            "show_if": "this.function_type=='multi_column_functions'",
-            "table": "input_table",
-            "bind": "COLUMNS",
-            "multiple": true,
-            "required": true
-          },
           "multi_column_functions__function": {
             "type": "select",
             "label": "Select Function",
@@ -317,8 +308,43 @@
                 "label": "Discount Rate"
               }
             },
-            "val": "absolute_growth",
-            "breakLine": true
+            "val": "absolute_growth"
+          },
+          "multi_row_functions__function": {
+            "type": "select",
+            "label": "Select Function",
+            "show_if": "this.function_type=='multi_row_functions'",
+            "required": true,
+            "options": {
+              "sum": {
+                "label": "Sum"
+              },
+              "average": {
+                "label": "Average"
+              },
+              "median": {
+                "label": "Median"
+              },
+              "standard_deviation": {
+                "label": "Standard Deviation"
+              },
+              "variance": {
+                "label": "Variance"
+              },
+              "product": {
+                "label": "Product"
+              }
+            },
+            "val": "sum"
+          },
+          "multi_column_functions__sel_columns": {
+            "type": "select",
+            "label": "Select Column(s)",
+            "show_if": "this.function_type=='multi_column_functions'",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "multiple": true,
+            "required": true
           },
           "multi_column_functions__use_first_column_as_label_column": {
             "type": "checkbox",
@@ -375,34 +401,6 @@
             "bind": "COLUMNS",
             "required": true
           },
-          "multi_row_functions__function": {
-            "type": "select",
-            "label": "Select Function",
-            "show_if": "this.function_type=='multi_row_functions'",
-            "required": true,
-            "options": {
-              "sum": {
-                "label": "Sum"
-              },
-              "average": {
-                "label": "Average"
-              },
-              "median": {
-                "label": "Median"
-              },
-              "standard_deviation": {
-                "label": "Standard Deviation"
-              },
-              "variance": {
-                "label": "Variance"
-              },
-              "product": {
-                "label": "Product"
-              }
-            },
-            "val": "sum",
-            "breakLine": true
-          },
           "multi_row_functions__apply_to_all_columns": {
             "type": "checkbox",
             "label": "Apply to all columns",
@@ -418,7 +416,8 @@
             "table": "input_table",
             "bind": "COLUMNS",
             "multiple": true,
-            "required": true
+            "required": true,
+            "breakLine": true
           },
           "multi_row_functions__select_labels": {
             "type": "checkbox",
