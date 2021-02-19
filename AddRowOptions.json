@@ -517,10 +517,34 @@
               },
               "text_formula": {
                 "type": "text",
-                "label": "Formula, e.g. [firstName] + ' ' + [lastName]",
+                "label": "Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
                 "show_if": "this.formula_type=='text_formula'",
                 "val": "",
-                "style": "min-width: 280px"
+                "style": "width: 100%"
+              },
+              "use_multi_row": {
+                "type": "checkbox",
+                "label": "Multi-Row Options",
+                "show_if": "this.formula_type=='numeric_formula' || this.formula_type=='text_formula'",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false"
+              },
+              "if_row_not_exist": {
+                "type": "select",
+                "label": "If referred row not exist",
+                "show_if": "this.use_multi_row=='true' && (this.formula_type=='numeric_formula' || this.formula_type=='text_formula')",
+                "required": true,
+                "options": {
+                  "empty": {
+                    "label": "Empty or 0"
+                  },
+                  "closest": {
+                    "label": "Closest Row Value"
+                  }
+                },
+                "val": "empty",
+                "breakLine": true
               },
               "delete": {
                 "type": "button",
