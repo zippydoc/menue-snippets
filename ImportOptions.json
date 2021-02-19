@@ -220,43 +220,43 @@
         "required": true,
         "width": "100%",
         "breakLine": true
-      }
-    },
-    "dir_filter_frame": {
-      "type": "fieldset",
-      "label": "Filter the files in directory",
-      "show_if": "options.from=='web' && options.is_github_dir=='true'",
-      "repeat": false,
-      "fields": {
-        "options.dir_filter.filter_type": {
-          "type": "select",
-          "label": "Filter Type",
-          "options": {
-            "all": {
-              "label": "All"
+      },
+      "dir_filter_frame": {
+        "type": "fieldset",
+        "label": "Filter the files in directory",
+        "show_if": "options.from=='web' && options.is_github_dir=='true'",
+        "repeat": false,
+        "fields": {
+          "options.dir_filter.filter_type": {
+            "type": "select",
+            "label": "Filter Type",
+            "options": {
+              "all": {
+                "label": "All"
+              },
+              "contains": {
+                "label": "Contains"
+              },
+              "starts_with": {
+                "label": "Starts With"
+              },
+              "ends_with": {
+                "label": "Ends With"
+              },
+              "regex": {
+                "label": "Regular Expression"
+              }
             },
-            "contains": {
-              "label": "Contains"
-            },
-            "starts_with": {
-              "label": "Starts With"
-            },
-            "ends_with": {
-              "label": "Ends With"
-            },
-            "regex": {
-              "label": "Regular Expression"
-            }
+            "val": "all",
+            "required": true
           },
-          "val": "all",
-          "required": true
-        },
-        "options.dir_filter.filter_string": {
-          "type": "text",
-          "label": "Enter string",
-          "show_if": "options.dir_filter.filter_type!='all'",
-          "required": true,
-          "width": "100%"
+          "options.dir_filter.filter_string": {
+            "type": "text",
+            "label": "Enter string",
+            "show_if": "options.dir_filter.filter_type!='all'",
+            "required": true,
+            "width": "100%"
+          }
         }
       }
     }
