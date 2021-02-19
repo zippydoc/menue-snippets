@@ -5,12 +5,18 @@
     "repeat": false,
     "fields": {
       "options.from": {
-        "type": "radio",
-        "val": "web",
-        "values": {
-          "web": "Import from Webservice",
-          "database": "Import from Database"
+        "type": "select",
+        "label": "Data Source",
+        "options": {
+          "web": {
+            "label": "Import from Webservice"
+          },
+          "database": {
+            "label": "Import from Database"
+          }
         },
+        "val": "web",
+        "required": true,
         "breakLine": true
       },
       "postgresql_db_credential_box": {
@@ -141,6 +147,15 @@
         "isOff": "false",
         "breakLine": true
       },
+      "options.use_filename_as_output_table_name": {
+        "type": "checkbox",
+        "label": "Use filename (including file extension) as generated table name(s)",
+        "show_if": "options.from=='web'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "options.suffix": {
         "type": "select",
         "label": "Suffix",
@@ -205,6 +220,44 @@
         "required": true,
         "width": "100%",
         "breakLine": true
+      }
+    }
+  },
+  "dir_filter_frame": {
+    "type": "fieldset",
+    "label": "Filter the files in directory",
+    "show_if": "options.from=='web' && options.is_github_dir=='true'",
+    "repeat": false,
+    "fields": {
+      "options.dir_filter.filter_type": {
+        "type": "select",
+        "label": "Filter Type",
+        "options": {
+          "all": {
+            "label": "All"
+          },
+          "contains": {
+            "label": "Contains"
+          },
+          "starts_with": {
+            "label": "Starts With"
+          },
+          "ends_with": {
+            "label": "Ends With"
+          },
+          "regex": {
+            "label": "Regular Expression"
+          }
+        },
+        "val": "all",
+        "required": true
+      },
+      "options.dir_filter.filter_string": {
+        "type": "text",
+        "label": "Enter string",
+        "show_if": "options.dir_filter.filter_type!='all'",
+        "required": true,
+        "width": "100%"
       }
     }
   }
