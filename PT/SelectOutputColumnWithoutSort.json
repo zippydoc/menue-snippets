@@ -1,0 +1,47 @@
+{
+  "output.select_output_columns": {
+    "type": "checkbox", 
+    "label": "Seleccionar Colunas de Saída", 
+    "val": "false", 
+    "isOn": "true", 
+    "isOff": "false"
+  }, 
+  "output_columns": {
+    "type": "fieldset", 
+    "label": "Seleccionar OutputColumns", 
+    "show_if": "output.select_output_columns=='true'", 
+    "repeat": true, 
+    "fields": {
+      "field_name": {
+        "type": "select", 
+        "label": "Seleccione Coluna", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "is_rename": {
+        "type": "checkbox", 
+        "label": "Renomear", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "rename": {
+        "show_if": "this.is_rename == 'true'", 
+        "type": "text", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "label": "Novo Nome de Coluna", 
+        "style": "margin-left: 10px"
+      }, 
+      "delete": {
+        "type": "button", 
+        "label": "Eliminar", 
+        "function": "DELETE_ROW"
+      }
+    }, 
+    "breakLine": true, 
+    "style": "margin-bottom: 20px"
+  }
+}
