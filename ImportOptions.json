@@ -151,10 +151,18 @@
         "type": "checkbox",
         "label": "Use filename as table name",
         "show_if": "options.from=='web'",
-        "val": "true",
+        "val": "false",
         "isOn": "true",
         "isOff": "false",
         "breakLine": true
+      },
+      "options.unify_in_one_table": {
+        "type": "checkbox",
+        "label": "Unify in one table",
+        "show_if": "options.from=='web' && options.is_github_dir=='true' && options.use_filename_as_output_table_name=='false'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
       },
       "options.suffix": {
         "type": "select",
@@ -169,17 +177,10 @@
           }
         },
         "val": "number",
-        "required": true
-      },
-      "options.unify_in_one_table": {
-        "type": "checkbox",
-        "label": "Unify in one table",
-        "show_if": "options.from=='web' && options.is_github_dir=='true' && options.use_filename_as_output_table_name=='false'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
+        "required": true,
         "breakLine": true
       },
+
       "options.is_github_private": {
         "type": "checkbox",
         "label": "Repository is private",
