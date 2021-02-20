@@ -1,0 +1,258 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Adicionar Etiqueta", 
+    "repeat": false, 
+    "fields": {
+      "add_column": {
+        "type": "text", 
+        "label": "Nome de coluna para etiqueta", 
+        "val": "Etiqueta", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "add_label": {
+        "type": "text", 
+        "label": "Adicionar etiqueta", 
+        "val": "label1", 
+        "required": true
+      }, 
+      "use_custom_delimiter": {
+        "type": "checkbox", 
+        "label": "Delimitador personalizado", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "custom_delimiter": {
+        "type": "text", 
+        "label": "Delimitador personalizado", 
+        "show_if": "use_custom_delimiter=='true'", 
+        "val": ";", 
+        "required": true
+      }, 
+      "do_not_duplicate": {
+        "type": "checkbox", 
+        "label": "Não duplicar", 
+        "val": "true", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "filter_box": {
+        "type": "fieldset", 
+        "label": "Opções de filtro", 
+        "repeat": false, 
+        "fields": {
+          "filter": {
+            "type": "fieldset", 
+            "label": "Seleccionar Condições para Rotulagem", 
+            "repeat": true, 
+            "fields": {
+              "initial_op": {
+                "type": "select", 
+                "label": "Seleccionar Operador Lógico", 
+                "required": true, 
+                "show_if" :  "$index == 0", 
+                "options": {
+                  "if": {
+                    "label": "SE"
+                  }, 
+                  "if_not": {
+                    "label": "SE NÃO"
+                  }
+                }, 
+                "val": "if"
+              }, 
+              "op": {
+                "type": "select", 
+                "label": "Seleccionar Operador Lógico", 
+                "show_if" :  "$index > 0", 
+                "options": {
+                  "and": {
+                    "label": "E"
+                  }, 
+                  "or": {
+                    "label": "OU"
+                  }, 
+                  "and_not": {
+                    "label": "E NÃO"
+                  }, 
+                  "or_not": {
+                    "label": "OU NÃO"
+                  }
+                }, 
+                "val": "and"
+              }, 
+              "column": {
+                "type": "select", 
+                "label": "Seleccione Coluna", 
+                "table": "input_table", 
+                "bind": "COLUMNS", 
+                "required": true
+              }, 
+              "condition": {
+                "type": "select", 
+                "label": "Seleccionar Operador", 
+                "required": true, 
+                "options": {
+                  "CONTENHA": {
+                    "label": "CONTENHA"
+                  }, 
+                  "CONTAINDO EM STRING": {
+                    "label": "CONTAINDO EM"
+                  }, 
+                  "INICIA COM": {
+                    "label": "INICIA COM"
+                  }, 
+                  "FIM COM": {
+                    "label": "FIM COM"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "MAIS GRANDE QUE"
+                  }, 
+                  ">=": {
+                    "label": "MAIOR OU IGUAL"
+                  }, 
+                  "<": {
+                    "label": "MAIS PEQUENO QUE"
+                  }, 
+                  "<=": {
+                    "label": "MENOR OU IGUAL"
+                  }, 
+                  "EMPTY": {
+                    "label": "É VAZIO"
+                  }, 
+                  "BLANK": {
+                    "label": "É BLOCO"
+                  }, 
+                  "É NULO": {
+                    "label": "É NULO"
+                  }, 
+                  "CONJUNTO REGEXO": {
+                    "label": "CONJUNTO REGEXO"
+                  }, 
+                  "CONTAINDO EM TABLE": {
+                    "label": "EM TABELA"
+                  }, 
+                  "NA TABELA REGEX": {
+                    "label": "NA TABELA REGEX"
+                  }, 
+                  "DATA": {
+                    "label": "DATA"
+                  }
+                }, 
+                "val": "CONTENHA"
+              }, 
+              "date_condition": {
+                "type": "select", 
+                "label": "Seleccionar o operador da data", 
+                "required": true, 
+                "show_if": "this.condition == 'DATA'", 
+                "options": {
+                  "<": {
+                    "label": "PRIOR"
+                  }, 
+                  "<=": {
+                    "label": "PRIOR OU IGUAL"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "DEPOIS"
+                  }, 
+                  ">=": {
+                    "label": "DEPOIS OU IGUAL"
+                  }
+                }, 
+                "val": "="
+              }, 
+              "case_sensitive": {
+                "type": "select", 
+                "label": "Seleccionar o caso sensível", 
+                "required": true, 
+                "show_if": "this.condition == 'CONTENHA' || this.condition == 'CONTAINDO EM STRING' || this.condition == '=' || this.condition == 'INICIA COM' || this.condition == 'FIM COM' || this.condition == 'CONJUNTO REGEXO' || this.condition == 'NOT CONJUNTO REGEXO' || this.condition == 'NA TABELA REGEX' || this.condition == 'NOT NA TABELA REGEX'", 
+                "options": {
+                  "yes": {
+                    "label": "Sensível a maiúsculas e minúsculas"
+                  }, 
+                  "no": {
+                    "label": "Insensível a maiúsculas e minúsculas"
+                  }
+                }, 
+                "val": "yes"
+              }, 
+              "date_value": {
+                "type": "date", 
+                "label": "Seleccione Data", 
+                "show_if": "this.condition=='DATA'", 
+                "val": "1/31/2020", 
+                "required": true
+              }, 
+              "value": {
+                "type": "text", 
+                "label": "Valor de entrada", 
+                "show_if": "this.condition != 'DATA' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'É NULO' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINDO EM TABLE' && this.condition != 'NOT CONTAINDO EM TABLE' && this.condition != 'NA TABELA REGEX' && this.condition != 'NOT NA TABELA REGEX'", 
+                "val": "", 
+                "required": true
+              }, 
+              "compare_table": {
+                "type": "select", 
+                "label": "Seleccionar tabela", 
+                "bind": "TABLES", 
+                "empty": "", 
+                "show_if": "this.condition == 'CONTAINDO EM TABLE' || this.condition == 'NOT CONTAINDO EM TABLE' || this.condition == 'NA TABELA REGEX' || this.condition == 'NOT NA TABELA REGEX'", 
+                "required": true
+              }, 
+              "compare_column": {
+                "type": "select", 
+                "label": "Seleccione Coluna", 
+                "table": "this.compare_table", 
+                "bind": "COLUMNS", 
+                "show_if": "this.condition == 'CONTAINDO EM TABLE' || this.condition == 'NOT CONTAINDO EM TABLE' || this.condition == 'NA TABELA REGEX' || this.condition == 'NOT NA TABELA REGEX'", 
+                "required": true
+              }, 
+              "delete": {
+                "type": "button", 
+                "label": "Eliminar", 
+                "function": "DELETE_ROW"
+              }
+            }
+          }, 
+          "apply_to_record": {
+            "type": "checkbox", 
+            "label": "Aplicar ao registo", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "style": "margin-top: 10px", 
+            "breakLine": true
+          }, 
+          "apply_to_group_box": {
+            "type": "fieldset", 
+            "label": "Candidate-se ao Grupo", 
+            "show_if": "apply_to_record=='false'", 
+            "repeat": false, 
+            "fields": {
+              "apply_to_group_columns": {
+                "type": "select", 
+                "label": "Seleccionar Colunas de Grupo", 
+                "required": true, 
+                "width": "100%", 
+                "table": "input_table", 
+                "multiple": true, 
+                "bind": "COLUMNS", 
+                "breakLine": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
