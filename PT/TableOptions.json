@@ -1,0 +1,49 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Seleccione Opções", 
+    "repeat": false, 
+    "fields": {
+      "options.type": {
+        "type": "radio", 
+        "val": "transform_group", 
+        "values": {
+          "transform_group": "Transform Group", 
+          "get_header": "Get Header", 
+          "get_formatting": "Get Formatoting and Formulas"
+        }, 
+        "breakLine": true
+      }, 
+      "options.group_label_direction": {
+        "type": "select", 
+        "label": "Direcção de Transformação", 
+        "show_if": "options.type=='transform_group'", 
+        "required": true, 
+        "options": {
+          "group_to_label": {
+            "label": "Grupo a rotular"
+          }, 
+          "label_to_group": {
+            "label": "Rótulo a agrupar"
+          }
+        }, 
+        "val": "group_to_label"
+      }, 
+      "options.group_column": {
+        "type": "select", 
+        "label": "Coluna do Grupo", 
+        "show_if": "options.type=='transform_group' && options.group_label_direction=='group_to_label'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "options.group_column_name": {
+        "type": "text", 
+        "label": "Nome da coluna de grupo", 
+        "show_if": "options.type=='transform_group' && options.group_label_direction=='label_to_group'", 
+        "val": "Group", 
+        "required": true
+      }
+    }
+  }
+}
