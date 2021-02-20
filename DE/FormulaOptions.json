@@ -1,0 +1,301 @@
+              }, 
+{
+  "options_box": {
+    "type": "fieldset", 
+    "label": "Optionen auswählen", 
+    "repeat": false, 
+    "fields": {
+      "options.column": {
+        "type": "select", 
+        "label": "Spalte zum Anwenden", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "options.column_value_type": {
+        "type": "select", 
+        "label": "Spalte Wert Typ", 
+        "required": true, 
+        "options": {
+          "static_value": {
+            "label": "Statischer Wert"
+          }, 
+          "numeric_formula": {
+            "label": "Numerische Formel"
+          }, 
+          "text_formula": {
+            "label": "Text Formel"
+          }
+        }, 
+        "val": "static_value"
+      }, 
+      "options.static_value": {
+        "type": "text", 
+        "label": "Eingangswert", 
+        "show_if": "options.column_value_type=='static_value'", 
+        "val": "", 
+        "width": "100%"
+      }, 
+      "options.numeric_formula": {
+        "type": "text", 
+        "label": "Eingabeformel, z. B. [Column1] + 2 * ([Row-1:Column3] - [Column1])", 
+        "show_if": "options.column_value_type=='numeric_formula'", 
+        "val": "", 
+        "width": "100%"
+      }, 
+      "options.text_formula": {
+        "type": "text", 
+        "label": "Eingabeformel, z. B. [vorname] + ' ' + [nachname] + ' ' + [Zeile-1:Spalte3]", 
+        "show_if": "options.column_value_type=='text_formula'", 
+        "val": "", 
+        "width": "100%"
+      }, 
+      "options.use_multi_row": {
+        "type": "checkbox", 
+        "label": "Mehrreihige Optionen", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "options.if_row_not_exist": {
+        "type": "select", 
+        "label": "Wenn verwiesene Zeile nicht vorhanden", 
+        "show_if": "options.use_multi_row=='true'", 
+        "required": true, 
+        "options": {
+          "empty": {
+            "label": "Leer oder 0"
+          }, 
+          "closest": {
+            "label": "Engster Zeilenwert"
+          }
+        }, 
+        "val": "empty", 
+        "breakLine": true
+      }, 
+      "options.use_filter": {
+        "type": "checkbox", 
+        "label": "Filter verwenden", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "filter_box": {
+        "type": "fieldset", 
+        "label": "Filter-Optionen", 
+        "show_if": "options.use_filter=='true'", 
+        "repeat": false, 
+        "fields": {
+          "options.filter": {
+            "type": "fieldset", 
+            "label": "Filterbedingungen hinzufügen", 
+            "show_if": "options.use_filter=='true'", 
+            "repeat": true, 
+            "fields": {
+              "initial_op": {
+                "type": "select", 
+                "label": "Logik-Operator auswählen", 
+                "required": true, 
+                "show_if" :  "$index == 0", 
+                "options": {
+                  "if": {
+                    "label": "IF"
+                  }, 
+                  "if_not": {
+                    "label": "WENN NICHT"
+                  }
+                }, 
+                "val": "if"
+              }, 
+              "op": {
+                "type": "select", 
+                "label": "Logik-Operator auswählen", 
+                "required": true, 
+                "show_if" :  "$index > 0", 
+                "options": {
+                  "and": {
+                    "label": "UND"
+                  }, 
+                  "or": {
+                    "label": "OR"
+                  }, 
+                  "and_not": {
+                    "label": "UND NICHT"
+                  }, 
+                  "or_not": {
+                    "label": "ODER NICHT"
+                  }
+                }, 
+                "val": "and"
+              }, 
+              "column": {
+                "type": "select", 
+                "label": "Spalte auswählen", 
+                "table": "input_table", 
+                "bind": "COLUMNS", 
+                "required": true
+              }, 
+              "condition": {
+                "type": "select", 
+                "label": "Bediener auswählen", 
+                "required": true, 
+                "options": {
+                  "ENTHÄLT": {
+                    "label": "ENTHÄLT"
+                  }, 
+                  "ENTHALTEN IN STRING": {
+                    "label": "ENTHALTEN IN"
+                  }, 
+                  "STARTET MIT": {
+                    "label": "STARTET MIT"
+                  }, 
+                  "ENDET MIT": {
+                    "label": "ENDET MIT"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "GRÖSSER ALS"
+                  }, 
+                  ">=": {
+                    "label": "GRÖSSER ODER GLEICH"
+                  }, 
+                  "<": {
+                    "label": "KLEINER ALS"
+                  }, 
+                  "<=": {
+                    "label": "KLEINER ODER GLEICH"
+                  }, 
+                  "EMPTY": {
+                    "label": "IST LEER"
+                  }, 
+                  "BLANK": {
+                    "label": "IST BLANK"
+                  }, 
+                  "IS NULL": {
+                    "label": "IS NULL"
+                  }, 
+                  "REGEX-MATCH": {
+                    "label": "REGEX-MATCH"
+                  }, 
+                  "ENTHALTEN IN TABLE": {
+                    "label": "IN TABELLE"
+                  }, 
+                  "IN REGEX-TABELLE": {
+                    "label": "IN REGEX-TABELLE"
+                  }, 
+                  "DATUM": {
+                    "label": "DATUM"
+                  }
+                }, 
+                "val": "ENTHÄLT"
+              }, 
+              "date_condition": {
+                "type": "select", 
+                "label": "Datumsoperator auswählen", 
+                "required": true, 
+                "show_if": "this.condition == 'DATUM'", 
+                "options": {
+                  "<": {
+                    "label": "PRIOR"
+                  }, 
+                  "<=": {
+                    "label": "PRIOR ODER GLEICH"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "NACH"
+                  }, 
+                  ">=": {
+                    "label": "NACHHER ODER GLEICH"
+                  }
+                }, 
+                "val": "="
+              }, 
+              "case_sensitive": {
+                "type": "select", 
+                "label": "Wählen Sie Case Sensitive", 
+                "required": true, 
+                "show_if": "this.condition == 'ENTHÄLT' || this.condition == 'ENTHALTEN IN STRING' || this.condition == '=' || this.condition == 'STARTET MIT' || this.condition == 'ENDET MIT' || this.condition == 'REGEX-MATCH' || this.condition == 'NOT REGEX-MATCH' || this.condition == 'IN REGEX-TABELLE' || this.condition == 'NOT IN REGEX-TABELLE'", 
+                "options": {
+                  "yes": {
+                    "label": "Gehäuse empfindlich"
+                  }, 
+                  "no": {
+                    "label": "Groß-/Kleinschreibung nicht beachten"
+                  }
+                }, 
+                "val": "yes"
+              }, 
+              "date_value": {
+                "type": "date", 
+                "label": "Datum auswählen", 
+                "show_if": "this.condition=='DATUM'", 
+                "val": "1/31/2020", 
+                "required": true
+              }, 
+              "value": {
+                "type": "text", 
+                "label": "Eingangswert", 
+                "show_if": "this.condition != 'DATUM' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'ENTHALTEN IN TABLE' && this.condition != 'NOT ENTHALTEN IN TABLE' && this.condition != 'IN REGEX-TABELLE' && this.condition != 'NOT IN REGEX-TABELLE'", 
+                "val": "", 
+                "required": true
+              }, 
+              "compare_table": {
+                "type": "select", 
+                "label": "Tabelle auswählen", 
+                "bind": "TABLES", 
+                "empty": "", 
+                "show_if": "this.condition == 'ENTHALTEN IN TABLE' || this.condition == 'NOT ENTHALTEN IN TABLE' || this.condition == 'IN REGEX-TABELLE' || this.condition == 'NOT IN REGEX-TABELLE'", 
+                "required": true
+              }, 
+              "compare_column": {
+                "type": "select", 
+                "label": "Spalte auswählen", 
+                "table": "this.compare_table", 
+                "bind": "COLUMNS", 
+                "show_if": "this.condition == 'ENTHALTEN IN TABLE' || this.condition == 'NOT ENTHALTEN IN TABLE' || this.condition == 'IN REGEX-TABELLE' || this.condition == 'NOT IN REGEX-TABELLE'", 
+                "required": true
+              "delete": {
+                "type": "button", 
+                "label": "Löschen", 
+                "function": "DELETE_ROW"
+              }
+            }
+          }, 
+          "options.apply_to_record": {
+            "type": "checkbox", 
+            "label": "Auf den Datensatz anwenden", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "style": "margin-top: 10px", 
+            "breakLine": true
+          }, 
+          "apply_to_group_box": {
+            "type": "fieldset", 
+            "label": "Anwenden auf Gruppe", 
+            "show_if": "options.apply_to_record=='false'", 
+            "repeat": false, 
+            "fields": {
+              "options.apply_to_group_columns": {
+                "type": "select", 
+                "label": "Gruppenspalten auswählen", 
+                "required": true, 
+                "width": "100%", 
+                "table": "input_table", 
+                "multiple": true, 
+                "bind": "COLUMNS", 
+                "breakLine": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
