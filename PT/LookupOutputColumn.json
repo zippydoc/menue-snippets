@@ -1,0 +1,72 @@
+{
+  "output.select_output_columns": {
+    "type": "checkbox", 
+    "label": "Seleccionar Colunas de Saída", 
+    "show_if": "options.task_type=='label_duplicates' || options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'", 
+    "val": "false", 
+    "isOn": "true", 
+    "isOff": "false"
+  }, 
+  "output_columns": {
+    "type": "fieldset", 
+    "label": "Seleccionar OutputColumns", 
+    "show_if": "output.select_output_columns=='true' && (options.task_type=='label_duplicates' || options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')", 
+    "repeat": true, 
+    "fields": {
+      "field_name": {
+        "type": "select", 
+        "label": "Seleccione Coluna", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "order": {
+        "type": "select", 
+        "label": "Encomenda", 
+        "options": {
+          "-": {
+            "label": "-"
+          }, 
+          "asc": {
+            "label": "Asc"
+          }, 
+          "desc": {
+            "label": "Desc"
+          }
+        }, 
+        "val": "-"
+      }, 
+      "is_rename": {
+        "type": "checkbox", 
+        "label": "Renomear", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "rename": {
+        "show_if": "this.is_rename == 'true'", 
+        "type": "text", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "label": "Novo Nome de Coluna", 
+        "style": "margin-left: 10px"
+      }, 
+      "delete": {
+        "type": "button", 
+        "label": "Eliminar", 
+        "function": "DELETE_ROW"
+      }
+    }, 
+    "breakLine": true, 
+    "style": "margin-bottom: 20px"
+  }, 
+  "options.add_filename": {
+    "type": "checkbox", 
+    "label": "Adicionar nome de ficheiro", 
+    "val": "false", 
+    "isOn": "true", 
+    "isOff": "false", 
+    "breakLine": true
+  }
+}
