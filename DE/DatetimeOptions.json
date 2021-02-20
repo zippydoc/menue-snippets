@@ -1,0 +1,252 @@
+          }, 
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Optionen auswählen", 
+    "repeat": false, 
+    "fields": {
+      "convert_type": {
+        "type": "select", 
+        "label": "Typ konvertieren", 
+        "required": true, 
+        "options": {
+          "complete_date": {
+            "label": "Vollständiges Datum"
+          }, 
+          "expand_date": {
+            "label": "Datum erweitern"
+          }, 
+          "convert_date": {
+            "label": "Datum umrechnen"
+          }, 
+          "convert_date_range": {
+            "label": "Datumsbereich umrechnen"
+          }
+        }, 
+        "val": "complete_date"
+      }, 
+      "date_convert_type": {
+        "type": "select", 
+        "label": "Konvertieren in", 
+        "show_if": "convert_type=='convert_date'", 
+        "required": true, 
+        "options": {
+          "begin_of_month": {
+            "label": "Beginn des Monats"
+          }, 
+          "end_of_month": {
+            "label": "Ende des Monats"
+          }, 
+          "hy_year": {
+            "label": "HY Jahr"
+          }, 
+          "qrt_year": {
+            "label": "Qrt Jahr"
+          }, 
+          "month_year": {
+            "label": "Monat Jahr"
+          }, 
+          "week_year": {
+            "label": "Woche Jahr"
+          }
+        }, 
+        "val": "begin_of_month", 
+        "breakLine": true
+      }, 
+      "date_range_convert_type": {
+        "type": "select", 
+        "label": "Konvertieren in", 
+        "show_if": "convert_type=='convert_date_range'", 
+        "required": true, 
+        "options": {
+          "begin_of_month": {
+            "label": "Beginn des Monats"
+          }, 
+          "end_of_month": {
+            "label": "Ende des Monats"
+          }, 
+          "begin_of_range": {
+            "label": "Beginn des Bereichs"
+          }, 
+          "end_of_range": {
+            "label": "Ende des Bereichs"
+          }, 
+          "begin_of_quarter": {
+            "label": "Beginn des Quartals"
+          }, 
+          "end_of_quarter": {
+            "label": "Ende des Quartals"
+          }
+        }, 
+        "val": "begin_of_month", 
+        "breakLine": true
+      }, 
+      "output_in_new_column": {
+        "type": "checkbox", 
+        "label": "Ausgabe in neuer Spalte", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "fields_to_convert.new_field_name": {
+        "type": "text", 
+        "label": "Neuer Spaltenname", 
+        "show_if": "output_in_new_column=='true'", 
+        "val": "GeneratedDatum", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "format_conversion.datetime_source_format": {
+        "type": "select", 
+        "label": "Quell-Datumszeitformat auswählen", 
+        "show_if": "convert_type=='format_conversion'", 
+        "required": true, 
+        "width": "100%", 
+        "options": {
+          "yyyy-MM-dd": {
+            "label": "yyyy-MM-dd"
+          }, 
+          "Tag, tt Monat, jjjjj": {
+            "label": "Tag, tt Monat, jjjjj"
+          }, 
+          "tt-MM-jj": {
+            "label": "tt-MM-jj"
+          }, 
+          "tt-MM-jjjj": {
+            "label": "tt-MM-jjjj"
+          }, 
+          "tt-mon.-jj": {
+            "label": "tt-mon.-jj"
+          }, 
+          "tt Monat, jjjjj": {
+            "label": "tt Monat, jjjjj"
+          }, 
+          "tt/MM/jj": {
+            "label": "tt/MM/jj"
+          }, 
+          "tt/MM/jjjj": {
+            "label": "tt/MM/jjjj"
+          }, 
+          "dy., Monat tt, jjjjj": {
+            "label": "dy., Monat tt, jjjjj"
+          }, 
+          "MM-tt-jj": {
+            "label": "MM-tt-jj"
+          }, 
+          "MM-tt-jjjj": {
+            "label": "MM-tt-jjjj"
+          }, 
+          "MM/TT/JJJ": {
+            "label": "MM/TT/JJJ"
+          }, 
+          "MM/TT/JJJJ": {
+            "label": "MM/TT/JJJJ"
+          }, 
+          "Mo dd": {
+            "label": "Mo dd"
+          }, 
+          "Mo tt, jjjjj": {
+            "label": "Mo tt, jjjjj"
+          }, 
+          "Monat tt, jjjjj": {
+            "label": "Monat tt, jjjjj"
+          }, 
+          "Monat, JJJJ": {
+            "label": "Monat, JJJJ"
+          }, 
+          "yyyyMMdd": {
+            "label": "yyyyMMdd"
+          }
+        }, 
+        "val": "yyyy-MM-dd", 
+        "breakLine": true
+      }, 
+      "format_conversion.datetime_target_format": {
+        "type": "select", 
+        "label": "Ziel-Datetime-Format auswählen", 
+        "show_if": "convert_type=='format_conversion'", 
+        "required": true, 
+        "width": "100%", 
+        "options": {
+          "Tag, tt Monat, jjjjj": {
+            "label": "Tag, tt Monat, jjjjj"
+          }, 
+          "tt-MM-jj": {
+            "label": "tt-MM-jj"
+          }, 
+          "tt-MM-jjjj": {
+            "label": "tt-MM-jjjj"
+          }, 
+          "tt-mon.-jj": {
+            "label": "tt-mon.-jj"
+          }, 
+          "tt Monat, jjjjj": {
+            "label": "tt Monat, jjjjj"
+          }, 
+          "tt/MM/jj": {
+            "label": "tt/MM/jj"
+          }, 
+          "tt/MM/jjjj": {
+            "label": "tt/MM/jjjj"
+          }, 
+          "dy., Monat tt, jjjjj": {
+            "label": "dy., Monat tt, jjjjj"
+          }, 
+          "MM-tt-jj": {
+            "label": "MM-tt-jj"
+          }, 
+          "MM-tt-jjjj": {
+            "label": "MM-tt-jjjj"
+          }, 
+          "MM/TT/JJJ": {
+            "label": "MM/TT/JJJ"
+          }, 
+          "MM/TT/JJJJ": {
+            "label": "MM/TT/JJJJ"
+          }, 
+          "Mo dd": {
+            "label": "Mo dd"
+          }, 
+          "Mo tt, jjjjj": {
+            "label": "Mo tt, jjjjj"
+          "Monat tt, jjjjj": {
+            "label": "Monat tt, jjjjj"
+          }, 
+          "Monat, JJJJ": {
+            "label": "Monat, JJJJ"
+          }, 
+          "yyyy-MM-dd": {
+            "label": "yyyy-MM-dd"
+          }, 
+          "yyyyMMdd": {
+            "label": "yyyyMMdd"
+          }, 
+          "yyyy-MM-dd hh:mm:ss": {
+            "label": "yyyy-MM-dd hh:mm:ss"
+          }, 
+          "MM/tt/jjjj hh:mm:ss": {
+            "label": "MM/tt/jjjj hh:mm:ss"
+          }, 
+          "MM/tt/jj hh:mm:ss": {
+            "label": "MM/tt/jj hh:mm:ss"
+          }, 
+          "tt/MM/jjjj hh:mm:ss": {
+            "label": "tt/MM/jjjj hh:mm:ss"
+          }, 
+          "tt/MM/jj hh:mm:ss": {
+            "label": "tt/MM/jj hh:mm:ss"
+          }, 
+          "HH:mm:ss": {
+            "label": "HH:mm:ss"
+          }
+        }, 
+        "val": "yyyy-MM-dd hh:mm:ss", 
+        "breakLine": true
+      }
+    }
+  }
+}
