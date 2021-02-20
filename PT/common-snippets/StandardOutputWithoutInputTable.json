@@ -1,0 +1,267 @@
+{
+  "output": {
+    "type": "fieldset", 
+    "label": "Definir tabela de saída", 
+    "repeat": false, 
+    "fields": {
+      "output.type": {
+        "type": "select", 
+        "label": "Nome da tabela", 
+        "val": "auto", 
+        "options": {
+          "auto": {
+            "label": "Auto"
+          }, 
+          "custom": {
+            "label": "Personalizado"
+          }, 
+          "compose": {
+            "label": "Compor"
+          }
+        }
+      }, 
+      "output.custom_text": {
+        "type": "text", 
+        "label": "Nome da tabela de saída", 
+        "show_if": "output.type=='custom'", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": "", 
+        "breakLine": true
+      }, 
+      "output.prefix_rule": {
+        "type": "select", 
+        "label": "Prefixo", 
+        "show_if": "output.type=='compose'", 
+        "val": "empty", 
+        "options": {
+          "empty": {
+            "label": "-"
+          }, 
+          "script_name": {
+            "label": "Nome da tarefa"
+          }, 
+          "date_string_type1": {
+            "label": "Data: dd_mm_yyyyy"
+          }, 
+          "date_string_type2": {
+            "label": "Data: yyyyy_mm_dd"
+          }, 
+          "time_string": {
+            "label": "Tempo: h_min_sec"
+          }, 
+          "datetime_string": {
+            "label": "Data_Tempo"
+          }, 
+          "custom": {
+            "label": "Personalizado"
+          }
+        }
+      }, 
+      "output.prefix_text": {
+        "type": "text", 
+        "label": "Prefixo Texto", 
+        "show_if": "output.type=='compose' && output.prefix_rule=='custom'", 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": ""
+      }, 
+      "output.core_delimiter": {
+        "type": "text", 
+        "label": "Delimiter", 
+        "show_if": "output.type=='compose' && output.prefix_rule!='empty'", 
+        "val": "_", 
+        "width": "50px"
+      }, 
+      "output.core_rule": {
+        "type": "select", 
+        "label": "Nome da tabela", 
+        "show_if": "output.type=='compose'", 
+        "val": "script_name", 
+        "options": {
+          "script_name": {
+            "label": "Nome da tarefa"
+          }, 
+          "custom": {
+            "label": "Personalizado"
+          }
+        }
+      }, 
+      "output.core_text": {
+        "type": "text", 
+        "label": "Nome da tabela de saída", 
+        "show_if": "output.type=='compose' && output.core_rule=='custom'", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": ""
+      }, 
+      "output.suffix_delimiter": {
+        "type": "text", 
+        "label": "Delimiter", 
+        "show_if": "output.type=='compose'", 
+        "val": "_", 
+        "width": "50px"
+      }, 
+      "output.suffix_rule": {
+        "type": "select", 
+        "label": "Sufixo", 
+        "show_if": "output.type=='compose'", 
+        "val": "script_name", 
+        "options": {
+          "empty": {
+            "label": "-"
+          }, 
+          "script_name": {
+            "label": "Nome da tarefa"
+          }, 
+          "date_string_type1": {
+            "label": "Data: dd_mm_yyyyy"
+          }, 
+          "date_string_type2": {
+            "label": "Data: yyyyy_mm_dd"
+          }, 
+          "time_string": {
+            "label": "Tempo: h_min_sec"
+          }, 
+          "datetime_string": {
+            "label": "Data_Tempo"
+          }, 
+          "custom": {
+            "label": "Personalizado"
+          }
+        }
+      }, 
+      "output.suffix_text": {
+        "type": "text", 
+        "label": "Texto do Sufixo", 
+        "show_if": "output.type=='compose' && output.suffix_rule=='custom'", 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": "", 
+        "breakLine": true
+      }, 
+      "output.timezone": {
+        "type": "select", 
+        "label": "Fuso horário", 
+        "show_if": "output.type=='compose' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
+        "val": "Europa/Berlim", 
+        "required": true, 
+        "options": {
+          "Europa/Amesterdão": {
+            "label": "Europa/Amesterdão"
+          }, 
+          "Europa/Berlim": {
+            "label": "Europa/Berlim"
+          }, 
+          "Europa/Helsínquia": {
+            "label": "Europa/Helsínquia"
+          }, 
+          "Europa/Londres": {
+            "label": "Europa/Londres"
+          }, 
+          "Europa/Luxemburgo": {
+            "label": "Europa/Luxemburgo"
+          }, 
+          "Europa/Oslo": {
+            "label": "Europa/Oslo"
+          }, 
+          "Europa/Paris": {
+            "label": "Europa/Paris"
+          }, 
+          "Europa/Roma": {
+            "label": "Europa/Roma"
+          }, 
+          "EUA/Alasca": {
+            "label": "EUA/Alasca"
+          }, 
+          "EUA/Central": {
+            "label": "EUA/Central"
+          }, 
+          "E.U.A./Oriente": {
+            "label": "E.U.A./Oriente"
+          }, 
+          "EUA/Pacífico": {
+            "label": "EUA/Pacífico"
+          }
+        }, 
+        "breakLine": true
+      }, 
+      "output.set_options": {
+        "type": "checkbox", 
+        "label": "Opções de saída", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "output_options_box": {
+        "type": "fieldset", 
+        "label": "Opções de saída", 
+        "show_if": "output.set_options=='true'", 
+        "repeat": false, 
+        "fields": {
+          "output.options.location": {
+            "type": "text", 
+            "label": "Especificar o local", 
+            "val": "A1", 
+            "breakLine": true
+          }, 
+          "output.options.table_mode": {
+            "type": "select", 
+            "label": "Colar", 
+            "val": "content_only", 
+            "options": {
+              "content_only": {
+                "label": "Apenas conteúdo"
+              }, 
+              "fully_formatted": {
+                "label": "Totalmente formatado"
+              }
+            }
+          }, 
+          "output.options.formatted_as_table": {
+            "type": "checkbox", 
+            "label": "Formatado como tabela", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "output.add_tag": {
+            "type": "checkbox", 
+            "label": "Adicionar etiqueta", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "output.tag_name": {
+            "type": "text", 
+            "label": "Nome da etiqueta", 
+            "show_if": "output.add_tag=='true'", 
+            "required": true, 
+            "minLength": 1, 
+            "maxLength": 255, 
+            "val": "", 
+            "breakLine": true, 
+            "style": "margin-left: 15px"
+          }, 
+          "output.options.visibility": {
+            "type": "select", 
+            "label": "Visibilidade", 
+            "val": "current_flow", 
+            "options": {
+              "current_flow": {
+                "label": "Fluxo de corrente"
+              }, 
+              "all_flow": {
+                "label": "Todos os fluxos"
+              }
+            }
+          }
+        }, 
+        "breakLine": true
+      }
+    }
+  }
+}
