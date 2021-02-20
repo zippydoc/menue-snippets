@@ -1,0 +1,258 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Ajouter une étiquette", 
+    "repeat": false, 
+    "fields": {
+      "add_column": {
+        "type": "text", 
+        "label": "Nom de la colonne pour l'étiquette", 
+        "val": "Label", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "add_label": {
+        "type": "text", 
+        "label": "Ajouter une étiquette", 
+        "val": "label1", 
+        "required": true
+      }, 
+      "use_custom_delimiter": {
+        "type": "checkbox", 
+        "label": "Délimiteur personnalisé", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "custom_delimiter": {
+        "type": "text", 
+        "label": "Délimiteur personnalisé", 
+        "show_if": "use_custom_delimiter=='true'", 
+        "val": ";", 
+        "required": true
+      }, 
+      "do_not_duplicate": {
+        "type": "checkbox", 
+        "label": "Ne pas dupliquer", 
+        "val": "true", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "filter_box": {
+        "type": "fieldset", 
+        "label": "Options de filtrage", 
+        "repeat": false, 
+        "fields": {
+          "filter": {
+            "type": "fieldset", 
+            "label": "Sélectionner les conditions d'étiquetage", 
+            "repeat": true, 
+            "fields": {
+              "initial_op": {
+                "type": "select", 
+                "label": "Sélectionnez l'opérateur logique", 
+                "required": true, 
+                "show_if" :  "$index == 0", 
+                "options": {
+                  "if": {
+                    "label": "IF"
+                  }, 
+                  "if_not": {
+                    "label": "SI NON"
+                  }
+                }, 
+                "val": "if"
+              }, 
+              "op": {
+                "type": "select", 
+                "label": "Sélectionnez l'opérateur logique", 
+                "show_if" :  "$index > 0", 
+                "options": {
+                  "and": {
+                    "label": "ET"
+                  }, 
+                  "or": {
+                    "label": "OU"
+                  }, 
+                  "and_not": {
+                    "label": "ET NON"
+                  }, 
+                  "or_not": {
+                    "label": "OU NON"
+                  }
+                }, 
+                "val": "and"
+              }, 
+              "column": {
+                "type": "select", 
+                "label": "Sélectionnez une colonne", 
+                "table": "input_table", 
+                "bind": "COLUMNS", 
+                "required": true
+              }, 
+              "condition": {
+                "type": "select", 
+                "label": "Sélectionner un opérateur", 
+                "required": true, 
+                "options": {
+                  "CONTIENT": {
+                    "label": "CONTIENT"
+                  }, 
+                  "CONTENU DANS STRING": {
+                    "label": "CONTENU DANS"
+                  }, 
+                  "COMMENCE AVEC": {
+                    "label": "COMMENCE AVEC"
+                  }, 
+                  "SE TERMINE PAR": {
+                    "label": "SE TERMINE PAR"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "PLUS QUE"
+                  }, 
+                  ">=": {
+                    "label": "SUPÉRIEUR OU ÉGAL"
+                  }, 
+                  "<": {
+                    "label": "PLUS PETIT QUE"
+                  }, 
+                  "<=": {
+                    "label": "PLUS PETIT OU ÉGAL"
+                  }, 
+                  "EMPTY": {
+                    "label": "EST VIDE"
+                  }, 
+                  "BLANK": {
+                    "label": "EST BLANC"
+                  }, 
+                  "EST NUL": {
+                    "label": "EST NUL"
+                  }, 
+                  "REGEX MATCH": {
+                    "label": "REGEX MATCH"
+                  }, 
+                  "CONTENU DANS TABLE": {
+                    "label": "EN TABLE"
+                  }, 
+                  "DANS LE TABLEAU DES RÈGLEMENTS": {
+                    "label": "DANS LE TABLEAU DES RÈGLEMENTS"
+                  }, 
+                  "DATE": {
+                    "label": "DATE"
+                  }
+                }, 
+                "val": "CONTIENT"
+              }, 
+              "date_condition": {
+                "type": "select", 
+                "label": "Sélectionnez l'opérateur de date", 
+                "required": true, 
+                "show_if": "this.condition == 'DATE'", 
+                "options": {
+                  "<": {
+                    "label": "PRIOR"
+                  }, 
+                  "<=": {
+                    "label": "PRIORITÉ OU ÉGALITÉ"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "APRÈS"
+                  }, 
+                  ">=": {
+                    "label": "APRÈS OU EN ÉGALITÉ"
+                  }
+                }, 
+                "val": "="
+              }, 
+              "case_sensitive": {
+                "type": "select", 
+                "label": "Sélectionner les cas sensibles", 
+                "required": true, 
+                "show_if": "this.condition == 'CONTIENT' || this.condition == 'CONTENU DANS STRING' || this.condition == '=' || this.condition == 'COMMENCE AVEC' || this.condition == 'SE TERMINE PAR' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'DANS LE TABLEAU DES RÈGLEMENTS' || this.condition == 'NOT DANS LE TABLEAU DES RÈGLEMENTS'", 
+                "options": {
+                  "yes": {
+                    "label": "Cas sensible"
+                  }, 
+                  "no": {
+                    "label": "Insensible à la casse"
+                  }
+                }, 
+                "val": "yes"
+              }, 
+              "date_value": {
+                "type": "date", 
+                "label": "Sélectionnez une date", 
+                "show_if": "this.condition=='DATE'", 
+                "val": "1/31/2020", 
+                "required": true
+              }, 
+              "value": {
+                "type": "text", 
+                "label": "Valeur d'entrée", 
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'EST NUL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTENU DANS TABLE' && this.condition != 'NOT CONTENU DANS TABLE' && this.condition != 'DANS LE TABLEAU DES RÈGLEMENTS' && this.condition != 'NOT DANS LE TABLEAU DES RÈGLEMENTS'", 
+                "val": "", 
+                "required": true
+              }, 
+              "compare_table": {
+                "type": "select", 
+                "label": "Sélectionner un tableau", 
+                "bind": "TABLES", 
+                "empty": "", 
+                "show_if": "this.condition == 'CONTENU DANS TABLE' || this.condition == 'NOT CONTENU DANS TABLE' || this.condition == 'DANS LE TABLEAU DES RÈGLEMENTS' || this.condition == 'NOT DANS LE TABLEAU DES RÈGLEMENTS'", 
+                "required": true
+              }, 
+              "compare_column": {
+                "type": "select", 
+                "label": "Sélectionnez une colonne", 
+                "table": "this.compare_table", 
+                "bind": "COLUMNS", 
+                "show_if": "this.condition == 'CONTENU DANS TABLE' || this.condition == 'NOT CONTENU DANS TABLE' || this.condition == 'DANS LE TABLEAU DES RÈGLEMENTS' || this.condition == 'NOT DANS LE TABLEAU DES RÈGLEMENTS'", 
+                "required": true
+              }, 
+              "delete": {
+                "type": "button", 
+                "label": "Supprimer", 
+                "function": "DELETE_ROW"
+              }
+            }
+          }, 
+          "apply_to_record": {
+            "type": "checkbox", 
+            "label": "Demande d'enregistrement", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "style": "margin-top: 10px", 
+            "breakLine": true
+          }, 
+          "apply_to_group_box": {
+            "type": "fieldset", 
+            "label": "Postuler au groupe", 
+            "show_if": "apply_to_record=='false'", 
+            "repeat": false, 
+            "fields": {
+              "apply_to_group_columns": {
+                "type": "select", 
+                "label": "Sélectionnez les colonnes du groupe", 
+                "required": true, 
+                "width": "100%", 
+                "table": "input_table", 
+                "multiple": true, 
+                "bind": "COLUMNS", 
+                "breakLine": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
