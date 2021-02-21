@@ -1,177 +1,186 @@
 {
   "options": {
-    "type": "fieldset",
-    "label": "Select Options",
-    "repeat": false,
+    "type": "fieldset", 
+    "label": "Optionen auswählen", 
+    "repeat": false, 
     "fields": {
       "options.to": {
-        "type": "select",
-        "label": "Type",
+        "type": "select", 
+        "label": "Typ", 
         "options": {
           "database": {
-            "label": "Export to database"
-          },
+            "label": "Exportieren in die Datenbank"
+          }, 
           "file": {
-            "label": "Export to file"
+            "label": "In Datei exportieren"
           }
-        },
-        "val": "database",
+        }, 
+        "val": "database", 
         "required": true
-      },
+      }, 
       "options.export_series": {
-        "type": "checkbox",
-        "label": "Export Series",
-        "show_if": "options.to=='file'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
+        "type": "checkbox", 
+        "label": "Serie exportieren", 
+        "show_if": "options.to=='file'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
         "breakLine": true
-      },
+      }, 
       "options.file_name_column": {
-        "type": "select",
-        "label": "Select File Name Column",
-        "show_if": "options.to=='file' && options.export_series=='true'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true,
+        "type": "select", 
+        "label": "Dateinamen-Spalte auswählen", 
+        "show_if": "options.to=='file' && options.export_series=='true'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true, 
         "breakLine": true
-      },
+      }, 
       "postgresql_db_credential_box": {
-        "type": "fieldset",
-        "label": "Database Connection Credentials",
-        "show_if": "options.to=='database'",
-        "repeat": false,
+        "type": "fieldset", 
+        "label": "Anmeldeinformationen für die Datenbankverbindung", 
+        "show_if": "options.to=='database'", 
+        "repeat": false, 
         "fields": {
           "options.dbms": {
-            "type": "select",
-            "label": "Select DBMS",
+            "type": "select", 
+            "label": "DBMS auswählen", 
             "options": {
               "postgresql": {
                 "label": "PostgreSQL"
-              },
+              }, 
               "mysql": {
                 "label": "MySQL"
-              },
+              }, 
               "sql_server": {
-                "label": "MS SQL Server"
-              },
+                "label": "MS SQL-Server"
+              }, 
               "oracle": {
                 "label": "Oracle"
               }
-            },
-            "val": "postgresql",
-            "required": true,
+            }, 
+            "val": "postgresql", 
+            "required": true, 
             "breakLine": true
-          },
+          }, 
           "options.postgresql_credential.user": {
-            "type": "text",
-            "label": "User",
-            "show_if": "options.dbms=='postgresql'",
-            "required": true,
-            "width": "100%",
+            "type": "text", 
+          }, 
+            "label": "Benutzer", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
             "breakLine": true
-          },
+          }, 
           "options.postgresql_credential.password": {
-            "type": "text",
-            "label": "Password",
-            "show_if": "options.dbms=='postgresql'",
-            "required": true,
-            "width": "100%",
+            "type": "text", 
+            "label": "Passwort", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
             "breakLine": true
-          },
+          }, 
           "options.postgresql_credential.host": {
-            "type": "text",
-            "label": "Host",
-            "show_if": "options.dbms=='postgresql'",
-            "required": true,
-            "width": "100%",
+            "type": "text", 
+            "label": "Host", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
             "breakLine": true
-          },
+          }, 
           "options.postgresql_credential.database": {
-            "type": "text",
-            "label": "Database",
-            "show_if": "options.dbms=='postgresql'",
-            "required": true,
-            "width": "100%",
+            "type": "text", 
+            "label": "Datenbank", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
             "breakLine": true
           }
         }
-      },
+      }, 
       "options.schema_name_to_export": {
-        "type": "text",
-        "label": "Schema name to export into",
-        "show_if": "options.to=='database' && options.dbms=='postgresql'",
-        "required": true,
-        "val": "public",
-        "width": "100%",
+        "type": "text", 
+        "label": "Name des Schemas, in das exportiert werden soll", 
+        "show_if": "options.to=='database' && options.dbms=='postgresql'", 
+        "required": true, 
+        "val": "public", 
+        "width": "100%", 
         "breakLine": true
-      },
+      }, 
       "options.webservice": {
-        "type": "select",
-        "label": "Select Webservice",
-        "show_if": "options.to=='file'",
+        "type": "select", 
+        "label": "Webservice auswählen", 
+        "show_if": "options.to=='file' || options.to=='mytask'", 
         "options": {
           "github": {
             "label": "Github"
           }
-        },
-        "val": "github",
+        }, 
+        "val": "github", 
         "required": true
-      },
+      }, 
       "options.export_format": {
-        "type": "select",
-        "label": "Export Format",
-        "show_if": "options.to=='file'",
+        "type": "select", 
+        "label": "Format exportieren", 
+        "show_if": "options.to=='file'", 
         "options": {
           "csv_file": {
-            "label": "Csv file(s)"
-          },
+            "label": "Csv-Datei(en)"
+          }, 
           "word_by_word": {
-            "label": "Word by Word"
-          },
+            "label": "Wort für Wort"
+          }, 
           "line_by_line": {
-            "label": "Line by Line"
+            "label": "Zeile für Zeile"
           }
-        },
-        "val": "csv_file",
-        "required": true,
+        }, 
+        "val": "csv_file", 
+        "required": true, 
         "breakLine": true
-      },
+      }, 
       "options.github_token": {
-        "type": "text",
-        "label": "Specify the github personal access token that has write permission:",
-        "show_if": "options.to=='file'",
-        "required": true,
-        "width": "100%",
+        "type": "text", 
+        "label": "Geben Sie das persönliche Github-Zugriffstoken an, das über eine Schreibberechtigung verfügt:", 
+        "show_if": "options.to=='file' || options.to=='mytask'", 
+        "required": true, 
+        "width": "100%", 
         "breakLine": true
-      },
+      }, 
       "options.github_url": {
-        "type": "text",
-        "label": "Enter link e.g. https://github.com/zippydoc/test",
-        "show_if": "options.to=='file'",
-        "val": "https://github.com/zippydoc/public-tables",
-        "required": true,
-        "width": "100%",
+        "type": "text", 
+        "label": "Link eingeben z. B. https://github.com/zippydoc/test", 
+        "show_if": "options.to=='file' || options.to=='mytask'", 
+        "val": "https://github.com/zippydoc/public-tables", 
+        "required": true, 
+        "width": "100%", 
         "breakLine": true
-      },
+      }, 
       "options.if_duplicated": {
-        "type": "select",
-        "label": "If duplicated",
-        "val": "drop_if_exist",
+        "type": "select", 
+        "label": "Wenn dupliziert", 
+        "val": "drop_if_exist", 
         "options": {
           "drop_if_exist": {
-            "label": "Create or Drop (if already existing)"
-          },
+            "label": "Erstellen oder Verwerfen (falls bereits vorhanden)"
+          }, 
           "error_if_exist": {
-            "label": "Create New (throw error if existing)"
-          },
+            "label": "Neu erstellen (wirft Fehler, wenn vorhanden)"
           "error_if_not_exist": {
-            "label": "Drop (throw error if not-existing)"
-          },
+            "label": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
+          }, 
           "append": {
-            "label": "Append"
+            "label": "Anhängen"
           }
         }
+      }, 
+      "options.export_task_name": {
+        "type": "text", 
+        "label": "Eingabe Task-Name", 
+        "show_if": "options.to=='mytask'", 
+        "required": true, 
+        "val": "Flow6_Task1_AddSpaltes", 
+        "width": "100%", 
+        "breakLine": true
       }
     }
   }

@@ -1,0 +1,102 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Sélectionner les options", 
+    "repeat": false, 
+    "fields": {
+      "split_method": {
+        "type": "select", 
+        "label": "Méthode de fractionnement", 
+        "required": true, 
+        "options": {
+          "standard": {
+            "label": "Standard"
+          }, 
+          "regex": {
+            "label": "RegEx"
+          }
+        }, 
+        "val": "standard"
+      }, 
+      "split_type": {
+        "type": "select", 
+        "label": "Type de fractionnement", 
+        "required": true, 
+        "options": {
+          "split_to_columns": {
+            "label": "Diviser en colonnes"
+          }, 
+          "split_to_rows": {
+            "label": "Séparés en rangées"
+          }
+        }, 
+        "val": "split_to_columns", 
+        "breakLine": true
+      }, 
+      "standard_delimiter": {
+        "type": "select", 
+        "label": "Délimiteur fractionné", 
+        "show_if": "split_method=='standard'", 
+        "required": true, 
+        "options": {
+          "tabs": {
+            "label": "Onglets"
+          }, 
+          "space": {
+            "label": "Espace"
+          }, 
+          "whitespace": {
+            "label": "Whitespace"
+          }, 
+          "linebreak": {
+            "label": "Saut de ligne"
+          }, 
+          "punctuation": {
+            "label": "Ponctuation"
+          }, 
+          "punctuation_whitespace": {
+            "label": "Ponctuation et espaces"
+          }, 
+          "custom": {
+            "label": "Personnalisation"
+          }
+        }, 
+        "val": "punctuation"
+      }, 
+      "delimiter": {
+        "type": "text", 
+        "label": "Délimiteur fractionné", 
+        "show_if": "split_method=='standard' && standard_delimiter=='custom'", 
+        "val": ", ,\
+        trim": "false", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "format": {
+        "type": "fieldset", 
+        "label": "Format à analyser pour le fractionnement", 
+        "show_if": "split_method=='regex'", 
+        "repeat": false, 
+        "fields": {
+          "format_to_convert.regular_expression": {
+            "type": "text", 
+            "label": "Parse Expression régulière ( ex: ([a-z]+)\\\\s([a-z]+) )", 
+            "val": "([a-z]+)\\\\s([a-z]+)", 
+            "required": true, 
+            "width": "100%", 
+            "trim": "false", 
+            "breakLine": true
+          }, 
+          "format_to_convert.case_insensitive": {
+            "type": "checkbox", 
+            "label": "Insensible à la casse", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}

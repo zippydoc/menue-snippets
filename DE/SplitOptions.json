@@ -1,98 +1,98 @@
 {
   "options": {
-    "type": "fieldset",
-    "label": "Select Options",
-    "repeat": false,
+    "type": "fieldset", 
+    "label": "Optionen auswählen", 
+    "repeat": false, 
     "fields": {
       "split_method": {
-        "type": "select",
-        "label": "Split method",
-        "required": true,
+        "type": "select", 
+        "label": "Split-Verfahren", 
+        "required": true, 
         "options": {
           "standard": {
             "label": "Standard"
-          },
+          }, 
           "regex": {
             "label": "RegEx"
           }
-        },
+        }, 
         "val": "standard"
-      },
+      }, 
       "split_type": {
-        "type": "select",
-        "label": "Split type",
-        "required": true,
+        "type": "select", 
+        "label": "Typ geteilt", 
+        "required": true, 
         "options": {
           "split_to_columns": {
-            "label": "Split to Columns"
-          },
+            "label": "Auf Spalten aufteilen"
+          }, 
           "split_to_rows": {
-            "label": "Split to Rows"
+            "label": "Aufteilung in Reihen"
           }
-        },
-        "val": "split_to_columns",
+        }, 
+        "val": "split_to_columns", 
         "breakLine": true
-      },
+      }, 
       "standard_delimiter": {
-        "type": "select",
-        "label": "Split Delimiter",
-        "show_if": "split_method=='standard'",
-        "required": true,
+        "type": "select", 
+        "label": "Trennzeichen", 
+        "show_if": "split_method=='standard'", 
+        "required": true, 
         "options": {
           "tabs": {
-            "label": "Tabs"
-          },
+            "label": "Registerkarten"
+          }, 
           "space": {
-            "label": "Space"
-          },
+            "label": "Weltraum"
+          }, 
           "whitespace": {
             "label": "Whitespace"
-          },
+          }, 
           "linebreak": {
-            "label": "Line break"
-          },
+            "label": "Zeilenumbruch"
+          }, 
           "punctuation": {
-            "label": "Punctuation"
-          },
+            "label": "Zeichensetzung"
+          }, 
           "punctuation_whitespace": {
-            "label": "Punctuation and Whitespace"
-          },
+            "label": "Interpunktion und Leerzeichen"
+          }, 
           "custom": {
-            "label": "Custom"
+            "label": "Benutzerdefiniert"
           }
-        },
+        }, 
         "val": "punctuation"
-      },
+      }, 
       "delimiter": {
-        "type": "text",
-        "label": "Split Delimiter",
-        "show_if": "split_method=='standard' && standard_delimiter=='custom'",
-        "val": ",",
-        "trim": "false",
-        "required": true,
+        "type": "text", 
+        "label": "Trennzeichen", 
+        "show_if": "split_method=='standard' && standard_delimiter=='custom'", 
+        "val": ", ,\
+        trim": "false", 
+        "required": true, 
         "breakLine": true
-      },
+      }, 
       "format": {
-        "type": "fieldset",
-        "label": "Format to Parse for Split",
-        "show_if": "split_method=='regex'",
-        "repeat": false,
+        "type": "fieldset", 
+        "label": "Zu parsendes Format für Split", 
+        "show_if": "split_method=='regex'", 
+        "repeat": false, 
         "fields": {
           "format_to_convert.regular_expression": {
-            "type": "text",
-            "label": "Parse Regular Expression ( ex: ([a-z]+)\\s([a-z]+) )",
-            "val": "([a-z]+)\\s([a-z]+)",
-            "required": true,
-            "width": "100%",
-            "trim": "false",
+            "type": "text", 
+            "label": "Parse Regulärer Ausdruck ( ex: ([a-z]+)\\\\s([a-z]+) )", 
+            "val": "([a-z]+)\\\\s([a-z]+)", 
+            "required": true, 
+            "width": "100%", 
+            "trim": "false", 
             "breakLine": true
-          },
+          }, 
           "format_to_convert.case_insensitive": {
-            "type": "checkbox",
-            "label": "Case Insensitive",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false",
+            "type": "checkbox", 
+            "label": "Groß-/Kleinschreibung nicht beachten", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
             "breakLine": true
           }
         }

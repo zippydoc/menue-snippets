@@ -1,88 +1,88 @@
 {
   "input": {
-    "type": "fieldset",
-    "label": "Select Input Table",
-    "repeat": false,
+    "type": "fieldset", 
+    "label": "Eingangstabelle auswählen", 
+    "repeat": false, 
     "fields": {
       "tables": {
-        "type": "fieldset",
-        "label": "Select Tables",
-        "repeat": true,
+        "type": "fieldset", 
+        "label": "Tabellen auswählen", 
+        "repeat": true, 
         "fields": {
           "table_id": {
-            "type": "select",
-            "label": "Lookup Table",
-            "bind": "TABLES",
+            "type": "select", 
+            "label": "Nachschlagetabelle", 
+            "bind": "TABLES", 
             "required": true
-          },
+          }, 
           "lookup_header_column": {
-            "type": "select",
-            "label": "Header Column",
-            "table": "this.table_id",
-            "bind": "COLUMNS",
+            "type": "select", 
+            "label": "Kopfspalte", 
+            "table": "this.table_id", 
+            "bind": "COLUMNS", 
             "required": true
-          },
+          }, 
           "lookup_value_column": {
-            "type": "select",
-            "label": "Value Column",
-            "table": "this.table_id",
-            "bind": "COLUMNS",
+            "type": "select", 
+            "label": "Wert-Spalte", 
+            "table": "this.table_id", 
+            "bind": "COLUMNS", 
             "required": true
-          },
+          }, 
           "lookup_mapping_column": {
-            "type": "select",
-            "label": "Mapping Column",
-            "table": "this.table_id",
+            "type": "select", 
+            "label": "Mapping-Spalte", 
+            "table": "this.table_id", 
             "bind": "COLUMNS"
-          },
+          }, 
           "delete": {
-            "type": "button",
-            "label": "Delete",
+            "type": "button", 
+            "label": "Löschen", 
             "function": "DELETE_ROW"
           }
         }
-      },
+      }, 
       "options.treatment": {
-        "type": "select",
-        "label": "Treatment of multiple occurances",
-        "required": true,
+        "type": "select", 
+        "label": "Behandlung von Mehrfachvorkommen", 
+        "required": true, 
         "options": {
           "sum": {
-            "label": "Sum"
-          },
+            "label": "Summe"
+          }, 
           "min": {
             "label": "Min"
-          },
+          }, 
           "max": {
             "label": "Max"
-          },
+          }, 
           "shortest": {
-            "label": "Shortest"
-          },
+            "label": "Kürzeste"
+          }, 
           "longest": {
-            "label": "Longest"
-          },
+            "label": "Längste"
+          }, 
           "first": {
-            "label": "First"
-          },
+            "label": "Erste"
+          }, 
           "last": {
-            "label": "Last"
-          },
+            "label": "Zuletzt"
+          }, 
           "concatenate": {
-            "label": "Concatenate"
+            "label": "Verketten"
           }
-        },
-        "val": "sum",
+        }, 
+        "val": "sum", 
         "style": "min-width: 200px"
-      },
+      }, 
       "options.treatment_delimiter": {
-        "type": "text",
-        "label": "Delimiter",
-        "show_if": "options.treatment=='concatenate'",
-        "required": true,
-        "minLength": 1,
-        "maxLength": 255,
-        "val": ";",
+        "type": "text", 
+        "label": "Begrenzer", 
+        "show_if": "options.treatment=='concatenate'", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "val": ";", 
         "breakLine": true
       }
     }
