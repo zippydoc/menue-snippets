@@ -30,14 +30,14 @@
           "options.new_row_name": {
             "type": "text",
             "label": "New Row Name",
-            "show_if": "options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions'",
+            "show_if": "options.function_type!='custom_functions'",
             "val": "NewRow",
             "required": true
           },
           "options.format__category": {
             "type": "select",
             "label": "Format",
-            "show_if": "options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions'",
+            "show_if": "options.function_type!='custom_functions'",
             "required": true,
             "options": {
               "standard": {
@@ -64,7 +64,7 @@
           "options.format__rounding": {
             "type": "select",
             "label": "Rounding",
-            "show_if": "(options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions') && (options.format__category=='number' || options.format__category=='percentage' || options.format__category=='currency')",
+            "show_if": "options.function_type!='custom_functions' && (options.format__category=='number' || options.format__category=='percentage' || options.format__category=='currency')",
             "required": true,
             "options": {
               "no_rounding": {
@@ -106,7 +106,7 @@
           "options.format__use_1000_separator": {
             "type": "checkbox",
             "label": "Use 1000 Separator(.)",
-            "show_if": "(options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions') && (options.format__category=='number' || options.format__category=='percentage' || options.format__category=='currency')",
+            "show_if": "options.function_type!='custom_functions' && (options.format__category=='number' || options.format__category=='percentage' || options.format__category=='currency')",
             "val": "false",
             "isOn": "true",
             "isOff": "false"
@@ -114,7 +114,7 @@
           "options.format__currency_symbol": {
             "type": "select",
             "label": "Symbol",
-            "show_if": "(options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions') && options.format__category=='currency'",
+            "show_if": "options.function_type!='custom_functions' && options.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
@@ -132,7 +132,7 @@
           "options.format__date_format": {
             "type": "select",
             "label": "Type",
-            "show_if": "(options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions') && options.format__category=='date'",
+            "show_if": "options.function_type!='custom_functions' && options.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
