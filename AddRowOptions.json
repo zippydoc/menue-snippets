@@ -37,6 +37,345 @@
         "required": true,
         "breakLine": true
       },
+      "new_row_option_frame": {
+        "type": "fieldset",
+        "label": "New Row Option",
+        "repeat": false,
+        "fields": {
+          "options.function_type": {
+            "type": "select",
+            "label": "Task Type",
+            "required": true,
+            "options": {
+              "multi_column_functions": {
+                "label": "Multi-Column"
+              },
+              "multi_row_functions": {
+                "label": "Multi-Row"
+              },
+              "custom_functions": {
+                "label": "Custom"
+              }
+            },
+            "val": "multi_column_functions"
+          },
+          "options.multi_column_functions__function": {
+            "type": "select",
+            "label": "Select Function",
+            "show_if": "options.function_type=='multi_column_functions'",
+            "required": true,
+            "options": {
+              "absolute_growth": {
+                "label": "Absolute Growth"
+              },
+              "relative_growth": {
+                "label": "Relative Growth"
+              },
+              "trailing_average": {
+                "label": "Trailing Average"
+              },
+              "index_growth": {
+                "label": "Index Growth"
+              },
+              "compound_growth": {
+                "label": "Compound Growth"
+              },
+              "discount_rate": {
+                "label": "Discount Rate"
+              }
+            },
+            "val": "absolute_growth"
+          },
+          "options.multi_row_functions__function": {
+            "type": "select",
+            "label": "Select Function",
+            "show_if": "options.function_type=='multi_row_functions'",
+            "required": true,
+            "options": {
+              "sum": {
+                "label": "Sum"
+              },
+              "average": {
+                "label": "Average"
+              },
+              "median": {
+                "label": "Median"
+              },
+              "standard_deviation": {
+                "label": "Standard Deviation"
+              },
+              "variance": {
+                "label": "Variance"
+              },
+              "product": {
+                "label": "Product"
+              }
+            },
+            "val": "sum"
+          },
+          "options.multi_column_functions__sel_columns": {
+            "type": "select",
+            "label": "Select Column(s)",
+            "show_if": "options.function_type=='multi_column_functions'",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "multiple": true,
+            "required": true
+          },
+          "options.multi_column_functions__n_value": {
+            "type": "text",
+            "label": "N (positive integer)",
+            "show_if": "options.function_type=='multi_column_functions' && (options.multi_column_functions__function=='trailing_average' || options.multi_column_functions__function=='index_growth' || options.multi_column_functions__function=='compound_growth')",
+            "val": "1",
+            "required": true
+          },
+          "options.multi_column_functions__discount_rate__rate": {
+            "type": "text",
+            "label": "Input Rate",
+            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__function=='discount_rate'",
+            "val": "1",
+            "required": true
+          },
+          "options.multi_column_functions__discount_rate__starting_column": {
+            "type": "select",
+            "label": "Starting column",
+            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__function=='discount_rate'",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "options.multi_column_functions__use_first_column_as_label_column": {
+            "type": "checkbox",
+            "label": "Use first column as Label column",
+            "show_if": "options.function_type=='multi_column_functions'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.multi_column_functions__label_column": {
+            "type": "select",
+            "label": "Label column",
+            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__use_first_column_as_label_column=='false'",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "breakLine": true
+          },
+          "options.multi_column_functions__use_function_name_as_label": {
+            "type": "checkbox",
+            "label": "Use Function Name as Label",
+            "show_if": "options.function_type=='multi_column_functions'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.multi_column_functions__custom_label": {
+            "type": "text",
+            "label": "Input Label Text",
+            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__use_function_name_as_label=='false'",
+            "val": "New Row",
+            "required": true,
+            "breakLine": true
+          },
+          "options.multi_row_functions__apply_to_all_columns": {
+            "type": "checkbox",
+            "label": "Apply to all columns",
+            "show_if": "options.function_type=='multi_row_functions'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.multi_row_functions__sel_columns": {
+            "type": "select",
+            "label": "Select Column(s)",
+            "show_if": "options.function_type=='multi_row_functions' && options.multi_row_functions__apply_to_all_columns=='false'",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "multiple": true,
+            "required": true,
+            "breakLine": true
+          },
+          "options.multi_row_functions__select_labels": {
+            "type": "checkbox",
+            "label": "Select Labels",
+            "show_if": "options.function_type=='multi_row_functions'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.custom_functions__target_cells": {
+            "type": "fieldset",
+            "label": "Define Target Cells",
+            "show_if": "options.function_type=='custom_functions'",
+            "repeat": true,
+            "fields": {
+              "column": {
+                "type": "select",
+                "label": "Select Column",
+                "table": "input_table",
+                "bind": "COLUMNS",
+                "required": true
+              },
+              "formula_type": {
+                "type": "select",
+                "label": "Formula Type",
+                "required": true,
+                "options": {
+                  "copy_selected": {
+                    "label": "Copy Selected"
+                  },
+                  "static_value": {
+                    "label": "Static Value"
+                  },
+                  "numeric_formula": {
+                    "label": "Numeric Formula"
+                  },
+                  "text_formula": {
+                    "label": "Text Formula"
+                  }
+                },
+                "val": "copy_selected"
+              },
+              "static_value": {
+                "type": "text",
+                "label": "Value",
+                "show_if": "this.formula_type=='static_value'",
+                "val": ""
+              },
+              "numeric_formula": {
+                "type": "text",
+                "label": "Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
+                "show_if": "this.formula_type=='numeric_formula'",
+                "val": "",
+                "style": "width: 100%"
+              },
+              "rounding": {
+                "type": "select",
+                "label": "Rounding",
+                "show_if": "this.formula_type=='numeric_formula'",
+                "required": true,
+                "options": {
+                  "no_rounding": {
+                    "label": "No rounding"
+                  },
+                  "0": {
+                    "label": "0 digits"
+                  },
+                  "1": {
+                    "label": "1 digits"
+                  },
+                  "2": {
+                    "label": "2 digits"
+                  },
+                  "3": {
+                    "label": "3 digits"
+                  },
+                  "4": {
+                    "label": "4 digits"
+                  },
+                  "5": {
+                    "label": "5 digits"
+                  },
+                  "6": {
+                    "label": "6 digits"
+                  },
+                  "7": {
+                    "label": "7 digits"
+                  },
+                  "8": {
+                    "label": "8 digits"
+                  },
+                  "9": {
+                    "label": "9 digits"
+                  }
+                },
+                "val": "no_rounding"
+              },
+              "text_formula": {
+                "type": "text",
+                "label": "Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
+                "show_if": "this.formula_type=='text_formula'",
+                "val": "",
+                "style": "width: 100%"
+              },
+              "use_multi_row": {
+                "type": "checkbox",
+                "label": "Multi-Row Options",
+                "show_if": "options.position!='add_row_after_each_group' && (this.formula_type=='numeric_formula' || this.formula_type=='text_formula')",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false"
+              },
+              "if_row_not_exist": {
+                "type": "select",
+                "label": "If referred row not exist",
+                "show_if": "options.position!='add_row_after_each_group' && this.use_multi_row=='true' && (this.formula_type=='numeric_formula' || this.formula_type=='text_formula')",
+                "required": true,
+                "options": {
+                  "empty": {
+                    "label": "Empty or 0"
+                  },
+                  "closest": {
+                    "label": "Closest Row Value"
+                  }
+                },
+                "val": "empty",
+                "breakLine": true
+              },
+              "delete": {
+                "type": "button",
+                "label": "Delete",
+                "function": "DELETE_ROW"
+              }
+            },
+            "breakLine": true
+          },
+          "options.custom_functions__set_date_column": {
+            "type": "checkbox",
+            "label": "Select Date Column",
+            "show_if": "options.function_type=='custom_functions'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "style": "margin-top: 20px",
+            "breakLine": true
+          },
+          "options.custom_functions__date_column": {
+            "type": "select",
+            "label": "Select Date Column",
+            "show_if": "options.function_type=='custom_functions' && options.custom_functions__set_date_column=='true'",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "options.custom_functions__period_shift__number": {
+            "type": "text",
+            "label": "Period Shift",
+            "show_if": "options.function_type=='custom_functions' && options.custom_functions__set_date_column=='true'",
+            "required": true,
+            "val": "0"
+          },
+          "options.custom_functions__period_shift__period": {
+            "type": "select",
+            "label": "Select Period",
+            "show_if": "options.function_type=='custom_functions' && options.custom_functions__set_date_column=='true'",
+            "options": {
+              "day": {
+                "label": "Days"
+              },
+              "week": {
+                "label": "Weeks"
+              },
+              "month": {
+                "label": "Months"
+              },
+              "year": {
+                "label": "Years"
+              }
+            },
+            "val": "month"
+          }
+        }
+      },
       "options.use_filter": {
         "type": "checkbox",
         "label": "Use Filter",
@@ -258,346 +597,6 @@
                 "breakLine": true
               }
             }
-          }
-        }
-      },
-      "new_row_option_frame": {
-        "type": "fieldset",
-        "label": "New Row Option",
-        "repeat": false,
-        "fields": {
-          "options.function_type": {
-            "type": "select",
-            "label": "Task Type",
-            "required": true,
-            "options": {
-              "multi_column_functions": {
-                "label": "Multi-Column"
-              },
-              "multi_row_functions": {
-                "label": "Multi-Row"
-              },
-              "custom_functions": {
-                "label": "Custom"
-              }
-            },
-            "val": "multi_column_functions"
-          },
-          "options.multi_column_functions__function": {
-            "type": "select",
-            "label": "Select Function",
-            "show_if": "options.function_type=='multi_column_functions'",
-            "required": true,
-            "options": {
-              "absolute_growth": {
-                "label": "Absolute Growth"
-              },
-              "relative_growth": {
-                "label": "Relative Growth"
-              },
-              "trailing_average": {
-                "label": "Trailing Average"
-              },
-              "index_growth": {
-                "label": "Index Growth"
-              },
-              "compound_growth": {
-                "label": "Compound Growth"
-              },
-              "discount_rate": {
-                "label": "Discount Rate"
-              }
-            },
-            "val": "absolute_growth"
-          },
-          "options.multi_row_functions__function": {
-            "type": "select",
-            "label": "Select Function",
-            "show_if": "options.function_type=='multi_row_functions'",
-            "required": true,
-            "options": {
-              "sum": {
-                "label": "Sum"
-              },
-              "average": {
-                "label": "Average"
-              },
-              "median": {
-                "label": "Median"
-              },
-              "standard_deviation": {
-                "label": "Standard Deviation"
-              },
-              "variance": {
-                "label": "Variance"
-              },
-              "product": {
-                "label": "Product"
-              }
-            },
-            "val": "sum"
-          },
-          "options.multi_column_functions__sel_columns": {
-            "type": "select",
-            "label": "Select Column(s)",
-            "show_if": "options.function_type=='multi_column_functions'",
-            "table": "input_table",
-            "bind": "COLUMNS",
-            "multiple": true,
-            "required": true
-          },
-          "options.multi_column_functions__use_first_column_as_label_column": {
-            "type": "checkbox",
-            "label": "Use first column as Label column",
-            "show_if": "options.function_type=='multi_column_functions'",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "options.multi_column_functions__label_column": {
-            "type": "select",
-            "label": "Label column",
-            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__use_first_column_as_label_column=='false'",
-            "table": "input_table",
-            "bind": "COLUMNS",
-            "required": true,
-            "breakLine": true
-          },
-          "options.multi_column_functions__use_custom_label": {
-            "type": "checkbox",
-            "label": "Use custom Label (if unticked, use Function name as Label)",
-            "show_if": "options.function_type=='multi_column_functions'",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "options.multi_column_functions__custom_label": {
-            "type": "text",
-            "label": "Input Label text",
-            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__use_custom_label=='true'",
-            "val": "New Row",
-            "required": true,
-            "breakLine": true
-          },
-          "options.multi_column_functions__n_value": {
-            "type": "text",
-            "label": "N (positive integer)",
-            "show_if": "options.function_type=='multi_column_functions' && (options.multi_column_functions__function=='trailing_average' || options.multi_column_functions__function=='index_growth' || options.multi_column_functions__function=='compound_growth')",
-            "val": "1",
-            "required": true
-          },
-          "options.multi_column_functions__discount_rate__rate": {
-            "type": "text",
-            "label": "Input Rate",
-            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__function=='discount_rate'",
-            "val": "1",
-            "required": true
-          },
-          "options.multi_column_functions__discount_rate__starting_column": {
-            "type": "select",
-            "label": "Starting column",
-            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__function=='discount_rate'",
-            "table": "input_table",
-            "bind": "COLUMNS",
-            "required": true
-          },
-          "options.multi_row_functions__apply_to_all_columns": {
-            "type": "checkbox",
-            "label": "Apply to all columns",
-            "show_if": "options.function_type=='multi_row_functions'",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "options.multi_row_functions__sel_columns": {
-            "type": "select",
-            "label": "Select Column(s)",
-            "show_if": "options.function_type=='multi_row_functions' && options.multi_row_functions__apply_to_all_columns=='false'",
-            "table": "input_table",
-            "bind": "COLUMNS",
-            "multiple": true,
-            "required": true,
-            "breakLine": true
-          },
-          "options.multi_row_functions__select_labels": {
-            "type": "checkbox",
-            "label": "Select Labels",
-            "show_if": "options.function_type=='multi_row_functions'",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "options.custom_functions__target_cells": {
-            "type": "fieldset",
-            "label": "Define Target Cells",
-            "show_if": "options.function_type=='custom_functions'",
-            "repeat": true,
-            "fields": {
-              "column": {
-                "type": "select",
-                "label": "Select Column",
-                "table": "input_table",
-                "bind": "COLUMNS",
-                "required": true
-              },
-              "formula_type": {
-                "type": "select",
-                "label": "Formula Type",
-                "required": true,
-                "options": {
-                  "copy_selected": {
-                    "label": "Copy Selected"
-                  },
-                  "static_value": {
-                    "label": "Static Value"
-                  },
-                  "numeric_formula": {
-                    "label": "Numeric Formula"
-                  },
-                  "text_formula": {
-                    "label": "Text Formula"
-                  }
-                },
-                "val": "copy_selected"
-              },
-              "static_value": {
-                "type": "text",
-                "label": "Value",
-                "show_if": "this.formula_type=='static_value'",
-                "val": ""
-              },
-              "numeric_formula": {
-                "type": "text",
-                "label": "Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
-                "show_if": "this.formula_type=='numeric_formula'",
-                "val": "",
-                "style": "width: 100%"
-              },
-              "rounding": {
-                "type": "select",
-                "label": "Rounding",
-                "show_if": "this.formula_type=='numeric_formula'",
-                "required": true,
-                "options": {
-                  "no_rounding": {
-                    "label": "No rounding"
-                  },
-                  "0": {
-                    "label": "0 digits"
-                  },
-                  "1": {
-                    "label": "1 digits"
-                  },
-                  "2": {
-                    "label": "2 digits"
-                  },
-                  "3": {
-                    "label": "3 digits"
-                  },
-                  "4": {
-                    "label": "4 digits"
-                  },
-                  "5": {
-                    "label": "5 digits"
-                  },
-                  "6": {
-                    "label": "6 digits"
-                  },
-                  "7": {
-                    "label": "7 digits"
-                  },
-                  "8": {
-                    "label": "8 digits"
-                  },
-                  "9": {
-                    "label": "9 digits"
-                  }
-                },
-                "val": "no_rounding"
-              },
-              "text_formula": {
-                "type": "text",
-                "label": "Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
-                "show_if": "this.formula_type=='text_formula'",
-                "val": "",
-                "style": "width: 100%"
-              },
-              "use_multi_row": {
-                "type": "checkbox",
-                "label": "Multi-Row Options",
-                "show_if": "options.position!='add_row_after_each_group' && (this.formula_type=='numeric_formula' || this.formula_type=='text_formula')",
-                "val": "false",
-                "isOn": "true",
-                "isOff": "false"
-              },
-              "if_row_not_exist": {
-                "type": "select",
-                "label": "If referred row not exist",
-                "show_if": "options.position!='add_row_after_each_group' && this.use_multi_row=='true' && (this.formula_type=='numeric_formula' || this.formula_type=='text_formula')",
-                "required": true,
-                "options": {
-                  "empty": {
-                    "label": "Empty or 0"
-                  },
-                  "closest": {
-                    "label": "Closest Row Value"
-                  }
-                },
-                "val": "empty",
-                "breakLine": true
-              },
-              "delete": {
-                "type": "button",
-                "label": "Delete",
-                "function": "DELETE_ROW"
-              }
-            },
-            "breakLine": true
-          },
-          "options.custom_functions__set_date_column": {
-            "type": "checkbox",
-            "label": "Select Date Column",
-            "show_if": "options.function_type=='custom_functions'",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false",
-            "style": "margin-top: 20px",
-            "breakLine": true
-          },
-          "options.custom_functions__date_column": {
-            "type": "select",
-            "label": "Select Date Column",
-            "show_if": "options.function_type=='custom_functions' && options.custom_functions__set_date_column=='true'",
-            "table": "input_table",
-            "bind": "COLUMNS",
-            "required": true
-          },
-          "options.custom_functions__period_shift__number": {
-            "type": "text",
-            "label": "Period Shift",
-            "show_if": "options.function_type=='custom_functions' && options.custom_functions__set_date_column=='true'",
-            "required": true,
-            "val": "0"
-          },
-          "options.custom_functions__period_shift__period": {
-            "type": "select",
-            "label": "Select Period",
-            "show_if": "options.function_type=='custom_functions' && options.custom_functions__set_date_column=='true'",
-            "options": {
-              "day": {
-                "label": "Days"
-              },
-              "week": {
-                "label": "Weeks"
-              },
-              "month": {
-                "label": "Months"
-              },
-              "year": {
-                "label": "Years"
-              }
-            },
-            "val": "month"
           }
         }
       }
