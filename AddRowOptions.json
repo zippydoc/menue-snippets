@@ -27,6 +27,127 @@
         "label": "New Row Option",
         "repeat": false,
         "fields": {
+          "options.new_row_name": {
+            "type": "text",
+            "label": "New Row Name",
+            "show_if": "options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions'",
+            "val": "NewRow",
+            "required": true
+          },
+          "options.format__category": {
+            "type": "select",
+            "label": "Format",
+            "show_if": "options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions'",
+            "required": true,
+            "options": {
+              "standard": {
+                "label": "Standard"
+              },
+              "number": {
+                "label": "Number"
+              },
+              "percentage": {
+                "label": "Percentage"
+              },
+              "text": {
+                "label": "Text"
+              },
+              "date": {
+                "label": "Date"
+              },
+              "currency": {
+                "label": "Currency"
+              }
+            },
+            "val": "standard"
+          },
+          "options.format__rounding": {
+            "type": "select",
+            "label": "Rounding",
+            "show_if": "(options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions') && (options.format__category=='number' || options.format__category=='percentage' || options.format__category=='currency')",
+            "required": true,
+            "options": {
+              "no_rounding": {
+                "label": "No rounding"
+              },
+              "0": {
+                "label": "0 digits"
+              },
+              "1": {
+                "label": "1 digits"
+              },
+              "2": {
+                "label": "2 digits"
+              },
+              "3": {
+                "label": "3 digits"
+              },
+              "4": {
+                "label": "4 digits"
+              },
+              "5": {
+                "label": "5 digits"
+              },
+              "6": {
+                "label": "6 digits"
+              },
+              "7": {
+                "label": "7 digits"
+              },
+              "8": {
+                "label": "8 digits"
+              },
+              "9": {
+                "label": "9 digits"
+              }
+            },
+            "val": "no_rounding"
+          },
+          "options.format__use_1000_separator": {
+            "type": "checkbox",
+            "label": "Use 1000 Separator(.)",
+            "show_if": "(options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions') && (options.format__category=='number' || options.format__category=='percentage' || options.format__category=='currency')",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.format__currency_symbol": {
+            "type": "select",
+            "label": "Symbol",
+            "show_if": "(options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions') && options.format__category=='currency'",
+            "required": true,
+            "options": {
+              "dollar": {
+                "label": "$"
+              },
+              "euro": {
+                "label": "€"
+              },
+              "pound": {
+                "label": "£"
+              }
+            },
+            "val": "dollar"
+          },
+          "options.format__date_format": {
+            "type": "select",
+            "label": "Type",
+            "show_if": "(options.function_type=='multi_column_functions' || options.function_type=='multi_row_functions') && options.format__category=='date'",
+            "required": true,
+            "options": {
+              "mm/dd/yyyy": {
+                "label": "3/14/2012"
+              },
+              "D, M dd, Y": {
+                "label": "Wednesday, March 14, 2012"
+              },
+              "yyyy-mm-dd": {
+                "label": "2012-03-14"
+              }
+            },
+            "val": "mm/dd/yyyy",
+            "breakLine": true
+          },
           "options.multi_column_functions__function": {
             "type": "select",
             "label": "Select Function",
@@ -103,14 +224,6 @@
             "bind": "COLUMNS",
             "required": true,
             "breakLine": true
-          },
-          "options.multi_column_functions__apply_to_all_columns": {
-            "type": "checkbox",
-            "label": "Apply to all columns",
-            "show_if": "options.function_type=='multi_column_functions'",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false"
           },
           "options.multi_column_functions__label_column": {
             "type": "select",
