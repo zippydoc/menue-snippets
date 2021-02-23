@@ -22,19 +22,12 @@
         "val": "multi_column_functions",
         "breakLine": true
       },
-      "new_row_option_frame": {
+      "options.add_rows": {
         "type": "fieldset",
-        "label": "New Row Option",
-        "repeat": false,
+        "label": "New Rows Option",
+        "repeat": true,
         "fields": {
-          "options.new_row_name": {
-            "type": "text",
-            "label": "New Row Name",
-            "show_if": "options.function_type!='custom_functions'",
-            "val": "NewRow",
-            "required": true
-          },
-          "options.format__category": {
+          "format__category": {
             "type": "select",
             "label": "Format",
             "show_if": "options.function_type!='custom_functions'",
@@ -61,10 +54,10 @@
             },
             "val": "standard"
           },
-          "options.format__rounding": {
+          "format__rounding": {
             "type": "select",
             "label": "Rounding",
-            "show_if": "options.function_type!='custom_functions' && (options.format__category=='number' || options.format__category=='percentage' || options.format__category=='currency')",
+            "show_if": "options.function_type!='custom_functions' && (this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency')",
             "required": true,
             "options": {
               "no_rounding": {
@@ -103,18 +96,18 @@
             },
             "val": "no_rounding"
           },
-          "options.format__use_1000_separator": {
+          "format__use_1000_separator": {
             "type": "checkbox",
             "label": "Use 1000 Separator(.)",
-            "show_if": "options.function_type!='custom_functions' && (options.format__category=='number' || options.format__category=='percentage' || options.format__category=='currency')",
+            "show_if": "options.function_type!='custom_functions' && (this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency')",
             "val": "false",
             "isOn": "true",
             "isOff": "false"
           },
-          "options.format__currency_symbol": {
+          "format__currency_symbol": {
             "type": "select",
             "label": "Symbol",
-            "show_if": "options.function_type!='custom_functions' && options.format__category=='currency'",
+            "show_if": "options.function_type!='custom_functions' && this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
@@ -129,10 +122,10 @@
             },
             "val": "dollar"
           },
-          "options.format__date_format": {
+          "format__date_format": {
             "type": "select",
             "label": "Type",
-            "show_if": "options.function_type!='custom_functions' && options.format__category=='date'",
+            "show_if": "options.function_type!='custom_functions' && this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
@@ -148,7 +141,7 @@
             "val": "mm/dd/yyyy",
             "breakLine": true
           },
-          "options.multi_column_functions__function": {
+          "multi_column_functions__function": {
             "type": "select",
             "label": "Select Function",
             "show_if": "options.function_type=='multi_column_functions'",
@@ -175,7 +168,7 @@
             },
             "val": "absolute_growth"
           },
-          "options.multi_row_functions__function": {
+          "multi_row_functions__function": {
             "type": "select",
             "label": "Select Function",
             "show_if": "options.function_type=='multi_row_functions'",
@@ -202,30 +195,30 @@
             },
             "val": "sum"
           },
-          "options.multi_column_functions__n_value": {
+          "multi_column_functions__n_value": {
             "type": "text",
             "label": "N (positive integer)",
-            "show_if": "options.function_type=='multi_column_functions' && (options.multi_column_functions__function=='trailing_average' || options.multi_column_functions__function=='index_growth' || options.multi_column_functions__function=='compound_growth')",
+            "show_if": "options.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
             "val": "1",
             "required": true
           },
-          "options.multi_column_functions__discount_rate__rate": {
+          "multi_column_functions__discount_rate__rate": {
             "type": "text",
             "label": "Input Rate",
-            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__function=='discount_rate'",
+            "show_if": "options.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "val": "1",
             "required": true
           },
-          "options.multi_column_functions__discount_rate__starting_column": {
+          "multi_column_functions__discount_rate__starting_column": {
             "type": "select",
             "label": "Starting column",
-            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__function=='discount_rate'",
+            "show_if": "options.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true,
             "breakLine": true
           },
-          "options.multi_column_functions__use_function_name_as_label": {
+          "multi_column_functions__use_function_name_as_label": {
             "type": "checkbox",
             "label": "Use Function Name as Label",
             "show_if": "options.function_type=='multi_column_functions'",
@@ -233,15 +226,15 @@
             "isOn": "true",
             "isOff": "false"
           },
-          "options.multi_column_functions__custom_label": {
+          "multi_column_functions__custom_label": {
             "type": "text",
             "label": "Input Label Text",
-            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__use_function_name_as_label=='false'",
+            "show_if": "options.function_type=='multi_column_functions' && this.multi_column_functions__use_function_name_as_label=='false'",
             "val": "New Row",
             "required": true,
             "breakLine": true
           },
-          "options.multi_row_functions__label_column": {
+          "multi_row_functions__label_column": {
             "type": "select",
             "label": "Label Column",
             "show_if": "options.function_type=='multi_row_functions'",
@@ -250,7 +243,7 @@
             "required": true,
             "breakLine": true
           },
-          "options.multi_row_functions__use_function_name_as_label": {
+          "multi_row_functions__use_function_name_as_label": {
             "type": "checkbox",
             "label": "Use Function Name as Label",
             "show_if": "options.function_type=='multi_row_functions'",
@@ -258,13 +251,32 @@
             "isOn": "true",
             "isOff": "false"
           },
-          "options.multi_row_functions__custom_label": {
+          "multi_row_functions__custom_label": {
             "type": "text",
             "label": "Input Label Text",
-            "show_if": "options.function_type=='multi_row_functions' && options.multi_row_functions__use_function_name_as_label=='false'",
+            "show_if": "options.function_type=='multi_row_functions' && this.multi_row_functions__use_function_name_as_label=='false'",
             "val": "New Row",
             "required": true,
             "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "new_row_option_frame": {
+        "type": "fieldset",
+        "label": "New Row Option",
+        "repeat": false,
+        "fields": {
+          "options.custom_task_type.new_row_name": {
+            "type": "text",
+            "label": "New Row Name",
+            "show_if": "options.function_type!='custom_functions'",
+            "val": "NewRow",
+            "required": true
           },
           "options.custom_functions__target_cells": {
             "type": "fieldset",
