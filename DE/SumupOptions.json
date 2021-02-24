@@ -1,186 +1,186 @@
 {
   "actions": {
-    "type": "fieldset",
-    "label": "Add Actions",
-    "repeat": true,
+    "type": "fieldset", 
+        "options": {
+    "label": "Aktionen hinzufügen", 
+    "repeat": true, 
     "fields": {
       "column": {
-        "type": "select",
-        "label": "Column",
-        "table": "input_table",
+        "type": "select", 
+        "label": "Spalte", 
+        "table": "input_table", 
 		"assign_selected_value_to":"this.output_column_name",
         "bind": "COLUMNS"
-      },
+      }, 
       "action": {
-        "type": "select",
-        "label": "Action",
+        "type": "select", 
+        "label": "Aktion", 
         "options": {
           "group_by": {
-            "label": "Group By"
-          },
+            "label": "Gruppe von"
+          }, 
           "count": {
-            "label": "Count"
-          },
+            "label": "Zählen Sie"
+          }, 
           "sum": {
-            "label": "Sum"
-          },
+            "label": "Summe"
+          }, 
           "first": {
-            "label": "First"
-          },
+            "label": "Erste"
+          }, 
           "last": {
-            "label": "Last"
-          },
+            "label": "Zuletzt"
+          }, 
           "shortest": {
-            "label": "Shortest"
-          },
+            "label": "Kürzeste"
+          }, 
           "longest": {
-            "label": "Longest"
-          },
+            "label": "Längste"
+          }, 
           "concatenate": {
-            "label": "Concatenate"
-          },
+            "label": "Verketten"
+          }, 
           "mathematics": {
-            "label": "Mathematics"
+            "label": "Mathematik"
           }
         }
-      },
+      }, 
       "count_action_category": {
-        "type": "select",
-        "label": "Action Type",
-        "show_if": "this.action=='count'",
+        "type": "select", 
+        "label": "Aktion Typ", 
+        "show_if": "this.action=='count'", 
         "options": {
           "all": {
-            "label": "All"
-          },
+            "label": "Alle"
+          }, 
           "distinct": {
-            "label": "Distinct"
-          },
+            "label": "Unverwechselbar"
+          }, 
           "empty_or_zero": {
-            "label": "Empty or 0"
-          },
+            "label": "Leer oder 0"
+          }, 
           "non_empty_or_zero": {
-            "label": "Non Empty or 0"
+            "label": "Nicht leer oder 0"
           }
-        },
+        }, 
         "val": "all"
-      },
+      }, 
       "action_type1": {
-        "type": "select",
-        "label": "Action Sub Type",
-        "show_if": "this.action=='count' && (this.count_action_category=='all' || this.count_action_category=='distinct')",
+        "type": "select", 
+        "label": "Aktion Sub-Typ", 
+        "show_if": "this.action=='count' && (this.count_action_category=='all' || this.count_action_category=='distinct')", 
         "options": {
           "-": {
             "label": "-"
-          },
+          }, 
           "non_zero": {
-            "label": "Non 0"
-          },
+            "label": "Nicht 0"
+          }, 
           "non_empty": {
-            "label": "Non Empty"
-          },
+            "label": "Nicht leer"
+          }, 
           "non_null": {
-            "label": "Non Null"
-          },
+            "label": "Nicht Null"
+          }, 
           "non_blank": {
-            "label": "Non Blank"
+            "label": "Nicht leer"
           }
-        },
+        }, 
         "val": "-"
-      },
+      }, 
       "action_type2": {
-        "type": "select",
-        "label": "Action Sub Type",
-        "show_if": "this.action=='count' && this.count_action_category=='empty_or_zero'",
+        "type": "select", 
+        "label": "Aktion Sub-Typ", 
+        "show_if": "this.action=='count' && this.count_action_category=='empty_or_zero'", 
         "options": {
           "zero": {
             "label": "0"
-          },
+          }, 
           "empty": {
-            "label": "Empty (Null & Blank)"
-          },
+            "label": "Leer (Null & Blank)"
+          }, 
           "null": {
             "label": "Null"
-          },
+          }, 
           "blank": {
-            "label": "Blank"
+            "label": "Leer"
           }
-        },
+        }, 
         "val": "zero"
-      },
+      }, 
       "action_type3": {
-        "type": "select",
-        "label": "Action Sub Type",
-        "show_if": "this.action=='count' && this.count_action_category=='non_empty_or_zero'",
-        "options": {
+        "type": "select", 
+        "label": "Aktion Sub-Typ", 
+        "show_if": "this.action=='count' && this.count_action_category=='non_empty_or_zero'", 
           "non_zero": {
-            "label": "Non 0"
-          },
+            "label": "Nicht 0"
+          }, 
           "non_empty": {
-            "label": "Non Empty"
-          },
+            "label": "Nicht leer"
+          }, 
           "non_null": {
-            "label": "Non Null"
-          },
+            "label": "Nicht Null"
+          }, 
           "non_blank": {
-            "label": "Non Blank"
+            "label": "Nicht leer"
           }
-        },
+        }, 
         "val": "non_zero"
-      },
+      }, 
       "mathematics_action_category": {
-        "type": "select",
-        "label": "Action Type",
-        "show_if": "this.action=='mathematics'",
+        "type": "select", 
+        "label": "Aktion Typ", 
+        "show_if": "this.action=='mathematics'", 
         "options": {
           "min": {
             "label": "Min"
-          },
+          }, 
           "max": {
             "label": "Max"
-          },
+          }, 
           "average": {
-            "label": "Average"
-          },
+            "label": "Durchschnitt"
+          }, 
           "median": {
             "label": "Median"
-          },
+          }, 
           "standard_deviation": {
-            "label": "Standard Deviation"
-          },
+            "label": "Standardabweichung"
+          }, 
           "variance": {
-            "label": "Variance"
+            "label": "Abweichung"
           }
-        },
+        }, 
         "val": "min"
-      },
+      }, 
       "action_type4": {
-        "type": "select",
-        "label": "Action Sub Type",
-        "show_if": "this.action=='mathematics'",
+        "type": "select", 
+        "label": "Aktion Sub-Typ", 
+        "show_if": "this.action=='mathematics'", 
         "options": {
           "include_zero": {
-            "label": "Include 0"
-          },
+            "label": "Einschließen 0"
+          }, 
           "exclude_zero": {
-            "label": "Exclude 0"
+            "label": "Ausschließen 0"
           }
-        },
+        }, 
         "val": "include_zero"
-      },
+      }, 
       "concatenate_separator": {
-        "type": "text",
-        "label": "Separator",
-        "show_if": "this.action=='concatenate'",
+        "type": "text", 
+        "label": "Abscheider", 
+        "show_if": "this.action=='concatenate'", 
         "val": ","
       },
       "output_column_name": {
-        "type": "text",
-        "label": "Output Column Name",
+        "type": "text", 
+        "label": "Name der Ausgabespalte", 
         "val": ""
-      },
+      }, 
       "delete": {
-        "type": "button",
-        "label": "Delete",
+        "type": "button", 
+        "label": "Löschen", 
         "function": "DELETE_ROW"
       }
     }

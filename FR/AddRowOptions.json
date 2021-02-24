@@ -1,0 +1,606 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Sélectionner les options", 
+    "repeat": false, 
+    "fields": {
+      "options.position": {
+        "type": "select", 
+        "label": "Sélectionnez un poste", 
+        "required": true, 
+        "options": {
+          "add_rows_below_selected_row": {
+            "label": "Ajouter des lignes ci-dessous"
+          }, 
+          "add_rows_above_selected_row": {
+            "label": "Ajouter des lignes au-dessus"
+          }, 
+          "add_rows_at_table_end": {
+            "label": "Ajouter des lignes à la fin du tableau"
+          }, 
+          "add_single_row_at_table_end": {
+            "label": "Ajouter une seule ligne à la fin du tableau"
+          }, 
+          "add_row_after_each_group": {
+            "label": "Ajouter une ligne après chaque groupe"
+          }
+        }, 
+        "val": "add_rows_below_selected_row", 
+        "breakLine": true
+      }, 
+      "options.group_column": {
+        "type": "select", 
+        "label": "Colonne de groupe", 
+        "show_if": "options.position=='add_row_after_each_group'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.use_filter": {
+        "type": "checkbox", 
+        "label": "Utiliser un filtre", 
+        "show_if": "options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "filter_box": {
+        "type": "fieldset", 
+        "label": "Options de filtrage", 
+        "show_if": "options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')", 
+        "repeat": false, 
+        "fields": {
+          "options.filter": {
+            "type": "fieldset", 
+            "label": "Ajouter des conditions de filtrage", 
+            "repeat": true, 
+            "fields": {
+              "initial_op": {
+                "type": "select", 
+                "label": "Sélectionnez l'opérateur logique", 
+                "required": true, 
+                "show_if": "$index == 0", 
+                "options": {
+                  "if": {
+                    "label": "IF"
+                  }, 
+                  "if_not": {
+                    "label": "SI NON"
+                  }
+                }, 
+                "val": "if"
+              }, 
+              "op": {
+                "type": "select", 
+                "label": "Sélectionnez l'opérateur logique", 
+                "required": true, 
+                "show_if": "$index > 0", 
+                "options": {
+                  "and": {
+                    "label": "ET"
+                  }, 
+                  "or": {
+                    "label": "OU"
+                  }, 
+                  "and_not": {
+                    "label": "ET NON"
+                  }, 
+                  "or_not": {
+                    "label": "OU NON"
+                  }
+                }, 
+                "val": "and"
+              }, 
+              "column": {
+                "type": "select", 
+                "label": "Sélectionnez une colonne", 
+                "table": "input_table", 
+                "bind": "COLUMNS", 
+                "required": true
+              }, 
+              "condition": {
+                "type": "select", 
+                "label": "Sélectionner un opérateur", 
+                "required": true, 
+                "options": {
+                  "CONTIENT": {
+                    "label": "CONTIENT"
+                  }, 
+                  "CONTENU DANS STRING": {
+                    "label": "CONTENU DANS"
+                  }, 
+                  "COMMENCE AVEC": {
+                    "label": "COMMENCE AVEC"
+                  }, 
+                  "SE TERMINE PAR": {
+                    "label": "SE TERMINE PAR"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "PLUS QUE"
+                  }, 
+                  ">=": {
+                    "label": "SUPÉRIEUR OU ÉGAL"
+                  }, 
+                  "<": {
+                    "label": "PLUS PETIT QUE"
+                  }, 
+                  "<=": {
+                    "label": "PLUS PETIT OU ÉGAL"
+                  }, 
+                  "EMPTY": {
+                    "label": "EST VIDE"
+                  }, 
+                  "BLANK": {
+                    "label": "EST BLANC"
+                  }, 
+                  "EST NUL": {
+                    "label": "EST NUL"
+                  }, 
+                  "REGEX MATCH": {
+                    "label": "REGEX MATCH"
+                  }, 
+                  "CONTENU DANS TABLE": {
+                    "label": "EN TABLE"
+                  }, 
+                  "DANS LE TABLEAU DES RÈGLEMENTS": {
+                    "label": "DANS LE TABLEAU DES RÈGLEMENTS"
+                  }, 
+                  "DATE": {
+                    "label": "DATE"
+                  }
+                }, 
+                "val": "CONTIENT"
+              }, 
+              "date_condition": {
+                "type": "select", 
+                "label": "Sélectionnez l'opérateur de date", 
+                "required": true, 
+                "show_if": "this.condition == 'DATE'", 
+                "options": {
+                  "<": {
+                    "label": "PRIOR"
+                  }, 
+                  "<=": {
+                    "label": "PRIORITÉ OU ÉGALITÉ"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "APRÈS"
+                  }, 
+                  ">=": {
+                    "label": "APRÈS OU EN ÉGALITÉ"
+                  }
+                }, 
+                "val": "="
+              }, 
+              "case_sensitive": {
+                "type": "select", 
+                "label": "Sélectionner les cas sensibles", 
+                "required": true, 
+                "show_if": "this.condition == 'CONTIENT' || this.condition == 'CONTENU DANS STRING' || this.condition == '=' || this.condition == 'COMMENCE AVEC' || this.condition == 'SE TERMINE PAR' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'DANS LE TABLEAU DES RÈGLEMENTS' || this.condition == 'NOT DANS LE TABLEAU DES RÈGLEMENTS'", 
+                "options": {
+                  "yes": {
+                    "label": "Cas sensible"
+                  }, 
+                  "no": {
+                    "label": "Insensible à la casse"
+                  }
+                }, 
+                "val": "yes"
+              }, 
+              "date_value": {
+                "type": "date", 
+                "label": "Sélectionnez une date", 
+                "show_if": "this.condition=='DATE'", 
+                "val": "1/31/2020", 
+                "required": true
+              }, 
+              "value": {
+                "type": "text", 
+                "label": "Valeur d'entrée", 
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'EST NUL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTENU DANS TABLE' && this.condition != 'NOT CONTENU DANS TABLE' && this.condition != 'DANS LE TABLEAU DES RÈGLEMENTS' && this.condition != 'NOT DANS LE TABLEAU DES RÈGLEMENTS'", 
+                "val": "", 
+                "required": true
+              }, 
+              "compare_table": {
+                "type": "select", 
+                "label": "Sélectionner un tableau", 
+                "bind": "TABLES", 
+                "empty": "", 
+                "show_if": "this.condition == 'CONTENU DANS TABLE' || this.condition == 'NOT CONTENU DANS TABLE' || this.condition == 'DANS LE TABLEAU DES RÈGLEMENTS' || this.condition == 'NOT DANS LE TABLEAU DES RÈGLEMENTS'", 
+                "required": true
+              }, 
+              "compare_column": {
+                "type": "select", 
+                "label": "Sélectionnez une colonne", 
+                "table": "this.compare_table", 
+                "bind": "COLUMNS", 
+                "show_if": "this.condition == 'CONTENU DANS TABLE' || this.condition == 'NOT CONTENU DANS TABLE' || this.condition == 'DANS LE TABLEAU DES RÈGLEMENTS' || this.condition == 'NOT DANS LE TABLEAU DES RÈGLEMENTS'", 
+                "required": true
+              }, 
+              "delete": {
+                "type": "button", 
+                "label": "Supprimer", 
+                "function": "DELETE_ROW"
+              }
+            }
+          }, 
+          "options.apply_to_record": {
+            "type": "checkbox", 
+            "label": "Demande d'enregistrement", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "style": "margin-top: 10px", 
+            "breakLine": true
+          }, 
+          "apply_to_group_box": {
+            "type": "fieldset", 
+            "label": "Postuler au groupe", 
+            "show_if": "options.apply_to_record=='false'", 
+            "repeat": false, 
+            "fields": {
+              "options.apply_to_group_columns": {
+                "type": "select", 
+                "label": "Sélectionnez les colonnes du groupe", 
+                "required": true, 
+                "width": "100%", 
+                "table": "input_table", 
+                "multiple": true, 
+                "bind": "COLUMNS", 
+                "breakLine": true
+              }
+            }
+          }
+        }
+      }, 
+      "new_row_option_frame": {
+        "type": "fieldset", 
+        "label": "Nouvelle option de rangée", 
+        "repeat": false, 
+        "fields": {
+          "options.function_type": {
+            "type": "select", 
+            "label": "Type de tâche", 
+            "required": true, 
+            "options": {
+              "multi_column_functions": {
+                "label": "Multi-Colonne"
+              }, 
+              "multi_row_functions": {
+                "label": "Multi-rangs"
+              }, 
+              "custom_functions": {
+                "label": "Personnalisation"
+              }
+            }, 
+            "val": "multi_column_functions"
+          }, 
+          "options.multi_column_functions__function": {
+            "type": "select", 
+            "label": "Sélectionnez une fonction", 
+            "show_if": "options.function_type=='multi_column_functions'", 
+            "required": true, 
+            "options": {
+              "absolute_growth": {
+                "label": "Croissance absolue"
+              }, 
+              "relative_growth": {
+                "label": "Croissance relative"
+              }, 
+              "trailing_average": {
+                "label": "Moyenne de suivi"
+              }, 
+              "index_growth": {
+                "label": "Croissance de l'indice"
+              }, 
+              "compound_growth": {
+                "label": "Croissance composée"
+              }, 
+              "discount_rate": {
+                "label": "Taux d'actualisation"
+              }
+            }, 
+            "val": "absolute_growth"
+          }, 
+          "options.multi_row_functions__function": {
+            "type": "select", 
+            "label": "Sélectionnez une fonction", 
+            "show_if": "options.function_type=='multi_row_functions'", 
+            "required": true, 
+            "options": {
+              "sum": {
+                "label": "Somme"
+              }, 
+              "average": {
+                "label": "Moyenne"
+              }, 
+              "median": {
+                "label": "Médiane"
+              }, 
+              "standard_deviation": {
+                "label": "Écart type"
+              }, 
+              "variance": {
+                "label": "Variance"
+              }, 
+              "product": {
+                "label": "Produit"
+              }
+            }, 
+            "val": "sum"
+          }, 
+          "options.multi_column_functions__sel_columns": {
+            "type": "select", 
+            "label": "Sélectionnez une ou plusieurs colonnes", 
+            "show_if": "options.function_type=='multi_column_functions'", 
+            "table": "input_table", 
+            "bind": "COLUMNS", 
+            "multiple": true, 
+            "required": true
+          }, 
+          "options.multi_column_functions__use_first_column_as_label_column": {
+            "type": "checkbox", 
+            "label": "Utilisez la première colonne comme colonne Étiquette", 
+            "show_if": "options.function_type=='multi_column_functions'", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "options.multi_column_functions__label_column": {
+            "type": "select", 
+            "label": "Colonne d'étiquettes", 
+            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__use_first_column_as_label_column=='false'", 
+            "table": "input_table", 
+            "bind": "COLUMNS", 
+            "required": true, 
+            "breakLine": true
+          }, 
+          "options.multi_column_functions__use_custom_label": {
+            "type": "checkbox", 
+            "label": "Utiliser l'étiquette personnalisée (si elle n'est pas collée, utiliser le nom de la fonction comme étiquette)", 
+            "show_if": "options.function_type=='multi_column_functions'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "options.multi_column_functions__custom_label": {
+            "type": "text", 
+            "label": "Entrée Texte de l'étiquette", 
+            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__use_custom_label=='true'", 
+            "val": "New Row", 
+            "required": true, 
+            "breakLine": true
+          }, 
+          "options.multi_column_functions__n_value": {
+            "type": "text", 
+            "label": "N (nombre entier positif)", 
+            "show_if": "options.function_type=='multi_column_functions' && (options.multi_column_functions__function=='trailing_average' || options.multi_column_functions__function=='index_growth' || options.multi_column_functions__function=='compound_growth')", 
+            "val": "1", 
+            "required": true
+          }, 
+          "options.multi_column_functions__discount_rate__rate": {
+            "type": "text", 
+            "label": "Taux d'entrée", 
+            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__function=='discount_rate'", 
+            "val": "1", 
+            "required": true
+          }, 
+          "options.multi_column_functions__discount_rate__starting_column": {
+            "type": "select", 
+            "label": "Colonne de départ", 
+            "show_if": "options.function_type=='multi_column_functions' && options.multi_column_functions__function=='discount_rate'", 
+            "table": "input_table", 
+            "bind": "COLUMNS", 
+            "required": true
+          }, 
+          "options.multi_row_functions__apply_to_all_columns": {
+            "type": "checkbox", 
+            "label": "S'applique à toutes les colonnes", 
+            "show_if": "options.function_type=='multi_row_functions'", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "options.multi_row_functions__sel_columns": {
+            "type": "select", 
+            "label": "Sélectionnez une ou plusieurs colonnes", 
+            "show_if": "options.function_type=='multi_row_functions' && options.multi_row_functions__apply_to_all_columns=='false'", 
+            "table": "input_table", 
+            "bind": "COLUMNS", 
+            "multiple": true, 
+            "required": true, 
+            "breakLine": true
+          }, 
+          "options.multi_row_functions__select_labels": {
+            "type": "checkbox", 
+            "label": "Sélectionner les labels", 
+            "show_if": "options.function_type=='multi_row_functions'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "options.custom_functions__target_cells": {
+            "type": "fieldset", 
+            "label": "Définir les cellules cibles", 
+            "show_if": "options.function_type=='custom_functions'", 
+            "repeat": true, 
+            "fields": {
+              "column": {
+                "type": "select", 
+                "label": "Sélectionnez une colonne", 
+                "table": "input_table", 
+                "bind": "COLUMNS", 
+                "required": true
+              }, 
+              "formula_type": {
+                "type": "select", 
+                "label": "Type de formule", 
+                "required": true, 
+                "options": {
+                  "copy_selected": {
+                    "label": "Copie sélectionnée"
+                  }, 
+                  "static_value": {
+                    "label": "Valeur statique"
+                  }, 
+                  "numeric_formula": {
+                    "label": "Formule numérique"
+                  }, 
+                  "text_formula": {
+                    "label": "Formule du texte"
+                  }
+                }, 
+                "val": "copy_selected"
+              }, 
+              "static_value": {
+                "type": "text", 
+                "label": "Valeur", 
+                "show_if": "this.formula_type=='static_value'", 
+                "val": ""
+              }, 
+              "numeric_formula": {
+                "type": "text", 
+                "label": "Formule, par exemple [Colonne1] + 2 * ([Ligne-1:Colonne3] - [Colonne1])", 
+                "show_if": "this.formula_type=='numeric_formula'", 
+                "val": "", 
+                "style": "width: 100%"
+              }, 
+              "rounding": {
+                "type": "select", 
+                "label": "Arrondissement", 
+                "show_if": "this.formula_type=='numeric_formula'", 
+                "required": true, 
+                "options": {
+                  "no_rounding": {
+                    "label": "Pas d'arrondi"
+                  }, 
+                  "0": {
+                    "label": "0 chiffres"
+                  }, 
+                  "1": {
+                    "label": "1 chiffres"
+                  }, 
+                  "2": {
+                    "label": "2 chiffres"
+                  }, 
+                  "3": {
+                    "label": "3 chiffres"
+                  }, 
+                  "4": {
+                    "label": "4 chiffres"
+                  }, 
+                  "5": {
+                    "label": "5 chiffres"
+                  }, 
+                  "6": {
+                    "label": "6 chiffres"
+                  }, 
+                  "7": {
+                    "label": "7 chiffres"
+                  }, 
+                  "8": {
+                    "label": "8 chiffres"
+                  }, 
+                  "9": {
+                    "label": "9 chiffres"
+                  }
+                }, 
+                "val": "no_rounding"
+              }, 
+              "text_formula": {
+                "type": "text", 
+                "label": "Formule, par exemple [prénom] + ' ' + [nom de famille] + ' ' + [rangée 1 : colonne 3]", 
+                "show_if": "this.formula_type=='text_formula'", 
+                "val": "", 
+                "style": "width: 100%"
+              }, 
+              "use_multi_row": {
+                "type": "checkbox", 
+                "label": "Options à plusieurs rangées", 
+                "show_if": "this.formula_type=='numeric_formula' || this.formula_type=='text_formula'", 
+                "val": "false", 
+                "isOn": "true", 
+                "isOff": "false"
+              }, 
+              "if_row_not_exist": {
+                "type": "select", 
+                "label": "Si la ligne de renvoi n'existe pas", 
+                "show_if": "this.use_multi_row=='true' && (this.formula_type=='numeric_formula' || this.formula_type=='text_formula')", 
+                "required": true, 
+                "options": {
+                  "empty": {
+                    "label": "Vide ou 0"
+                  }, 
+                  "closest": {
+                    "label": "Valeur de la ligne la plus proche"
+                  }
+                }, 
+                "val": "empty", 
+                "breakLine": true
+              }, 
+              "delete": {
+                "type": "button", 
+                "label": "Supprimer", 
+                "function": "DELETE_ROW"
+              }
+            }, 
+            "breakLine": true
+          }, 
+          "options.custom_functions__set_date_column": {
+            "type": "checkbox", 
+            "label": "Sélectionnez la colonne de la date", 
+            "show_if": "options.function_type=='custom_functions'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "style": "margin-top: 20px", 
+            "breakLine": true
+          }, 
+          "options.custom_functions__date_column": {
+            "type": "select", 
+            "label": "Sélectionnez la colonne de la date", 
+            "show_if": "options.function_type=='custom_functions' && options.custom_functions__set_date_column=='true'", 
+            "table": "input_table", 
+            "bind": "COLUMNS", 
+            "required": true
+          }, 
+          "options.custom_functions__period_shift__number": {
+            "type": "text", 
+            "label": "Changement de période", 
+            "show_if": "options.function_type=='custom_functions' && options.custom_functions__set_date_column=='true'", 
+            "required": true, 
+            "val": "0"
+          }, 
+          "options.custom_functions__period_shift__period": {
+            "type": "select", 
+            "label": "Sélectionnez une période", 
+            "show_if": "options.function_type=='custom_functions' && options.custom_functions__set_date_column=='true'", 
+            "options": {
+              "day": {
+                "label": "Journées"
+              }, 
+              "week": {
+                "label": "Semaines"
+              }, 
+              "month": {
+                "label": "Mois"
+              }, 
+              "year": {
+                "label": "Années"
+              }
+            }, 
+            "val": "month"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Sélectionnez les options de nettoyage", 
+    "repeat": false, 
+    "fields": {
+      "replace_null": {
+        "type": "fieldset", 
+        "label": "Dossiers vides", 
+        "repeat": false, 
+        "fields": {
+          "replace_null": {
+            "type": "checkbox", 
+            "label": "Dossiers vides", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "replace_null_target": {
+            "type": "select", 
+            "label": "Remplacer", 
+            "show_if": "replace_null=='true'", 
+            "options": {
+              "empty": {
+                "label": "Vide"
+              }, 
+              "blank": {
+                "label": "Vide"
+              }, 
+              "null": {
+                "label": "NULL"
+              }
+            }, 
+            "val": "empty", 
+            "breakLine": true
+          }, 
+          "replace_null_by": {
+            "type": "radio", 
+            "show_if": "replace_null=='true'", 
+            "val": "by_blank", 
+            "values": {
+              "by_blank": "By Vide", 
+              "by_zero": "By Zero"
+            }, 
+            "breakLine": true
+          }
+        }
+      }, 
+      "remove_whitespace": {
+        "type": "fieldset", 
+        "label": "Supprimer l'espace blanc", 
+        "repeat": false, 
+        "fields": {
+          "remove_characters.all_whitespace": {
+            "type": "checkbox", 
+            "label": "Tout l'espace blanc", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.leading_whitespace": {
+            "type": "checkbox", 
+            "label": "Un espace blanc de premier plan", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.trailing_whitespace": {
+            "type": "checkbox", 
+            "label": "Suivre l'espace blanc", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.whitespace": {
+            "type": "checkbox", 
+            "label": "Espace", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.tabs": {
+            "type": "checkbox", 
+            "label": "Onglets", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.line_breaks": {
+            "type": "checkbox", 
+            "label": "Ruptures de ligne", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.duplicate_whitespace": {
+            "type": "checkbox", 
+            "label": "Dupliquer l'espace blanc", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }
+        }
+      }, 
+      "remove_duplicates": {
+        "type": "fieldset", 
+        "label": "Supprimer les doublons", 
+        "repeat": false, 
+        "fields": {
+          "remove_duplicates.cell": {
+            "type": "checkbox", 
+            "label": "Dupliqués dans la cellule", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_duplicates.custom_delimiter": {
+            "type": "checkbox", 
+            "label": "Délimiteur personnalisé", 
+            "show_if": "remove_duplicates.cell=='true'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "remove_duplicates.delimiter": {
+            "type": "text", 
+            "label": "Délimiteur personnalisé", 
+            "show_if": "remove_duplicates.custom_delimiter=='true'", 
+            "val": ";", 
+            "required": true
+          }, 
+          "remove_duplicates.include_whitespace": {
+            "type": "checkbox", 
+            "label": "(y compris les espaces)", 
+            "show_if": "remove_duplicates.cell=='true'", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "remove_duplicates.rows": {
+            "type": "checkbox", 
+            "label": "Dupliquer des lignes", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }
+        }
+      }, 
+      "remove_characters": {
+        "type": "fieldset", 
+        "label": "Supprimer des caractères", 
+        "repeat": false, 
+        "fields": {
+          "remove_characters.letters": {
+            "type": "checkbox", 
+            "label": "Lettres", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.numbers": {
+            "type": "checkbox", 
+            "label": "Numéros", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.punctuation": {
+            "type": "checkbox", 
+            "label": "Ponctuation", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }
+        }
+      }, 
+      "modify_case": {
+        "type": "fieldset", 
+        "label": "Modifier l'affaire", 
+        "repeat": false, 
+        "fields": {
+          "modify_case": {
+            "type": "checkbox", 
+            "label": "Modifier l'affaire", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "modify_case_by": {
+            "type": "radio", 
+            "show_if": "modify_case=='true'", 
+            "val": "upper", 
+            "values": {
+              "upper": "to Upper Case", 
+              "lower": "to Lower Case", 
+              "title": "to Title Case"
+            }, 
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}
