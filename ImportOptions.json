@@ -236,7 +236,15 @@
       "options.link_directory": {
         "type": "text",
         "label": "Enter link e.g. https://github.com/zippydoc/test",
-        "show_if": "options.from=='web' && options.is_github_dir=='true'",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.link_directory_4_file_list": {
+        "type": "text",
+        "label": "Enter link e.g. https://github.com/zippydoc/test",
+        "show_if": "options.from=='web' && options.output_format=='file_list'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -251,8 +259,8 @@
       },
       "options.link_text_file": {
         "type": "text",
-        "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.txt",
-        "show_if": "options.from=='web' && options.is_github_dir=='false' && options.output_format!='csv_table'",
+        "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.txt(json, etc)",
+        "show_if": "options.from=='web' && options.is_github_dir=='false' && options.output_format!='csv_table' && options.output_format!='file_list'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -260,7 +268,7 @@
       "dir_filter_frame": {
         "type": "fieldset",
         "label": "Filter the files in directory",
-        "show_if": "options.from=='web' && options.is_github_dir=='true'",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true'",
         "repeat": false,
         "fields": {
           "options.dir_filter.filter_type": {
