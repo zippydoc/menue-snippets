@@ -442,6 +442,7 @@
         "type": "select",
         "label": "Select Position",
         "required": true,
+        "show_if": "options.function_type=='custom_functions'",
         "options": {
           "add_rows_below_selected_row": {
             "label": "Add rows below"
@@ -465,7 +466,7 @@
       "options.group_column": {
         "type": "select",
         "label": "Group Column",
-        "show_if": "options.position=='add_row_after_each_group'",
+        "show_if": "options.function_type=='custom_functions' && options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -474,7 +475,7 @@
       "options.use_filter": {
         "type": "checkbox",
         "label": "Use Filter",
-        "show_if": "options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end'",
+        "show_if": "options.function_type=='custom_functions' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -484,7 +485,7 @@
       "filter_box": {
         "type": "fieldset",
         "label": "Filter Options",
-        "show_if": "options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "show_if": "options.function_type=='custom_functions' && options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "repeat": false,
         "fields": {
           "options.filter": {
