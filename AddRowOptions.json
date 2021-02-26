@@ -456,7 +456,29 @@
                 "label": "Product"
               }
             },
-            "val": "sum",
+            "val": "sum"
+          },
+          "multi_column_functions__n_value": {
+            "type": "text",
+            "label": "N (positive integer)",
+            "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
+            "val": "1",
+            "required": true
+          },
+          "multi_column_functions__discount_rate__rate": {
+            "type": "text",
+            "label": "Input Rate",
+            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
+            "val": "1",
+            "required": true
+          },
+          "multi_column_functions__discount_rate__starting_column": {
+            "type": "select",
+            "label": "Starting column",
+            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true,
             "breakLine": true
           },
           "position": {
@@ -485,7 +507,7 @@
           "sel_label_a": {
             "type": "select",
             "label": "Select Label A",
-            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
+            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota' && (table_type == 'label_only' || table_type == 'matrix')",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
@@ -626,29 +648,6 @@
               }
             },
             "val": "row-1"
-          },
-          "multi_column_functions__n_value": {
-            "type": "text",
-            "label": "N (positive integer)",
-            "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
-            "val": "1",
-            "required": true
-          },
-          "multi_column_functions__discount_rate__rate": {
-            "type": "text",
-            "label": "Input Rate",
-            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
-            "val": "1",
-            "required": true
-          },
-          "multi_column_functions__discount_rate__starting_column": {
-            "type": "select",
-            "label": "Starting column",
-            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
-            "table": "input_table",
-            "bind": "COLUMNS",
-            "required": true,
-            "breakLine": true
           },
           "delete": {
             "type": "button",
