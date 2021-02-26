@@ -478,40 +478,7 @@
             "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "table": "input_table",
             "bind": "COLUMNS",
-            "required": true,
-            "breakLine": true
-          },
-          "position": {
-            "type": "select",
-            "label": "Position",
-            "required": true,
-            "options": {
-              "above": {
-                "label": "ABOVE"
-              },
-              "below": {
-                "label": "BELOW"
-              }
-            },
-            "val": "below"
-          },
-          "multi_column_functions__sel_labels": {
-            "type": "select",
-            "label": "Select Label(s)",
-            "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
-            "required": true,
-            "table": "input_table",
-            "multiple": true,
-            "bind": "LABELS"
-          },
-          "multi_row_functions__sel_labels": {
-            "type": "select",
-            "label": "Select Label(s)",
-            "show_if": "this.function_type=='multi_row_functions'",
-            "required": true,
-            "table": "input_table",
-            "multiple": true,
-            "bind": "LABELS"
+            "required": true
           },
           "multi_column_functions__sel_label_a": {
             "type": "select",
@@ -527,11 +494,183 @@
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
+            "bind": "LABELS",
+            "breakLine": true
+          },
+          "position": {
+            "type": "select",
+            "label": "Position",
+            "show_if": "table_type!='header_only'",
+            "required": true,
+            "options": {
+              "above": {
+                "label": "ABOVE"
+              },
+              "below": {
+                "label": "BELOW"
+              }
+            },
+            "val": "below"
+          },
+          "multi_column_functions__sel_labels": {
+            "type": "select",
+            "label": "Select Label(s)",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
+            "required": true,
+            "table": "input_table",
+            "multiple": true,
             "bind": "LABELS"
           },
-          "multi_column_functions__sel_rows": {
+          "multi_column_functions__quota_sel_labels": {
             "type": "select",
-            "label": "Select Rows",
+            "label": "Select Label(s)",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
+            "required": true,
+            "table": "input_table",
+            "multiple": true,
+            "bind": "LABELS"
+          },
+          "multi_row_functions__sel_labels": {
+            "type": "select",
+            "label": "Select Label(s)",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions'",
+            "required": true,
+            "table": "input_table",
+            "multiple": true,
+            "bind": "LABELS"
+          },
+          "multi_column_functions__sel_row_a": {
+            "type": "select",
+            "label": "Select Row A",
+            "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
+            "required": true,
+            "options": {
+              "row-1": {
+                "label": "Row-1"
+              },
+              "row-2": {
+                "label": "Row-2"
+              },
+              "row-3": {
+                "label": "Row-3"
+              },
+              "row-4": {
+                "label": "Row-4"
+              },
+              "row-5": {
+                "label": "Row-5"
+              },
+              "row-6": {
+                "label": "Row-6"
+              },
+              "row-7": {
+                "label": "Row-7"
+              },
+              "row-8": {
+                "label": "Row-8"
+              },
+              "row-9": {
+                "label": "Row-9"
+              },
+              "row-10": {
+                "label": "Row-10"
+              },
+              "row-11": {
+                "label": "Row-11"
+              },
+              "row-12": {
+                "label": "Row-12"
+              },
+              "row-13": {
+                "label": "Row-13"
+              },
+              "row-14": {
+                "label": "Row-14"
+              },
+              "row-15": {
+                "label": "Row-15"
+              },
+              "row-16": {
+                "label": "Row-16"
+              },
+              "row-17": {
+                "label": "Row-17"
+              },
+              "row-18": {
+                "label": "Row-18"
+              },
+              "row-19": {
+                "label": "Row-19"
+              },
+              "row-20": {
+                "label": "Row-20"
+              },
+              "row+1": {
+                "label": "Row+1"
+              },
+              "row+2": {
+                "label": "Row+2"
+              },
+              "row+3": {
+                "label": "Row+3"
+              },
+              "row+4": {
+                "label": "Row+4"
+              },
+              "row+5": {
+                "label": "Row+5"
+              },
+              "row+6": {
+                "label": "Row+6"
+              },
+              "row+7": {
+                "label": "Row+7"
+              },
+              "row+8": {
+                "label": "Row+8"
+              },
+              "row+9": {
+                "label": "Row+9"
+              },
+              "row+10": {
+                "label": "Row+10"
+              },
+              "row+11": {
+                "label": "Row+11"
+              },
+              "row+12": {
+                "label": "Row+12"
+              },
+              "row+13": {
+                "label": "Row+13"
+              },
+              "row+14": {
+                "label": "Row+14"
+              },
+              "row+15": {
+                "label": "Row+15"
+              },
+              "row+16": {
+                "label": "Row+16"
+              },
+              "row+17": {
+                "label": "Row+17"
+              },
+              "row+18": {
+                "label": "Row+18"
+              },
+              "row+19": {
+                "label": "Row+19"
+              },
+              "row+20": {
+                "label": "Row+20"
+              }
+            },
+            "val": "row-1"
+          },
+          "multi_column_functions__sel_row_b": {
+            "type": "select",
+            "label": "Select Row B",
             "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
