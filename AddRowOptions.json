@@ -404,7 +404,7 @@
           "multi_column_functions__function": {
             "type": "select",
             "label": "Select Function",
-            "show_if": "options.function_type=='multi_column_functions'",
+            "show_if": "this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "absolute_growth": {
@@ -434,7 +434,7 @@
           "multi_row_functions__function": {
             "type": "select",
             "label": "Select Function",
-            "show_if": "options.function_type=='multi_row_functions'",
+            "show_if": "this.function_type=='multi_row_functions'",
             "required": true,
             "options": {
               "sum": {
@@ -630,21 +630,21 @@
           "multi_column_functions__n_value": {
             "type": "text",
             "label": "N (positive integer)",
-            "show_if": "options.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
+            "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__rate": {
             "type": "text",
             "label": "Input Rate",
-            "show_if": "options.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
+            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__starting_column": {
             "type": "select",
             "label": "Starting column",
-            "show_if": "options.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
+            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true,
