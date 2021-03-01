@@ -5,9 +5,10 @@
     "show_if": "options.use_filename_as_output_table_name=='false'",
     "repeat": false,
     "fields": {
-      "output.type": {
+      "output.github_file.type": {
         "type": "select",
         "label": "Table Name",
+        "show_if": "options.from!='web' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.is_github_dir=='false')",
         "val": "auto",
         "options": {
           "auto": {
@@ -21,10 +22,200 @@
           }
         }
       },
+      "output.github_dir.type": {
+        "type": "select",
+        "label": "Table Name",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true'",
+        "val": "auto",
+        "options": {
+          "auto": {
+            "label": "Auto"
+          },
+          "custom": {
+            "label": "Custom"
+          },
+          "compose": {
+            "label": "Compose"
+          },
+          "table_name": {
+            "label": "Table name"
+          }
+        }
+      },
+      "output.github_file.custom_text": {
+        "type": "text",
+        "label": "Output Table Name",
+        "show_if": "(options.from!='web' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.is_github_dir=='false')) && output.github_file.type=='custom'",
+        "required": true,
+        "minLength": 1,
+        "val": "",
+        "breakLine": true
+      },
+      "output.github_file.prefix_rule": {
+        "type": "select",
+        "label": "Prefix",
+        "show_if": "(options.from!='web' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.is_github_dir=='false')) && output.github_file.type=='compose'",
+        "val": "empty",
+        "options": {
+          "empty": {
+            "label": "-"
+          },
+          "script_name": {
+            "label": "Task Name"
+          },
+          "date_string_type1": {
+            "label": "Date: dd_mm_yyyy"
+          },
+          "date_string_type2": {
+            "label": "Date: yyyy_mm_dd"
+          },
+          "time_string": {
+            "label": "Time: h_min_sec"
+          },
+          "datetime_string": {
+            "label": "Date_Time"
+          },
+          "custom": {
+            "label": "Custom"
+          }
+        }
+      },
+      "output.github_file.prefix_text": {
+        "type": "text",
+        "label": "Prefix Text",
+        "show_if": "(options.from!='web' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.is_github_dir=='false')) && output.github_file.type=='compose' && output.github_file.prefix_rule=='custom'",
+        "minLength": 1,
+        "maxLength": 31,
+        "val": ""
+      },
+      "output.github_file.core_delimiter": {
+        "type": "text",
+        "label": "Delimiter",
+        "show_if": "(options.from!='web' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.is_github_dir=='false')) && output.type.github_file=='compose' && output.github_file.prefix_rule!='empty'",
+        "val": "_",
+        "width": "50px"
+      },
+      "output.github_file.core_rule": {
+        "type": "select",
+        "label": "Table Name",
+        "show_if": "options.is_github_dir=='false' && output.github_file.type=='compose'",
+        "val": "input_table_name",
+        "options": {
+          "input_table_name": {
+            "label": "Input Table Name"
+          },
+          "script_name": {
+            "label": "Task Name"
+          },
+          "custom": {
+            "label": "Custom"
+          }
+        }
+      },
+      "output.github_file.core_text": {
+        "type": "text",
+        "label": "Main Table Name",
+        "show_if": "(options.from!='web' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.is_github_dir=='false')) && output.github_file.type=='compose' && output.github_file.core_rule=='custom'",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 31,
+        "val": ""
+      },
+      "output.github_file.suffix_delimiter": {
+        "type": "text",
+        "label": "Delimiter",
+        "show_if": "(options.from!='web' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.is_github_dir=='false')) && output.github_file.type=='compose'",
+        "val": "_",
+        "width": "50px"
+      },
+      "output.github_file.suffix_rule": {
+        "type": "select",
+        "label": "Suffix",
+        "show_if": "(options.from!='web' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.is_github_dir=='false')) && output.github_file.type=='compose'",
+        "val": "script_name",
+        "options": {
+          "empty": {
+            "label": "-"
+          },
+          "script_name": {
+            "label": "Task Name"
+          },
+          "date_string_type1": {
+            "label": "Date: dd_mm_yyyy"
+          },
+          "date_string_type2": {
+            "label": "Date: yyyy_mm_dd"
+          },
+          "time_string": {
+            "label": "Time: h_min_sec"
+          },
+          "datetime_string": {
+            "label": "Date_Time"
+          },
+          "custom": {
+            "label": "Custom"
+          }
+        }
+      },
+      "output.github_file.suffix_text": {
+        "type": "text",
+        "label": "Suffix Text",
+        "show_if": "(options.from!='web' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.is_github_dir=='false')) && output.github_file.type=='compose' && output.github_file.suffix_rule=='custom'",
+        "minLength": 1,
+        "maxLength": 31,
+        "val": "",
+        "breakLine": true
+      },
+      "output.github_file.timezone": {
+        "type": "select",
+        "label": "Timezone",
+        "show_if": "(options.from!='web' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.is_github_dir=='false')) && output.github_file.type=='compose' && (output.github_file.prefix_rule=='date_string_type1' || output.github_file.prefix_rule=='date_string_type2' || output.github_file.prefix_rule=='time_string' || output.github_file.prefix_rule=='datetime_string' || output.github_file.suffix_rule=='date_string_type1' || output.github_file.suffix_rule=='date_string_type2' || output.github_file.suffix_rule=='time_string' || output.github_file.suffix_rule=='datetime_string')",
+        "val": "Europe/Berlin",
+        "required": true,
+        "options": {
+          "Europe/Amsterdam": {
+            "label": "Europe/Amsterdam"
+          },
+          "Europe/Berlin": {
+            "label": "Europe/Berlin"
+          },
+          "Europe/Helsinki": {
+            "label": "Europe/Helsinki"
+          },
+          "Europe/London": {
+            "label": "Europe/London"
+          },
+          "Europe/Luxembourg": {
+            "label": "Europe/Luxembourg"
+          },
+          "Europe/Oslo": {
+            "label": "Europe/Oslo"
+          },
+          "Europe/Paris": {
+            "label": "Europe/Paris"
+          },
+          "Europe/Rome": {
+            "label": "Europe/Rome"
+          },
+          "US/Alaska": {
+            "label": "US/Alaska"
+          },
+          "US/Central": {
+            "label": "US/Central"
+          },
+          "US/Eastern": {
+            "label": "US/Eastern"
+          },
+          "US/Pacific": {
+            "label": "US/Pacific"
+          }
+        },
+        "breakLine": true
+      },
       "output.custom_text": {
         "type": "text",
         "label": "Output Table Name",
-        "show_if": "output.type=='custom'",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true' && output.github_dir.type=='custom'",
         "required": true,
         "minLength": 1,
         "val": "",
@@ -33,7 +224,7 @@
       "output.prefix_rule": {
         "type": "select",
         "label": "Prefix",
-        "show_if": "output.type=='compose'",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true' && output.github_dir.type=='compose'",
         "val": "empty",
         "options": {
           "empty": {
@@ -62,7 +253,7 @@
       "output.prefix_text": {
         "type": "text",
         "label": "Prefix Text",
-        "show_if": "output.type=='compose' && output.prefix_rule=='custom'",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true' && output.github_dir.type=='compose' && output.github_dir.prefix_rule=='custom'",
         "minLength": 1,
         "maxLength": 31,
         "val": ""
@@ -70,14 +261,14 @@
       "output.core_delimiter": {
         "type": "text",
         "label": "Delimiter",
-        "show_if": "output.type=='compose' && output.prefix_rule!='empty'",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true' && output.github_dir.type=='compose' && output.github_dir.prefix_rule!='empty'",
         "val": "_",
         "width": "50px"
       },
       "output.core_rule": {
         "type": "select",
         "label": "Table Name",
-        "show_if": "output.type=='compose'",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true' && output.github_dir.type=='compose'",
         "val": "input_table_name",
         "options": {
           "input_table_name": {
@@ -94,7 +285,7 @@
       "output.core_text": {
         "type": "text",
         "label": "Main Table Name",
-        "show_if": "output.type=='compose' && output.core_rule=='custom'",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true' && output.github_dir.type=='compose' && output.github_dir.core_rule=='custom'",
         "required": true,
         "minLength": 1,
         "maxLength": 31,
@@ -103,14 +294,14 @@
       "output.suffix_delimiter": {
         "type": "text",
         "label": "Delimiter",
-        "show_if": "output.type=='compose'",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true' && output.github_dir.type=='compose'",
         "val": "_",
         "width": "50px"
       },
       "output.suffix_rule": {
         "type": "select",
         "label": "Suffix",
-        "show_if": "output.type=='compose'",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true' && output.github_dir.type=='compose'",
         "val": "script_name",
         "options": {
           "empty": {
@@ -139,7 +330,7 @@
       "output.suffix_text": {
         "type": "text",
         "label": "Suffix Text",
-        "show_if": "output.type=='compose' && output.suffix_rule=='custom'",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true' && output.github_dir.type=='compose' && output.github_dir.suffix_rule=='custom'",
         "minLength": 1,
         "maxLength": 31,
         "val": "",
@@ -148,7 +339,7 @@
       "output.timezone": {
         "type": "select",
         "label": "Timezone",
-        "show_if": "output.type=='compose' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true' && output.github_dir.type=='compose' && (output.github_dir.prefix_rule=='date_string_type1' || output.github_dir.prefix_rule=='date_string_type2' || output.github_dir.prefix_rule=='time_string' || output.github_dir.prefix_rule=='datetime_string' || output.github_dir.suffix_rule=='date_string_type1' || output.github_dir.suffix_rule=='date_string_type2' || output.github_dir.suffix_rule=='time_string' || output.github_dir.suffix_rule=='datetime_string')",
         "val": "Europe/Berlin",
         "required": true,
         "options": {
