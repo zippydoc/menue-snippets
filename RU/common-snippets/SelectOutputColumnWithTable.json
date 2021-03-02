@@ -1,0 +1,69 @@
+{
+  "output.select_output_columns": {
+    "type": "checkbox", 
+    "label": "ÐÑÐ±ÐµÑÐ¸ÑÐµ ÐÑÑÐ¾Ð´Ð½ÑÐµ ÐºÐ¾Ð»Ð¾Ð½ÐºÐ¸", 
+    "val": "false", 
+    "isOn": "true", 
+    "isOff": "false"
+  }, 
+  "output_columns": {
+    "type": "fieldset", 
+    "label": "ÐÑÐ±ÐµÑÐ¸ÑÐµ OutputColumns", 
+    "show_if": "output.select_output_columns=='true'", 
+    "repeat": true, 
+    "fields": {
+      "table_id": {
+        "type": "select", 
+        "label": "ÐÑÐ±ÐµÑÐ¸ÑÐµ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+        "bind": "TABLES", 
+        "required": true
+      }, 
+      "field_name": {
+        "type": "select", 
+        "label": "ÐÑÐ±ÑÐ°ÑÑ ÐºÐ¾Ð»Ð¾Ð½ÐºÑ", 
+        "table": "this.table_id", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "order": {
+        "type": "select", 
+        "label": "ÐÐ°ÐºÐ°Ð·Ð°ÑÑ", 
+        "options": {
+          "-": {
+            "label": "-"
+          }, 
+          "asc": {
+            "label": "Asc"
+          }, 
+          "desc": {
+            "label": "ÐÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ"
+          }
+        }, 
+        "val": "-"
+      }, 
+      "is_rename": {
+        "type": "checkbox", 
+        "label": "ÐÐµÑÐµÐ¸Ð¼ÐµÐ½Ð¾Ð²Ð°ÑÑ", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "rename": {
+        "show_if": "this.is_rename == 'true'", 
+        "type": "text", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "label": "ÐÐ¾Ð²Ð°Ñ ÐºÐ¾Ð»Ð¾Ð½ÐºÐ° ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ", 
+        "style": "margin-left: 10px"
+      }, 
+      "delete": {
+        "type": "button", 
+        "label": "Ð£Ð´Ð°Ð»Ð¸ÑÑ", 
+        "function": "DELETE_ROW"
+      }
+    }, 
+    "breakLine": true, 
+    "style": "margin-bottom: 20px"
+  }
+}
