@@ -1,0 +1,53 @@
+{
+  "output.select_output_columns": {
+    "type": "checkbox", 
+    "label": "éæ©è¾åºå", 
+    "val": "false", 
+    "isOn": "true", 
+    "isOff": "false"
+  }, 
+  "output_columns": {
+    "type": "fieldset", 
+    "label": "éæ©è¾åºå", 
+    "show_if": "output.select_output_columns=='true'", 
+    "repeat": true, 
+    "fields": {
+      "table_id": {
+        "type": "select", 
+        "label": "éæ©è¡¨æ ¼", 
+        "bind": "TABLES", 
+        "required": true
+      }, 
+      "field_name": {
+        "type": "select", 
+        "label": "éæ©å", 
+        "table": "this.table_id", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "is_rename": {
+        "type": "checkbox", 
+        "label": "éå½å", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "rename": {
+        "show_if": "this.is_rename == 'true'", 
+        "type": "text", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "label": "æ°æ ç®åç§°", 
+        "style": "margin-left: 10px"
+      }, 
+      "delete": {
+        "type": "button", 
+        "label": "å é¤", 
+        "function": "DELETE_ROW"
+      }
+    }, 
+    "breakLine": true, 
+    "style": "margin-bottom: 20px"
+  }
+}
