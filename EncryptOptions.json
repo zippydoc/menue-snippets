@@ -10,21 +10,70 @@
         "required": true,
         "options": {
           "encrypt": {
-            "label": "Encrypt"
+            "label": "Encrypt (secure)"
           },
           "decrypt": {
-            "label": "Decrypt"
+            "label": "Decrypt (secure)"
+          },
+          "encrypt_simple": {
+            "label": "Encrypt (simple)"
+          },
+          "decrypt_simple": {
+            "label": "Decrypt (simple)"
+          },
+          "mask": {
+            "label": "Mask"
           }
         },
         "val": "encrypt"
       },
+      "mask_type": {
+        "type": "select",
+        "label": "Mask Type",
+        "show_if": "this.task_type == 'mask'",
+        "required": true,
+        "options": {
+          "trailing": {
+            "label": "Trailing N Characters"
+          },
+          "leading": {
+            "label": "Leading N Characters"
+          },
+          "numbers": {
+            "label": "Numbers"
+          },
+          "alphabets": {
+            "label": "Characters"
+          },
+          "regex": {
+            "label": "Regular Expression"
+          }
+        },
+        "val": "trailing"
+      },
       "password": {
         "type": "password",
         "label": "Password",
+        "show_if": "this.task_type != 'mask'",
         "required": true,
         "minLength": 1,
         "maxLength": 31,
         "val": ""
+      },
+      "varn": {
+        "type": "number",
+        "label": "N",
+        "show_if": "this.task_type == 'mask' && (this.mask_type == 'trailing' || this.mask_type == 'leading')",
+        "required": true,
+        "val": "1"
+      },
+      "regexp": {
+        "type": "text",
+        "label": "Expression",
+        "show_if": "this.task_type == 'mask' && (this.mask_type == 'regex')",
+        "required": true,
+        "val": "",
+        "placeholder": "[a-fA-F0-9]"
       }
     }
   }
