@@ -1,0 +1,196 @@
+{
+  "output": {
+    "type": "fieldset", 
+    "label": "ÐÐ¿ÑÐµÐ´ÐµÐ»Ð¸ÑÑ Ð²ÑÑÐ¾Ð´Ð½ÑÑ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+    "repeat": false, 
+    "fields": {
+      "output.type": {
+        "type": "select", 
+        "label": "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+        "val": "auto", 
+        "options": {
+          "auto": {
+            "label": "ÐÐ²ÑÐ¾"
+          }, 
+          "custom": {
+            "label": "ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¸Ð¹"
+          }, 
+          "compose": {
+            "label": "Ð¡Ð¾ÑÑÐ°Ð²Ð¸ÑÑ"
+          }
+        }
+      }, 
+      "output.custom_text": {
+        "type": "text", 
+        "label": "ÐÐ¼Ñ Ð²ÑÑÐ¾Ð´Ð½Ð¾Ð¹ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+        "show_if": "output.type=='custom'", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": "", 
+        "breakLine": true
+      }, 
+      "output.prefix_rule": {
+        "type": "select", 
+        "label": "ÐÑÐµÑÐ¸ÐºÑ", 
+        "show_if": "output.type=='compose'", 
+        "val": "empty", 
+        "options": {
+          "empty": {
+            "label": "-"
+          }, 
+          "script_name": {
+            "label": "ÐÐ¼Ñ Ð·Ð°Ð´Ð°ÑÐ¸"
+          }, 
+          "date_string_type1": {
+            "label": "ÐÐ°ÑÐ°: dd_mm_yyyy"
+          }, 
+          "date_string_type2": {
+            "label": "ÐÐ°ÑÐ°: yyyy_mm_dd"
+          }, 
+          "time_string": {
+            "label": "ÐÑÐµÐ¼Ñ: h_min_sec"
+          }, 
+          "datetime_string": {
+            "label": "ÐÐ°ÑÐ°_Ð²ÑÐµÐ¼Ñ"
+          }, 
+          "custom": {
+            "label": "ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¸Ð¹"
+          }
+        }
+      }, 
+      "output.prefix_text": {
+        "type": "text", 
+        "label": "ÐÑÐµÑÐ¸ÐºÑÐ½ÑÐ¹ ÑÐµÐºÑÑ", 
+        "show_if": "output.type=='compose' && output.prefix_rule=='custom'", 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": ""
+      }, 
+      "output.core_delimiter": {
+        "type": "text", 
+        "label": "ÐÐµÐ»Ð¸Ð¼Ð¸ÑÑÐµÑ", 
+        "show_if": "output.type=='compose' && output.prefix_rule!='empty'", 
+        "val": "_", 
+        "width": "50px"
+      }, 
+      "output.core_rule": {
+        "type": "select", 
+        "label": "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+        "show_if": "output.type=='compose'", 
+        "val": "input_table_name", 
+        "options": {
+          "input_table_name": {
+            "label": "ÐÐ¼Ñ Ð²ÑÐ¾Ð´Ð½Ð¾Ð¹ ÑÐ°Ð±Ð»Ð¸ÑÑ"
+          }, 
+          "script_name": {
+            "label": "ÐÐ¼Ñ Ð·Ð°Ð´Ð°ÑÐ¸"
+          }, 
+          "custom": {
+            "label": "ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¸Ð¹"
+          }
+        }
+      }, 
+      "output.core_text": {
+        "type": "text", 
+        "label": "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¾ÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+        "show_if": "output.type=='compose' && output.core_rule=='custom'", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": ""
+      }, 
+      "output.suffix_delimiter": {
+        "type": "text", 
+        "label": "ÐÐµÐ»Ð¸Ð¼Ð¸ÑÑÐµÑ", 
+        "show_if": "output.type=='compose'", 
+        "val": "_", 
+        "width": "50px"
+      }, 
+      "output.suffix_rule": {
+        "type": "select", 
+        "label": "Ð¡ÑÑÑÐ¸ÐºÑ", 
+        "show_if": "output.type=='compose'", 
+        "val": "script_name", 
+        "options": {
+          "empty": {
+            "label": "-"
+          }, 
+          "script_name": {
+            "label": "ÐÐ¼Ñ Ð·Ð°Ð´Ð°ÑÐ¸"
+          }, 
+          "date_string_type1": {
+            "label": "ÐÐ°ÑÐ°: dd_mm_yyyy"
+          }, 
+          "date_string_type2": {
+            "label": "ÐÐ°ÑÐ°: yyyy_mm_dd"
+          }, 
+          "time_string": {
+            "label": "ÐÑÐµÐ¼Ñ: h_min_sec"
+          }, 
+          "datetime_string": {
+            "label": "ÐÐ°ÑÐ°_Ð²ÑÐµÐ¼Ñ"
+          }, 
+          "custom": {
+            "label": "ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¸Ð¹"
+          }
+        }
+      }, 
+      "output.suffix_text": {
+        "type": "text", 
+        "label": "Ð¡ÑÑÑÐ¸ÐºÑÐ½ÑÐ¹ ÑÐµÐºÑÑ", 
+        "show_if": "output.type=='compose' && output.suffix_rule=='custom'", 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": "", 
+        "breakLine": true
+      }, 
+      "output.timezone": {
+        "type": "select", 
+        "label": "Ð¢Ð°Ð¹Ð¼Ð·Ð¾Ð½", 
+        "show_if": "output.type=='compose' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
+        "val": "ÐÐ²ÑÐ¾Ð¿Ð°/ÐÐµÑÐ»Ð¸Ð½", 
+        "required": true, 
+        "options": {
+          "ÐÐ²ÑÐ¾Ð¿Ð°/ÐÐ¼ÑÑÐµÑÐ´Ð°Ð¼": {
+            "label": "ÐÐ²ÑÐ¾Ð¿Ð°/ÐÐ¼ÑÑÐµÑÐ´Ð°Ð¼"
+          }, 
+          "ÐÐ²ÑÐ¾Ð¿Ð°/ÐÐµÑÐ»Ð¸Ð½": {
+            "label": "ÐÐ²ÑÐ¾Ð¿Ð°/ÐÐµÑÐ»Ð¸Ð½"
+          }, 
+          "ÐÐ²ÑÐ¾Ð¿Ð°/Ð¥ÐµÐ»ÑÑÐ¸Ð½ÐºÐ¸": {
+            "label": "ÐÐ²ÑÐ¾Ð¿Ð°/Ð¥ÐµÐ»ÑÑÐ¸Ð½ÐºÐ¸"
+          }, 
+          "ÐÐ²ÑÐ¾Ð¿Ð°/ÐÐ¾Ð½Ð´Ð¾Ð½": {
+            "label": "ÐÐ²ÑÐ¾Ð¿Ð°/ÐÐ¾Ð½Ð´Ð¾Ð½"
+          }, 
+          "ÐÐ²ÑÐ¾Ð¿Ð°/ ÐÑÐºÑÐµÐ¼Ð±ÑÑÐ³": {
+            "label": "ÐÐ²ÑÐ¾Ð¿Ð°/ ÐÑÐºÑÐµÐ¼Ð±ÑÑÐ³"
+          }, 
+          "ÐÐ²ÑÐ¾Ð¿Ð°/ÐÑÐ»Ð¾": {
+            "label": "ÐÐ²ÑÐ¾Ð¿Ð°/ÐÑÐ»Ð¾"
+          }, 
+          "ÐÐ²ÑÐ¾Ð¿Ð°/ÐÐ°ÑÐ¸Ð¶": {
+            "label": "ÐÐ²ÑÐ¾Ð¿Ð°/ÐÐ°ÑÐ¸Ð¶"
+          }, 
+          "ÐÐ²ÑÐ¾Ð¿Ð°/Ð Ð¸Ð¼": {
+            "label": "ÐÐ²ÑÐ¾Ð¿Ð°/Ð Ð¸Ð¼"
+          }, 
+          "Ð¡Ð¨Ð/ÐÐ»ÑÑÐºÐ°": {
+            "label": "Ð¡Ð¨Ð/ÐÐ»ÑÑÐºÐ°"
+          }, 
+          "Ð¡Ð¨Ð/Ð¦ÐµÐ½ÑÑÐ°Ð»ÑÐ½Ð°Ñ": {
+            "label": "Ð¡Ð¨Ð/Ð¦ÐµÐ½ÑÑÐ°Ð»ÑÐ½Ð°Ñ"
+          }, 
+          "Ð°Ð¼ÐµÑÐ¸ÐºÐ°Ð½ÑÐºÐ¸Ð¹/Ð²Ð¾ÑÑÐ¾ÑÐ½ÑÐ¹": {
+            "label": "Ð°Ð¼ÐµÑÐ¸ÐºÐ°Ð½ÑÐºÐ¸Ð¹/Ð²Ð¾ÑÑÐ¾ÑÐ½ÑÐ¹"
+          }, 
+          "Ð¡Ð¨Ð/Ð¢Ð¸ÑÐ¸Ð¹ Ð¾ÐºÐµÐ°Ð½": {
+            "label": "Ð¡Ð¨Ð/Ð¢Ð¸ÑÐ¸Ð¹ Ð¾ÐºÐµÐ°Ð½"
+          }
+        }, 
+        "breakLine": true
+      }
+    }
+  }
+}
