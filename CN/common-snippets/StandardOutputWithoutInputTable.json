@@ -1,0 +1,267 @@
+{
+  "output": {
+    "type": "fieldset", 
+    "label": "å®ä¹è¾åºè¡¨", 
+    "repeat": false, 
+    "fields": {
+      "output.type": {
+        "type": "select", 
+        "label": "è¡¨å", 
+        "val": "auto", 
+        "options": {
+          "auto": {
+            "label": "èªå¨"
+          }, 
+          "custom": {
+            "label": "èªå®ä¹"
+          }, 
+          "compose": {
+            "label": "æ°å"
+          }
+        }
+      }, 
+      "output.custom_text": {
+        "type": "text", 
+        "label": "è¾åºè¡¨åç§°", 
+        "show_if": "output.type=='custom'", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": "", 
+        "breakLine": true
+      }, 
+      "output.prefix_rule": {
+        "type": "select", 
+        "label": "åç¼", 
+        "show_if": "output.type=='compose'", 
+        "val": "empty", 
+        "options": {
+          "empty": {
+            "label": "-"
+          }, 
+          "script_name": {
+            "label": "ä»»å¡åç§°"
+          }, 
+          "date_string_type1": {
+            "label": "æ¥æï¼æ¥_æ_å¹´"
+          }, 
+          "date_string_type2": {
+            "label": "æ¥æï¼yyy_mm_dd"
+          }, 
+          "time_string": {
+            "label": "æ¶é´ï¼h_min_sec"
+          }, 
+          "datetime_string": {
+            "label": "æ¥æ_æ¶é´"
+          }, 
+          "custom": {
+            "label": "èªå®ä¹"
+          }
+        }
+      }, 
+      "output.prefix_text": {
+        "type": "text", 
+        "label": "åç¼æå­", 
+        "show_if": "output.type=='compose' && output.prefix_rule=='custom'", 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": ""
+      }, 
+      "output.core_delimiter": {
+        "type": "text", 
+        "label": "å®çç¬¦", 
+        "show_if": "output.type=='compose' && output.prefix_rule!='empty'", 
+        "val": "_", 
+        "width": "50px"
+      }, 
+      "output.core_rule": {
+        "type": "select", 
+        "label": "è¡¨å", 
+        "show_if": "output.type=='compose'", 
+        "val": "script_name", 
+        "options": {
+          "script_name": {
+            "label": "ä»»å¡åç§°"
+          }, 
+          "custom": {
+            "label": "èªå®ä¹"
+          }
+        }
+      }, 
+      "output.core_text": {
+        "type": "text", 
+        "label": "è¾åºè¡¨åç§°", 
+        "show_if": "output.type=='compose' && output.core_rule=='custom'", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": ""
+      }, 
+      "output.suffix_delimiter": {
+        "type": "text", 
+        "label": "å®çç¬¦", 
+        "show_if": "output.type=='compose'", 
+        "val": "_", 
+        "width": "50px"
+      }, 
+      "output.suffix_rule": {
+        "type": "select", 
+        "label": "åç¼", 
+        "show_if": "output.type=='compose'", 
+        "val": "script_name", 
+        "options": {
+          "empty": {
+            "label": "-"
+          }, 
+          "script_name": {
+            "label": "ä»»å¡åç§°"
+          }, 
+          "date_string_type1": {
+            "label": "æ¥æï¼æ¥_æ_å¹´"
+          }, 
+          "date_string_type2": {
+            "label": "æ¥æï¼yyy_mm_dd"
+          }, 
+          "time_string": {
+            "label": "æ¶é´ï¼h_min_sec"
+          }, 
+          "datetime_string": {
+            "label": "æ¥æ_æ¶é´"
+          }, 
+          "custom": {
+            "label": "èªå®ä¹"
+          }
+        }
+      }, 
+      "output.suffix_text": {
+        "type": "text", 
+        "label": "åç¼ææ¬", 
+        "show_if": "output.type=='compose' && output.suffix_rule=='custom'", 
+        "minLength": 1, 
+        "maxLength": 31, 
+        "val": "", 
+        "breakLine": true
+      }, 
+      "output.timezone": {
+        "type": "select", 
+        "label": "æ¶åº", 
+        "show_if": "output.type=='compose' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
+        "val": "æ¬§æ´²/ææ", 
+        "required": true, 
+        "options": {
+          "æ¬§æ´²/é¿å§æ¯ç¹ä¸¹": {
+            "label": "æ¬§æ´²/é¿å§æ¯ç¹ä¸¹"
+          }, 
+          "æ¬§æ´²/ææ": {
+            "label": "æ¬§æ´²/ææ"
+          }, 
+          "æ¬§æ´²/èµ«å°è¾åº": {
+            "label": "æ¬§æ´²/èµ«å°è¾åº"
+          }, 
+          "æ¬§æ´²/ä¼¦æ¦": {
+            "label": "æ¬§æ´²/ä¼¦æ¦"
+          }, 
+          "æ¬§æ´²/å¢æ£®å ¡": {
+            "label": "æ¬§æ´²/å¢æ£®å ¡"
+          }, 
+          "æ¬§æ´²/å¥¥æ¯é": {
+            "label": "æ¬§æ´²/å¥¥æ¯é"
+          }, 
+          "æ¬§æ´²/å·´é»": {
+            "label": "æ¬§æ´²/å·´é»"
+          }, 
+          "æ¬§æ´²/ç½é©¬": {
+            "label": "æ¬§æ´²/ç½é©¬"
+          }, 
+          "ç¾å½/é¿ææ¯å ": {
+            "label": "ç¾å½/é¿ææ¯å "
+          }, 
+          "ç¾å½/ä¸­é¨": {
+            "label": "ç¾å½/ä¸­é¨"
+          }, 
+          "ç¾å½/ä¸é¨": {
+            "label": "ç¾å½/ä¸é¨"
+          }, 
+          "ç¾å½/å¤ªå¹³æ´": {
+            "label": "ç¾å½/å¤ªå¹³æ´"
+          }
+        }, 
+        "breakLine": true
+      }, 
+      "output.set_options": {
+        "type": "checkbox", 
+        "label": "è¾åºéé¡¹", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "output_options_box": {
+        "type": "fieldset", 
+        "label": "è¾åºéé¡¹", 
+        "show_if": "output.set_options=='true'", 
+        "repeat": false, 
+        "fields": {
+          "output.options.location": {
+            "type": "text", 
+            "label": "æå®å°ç¹", 
+            "val": "A1", 
+            "breakLine": true
+          }, 
+          "output.options.table_mode": {
+            "type": "select", 
+            "label": "ç²è´´", 
+            "val": "content_only", 
+            "options": {
+              "content_only": {
+                "label": "ä»éåå®¹"
+              }, 
+              "fully_formatted": {
+                "label": "å®å¨æ ¼å¼å"
+              }
+            }
+          }, 
+          "output.options.formatted_as_table": {
+            "type": "checkbox", 
+            "label": "æ ¼å¼ä¸ºè¡¨", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "output.add_tag": {
+            "type": "checkbox", 
+            "label": "æ·»å æ ç­¾", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "output.tag_name": {
+            "type": "text", 
+            "label": "æ ç­¾åç§°", 
+            "show_if": "output.add_tag=='true'", 
+            "required": true, 
+            "minLength": 1, 
+            "maxLength": 255, 
+            "val": "", 
+            "breakLine": true, 
+            "style": "margin-left: 15px"
+          }, 
+          "output.options.visibility": {
+            "type": "select", 
+            "label": "å¯è§åº¦", 
+            "val": "current_flow", 
+            "options": {
+              "current_flow": {
+                "label": "å½åæµé"
+              }, 
+              "all_flow": {
+                "label": "æææµé"
+              }
+            }
+          }
+        }, 
+        "breakLine": true
+      }
+    }
+  }
+}
