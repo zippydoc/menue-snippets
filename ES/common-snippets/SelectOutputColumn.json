@@ -1,0 +1,63 @@
+{
+  "output.select_output_columns": {
+    "type": "checkbox", 
+    "label": "Seleziona le colonne di uscita", 
+    "val": "false", 
+    "isOn": "true", 
+    "isOff": "false"
+  }, 
+  "output_columns": {
+    "type": "fieldset", 
+    "label": "Selezionare OutputColumns", 
+    "show_if": "output.select_output_columns=='true'", 
+    "repeat": true, 
+    "fields": {
+      "field_name": {
+        "type": "select", 
+        "label": "Seleziona la colonna", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "order": {
+        "type": "select", 
+        "label": "Ordina", 
+        "options": {
+          "-": {
+            "label": "-"
+          }, 
+          "asc": {
+            "label": "Asc"
+          }, 
+          "desc": {
+            "label": "Desc"
+          }
+        }, 
+        "val": "-"
+      }, 
+      "is_rename": {
+        "type": "checkbox", 
+        "label": "Rinominare", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "rename": {
+        "show_if": "this.is_rename == 'true'", 
+        "type": "text", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "label": "Nuovo nome della colonna", 
+        "style": "margin-left: 10px"
+      }, 
+      "delete": {
+        "type": "button", 
+        "label": "Borrar", 
+        "function": "DELETE_ROW"
+      }
+    }, 
+    "breakLine": true, 
+    "style": "margin-bottom: 20px"
+  }
+}
