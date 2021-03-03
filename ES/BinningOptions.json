@@ -1,0 +1,61 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Selezionare le opzioni di binning", 
+    "repeat": false, 
+    "fields": {
+      "number_of_tiles": {
+        "type": "text", 
+        "label": "Numero di bidoni", 
+        "val": "2", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "binning_type": {
+        "type": "select", 
+        "label": "Tipo de binning", 
+        "options": {
+          "equal_records": {
+            "label": "Binning semplice"
+          }, 
+          "equal_intervals": {
+            "label": "Binning a intervalos iguales"
+          }
+        }, 
+        "val": "equal_records"
+      }, 
+      "equal_records_order": {
+        "type": "select", 
+        "label": "Ordina", 
+        "show_if": "binning_type=='equal_records'", 
+        "options": {
+          "keep_current": {
+            "label": "Manténgase al día"
+          }, 
+          "asc": {
+            "label": "Ascendente"
+          }, 
+          "desc": {
+            "label": "Descendiendo"
+          }
+        }, 
+        "val": "keep_current"
+      }, 
+      "equal_intervals_order": {
+        "type": "select", 
+        "label": "Ordina", 
+        "show_if": "binning_type=='equal_intervals'", 
+        "options": {
+          "asc": {
+            "label": "Ascendente"
+          }, 
+          "desc": {
+            "label": "Descendiendo"
+          }
+        }, 
+        "val": "asc"
+      }
+    }, 
+    "breakLine": true
+  }
+}
