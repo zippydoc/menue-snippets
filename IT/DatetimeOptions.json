@@ -1,0 +1,252 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Seleziona le opzioni", 
+    "repeat": false, 
+    "fields": {
+      "convert_type": {
+        "type": "select", 
+        "label": "Convertire il tipo", 
+        "required": true, 
+        "options": {
+          "complete_date": {
+            "label": "Data completa"
+          }, 
+          "expand_date": {
+            "label": "Espandi la data"
+          }, 
+          "convert_date": {
+            "label": "Convertire la data"
+          }, 
+          "convert_date_range": {
+            "label": "Convertire intervallo di date"
+          }
+        }, 
+        "val": "complete_date"
+      }, 
+      "date_convert_type": {
+        "type": "select", 
+        "label": "Convertire in", 
+        "show_if": "convert_type=='convert_date'", 
+        "required": true, 
+        "options": {
+          "begin_of_month": {
+            "label": "Inizio del mese"
+          }, 
+          "end_of_month": {
+            "label": "Fine del mese"
+          }, 
+          "hy_year": {
+            "label": "Anno HY"
+          }, 
+          "qrt_year": {
+            "label": "Qrt Anno"
+          }, 
+          "month_year": {
+            "label": "Mese Anno"
+          }, 
+          "week_year": {
+            "label": "Settimana Anno"
+          }
+        }, 
+        "val": "begin_of_month", 
+        "breakLine": true
+      }, 
+      "date_range_convert_type": {
+        "type": "select", 
+        "label": "Convertire in", 
+        "show_if": "convert_type=='convert_date_range'", 
+        "required": true, 
+        "options": {
+          "begin_of_month": {
+            "label": "Inizio del mese"
+          }, 
+          "end_of_month": {
+            "label": "Fine del mese"
+          }, 
+          "begin_of_range": {
+            "label": "Inizio della gamma"
+          }, 
+          "end_of_range": {
+            "label": "Fine della gamma"
+          }, 
+          "begin_of_quarter": {
+            "label": "Inizio del trimestre"
+          }, 
+          "end_of_quarter": {
+            "label": "Fine del trimestre"
+          }
+        }, 
+        "val": "begin_of_month", 
+        "breakLine": true
+      }, 
+      "output_in_new_column": {
+        "type": "checkbox", 
+        "label": "Uscita in una nuova colonna", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "fields_to_convert.new_field_name": {
+        "type": "text", 
+        "label": "Nuovo nome della colonna", 
+        "show_if": "output_in_new_column=='true'", 
+        "val": "GeneratedDate", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "format_conversion.datetime_source_format": {
+        "type": "select", 
+        "label": "Seleziona il formato datetime di origine", 
+        "show_if": "convert_type=='format_conversion'", 
+        "required": true, 
+        "width": "100%", 
+        "options": {
+          "yyyy-MM-dd": {
+            "label": "yyyy-MM-dd"
+          }, 
+          "giorno, dd Mese, yyyy": {
+            "label": "giorno, dd Mese, yyyy"
+          }, 
+          "dd-MM-yy": {
+            "label": "dd-MM-yy"
+          }, 
+          "dd-MM-yyyy": {
+            "label": "dd-MM-yyyy"
+          }, 
+          "dd-Mon.-yy": {
+            "label": "dd-Mon.-yy"
+          }, 
+          "dd Mese, aaaa": {
+            "label": "dd Mese, aaaa"
+          }, 
+          "gg/MM/aa": {
+            "label": "gg/MM/aa"
+          }, 
+          "gg/MM/aaaa": {
+            "label": "gg/MM/aaaa"
+          }, 
+          "dy., mese dd, yyyy": {
+            "label": "dy., mese dd, yyyy"
+          }, 
+          "MM-dd-yy": {
+            "label": "MM-dd-yy"
+          }, 
+          "MM-dd-yyyy": {
+            "label": "MM-dd-yyyy"
+          }, 
+          "MM/gg/aa": {
+            "label": "MM/gg/aa"
+          }, 
+          "MM/gg/aaaa": {
+            "label": "MM/gg/aaaa"
+          }, 
+          "Mon dd": {
+            "label": "Mon dd"
+          }, 
+          "Lun gg, aaaa": {
+            "label": "Lun gg, aaaa"
+          }, 
+          "Mese gg, aaaa": {
+            "label": "Mese gg, aaaa"
+          }, 
+          "Mese, aaaa": {
+            "label": "Mese, aaaa"
+          }, 
+          "yyyyMMdd": {
+            "label": "yyyyMMdd"
+          }
+        }, 
+        "val": "yyyy-MM-dd", 
+        "breakLine": true
+      }, 
+      "format_conversion.datetime_target_format": {
+        "type": "select", 
+        "label": "Seleziona il formato datetime di destinazione", 
+        "show_if": "convert_type=='format_conversion'", 
+        "required": true, 
+        "width": "100%", 
+        "options": {
+          "giorno, dd Mese, yyyy": {
+            "label": "giorno, dd Mese, yyyy"
+          }, 
+          "dd-MM-yy": {
+            "label": "dd-MM-yy"
+          }, 
+          "dd-MM-yyyy": {
+            "label": "dd-MM-yyyy"
+          }, 
+          "dd-Mon.-yy": {
+            "label": "dd-Mon.-yy"
+          }, 
+          "dd Mese, aaaa": {
+            "label": "dd Mese, aaaa"
+          }, 
+          "gg/MM/aa": {
+            "label": "gg/MM/aa"
+          }, 
+          "gg/MM/aaaa": {
+            "label": "gg/MM/aaaa"
+          }, 
+          "dy., mese dd, yyyy": {
+            "label": "dy., mese dd, yyyy"
+          }, 
+          "MM-dd-yy": {
+            "label": "MM-dd-yy"
+          }, 
+          "MM-dd-yyyy": {
+            "label": "MM-dd-yyyy"
+          }, 
+          "MM/gg/aa": {
+            "label": "MM/gg/aa"
+          }, 
+          "MM/gg/aaaa": {
+            "label": "MM/gg/aaaa"
+          }, 
+          "Mon dd": {
+            "label": "Mon dd"
+          }, 
+          "Lun gg, aaaa": {
+            "label": "Lun gg, aaaa"
+          }, 
+          "Mese gg, aaaa": {
+            "label": "Mese gg, aaaa"
+          }, 
+          "Mese, aaaa": {
+            "label": "Mese, aaaa"
+          }, 
+          "yyyy-MM-dd": {
+            "label": "yyyy-MM-dd"
+          }, 
+          "yyyyMMdd": {
+            "label": "yyyyMMdd"
+          }, 
+          "aaaa-MM-gg hh:mm:ss": {
+            "label": "aaaa-MM-gg hh:mm:ss"
+          }, 
+          "MM/gg/aaaa hh:mm:ss": {
+            "label": "MM/gg/aaaa hh:mm:ss"
+          }, 
+          "MM/gg/aa hh:mm:ss": {
+            "label": "MM/gg/aa hh:mm:ss"
+          }, 
+          "gg/MM/aaaa hh:mm:ss": {
+            "label": "gg/MM/aaaa hh:mm:ss"
+          }, 
+          "gg/MM/aa hh:mm:ss": {
+            "label": "gg/MM/aa hh:mm:ss"
+          }, 
+          "HH:mm:ss": {
+            "label": "HH:mm:ss"
+          }
+        }, 
+        "val": "aaaa-MM-gg hh:mm:ss", 
+        "breakLine": true
+      }
+    }
+  }
+}
