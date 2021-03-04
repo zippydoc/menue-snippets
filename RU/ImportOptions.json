@@ -1,0 +1,308 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Выберите Опции", 
+    "repeat": false, 
+    "fields": {
+      "options.from": {
+        "type": "select", 
+        "label": "Источник данных", 
+        "options": {
+          "web": {
+            "label": "Импорт из Веб-сервиса"
+          }, 
+          "database": {
+            "label": "Импорт из базы данных"
+          }
+        }, 
+        "val": "web", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "postgresql_db_credential_box": {
+        "type": "fieldset", 
+        "label": "Учетные данные для подключения к базе данных", 
+        "show_if": "options.from=='database'", 
+        "repeat": false, 
+        "fields": {
+          "options.dbms": {
+            "type": "select", 
+            "label": "Выберите СУБД", 
+            "options": {
+              "postgresql": {
+                "label": "PostgreSQL"
+              }, 
+              "mysql": {
+                "label": "MySQL (Скоро будет...)"
+              }, 
+              "sql_server": {
+                "label": "MS SQL Server (Скоро будет...)"
+              }, 
+              "oracle": {
+                "label": "Оракул (Скоро будет...)"
+              }
+            }, 
+            "val": "postgresql", 
+            "required": true, 
+            "breakLine": true
+          }, 
+          "options.postgresql_credential.user": {
+            "type": "text", 
+            "label": "Пользователь", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
+            "breakLine": true
+          }, 
+          "options.postgresql_credential.password": {
+            "type": "text", 
+            "label": "Пароль", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
+            "breakLine": true
+          }, 
+          "options.postgresql_credential.host": {
+            "type": "text", 
+            "label": "Хост", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
+            "breakLine": true
+          }, 
+          "options.postgresql_credential.database": {
+            "type": "text", 
+            "label": "База данных", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
+            "breakLine": true
+          }
+        }
+      }, 
+      "options.schema_name_to_import": {
+        "type": "text", 
+        "label": "Название схемы, включающее таблицу для импорта", 
+        "show_if": "options.from=='database' && options.dbms=='postgresql'", 
+        "required": true, 
+        "val": "public", 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.table_name_to_import": {
+        "type": "text", 
+        "label": "Наименование таблицы для импорта", 
+        "show_if": "options.from=='database' && options.dbms=='postgresql'", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.webservice": {
+        "type": "select", 
+        "label": "Выберите услугу Веб-сайта", 
+        "show_if": "options.from=='web'", 
+        "options": {
+          "github": {
+            "label": "Github"
+          }
+        }, 
+        "val": "github", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.output_format": {
+        "type": "select", 
+        "label": "Выберите Тип", 
+        "show_if": "options.from=='web'", 
+        "options": {
+          "csv_table": {
+            "label": "CSV-таблица"
+          }, 
+          "line_by_line": {
+            "label": "Линия за линией"
+          }, 
+          "word_by_word": {
+            "label": "Слово за словом"
+          }, 
+          "file_list": {
+            "label": "File List"
+          }
+        }, 
+        "val": "csv_table", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.add_section_column": {
+        "type": "checkbox", 
+        "label": "Add Section Column", 
+        "show_if": "options.from=='web' && options.output_format=='word_by_word'", 
+        "val": "true", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "options.section_column_type": {
+        "type": "select", 
+        "label": "Section Column Type", 
+        "show_if": "options.from=='web' && options.output_format=='word_by_word' && options.add_section_column=='true'", 
+        "options": {
+          "paragraph": {
+            "label": "Paragraph"
+          }, 
+          "brackets": {
+            "label": "Brackets"
+          }
+        }, 
+        "val": "paragraph", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.add_filename_column": {
+        "type": "checkbox", 
+        "label": "Добавить колонку для имени файла", 
+        "show_if": "options.from=='web' && options.output_format!='file_list'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "options.is_github_dir": {
+        "type": "checkbox", 
+        "label": "каталог импорта", 
+        "show_if": "options.from=='web' && options.output_format!='file_list'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "options.use_filename_as_output_table_name": {
+        "type": "checkbox", 
+        "label": "Использовать имя файла в качестве имени таблицы", 
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='false'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "options.unify_in_one_table": {
+        "type": "checkbox", 
+        "label": "Объединитесь в один стол", 
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "options.suffix": {
+        "type": "select", 
+        "label": "Суффикс", 
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true' && options.unify_in_one_table=='false'", 
+        "options": {
+          "number": {
+            "label": "Номер"
+          }, 
+          "filename": {
+            "label": "Фильм"
+          }
+        }, 
+        "val": "number", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.is_github_private": {
+        "type": "checkbox", 
+        "label": "Репозиторий является частным", 
+        "show_if": "options.from=='web'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "options.include_subdir": {
+        "type": "checkbox", 
+        "label": "Include Subdirectories", 
+        "show_if": "options.from=='web' && options.output_format=='file_list'", 
+        "val": "true", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "options.github_token": {
+        "type": "text", 
+        "label": "указать токен персонального доступа Github", 
+        "show_if": "options.from=='web' && options.is_github_private=='true'", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.link_directory": {
+        "type": "text", 
+        "label": "Введите ссылку, например, https://github.com/zippydoc/test.", 
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true'", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.link_directory_4_file_list": {
+        "type": "text", 
+        "label": "Введите ссылку, например, https://github.com/zippydoc/test.", 
+        "show_if": "options.from=='web' && options.output_format=='file_list'", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.link_file": {
+        "type": "text", 
+        "label": "Введите ссылку, например, https://github.com/zippydoc/test/blob/main/example.csv.", 
+        "show_if": "options.from=='web' && options.is_github_dir=='false' && options.output_format=='csv_table'", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.link_text_file": {
+        "type": "text", 
+        "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.txt(json,  csv,  etc)", 
+        "show_if": "options.from=='web' && options.is_github_dir=='false' && options.output_format!='csv_table' && options.output_format!='file_list'", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "dir_filter_frame": {
+        "type": "fieldset", 
+        "label": "Фильтровать файлы в каталоге", 
+        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_github_dir=='true'", 
+        "repeat": false, 
+        "fields": {
+          "options.dir_filter.filter_type": {
+            "type": "select", 
+            "label": "Тип фильтра", 
+            "options": {
+              "all": {
+                "label": "Все"
+              }, 
+              "contains": {
+                "label": "Содержит ."
+              }, 
+              "starts_with": {
+                "label": "Начинается с"
+              }, 
+              "ends_with": {
+                "label": "Заканчивается"
+              }, 
+              "regex": {
+                "label": "Регулярное выражение"
+              }
+            }, 
+            "val": "all", 
+            "required": true
+          }, 
+          "options.dir_filter.filter_string": {
+            "type": "text", 
+            "label": "Введите строку", 
+            "show_if": "options.dir_filter.filter_type!='all'", 
+            "required": true, 
+            "width": "100%"
+          }
+        }
+      }
+    }
+  }
+}
