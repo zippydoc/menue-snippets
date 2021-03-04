@@ -1,0 +1,90 @@
+      }, 
+{
+  "input": {
+    "type": "fieldset", 
+    "label": "Seleziona la tabella degli ingressi", 
+    "repeat": false, 
+    "fields": {
+      "tables": {
+        "type": "fieldset", 
+        "label": "Seleziona le tabelle", 
+        "repeat": true, 
+        "fields": {
+          "table_id": {
+            "type": "select", 
+            "label": "Tabla de búsqueda", 
+            "bind": "TABLES", 
+            "required": true
+          }, 
+          "lookup_header_column": {
+            "type": "select", 
+            "label": "Columna de cabecera", 
+            "table": "this.table_id", 
+            "bind": "COLUMNS", 
+            "required": true
+          }, 
+          "lookup_value_column": {
+            "type": "select", 
+            "label": "Colonna dei valori", 
+            "table": "this.table_id", 
+            "bind": "COLUMNS", 
+            "required": true
+          }, 
+          "lookup_mapping_column": {
+            "type": "select", 
+            "label": "Columna de mapas", 
+            "table": "this.table_id", 
+            "bind": "COLUMNS"
+          }, 
+          "delete": {
+            "type": "button", 
+            "label": "Borrar", 
+            "function": "DELETE_ROW"
+          }
+        }
+      }, 
+      "options.treatment": {
+        "type": "select", 
+        "label": "Trattamento delle occorrenze multiple", 
+        "required": true, 
+        "options": {
+          "sum": {
+            "label": "Somma"
+          }, 
+          "min": {
+            "label": "Min"
+          }, 
+          "max": {
+            "label": "Max"
+          }, 
+          "shortest": {
+            "label": "Il più corto"
+          }, 
+          "longest": {
+            "label": "El más largo"
+          }, 
+          "first": {
+            "label": "Primero"
+          }, 
+          "last": {
+            "label": "Última"
+          }, 
+          "concatenate": {
+            "label": "Concatenar"
+          }
+        }, 
+        "val": "sum", 
+        "style": "min-width: 200px"
+      "options.treatment_delimiter": {
+        "type": "text", 
+        "label": "Delimitador", 
+        "show_if": "options.treatment=='concatenate'", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "val": ";", 
+        "breakLine": true
+      }
+    }
+  }
+}

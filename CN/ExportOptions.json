@@ -1,0 +1,187 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "选择选项", 
+    "repeat": false, 
+    "fields": {
+      "options.to": {
+        "type": "select", 
+        "label": "种类", 
+        "options": {
+          "database": {
+            "label": "导出到数据库"
+          }, 
+          "file": {
+            "label": "输出到文件"
+          }
+        }, 
+        "val": "database", 
+        "required": true
+      }, 
+      "options.export_series": {
+        "type": "checkbox", 
+        "label": "出口系列", 
+        "show_if": "options.to=='file'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "options.file_name_column": {
+        "type": "select", 
+        "label": "选择文件名栏", 
+        "show_if": "options.to=='file' && options.export_series=='true'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "postgresql_db_credential_box": {
+        "type": "fieldset", 
+        "label": "数据库连接凭证", 
+        "show_if": "options.to=='database'", 
+        "repeat": false, 
+        "fields": {
+          "options.dbms": {
+            "type": "select", 
+            "label": "选择DBMS", 
+            "options": {
+              "postgresql": {
+                "label": "PostgreSQL"
+              }, 
+              "mysql": {
+                "label": "MySQL"
+              }, 
+              "sql_server": {
+                "label": "MS SQL服务器"
+              }, 
+              "oracle": {
+                "label": "甲骨文"
+              }
+            }, 
+            "val": "postgresql", 
+            "required": true, 
+            "breakLine": true
+          }, 
+          "options.postgresql_credential.user": {
+            "type": "text", 
+            "label": "用户", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
+            "breakLine": true
+          }, 
+          "options.postgresql_credential.password": {
+            "type": "text", 
+            "label": "密码", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
+            "breakLine": true
+          }, 
+          "options.postgresql_credential.host": {
+            "type": "text", 
+            "label": "主机", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
+            "breakLine": true
+          }, 
+          "options.postgresql_credential.database": {
+            "type": "text", 
+            "label": "数据库", 
+            "show_if": "options.dbms=='postgresql'", 
+            "required": true, 
+            "width": "100%", 
+            "breakLine": true
+          }
+        }
+      }, 
+      "options.schema_name_to_export": {
+        "type": "text", 
+        "label": "要导出的模式名称", 
+        "show_if": "options.to=='database' && options.dbms=='postgresql'", 
+        "required": true, 
+        "val": "public", 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.webservice": {
+        "type": "select", 
+        "label": "选择Webservice", 
+        "show_if": "options.to=='file' || options.to=='mytask'", 
+        "options": {
+          "github": {
+            "label": "Github"
+          }
+        }, 
+        "val": "github", 
+        "required": true
+      }, 
+      "options.export_format": {
+        "type": "select", 
+        "label": "输出格式", 
+        "show_if": "options.to=='file'", 
+        "options": {
+          "csv_file": {
+            "label": "Csv文件"
+          }, 
+          "word_by_word": {
+            "label": "逐字逐句"
+          }, 
+          "line_by_line": {
+            "label": "逐行"
+          }
+        }, 
+        "val": "csv_file", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.github_token": {
+        "type": "text", 
+        "label": "指定有写权限的github个人访问令牌。", 
+        "show_if": "options.to=='file' || options.to=='mytask'", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.github_url": {
+        "type": "text", 
+        "label": "输入链接，如：https://github.com/zippydoc/test", 
+        "show_if": "options.to=='file' || options.to=='mytask'", 
+        "val": "https://github.com/zippydoc/public-tables", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.if_duplicated": {
+        "type": "select", 
+        "label": "如果重复", 
+        "val": "drop_if_exist", 
+        "options": {
+          "drop_if_exist": {
+            "label": "创建或删除（如果已经存在）。"
+          }, 
+          "error_if_exist": {
+            "label": "创建新的(如果已经存在，则抛出错误)"
+          }, 
+          "error_if_not_exist": {
+            "label": "丢弃(如果不存在，则丢弃错误)"
+          }, 
+          "append": {
+            "label": "附加"
+          }
+        }
+      }, 
+      "options.export_task_name": {
+        "type": "text", 
+        "label": "输入任务名称", 
+        "show_if": "options.to=='mytask'", 
+        "required": true, 
+        "val": "Flow6_Task1_AddColumns", 
+        "width": "100%", 
+        "breakLine": true
+      }
+    }
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Selezionare le opzioni di pulizia", 
+    "repeat": false, 
+    "fields": {
+      "replace_null": {
+        "type": "fieldset", 
+        "label": "Dischi vuoti", 
+        "repeat": false, 
+        "fields": {
+          "replace_null": {
+            "type": "checkbox", 
+            "label": "Dischi vuoti", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "replace_null_target": {
+            "type": "select", 
+            "label": "Sostituire", 
+            "show_if": "replace_null=='true'", 
+            "options": {
+              "empty": {
+                "label": "Vuoto"
+              }, 
+              "blank": {
+                "label": "Vuoto"
+              }, 
+              "null": {
+                "label": "NULL"
+              }
+            }, 
+            "val": "empty", 
+            "breakLine": true
+          }, 
+          "replace_null_by": {
+            "type": "radio", 
+            "show_if": "replace_null=='true'", 
+            "val": "by_blank", 
+            "values": {
+              "by_blank": "By Blank", 
+              "by_zero": "By Zero"
+            }, 
+            "breakLine": true
+          }
+        }
+      }, 
+      "remove_whitespace": {
+        "type": "fieldset", 
+        "label": "Rimuovere gli spazi bianchi", 
+        "repeat": false, 
+        "fields": {
+          "remove_characters.all_whitespace": {
+            "type": "checkbox", 
+            "label": "Tutto lo spazio bianco", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.leading_whitespace": {
+            "type": "checkbox", 
+            "label": "Spazio bianco leader", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.trailing_whitespace": {
+            "type": "checkbox", 
+            "label": "Spazio bianco residuo", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.whitespace": {
+            "type": "checkbox", 
+            "label": "Spazio", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.tabs": {
+            "type": "checkbox", 
+            "label": "Schede", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.line_breaks": {
+            "type": "checkbox", 
+            "label": "Interruzioni di linea", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.duplicate_whitespace": {
+            "type": "checkbox", 
+            "label": "Spazio bianco duplicato", 
+            "show_if": "remove_characters.all_whitespace=='false'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }
+        }
+      }, 
+      "remove_duplicates": {
+        "type": "fieldset", 
+        "label": "Rimuovere i duplicati", 
+        "repeat": false, 
+        "fields": {
+          "remove_duplicates.cell": {
+            "type": "checkbox", 
+            "label": "Duplicati nella cella", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_duplicates.custom_delimiter": {
+            "type": "checkbox", 
+            "label": "Delimitatore personalizzato", 
+            "show_if": "remove_duplicates.cell=='true'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "remove_duplicates.delimiter": {
+            "type": "text", 
+            "label": "Delimitatore personalizzato", 
+            "show_if": "remove_duplicates.custom_delimiter=='true'", 
+            "val": ";", 
+            "required": true
+          }, 
+          "remove_duplicates.include_whitespace": {
+            "type": "checkbox", 
+            "label": "(includere lo spazio bianco)", 
+            "show_if": "remove_duplicates.cell=='true'", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "remove_duplicates.rows": {
+            "type": "checkbox", 
+            "label": "Righe duplicate", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }
+        }
+      }, 
+      "remove_characters": {
+        "type": "fieldset", 
+        "label": "Rimuovere i caratteri", 
+        "repeat": false, 
+        "fields": {
+          "remove_characters.letters": {
+            "type": "checkbox", 
+            "label": "Lettere", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.numbers": {
+            "type": "checkbox", 
+            "label": "Numeri", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "remove_characters.punctuation": {
+            "type": "checkbox", 
+            "label": "Punteggiatura", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }
+        }
+      }, 
+      "modify_case": {
+        "type": "fieldset", 
+        "label": "Modificare il caso", 
+        "repeat": false, 
+        "fields": {
+          "modify_case": {
+            "type": "checkbox", 
+            "label": "Modificare il caso", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }, 
+          "modify_case_by": {
+            "type": "radio", 
+            "show_if": "modify_case=='true'", 
+            "val": "upper", 
+            "values": {
+              "upper": "to Upper Case", 
+              "lower": "to Lower Case", 
+              "title": "to Title Case"
+            }, 
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}

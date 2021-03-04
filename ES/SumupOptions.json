@@ -1,0 +1,188 @@
+        "options": {
+{
+  "actions": {
+    "type": "fieldset", 
+    "label": "Añadir acciones", 
+    "repeat": true, 
+    "fields": {
+      "column": {
+        "type": "select", 
+        "label": "Columna", 
+        "table": "input_table", 
+\	\	"assign_selected_value_to":"this.output_column_name", 
+        "bind": "COLUMNS"
+      }, 
+      "action": {
+        "type": "select", 
+        "label": "Acción", 
+        "options": {
+          "group_by": {
+            "label": "Grupo por"
+          }, 
+          "count": {
+            "label": "Cuenta"
+          }, 
+          "sum": {
+            "label": "Somma"
+          }, 
+          "first": {
+            "label": "Primero"
+          }, 
+          "last": {
+            "label": "Última"
+          }, 
+          "shortest": {
+            "label": "Il più corto"
+          }, 
+          "longest": {
+            "label": "El más largo"
+          }, 
+          "concatenate": {
+            "label": "Concatenar"
+          }, 
+          "mathematics": {
+            "label": "Matemáticas"
+          }
+        }
+      }, 
+      "count_action_category": {
+        "type": "select", 
+        "label": "Tipo de acción", 
+        "show_if": "this.action=='count'", 
+        "options": {
+          "all": {
+            "label": "Todo"
+          }, 
+          "distinct": {
+            "label": "Distintivo"
+          }, 
+          "empty_or_zero": {
+            "label": "Vacío o 0"
+          }, 
+          "non_empty_or_zero": {
+            "label": "Non Vuoto o 0"
+          }
+        }, 
+        "val": "all"
+      }, 
+      "action_type1": {
+        "type": "select", 
+        "label": "Subtipo de acción", 
+        "show_if": "this.action=='count' && (this.count_action_category=='all' || this.count_action_category=='distinct')", 
+        "options": {
+          "-": {
+            "label": "-"
+          }, 
+          "non_zero": {
+            "label": "Non 0"
+          }, 
+          "non_empty": {
+            "label": "Non Vuoto"
+          }, 
+          "non_null": {
+            "label": "Non Null"
+          }, 
+          "non_blank": {
+            "label": "Non vuoto"
+          }
+        }, 
+        "val": "-"
+      }, 
+      "action_type2": {
+        "type": "select", 
+        "label": "Subtipo de acción", 
+        "show_if": "this.action=='count' && this.count_action_category=='empty_or_zero'", 
+          "zero": {
+            "label": "0"
+          }, 
+          "empty": {
+            "label": "Vacío (nulo y en blanco)"
+          }, 
+          "null": {
+            "label": "Null"
+          }, 
+          "blank": {
+            "label": "En blanco"
+          }
+        }, 
+        "val": "zero"
+      }, 
+      "action_type3": {
+        "type": "select", 
+        "label": "Subtipo de acción", 
+        "show_if": "this.action=='count' && this.count_action_category=='non_empty_or_zero'", 
+        "options": {
+          "non_zero": {
+            "label": "Non 0"
+          }, 
+          "non_empty": {
+            "label": "Non Vuoto"
+          }, 
+          "non_null": {
+            "label": "Non Null"
+          }, 
+          "non_blank": {
+            "label": "Non vuoto"
+          }
+        }, 
+        "val": "non_zero"
+      }, 
+      "mathematics_action_category": {
+        "type": "select", 
+        "label": "Tipo de acción", 
+        "show_if": "this.action=='mathematics'", 
+        "options": {
+          "min": {
+            "label": "Min"
+          }, 
+          "max": {
+            "label": "Max"
+          }, 
+          "average": {
+            "label": "Media"
+          }, 
+          "median": {
+            "label": "Mediana"
+          }, 
+          "standard_deviation": {
+            "label": "Deviazione standard"
+          }, 
+          "variance": {
+            "label": "Varianza"
+          }
+        }, 
+        "val": "min"
+      }, 
+      "action_type4": {
+        "type": "select", 
+        "label": "Subtipo de acción", 
+        "show_if": "this.action=='mathematics'", 
+        "options": {
+          "include_zero": {
+            "label": "Incluir 0"
+          }, 
+          "exclude_zero": {
+            "label": "Excluir 0"
+          }
+        }, 
+        "val": "include_zero"
+      }, 
+      "concatenate_separator": {
+        "type": "text", 
+        "label": "Separatore", 
+        "show_if": "this.action=='concatenate'", 
+        "val": ", \
+      },\
+      output_column_name": {
+        "type": "text", 
+        "label": "Nome della colonna di uscita", 
+        "val": ""
+      }, 
+      "delete": {
+        "type": "button", 
+        "label": "Borrar", 
+        "function": "DELETE_ROW"
+      }
+    }
+  }
+}

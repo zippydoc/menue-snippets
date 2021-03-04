@@ -1,0 +1,252 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "选择选项", 
+    "repeat": false, 
+    "fields": {
+      "convert_type": {
+        "type": "select", 
+        "label": "转换类型", 
+        "required": true, 
+        "options": {
+          "complete_date": {
+            "label": "完整日期"
+          }, 
+          "expand_date": {
+            "label": "展开日期"
+          }, 
+          "convert_date": {
+            "label": "转换日期"
+          }, 
+          "convert_date_range": {
+            "label": "转换日期范围"
+          }
+        }, 
+        "val": "complete_date"
+      }, 
+      "date_convert_type": {
+        "type": "select", 
+        "label": "转换为", 
+        "show_if": "convert_type=='convert_date'", 
+        "required": true, 
+        "options": {
+          "begin_of_month": {
+            "label": "月初"
+          }, 
+          "end_of_month": {
+            "label": "月末"
+          }, 
+          "hy_year": {
+            "label": "HY年"
+          }, 
+          "qrt_year": {
+            "label": "Qrt年"
+          }, 
+          "month_year": {
+            "label": "年月日"
+          }, 
+          "week_year": {
+            "label": "周 年"
+          }
+        }, 
+        "val": "begin_of_month", 
+        "breakLine": true
+      }, 
+      "date_range_convert_type": {
+        "type": "select", 
+        "label": "转换为", 
+        "show_if": "convert_type=='convert_date_range'", 
+        "required": true, 
+        "options": {
+          "begin_of_month": {
+            "label": "月初"
+          }, 
+          "end_of_month": {
+            "label": "月末"
+          }, 
+          "begin_of_range": {
+            "label": "范围的开始"
+          }, 
+          "end_of_range": {
+            "label": "范围的末端"
+          }, 
+          "begin_of_quarter": {
+            "label": "季度初"
+          }, 
+          "end_of_quarter": {
+            "label": "季度末"
+          }
+        }, 
+        "val": "begin_of_month", 
+        "breakLine": true
+      }, 
+      "output_in_new_column": {
+        "type": "checkbox", 
+        "label": "新栏输出", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "fields_to_convert.new_field_name": {
+        "type": "text", 
+        "label": "新栏目名称", 
+        "show_if": "output_in_new_column=='true'", 
+        "val": "GeneratedDate", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "format_conversion.datetime_source_format": {
+        "type": "select", 
+        "label": "选择源日期时间格式", 
+        "show_if": "convert_type=='format_conversion'", 
+        "required": true, 
+        "width": "100%", 
+        "options": {
+          "yyyy-MM-dd": {
+            "label": "yyyy-MM-dd"
+          }, 
+          "日，日 月，年": {
+            "label": "日，日 月，年"
+          }, 
+          "日-月-日": {
+            "label": "日-月-日"
+          }, 
+          "日-月-年": {
+            "label": "日-月-年"
+          }, 
+          "日-月-年": {
+            "label": "日-月-年"
+          }, 
+          "dd 月，yyy": {
+            "label": "dd 月，yyy"
+          }, 
+          "日/月/年": {
+            "label": "日/月/年"
+          }, 
+          "日/月/年": {
+            "label": "日/月/年"
+          }, 
+          "dy.，月 dd，yyy": {
+            "label": "dy.，月 dd，yyy"
+          }, 
+          "MM-dd-yy": {
+            "label": "MM-dd-yy"
+          }, 
+          "MM-dd-yyy": {
+            "label": "MM-dd-yyy"
+          }, 
+          "月/日/年": {
+            "label": "月/日/年"
+          }, 
+          "MM/dd/yyyy": {
+            "label": "MM/dd/yyyy"
+          }, 
+          "月 日": {
+            "label": "月 日"
+          }, 
+          "Mon dd, yyyy": {
+            "label": "Mon dd, yyyy"
+          }, 
+          "月 日，年月日": {
+            "label": "月 日，年月日"
+          }, 
+          "月，yyy": {
+            "label": "月，yyy"
+          }, 
+          "yyyyMMdd": {
+            "label": "yyyyMMdd"
+          }
+        }, 
+        "val": "yyyy-MM-dd", 
+        "breakLine": true
+      }, 
+      "format_conversion.datetime_target_format": {
+        "type": "select", 
+        "label": "选择目标日期时间格式", 
+        "show_if": "convert_type=='format_conversion'", 
+        "required": true, 
+        "width": "100%", 
+        "options": {
+          "日，日 月，年": {
+            "label": "日，日 月，年"
+          }, 
+          "日-月-日": {
+            "label": "日-月-日"
+          }, 
+          "日-月-年": {
+            "label": "日-月-年"
+          }, 
+          "日-月-年": {
+            "label": "日-月-年"
+          }, 
+          "dd 月，yyy": {
+            "label": "dd 月，yyy"
+          }, 
+          "日/月/年": {
+            "label": "日/月/年"
+          }, 
+          "日/月/年": {
+            "label": "日/月/年"
+          }, 
+          "dy.，月 dd，yyy": {
+            "label": "dy.，月 dd，yyy"
+          }, 
+          "MM-dd-yy": {
+            "label": "MM-dd-yy"
+          }, 
+          "MM-dd-yyy": {
+            "label": "MM-dd-yyy"
+          }, 
+          "月/日/年": {
+            "label": "月/日/年"
+          }, 
+          "MM/dd/yyyy": {
+            "label": "MM/dd/yyyy"
+          }, 
+          "月 日": {
+            "label": "月 日"
+          }, 
+          "Mon dd, yyyy": {
+            "label": "Mon dd, yyyy"
+          }, 
+          "月 日，年月日": {
+            "label": "月 日，年月日"
+          }, 
+          "月，yyy": {
+            "label": "月，yyy"
+          }, 
+          "yyyy-MM-dd": {
+            "label": "yyyy-MM-dd"
+          }, 
+          "yyyyMMdd": {
+            "label": "yyyyMMdd"
+          }, 
+          "yyyy-MM-dd hh:mm:sss": {
+            "label": "yyyy-MM-dd hh:mm:sss"
+          }, 
+          "MM/dd/yyyy hh:mm:ssss": {
+            "label": "MM/dd/yyyy hh:mm:ssss"
+          }, 
+          "MM/dd/yy hh:mm:sss (中文)": {
+            "label": "MM/dd/yy hh:mm:sss (中文)"
+          }, 
+          "日/月/年 hh:mm:ssss": {
+            "label": "日/月/年 hh:mm:ssss"
+          }, 
+          "日/月/年 hh:mm:ssss": {
+            "label": "日/月/年 hh:mm:ssss"
+          }, 
+          "HH:mm:ss": {
+            "label": "HH:mm:ss"
+          }
+        }, 
+        "val": "yyyy-MM-dd hh:mm:sss", 
+        "breakLine": true
+      }
+    }
+  }
+}

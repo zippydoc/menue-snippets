@@ -1,0 +1,345 @@
+}
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "选择选项", 
+    "repeat": false, 
+    "fields": {
+      "options.type": {
+        "type": "select", 
+        "label": "种类", 
+        "options": {
+          "standard": {
+            "label": "生成标准影响曲线"
+          }, 
+          "custom": {
+            "label": "生成自定义影响曲线"
+          }, 
+          "apply": {
+            "label": "应用影响曲线"
+          }
+        }, 
+        "val": "standard", 
+        "breakLine": true
+      }, 
+      "options.standard.start": {
+        "type": "text", 
+        "label": "初期", 
+        "show_if": "options.type=='standard' && options.standard.end_value_equals_initial_value=='no'", 
+        "val": "1", 
+        "required": true
+      }, 
+      "options.standard.maximum": {
+        "type": "text", 
+        "label": "最长期限", 
+        "show_if": "options.type=='standard'", 
+        "val": "50", 
+        "required": true
+      }, 
+      "options.standard.end": {
+        "type": "text", 
+        "label": "末期", 
+        "show_if": "options.type=='standard'", 
+        "val": "100", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.standard.multiplier_at_maximum_impact_level": {
+        "type": "text", 
+        "label": "最大影响水平的乘数", 
+        "show_if": "options.type=='standard'", 
+        "width": "100%", 
+        "val": "2", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.standard.end_value_equals_initial_value": {
+        "type": "checkbox", 
+        "label": "最终值等于初始值", 
+        "show_if": "options.type=='standard'", 
+        "width": "100%", 
+        "val": "yes", 
+        "isOn": "yes", 
+        "isOff": "no", 
+        "breakLine": true
+      }, 
+      "options.standard.multiplier_end_value": {
+        "type": "text", 
+        "label": "乘数终值", 
+        "width": "100%", 
+        "show_if": "options.type=='standard' && options.standard.end_value_equals_initial_value=='no'", 
+        "val": "", 
+        "breakLine": true
+      }, 
+      "options.standard.maximum_plateau": {
+        "type": "checkbox", 
+        "label": "最大高原", 
+        "show_if": "options.type=='standard'", 
+        "width": "100%", 
+        "val": "yes", 
+        "isOn": "yes", 
+        "isOff": "no", 
+        "breakLine": true
+      }, 
+      "options.standard.no_of_periods_prior_defined_maximum_point": {
+        "type": "text", 
+        "label": "前期确定的最高点的期数", 
+        "show_if": "options.type=='standard' && options.standard.maximum_plateau=='yes'", 
+        "val": "0", 
+        "style": "width: 250px"
+      }, 
+      "options.standard.no_of_periods_post_defined_maximum_point": {
+        "type": "text", 
+        "label": "确定的最高点后的期间数", 
+        "show_if": "options.type=='standard' && options.standard.maximum_plateau=='yes'", 
+        "val": "0", 
+        "style": "width: 250px", 
+        "breakLine": true
+      }, 
+      "options.standard.left_slope": {
+        "type": "select", 
+        "label": "左坡", 
+        "show_if": "options.type=='standard'", 
+        "options": {
+          "vertical": {
+            "label": "纵向"
+          }, 
+          "linear": {
+            "label": "直线型"
+          }, 
+          "standard_distribution": {
+            "label": "标准分布"
+          }
+        }, 
+        "val": "standard_distribution"
+      }, 
+      "options.standard.use_auto_calculated_sigma_for_left_slope": {
+        "type": "checkbox", 
+        "label": "自动计算的左西格玛", 
+        "show_if": "options.type=='standard' && options.standard.left_slope=='standard_distribution'", 
+        "val": "true", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "options.standard.left_slope_sigma": {
+        "type": "text", 
+        "label": "左侧坡度 西格玛", 
+        "show_if": "options.type=='standard' && options.standard.left_slope=='standard_distribution' && options.standard.use_auto_calculated_sigma_for_left_slope=='false'", 
+        "val": ""
+      }, 
+      "options.standard.right_slope": {
+        "type": "select", 
+        "label": "右坡", 
+        "show_if": "options.type=='standard'", 
+        "required": true, 
+        "options": {
+          "vertical": {
+            "label": "纵向"
+          }, 
+          "linear": {
+            "label": "直线型"
+          }, 
+          "standard_distribution": {
+            "label": "标准分布"
+          }
+        }, 
+        "val": "standard_distribution"
+      }, 
+      "options.standard.use_auto_calculated_sigma_for_right_slope": {
+        "type": "checkbox", 
+        "label": "自动计算的右西格玛", 
+        "show_if": "options.type=='standard' && options.standard.right_slope=='standard_distribution'", 
+        "val": "true", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "options.standard.right_slope_sigma": {
+        "type": "text", 
+        "label": "右坡西格玛", 
+        "show_if": "options.type=='standard' && options.standard.right_slope=='standard_distribution' && options.standard.use_auto_calculated_sigma_for_right_slope=='false'", 
+        "val": "", 
+        "breakLine": true
+      }, 
+      "options.standard.event_name": {
+        "type": "text", 
+        "label": "活动名称", 
+        "show_if": "options.type=='standard'", 
+        "val": "Event"
+      }, 
+      "options.custom.event_table": {
+        "type": "select", 
+        "label": "活动表", 
+        "show_if": "options.type=='custom'", 
+        "bind": "TABLES", 
+        "empty": "", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.custom.event_date_column": {
+        "type": "select", 
+        "label": "事件日期栏", 
+        "show_if": "options.type=='custom'", 
+        "required": true, 
+        "table": "options.custom.event_table", 
+        "bind": "COLUMNS"
+      }, 
+      "options.custom.event_name_column": {
+        "type": "select", 
+        "label": "事件名称栏", 
+        "show_if": "options.type=='custom'", 
+        "required": true, 
+        "table": "options.custom.event_table", 
+        "bind": "COLUMNS"
+      }, 
+      "options.custom.event_name": {
+        "type": "text", 
+        "label": "活动名称", 
+        "show_if": "options.type=='custom'", 
+        "val": "Weekend", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.custom.base_period": {
+        "type": "select", 
+        "label": "基准期", 
+        "show_if": "options.type=='custom'", 
+        "required": true, 
+        "options": {
+          "months": {
+            "label": "前N个月"
+          }, 
+          "weeks": {
+            "label": "前N周"
+          }, 
+          "days": {
+            "label": "以前的N天"
+          }
+        }, 
+        "val": "days"
+      }, 
+      "options.custom.base_period_n": {
+        "type": "text", 
+        "label": "N", 
+        "show_if": "options.type=='custom'", 
+        "val": "5", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.custom.leading_impact_days": {
+        "type": "text", 
+        "label": "主要影响期", 
+        "show_if": "options.type=='custom'", 
+        "val": "0", 
+        "required": true
+      }, 
+      "options.custom.trailing_impact_days": {
+        "type": "text", 
+        "label": "追踪影响期", 
+        "show_if": "options.type=='custom'", 
+        "val": "0", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.custom.value_column": {
+        "type": "select", 
+        "label": "价值栏", 
+        "show_if": "options.type=='custom'", 
+        "required": true, 
+        "table": "options.custom.event_table", 
+        "bind": "COLUMNS", 
+        "breakLine": true
+      }, 
+      "options.custom.average": {
+        "type": "hidden", 
+        "val": "true"
+      }, 
+      "options.apply.event_name": {
+        "type": "text", 
+        "label": "活动名称", 
+        "show_if": "options.type=='apply'", 
+        "val": "Weekend", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "apply_event_table_box": {
+        "type": "fieldset", 
+        "label": "选择事件表", 
+        "show_if": "options.type=='apply'", 
+        "repeat": false, 
+        "fields": {
+          "options.apply.event_table": {
+            "type": "select", 
+            "label": "活动表", 
+            "bind": "TABLES", 
+            "empty": "", 
+            "required": true, 
+            "breakLine": true
+          }, 
+          "options.apply.event_table_event_date_column": {
+            "type": "select", 
+            "label": "事件日期栏", 
+            "required": true, 
+            "table": "options.apply.event_table", 
+            "bind": "COLUMNS"
+          }, 
+          "options.apply.event_table_event_name_column": {
+            "type": "select", 
+            "label": "事件名称栏", 
+            "required": true, 
+            "table": "options.apply.event_table", 
+            "bind": "COLUMNS"
+          }, 
+          "options.apply.event_table_value_column": {
+            "type": "select", 
+            "label": "价值栏", 
+            "required": true, 
+            "table": "options.apply.event_table", 
+            "bind": "COLUMNS", 
+            "breakLine": true
+          }
+        }
+      }, 
+      "apply_impact_table_box": {
+        "type": "fieldset", 
+        "label": "选择影响表", 
+        "show_if": "options.type=='apply'", 
+        "repeat": false, 
+        "fields": {
+          "options.apply.impact_table": {
+            "type": "select", 
+            "label": "影响表", 
+            "bind": "TABLES", 
+            "empty": "", 
+            "required": true, 
+            "breakLine": true
+          }, 
+          "options.apply.on_average": {
+            "type": "hidden", 
+            "val": "true"
+          }, 
+          "options.apply.impact_table_event_date_column": {
+            "type": "select", 
+            "label": "事件日期栏", 
+            "required": true, 
+            "table": "options.apply.impact_table", 
+            "bind": "COLUMNS"
+          }, 
+          "options.apply.impact_table_event_name_column": {
+            "type": "select", 
+            "label": "事件名称栏", 
+            "required": true, 
+            "table": "options.apply.impact_table", 
+            "bind": "COLUMNS"
+          }, 
+          "options.apply.impact_table_impact_column": {
+            "type": "select", 
+            "label": "冲击柱", 
+            "required": true, 
+            "table": "options.apply.impact_table", 
+            "bind": "COLUMNS", 
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }

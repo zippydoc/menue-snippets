@@ -1,0 +1,130 @@
+        }, 
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Выберите опцию Периодическая", 
+    "repeat": false, 
+    "fields": {
+      "options.type": {
+        "type": "select", 
+        "label": "Введите .", 
+        "options": {
+          "generate": {
+            "label": "Пример генерации периодической периодичности"
+          }, 
+          "process": {
+            "label": "Периодическая таблица процесса"
+          }
+        "val": "generate", 
+        "breakLine": true
+      }, 
+      "options.standard_table": {
+        "type": "checkbox", 
+        "label": "Стандартная периодическая таблица", 
+        "show_if": "options.type=='process'", 
+        "val": "true", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "options.initial_date": {
+        "type": "select", 
+        "label": "Начальная дата", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "options.period": {
+        "type": "select", 
+        "label": "Периодически (например, ежемесячно, ежеквартально)", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "options.final_date": {
+        "type": "select", 
+        "label": "Заключительная дата", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "breakLine": true
+      }, 
+      "options.volume": {
+        "type": "select", 
+        "label": "Сумма", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS"
+      }, 
+      "options.growth": {
+        "type": "select", 
+        "label": "Growth", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS"
+      }, 
+      "options.growth_period": {
+        "type": "select", 
+        "label": "Период роста", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "options": {
+          "selected_period": {
+            "label": "Равенство в периодичности"
+          }, 
+          "week_on_week": {
+            "label": "Неделя за неделей"
+          }, 
+          "month_on_month": {
+            "label": "Месяц в месяц"
+          }, 
+          "quarter_on_quarter": {
+            "label": "Квартал за кварталом"
+          }, 
+          "year_on_year": {
+            "label": "Год за годом"
+          }, 
+          "column": {
+            "label": "Выбрать колонку"
+          }
+        }, 
+        "val": "selected_period"
+      }, 
+      "options.growth_period_column": {
+        "type": "select", 
+        "label": "Колонка периода роста", 
+        "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.use_growth_pattern_column": {
+        "type": "checkbox", 
+        "label": "Использовать модель роста", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "options.growth_pattern_column": {
+        "type": "select", 
+        "label": "Модель роста", 
+        "show_if": "options.type=='process' && options.standard_table=='false' && options.use_growth_pattern_column=='true'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.end_date": {
+        "type": "date", 
+        "label": "Дата окончания таблицы", 
+        "show_if": "options.type=='process'", 
+        "val": "", 
+        "required": true, 
+        "style": "width: 300px"
+      }
+    }
+  }
+}

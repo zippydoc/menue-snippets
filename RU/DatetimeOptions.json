@@ -1,0 +1,252 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Выберите Опции", 
+    "repeat": false, 
+    "fields": {
+      "convert_type": {
+        "type": "select", 
+        "label": "Конвертировать тип", 
+        "required": true, 
+        "options": {
+          "complete_date": {
+            "label": "Полная дата"
+          }, 
+          "expand_date": {
+            "label": "Дата расширения"
+          }, 
+          "convert_date": {
+            "label": "Дата конвертации"
+          }, 
+          "convert_date_range": {
+            "label": "Конвертировать диапазон дат"
+          }
+        }, 
+        "val": "complete_date"
+      }, 
+      "date_convert_type": {
+        "type": "select", 
+        "label": "Преобразовать в", 
+        "show_if": "convert_type=='convert_date'", 
+        "required": true, 
+        "options": {
+          "begin_of_month": {
+            "label": "начало месяца"
+          }, 
+          "end_of_month": {
+            "label": "Конец месяца"
+          }, 
+          "hy_year": {
+            "label": "HYY Год"
+          }, 
+          "qrt_year": {
+            "label": "Кртовский год"
+          }, 
+          "month_year": {
+            "label": "Месяц года"
+          }, 
+          "week_year": {
+            "label": "неделя Год"
+          }
+        }, 
+        "val": "begin_of_month", 
+        "breakLine": true
+      }, 
+      "date_range_convert_type": {
+        "type": "select", 
+        "label": "Преобразовать в", 
+        "show_if": "convert_type=='convert_date_range'", 
+        "required": true, 
+        "options": {
+          "begin_of_month": {
+            "label": "начало месяца"
+          }, 
+          "end_of_month": {
+            "label": "Конец месяца"
+          }, 
+          "begin_of_range": {
+            "label": "Начало диапазона"
+          }, 
+          "end_of_range": {
+            "label": "Конец диапазона"
+          }, 
+          "begin_of_quarter": {
+            "label": "начало квартала"
+          }, 
+          "end_of_quarter": {
+            "label": "Конец квартала"
+          }
+        }, 
+        "val": "begin_of_month", 
+        "breakLine": true
+      }, 
+      "output_in_new_column": {
+        "type": "checkbox", 
+        "label": "Выход в новой колонке", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "fields_to_convert.new_field_name": {
+        "type": "text", 
+        "label": "Новое название колонки", 
+        "show_if": "output_in_new_column=='true'", 
+        "val": "GeneratedDate", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "format_conversion.datetime_source_format": {
+        "type": "select", 
+        "label": "Выберите исходный формат даты", 
+        "show_if": "convert_type=='format_conversion'", 
+        "required": true, 
+        "width": "100%", 
+        "options": {
+          "yyyy-MM-dd": {
+            "label": "yyyy-MM-dd"
+          }, 
+          "День, дд Месяц, йоуууууууууууууууууууууууу...": {
+            "label": "День, дд Месяц, йоуууууууууууууууууууууууу..."
+          }, 
+          "dd-MM-yy": {
+            "label": "dd-MM-yy"
+          }, 
+          "dd-MM-yyyy": {
+            "label": "dd-MM-yyyy"
+          }, 
+          "дд-мон.": {
+            "label": "дд-мон."
+          }, 
+          "Месяц, год": {
+            "label": "Месяц, год"
+          }, 
+          "дд/ММ/гг": {
+            "label": "дд/ММ/гг"
+          }, 
+          "дд/ММ/ггг": {
+            "label": "дд/ММ/ггг"
+          }, 
+          "dy., Month dd, yyyy.": {
+            "label": "dy., Month dd, yyyy."
+          }, 
+          "MM-dd-yy": {
+            "label": "MM-dd-yy"
+          }, 
+          "MM-dd-yyyyy": {
+            "label": "MM-dd-yyyyy"
+          }, 
+          "ММ/ДД/Г": {
+            "label": "ММ/ДД/Г"
+          }, 
+          "ММ/ДД/ГГГ": {
+            "label": "ММ/ДД/ГГГ"
+          }, 
+          "мон дд": {
+            "label": "мон дд"
+          }, 
+          "Mon dd, yyyy": {
+            "label": "Mon dd, yyyy"
+          }, 
+          "Месяц дд, год": {
+            "label": "Месяц дд, год"
+          }, 
+          "Месяц, год": {
+            "label": "Месяц, год"
+          }, 
+          "yyyyMMdd": {
+            "label": "yyyyMMdd"
+          }
+        }, 
+        "val": "yyyy-MM-dd", 
+        "breakLine": true
+      }, 
+      "format_conversion.datetime_target_format": {
+        "type": "select", 
+        "label": "Выберите формат целевой даты", 
+        "show_if": "convert_type=='format_conversion'", 
+        "required": true, 
+        "width": "100%", 
+        "options": {
+          "День, дд Месяц, йоуууууууууууууууууууууууу...": {
+            "label": "День, дд Месяц, йоуууууууууууууууууууууууу..."
+          }, 
+          "dd-MM-yy": {
+            "label": "dd-MM-yy"
+          }, 
+          "dd-MM-yyyy": {
+            "label": "dd-MM-yyyy"
+          }, 
+          "дд-мон.": {
+            "label": "дд-мон."
+          }, 
+          "Месяц, год": {
+            "label": "Месяц, год"
+          }, 
+          "дд/ММ/гг": {
+            "label": "дд/ММ/гг"
+          }, 
+          "дд/ММ/ггг": {
+            "label": "дд/ММ/ггг"
+          }, 
+          "dy., Month dd, yyyy.": {
+            "label": "dy., Month dd, yyyy."
+          }, 
+          "MM-dd-yy": {
+            "label": "MM-dd-yy"
+          }, 
+          "MM-dd-yyyyy": {
+            "label": "MM-dd-yyyyy"
+          }, 
+          "ММ/ДД/Г": {
+            "label": "ММ/ДД/Г"
+          }, 
+          "ММ/ДД/ГГГ": {
+            "label": "ММ/ДД/ГГГ"
+          }, 
+          "мон дд": {
+            "label": "мон дд"
+          }, 
+          "Mon dd, yyyy": {
+            "label": "Mon dd, yyyy"
+          }, 
+          "Месяц дд, год": {
+            "label": "Месяц дд, год"
+          }, 
+          "Месяц, год": {
+            "label": "Месяц, год"
+          }, 
+          "yyyy-MM-dd": {
+            "label": "yyyy-MM-dd"
+          }, 
+          "yyyyMMdd": {
+            "label": "yyyyMMdd"
+          }, 
+          "yyyy-MM-dd hh:mm:ss": {
+            "label": "yyyy-MM-dd hh:mm:ss"
+          }, 
+          "MM/dd/yyyy hh:mm:ss": {
+            "label": "MM/dd/yyyy hh:mm:ss"
+          }, 
+          "MM/dd/yy hh:mm:ss": {
+            "label": "MM/dd/yy hh:mm:ss"
+          }, 
+          "дд/мММ/гггггг.": {
+            "label": "дд/мММ/гггггг."
+          }, 
+          "дд/мММ/гей хм:ммм:сс": {
+            "label": "дд/мММ/гей хм:ммм:сс"
+          }, 
+          "HH:mm:ss": {
+            "label": "HH:mm:ss"
+          }
+        }, 
+        "val": "yyyy-MM-dd hh:mm:ss", 
+        "breakLine": true
+      }
+    }
+  }
+}

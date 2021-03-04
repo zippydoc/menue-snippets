@@ -1,0 +1,102 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "选择选项", 
+    "repeat": false, 
+    "fields": {
+      "split_method": {
+        "type": "select", 
+        "label": "分割法", 
+        "required": true, 
+        "options": {
+          "standard": {
+            "label": "标准型"
+          }, 
+          "regex": {
+            "label": "RegEx"
+          }
+        }, 
+        "val": "standard"
+      }, 
+      "split_type": {
+        "type": "select", 
+        "label": "分体式", 
+        "required": true, 
+        "options": {
+          "split_to_columns": {
+            "label": "分栏"
+          }, 
+          "split_to_rows": {
+            "label": "分割到行"
+          }
+        }, 
+        "val": "split_to_columns", 
+        "breakLine": true
+      }, 
+      "standard_delimiter": {
+        "type": "select", 
+        "label": "分割定标器", 
+        "show_if": "split_method=='standard'", 
+        "required": true, 
+        "options": {
+          "tabs": {
+            "label": "标签"
+          }, 
+          "space": {
+            "label": "空间"
+          }, 
+          "whitespace": {
+            "label": "空白"
+          }, 
+          "linebreak": {
+            "label": "换行"
+          }, 
+          "punctuation": {
+            "label": "标点符号"
+          }, 
+          "punctuation_whitespace": {
+            "label": "标点和空白"
+          }, 
+          "custom": {
+            "label": "自定义"
+          }
+        }, 
+        "val": "punctuation"
+      }, 
+      "delimiter": {
+        "type": "text", 
+        "label": "分割定标器", 
+        "show_if": "split_method=='standard' && standard_delimiter=='custom'", 
+        "val": ", ,\
+        trim": "false", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "format": {
+        "type": "fieldset", 
+        "label": "要解析的格式", 
+        "show_if": "split_method=='regex'", 
+        "repeat": false, 
+        "fields": {
+          "format_to_convert.regular_expression": {
+            "type": "text", 
+            "label": "Parse Regular Expression ( ex: ([a-z]+)\\\\s([a-z]+) )", 
+            "val": "([a-z]+)\\\\s([a-z]+)", 
+            "required": true, 
+            "width": "100%", 
+            "trim": "false", 
+            "breakLine": true
+          }, 
+          "format_to_convert.case_insensitive": {
+            "type": "checkbox", 
+            "label": "不区分大小写", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}

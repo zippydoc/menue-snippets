@@ -113,6 +113,15 @@
         "options": {
           "github": {
             "label": "Github"
+          },
+          "dropbox": {
+            "label": "Dropbox"
+          },
+          "google_drive": {
+            "label": "Google Drive"
+          },
+          "ms_one_drive": {
+            "label": "Microsoft OneDrive"
           }
         },
         "val": "github",
@@ -137,10 +146,19 @@
         "required": true,
         "breakLine": true
       },
+      "options.github_create_pr": {
+        "type": "checkbox",
+        "label": "Create pull request",
+        "show_if": "options.to=='file' && options.webservice=='github'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "options.github_token": {
         "type": "text",
         "label": "Specify the github personal access token that has write permission:",
-        "show_if": "options.to=='file' || options.to=='mytask'",
+        "show_if": "options.to=='file' && options.webservice=='github'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -148,7 +166,7 @@
       "options.github_url": {
         "type": "text",
         "label": "Enter link e.g. https://github.com/zippydoc/test",
-        "show_if": "options.to=='file' || options.to=='mytask'",
+        "show_if": "options.to=='file' && options.webservice=='github'",
         "val": "https://github.com/zippydoc/public-tables",
         "required": true,
         "width": "100%",
