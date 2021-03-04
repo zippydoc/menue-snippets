@@ -1,0 +1,61 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Выберите Опции биннинга", 
+    "repeat": false, 
+    "fields": {
+      "number_of_tiles": {
+        "type": "text", 
+        "label": "Количество бункеров", 
+        "val": "2", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "binning_type": {
+        "type": "select", 
+        "label": "Тип биннинга", 
+        "options": {
+          "equal_records": {
+            "label": "Простое отлёжка"
+          }, 
+          "equal_intervals": {
+            "label": "Биннинг с равным интервалом"
+          }
+        }, 
+        "val": "equal_records"
+      }, 
+      "equal_records_order": {
+        "type": "select", 
+        "label": "Заказать", 
+        "show_if": "binning_type=='equal_records'", 
+        "options": {
+          "keep_current": {
+            "label": "Поддерживать ток"
+          }, 
+          "asc": {
+            "label": "Восходящий"
+          }, 
+          "desc": {
+            "label": "Поступающий"
+          }
+        }, 
+        "val": "keep_current"
+      }, 
+      "equal_intervals_order": {
+        "type": "select", 
+        "label": "Заказать", 
+        "show_if": "binning_type=='equal_intervals'", 
+        "options": {
+          "asc": {
+            "label": "Восходящий"
+          }, 
+          "desc": {
+            "label": "Поступающий"
+          }
+        }, 
+        "val": "asc"
+      }
+    }, 
+    "breakLine": true
+  }
+}

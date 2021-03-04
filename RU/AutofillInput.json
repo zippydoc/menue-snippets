@@ -1,0 +1,90 @@
+      }, 
+{
+  "input": {
+    "type": "fieldset", 
+    "label": "Выберите Входную таблицу", 
+    "repeat": false, 
+    "fields": {
+      "tables": {
+        "type": "fieldset", 
+        "label": "Таблицы выбора", 
+        "repeat": true, 
+        "fields": {
+          "table_id": {
+            "type": "select", 
+            "label": "Смотровая таблица", 
+            "bind": "TABLES", 
+            "required": true
+          }, 
+          "lookup_header_column": {
+            "type": "select", 
+            "label": "Колонна заголовка", 
+            "table": "this.table_id", 
+            "bind": "COLUMNS", 
+            "required": true
+          }, 
+          "lookup_value_column": {
+            "type": "select", 
+            "label": "Столбец значений", 
+            "table": "this.table_id", 
+            "bind": "COLUMNS", 
+            "required": true
+          }, 
+          "lookup_mapping_column": {
+            "type": "select", 
+            "label": "Картографическая колонна", 
+            "table": "this.table_id", 
+            "bind": "COLUMNS"
+          }, 
+          "delete": {
+            "type": "button", 
+            "label": "Удалить", 
+            "function": "DELETE_ROW"
+          }
+        }
+      }, 
+      "options.treatment": {
+        "type": "select", 
+        "label": "Лечение множественных случаев", 
+        "required": true, 
+        "options": {
+          "sum": {
+            "label": "Сумма"
+          }, 
+          "min": {
+            "label": "Мин"
+          }, 
+          "max": {
+            "label": "Макс"
+          }, 
+          "shortest": {
+            "label": "Кратчайший"
+          }, 
+          "longest": {
+            "label": "Самый длинный"
+          }, 
+          "first": {
+            "label": "Первый"
+          }, 
+          "last": {
+            "label": "Последний"
+          }, 
+          "concatenate": {
+            "label": "Концентрат"
+          }
+        }, 
+        "val": "sum", 
+        "style": "min-width: 200px"
+      "options.treatment_delimiter": {
+        "type": "text", 
+        "label": "Делимиттер", 
+        "show_if": "options.treatment=='concatenate'", 
+        "required": true, 
+        "minLength": 1, 
+        "maxLength": 255, 
+        "val": ";", 
+        "breakLine": true
+      }
+    }
+  }
+}

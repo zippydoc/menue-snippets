@@ -1,28 +1,28 @@
 {
   "output": {
     "type": "fieldset", 
-    "label": "å®ä¹è¾åºè¡¨", 
+    "label": "定义输出表", 
     "repeat": false, 
     "fields": {
       "output.type": {
         "type": "select", 
-        "label": "è¡¨å", 
+        "label": "表名", 
         "val": "auto", 
         "options": {
           "auto": {
-            "label": "èªå¨"
+            "label": "自动"
           }, 
           "custom": {
-            "label": "èªå®ä¹"
+            "label": "自定义"
           }, 
           "compose": {
-            "label": "æ°å"
+            "label": "撰写"
           }
         }
       }, 
       "output.custom_text": {
         "type": "text", 
-        "label": "è¾åºè¡¨åç§°", 
+        "label": "输出表名称", 
         "show_if": "output.type=='custom'", 
         "required": true, 
         "minLength": 1, 
@@ -32,7 +32,7 @@
       }, 
       "output.prefix_rule": {
         "type": "select", 
-        "label": "åç¼", 
+        "label": "前缀", 
         "show_if": "output.type=='compose'", 
         "val": "empty", 
         "options": {
@@ -40,28 +40,28 @@
             "label": "-"
           }, 
           "script_name": {
-            "label": "ä»»å¡åç§°"
+            "label": "任务名称"
           }, 
           "date_string_type1": {
-            "label": "æ¥æï¼æ¥_æ_å¹´"
+            "label": "日期：日_月_年"
           }, 
           "date_string_type2": {
-            "label": "æ¥æï¼yyy_mm_dd"
+            "label": "日期：yyy_mm_dd"
           }, 
           "time_string": {
-            "label": "æ¶é´ï¼h_min_sec"
+            "label": "时间：h_min_sec"
           }, 
           "datetime_string": {
-            "label": "æ¥æ_æ¶é´"
+            "label": "日期_时间"
           }, 
           "custom": {
-            "label": "èªå®ä¹"
+            "label": "自定义"
           }
         }
       }, 
       "output.prefix_text": {
         "type": "text", 
-        "label": "åç¼æå­", 
+        "label": "前缀文字", 
         "show_if": "output.type=='compose' && output.prefix_rule=='custom'", 
         "minLength": 1, 
         "maxLength": 31, 
@@ -69,28 +69,28 @@
       }, 
       "output.core_delimiter": {
         "type": "text", 
-        "label": "å®çç¬¦", 
+        "label": "定界符", 
         "show_if": "output.type=='compose' && output.prefix_rule!='empty'", 
         "val": "_", 
         "width": "50px"
       }, 
       "output.core_rule": {
         "type": "select", 
-        "label": "è¡¨å", 
+        "label": "表名", 
         "show_if": "output.type=='compose'", 
         "val": "script_name", 
         "options": {
           "script_name": {
-            "label": "ä»»å¡åç§°"
+            "label": "任务名称"
           }, 
           "custom": {
-            "label": "èªå®ä¹"
+            "label": "自定义"
           }
         }
       }, 
       "output.core_text": {
         "type": "text", 
-        "label": "è¾åºè¡¨åç§°", 
+        "label": "输出表名称", 
         "show_if": "output.type=='compose' && output.core_rule=='custom'", 
         "required": true, 
         "minLength": 1, 
@@ -99,14 +99,14 @@
       }, 
       "output.suffix_delimiter": {
         "type": "text", 
-        "label": "å®çç¬¦", 
+        "label": "定界符", 
         "show_if": "output.type=='compose'", 
         "val": "_", 
         "width": "50px"
       }, 
       "output.suffix_rule": {
         "type": "select", 
-        "label": "åç¼", 
+        "label": "后缀", 
         "show_if": "output.type=='compose'", 
         "val": "script_name", 
         "options": {
@@ -114,28 +114,28 @@
             "label": "-"
           }, 
           "script_name": {
-            "label": "ä»»å¡åç§°"
+            "label": "任务名称"
           }, 
           "date_string_type1": {
-            "label": "æ¥æï¼æ¥_æ_å¹´"
+            "label": "日期：日_月_年"
           }, 
           "date_string_type2": {
-            "label": "æ¥æï¼yyy_mm_dd"
+            "label": "日期：yyy_mm_dd"
           }, 
           "time_string": {
-            "label": "æ¶é´ï¼h_min_sec"
+            "label": "时间：h_min_sec"
           }, 
           "datetime_string": {
-            "label": "æ¥æ_æ¶é´"
+            "label": "日期_时间"
           }, 
           "custom": {
-            "label": "èªå®ä¹"
+            "label": "自定义"
           }
         }
       }, 
       "output.suffix_text": {
         "type": "text", 
-        "label": "åç¼ææ¬", 
+        "label": "后缀文本", 
         "show_if": "output.type=='compose' && output.suffix_rule=='custom'", 
         "minLength": 1, 
         "maxLength": 31, 
@@ -144,85 +144,85 @@
       }, 
       "output.timezone": {
         "type": "select", 
-        "label": "æ¶åº", 
+        "label": "时区", 
         "show_if": "output.type=='compose' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
-        "val": "æ¬§æ´²/ææ", 
+        "val": "欧洲/柏林", 
         "required": true, 
         "options": {
-          "æ¬§æ´²/é¿å§æ¯ç¹ä¸¹": {
-            "label": "æ¬§æ´²/é¿å§æ¯ç¹ä¸¹"
+          "欧洲/阿姆斯特丹": {
+            "label": "欧洲/阿姆斯特丹"
           }, 
-          "æ¬§æ´²/ææ": {
-            "label": "æ¬§æ´²/ææ"
+          "欧洲/柏林": {
+            "label": "欧洲/柏林"
           }, 
-          "æ¬§æ´²/èµ«å°è¾åº": {
-            "label": "æ¬§æ´²/èµ«å°è¾åº"
+          "欧洲/赫尔辛基": {
+            "label": "欧洲/赫尔辛基"
           }, 
-          "æ¬§æ´²/ä¼¦æ¦": {
-            "label": "æ¬§æ´²/ä¼¦æ¦"
+          "欧洲/伦敦": {
+            "label": "欧洲/伦敦"
           }, 
-          "æ¬§æ´²/å¢æ£®å ¡": {
-            "label": "æ¬§æ´²/å¢æ£®å ¡"
+          "欧洲/卢森堡": {
+            "label": "欧洲/卢森堡"
           }, 
-          "æ¬§æ´²/å¥¥æ¯é": {
-            "label": "æ¬§æ´²/å¥¥æ¯é"
+          "欧洲/奥斯陆": {
+            "label": "欧洲/奥斯陆"
           }, 
-          "æ¬§æ´²/å·´é»": {
-            "label": "æ¬§æ´²/å·´é»"
+          "欧洲/巴黎": {
+            "label": "欧洲/巴黎"
           }, 
-          "æ¬§æ´²/ç½é©¬": {
-            "label": "æ¬§æ´²/ç½é©¬"
+          "欧洲/罗马": {
+            "label": "欧洲/罗马"
           }, 
-          "ç¾å½/é¿ææ¯å ": {
-            "label": "ç¾å½/é¿ææ¯å "
+          "美国/阿拉斯加": {
+            "label": "美国/阿拉斯加"
           }, 
-          "ç¾å½/ä¸­é¨": {
-            "label": "ç¾å½/ä¸­é¨"
+          "美国/中部": {
+            "label": "美国/中部"
           }, 
-          "ç¾å½/ä¸é¨": {
-            "label": "ç¾å½/ä¸é¨"
+          "美国/东部": {
+            "label": "美国/东部"
           }, 
-          "ç¾å½/å¤ªå¹³æ´": {
-            "label": "ç¾å½/å¤ªå¹³æ´"
+          "美国/太平洋": {
+            "label": "美国/太平洋"
           }
         }, 
         "breakLine": true
       }, 
       "output.set_options": {
         "type": "checkbox", 
-        "label": "è¾åºéé¡¹", 
+        "label": "输出选项", 
         "val": "false", 
         "isOn": "true", 
         "isOff": "false"
       }, 
       "output_options_box": {
         "type": "fieldset", 
-        "label": "è¾åºéé¡¹", 
+        "label": "输出选项", 
         "show_if": "output.set_options=='true'", 
         "repeat": false, 
         "fields": {
           "output.options.location": {
             "type": "text", 
-            "label": "æå®å°ç¹", 
+            "label": "指定地点", 
             "val": "A1", 
             "breakLine": true
           }, 
           "output.options.table_mode": {
             "type": "select", 
-            "label": "ç²è´´", 
+            "label": "粘贴", 
             "val": "content_only", 
             "options": {
               "content_only": {
-                "label": "ä»éåå®¹"
+                "label": "仅限内容"
               }, 
               "fully_formatted": {
-                "label": "å®å¨æ ¼å¼å"
+                "label": "完全格式化"
               }
             }
           }, 
           "output.options.formatted_as_table": {
             "type": "checkbox", 
-            "label": "æ ¼å¼ä¸ºè¡¨", 
+            "label": "格式为表", 
             "val": "true", 
             "isOn": "true", 
             "isOff": "false", 
@@ -230,14 +230,14 @@
           }, 
           "output.add_tag": {
             "type": "checkbox", 
-            "label": "æ·»å æ ç­¾", 
+            "label": "添加标签", 
             "val": "false", 
             "isOn": "true", 
             "isOff": "false"
           }, 
           "output.tag_name": {
             "type": "text", 
-            "label": "æ ç­¾åç§°", 
+            "label": "标签名称", 
             "show_if": "output.add_tag=='true'", 
             "required": true, 
             "minLength": 1, 
@@ -248,14 +248,14 @@
           }, 
           "output.options.visibility": {
             "type": "select", 
-            "label": "å¯è§åº¦", 
+            "label": "可见度", 
             "val": "current_flow", 
             "options": {
               "current_flow": {
-                "label": "å½åæµé"
+                "label": "当前流量"
               }, 
               "all_flow": {
-                "label": "æææµé"
+                "label": "所有流量"
               }
             }
           }

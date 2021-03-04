@@ -1,0 +1,809 @@
+              }, 
+              "0": {
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "选择选项", 
+    "repeat": false, 
+    "fields": {
+      "options.position": {
+        "type": "select", 
+        "label": "选择位置", 
+        "required": true, 
+        "show_if": "table_type=='header_only'", 
+        "options": {
+          "add_rows_below_selected_row": {
+            "label": "在下面添加行"
+          }, 
+          "add_rows_above_selected_row": {
+            "label": "在上面添加行"
+          }, 
+          "add_rows_at_table_end": {
+            "label": "在表尾添加行"
+          }, 
+          "add_single_row_at_table_end": {
+            "label": "在表尾添加单行"
+          }, 
+          "add_row_after_each_group": {
+            "label": "在每组之后增加一行"
+          }
+        }, 
+        "val": "add_rows_below_selected_row", 
+        "breakLine": true
+      }, 
+      "options.group_column": {
+        "type": "select", 
+        "label": "组列", 
+        "show_if": "table_type=='header_only' && options.position=='add_row_after_each_group'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.use_filter": {
+        "type": "checkbox", 
+        "label": "使用过滤器", 
+        "show_if": "table_type=='header_only' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true, 
+        "style": "margin-top: 10px"
+      }, 
+      "filter_box": {
+        "type": "fieldset", 
+        "label": "过滤器选项", 
+        "show_if": "table_type=='header_only' && options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')", 
+        "repeat": false, 
+        "fields": {
+          "options.filter": {
+            "type": "fieldset", 
+            "label": "添加过滤条件", 
+            "repeat": true, 
+            "fields": {
+              "initial_op": {
+                "type": "select", 
+                "label": "选择逻辑运算符", 
+                "required": true, 
+                "show_if": "$index == 0", 
+                "options": {
+                  "if": {
+                    "label": "IF"
+                  }, 
+                  "if_not": {
+                    "label": "IF NOT"
+                  }
+                }, 
+                "val": "if"
+              }, 
+              "op": {
+                "type": "select", 
+                "label": "选择逻辑运算符", 
+                "required": true, 
+                "show_if": "$index > 0", 
+                "options": {
+                  "and": {
+                    "label": "AND"
+                  }, 
+                  "or": {
+                    "label": "或"
+                  }, 
+                  "and_not": {
+                    "label": "而不是"
+                  }, 
+                  "or_not": {
+                    "label": "或不"
+                  }
+                }, 
+                "val": "and"
+              }, 
+              "column": {
+                "type": "select", 
+                "label": "选择列", 
+                "table": "input_table", 
+                "bind": "COLUMNS", 
+                "required": true
+              }, 
+              "condition": {
+                "type": "select", 
+                "label": "选择操作员", 
+                "required": true, 
+                "options": {
+                  "含有": {
+                    "label": "含有"
+                  }, 
+                  "CONTAINED IN STRING": {
+                    "label": "包含在"
+                  }, 
+                  "开始于": {
+                    "label": "开始于"
+                  }, 
+                  "ENDS WITH": {
+                    "label": "ENDS WITH"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "大于"
+                  }, 
+                  ">=": {
+                    "label": "大于或等于"
+                  }, 
+                  "<": {
+                    "label": "小于"
+                  }, 
+                  "<=": {
+                    "label": "较小或相等"
+                  }, 
+                  "EMPTY": {
+                    "label": "是空的"
+                  }, 
+                  "BLANK": {
+                    "label": "是空白的"
+                  }, 
+                  "IS NULL": {
+                    "label": "IS NULL"
+                  }, 
+                  "REGEX MATCH": {
+                    "label": "REGEX MATCH"
+                  }, 
+                  "CONTAINED IN TABLE": {
+                    "label": "表中"
+                  }, 
+                  "在REGEX表中": {
+                    "label": "在REGEX表中"
+                  }, 
+                  "日期": {
+                    "label": "日期"
+                  }
+                }, 
+                "val": "含有"
+              }, 
+              "date_condition": {
+                "type": "select", 
+                "label": "选择日期运算符", 
+                "required": true, 
+                "show_if": "this.condition == 'DATE'", 
+                "options": {
+                  "<": {
+                    "label": "以前"
+                  }, 
+                  "<=": {
+                    "label": "优先或平等"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "后"
+                  }, 
+                  ">=": {
+                    "label": "后或等于"
+                  }
+                }, 
+                "val": "="
+              }, 
+              "case_sensitive": {
+                "type": "select", 
+                "label": "选择区分大小写", 
+                "required": true, 
+                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'", 
+                "options": {
+                  "yes": {
+                    "label": "大小写敏感"
+                  }, 
+                  "no": {
+                    "label": "不区分大小写"
+                  }
+                }, 
+                "val": "yes"
+              }, 
+              "date_value": {
+                "type": "date", 
+                "label": "选择日期", 
+                "show_if": "this.condition=='DATE'", 
+                "val": "1/31/2020", 
+                "required": true
+              }, 
+              "value": {
+                "type": "text", 
+                "label": "输入值", 
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'", 
+                "val": "", 
+                "required": true
+              }, 
+              "compare_table": {
+                "type": "select", 
+                "label": "选择表格", 
+                "bind": "TABLES", 
+                "empty": "", 
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'", 
+                "required": true
+              }, 
+              "compare_column": {
+                "type": "select", 
+                "label": "选择列", 
+                "table": "this.compare_table", 
+                "bind": "COLUMNS", 
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'", 
+                "required": true
+              }, 
+              "delete": {
+                "type": "button", 
+                "label": "删除", 
+                "function": "DELETE_ROW"
+              }
+            }
+          }, 
+          "options.apply_to_record": {
+            "type": "checkbox", 
+            "label": "申请记录", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "style": "margin-top: 10px", 
+            "breakLine": true
+          }, 
+          "apply_to_group_box": {
+            "type": "fieldset", 
+            "label": "申请加入集团", 
+            "show_if": "options.apply_to_record=='false'", 
+            "repeat": false, 
+            "fields": {
+              "options.apply_to_group_columns": {
+                "type": "select", 
+                "label": "选择组列", 
+                "required": true, 
+                "width": "100%", 
+                "table": "input_table", 
+                "multiple": true, 
+                "bind": "COLUMNS", 
+                "breakLine": true
+              }
+            }
+          }
+        }
+      }, 
+      "options.add_rows": {
+        "type": "fieldset", 
+        "label": "New Rows Option", 
+        "repeat": true, 
+        "fields": {
+          "new_row_name": {
+            "type": "text", 
+            "label": "New Row Name", 
+            "val": "NewRow", 
+            "required": true
+          }, 
+          "format__category": {
+            "type": "select", 
+            "label": "格式", 
+            "required": true, 
+            "options": {
+              "standard": {
+                "label": "标准型"
+              }, 
+              "number": {
+                "label": "数量"
+              }, 
+              "percentage": {
+                "label": "百分比"
+              }, 
+              "text": {
+                "label": "案文"
+              }, 
+              "date": {
+                "label": "日期"
+              }, 
+              "currency": {
+                "label": "币种"
+              }
+            }, 
+            "val": "standard"
+          }, 
+          "format__rounding": {
+            "type": "select", 
+            "label": "四舍五入", 
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'", 
+            "required": true, 
+            "options": {
+              "no_rounding": {
+                "label": "没有四舍五入"
+                "label": "0位"
+              }, 
+              "1": {
+                "label": "1位数"
+              }, 
+              "2": {
+                "label": "2位数"
+              }, 
+              "3": {
+                "label": "3位数"
+              }, 
+              "4": {
+                "label": "4位数"
+              }, 
+              "5": {
+                "label": "5位数"
+              }, 
+              "6": {
+                "label": "6位数"
+              }, 
+              "7": {
+                "label": "7位数"
+              }, 
+              "8": {
+                "label": "8位数"
+              }, 
+              "9": {
+                "label": "9位数"
+              }
+            }, 
+            "val": "no_rounding"
+          }, 
+          "format__use_1000_separator": {
+            "type": "checkbox", 
+            "label": "使用1000分离器(.)", 
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'", 
+            "val": "false", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "format__currency_symbol": {
+            "type": "select", 
+            "label": "符号", 
+            "show_if": "this.format__category=='currency'", 
+            "required": true, 
+            "options": {
+              "dollar": {
+                "label": "$"
+              }, 
+              "euro": {
+                "label": "â¬"
+              }, 
+              "pound": {
+                "label": "Â£"
+              }
+            }, 
+            "val": "dollar"
+          }, 
+          "format__date_format": {
+            "type": "select", 
+            "label": "种类", 
+            "show_if": "this.format__category=='date'", 
+            "required": true, 
+            "options": {
+              "mm/dd/yyyy": {
+                "label": "3/14/2012"
+              }, 
+              "D,  M dd,  Y": {
+                "label": "2012年3月14日 星期三"
+              }, 
+              "yyyy-mm-dd": {
+                "label": "2012-03-14"
+              }
+            }, 
+            "val": "mm/dd/yyyy", 
+            "breakLine": true
+          }, 
+          "function_type": {
+            "type": "select", 
+            "label": "任务类型", 
+            "required": true, 
+            "options": {
+              "multi_column_functions": {
+                "label": "多柱式"
+              }, 
+              "multi_row_functions": {
+                "label": "多行"
+              }
+            }, 
+            "val": "multi_column_functions"
+          }, 
+          "multi_column_functions__function": {
+            "type": "select", 
+            "label": "选择功能", 
+            "show_if": "this.function_type=='multi_column_functions'", 
+            "required": true, 
+            "options": {
+              "absolute_growth": {
+                "label": "绝对增长"
+              }, 
+              "relative_growth": {
+                "label": "相对增长"
+              }, 
+              "trailing_average": {
+                "label": "追踪平均数"
+              }, 
+              "index_growth": {
+                "label": "指数增长"
+              }, 
+              "compound_growth": {
+                "label": "复式增长"
+              }, 
+              "discount_rate": {
+                "label": "折扣率"
+              }, 
+              "quota": {
+                "label": "配额"
+              }
+            }, 
+            "val": "absolute_growth"
+          }, 
+          "multi_row_functions__function": {
+            "type": "select", 
+            "label": "选择功能", 
+            "show_if": "this.function_type=='multi_row_functions'", 
+            "required": true, 
+            "options": {
+              "sum": {
+                "label": "总额"
+              }, 
+              "average": {
+                "label": "平均值"
+              }, 
+              "median": {
+                "label": "中位数"
+              }, 
+              "standard_deviation": {
+                "label": "标准偏差"
+              }, 
+              "variance": {
+                "label": "差异"
+              }, 
+              "product": {
+                "label": "产品介绍"
+              }
+            }, 
+            "val": "sum"
+          }, 
+          "multi_column_functions__n_value": {
+            "type": "text", 
+            "label": "N(正整数)", 
+            "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')", 
+            "val": "1", 
+            "required": true
+          }, 
+          "multi_column_functions__discount_rate__rate": {
+            "type": "text", 
+            "label": "输入率", 
+            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'", 
+            "val": "1", 
+            "required": true
+          }, 
+          "multi_column_functions__discount_rate__starting_column": {
+            "type": "select", 
+            "label": "起始列", 
+            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'", 
+            "table": "input_table", 
+            "bind": "COLUMNS", 
+            "required": true
+          }, 
+          "multi_column_functions__sel_label_a": {
+            "type": "select", 
+            "label": "Select Label A", 
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'", 
+            "required": true, 
+            "table": "input_table", 
+            "bind": "LABELS"
+          }, 
+          "multi_column_functions__sel_label_b": {
+            "type": "select", 
+            "label": "Select Label B", 
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'", 
+            "required": true, 
+            "table": "input_table", 
+            "bind": "LABELS", 
+            "breakLine": true
+          }, 
+          "position": {
+            "type": "select", 
+            "label": "职务", 
+            "show_if": "table_type!='header_only'", 
+            "required": true, 
+            "options": {
+              "above": {
+                "label": "ABOVE"
+              }, 
+              "below": {
+                "label": "BELOW"
+              }
+            }, 
+            "val": "below"
+          }, 
+          "multi_column_functions__sel_labels": {
+            "type": "select", 
+            "label": "Select Label(s)", 
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')", 
+            "required": true, 
+            "table": "input_table", 
+            "multiple": true, 
+            "bind": "LABELS"
+          }, 
+          "multi_column_functions__quota_sel_labels": {
+            "type": "select", 
+            "label": "Select Label(s)", 
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'", 
+            "required": true, 
+            "table": "input_table", 
+            "multiple": true, 
+            "bind": "LABELS"
+          }, 
+          "multi_row_functions__sel_labels": {
+            "type": "select", 
+            "label": "Select Label(s)", 
+            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions'", 
+            "required": true, 
+            "table": "input_table", 
+            "multiple": true, 
+            "bind": "LABELS"
+          }, 
+          "multi_column_functions__sel_row_a": {
+            "type": "select", 
+            "label": "Select Row A", 
+            "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'", 
+            "required": true, 
+            "options": {
+              "row-1": {
+                "label": "Row-1"
+              }, 
+              "row-2": {
+                "label": "Row-2"
+              }, 
+              "row-3": {
+                "label": "Row-3"
+              }, 
+              "row-4": {
+                "label": "Row-4"
+              }, 
+              "row-5": {
+                "label": "Row-5"
+              }, 
+              "row-6": {
+                "label": "Row-6"
+              }, 
+              "row-7": {
+                "label": "Row-7"
+              }, 
+              "row-8": {
+                "label": "Row-8"
+              }, 
+              "row-9": {
+                "label": "Row-9"
+              }, 
+              "row-10": {
+                "label": "Row-10"
+              }, 
+              "row-11": {
+                "label": "Row-11"
+              }, 
+              "row-12": {
+                "label": "Row-12"
+              }, 
+              "row-13": {
+                "label": "Row-13"
+              }, 
+              "row-14": {
+                "label": "Row-14"
+              }, 
+              "row-15": {
+                "label": "Row-15"
+              }, 
+              "row-16": {
+                "label": "Row-16"
+              }, 
+              "row-17": {
+                "label": "Row-17"
+              }, 
+              "row-18": {
+                "label": "Row-18"
+              }, 
+              "row-19": {
+                "label": "Row-19"
+              }, 
+              "row-20": {
+                "label": "Row-20"
+              }, 
+              "row+1": {
+                "label": "Row+1"
+              }, 
+              "row+2": {
+                "label": "Row+2"
+              }, 
+              "row+3": {
+                "label": "Row+3"
+              }, 
+              "row+4": {
+                "label": "Row+4"
+              }, 
+              "row+5": {
+                "label": "Row+5"
+              }, 
+              "row+6": {
+                "label": "Row+6"
+              }, 
+              "row+7": {
+                "label": "Row+7"
+              }, 
+              "row+8": {
+                "label": "Row+8"
+              }, 
+              "row+9": {
+                "label": "Row+9"
+              }, 
+              "row+10": {
+                "label": "Row+10"
+              }, 
+              "row+11": {
+                "label": "Row+11"
+              }, 
+              "row+12": {
+                "label": "Row+12"
+              }, 
+              "row+13": {
+                "label": "Row+13"
+              }, 
+              "row+14": {
+                "label": "Row+14"
+              }, 
+              "row+15": {
+                "label": "Row+15"
+              }, 
+              "row+16": {
+                "label": "Row+16"
+              }, 
+              "row+17": {
+                "label": "Row+17"
+              }, 
+              "row+18": {
+                "label": "Row+18"
+              }, 
+              "row+19": {
+                "label": "Row+19"
+              }, 
+              "row+20": {
+                "label": "Row+20"
+              }
+            }, 
+            "val": "row-1"
+          }, 
+          "multi_column_functions__sel_row_b": {
+            "type": "select", 
+            "label": "Select Row B", 
+            "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'", 
+            "required": true, 
+            "options": {
+              "row-1": {
+                "label": "Row-1"
+              }, 
+              "row-2": {
+                "label": "Row-2"
+              }, 
+              "row-3": {
+                "label": "Row-3"
+              }, 
+              "row-4": {
+                "label": "Row-4"
+              }, 
+              "row-5": {
+                "label": "Row-5"
+              }, 
+              "row-6": {
+                "label": "Row-6"
+              }, 
+              "row-7": {
+                "label": "Row-7"
+              }, 
+              "row-8": {
+                "label": "Row-8"
+              }, 
+              "row-9": {
+                "label": "Row-9"
+              }, 
+              "row-10": {
+                "label": "Row-10"
+              }, 
+              "row-11": {
+                "label": "Row-11"
+              }, 
+              "row-12": {
+                "label": "Row-12"
+              }, 
+              "row-13": {
+                "label": "Row-13"
+              }, 
+              "row-14": {
+                "label": "Row-14"
+              }, 
+              "row-15": {
+                "label": "Row-15"
+              }, 
+              "row-16": {
+                "label": "Row-16"
+              }, 
+              "row-17": {
+                "label": "Row-17"
+              }, 
+              "row-18": {
+                "label": "Row-18"
+              }, 
+              "row-19": {
+                "label": "Row-19"
+              }, 
+              "row-20": {
+                "label": "Row-20"
+              }, 
+              "row+1": {
+                "label": "Row+1"
+              }, 
+              "row+2": {
+                "label": "Row+2"
+              }, 
+              "row+3": {
+                "label": "Row+3"
+              }, 
+              "row+4": {
+                "label": "Row+4"
+              }, 
+              "row+5": {
+                "label": "Row+5"
+              }, 
+              "row+6": {
+                "label": "Row+6"
+              }, 
+              "row+7": {
+                "label": "Row+7"
+              }, 
+              "row+8": {
+                "label": "Row+8"
+              }, 
+              "row+9": {
+                "label": "Row+9"
+              }, 
+              "row+10": {
+                "label": "Row+10"
+              }, 
+              "row+11": {
+                "label": "Row+11"
+              }, 
+              "row+12": {
+                "label": "Row+12"
+              }, 
+              "row+13": {
+                "label": "Row+13"
+              }, 
+              "row+14": {
+                "label": "Row+14"
+              }, 
+              "row+15": {
+                "label": "Row+15"
+              }, 
+              "row+16": {
+                "label": "Row+16"
+              }, 
+              "row+17": {
+                "label": "Row+17"
+              }, 
+              "row+18": {
+                "label": "Row+18"
+              }, 
+              "row+19": {
+                "label": "Row+19"
+              }, 
+              "row+20": {
+                "label": "Row+20"
+              }
+            }, 
+            "val": "row-1"
+          }, 
+          "delete": {
+            "type": "button", 
+            "label": "删除", 
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
