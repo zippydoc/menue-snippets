@@ -1,28 +1,28 @@
 {
   "output": {
     "type": "fieldset", 
-    "label": "ÐÐ¿ÑÐµÐ´ÐµÐ»Ð¸ÑÑ Ð²ÑÑÐ¾Ð´Ð½ÑÑ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+    "label": "Определить выходную таблицу",
     "repeat": false, 
     "fields": {
       "output.type": {
         "type": "select", 
-        "label": "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+        "label": "Имя таблицы",
         "val": "auto", 
         "options": {
           "auto": {
-            "label": "ÐÐ²ÑÐ¾"
+            "label": "Авто"
           }, 
           "custom": {
-            "label": "ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¸Ð¹"
+            "label": "Ручной"
           }, 
           "compose": {
-            "label": "Ð¡Ð¾ÑÑÐ°Ð²Ð¸ÑÑ"
+            "label": "Составить"
           }
         }
       }, 
       "output.custom_text": {
         "type": "text", 
-        "label": "ÐÐ¼Ñ Ð²ÑÑÐ¾Ð´Ð½Ð¾Ð¹ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+        "label": "Имя Таблицы для Вывода",
         "show_if": "output.type=='custom'", 
         "required": true, 
         "minLength": 1, 
@@ -32,7 +32,7 @@
       }, 
       "output.prefix_rule": {
         "type": "select", 
-        "label": "ÐÑÐµÑÐ¸ÐºÑ", 
+        "label": "Префикс",
         "show_if": "output.type=='compose'", 
         "val": "empty", 
         "options": {
@@ -40,28 +40,28 @@
             "label": "-"
           }, 
           "script_name": {
-            "label": "ÐÐ¼Ñ Ð·Ð°Ð´Ð°ÑÐ¸"
+            "label": "Имя задачи"
           }, 
           "date_string_type1": {
-            "label": "ÐÐ°ÑÐ°: dd_mm_yyyy"
+            "label": "Дата: dd_mm_yyyy"
           }, 
           "date_string_type2": {
-            "label": "ÐÐ°ÑÐ°: yyyy_mm_dd"
+            "label": "Дата: yyyy_mm_dd"
           }, 
           "time_string": {
-            "label": "ÐÑÐµÐ¼Ñ: h_min_sec"
+            "label": "Время: h_min_sec"
           }, 
           "datetime_string": {
-            "label": "ÐÐ°ÑÐ°_Ð²ÑÐµÐ¼Ñ"
+            "label": "Дата_Время"
           }, 
           "custom": {
-            "label": "ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¸Ð¹"
+            "label": "Ручной"
           }
         }
       }, 
       "output.prefix_text": {
         "type": "text", 
-        "label": "ÐÑÐµÑÐ¸ÐºÑÐ½ÑÐ¹ ÑÐµÐºÑÑ", 
+        "label": "Префикс Текст",
         "show_if": "output.type=='compose' && output.prefix_rule=='custom'", 
         "minLength": 1, 
         "maxLength": 31, 
@@ -69,28 +69,28 @@
       }, 
       "output.core_delimiter": {
         "type": "text", 
-        "label": "ÐÐµÐ»Ð¸Ð¼Ð¸ÑÑÐµÑ", 
+        "label": "Разделитель",
         "show_if": "output.type=='compose' && output.prefix_rule!='empty'", 
         "val": "_", 
         "width": "50px"
       }, 
       "output.core_rule": {
         "type": "select", 
-        "label": "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+        "label": "Главной Таблицы",
         "show_if": "output.type=='compose'", 
         "val": "script_name", 
         "options": {
           "script_name": {
-            "label": "ÐÐ¼Ñ Ð·Ð°Ð´Ð°ÑÐ¸"
+            "label": "Имя Задачи"
           }, 
           "custom": {
-            "label": "ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¸Ð¹"
+            "label": "Ручной"
           }
         }
       }, 
       "output.core_text": {
         "type": "text", 
-        "label": "ÐÐ¼Ñ Ð²ÑÑÐ¾Ð´Ð½Ð¾Ð¹ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+        "label": "Имя Главной Таблицы",
         "show_if": "output.type=='compose' && output.core_rule=='custom'", 
         "required": true, 
         "minLength": 1, 
@@ -99,14 +99,14 @@
       }, 
       "output.suffix_delimiter": {
         "type": "text", 
-        "label": "ÐÐµÐ»Ð¸Ð¼Ð¸ÑÑÐµÑ", 
+        "label": "Разделитель",
         "show_if": "output.type=='compose'", 
         "val": "_", 
         "width": "50px"
       }, 
       "output.suffix_rule": {
         "type": "select", 
-        "label": "Ð¡ÑÑÑÐ¸ÐºÑ", 
+        "label": "Суффикс",
         "show_if": "output.type=='compose'", 
         "val": "script_name", 
         "options": {
@@ -114,28 +114,28 @@
             "label": "-"
           }, 
           "script_name": {
-            "label": "ÐÐ¼Ñ Ð·Ð°Ð´Ð°ÑÐ¸"
+            "label": "Имя задачи"
           }, 
           "date_string_type1": {
-            "label": "ÐÐ°ÑÐ°: dd_mm_yyyy"
+            "label": "Дата: dd_mm_yyyy"
           }, 
           "date_string_type2": {
-            "label": "ÐÐ°ÑÐ°: yyyy_mm_dd"
+            "label": "Дата: yyyy_mm_dd"
           }, 
           "time_string": {
-            "label": "ÐÑÐµÐ¼Ñ: h_min_sec"
+            "label": "Время: h_min_sec"
           }, 
           "datetime_string": {
-            "label": "ÐÐ°ÑÐ°_Ð²ÑÐµÐ¼Ñ"
+            "label": "Дата_Время"
           }, 
           "custom": {
-            "label": "ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¸Ð¹"
+            "label": "Ручной"
           }
         }
       }, 
       "output.suffix_text": {
         "type": "text", 
-        "label": "Ð¡ÑÑÑÐ¸ÐºÑÐ½ÑÐ¹ ÑÐµÐºÑÑ", 
+        "label": "Суффикс Текст",
         "show_if": "output.type=='compose' && output.suffix_rule=='custom'", 
         "minLength": 1, 
         "maxLength": 31, 
@@ -144,7 +144,7 @@
       }, 
       "output.timezone": {
         "type": "select", 
-        "label": "Ð¢Ð°Ð¹Ð¼Ð·Ð¾Ð½", 
+        "label": "Часовой пояс",
         "show_if": "output.type=='compose' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
         "val": "CET",
         "required": true, 
@@ -427,39 +427,39 @@
       }, 
       "output.set_options": {
         "type": "checkbox", 
-        "label": "ÐÐ¿ÑÐ¸Ð¸ Ð²ÑÐ²Ð¾Ð´Ð°", 
+        "label": "Опции Вывода",
         "val": "false", 
         "isOn": "true", 
         "isOff": "false"
       }, 
       "output_options_box": {
         "type": "fieldset", 
-        "label": "ÐÐ¿ÑÐ¸Ð¸ Ð²ÑÐ²Ð¾Ð´Ð°", 
+        "label": "Опции Вывода",
         "show_if": "output.set_options=='true'", 
         "repeat": false, 
         "fields": {
           "output.options.location": {
             "type": "text", 
-            "label": "Ð£ÐºÐ°Ð¶Ð¸ÑÐµ Ð¼ÐµÑÑÐ¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ", 
+            "label": "Указать Местоположение",
             "val": "A1", 
             "breakLine": true
           }, 
           "output.options.table_mode": {
             "type": "select", 
-            "label": "ÐÑÑÐ°Ð²Ð¸ÑÑ", 
+            "label": "Вставить",
             "val": "content_only", 
             "options": {
               "content_only": {
-                "label": "Ð¢Ð¾Ð»ÑÐºÐ¾ ÑÐ¾Ð´ÐµÑÐ¶Ð°Ð½Ð¸Ðµ"
+                "label": "Только Содержимое"
               }, 
               "fully_formatted": {
-                "label": "ÐÐ¾Ð»Ð½Ð¾ÑÑÑÑ Ð¾ÑÑÐ¾ÑÐ¼Ð°ÑÐ¸ÑÐ¾Ð²Ð°Ð½Ð½ÑÐ¹"
+                "label": "Полностью Отформатирован"
               }
             }
           }, 
           "output.options.formatted_as_table": {
             "type": "checkbox", 
-            "label": "ÐÑÑÐ¾ÑÐ¼Ð°ÑÐ¸ÑÐ¾Ð²Ð°Ð½Ð¾ Ð² Ð²Ð¸Ð´Ðµ ÑÐ°Ð±Ð»Ð¸ÑÑ", 
+            "label": "Форматировать как таблицу",
             "val": "true", 
             "isOn": "true", 
             "isOff": "false", 
@@ -467,14 +467,14 @@
           }, 
           "output.add_tag": {
             "type": "checkbox", 
-            "label": "ÐÐ¾Ð±Ð°Ð²Ð¸ÑÑ Ð¼ÐµÑÐºÑ", 
+            "label": "Добавить тэг",
             "val": "false", 
             "isOn": "true", 
             "isOff": "false"
           }, 
           "output.tag_name": {
             "type": "text", 
-            "label": "ÐÐ¼Ñ Ð¼ÐµÑÐºÐ¸", 
+            "label": "Имя Тэга",
             "show_if": "output.add_tag=='true'", 
             "required": true, 
             "minLength": 1, 
@@ -485,14 +485,14 @@
           }, 
           "output.options.visibility": {
             "type": "select", 
-            "label": "ÐÐ¸Ð´Ð¸Ð¼Ð¾ÑÑÑ", 
+            "label": "ВИдимость",
             "val": "current_flow", 
             "options": {
               "current_flow": {
-                "label": "Ð¢ÐµÐºÑÑÐ¸Ð¹ Ð¿Ð¾ÑÐ¾Ðº"
+                "label": "Текущий поток"
               }, 
               "all_flow": {
-                "label": "ÐÑÐµ Ð¿Ð¾ÑÐ¾ÐºÐ¸"
+                "label": "Все потоки"
               }
             }
           }
