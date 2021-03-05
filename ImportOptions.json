@@ -138,23 +138,46 @@
         "show_if": "options.from=='web' && options.output_format=='word_by_word'",
         "val": "true",
         "isOn": "true",
-        "isOff": "false"
-      },
-      "options.section_column_type": {
-        "type": "select",
-        "label": "Section Column Type",
-        "show_if": "options.from=='web' && options.output_format=='word_by_word' && options.add_section_column=='true'",
-        "options": {
-          "paragraph": {
-            "label": "Paragraph"
-          },
-          "brackets": {
-            "label": "Brackets"
-          }
-        },
-        "val": "paragraph",
-        "required": true,
+        "isOff": "false",
         "breakLine": true
+      },
+      "section_column_types_frame": {
+        "type": "fieldset",
+        "label": "Add Section Column Types",
+        "show_if": "options.from=='web' && options.output_format=='word_by_word' && options.add_section_column=='true'",
+        "repeat": false,
+        "fields": {
+          "options.section_columns.add_paragraph_section_column": {
+            "type": "checkbox",
+            "label": "Paragraph",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.section_columns.add_brackets_section_column": {
+            "type": "checkbox",
+            "label": "Brackets",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.section_columns.add_regex_section_column": {
+            "type": "checkbox",
+            "label": "Regular Expression",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.section_columns.regex": {
+            "type": "text",
+            "label": "Regular Expression",
+            "show_if": "options.section_columns.add_regex_section_column=='true'",
+            "required": true,
+            "breakLine": true
+          }
+        }
       },
       "options.add_filename_column": {
         "type": "checkbox",
@@ -163,6 +186,7 @@
         "val": "false",
         "isOn": "true",
         "isOff": "false",
+        "style": "margin-top: 10px",
         "breakLine": true
       },
       "options.is_github_dir": {
