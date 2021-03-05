@@ -1,0 +1,130 @@
+        }, 
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Seleziona le opzioni del periodo", 
+    "repeat": false, 
+    "fields": {
+      "options.type": {
+        "type": "select", 
+        "label": "Tipo", 
+        "options": {
+          "generate": {
+            "label": "Generare un esempio di periodicità"
+          }, 
+          "process": {
+            "label": "Tabella dei periodi di processo"
+          }
+        "val": "generate", 
+        "breakLine": true
+      }, 
+      "options.standard_table": {
+        "type": "checkbox", 
+        "label": "Tabella dei periodi standard", 
+        "show_if": "options.type=='process'", 
+        "val": "true", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "options.initial_date": {
+        "type": "select", 
+        "label": "Data iniziale", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "options.period": {
+        "type": "select", 
+        "label": "Periodicità (ad esempio mensile, trimestrale)", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "options.final_date": {
+        "type": "select", 
+        "label": "Data finale", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "breakLine": true
+      }, 
+      "options.volume": {
+        "type": "select", 
+        "label": "Importo", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS"
+      }, 
+      "options.growth": {
+        "type": "select", 
+        "label": "Crescita", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS"
+      }, 
+      "options.growth_period": {
+        "type": "select", 
+        "label": "Periodo di crescita", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "options": {
+          "selected_period": {
+            "label": "Uguale a Periodicy"
+          }, 
+          "week_on_week": {
+            "label": "Settimana per settimana"
+          }, 
+          "month_on_month": {
+            "label": "Mese per mese"
+          }, 
+          "quarter_on_quarter": {
+            "label": "Trimestre su trimestre"
+          }, 
+          "year_on_year": {
+            "label": "Anno per anno"
+          }, 
+          "column": {
+            "label": "Seleziona la colonna"
+          }
+        }, 
+        "val": "selected_period"
+      }, 
+      "options.growth_period_column": {
+        "type": "select", 
+        "label": "Colonna del periodo di crescita", 
+        "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.use_growth_pattern_column": {
+        "type": "checkbox", 
+        "label": "Modello di crescita dell'uso", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "options.growth_pattern_column": {
+        "type": "select", 
+        "label": "Modello di crescita", 
+        "show_if": "options.type=='process' && options.standard_table=='false' && options.use_growth_pattern_column=='true'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.end_date": {
+        "type": "date", 
+        "label": "Data di fine della tabella", 
+        "show_if": "options.type=='process'", 
+        "val": "", 
+        "required": true, 
+        "style": "width: 300px"
+      }
+    }
+  }
+}

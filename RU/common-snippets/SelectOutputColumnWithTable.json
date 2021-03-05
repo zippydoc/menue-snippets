@@ -1,49 +1,49 @@
 {
   "output.select_output_columns": {
     "type": "checkbox", 
-    "label": "Выберите Выходные колонки", 
+    "label": "Выбрать исходящие столбцы",
     "val": "false", 
     "isOn": "true", 
     "isOff": "false"
   }, 
   "output_columns": {
     "type": "fieldset", 
-    "label": "Выберите OutputColumns", 
+    "label": "Выбрать исходящие столбцы",
     "show_if": "output.select_output_columns=='true'", 
     "repeat": true, 
     "fields": {
       "table_id": {
         "type": "select", 
-        "label": "Выберите таблицу", 
+        "label": "Выбрать таблицу",
         "bind": "TABLES", 
         "required": true
       }, 
       "field_name": {
         "type": "select", 
-        "label": "Выбрать колонку", 
+        "label": "Выбрать столбец",
         "table": "this.table_id", 
         "bind": "COLUMNS", 
         "required": true
       }, 
       "order": {
         "type": "select", 
-        "label": "Заказать", 
+        "label": "Порядок",
         "options": {
           "-": {
             "label": "-"
           }, 
           "asc": {
-            "label": "Asc"
+            "label": "Восходящее"
           }, 
           "desc": {
-            "label": "Описание"
+            "label": "Убывающий"
           }
         }, 
         "val": "-"
       }, 
       "is_rename": {
         "type": "checkbox", 
-        "label": "Переименовать", 
+        "label": "Переименовать",
         "val": "false", 
         "isOn": "true", 
         "isOff": "false"
@@ -54,12 +54,12 @@
         "required": true, 
         "minLength": 1, 
         "maxLength": 255, 
-        "label": "Новая колонка Название", 
+        "label": "Имя нового столбца",
         "style": "margin-left: 10px"
       }, 
       "delete": {
         "type": "button", 
-        "label": "Удалить", 
+        "label": "Удалить",
         "function": "DELETE_ROW"
       }
     }, 

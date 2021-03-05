@@ -1,19 +1,19 @@
 {
   "output": {
     "type": "fieldset", 
-    "label": "Определить выходную таблицу", 
+    "label": "Определить выходную таблицу",
     "repeat": false, 
     "fields": {
       "output.type": {
         "type": "select", 
-        "label": "Название таблицы", 
+        "label": "Имя таблицы",
         "val": "auto", 
         "options": {
           "auto": {
             "label": "Авто"
           }, 
           "custom": {
-            "label": "Пользовательский"
+            "label": "Ручной"
           }, 
           "compose": {
             "label": "Составить"
@@ -22,7 +22,7 @@
       }, 
       "output.custom_text": {
         "type": "text", 
-        "label": "Имя выходной таблицы", 
+        "label": "Имя Таблицы для Вывода",
         "show_if": "output.type=='custom'", 
         "required": true, 
         "minLength": 1, 
@@ -33,7 +33,7 @@
       }, 
       "output.prefix_rule": {
         "type": "select", 
-        "label": "Префикс", 
+        "label": "Префикс",
         "show_if": "output.type=='compose'", 
         "val": "empty", 
         "options": {
@@ -53,16 +53,16 @@
             "label": "Время: h_min_sec"
           }, 
           "datetime_string": {
-            "label": "Дата_время"
+            "label": "Дата_Время"
           }, 
           "custom": {
-            "label": "Пользовательский"
+            "label": "Ручной"
           }
         }
       }, 
       "output.prefix_text": {
         "type": "text", 
-        "label": "Префиксный текст", 
+        "label": "Префикс Текст",
         "show_if": "output.type=='compose' && output.prefix_rule=='custom'", 
         "minLength": 1, 
         "maxLength": 31, 
@@ -70,31 +70,31 @@
       }, 
       "output.core_delimiter": {
         "type": "text", 
-        "label": "Делимиттер", 
+        "label": "Разделитель",
         "show_if": "output.type=='compose' && output.prefix_rule!='empty'", 
         "val": "_", 
         "width": "50px"
       }, 
       "output.core_rule": {
         "type": "select", 
-        "label": "Название таблицы", 
+        "label": "Главной Таблицы",
         "show_if": "output.type=='compose'", 
         "val": "input_table_name", 
         "options": {
           "input_table_name": {
-            "label": "Имя входной таблицы"
+            "label": "Имя Входящей Таблицы"
           }, 
           "script_name": {
-            "label": "Имя задачи"
+            "label": "Имя Задачи"
           }, 
           "custom": {
-            "label": "Пользовательский"
+            "label": "Ручной"
           }
         }
       }, 
       "output.core_text": {
         "type": "text", 
-        "label": "Название основной таблицы", 
+        "label": "Имя Главной Таблицы",
         "show_if": "output.type=='compose' && output.core_rule=='custom'", 
         "required": true, 
         "minLength": 1, 
@@ -103,14 +103,14 @@
       }, 
       "output.suffix_delimiter": {
         "type": "text", 
-        "label": "Делимиттер", 
+        "label": "Разделитель",
         "show_if": "output.type=='compose'", 
         "val": "_", 
         "width": "50px"
       }, 
       "output.suffix_rule": {
         "type": "select", 
-        "label": "Суффикс", 
+        "label": "Суффикс",
         "show_if": "output.type=='compose'", 
         "val": "script_name", 
         "options": {
@@ -130,16 +130,16 @@
             "label": "Время: h_min_sec"
           }, 
           "datetime_string": {
-            "label": "Дата_время"
+            "label": "Дата_Время"
           }, 
           "custom": {
-            "label": "Пользовательский"
+            "label": "Ручной"
           }
         }
       }, 
       "output.suffix_text": {
         "type": "text", 
-        "label": "Суффиксный текст", 
+        "label": "Суффикс Текст",
         "show_if": "output.type=='compose' && output.suffix_rule=='custom'", 
         "minLength": 1, 
         "maxLength": 31, 
@@ -148,7 +148,7 @@
       }, 
       "output.timezone": {
         "type": "select", 
-        "label": "Таймзон", 
+        "label": "Часовой пояс",
         "show_if": "output.type=='compose' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
         "val": "CET", 
         "required": true, 

@@ -1,0 +1,615 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Укажите параметры", 
+    "repeat": false, 
+    "fields": {
+      "fields_to_impute": {
+        "type": "select", 
+        "label": "Выберите столбцы, чтобы найти", 
+        "required": true, 
+        "table": "input_table", 
+        "multiple": true, 
+        "bind": "COLUMNS", 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "incoming_value_to_replace.type": {
+        "type": "select", 
+        "label": "Входящая стоимость", 
+        "options": {
+          "user_specified_value": {
+            "label": "Равны"
+          }, 
+          "begins_with": {
+            "label": "Начинается с"
+          }, 
+          "ends_with": {
+            "label": "Заканчивается на"
+          }, 
+          "empty": {
+            "label": "Пустой"
+          }, 
+          "regex": {
+            "label": "Регулярное выражение"
+          }, 
+          "replacement_table": {
+            "label": "Таблица замены"
+          }
+        }, 
+        "val": "user_specified_value", 
+        "style": "min-width: 190px"
+      }, 
+      "incoming_value_to_replace.value": {
+        "type": "text", 
+        "label": "Входящее значение для замены", 
+        "required": true, 
+        "show_if": "incoming_value_to_replace.type=='user_specified_value' || incoming_value_to_replace.type=='begins_with' || incoming_value_to_replace.type=='ends_with'", 
+        "val": "", 
+        "style": "min-width: 170px"
+      }, 
+      "incoming_value_to_replace.regex": {
+        "type": "text", 
+        "label": "Регулярное выражение", 
+        "required": true, 
+        "show_if": "incoming_value_to_replace.type=='regex'", 
+        "val": "(.*), (.*), (.*)\\\\s(\\\\d{5})(-\\\\d{4})?", 
+        "style": "min-width: 200px"
+      }, 
+      "replace_table.table_id": {
+        "type": "select", 
+        "label": "Таблица замены", 
+        "show_if": "incoming_value_to_replace.type=='replacement_table'", 
+        "bind": "TABLES", 
+        "required": true
+      }, 
+      "replace_table.find_column": {
+        "type": "select", 
+        "label": "Выберите столбец "Поиск", 
+        "show_if": "incoming_value_to_replace.type=='replacement_table'", 
+        "table": "replace_table.table_id", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "replace_table.replace_with_column": {
+        "type": "select", 
+        "label": "Выберите Заменить на колонку", 
+        "show_if": "incoming_value_to_replace.type=='replacement_table'", 
+        "table": "replace_table.table_id", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "incoming_value_to_replace.partial_match": {
+        "type": "checkbox", 
+        "label": "Частичное совпадение", 
+        "show_if": "incoming_value_to_replace.type=='user_specified_value' || incoming_value_to_replace.type=='replacement_table'", 
+        "val": "true", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "replace_with.value_type": {
+        "type": "select", 
+        "label": "Заменить на", 
+        "show_if": "incoming_value_to_replace.type!='regex' && incoming_value_to_replace.type!='replacement_table'", 
+        "options": {
+          "user_specified_value": {
+            "label": "Настраиваемое значение"
+          }, 
+          "average": {
+            "label": "Колонка Среднее"
+          }, 
+          "median": {
+            "label": "Колонна Медиана"
+          }, 
+          "mode": {
+            "label": "Режим столбца"
+          }, 
+          "sum": {
+            "label": "Колонка Сумма"
+          }, 
+          "table": {
+            "label": "Столбчатая колонка"
+          }
+        }, 
+        "val": "user_specified_value", 
+        "style": "min-width: 190px"
+      }, 
+      "replace_with.value": {
+        "type": "text", 
+        "label": "Заменить на "Значение", 
+        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='user_specified_value' && incoming_value_to_replace.type!='replacement_table'", 
+        "val": ""
+      }, 
+      "replace_with.regex_value": {
+        "type": "text", 
+        "label": "Заменить на "Значение", 
+        "show_if": "incoming_value_to_replace.type=='regex' && incoming_value_to_replace.type!='replacement_table'", 
+        "val": "\\\\4: \\\\2,  \\\\3"
+      }, 
+      "replace_with.table": {
+        "type": "select", 
+        "label": "Выберите таблицу", 
+        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table' && incoming_value_to_replace.type!='replacement_table'", 
+        "bind": "TABLES", 
+        "required": true
+      }, 
+      "replace_with.column": {
+        "type": "select", 
+        "label": "Выбрать колонку", 
+        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table' && incoming_value_to_replace.type!='replacement_table'", 
+        "table": "replace_with.table", 
+        "bind": "COLUMNS", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "use_filter": {
+        "type": "checkbox", 
+        "label": "Использовать фильтр", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "filter_options_box": {
+        "type": "fieldset", 
+        "label": "Опции фильтра", 
+        "show_if": "use_filter=='true'", 
+        "repeat": false, 
+        "fields": {
+          "filter": {
+            "type": "fieldset", 
+            "label": "Добавить условия фильтра", 
+            "show_if": "use_filter=='true'", 
+            "repeat": true, 
+            "fields": {
+              "initial_op": {
+                "type": "select", 
+                "label": "Выберите Логический оператор", 
+                "required": true, 
+                "show_if" :  "$index == 0", 
+                "options": {
+                  "if": {
+                    "label": "ЕСЛИ"
+                  }, 
+                  "if_not": {
+                    "label": "ЕСЛИ НЕ"
+                  }
+                }, 
+                "val": "if"
+              }, 
+              "op": {
+                "type": "select", 
+                "label": "Выберите Логический оператор", 
+                "required": true, 
+                "show_if" :  "$index > 0", 
+                "options": {
+                  "and": {
+                    "label": "И"
+                  }, 
+                  "or": {
+                    "label": "ИЛИ"
+                  }, 
+                  "and_not": {
+                    "label": "И НЕ"
+                  }, 
+                  "or_not": {
+                    "label": "ИЛИ НЕ"
+                  }
+                }, 
+                "val": "and"
+              }, 
+              "column": {
+                "type": "select", 
+                "label": "Выбрать колонку", 
+                "table": "input_table", 
+                "bind": "COLUMNS", 
+                "required": true
+              }, 
+              "condition": {
+                "type": "select", 
+                "label": "Выберите оператора", 
+                "required": true, 
+                "options": {
+                  "КОНТЕИНЫ": {
+                    "label": "КОНТЕИНЫ"
+                  }, 
+                  "CONTAINED IN STRING": {
+                    "label": "КОНТАИНА"
+                  }, 
+                  "СТАРТЫ С": {
+                    "label": "СТАРТЫ С"
+                  }, 
+                  "КОНЕЦ С": {
+                    "label": "КОНЕЦ С"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "БОЛЬШЕЕ"
+                  }, 
+                  ">=": {
+                    "label": "БОЛЬШИЙ ИЛИ РАВНЫЙ"
+                  }, 
+                  "<": {
+                    "label": "СМАЛЬШЕЕ ТАН"
+                  }, 
+                  "<=": {
+                    "label": "МЕНЬШИЙ ИЛИ РАВНЫЙ"
+                  }, 
+                  "EMPTY": {
+                    "label": "ЕСТЬ ВРЕМЯ"
+                  }, 
+                  "BLANK": {
+                    "label": "БЛАНК"
+                  }, 
+                  "НУЛЬ": {
+                    "label": "НУЛЬ"
+                  }, 
+                  "REGEX MATCH": {
+                    "label": "REGEX MATCH"
+                  }, 
+                  "CONTAINED IN TABLE": {
+                    "label": "В ТАБЛИЦЕ"
+                  }, 
+                  "В РЕГИОНАЛЬНОЙ ТАБЛИЦЕ": {
+                    "label": "В РЕГИОНАЛЬНОЙ ТАБЛИЦЕ"
+                  }, 
+                  "ДАТА": {
+                    "label": "ДАТА"
+                  }
+                }, 
+                "val": "КОНТЕИНЫ"
+              }, 
+              "date_condition": {
+                "type": "select", 
+                "label": "Выберите Дата Оператор", 
+                "required": true, 
+                "show_if": "this.condition == 'DATE'", 
+                "options": {
+                  "<": {
+                    "label": "ПРИОР"
+                  }, 
+                  "<=": {
+                    "label": "ПРИОР ИЛИ РАБОТА"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "ПОСЛЕ"
+                  }, 
+                  ">=": {
+                    "label": "ПОСЛЕ ИЛИ ОБОРУДОВАНИЕ"
+                  }
+                }, 
+                "val": "="
+              }, 
+              "case_sensitive": {
+                "type": "select", 
+                "label": "Выберите Чувствительный к регистру", 
+                "required": true, 
+                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'", 
+                "options": {
+                  "yes": {
+                    "label": "Чувствительность к регистру"
+                  }, 
+                  "no": {
+                    "label": "Корпус Нечувствительный"
+                  }
+                }, 
+                "val": "yes"
+              }, 
+              "date_value": {
+                "type": "date", 
+                "label": "Выберите Дата", 
+                "show_if": "this.condition=='DATE'", 
+                "val": "1/31/2020", 
+                "required": true
+              }, 
+              "value": {
+                "type": "text", 
+                "label": "Входное значение", 
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'", 
+                "val": "", 
+                "required": true
+              }, 
+              "compare_table": {
+                "type": "select", 
+                "label": "Выберите таблицу", 
+                "bind": "TABLES", 
+                "empty": "", 
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'", 
+                "required": true
+              }, 
+              "compare_column": {
+                "type": "select", 
+                "label": "Выбрать колонку", 
+                "table": "this.compare_table", 
+                "bind": "COLUMNS", 
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'", 
+                "required": true
+              }, 
+              "delete": {
+                "type": "button", 
+                "label": "Удалить", 
+                "function": "DELETE_ROW"
+              }
+            }
+          }, 
+          "apply_to_record": {
+            "type": "checkbox", 
+            "label": "Применить к записям", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "style": "margin-top: 10px", 
+            "breakLine": true
+          }, 
+          "apply_to_group_box": {
+            "type": "fieldset", 
+            "label": "Обратиться в Группу", 
+            "show_if": "apply_to_record=='false'", 
+            "repeat": false, 
+            "fields": {
+              "apply_to_group_columns": {
+                "type": "select", 
+                "label": "Выберите групповые колонки", 
+                "required": true, 
+                "width": "100%", 
+                "table": "input_table", 
+                "multiple": true, 
+                "bind": "COLUMNS", 
+                "breakLine": true
+              }
+            }
+          }
+        }
+      }, 
+      "use_replace_table_filter": {
+        "type": "checkbox", 
+        "label": "Use Filter on \\"Replace With\\" Table", 
+        "show_if": "incoming_value_to_replace.type=='replacement_table' || (incoming_value_to_replace.type!='regex' && replace_with.value_type=='table')", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "style": "margin-top: 10px", 
+        "breakLine": true
+      }, 
+      "replace_table_filter_option_box": {
+        "type": "fieldset", 
+        "label": "\\"Replace With\\" Table Filter Options", 
+        "show_if": "use_replace_table_filter=='true' && (incoming_value_to_replace.type=='replacement_table' || (incoming_value_to_replace.type!='regex' && replace_with.value_type=='table'))", 
+        "repeat": false, 
+        "fields": {
+          "replace_table_filter_option.filter": {
+            "type": "fieldset", 
+            "label": "Add Filter Conditions on \\"Replace With\\" Table", 
+            "repeat": true, 
+            "fields": {
+              "initial_op": {
+                "type": "select", 
+                "label": "Выберите Логический оператор", 
+                "required": true, 
+                "show_if" :  "$index == 0", 
+                "options": {
+                  "if": {
+                    "label": "ЕСЛИ"
+                  }, 
+                  "if_not": {
+                    "label": "ЕСЛИ НЕ"
+                  }
+                }, 
+                "val": "if"
+              }, 
+              "op": {
+                "type": "select", 
+                "label": "Выберите Логический оператор", 
+                "required": true, 
+                "show_if" :  "$index > 0", 
+                "options": {
+                  "and": {
+                    "label": "И"
+                  }, 
+                  "or": {
+                    "label": "ИЛИ"
+                  }, 
+                  "and_not": {
+                    "label": "И НЕ"
+                  }, 
+                  "or_not": {
+                    "label": "ИЛИ НЕ"
+                  }
+                }, 
+                "val": "and"
+              }, 
+              "column": {
+                "type": "select", 
+                "label": "Выбрать колонку", 
+                "table": "replace_with.table", 
+                "bind": "COLUMNS", 
+                "required": true
+              }, 
+              "condition": {
+                "type": "select", 
+                "label": "Выберите оператора", 
+                "required": true, 
+                "options": {
+                  "КОНТЕИНЫ": {
+                    "label": "КОНТЕИНЫ"
+                  }, 
+                  "CONTAINED IN STRING": {
+                    "label": "КОНТАИНА"
+                  }, 
+                  "СТАРТЫ С": {
+                    "label": "СТАРТЫ С"
+                  }, 
+                  "КОНЕЦ С": {
+                    "label": "КОНЕЦ С"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "БОЛЬШЕЕ"
+                  }, 
+                  ">=": {
+                    "label": "БОЛЬШИЙ ИЛИ РАВНЫЙ"
+                  }, 
+                  "<": {
+                    "label": "СМАЛЬШЕЕ ТАН"
+                  }, 
+                  "<=": {
+                    "label": "МЕНЬШИЙ ИЛИ РАВНЫЙ"
+                  }, 
+                  "EMPTY": {
+                    "label": "ЕСТЬ ВРЕМЯ"
+                  }, 
+                  "BLANK": {
+                    "label": "БЛАНК"
+                  }, 
+                  "НУЛЬ": {
+                    "label": "НУЛЬ"
+                  }, 
+                  "REGEX MATCH": {
+                    "label": "REGEX MATCH"
+                  }, 
+                  "CONTAINED IN TABLE": {
+                    "label": "В ТАБЛИЦЕ"
+                  }, 
+                  "В РЕГИОНАЛЬНОЙ ТАБЛИЦЕ": {
+                    "label": "В РЕГИОНАЛЬНОЙ ТАБЛИЦЕ"
+                  }, 
+                  "ДАТА": {
+                    "label": "ДАТА"
+                  }
+                }, 
+                "val": "КОНТЕИНЫ"
+              }, 
+              "date_condition": {
+                "type": "select", 
+                "label": "Выберите Дата Оператор", 
+                "required": true, 
+                "show_if": "this.condition == 'DATE'", 
+                "options": {
+                  "<": {
+                    "label": "ПРИОР"
+                  }, 
+                  "<=": {
+                    "label": "ПРИОР ИЛИ РАБОТА"
+                  }, 
+                  "=": {
+                    "label": "EQUAL"
+                  }, 
+                  ">": {
+                    "label": "ПОСЛЕ"
+                  }, 
+                  ">=": {
+                    "label": "ПОСЛЕ ИЛИ ОБОРУДОВАНИЕ"
+                  }
+                }, 
+                "val": "="
+              }, 
+              "case_sensitive": {
+                "type": "select", 
+                "label": "Выберите Чувствительный к регистру", 
+                "required": true, 
+                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'", 
+                "options": {
+                  "yes": {
+                    "label": "Чувствительность к регистру"
+                  }, 
+                  "no": {
+                    "label": "Корпус Нечувствительный"
+                  }
+                }, 
+                "val": "yes"
+              }, 
+              "date_value": {
+                "type": "date", 
+                "label": "Выберите Дата", 
+                "show_if": "this.condition=='DATE'", 
+                "val": "1/31/2020", 
+                "required": true
+              }, 
+              "value": {
+                "type": "text", 
+                "label": "Входное значение", 
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'", 
+                "val": "", 
+                "required": true
+              }, 
+              "compare_table": {
+                "type": "select", 
+                "label": "Выберите таблицу", 
+                "bind": "TABLES", 
+                "empty": "", 
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'", 
+                "required": true
+              }, 
+              "compare_column": {
+                "type": "select", 
+                "label": "Выбрать колонку", 
+                "table": "this.compare_table", 
+                "bind": "COLUMNS", 
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'", 
+                "required": true
+              }, 
+              "delete": {
+                "type": "button", 
+                "label": "Удалить", 
+                "function": "DELETE_ROW"
+              }
+            }
+          }, 
+          "replace_table_filter_option.apply_to_record": {
+            "type": "checkbox", 
+            "label": "Apply to Record on \\"Replace With\\" Table", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "style": "margin-top: 10px", 
+            "breakLine": true
+          }, 
+          "replace_table_filter_option_apply_to_group_box": {
+            "type": "fieldset", 
+            "label": "Apply to Group on \\"Replace With\\" Table", 
+            "show_if": "replace_table_filter_option.apply_to_record=='false' && (incoming_value_to_replace.type!='replacement_table' && incoming_value_to_replace.type!='regex' && replace_with.value_type=='table')", 
+            "repeat": false, 
+            "fields": {
+              "replace_table_filter_option.apply_to_group_columns": {
+                "type": "select", 
+                "label": "Выберите групповые колонки", 
+                "required": true, 
+                "width": "100%", 
+                "table": "replace_with.table", 
+                "multiple": true, 
+                "bind": "COLUMNS", 
+                "breakLine": true
+              }
+            }
+          }, 
+          "replacement_table_filter_option_apply_to_group_box": {
+            "type": "fieldset", 
+            "label": "Apply to Group on \\"Replace With\\" Table", 
+            "show_if": "replace_table_filter_option.apply_to_record=='false' && incoming_value_to_replace.type=='replacement_table'", 
+            "repeat": false, 
+            "fields": {
+              "replacement_table_filter_option.apply_to_group_columns": {
+                "type": "select", 
+                "label": "Выберите групповые колонки", 
+                "required": true, 
+                "width": "100%", 
+                "table": "replace_table.table_id", 
+                "multiple": true, 
+                "bind": "COLUMNS", 
+                "breakLine": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

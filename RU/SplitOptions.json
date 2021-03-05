@@ -1,0 +1,102 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Выберите Опции", 
+    "repeat": false, 
+    "fields": {
+      "split_method": {
+        "type": "select", 
+        "label": "Сплит-метод", 
+        "required": true, 
+        "options": {
+          "standard": {
+            "label": "Стандартный"
+          }, 
+          "regex": {
+            "label": "RegEx"
+          }
+        }, 
+        "val": "standard"
+      }, 
+      "split_type": {
+        "type": "select", 
+        "label": "Разделенный тип", 
+        "required": true, 
+        "options": {
+          "split_to_columns": {
+            "label": "Разделить на колонны"
+          }, 
+          "split_to_rows": {
+            "label": "Разделить на ряды"
+          }
+        }, 
+        "val": "split_to_columns", 
+        "breakLine": true
+      }, 
+      "standard_delimiter": {
+        "type": "select", 
+        "label": "Сплит-делимиттер", 
+        "show_if": "split_method=='standard'", 
+        "required": true, 
+        "options": {
+          "tabs": {
+            "label": "Вкладки"
+          }, 
+          "space": {
+            "label": "Пространство"
+          }, 
+          "whitespace": {
+            "label": "Уайтспейс"
+          }, 
+          "linebreak": {
+            "label": "Перевод строки"
+          }, 
+          "punctuation": {
+            "label": "Препинание"
+          }, 
+          "punctuation_whitespace": {
+            "label": "Пунктуация и Уайтспейс"
+          }, 
+          "custom": {
+            "label": "Пользовательский"
+          }
+        }, 
+        "val": "punctuation"
+      }, 
+      "delimiter": {
+        "type": "text", 
+        "label": "Сплит-делимиттер", 
+        "show_if": "split_method=='standard' && standard_delimiter=='custom'", 
+        "val": ", ,\
+        trim": "false", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "format": {
+        "type": "fieldset", 
+        "label": "Формат для разделения на части", 
+        "show_if": "split_method=='regex'", 
+        "repeat": false, 
+        "fields": {
+          "format_to_convert.regular_expression": {
+            "type": "text", 
+            "label": "Parse Regular Expression ( ex: ([a-z]+)\\\\s([a-z]+) )", 
+            "val": "([a-z]+)\\\\s([a-z]+)", 
+            "required": true, 
+            "width": "100%", 
+            "trim": "false", 
+            "breakLine": true
+          }, 
+          "format_to_convert.case_insensitive": {
+            "type": "checkbox", 
+            "label": "Корпус Нечувствительный", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false", 
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}
