@@ -140,24 +140,43 @@
         "isOn": "true",
         "isOff": "false"
       },
-      "options.section_column_type": {
-        "type": "select",
-        "label": "Section Column Type",
+      "section_column_types_frame": {
+        "type": "fieldset",
+        "label": "Section Column Types",
         "show_if": "options.from=='web' && options.output_format=='word_by_word' && options.add_section_column=='true'",
-        "options": {
-          "paragraph": {
-            "label": "Paragraph"
+        "repeat": false,
+        "fields": {
+          "options.section_columns.add_paragraph_section_column": {
+            "type": "checkbox",
+            "label": "Paragraph",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
           },
-          "brackets": {
-            "label": "Brackets"
+          "options.section_columns.add_brackets_section_column": {
+            "type": "checkbox",
+            "label": "Brackets",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
           },
-          "regex": {
-            "label": "Regular Expression"
+          "options.section_columns.add_regex_section_column": {
+            "type": "checkbox",
+            "label": "Regular Expression",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.section_columns.add_paragraph_section_column": {
+            "type": "text",
+            "label": "Regular Expression",
+            "show_if": "options.section_columns.add_regex_section_column=='true'",
+            "required": true,
+            "breakLine": true
           }
-        },
-        "multiple": true,
-        "required": true,
-        "breakLine": true
+        }
       },
       "options.add_filename_column": {
         "type": "checkbox",
