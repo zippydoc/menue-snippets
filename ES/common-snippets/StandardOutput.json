@@ -4,26 +4,18 @@
     "label": "Definir tabla de salida", 
     "repeat": false, 
     "fields": {
-      "output.type": {
-        "type": "select", 
-        "label": "Nome della tabella", 
-        "val": "auto", 
-        "options": {
-          "auto": {
-            "label": "Auto"
-          }, 
-          "custom": {
-            "label": "Personalizado"
-          }, 
-          "compose": {
-            "label": "Componer"
-          }
-        }
-      }, 
+      "output.compose_table_name": {
+        "type": "checkbox",
+        "label": "Componer",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "output.custom_text": {
         "type": "text", 
         "label": "Nome della tabella di uscita", 
-        "show_if": "output.type=='custom'", 
+        "show_if": "output.compose_table_name=='false'",
         "required": true, 
         "minLength": 1, 
         "val": "", 
@@ -32,7 +24,7 @@
       "output.prefix_rule": {
         "type": "select", 
         "label": "Prefisso", 
-        "show_if": "output.type=='compose'", 
+        "show_if": "output.compose_table_name=='true'", 
         "val": "empty", 
         "options": {
           "empty": {
@@ -61,7 +53,7 @@
       "output.prefix_text": {
         "type": "text", 
         "label": "Testo del prefisso", 
-        "show_if": "output.type=='compose' && output.prefix_rule=='custom'", 
+        "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'", 
         "minLength": 1, 
         "maxLength": 31, 
         "val": ""
@@ -69,14 +61,14 @@
       "output.core_delimiter": {
         "type": "text", 
         "label": "Delimitador", 
-        "show_if": "output.type=='compose' && output.prefix_rule!='empty'", 
+        "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'", 
         "val": "_", 
         "width": "50px"
       }, 
       "output.core_rule": {
         "type": "select", 
         "label": "Nome della tabella", 
-        "show_if": "output.type=='compose'", 
+        "show_if": "output.compose_table_name=='true'", 
         "val": "input_table_name", 
         "options": {
           "input_table_name": {
@@ -93,7 +85,7 @@
       "output.core_text": {
         "type": "text", 
         "label": "Nombre de la tabla principal", 
-        "show_if": "output.type=='compose' && output.core_rule=='custom'", 
+        "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'", 
         "required": true, 
         "minLength": 1, 
         "maxLength": 31, 
@@ -102,14 +94,14 @@
       "output.suffix_delimiter": {
         "type": "text", 
         "label": "Delimitador", 
-        "show_if": "output.type=='compose'", 
+        "show_if": "output.compose_table_name=='true'", 
         "val": "_", 
         "width": "50px"
       }, 
       "output.suffix_rule": {
         "type": "select", 
         "label": "Suffisso", 
-        "show_if": "output.type=='compose'", 
+        "show_if": "output.compose_table_name=='true'", 
         "val": "script_name", 
         "options": {
           "empty": {
@@ -138,7 +130,7 @@
       "output.suffix_text": {
         "type": "text", 
         "label": "Testo del suffisso", 
-        "show_if": "output.type=='compose' && output.suffix_rule=='custom'", 
+        "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'", 
         "minLength": 1, 
         "maxLength": 31, 
         "val": "", 
@@ -147,7 +139,7 @@
       "output.timezone": {
         "type": "select", 
         "label": "Fuso orario", 
-        "show_if": "output.type=='compose' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
+        "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
         "val": "CET",
         "required": true, 
         "options": {

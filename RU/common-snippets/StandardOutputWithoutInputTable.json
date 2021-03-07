@@ -4,26 +4,18 @@
     "label": "Определить выходную таблицу",
     "repeat": false, 
     "fields": {
-      "output.type": {
-        "type": "select", 
-        "label": "Имя таблицы",
-        "val": "auto", 
-        "options": {
-          "auto": {
-            "label": "Авто"
-          }, 
-          "custom": {
-            "label": "Ручной"
-          }, 
-          "compose": {
-            "label": "Составить"
-          }
-        }
-      }, 
+      "output.compose_table_name": {
+        "type": "checkbox",
+        "label": "Составить",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "output.custom_text": {
         "type": "text", 
         "label": "Имя Таблицы для Вывода",
-        "show_if": "output.type=='custom'", 
+        "show_if": "output.compose_table_name=='false'",
         "required": true, 
         "minLength": 1, 
         "maxLength": 31, 
@@ -34,7 +26,7 @@
       "output.prefix_rule": {
         "type": "select", 
         "label": "Префикс",
-        "show_if": "output.type=='compose'", 
+        "show_if": "output.compose_table_name=='true'", 
         "val": "empty", 
         "options": {
           "empty": {
@@ -63,7 +55,7 @@
       "output.prefix_text": {
         "type": "text", 
         "label": "Префикс Текст",
-        "show_if": "output.type=='compose' && output.prefix_rule=='custom'", 
+        "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'", 
         "minLength": 1, 
         "maxLength": 31, 
         "val": ""
@@ -71,14 +63,14 @@
       "output.core_delimiter": {
         "type": "text", 
         "label": "Разделитель",
-        "show_if": "output.type=='compose' && output.prefix_rule!='empty'", 
+        "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'", 
         "val": "_", 
         "width": "50px"
       }, 
       "output.core_rule": {
         "type": "select", 
         "label": "Главной Таблицы",
-        "show_if": "output.type=='compose'", 
+        "show_if": "output.compose_table_name=='true'", 
         "val": "script_name", 
         "options": {
           "script_name": {
@@ -92,7 +84,7 @@
       "output.core_text": {
         "type": "text", 
         "label": "Имя Главной Таблицы",
-        "show_if": "output.type=='compose' && output.core_rule=='custom'", 
+        "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'", 
         "required": true, 
         "minLength": 1, 
         "maxLength": 31, 
@@ -101,14 +93,14 @@
       "output.suffix_delimiter": {
         "type": "text", 
         "label": "Разделитель",
-        "show_if": "output.type=='compose'", 
+        "show_if": "output.compose_table_name=='true'", 
         "val": "_", 
         "width": "50px"
       }, 
       "output.suffix_rule": {
         "type": "select", 
         "label": "Суффикс",
-        "show_if": "output.type=='compose'", 
+        "show_if": "output.compose_table_name=='true'", 
         "val": "script_name", 
         "options": {
           "empty": {
@@ -137,7 +129,7 @@
       "output.suffix_text": {
         "type": "text", 
         "label": "Суффикс Текст",
-        "show_if": "output.type=='compose' && output.suffix_rule=='custom'", 
+        "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'", 
         "minLength": 1, 
         "maxLength": 31, 
         "val": "", 
@@ -146,7 +138,7 @@
       "output.timezone": {
         "type": "select", 
         "label": "Часовой пояс",
-        "show_if": "output.type=='compose' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
+        "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
         "val": "CET", 
         "required": true, 
         "options": {
