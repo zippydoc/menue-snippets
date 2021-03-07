@@ -4,26 +4,18 @@
     "label": "Define Output Table",
     "repeat": false,
     "fields": {
-      "output.type": {
-        "type": "select",
-        "label": "Table Name",
-        "val": "auto",
-        "options": {
-          "auto": {
-            "label": "Auto"
-          },
-          "custom": {
-            "label": "Custom"
-          },
-          "compose": {
-            "label": "Compose"
-          }
-        }
+      "output.compose_table_name": {
+        "type": "checkbox",
+        "label": "Compose Table Name",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
       },
       "output.custom_text": {
         "type": "text",
         "label": "Output Table Name",
-        "show_if": "output.type=='custom'",
+        "show_if": "output.compose_table_name=='true'",
         "required": true,
         "minLength": 1,
         "maxLength": 31,
