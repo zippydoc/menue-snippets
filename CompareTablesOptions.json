@@ -4,18 +4,77 @@
     "label": "Options",
     "repeat": false,
     "fields": {
-      "patterns": {
-        "type": "select",
-        "label": "Pattern",
-        "options": {
-          "all_col": {
-            "label": "All column identity"
+      "compare_set": {
+        "type": "fieldset",
+        "label": "Select Patterns",
+        "repeat": true,
+        "fields": {
+          "pattern": {
+            "type": "select",
+            "label": "Table Pattern Type",
+            "options": {
+              "all_col": {
+                "label": "All column identity"
+              },
+              "two_col": {
+                "label": "Two column identity (case insensitive)"
+              }
+            },
+            "val": "all_col",
+            "required": true
           },
-          "two_col": {
-            "label": "Two column identity (case insensitive)"
+          "compare_type": {
+            "type": "select",
+            "label": "Cell Pattern Type",
+            "options": {
+              "equal": {
+                "label": "Equal"
+              },
+              "contain": {
+                "label": "Contains"
+              },
+              "start_with": {
+                "label": "Starts With"
+              },
+              "end_with": {
+                "label": "Ends With"
+              },
+              "reg_exp": {
+                "label": "Regular Expression"
+              }
+            },
+            "val": "equal",
+            "required": true
+          },
+          "regexp": {
+            "type": "text",
+            "label": "Expression",
+            "show_if": "this.compare_type == 'reg_exp'",
+            "required": true,
+            "val": "",
+            "placeholder": "[a-fA-F0-9]"
+          },
+          "delete": {
+            "show_if": "this.field_name != ''",
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
           }
         },
-        "multiple": true,
+        "breakLine": true
+      },
+      "target": {
+        "type": "select",
+        "label": "Target",
+        "options": {
+          "to_table": {
+            "label": "Apply to table"
+          },
+          "to_rows": {
+            "label": "Row by Row"
+          }
+        },
+        "val": "to_table",
         "required": true
       }
     }
