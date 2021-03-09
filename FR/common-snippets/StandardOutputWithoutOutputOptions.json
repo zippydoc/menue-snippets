@@ -4,429 +4,443 @@
     "label": "Définir le tableau des résultats", 
     "repeat": false, 
     "fields": {
-      "output.type": {
-        "type": "select", 
-        "label": "Nom de la table", 
-        "val": "auto", 
-        "options": {
-          "auto": {
-            "label": "Auto"
-          }, 
-          "custom": {
-            "label": "Personnalisation"
-          }, 
-          "compose": {
-            "label": "Composer"
-          }
-        }
-      }, 
       "output.custom_text": {
         "type": "text", 
         "label": "Nom du tableau de sortie", 
-        "show_if": "output.type=='custom'", 
-        "required": true, 
-        "minLength": 1, 
-        "maxLength": 31, 
-        "val": "", 
+        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'",
+        "minLength": 1,
+        "val": "",
+        "width": "100%",
         "breakLine": true
-      }, 
-      "output.prefix_rule": {
-        "type": "select", 
-        "label": "Préfixe", 
-        "show_if": "output.type=='compose'", 
-        "val": "empty", 
-        "options": {
-          "empty": {
-            "label": "-"
-          }, 
-          "script_name": {
-            "label": "Nom de la tâche"
-          }, 
-          "date_string_type1": {
-            "label": "Date : jj_mm_aaaa"
-          }, 
-          "date_string_type2": {
-            "label": "Date : aaaa_mm_jj"
-          }, 
-          "time_string": {
-            "label": "Heure : h_min_sec"
-          }, 
-          "datetime_string": {
-            "label": "Date_Heure"
-          }, 
-          "custom": {
-            "label": "Personnalisation"
+      },
+      "output.set_options": {
+        "type": "checkbox",
+        "label": "Options de sortie",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "output_options_box": {
+        "type": "fieldset",
+        "label": "Options de sortie",
+        "show_if": "output.set_options=='true'",
+        "repeat": false,
+        "fields": {
+          "output.compose_table_name": {
+            "type": "checkbox",
+            "label": "Composer",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "compose_table_name_frame": {
+            "type": "fieldset",
+            "label": "Composer",
+            "show_if": "output.compose_table_name=='true'",
+            "repeat": false,
+            "fields": {
+              "output.prefix_rule": {
+                "type": "select",
+                "label": "Préfixe",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "empty",
+                "options": {
+                  "empty": {
+                    "label": "-"
+                  },
+                  "script_name": {
+                    "label": "Nom de la tâche"
+                  },
+                  "date_string_type1": {
+                    "label": "Date : jj_mm_aaaa"
+                  },
+                  "date_string_type2": {
+                    "label": "Date : aaaa_mm_jj"
+                  },
+                  "time_string": {
+                    "label": "Heure : h_min_sec"
+                  },
+                  "datetime_string": {
+                    "label": "Date_Heure"
+                  },
+                  "custom": {
+                    "label": "Personnalisation"
+                  }
+                }
+              },
+              "output.prefix_text": {
+                "type": "text",
+                "label": "Préfixe Texte",
+                "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
+                "minLength": 1,
+                "maxLength": 31,
+                "val": ""
+              },
+              "output.core_delimiter": {
+                "type": "text",
+                "label": "Délimiteur",
+                "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
+                "val": "_",
+                "width": "50px"
+              },
+              "output.core_rule": {
+                "type": "select",
+                "label": "Nom de la table",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "input_table_name",
+                "options": {
+                  "input_table_name": {
+                    "label": "Nom du tableau d'entrée"
+                  },
+                  "script_name": {
+                    "label": "Nom de la tâche"
+                  },
+                  "custom": {
+                    "label": "Personnalisation"
+                  }
+                }
+              },
+              "output.core_text": {
+                "type": "text",
+                "label": "Nom de la table principale",
+                "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
+                "required": true,
+                "minLength": 1,
+                "maxLength": 31,
+                "val": ""
+              },
+              "output.suffix_delimiter": {
+                "type": "text",
+                "label": "Délimiteur",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "_",
+                "width": "50px"
+              },
+              "output.suffix_rule": {
+                "type": "select",
+                "label": "Suffixe",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "script_name",
+                "options": {
+                  "empty": {
+                    "label": "-"
+                  },
+                  "script_name": {
+                    "label": "Nom de la tâche"
+                  },
+                  "date_string_type1": {
+                    "label": "Date : jj_mm_aaaa"
+                  },
+                  "date_string_type2": {
+                    "label": "Date : aaaa_mm_jj"
+                  },
+                  "time_string": {
+                    "label": "Heure : h_min_sec"
+                  },
+                  "datetime_string": {
+                    "label": "Date_Heure"
+                  },
+                  "custom": {
+                    "label": "Personnalisation"
+                  }
+                }
+              },
+              "output.suffix_text": {
+                "type": "text",
+                "label": "Texte du suffixe",
+                "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
+                "minLength": 1,
+                "maxLength": 31,
+                "val": "",
+                "breakLine": true
+              },
+              "output.timezone": {
+                "type": "select",
+                "label": "Fuseau horaire",
+                "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+                "val": "CET",
+                "required": true,
+                "options": {
+                  "NZDT": {
+                    "label": "NZDT(New Zealand Daylight Time)"
+                  },
+                  "IDLE": {
+                    "label": "IDLE(International Date Line, East)"
+                  },
+                  "NZST": {
+                    "label": "NZST(New Zealand Standard Time)"
+                  },
+                  "NZT": {
+                    "label": "NZT(New Zealand Time)"
+                  },
+                  "AESST": {
+                    "label": "AESST(Australia Eastern Summer Standard Time)"
+                  },
+                  "ACSST": {
+                    "label": "ACSST(Central Australia Summer Standard Time)"
+                  },
+                  "CADT": {
+                    "label": "CADT(Central Australia Daylight Savings Time)"
+                  },
+                  "SADT": {
+                    "label": "SADT(South Australian Daylight Time)"
+                  },
+                  "AEST": {
+                    "label": "AEST(Australia Eastern Standard Time)"
+                  },
+                  "EAST": {
+                    "label": "EAST(East Australian Standard Time)"
+                  },
+                  "GST": {
+                    "label": "GST(Guam Standard Time, USSR Zone 9)"
+                  },
+                  "LIGT": {
+                    "label": "LIGT(Melbourne, Australia)"
+                  },
+                  "SAST": {
+                    "label": "SAST(South Australia Standard Time)"
+                  },
+                  "CAST": {
+                    "label": "CAST(Central Australia Standard Time)"
+                  },
+                  "AWSST": {
+                    "label": "AWSST(Australia Western Summer Standard Time)"
+                  },
+                  "JST": {
+                    "label": "JST(Japan Standard Time,USSR Zone 8)"
+                  },
+                  "KST": {
+                    "label": "KST(Korea Standard Time)"
+                  },
+                  "MHT": {
+                    "label": "MHT(Kwajalein Time)"
+                  },
+                  "WDT": {
+                    "label": "WDT(West Australian Daylight Time)"
+                  },
+                  "MT": {
+                    "label": "MT(Moluccas Time)"
+                  },
+                  "AWST": {
+                    "label": "AWST(Australia Western Standard Time)"
+                  },
+                  "CCT": {
+                    "label": "CCT(China Coastal Time)"
+                  },
+                  "WADT": {
+                    "label": "WADT(West Australian Daylight Time)"
+                  },
+                  "WST": {
+                    "label": "WST(West Australian Standard Time)"
+                  },
+                  "ALMST": {
+                    "label": "ALMST(Almaty Summer Time)"
+                  },
+                  "WAST": {
+                    "label": "WAST(West Australian Standard Time)"
+                  },
+                  "CXT": {
+                    "label": "CXT(Christmas (Island) Time)"
+                  },
+                  "ALMT": {
+                    "label": "ALMT(Almaty Time)"
+                  },
+                  "MAWT": {
+                    "label": "MAWT(Mawson (Antarctica) Time)"
+                  },
+                  "IOT": {
+                    "label": "IOT(Indian Chagos Time)"
+                  },
+                  "MVT": {
+                    "label": "MVT(Maldives Island Time)"
+                  },
+                  "TFT": {
+                    "label": "TFT(Kerguelen Time)"
+                  },
+                  "AFT": {
+                    "label": "AFT(Afganistan Time)"
+                  },
+                  "MUT": {
+                    "label": "MUT(Mauritius Island Time)"
+                  },
+                  "RET": {
+                    "label": "RET(Reunion Island Time)"
+                  },
+                  "SCT": {
+                    "label": "SCT(Mahe Island Time)"
+                  },
+                  "IT": {
+                    "label": "IT(Iran Time)"
+                  },
+                  "EAT": {
+                    "label": "EAT(Antananarivo, Comoro Time)"
+                  },
+                  "BT": {
+                    "label": "BT(Baghdad Time)"
+                  },
+                  "EETDST": {
+                    "label": "EETDST(Eastern Europe Daylight Savings Time)"
+                  },
+                  "HMT": {
+                    "label": "HMT(Hellas Mediterranean Time (?))"
+                  },
+                  "BDST": {
+                    "label": "BDST(British Double Standard Time)"
+                  },
+                  "CEST": {
+                    "label": "CEST(Central European Savings Time)"
+                  },
+                  "CETDST": {
+                    "label": "CETDST(Central European Daylight Savings Time)"
+                  },
+                  "EET": {
+                    "label": "EET(Eastern Europe, USSR Zone 1)"
+                  },
+                  "FWT": {
+                    "label": "FWT(French Winter Time)"
+                  },
+                  "IST": {
+                    "label": "IST(Israel Standard Time)"
+                  },
+                  "MEST": {
+                    "label": "MEST(Middle Europe Summer Time)"
+                  },
+                  "METDST": {
+                    "label": "METDST(Middle Europe Daylight Time)"
+                  },
+                  "SST": {
+                    "label": "SST(Swedish Summer Time)"
+                  },
+                  "BST": {
+                    "label": "BST(British Summer Time)"
+                  },
+                  "CET": {
+                    "label": "CET(Central European Time)"
+                  },
+                  "DNT": {
+                    "label": "DNT(Dansk Normal Tid)"
+                  },
+                  "FST": {
+                    "label": "FST(French Summer Time)"
+                  },
+                  "MET": {
+                    "label": "MET(Middle Europe Time)"
+                  },
+                  "MEWT": {
+                    "label": "MEWT(Middle Europe Winter Time)"
+                  },
+                  "MEZ": {
+                    "label": "MEZ(Middle Europe Zone)"
+                  },
+                  "NOR": {
+                    "label": "NOR(Norway Standard Time)"
+                  },
+                  "SET": {
+                    "label": "SET(Seychelles Time)"
+                  },
+                  "SWT": {
+                    "label": "SWT(Swedish Winter Time)"
+                  },
+                  "WETDST": {
+                    "label": "WETDST(Western Europe Daylight Savings Time)"
+                  },
+                  "GMT": {
+                    "label": "GMT(Greenwich Mean Time)"
+                  },
+                  "UT": {
+                    "label": "UT(Universal Time)"
+                  },
+                  "UTC": {
+                    "label": "UTC(Universal Time, Coordinated)"
+                  },
+                  "WET": {
+                    "label": "WET(Western Europe)"
+                  },
+                  "WAT": {
+                    "label": "WAT(West Africa Time)"
+                  },
+                  "NDT": {
+                    "label": "NDT(Newfoundland Daylight Time)"
+                  },
+                  "ADT": {
+                    "label": "ADT(Atlantic Daylight Time)"
+                  },
+                  "NFT": {
+                    "label": "NFT(Newfoundland Standard Time)"
+                  },
+                  "NST": {
+                    "label": "NST(Newfoundland Standard Time)"
+                  },
+                  "AST": {
+                    "label": "AST(Atlantic Standard Time (Canada))"
+                  },
+                  "ACST": {
+                    "label": "ACST(Atlantic/Porto Acre Summer Time)"
+                  },
+                  "ACT": {
+                    "label": "ACT(Atlantic/Porto Acre Standard Time)"
+                  },
+                  "EDT": {
+                    "label": "EDT(Eastern Daylight Time)"
+                  },
+                  "CDT": {
+                    "label": "CDT(Central Daylight Time)"
+                  },
+                  "EST": {
+                    "label": "EST(Eastern Standard Time)"
+                  },
+                  "CST": {
+                    "label": "CST(Central Standard Time)"
+                  },
+                  "MDT": {
+                    "label": "MDT(Mountain Daylight Time)"
+                  },
+                  "MST": {
+                    "label": "MST(Mountain Standard Time)"
+                  },
+                  "PDT": {
+                    "label": "PDT(Pacific Daylight Time)"
+                  },
+                  "AKDT": {
+                    "label": "AKDT(Alaska Daylight Time)"
+                  },
+                  "PST": {
+                    "label": "PST(Pacific Standard Time)"
+                  },
+                  "YDT": {
+                    "label": "YDT(Yukon Daylight Time)"
+                  },
+                  "AKST": {
+                    "label": "AKST(Alaska Standard Time)"
+                  },
+                  "HDT": {
+                    "label": "HDT(Hawaii/Alaska Daylight Time)"
+                  },
+                  "YST": {
+                    "label": "YST(Yukon Standard Time)"
+                  },
+                  "AHST": {
+                    "label": "AHST(Alaska-Hawaii Standard Time)"
+                  },
+                  "HST": {
+                    "label": "HST(Hawaii Standard Time)"
+                  },
+                  "CAT": {
+                    "label": "CAT(Central Alaska Time)"
+                  },
+                  "NT": {
+                    "label": "NT(Nome Time)"
+                  },
+                  "IDLW": {
+                    "label": "IDLW(International Date Line, West)"
+                  }
+                },
+                "breakLine": true
+              }
+            }
           }
         }
-      }, 
-      "output.prefix_text": {
-        "type": "text", 
-        "label": "Préfixe Texte", 
-        "show_if": "output.type=='compose' && output.prefix_rule=='custom'", 
-        "minLength": 1, 
-        "maxLength": 31, 
-        "val": ""
-      }, 
-      "output.core_delimiter": {
-        "type": "text", 
-        "label": "Délimiteur", 
-        "show_if": "output.type=='compose' && output.prefix_rule!='empty'", 
-        "val": "_", 
-        "width": "50px"
-      }, 
-      "output.core_rule": {
-        "type": "select", 
-        "label": "Nom de la table", 
-        "show_if": "output.type=='compose'", 
-        "val": "input_table_name", 
-        "options": {
-          "input_table_name": {
-            "label": "Nom du tableau d'entrée"
-          }, 
-          "script_name": {
-            "label": "Nom de la tâche"
-          }, 
-          "custom": {
-            "label": "Personnalisation"
-          }
-        }
-      }, 
-      "output.core_text": {
-        "type": "text", 
-        "label": "Nom de la table principale", 
-        "show_if": "output.type=='compose' && output.core_rule=='custom'", 
-        "required": true, 
-        "minLength": 1, 
-        "maxLength": 31, 
-        "val": ""
-      }, 
-      "output.suffix_delimiter": {
-        "type": "text", 
-        "label": "Délimiteur", 
-        "show_if": "output.type=='compose'", 
-        "val": "_", 
-        "width": "50px"
-      }, 
-      "output.suffix_rule": {
-        "type": "select", 
-        "label": "Suffixe", 
-        "show_if": "output.type=='compose'", 
-        "val": "script_name", 
-        "options": {
-          "empty": {
-            "label": "-"
-          }, 
-          "script_name": {
-            "label": "Nom de la tâche"
-          }, 
-          "date_string_type1": {
-            "label": "Date : jj_mm_aaaa"
-          }, 
-          "date_string_type2": {
-            "label": "Date : aaaa_mm_jj"
-          }, 
-          "time_string": {
-            "label": "Heure : h_min_sec"
-          }, 
-          "datetime_string": {
-            "label": "Date_Heure"
-          }, 
-          "custom": {
-            "label": "Personnalisation"
-          }
-        }
-      }, 
-      "output.suffix_text": {
-        "type": "text", 
-        "label": "Texte du suffixe", 
-        "show_if": "output.type=='compose' && output.suffix_rule=='custom'", 
-        "minLength": 1, 
-        "maxLength": 31, 
-        "val": "", 
-        "breakLine": true
-      }, 
-      "output.timezone": {
-        "type": "select", 
-        "label": "Fuseau horaire", 
-        "show_if": "output.type=='compose' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
-        "val": "CET",
-        "required": true, 
-        "options": {
-          "NZDT": {
-            "label": "NZDT(New Zealand Daylight Time)"
-          },
-          "IDLE": {
-            "label": "IDLE(International Date Line, East)"
-          },
-          "NZST": {
-            "label": "NZST(New Zealand Standard Time)"
-          },
-          "NZT": {
-            "label": "NZT(New Zealand Time)"
-          },
-          "AESST": {
-            "label": "AESST(Australia Eastern Summer Standard Time)"
-          },
-          "ACSST": {
-            "label": "ACSST(Central Australia Summer Standard Time)"
-          },
-          "CADT": {
-            "label": "CADT(Central Australia Daylight Savings Time)"
-          },
-          "SADT": {
-            "label": "SADT(South Australian Daylight Time)"
-          },
-          "AEST": {
-            "label": "AEST(Australia Eastern Standard Time)"
-          },
-          "EAST": {
-            "label": "EAST(East Australian Standard Time)"
-          },
-          "GST": {
-            "label": "GST(Guam Standard Time, USSR Zone 9)"
-          },
-          "LIGT": {
-            "label": "LIGT(Melbourne, Australia)"
-          },
-          "SAST": {
-            "label": "SAST(South Australia Standard Time)"
-          },
-          "CAST": {
-            "label": "CAST(Central Australia Standard Time)"
-          },
-          "AWSST": {
-            "label": "AWSST(Australia Western Summer Standard Time)"
-          },
-          "JST": {
-            "label": "JST(Japan Standard Time,USSR Zone 8)"
-          },
-          "KST": {
-            "label": "KST(Korea Standard Time)"
-          },
-          "MHT": {
-            "label": "MHT(Kwajalein Time)"
-          },
-          "WDT": {
-            "label": "WDT(West Australian Daylight Time)"
-          },
-          "MT": {
-            "label": "MT(Moluccas Time)"
-          },
-          "AWST": {
-            "label": "AWST(Australia Western Standard Time)"
-          },
-          "CCT": {
-            "label": "CCT(China Coastal Time)"
-          },
-          "WADT": {
-            "label": "WADT(West Australian Daylight Time)"
-          },
-          "WST": {
-            "label": "WST(West Australian Standard Time)"
-          },
-          "ALMST": {
-            "label": "ALMST(Almaty Summer Time)"
-          },
-          "WAST": {
-            "label": "WAST(West Australian Standard Time)"
-          },
-          "CXT": {
-            "label": "CXT(Christmas (Island) Time)"
-          },
-          "ALMT": {
-            "label": "ALMT(Almaty Time)"
-          },
-          "MAWT": {
-            "label": "MAWT(Mawson (Antarctica) Time)"
-          },
-          "IOT": {
-            "label": "IOT(Indian Chagos Time)"
-          },
-          "MVT": {
-            "label": "MVT(Maldives Island Time)"
-          },
-          "TFT": {
-            "label": "TFT(Kerguelen Time)"
-          },
-          "AFT": {
-            "label": "AFT(Afganistan Time)"
-          },
-          "MUT": {
-            "label": "MUT(Mauritius Island Time)"
-          },
-          "RET": {
-            "label": "RET(Reunion Island Time)"
-          },
-          "SCT": {
-            "label": "SCT(Mahe Island Time)"
-          },
-          "IT": {
-            "label": "IT(Iran Time)"
-          },
-          "EAT": {
-            "label": "EAT(Antananarivo, Comoro Time)"
-          },
-          "BT": {
-            "label": "BT(Baghdad Time)"
-          },
-          "EETDST": {
-            "label": "EETDST(Eastern Europe Daylight Savings Time)"
-          },
-          "HMT": {
-            "label": "HMT(Hellas Mediterranean Time (?))"
-          },
-          "BDST": {
-            "label": "BDST(British Double Standard Time)"
-          },
-          "CEST": {
-            "label": "CEST(Central European Savings Time)"
-          },
-          "CETDST": {
-            "label": "CETDST(Central European Daylight Savings Time)"
-          },
-          "EET": {
-            "label": "EET(Eastern Europe, USSR Zone 1)"
-          },
-          "FWT": {
-            "label": "FWT(French Winter Time)"
-          },
-          "IST": {
-            "label": "IST(Israel Standard Time)"
-          },
-          "MEST": {
-            "label": "MEST(Middle Europe Summer Time)"
-          },
-          "METDST": {
-            "label": "METDST(Middle Europe Daylight Time)"
-          },
-          "SST": {
-            "label": "SST(Swedish Summer Time)"
-          },
-          "BST": {
-            "label": "BST(British Summer Time)"
-          },
-          "CET": {
-            "label": "CET(Central European Time)"
-          },
-          "DNT": {
-            "label": "DNT(Dansk Normal Tid)"
-          },
-          "FST": {
-            "label": "FST(French Summer Time)"
-          },
-          "MET": {
-            "label": "MET(Middle Europe Time)"
-          },
-          "MEWT": {
-            "label": "MEWT(Middle Europe Winter Time)"
-          },
-          "MEZ": {
-            "label": "MEZ(Middle Europe Zone)"
-          },
-          "NOR": {
-            "label": "NOR(Norway Standard Time)"
-          },
-          "SET": {
-            "label": "SET(Seychelles Time)"
-          },
-          "SWT": {
-            "label": "SWT(Swedish Winter Time)"
-          },
-          "WETDST": {
-            "label": "WETDST(Western Europe Daylight Savings Time)"
-          },
-          "GMT": {
-            "label": "GMT(Greenwich Mean Time)"
-          },
-          "UT": {
-            "label": "UT(Universal Time)"
-          },
-          "UTC": {
-            "label": "UTC(Universal Time, Coordinated)"
-          },
-          "WET": {
-            "label": "WET(Western Europe)"
-          },
-          "WAT": {
-            "label": "WAT(West Africa Time)"
-          },
-          "NDT": {
-            "label": "NDT(Newfoundland Daylight Time)"
-          },
-          "ADT": {
-            "label": "ADT(Atlantic Daylight Time)"
-          },
-          "NFT": {
-            "label": "NFT(Newfoundland Standard Time)"
-          },
-          "NST": {
-            "label": "NST(Newfoundland Standard Time)"
-          },
-          "AST": {
-            "label": "AST(Atlantic Standard Time (Canada))"
-          },
-          "ACST": {
-            "label": "ACST(Atlantic/Porto Acre Summer Time)"
-          },
-          "ACT": {
-            "label": "ACT(Atlantic/Porto Acre Standard Time)"
-          },
-          "EDT": {
-            "label": "EDT(Eastern Daylight Time)"
-          },
-          "CDT": {
-            "label": "CDT(Central Daylight Time)"
-          },
-          "EST": {
-            "label": "EST(Eastern Standard Time)"
-          },
-          "CST": {
-            "label": "CST(Central Standard Time)"
-          },
-          "MDT": {
-            "label": "MDT(Mountain Daylight Time)"
-          },
-          "MST": {
-            "label": "MST(Mountain Standard Time)"
-          },
-          "PDT": {
-            "label": "PDT(Pacific Daylight Time)"
-          },
-          "AKDT": {
-            "label": "AKDT(Alaska Daylight Time)"
-          },
-          "PST": {
-            "label": "PST(Pacific Standard Time)"
-          },
-          "YDT": {
-            "label": "YDT(Yukon Daylight Time)"
-          },
-          "AKST": {
-            "label": "AKST(Alaska Standard Time)"
-          },
-          "HDT": {
-            "label": "HDT(Hawaii/Alaska Daylight Time)"
-          },
-          "YST": {
-            "label": "YST(Yukon Standard Time)"
-          },
-          "AHST": {
-            "label": "AHST(Alaska-Hawaii Standard Time)"
-          },
-          "HST": {
-            "label": "HST(Hawaii Standard Time)"
-          },
-          "CAT": {
-            "label": "CAT(Central Alaska Time)"
-          },
-          "NT": {
-            "label": "NT(Nome Time)"
-          },
-          "IDLW": {
-            "label": "IDLW(International Date Line, West)"
-          }
-        },
-        "breakLine": true
       }
     }
   }
