@@ -46,13 +46,20 @@
             "val": "equal",
             "required": true
           },
-          "regexp": {
+          "case_sensitive": {
+            "type": "checkbox",
+            "label": "Case sensitive",
+            "show_if": "this.compare_type != 'equal'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "expression": {
             "type": "text",
             "label": "Expression",
-            "show_if": "this.compare_type == 'reg_exp'",
+            "show_if": "this.compare_type != 'equal'",
             "required": true,
-            "val": "",
-            "placeholder": "[a-fA-F0-9]"
+            "val": ""
           },
           "delete": {
             "show_if": "this.field_name != ''",
