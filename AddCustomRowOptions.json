@@ -306,43 +306,10 @@
             "val": "",
             "style": "width: 100%"
           },
-          "text_formula": {
-            "type": "text",
-            "label": "Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
-            "show_if": "this.formula_type=='text_formula'",
-            "val": "",
-            "style": "width: 100%"
-          },
-          "format__category": {
-            "type": "select",
-            "label": "Format",
-            "required": true,
-            "options": {
-              "standard": {
-                "label": "Standard"
-              },
-              "number": {
-                "label": "Number"
-              },
-              "percentage": {
-                "label": "Percentage"
-              },
-              "text": {
-                "label": "Text"
-              },
-              "date": {
-                "label": "Date"
-              },
-              "currency": {
-                "label": "Currency"
-              }
-            },
-            "val": "standard"
-          },
-          "format__rounding": {
+          "rounding": {
             "type": "select",
             "label": "Rounding",
-            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "show_if": "this.formula_type=='numeric_formula'",
             "required": true,
             "options": {
               "no_rounding": {
@@ -379,52 +346,14 @@
                 "label": "9 digits"
               }
             },
-            "val": "2"
+            "val": "no_rounding"
           },
-          "format__use_1000_separator": {
-            "type": "checkbox",
-            "label": "Use 1000 Separator(.)",
-            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "format__currency_symbol": {
-            "type": "select",
-            "label": "Symbol",
-            "show_if": "this.format__category=='currency'",
-            "required": true,
-            "options": {
-              "dollar": {
-                "label": "$"
-              },
-              "euro": {
-                "label": "€"
-              },
-              "pound": {
-                "label": "£"
-              }
-            },
-            "val": "dollar"
-          },
-          "format__date_format": {
-            "type": "select",
-            "label": "Type",
-            "show_if": "this.format__category=='date'",
-            "required": true,
-            "options": {
-              "mm/dd/yyyy": {
-                "label": "3/14/2012"
-              },
-              "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
-              },
-              "yyyy-mm-dd": {
-                "label": "2012-03-14"
-              }
-            },
-            "val": "mm/dd/yyyy",
-            "breakLine": true
+          "text_formula": {
+            "type": "text",
+            "label": "Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
+            "show_if": "this.formula_type=='text_formula'",
+            "val": "",
+            "style": "width: 100%"
           },
           "use_multi_row": {
             "type": "checkbox",
