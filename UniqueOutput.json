@@ -1,4 +1,19 @@
 {
+  "output.output_table_types": {
+    "type": "select",
+    "label": "Output Table Type(s)",
+    "required": true,
+    "options": {
+      "unique": {
+        "label": "Unique Table"
+      },
+      "duplicates": {
+        "label": "Duplicates Table"
+      }
+    },
+    "multiple": true,
+    "val": ["unique"]
+  },
   "output.standard_ending": {
     "type": "checkbox",
     "label": "Standard Ending",
@@ -10,7 +25,6 @@
   "output.unique_ending": {
     "show_if": "output.standard_ending == 'false'",
     "type": "text",
-    "required": true,
     "label": "Unique Output Ending",
     "val": "_u",
     "style": "width: 160px; margin-left: 10px"
@@ -18,7 +32,6 @@
   "output.duplicates_ending": {
     "show_if": "output.standard_ending == 'false'",
     "type": "text",
-    "required": true,
     "label": "Duplicates Output Ending",
     "val": "_d",
     "style": "width: 160px; margin-left: 10px",
