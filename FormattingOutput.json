@@ -2,20 +2,13 @@
   "output": {
     "type": "fieldset",
     "label": "Define Output Table",
+    "show_if": "create_new_table=='true'",
     "repeat": false,
     "fields": {
-      "output.create_new_table": {
-        "type": "checkbox",
-        "label": "Output as new table",
-        "val": "true",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      },
       "output.custom_text": {
         "type": "text",
         "label": "Output Table Name",
-        "show_if": "((output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false')) && output.create_new_table=='true'",
+        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false')",
         "minLength": 1,
         "val": "",
         "width": "100%",
@@ -24,7 +17,6 @@
       "output.set_options": {
         "type": "checkbox",
         "label": "Output Options",
-        "show_if": "output.create_new_table=='true'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -32,7 +24,7 @@
       "output_options_box": {
         "type": "fieldset",
         "label": "Output Options",
-        "show_if": "output.create_new_table=='true' && output.set_options=='true'",
+        "show_if": "output.set_options=='true'",
         "repeat": false,
         "fields": {
           "output.compose_table_name": {
