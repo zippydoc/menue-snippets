@@ -1,0 +1,57 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Select Options",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "radio",
+        "val": "expand",
+        "values": {
+          "expand": "Expand",
+          "compress": "Compress"
+        },
+        "breakLine": true
+      },
+      "options.column_to_expand": {
+        "type": "select",
+        "label": "Column to expand",
+        "show_if": "options.type=='expand'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.column_to_group": {
+        "type": "select",
+        "label": "Column to group",
+        "show_if": "options.type=='compress'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.column_to_compress": {
+        "type": "select",
+        "label": "Column to compress",
+        "show_if": "options.type=='compress'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.delimiter": {
+        "type": "text",
+        "label": "Delimiter",
+        "val": ";",
+        "trim": "false",
+        "required": true
+      },
+      "options.new_col_name": {
+        "type": "text",
+        "label": "New Column Name",
+        "show_if": "options.type=='expand'",
+        "val": "label",
+        "required": true,
+        "breakLine": true
+      }
+    }
+  }
+}
