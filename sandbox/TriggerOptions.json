@@ -1,0 +1,70 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Add Trigger",
+    "repeat": false,
+    "fields": {
+          "trigger_type": {
+            "type": "select",
+            "label": "Trigger Type",
+            "required": true,
+            "options": {
+              "label_by_table": {
+                "label": "Table"
+              },
+              "label_manual": {
+                "label": "Manual"
+              }
+            },
+            "val": "label_by_table",
+            "breakLine": true
+          },		
+          "trigger_label_column": {
+            "type": "select",
+            "label": "Select Label Column",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "show_if": "this.trigger_type=='label_by_table'",
+            "required": true
+          },
+          "trigger_value_column": {
+            "type": "select",
+            "label": "Select Value Column",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "show_if": "this.trigger_type=='label_by_table'",
+            "required": true
+          }, 
+		    "task_name": {
+            "type": "text",
+            "label": "Select Task to Run",
+            "val": "",
+            "breakLine": true
+          },
+			"task_trigger": {
+				"type": "fieldset",
+				"label": "Trigger Label-Value Pair",
+				"repeat": true,
+				"fields": {
+					"task_trigger_label": {
+					"type": "text",
+					"label": "Enter Task Trigger Label",
+					"val": "",
+					"breakLine": false
+					},
+					"task_trigger_value": {
+					"type": "text",
+					"label": "Enter Task Trigger Value",
+					"val": "",
+					"breakLine": true
+					},
+				"delete": {
+					"type": "button",
+					"label": "Delete",
+					"function": "DELETE_ROW"
+					}
+				}
+			}
+		}
+	}
+}
