@@ -129,7 +129,34 @@
           }
         },
         "val": "csv_table",
+        "required": true
+      },
+      "options.specify_word_pattern": {
+        "type": "checkbox",
+        "label": "Specify Word Pattern",
+        "show_if": "options.from=='web' && options.output_format=='word_by_word'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.word_pattern_type": {
+        "type": "select",
+        "label": "Word Pattern",
+        "show_if": "options.from=='web' && options.output_format=='word_by_word' && options.specify_word_pattern=='true'",
+        "options": {
+          "regex": {
+            "label": "Regular Expression"
+          }
+        },
+        "val": "regex",
+        "required": true
+      },
+      "options.word_pattern_regex": {
+        "type": "text",
+        "label": "Regular Expression",
+        "show_if": "options.from=='web' && options.output_format=='word_by_word' && options.specify_word_pattern=='true' && options.word_pattern_type=='regex'",
         "required": true,
+        "val": "[a-z][1-9]",
         "breakLine": true
       },
       "options.column_setting": {
