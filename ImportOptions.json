@@ -185,21 +185,13 @@
           },
           "section_column_types_frame": {
             "type": "fieldset",
-            "label": "Add Section Column Types",
+            "label": "Section Column Types",
             "show_if": "options.from=='web' && options.output_format=='word_by_word' && options.add_section_column=='true'",
             "repeat": false,
             "fields": {
               "options.section_columns.add_paragraph_section_column": {
                 "type": "checkbox",
                 "label": "Paragraph",
-                "val": "false",
-                "isOn": "true",
-                "isOff": "false",
-                "breakLine": true
-              },
-              "options.section_columns.add_brackets_section_column": {
-                "type": "checkbox",
-                "label": "Brackets",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false",
@@ -227,13 +219,23 @@
                 "isOn": "true",
                 "isOff": "false"
               },
-              "options.section_columns.brackets_punctuation_section_column__show_all": {
-                "type": "checkbox",
-                "label": "Show All",
+              "options.section_columns.brackets_punctuation_section_column_type": {
+                "type": "select",
+                "label": "Brackets Type",
                 "show_if": "options.section_columns.add_brackets_punctuation_section_column=='true'",
-                "val": "true",
-                "isOn": "true",
-                "isOff": "false",
+                "options": {
+                  "nesting_structure": {
+                    "label": "Nesting Structure"
+                  },
+                  "inner_bracket": {
+                    "label": "Inner Bracket"
+                  },
+                  "show_all": {
+                    "label": "Show All"
+                  }
+                },
+                "val": "nesting_structure",
+                "required": true,
                 "breakLine": true
               }
             }
