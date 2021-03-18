@@ -457,6 +457,33 @@
             },
             "val": "sum"
           },
+          "multi_column_functions__sel_labels": {
+            "type": "select",
+            "label": "Select Label(s)",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
+            "required": true,
+            "table": "input_table",
+            "multiple": true,
+            "bind": "LABELS"
+          },
+          "multi_column_functions__quota_sel_labels": {
+            "type": "select",
+            "label": "Select Label(s)",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
+            "required": true,
+            "table": "input_table",
+            "multiple": true,
+            "bind": "LABELS"
+          },
+          "multi_row_functions__sel_labels": {
+            "type": "select",
+            "label": "Select Label(s)",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions'",
+            "required": true,
+            "table": "input_table",
+            "multiple": true,
+            "bind": "LABELS"
+          },
           "multi_column_functions__n_value": {
             "type": "text",
             "label": "N (positive integer)",
@@ -502,6 +529,12 @@
             "show_if": "table_type!='header_only'",
             "required": true,
             "options": {
+              "bottom": {
+                "label": "ON BOTTOM"
+              },
+              "top": {
+                "label": "ON TOP"
+              },
               "above": {
                 "label": "ABOVE"
               },
@@ -509,33 +542,14 @@
                 "label": "BELOW"
               }
             },
-            "val": "below"
+            "val": "bottom"
           },
-          "multi_column_functions__sel_labels": {
+          "positioning_row": {
             "type": "select",
-            "label": "Select Label(s)",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
+            "label": "Positioning Row",
+            "show_if": "table_type!='header_only' && (this.position=='above' || this.position=='below')",
             "required": true,
             "table": "input_table",
-            "multiple": true,
-            "bind": "LABELS"
-          },
-          "multi_column_functions__quota_sel_labels": {
-            "type": "select",
-            "label": "Select Label(s)",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
-            "required": true,
-            "table": "input_table",
-            "multiple": true,
-            "bind": "LABELS"
-          },
-          "multi_row_functions__sel_labels": {
-            "type": "select",
-            "label": "Select Label(s)",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions'",
-            "required": true,
-            "table": "input_table",
-            "multiple": true,
             "bind": "LABELS"
           },
           "multi_column_functions__sel_row_a": {
