@@ -117,11 +117,11 @@
           "dropbox": {
             "label": "Dropbox (Coming soon)"
           },
-          "google_drive": {
-            "label": "Google Drive"
-          },
           "ms_one_drive": {
             "label": "Microsoft OneDrive"
+          },
+          "google_drive": {
+            "label": "Google Drive"
           }
         },
         "val": "github",
@@ -182,8 +182,16 @@
       },
       "options.google_drive_token": {
         "type": "text",
-        "label": "Specify the Google OAuth 2.0 access token that has 'Files.ReadWrite.All' API permission. You can get it here https://developers.google.com/",
+        "label": "Specify the Google OAuth 2.0 access token that has 'https://www.googleapis.com/auth/drive' API permission. You can get it here https://developers.google.com/",
         "show_if": "options.to=='file' && options.webservice=='google_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox_authorization_code": {
+        "type": "text",
+        "label": "Specify the Dropbox Authorization Code that has 'files.content.write' and 'files.content.read' API permission. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "show_if": "options.to=='file' && options.webservice=='dropbox'",
         "required": true,
         "width": "100%",
         "breakLine": true
