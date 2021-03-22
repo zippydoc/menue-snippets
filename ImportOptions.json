@@ -326,7 +326,7 @@
       "options.is_github_private": {
         "type": "checkbox",
         "label": "Repository is private",
-        "show_if": "options.from=='web'",
+        "show_if": "options.from=='web' && options.webservice=='github'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -353,7 +353,7 @@
       "options.github_token": {
         "type": "text",
         "label": "specify the Github personal access token",
-        "show_if": "options.from=='web' && options.is_github_private=='true'",
+        "show_if": "options.from=='web' && options.webservice=='github' && options.is_github_private=='true'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -361,7 +361,7 @@
       "options.link_directory": {
         "type": "text",
         "label": "Enter link e.g. https://github.com/zippydoc/test",
-        "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='true'",
+        "show_if": "options.from=='web' && options.webservice=='github' && options.output_format!='file_list' && options.is_cloud_dir=='true'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -369,7 +369,7 @@
       "options.link_directory_4_file_list": {
         "type": "text",
         "label": "Enter link e.g. https://github.com/zippydoc/test",
-        "show_if": "options.from=='web' && options.output_format=='file_list'",
+        "show_if": "options.from=='web' && options.webservice=='github' && options.output_format=='file_list'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -377,7 +377,7 @@
       "options.link_file": {
         "type": "text",
         "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.csv",
-        "show_if": "options.from=='web' && options.is_cloud_dir=='false' && options.output_format=='csv_table'",
+        "show_if": "options.from=='web' && options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format=='csv_table'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -385,7 +385,7 @@
       "options.link_text_file": {
         "type": "text",
         "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.txt(json, csv, etc)",
-        "show_if": "options.from=='web' && options.is_cloud_dir=='false' && options.output_format!='csv_table' && options.output_format!='file_list'",
+        "show_if": "options.from=='web' && options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format!='csv_table' && options.output_format!='file_list'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -393,7 +393,7 @@
       "options.one_drive.access_token": {
         "type": "text",
         "label": "OAuth Access Token",
-        "show_if": "options.from=='web'&& options.is_cloud_dir=='false'",
+        "show_if": "options.from=='web' && options.webservice=='ms_one_drive' && options.is_cloud_dir=='false'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -401,7 +401,7 @@
       "options.one_drive.file_path": {
         "type": "text",
         "label": "Enter path to file e.g. My files/Dir1/Subdir1/test.txt",
-        "show_if": "options.from=='web' && options.webservice='ms_one_drive' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
+        "show_if": "options.from=='web' && options.webservice=='ms_one_drive' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -409,7 +409,7 @@
       "options.one_drive.dir_path": {
         "type": "text",
         "label": "Enter path to dir e.g. My files/Dir1/Subdir1",
-        "show_if": "options.from=='web' && options.webservice='ms_one_drive' && (options.output_format=='file_list' || options.is_cloud_dir=='true')",
+        "show_if": "options.from=='web' && options.webservice=='ms_one_drive' && (options.output_format=='file_list' || options.is_cloud_dir=='true')",
         "required": true,
         "width": "100%",
         "breakLine": true
