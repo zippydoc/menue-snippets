@@ -21,6 +21,7 @@
       "amount_formatting_frame": {
         "type": "fieldset",
         "label": "Amount Column Formatting",
+        "show_if": "options.type=='generate'",
         "repeat": false,
         "fields": {
           "amount.format__category": {
@@ -46,7 +47,7 @@
           "amount.format__rounding": {
             "type": "select",
             "label": "Rounding",
-            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "show_if": "amount.format__category=='number' || amount.format__category=='percentage' || amount.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
@@ -88,7 +89,7 @@
           "amount.format__use_1000_separator": {
             "type": "checkbox",
             "label": "Use 1000 Separator(.)",
-            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "show_if": "amount.format__category=='number' || amount.format__category=='percentage' || amount.format__category=='currency'",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
@@ -96,7 +97,7 @@
           "amount.format__currency_symbol": {
             "type": "select",
             "label": "Symbol",
-            "show_if": "this.format__category=='currency'",
+            "show_if": "amount.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
