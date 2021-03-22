@@ -13,6 +13,15 @@
         },
         "breakLine": true
       },
+      "options.expand__output_in_new_column": {
+        "type": "checkbox",
+        "label": "Output in new column",
+        "show_if": "options.type=='expand'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "options.column_to_expand": {
         "type": "select",
         "label": "Column to expand",
@@ -47,9 +56,17 @@
       "options.new_col_name": {
         "type": "text",
         "label": "New Column Name",
-        "show_if": "options.type=='expand'",
+        "show_if": "options.type=='expand' && options.expand__output_in_new_column=='true'",
         "val": "label",
         "required": true,
+        "breakLine": true
+      },
+      "create_new_table": {
+        "type": "checkbox",
+        "label": "Output as new table",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
         "breakLine": true
       }
     }

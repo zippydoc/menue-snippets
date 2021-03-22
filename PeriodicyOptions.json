@@ -18,6 +18,102 @@
         "val": "generate",
         "breakLine": true
       },
+      "amount_formatting_frame": {
+        "type": "fieldset",
+        "label": "Amount Column Formatting",
+        "show_if": "options.type=='generate'",
+        "repeat": false,
+        "fields": {
+          "options.amount.format__category": {
+            "type": "select",
+            "label": "Format",
+            "required": true,
+            "options": {
+              "standard": {
+                "label": "Standard"
+              },
+              "number": {
+                "label": "Number"
+              },
+              "percentage": {
+                "label": "Percentage"
+              },
+              "currency": {
+                "label": "Currency"
+              }
+            },
+            "val": "currency"
+          },
+          "options.amount.format__rounding": {
+            "type": "select",
+            "label": "Rounding",
+            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+            "required": true,
+            "options": {
+              "no_rounding": {
+                "label": "No rounding"
+              },
+              "0": {
+                "label": "0 digits"
+              },
+              "1": {
+                "label": "1 digits"
+              },
+              "2": {
+                "label": "2 digits"
+              },
+              "3": {
+                "label": "3 digits"
+              },
+              "4": {
+                "label": "4 digits"
+              },
+              "5": {
+                "label": "5 digits"
+              },
+              "6": {
+                "label": "6 digits"
+              },
+              "7": {
+                "label": "7 digits"
+              },
+              "8": {
+                "label": "8 digits"
+              },
+              "9": {
+                "label": "9 digits"
+              }
+            },
+            "val": "2"
+          },
+          "options.amount.format__use_1000_separator": {
+            "type": "checkbox",
+            "label": "Use 1000 Separator(.)",
+            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.amount.format__currency_symbol": {
+            "type": "select",
+            "label": "Symbol",
+            "show_if": "options.amount.format__category=='currency'",
+            "required": true,
+            "options": {
+              "dollar": {
+                "label": "$"
+              },
+              "euro": {
+                "label": "€"
+              },
+              "pound": {
+                "label": "£"
+              }
+            },
+            "val": "dollar"
+          }
+        }
+      },
       "options.standard_table": {
         "type": "checkbox",
         "label": "Standard Periodicy Table",
