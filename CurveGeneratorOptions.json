@@ -4,17 +4,17 @@
     "label": "Select Options",
     "repeat": false,
     "fields": {
+      "options.standard.start": {
+        "type": "text",
+        "label": "Initial Value",
+        "show_if": "options.standard.end_value_equals_initial_value=='no'",
+        "val": "1",
+        "required": true
+      },
       "options.standard.multiplier_at_maximum_impact_level": {
         "type": "text",
         "label": "Maximum Value",
         "val": "2",
-        "required": true
-      },
-      "options.standard.start": {
-        "type": "text",
-        "label": "Initial Period",
-        "show_if": "options.standard.end_value_equals_initial_value=='no'",
-        "val": "1",
         "required": true
       },
       "options.standard.maximum": {
@@ -22,6 +22,13 @@
         "label": "Maximum Period",
         "val": "50",
         "required": true
+      },
+      "options.standard.multiplier_end_value": {
+        "type": "text",
+        "label": "End Value",
+        "width": "100%",
+        "show_if": "options.standard.end_value_equals_initial_value=='no'",
+        "val": ""
       },
       "options.standard.end": {
         "type": "text",
@@ -32,19 +39,11 @@
       },
       "options.standard.end_value_equals_initial_value": {
         "type": "checkbox",
-        "label": "End Value Equals Initial Value",
+        "label": "Initial Value and End Value equals 1",
         "width": "100%",
         "val": "yes",
         "isOn": "yes",
         "isOff": "no",
-        "breakLine": true
-      },
-      "options.standard.multiplier_end_value": {
-        "type": "text",
-        "label": "End Value",
-        "width": "100%",
-        "show_if": "options.standard.end_value_equals_initial_value=='no'",
-        "val": "",
         "breakLine": true
       },
       "options.standard.maximum_plateau": {
@@ -99,7 +98,8 @@
         "type": "text",
         "label": "Left Slope Sigma",
         "show_if": "options.standard.left_slope=='standard_distribution' && options.standard.use_auto_calculated_sigma_for_left_slope=='false'",
-        "val": ""
+        "val": "",
+        "breakLine": true
       },
       "options.standard.right_slope": {
         "type": "select",
