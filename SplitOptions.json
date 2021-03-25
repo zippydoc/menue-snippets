@@ -4,7 +4,7 @@
     "label": "Select Options",
     "repeat": false,
     "fields": {
-      "split_method": {
+      "options.split_method": {
         "type": "select",
         "label": "Split method",
         "required": true,
@@ -18,7 +18,7 @@
         },
         "val": "standard"
       },
-      "split_type": {
+      "options.split_type": {
         "type": "select",
         "label": "Split type",
         "required": true,
@@ -33,10 +33,10 @@
         "val": "split_to_columns",
         "breakLine": true
       },
-      "standard_delimiter": {
+      "options.standard_delimiter": {
         "type": "select",
         "label": "Split Delimiter",
-        "show_if": "split_method=='standard'",
+        "show_if": "options.split_method=='standard'",
         "required": true,
         "options": {
           "tabs": {
@@ -63,19 +63,19 @@
         },
         "val": "punctuation"
       },
-      "delimiter": {
+      "options.delimiter": {
         "type": "text",
         "label": "Split Delimiter",
-        "show_if": "split_method=='standard' && standard_delimiter=='custom'",
+        "show_if": "options.split_method=='standard' && options.standard_delimiter=='custom'",
         "val": ",",
         "trim": "false",
         "required": true,
         "breakLine": true
       },
-      "format": {
+      "options.format": {
         "type": "fieldset",
         "label": "Format to Parse for Split",
-        "show_if": "split_method=='regex'",
+        "show_if": "options.split_method=='regex'",
         "repeat": false,
         "fields": {
           "format_to_convert.regular_expression": {
