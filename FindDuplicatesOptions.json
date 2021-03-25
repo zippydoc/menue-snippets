@@ -4,28 +4,13 @@
     "label": "Select Options",
     "repeat": false,
     "fields": {
+      "options.task": {
+        "type": "hidden",
+        "val": "find_duplicates"
+      },
       "options.task_type": {
-        "type": "select",
-        "label": "Task Type",
-        "required": true,
-        "options": {
-          "generate_lookup_table": {
-            "label": "Generate Lookup-Table"
-          },
-          "apply_lookup_table": {
-            "label": "Apply Lookup-Table"
-          },
-          "apply_regex_table": {
-            "label": "Apply Regex-Table"
-          },
-          "apply_lookup_table_to_cells": {
-            "label": "Apply Lookup-Table to Cells"
-          },
-          "apply_regex_table_to_cells": {
-            "label": "Apply Regex-Table to Cells"
-          }
-        },
-        "val": "generate_lookup_table"
+        "type": "hidden",
+        "val": "label_duplicates"
       },
       "options.pattern_type": {
         "type": "select",
@@ -142,7 +127,7 @@
         "type": "checkbox",
         "label": "Partial Match",
         "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
-        "val": "false",
+        "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
@@ -648,6 +633,20 @@
         "table": "input_table",
         "bind": "COLUMNS",
         "breakLine": true
+      },
+      "options.output_type": {
+        "type": "select",
+        "label": "Output Type",
+        "required": true,
+        "options": {
+          "list_all_duplicates_once": {
+            "label": "List all duplicates once"
+          },
+          "list_found_duplicates_per_item": {
+            "label": "List found duplicates per item"
+          }
+        },
+        "val": "list_all_duplicates_once"
       }
     }
   }

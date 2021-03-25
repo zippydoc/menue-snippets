@@ -4,43 +4,17 @@
     "label": "Select Options",
     "repeat": false,
     "fields": {
+      "options.task": {
+        "type": "hidden",
+        "val": "find_ranges"
+      },
       "options.task_type": {
-        "type": "select",
-        "label": "Task Type",
-        "required": true,
-        "options": {
-          "generate_lookup_table": {
-            "label": "Generate Lookup-Table"
-          },
-          "apply_lookup_table": {
-            "label": "Apply Lookup-Table"
-          },
-          "apply_regex_table": {
-            "label": "Apply Regex-Table"
-          },
-          "apply_lookup_table_to_cells": {
-            "label": "Apply Lookup-Table to Cells"
-          },
-          "apply_regex_table_to_cells": {
-            "label": "Apply Regex-Table to Cells"
-          }
-        },
+        "type": "hidden",
         "val": "generate_lookup_table"
       },
       "options.pattern_type": {
-        "type": "select",
-        "label": "Pattern Type",
-        "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
-        "required": true,
-        "options": {
-          "duplicate_pattern": {
-            "label": "Word Pattern"
-          },
-          "number_range": {
-            "label": "Ranges(e.g. 10 < x <= 100)"
-          }
-        },
-        "val": "duplicate_pattern"
+        "type": "hidden",
+        "val": "number_range"
       },
       "duplicate_option_box": {
         "type": "fieldset",
@@ -142,7 +116,7 @@
         "type": "checkbox",
         "label": "Partial Match",
         "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
-        "val": "false",
+        "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
@@ -648,6 +622,20 @@
         "table": "input_table",
         "bind": "COLUMNS",
         "breakLine": true
+      },
+      "options.output_type": {
+        "type": "select",
+        "label": "Output Type",
+        "required": true,
+        "options": {
+          "list_all_ranges": {
+            "label": "List all ranges"
+          },
+          "allocate_items_to_ranges": {
+            "label": "Allocate items to ranges"
+          }
+        },
+        "val": "list_all_ranges"
       }
     }
   }
