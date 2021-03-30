@@ -109,7 +109,7 @@
             "label": "Microsoft OneDrive"
           },
           "dropbox": {
-            "label": "Dropbox (Coming soon)"
+            "label": "Dropbox"
           },
           "google_drive": {
             "label": "Google Drive (Coming soon)"
@@ -410,6 +410,29 @@
         "type": "text",
         "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
         "show_if": "options.from=='web' && options.webservice=='ms_one_drive' && (options.output_format=='file_list' || options.is_cloud_dir=='true')",
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox.auth_code": {
+        "type": "text",
+        "label": "Dropbox Authorization Code",
+        "show_if": "options.from=='web' && options.webservice=='dropbox' && options.is_cloud_dir=='false'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox.file_path": {
+        "type": "text",
+        "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
+        "show_if": "options.from=='web' && options.webservice=='dropbox' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox.dir_path": {
+        "type": "text",
+        "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
+        "show_if": "options.from=='web' && options.webservice=='dropbox' && (options.output_format=='file_list' || options.is_cloud_dir=='true')",
         "width": "100%",
         "breakLine": true
       },
