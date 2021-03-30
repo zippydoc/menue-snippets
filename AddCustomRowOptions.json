@@ -38,12 +38,19 @@
         "breakLine": true
       },
       "options.use_filter": {
-        "type": "checkbox",
-        "label": "Use Filter",
+        "type": "select",
+        "label": "Select Type",
         "show_if": "options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end'",
+        "required": true,
+        "options": {
+          "false": {
+            "label": "Add one row for each table row"
+          },
+          "true": {
+            "label": "Add one row for each specified row"
+          }
+        },
         "val": "false",
-        "isOn": "true",
-        "isOff": "false",
         "breakLine": true
       },
       "filter_box": {
@@ -263,7 +270,7 @@
       },
       "options.target_cells": {
         "type": "fieldset",
-        "label": "Define Target Cells",
+        "label": "Define added Row(s)",
         "repeat": true,
         "fields": {
           "column": {
@@ -389,7 +396,7 @@
       },
       "options.set_date_column": {
         "type": "checkbox",
-        "label": "Select Date Column",
+        "label": "Apply time-shift to a selected date column",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
