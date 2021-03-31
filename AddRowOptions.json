@@ -350,7 +350,7 @@
           },
           "multi_column_functions__sel_labels": {
             "type": "select",
-            "label": "Select Label(s)",
+            "label": "Select Rows(s)",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
             "required": true,
             "table": "input_table",
@@ -359,7 +359,7 @@
           },
           "multi_column_functions__quota_sel_labels": {
             "type": "select",
-            "label": "Select Label(s)",
+            "label": "Select Rows(s)",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -368,7 +368,7 @@
           },
           "multi_row_functions__sel_labels": {
             "type": "select",
-            "label": "Select Label(s)",
+            "label": "Select Rows(s)",
             "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions'",
             "required": true,
             "table": "input_table",
@@ -427,7 +427,8 @@
             "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
-            "bind": "LABELS"
+            "bind": "LABELS",
+            "breakLine": true
           },
           "position": {
             "type": "select",
@@ -716,11 +717,6 @@
             },
             "val": "row-1"
           },
-          "delete": {
-            "type": "button",
-            "label": "Delete",
-            "function": "DELETE_ROW"
-          },
           "format__category": {
             "type": "select",
             "label": "Format",
@@ -831,8 +827,12 @@
                 "label": "2012-03-14"
               }
             },
-            "val": "mm/dd/yyyy",
-            "breakLine": true
+            "val": "mm/dd/yyyy"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
           }
         }
       }

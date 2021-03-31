@@ -276,7 +276,7 @@
           "function_type": {
             "type": "select",
             "label": "Task Type",
-            "show_if": "false",
+            "show_if": "table_type=='header_only'",
             "required": true,
             "options": {
               "multi_column_functions": {
@@ -350,7 +350,7 @@
           },
           "multi_column_functions__sel_labels": {
             "type": "select",
-            "label": "Select Label(s)",
+            "label": "Select Rows(s)",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
             "required": true,
             "table": "input_table",
@@ -359,7 +359,7 @@
           },
           "multi_column_functions__quota_sel_labels": {
             "type": "select",
-            "label": "Select Label(s)",
+            "label": "Select Rows(s)",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -368,7 +368,7 @@
           },
           "multi_row_functions__sel_labels": {
             "type": "select",
-            "label": "Select Label(s)",
+            "label": "Select Rows(s)",
             "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions'",
             "required": true,
             "table": "input_table",
@@ -413,6 +413,75 @@
             "table": "input_table",
             "bind": "LABELS"
           },
+          "multi_row_functions__sel_rows": {
+            "type": "select",
+            "label": "Select Rows",
+            "show_if": "table_type=='header_only' && this.function_type=='multi_row_functions'",
+            "required": true,
+            "options": {
+              "row-1": {
+                "label": "Row-1"
+              },
+              "row-2": {
+                "label": "Row-2"
+              },
+              "row-3": {
+                "label": "Row-3"
+              },
+              "row-4": {
+                "label": "Row-4"
+              },
+              "row-5": {
+                "label": "Row-5"
+              },
+              "row-6": {
+                "label": "Row-6"
+              },
+              "row-7": {
+                "label": "Row-7"
+              },
+              "row-8": {
+                "label": "Row-8"
+              },
+              "row-9": {
+                "label": "Row-9"
+              },
+              "row-10": {
+                "label": "Row-10"
+              },
+              "row+1": {
+                "label": "Row+1"
+              },
+              "row+2": {
+                "label": "Row+2"
+              },
+              "row+3": {
+                "label": "Row+3"
+              },
+              "row+4": {
+                "label": "Row+4"
+              },
+              "row+5": {
+                "label": "Row+5"
+              },
+              "row+6": {
+                "label": "Row+6"
+              },
+              "row+7": {
+                "label": "Row+7"
+              },
+              "row+8": {
+                "label": "Row+8"
+              },
+              "row+9": {
+                "label": "Row+9"
+              },
+              "row+10": {
+                "label": "Row+10"
+              }
+            },
+            "val": "row-1"
+          },
           "multi_row_functions__sel_label_a": {
             "type": "select",
             "label": "Select Label A",
@@ -427,7 +496,8 @@
             "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
-            "bind": "LABELS"
+            "bind": "LABELS",
+            "breakLine": true
           },
           "position": {
             "type": "select",
@@ -716,11 +786,6 @@
             },
             "val": "row-1"
           },
-          "delete": {
-            "type": "button",
-            "label": "Delete",
-            "function": "DELETE_ROW"
-          },
           "format__category": {
             "type": "select",
             "label": "Format",
@@ -831,8 +896,12 @@
                 "label": "2012-03-14"
               }
             },
-            "val": "mm/dd/yyyy",
-            "breakLine": true
+            "val": "mm/dd/yyyy"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
           }
         }
       }
