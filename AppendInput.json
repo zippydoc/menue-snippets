@@ -20,7 +20,8 @@
       "source_table.table": {
         "type": "select",
         "label": "Right Table",
-        "bind": "TABLES"
+        "bind": "TABLES",
+        "breakLine": true
       },
       "source_table.remove_input_table_after_processing": {
         "type": "hidden",
@@ -30,9 +31,17 @@
         "type": "hidden",
         "val": "false"
       },
-      "input_table_rows_limit": {
+      "options.cut_off_run": {
+        "type": "checkbox",
+        "label": "Cut off Input table and Run",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.input_table_rows_limit": {
         "type": "text",
         "label": "Input table limit(max: 800)",
+        "show_if": "options.cut_off_run=='true'",
         "minLength": 1,
         "maxLength": 3,
         "val": "500",
