@@ -276,7 +276,7 @@
           "function_type": {
             "type": "select",
             "label": "Task Type",
-            "show_if": "table_type=='header_only'",
+            "show_if": "false",
             "required": true,
             "options": {
               "multi_column_functions": {
@@ -286,7 +286,7 @@
                 "label": "Multi-Row"
               }
             },
-            "val": "multi_row_functions"
+            "val": "multi_column_functions"
           },
           "multi_column_functions__function": {
             "type": "select",
@@ -357,24 +357,6 @@
             "multiple": true,
             "bind": "LABELS"
           },
-          "multi_column_functions__quota_sel_labels": {
-            "type": "select",
-            "label": "Select Rows(s)",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
-            "required": true,
-            "table": "input_table",
-            "multiple": true,
-            "bind": "LABELS"
-          },
-          "multi_row_functions__sel_labels": {
-            "type": "select",
-            "label": "Select Rows(s)",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions'",
-            "required": true,
-            "table": "input_table",
-            "multiple": true,
-            "bind": "LABELS"
-          },
           "multi_column_functions__n_value": {
             "type": "text",
             "label": "N (positive integer)",
@@ -413,75 +395,6 @@
             "table": "input_table",
             "bind": "LABELS"
           },
-          "multi_row_functions__sel_rows": {
-            "type": "select",
-            "label": "Select Rows",
-            "show_if": "table_type=='header_only' && this.function_type=='multi_row_functions'",
-            "required": true,
-            "options": {
-              "row-1": {
-                "label": "Row-1"
-              },
-              "row-2": {
-                "label": "Row-2"
-              },
-              "row-3": {
-                "label": "Row-3"
-              },
-              "row-4": {
-                "label": "Row-4"
-              },
-              "row-5": {
-                "label": "Row-5"
-              },
-              "row-6": {
-                "label": "Row-6"
-              },
-              "row-7": {
-                "label": "Row-7"
-              },
-              "row-8": {
-                "label": "Row-8"
-              },
-              "row-9": {
-                "label": "Row-9"
-              },
-              "row-10": {
-                "label": "Row-10"
-              },
-              "row+1": {
-                "label": "Row+1"
-              },
-              "row+2": {
-                "label": "Row+2"
-              },
-              "row+3": {
-                "label": "Row+3"
-              },
-              "row+4": {
-                "label": "Row+4"
-              },
-              "row+5": {
-                "label": "Row+5"
-              },
-              "row+6": {
-                "label": "Row+6"
-              },
-              "row+7": {
-                "label": "Row+7"
-              },
-              "row+8": {
-                "label": "Row+8"
-              },
-              "row+9": {
-                "label": "Row+9"
-              },
-              "row+10": {
-                "label": "Row+10"
-              }
-            },
-            "val": "row-1"
-          },
           "multi_row_functions__sel_label_a": {
             "type": "select",
             "label": "Select Label A",
@@ -506,10 +419,10 @@
             "required": true,
             "options": {
               "bottom": {
-                "label": "ON BOTTOM"
+                "label": "BOTTOM"
               },
               "top": {
-                "label": "ON TOP"
+                "label": "TOP"
               },
               "above": {
                 "label": "ABOVE"
