@@ -4,7 +4,7 @@
     "label": "Select Options",
     "repeat": false,
     "fields": {
-      "convert_type": {
+      "options.convert_type": {
         "type": "select",
         "label": "Convert Type",
         "required": true,
@@ -24,10 +24,10 @@
         },
         "val": "complete_date"
       },
-      "date_convert_type": {
+      "options.date_convert_type": {
         "type": "select",
         "label": "Convert to",
-        "show_if": "convert_type=='convert_date'",
+        "show_if": "options.convert_type=='convert_date'",
         "required": true,
         "options": {
           "begin_of_month": {
@@ -49,13 +49,12 @@
             "label": "Week Year"
           }
         },
-        "val": "begin_of_month",
-        "breakLine": true
+        "val": "begin_of_month"
       },
-      "date_range_convert_type": {
+      "options.date_range_convert_type": {
         "type": "select",
         "label": "Convert to",
-        "show_if": "convert_type=='convert_date_range'",
+        "show_if": "options.convert_type=='convert_date_range'",
         "required": true,
         "options": {
           "begin_of_month": {
@@ -80,171 +79,21 @@
         "val": "begin_of_month",
         "breakLine": true
       },
-      "output_in_new_column": {
+      "options.output_in_new_column": {
         "type": "checkbox",
         "label": "Output in New Column",
         "val": "false",
         "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
+        "isOff": "false"
       },
-      "fields_to_convert.new_field_name": {
+      "options.new_field_name": {
         "type": "text",
         "label": "New column name",
-        "show_if": "output_in_new_column=='true'",
+        "show_if": "options.output_in_new_column=='true'",
         "val": "GeneratedDate",
         "required": true,
         "minLength": 1,
         "maxLength": 255,
-        "width": "100%",
-        "breakLine": true
-      },
-      "format_conversion.datetime_source_format": {
-        "type": "select",
-        "label": "Select source datetime format",
-        "show_if": "convert_type=='format_conversion'",
-        "required": true,
-        "width": "100%",
-        "options": {
-          "yyyy-MM-dd": {
-            "label": "yyyy-MM-dd"
-          },
-          "day, dd Month, yyyy": {
-            "label": "day, dd Month, yyyy"
-          },
-          "dd-MM-yy": {
-            "label": "dd-MM-yy"
-          },
-          "dd-MM-yyyy": {
-            "label": "dd-MM-yyyy"
-          },
-          "dd-Mon.-yy": {
-            "label": "dd-Mon.-yy"
-          },
-          "dd Month, yyyy": {
-            "label": "dd Month, yyyy"
-          },
-          "dd/MM/yy": {
-            "label": "dd/MM/yy"
-          },
-          "dd/MM/yyyy": {
-            "label": "dd/MM/yyyy"
-          },
-          "dy., Month dd, yyyy": {
-            "label": "dy., Month dd, yyyy"
-          },
-          "MM-dd-yy": {
-            "label": "MM-dd-yy"
-          },
-          "MM-dd-yyyy": {
-            "label": "MM-dd-yyyy"
-          },
-          "MM/dd/yy": {
-            "label": "MM/dd/yy"
-          },
-          "MM/dd/yyyy": {
-            "label": "MM/dd/yyyy"
-          },
-          "Mon dd": {
-            "label": "Mon dd"
-          },
-          "Mon dd, yyyy": {
-            "label": "Mon dd, yyyy"
-          },
-          "Month dd, yyyy": {
-            "label": "Month dd, yyyy"
-          },
-          "Month, yyyy": {
-            "label": "Month, yyyy"
-          },
-          "yyyyMMdd": {
-            "label": "yyyyMMdd"
-          }
-        },
-        "val": "yyyy-MM-dd",
-        "breakLine": true
-      },
-      "format_conversion.datetime_target_format": {
-        "type": "select",
-        "label": "Select target datetime format",
-        "show_if": "convert_type=='format_conversion'",
-        "required": true,
-        "width": "100%",
-        "options": {
-          "day, dd Month, yyyy": {
-            "label": "day, dd Month, yyyy"
-          },
-          "dd-MM-yy": {
-            "label": "dd-MM-yy"
-          },
-          "dd-MM-yyyy": {
-            "label": "dd-MM-yyyy"
-          },
-          "dd-Mon.-yy": {
-            "label": "dd-Mon.-yy"
-          },
-          "dd Month, yyyy": {
-            "label": "dd Month, yyyy"
-          },
-          "dd/MM/yy": {
-            "label": "dd/MM/yy"
-          },
-          "dd/MM/yyyy": {
-            "label": "dd/MM/yyyy"
-          },
-          "dy., Month dd, yyyy": {
-            "label": "dy., Month dd, yyyy"
-          },
-          "MM-dd-yy": {
-            "label": "MM-dd-yy"
-          },
-          "MM-dd-yyyy": {
-            "label": "MM-dd-yyyy"
-          },
-          "MM/dd/yy": {
-            "label": "MM/dd/yy"
-          },
-          "MM/dd/yyyy": {
-            "label": "MM/dd/yyyy"
-          },
-          "Mon dd": {
-            "label": "Mon dd"
-          },
-          "Mon dd, yyyy": {
-            "label": "Mon dd, yyyy"
-          },
-          "Month dd, yyyy": {
-            "label": "Month dd, yyyy"
-          },
-          "Month, yyyy": {
-            "label": "Month, yyyy"
-          },
-          "yyyy-MM-dd": {
-            "label": "yyyy-MM-dd"
-          },
-          "yyyyMMdd": {
-            "label": "yyyyMMdd"
-          },
-          "yyyy-MM-dd hh:mm:ss": {
-            "label": "yyyy-MM-dd hh:mm:ss"
-          },
-          "MM/dd/yyyy hh:mm:ss": {
-            "label": "MM/dd/yyyy hh:mm:ss"
-          },
-          "MM/dd/yy hh:mm:ss": {
-            "label": "MM/dd/yy hh:mm:ss"
-          },
-          "dd/MM/yyyy hh:mm:ss": {
-            "label": "dd/MM/yyyy hh:mm:ss"
-          },
-          "dd/MM/yy hh:mm:ss": {
-            "label": "dd/MM/yy hh:mm:ss"
-          },
-          "HH:mm:ss": {
-            "label": "HH:mm:ss"
-          }
-        },
-        "val": "yyyy-MM-dd hh:mm:ss",
         "breakLine": true
       }
     }
