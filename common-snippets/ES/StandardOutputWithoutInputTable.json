@@ -1,12 +1,12 @@
 {
   "output": {
     "type": "fieldset", 
-    "label": "Ausgabetabelle definieren", 
+    "label": "Definir Tabla de Salida", 
     "repeat": false, 
     "fields": {
       "output.custom_text": {
         "type": "text", 
-        "label": "Name der Ausgabetabelle", 
+        "label": "Imprimir Nombre de Tabla", 
         "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'", 
         "minLength": 1, 
         "val": "", 
@@ -15,20 +15,20 @@
       }, 
       "output.set_options": {
         "type": "checkbox", 
-        "label": "Ausgabe-Optionen", 
+        "label": "Imprimir Opciones", 
         "val": "false", 
         "isOn": "true", 
         "isOff": "false"
       }, 
       "output_options_box": {
         "type": "fieldset", 
-        "label": "Ausgabe-Optionen", 
+        "label": "Imprimir Opciones", 
         "show_if": "output.set_options=='true'", 
         "repeat": false, 
         "fields": {
           "output.compose_table_name": {
             "type": "checkbox", 
-            "label": "Tabellenname zusammenstellen", 
+            "label": “Componer Nombre de la Tabla”, 
             "val": "false", 
             "isOn": "true", 
             "isOff": "false", 
@@ -36,13 +36,13 @@
           }, 
           "compose_table_name_frame": {
             "type": "fieldset", 
-            "label": "Name der Ausgabetabelle zusammenstellen", 
+            "label": “Componer Nombre de la Tabla de Salida”, 
             "show_if": "output.compose_table_name=='true'", 
             "repeat": false, 
             "fields": {
               "output.prefix_rule": {
                 "type": "select", 
-                "label": "Präfix", 
+                "label": "Prefijo", 
                 "show_if": "output.compose_table_name=='true'", 
                 "val": "empty", 
                 "options": {
@@ -50,28 +50,28 @@
                     "label": "-"
                   }, 
                   "script_name": {
-                    "label": "Aufgabe Name"
+                    "label": "Nombre de la Tarea"
                   }, 
                   "date_string_type1": {
-                    "label": "Datum: tt_mm_jjjj"
+                    "label": "Fecha: dd_mm_aaaa"
                   }, 
                   "date_string_type2": {
-                    "label": "Datum: jjjj_mm_tt"
+                    "label": "Fecha: aaaa_mm_dd"
                   }, 
                   "time_string": {
-                    "label": "Zeit: h_min_sec"
+                    "label": "Tempo: h_min_seg"
                   }, 
                   "datetime_string": {
-                    "label": "Datum_Zeit"
+                    "label": "Fecha_Hora"
                   }, 
                   "custom": {
-                    "label": "Benutzerdefiniert"
+                    "label": "Personalizado"
                   }
                 }
               }, 
               "output.prefix_text": {
                 "type": "text", 
-                "label": "Präfix Text", 
+                "label": "Texto del Prefijo", 
                 "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'", 
                 "minLength": 1, 
                 "maxLength": 31, 
@@ -79,28 +79,28 @@
               }, 
               "output.core_delimiter": {
                 "type": "text", 
-                "label": "Begrenzer", 
+                "label": "Delimitador", 
                 "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'", 
                 "val": "_", 
                 "width": "50px"
               }, 
               "output.core_rule": {
                 "type": "select", 
-                "label": "Tabelle Name", 
+                "label": "Nombre de la Tabla", 
                 "show_if": "output.compose_table_name=='true'", 
                 "val": "script_name", 
                 "options": {
                   "script_name": {
-                    "label": "Aufgabe Name"
+                    "label": "Nombre de la Tarea"
                   }, 
                   "custom": {
-                    "label": "Benutzerdefiniert"
+                    "label": "Personalizado"
                   }
                 }
               }, 
               "output.core_text": {
                 "type": "text", 
-                "label": "Name der Ausgabetabelle", 
+                "label": "Imprimir Nombre de Tabla", 
                 "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'", 
                 "required": true, 
                 "minLength": 1, 
@@ -109,14 +109,14 @@
               }, 
               "output.suffix_delimiter": {
                 "type": "text", 
-                "label": "Begrenzer", 
+                "label": "Delimitador", 
                 "show_if": "output.compose_table_name=='true'", 
                 "val": "_", 
                 "width": "50px"
               }, 
               "output.suffix_rule": {
                 "type": "select", 
-                "label": "Sufixo", 
+                "label": "Sufijo", 
                 "show_if": "output.compose_table_name=='true'", 
                 "val": "script_name", 
                 "options": {
@@ -124,28 +124,28 @@
                     "label": "-"
                   }, 
                   "script_name": {
-                    "label": "Aufgabe Name"
+                    "label": "Nombre de la Tarea"
                   }, 
                   "date_string_type1": {
-                    "label": "Datum: tt_mm_jjjj"
+                    "label": "Fecha: dd_mm_aaaa"
                   }, 
                   "date_string_type2": {
-                    "label": "Datum: jjjj_mm_tt"
+                    "label": "Fecha: aaaa_mm_dd"
                   }, 
                   "time_string": {
-                    "label": "Zeit: h_min_sec"
+                    "label": "Tempo: h_min_seg"
                   }, 
                   "datetime_string": {
-                    "label": "Datum_Zeit"
+                    "label": "Fecha_Hora"
                   }, 
                   "custom": {
-                    "label": "Benutzerdefiniert"
+                    "label": "Personalizado"
                   }
                 }
               }, 
               "output.suffix_text": {
                 "type": "text", 
-                "label": "Juntar Sufixo ao Texto", 
+                "label": "Texto del Sufijo", 
                 "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'", 
                 "minLength": 1, 
                 "maxLength": 31, 
@@ -154,283 +154,283 @@
               }, 
               "output.timezone": {
                 "type": "select", 
-                "label": "Zeitzone", 
+                "label": "Zona Horaria", 
                 "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
                 "val": "CET", 
                 "required": true, 
                 "options": {
                   "NZDT": {
-                    "label": "NZDT(Neuseeländische Sommerzeit)"
+                    "label": “NZDT(Horario de Verano de Nueva Zelanda)”
                   }, 
                   "IDLE": {
-                    "label": "IDLE(Internationale Datumsgrenze, Ost)"
+                    "label": “IDLE(Línea Internacional de Cambio de Fecha, Este)”
                   }, 
                   "NZST": {
-                    "label": "NZST(Neuseeländische Standardzeit)"
+                    "label": “NZST(Horario Estándar de Nueva Zelanda)”
                   }, 
                   "NZT": {
-                    "label": "NZT(Neuseeländische Zeit)"
+                    "label": “NZT(Horario de Nueva Zelanda)”
                   }, 
                   "AESST": {
-                    "label": "AESST(Australische Sommerzeit)"
+                    "label": “AESST(Horario Estándar de Verano del Este de Australia)”
                   }, 
                   "ACSST": {
-                    "label": "ACSST(Zentralaustralische Sommer-Standardzeit)"
+                    "label": “ACSST(Horario Estándar de Verano de Australia Central)”
                   }, 
                   "CADT": {
-                    "label": "CADT (Horário de Verão da Austrália Central)"
+                    "label": “CADT(Horario de Verano de Australia Central)”
                   }, 
                   "SADT": {
-                    "label": "SADT(Südaustralische Sommerzeit)"
+                    "label": “SADT(Horario de Verano del Sur de Australia)”
                   }, 
                   "AEST": {
-                    "label": "AEST(Australische Östliche Standardzeit)"
+                    "label": “AEST(Horario Estándar del Este de Australia)”
                   }, 
                   "EAST": {
-                    "label": "EAST(Ostaustralische Standardzeit)"
+                    "label": “EAST(Horario Estándar de Australia del Este)”
                   }, 
                   "GST": {
-                    "label": "GST(Guam Standardzeit, USSR Zone 9)"
+                    "label": “GST(Horario Estándar de Guam, Zona 9 de URSS)”
                   }, 
                   "LIGT": {
-                    "label": "LIGT(Melbourne, Australien)"
+                    "label": “LIGT(Melbourne, Australia)”
                   }, 
                   "SAST": {
-                    "label": "SAST(Südaustralische Standardzeit)"
+                    "label": “SAST(Horario Estándar del Sur de Australia)”
                   }, 
                   "CAST": {
-                    "label": "CAST(Zentralaustralische Standardzeit)"
+                    "label": “CAST(Horario Estándar de Australia Central)”
                   }, 
                   "AWSST": {
-                    "label": "AWSST(Westliche Sommerzeit in Australien)"
+                    "label": “AWSST(Horario Estándar del Verano del Oeste de Australia)”
                   }, 
                   "JST": {
-                    "label": "JST(Japanische Standardzeit, USSR Zone 8)"
+                    "label": “JST(Horario Estándar de Japón, Zona 8 de URSS)”
                   }, 
                   "KST": {
-                    "label": "KST(Korea-Standardzeit)"
+                    "label": “KST(Horario Estándar de Corea)”
                   }, 
                   "MHT": {
-                    "label": "MHT(Kwajalein-Zeit)"
+                    "label": “MHT(Horario de Kwajalein)”
                   }, 
                   "WDT": {
-                    "label": "WDT(Westaustralische Sommerzeit)"
+                    "label": “WDT(Horario de Verano de Australia del Oeste)”
                   }, 
                   "MT": {
-                    "label": "MT(Molukken-Zeit)"
+                    "label": “MT(Horario de Molucas)”
                   }, 
                   "AWST": {
-                    "label": "AWST(Australische Westliche Standardzeit)"
+                    "label": “AWST(Horario Estándar del Oeste de Australia)”
                   }, 
                   "CCT": {
-                    "label": "CCT(Chinesische Küstenzeit)"
+                    "label": “CCT(Horario de la Costa de China)”
                   }, 
                   "WADT": {
-                    "label": "WADT (Horário de Verão da Austrália Ocidental)"
+                    "label": “WADT(Horario de Verano de Australia del Oeste)”
                   }, 
                   "WST": {
-                    "label": "WST(Westaustralische Standardzeit)"
+                    "label": “WST(Horario Estándar de Australia del Oeste)”
                   }, 
                   "ALMST": {
-                    "label": "ALMST(Almaty Sommerzeit)"
+                    "label": “ALMST(Horario de Verano de Almatý)
                   }, 
                   "WAST": {
-                    "label": "WAST(Westaustralische Standardzeit)"
+                    "label": “WAST(Horario Estándar de Australia del Oeste)”
                   }, 
                   "CXT": {
-                    "label": "CXT(Weihnachts(Insel)zeit)"
+                    "label": “CXT(Horario (Insular) de Navidad)”
                   }, 
                   "ALMT": {
-                    "label": "ALMT(Almaty Zeit)"
+                    "label": “ALMT(Horario de Almatý)
                   }, 
                   "MAWT": {
-                    "label": "MAWT(Mawson (Antarktis) Zeit)"
+                    "label": “MAWT(Horario de Mawson (Antártida))
                   }, 
                   "IOT": {
-                    "label": "IOT(Indische Chagos-Zeit)"
+                    "label": “IOT(Horario de Chagos, India)”
                   }, 
                   "MVT": {
-                    "label": "MVT(Malediven-Inselzeit)"
+                    "label": “MVT(Horario Insular de Maldivas)”
                   }, 
                   "TFT": {
-                    "label": "TFT(Kerguelen-Zeit)"
+                    "label": “TFT(Horario de Kerguelen)”
                   }, 
                   "AFT": {
-                    "label": "AFT(Afganistan Zeit)"
+                    "label": “AFT(Horario de Afganistán)”
                   }, 
                   "MUT": {
-                    "label": "MUT(Mauritius Inselzeit)"
+                    "label": “MUT(Horario Insular de Mauricio)”
                   }, 
                   "RET": {
-                    "label": "RET(Zeit auf La Réunion)"
+                    "label": “RET(Horario de la Isla Reunión)”
                   }, 
                   "SCT": {
-                    "label": "SCT(Insel Mahe Zeit)"
+                    "label": “SCT(Horario Estándar de la Isla de Mahé)”
                   }, 
                   "IT": {
-                    "label": "IT(Iran Zeit)"
+                    "label": “IT(Horario de Irán)”
                   }, 
                   "EAT": {
-                    "label": "EAT(Antananarivo, Komorenzeit)"
+                    "label": “EAT(Horario de Antananarivo, Comoras)
                   }, 
                   "BT": {
-                    "label": "BT(Baghdad-Zeit)"
+                    "label": “BT(Horario de Bagdad)”
                   }, 
                   "EETDST": {
-                    "label": "EETDST(Ost-Europa Sommerzeit)"
+                    "label": “EETDST(Horario de Verano de Europa del Este)”
                   }, 
                   "HMT": {
-                    "label": "HMT (Horário das Ilhas Heard e McDonald)"
+                    "label": “HMT(Horario de las islas Heard y McDonald)”
                   }, 
                   "BDST": {
-                    "label": "BDST (Horário de Verão Britânico)"
+                    "label": “BDST(Horario de Verano Británico)”
                   }, 
                   "CEST": {
-                    "label": "CEST(Mitteleuropäische Sommerzeit)"
+                    "label": “CEST(Horario de Verano de Europa Central)”
                   }, 
                   "CETDST": {
-                    "label": "CETDST(Mitteleuropäische Sommerzeit)"
+                    "label": “CETDST(Horario de Verano de Europa Central)”
                   }, 
                   "EET": {
-                    "label": "EET(Osteuropa, UdSSR Zone 1)"
+                    "label": “EET(Europa del Este, Zona 1 de URSS)”
                   }, 
                   "FWT": {
-                    "label": "FWT(Französische Winterzeit)"
+                    "label": “FWT(Horario de Invierno de Francia)”
                   }, 
                   "IST": {
-                    "label": "IST(Israelische Standardzeit)"
+                    "label": “IST(Horario Estándar de Israel)”
                   }, 
                   "MEST": {
-                    "label": "MEST(Mitteleuropäische Sommerzeit)"
+                    "label": “MEST(Horario de Verano de Europa Central)”
                   }, 
                   "METDST": {
-                    "label": "METDST(Mitteleuropäische Sommerzeit)"
+                    "label": “METDST(Horario de Verano de Europa Central)”
                   }, 
                   "SST": {
-                    "label": "SST(Schwedische Sommerzeit)"
+                    "label": “SST(Horario de Verano de Suecia)”
                   }, 
                   "BST": {
-                    "label": "BST(Britische Sommerzeit)"
+                    "label": “BST(Horario de Verano Británico)”
                   }, 
                   "CET": {
-                    "label": "CET(Mitteleuropäische Zeit)"
+                    "label": “CET(Horario de Europa Central)”
                   }, 
                   "DNT": {
-                    "label": "DNT (Horário Padrão da Dinamarca)"
+                    "label": “DNT(Horario Normal de Dinamarca)”
                   }, 
                   "FST": {
-                    "label": "FST(Französische Sommerzeit)"
+                    "label": “FST(Horario de Verano de Francia)”
                   }, 
                   "MET": {
-                    "label": "MET(Mitteleuropäische Zeit)"
+                    "label": “MET(Horario de Europa Central)”
                   }, 
                   "MEWT": {
-                    "label": "MEWT(Mitteleuropäische Winterzeit)"
+                    "label": “MEWT(Horario de Invierno de Europa Central)”
                   }, 
                   "MEZ": {
-                    "label": "MEZ(Mitteleuropa-Zone)"
+                    "label": “MEZ(Zona de Europa Central)”
                   }, 
                   "NOR": {
-                    "label": "NOR(Norwegische Standardzeit)"
+                    "label": “NOR(Horario Estándar de Noruega)”
                   }, 
                   "SET": {
-                    "label": "SET(Seychellen-Zeit)"
+                    "label": “SET(Horario de Seychelles)”
                   }, 
                   "SWT": {
-                    "label": "SWT(Schwedische Winterzeit)"
+                    "label": “SWT(Horario de Invierno de Suecia)”
                   }, 
                   "WETDST": {
-                    "label": "WETDST(Westeuropäische Sommerzeit)"
+                    "label": “WETDST(Horario de Verano de Europa del Oeste)”
                   }, 
                   "GMT": {
-                    "label": "GMT (Horário do Meridiano de Greenwich)"
+                    "label": “GMT(Horario Medio de Greenwich)”
                   }, 
                   "UT": {
-                    "label": "UT(Weltzeit)"
+                    "label": “UT(Horario Universal)”
                   }, 
                   "UTC": {
-                    "label": "UTC(Universalzeit, koordiniert)"
+                    "label": “UTC(Horario Universal, Coordinado)”
                   }, 
                   "WET": {
-                    "label": "WET(Westeuropa)"
+                    "label": “WET(Europa del Oeste)”
                   }, 
                   "WAT": {
-                    "label": "WAT(Westafrikanische Zeit)"
+                    "label": “WAT(Horario de África del Oeste)”
                   }, 
                   "NDT": {
-                    "label": "NDT(Neufundland Sommerzeit)"
+                    "label": “NDT(Horario de Verano de Terranova)”
                   }, 
                   "ADT": {
-                    "label": "ADT (Horário de Verão do Atlântico)"
+                    "label": “ADT(Horario de Verano del Atlántico)”
                   }, 
                   "NFT": {
-                    "label": "NFT(Neufundland-Standardzeit)"
+                    "label": “NFT(Horario Estándar de Terranova)”
                   }, 
                   "NST": {
-                    "label": "NST(Neufundland-Standardzeit)"
+                    "label": “NST(Horario Estándar de Terranova)”
                   }, 
                   "AST": {
-                    "label": "AST(Atlantische Standardzeit (Kanada))"
+                    "label": “AST(Horario Estándar del Atlántico (Canadá))”
                   }, 
                   "ACST": {
-                    "label": "ACST(Atlantik/Porto Acre Sommerzeit)"
+                    "label": “ACST(Horario de Verano del Atlántico/de Porto Acre)”
                   }, 
                   "ACT": {
-                    "label": "ACT(Atlantik/Porto Acre Standardzeit)"
+                    "label": “ACT(Horario Estándar del Atlántico/de Porto Acre)”
                   }, 
                   "EDT": {
-                    "label": "EDT (Horário de Verão Oriental)"
+                    "label": “EDT(Horario de Verano del Este)”
                   }, 
                   "CDT": {
-                    "label": "CDT(Zentrale Sommerzeit)"
+                    "label": “CDT(Horario de Verano Central)”
                   }, 
                   "EST": {
-                    "label": "EST(Östliche Standardzeit)"
+                    "label": “EST(Horario Estándar del Este)”
                   }, 
                   "CST": {
-                    "label": "CST(Zentrale Standardzeit)"
+                    "label": “CST(Horario Estándar Central)”
                   }, 
                   "MDT": {
-                    "label": "MDT(Bergzeit)(Mountain Daylight Time)"
+                    "label": “MDT(Horario de Verano de Montaña)”
                   }, 
                   "MST": {
-                    "label": "MST(Berg-Standardzeit)"
+                    "label": “MST(Horario Estándar de Montaña)”
                   }, 
                   "PDT": {
-                    "label": "PDT(Pazifische Sommerzeit)"
+                    "label": “PDT(Horario de Verano del Pacífico)”
                   }, 
                   "AKDT": {
-                    "label": "AKDT (Horário de Verão do Alasca)"
+                    "label": “AKDT(Horario de Verano de Alaska)”
                   }, 
                   "PST": {
-                    "label": "PST(Pazifische Standardzeit)"
+                    "label": “PST(Horario Estándar del Pacífico)”
                   }, 
                   "YDT": {
-                    "label": "YDT (Horário de Verão de Yukon)"
+                    "label": “YDT(Horario de Verano de Yucón)”
                   }, 
                   "AKST": {
-                    "label": "AKST(Alaska Standardzeit)"
+                    "label": “AKST(Horario Estándar de Alaska)”
                   }, 
                   "HDT": {
-                    "label": "HDT(Hawaii/Alaska Sommerzeit)"
+                    "label": “HDT(Horario de Verano de Hawái/Alaska)”
                   }, 
                   "YST": {
-                    "label": "YST (Horário Padrão de Yukon)"
+                    "label": “YST(Horario Estándar de Yucón)”
                   }, 
                   "AHST": {
-                    "label": "AHST(Alaska-Hawaii Standardzeit)"
+                    "label": “AHST(Hoario Estándar de Alaska-Hawái)”
                   }, 
                   "HST": {
-                    "label": "HST(Hawaii-Standardzeit)"
+                    "label": “HST(Horario Estándar de Hawái)”
                   }, 
                   "CAT": {
-                    "label": "CAT(Zentral-Alaska-Zeit)"
+                    "label": “CAT(Horario de Alaska Central)”
                   }, 
                   "NT": {
-                    "label": "NT(Nome Zeit)"
+                    "label": “NT(Horario de Nome)”
                   }, 
                   "IDLW": {
-                    "label": "IDLW(Internationale Datumsgrenze, West)"
+                    "label": “IDLW(Línea Internacional de Cambio de Fecha, Oeste)”
                   }
                 }, 
                 "breakLine": true
@@ -439,25 +439,25 @@
           }, 
           "output.options.location": {
             "type": "text", 
-            "label": "Standort angeben", 
+            "label": "Especificar Ubicación", 
             "val": "A1"
           }, 
           "output.options.table_mode": {
             "type": "select", 
-            "label": "Einfügen", 
+            "label": "Pegar", 
             "val": "content_only", 
             "options": {
               "content_only": {
-                "label": "Nur Inhalt"
+                "label": "Sólo Contenido"
               }, 
               "fully_formatted": {
-                "label": "Vollständig formatiert"
+                "label": "Completamente Formateada"
               }
             }
           }, 
           "output.options.formatted_as_table": {
             "type": "checkbox", 
-            "label": "Als Tabelle formatiert", 
+            "label": "Formateado como Tabla", 
             "val": "true", 
             "isOn": "true", 
             "isOff": "false", 
@@ -465,14 +465,14 @@
           }, 
           "output.add_tag": {
             "type": "checkbox", 
-            "label": "Tag hinzufügen", 
+            "label": “Agregar Marcador”, 
             "val": "false", 
             "isOn": "true", 
             "isOff": "false"
           }, 
           "output.tag_name": {
             "type": "text", 
-            "label": "Nome do Rótulo", 
+            "label": "Nombre del marcador", 
             "show_if": "output.add_tag=='true'", 
             "required": true, 
             "minLength": 1, 
@@ -483,14 +483,14 @@
           }, 
           "output.options.visibility": {
             "type": "select", 
-            "label": "Sichtbarkeit", 
+            "label": "Visibilidad", 
             "val": "current_flow", 
             "options": {
               "current_flow": {
-                "label": "Stromfluss"
+                "label": "Caudal Actual"
               }, 
               "all_flow": {
-                "label": "Alle Flows"
+                "label": "Todos los Caudales"
               }
             }
           }
