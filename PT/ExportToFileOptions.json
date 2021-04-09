@@ -1,0 +1,138 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "Opções de Seleção", 
+    "repeat": false, 
+    "fields": {
+      "options.to": {
+        "type": "hidden", 
+        "val": "file"
+      }, 
+      "options.export_series": {
+        "type": "checkbox", 
+        "label": "Exportar Série", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "options.file_name_column": {
+        "type": "select", 
+        "label": "Selecionar Coluna de Nome de Ficheiro", 
+        "show_if": "options.export_series=='true'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.webservice": {
+        "type": "select", 
+        "label": "Selecionar Serviço Web", 
+        "options": {
+          "github": {
+            "label": "Github"
+          }, 
+          "dropbox": {
+            "label": "Dropbox"
+          }, 
+          "ms_one_drive": {
+            "label": "Microsoft OneDrive"
+          }, 
+          "google_drive": {
+            "label": "Google Drive"
+          }
+        }, 
+        "val": "github", 
+        "required": true
+      }, 
+      "options.export_format": {
+        "type": "select", 
+        "label": "Exportar Formato", 
+        "options": {
+          "csv_file": {
+            "label": "Ficheiro(s) Csv"
+          }, 
+          "word_by_word": {
+            "label": "Palavra a Palavra"
+          }, 
+          "line_by_line": {
+            "label": "Linha a Linha"
+          }
+        }, 
+        "val": "csv_file", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.github_create_pr": {
+        "type": "checkbox", 
+        "label": "Criar pedido de extração", 
+        "show_if": "options.webservice=='github'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "options.github_token": {
+        "type": "text", 
+        "label": "Specify the Github personal access token that has write permission:", 
+        "show_if": "options.webservice=='github'", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.github_url": {
+        "type": "text", 
+        "label": "Introduzir hiperligação, por exemplo https://github.com/zippydoc/test", 
+        "show_if": "options.webservice=='github'", 
+        "val": "https://github.com/zippydoc/public-tables", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.ms_one_drive_token": {
+        "type": "text", 
+        "label": "Microsoft Graph API access token. You can get it here https://ms-oauth.herokuapp.com/", 
+        "show_if": "options.webservice=='ms_one_drive'", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.google_authorization_code": {
+        "type": "text", 
+        "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/", 
+        "show_if": "options.webservice=='google_drive'", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.dropbox_authorization_code": {
+        "type": "text", 
+        "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code", 
+        "show_if": "options.webservice=='dropbox'", 
+        "required": true, 
+        "width": "100%", 
+        "breakLine": true
+      }, 
+      "options.if_duplicated": {
+        "type": "select", 
+        "label": "Se duplicado", 
+        "show_if": "options.webservice=='github'", 
+        "val": "drop_if_exist", 
+        "options": {
+          "drop_if_exist": {
+            "label": "Criar ou Descartar (se já existir)"
+          }, 
+          "error_if_exist": {
+            "label": "Criar Novo (gera erro se existir)"
+          }, 
+          "error_if_not_exist": {
+            "label": "Descartar (gera erro se não existir)"
+          }, 
+          "append": {
+            "label": "Anexar"
+          }
+        }
+      }
+    }
+  }
+}
