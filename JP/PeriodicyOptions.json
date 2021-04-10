@@ -1,0 +1,226 @@
+{
+  "options": {
+    "type": "fieldset", 
+    "label": "周期オプションの選択", 
+    "repeat": false, 
+    "fields": {
+      "options.type": {
+        "type": "select", 
+        "label": "タイプ", 
+        "options": {
+          "generate": {
+            "label": "周期例の生成"
+          }, 
+          "process": {
+            "label": "プロセス周期表"
+          }
+        }, 
+        "val": "generate", 
+        "breakLine": true
+      }, 
+      "amount_formatting_frame": {
+        "type": "fieldset", 
+        "label": "Amount Column Formatting", 
+        "show_if": "options.type=='generate'", 
+        "repeat": false, 
+        "fields": {
+          "options.amount.format__category": {
+            "type": "select", 
+            "label": "フォーマット", 
+            "required": true, 
+            "options": {
+              "standard": {
+                "label": "標準"
+              }, 
+              "number": {
+                "label": "数"
+              }, 
+              "percentage": {
+                "label": "割合"
+              }, 
+              "currency": {
+                "label": "通貨"
+              }
+            }, 
+            "val": "currency"
+          }, 
+          "options.amount.format__rounding": {
+            "type": "select", 
+            "label": "四捨五入", 
+            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'", 
+            "required": true, 
+            "options": {
+              "no_rounding": {
+                "label": "四捨五入無し"
+              }, 
+              "0": {
+                "label": "0桁"
+              }, 
+              "1": {
+                "label": "1桁"
+              }, 
+              "2": {
+                "label": "2桁"
+              }, 
+              "3": {
+                "label": "3桁"
+              }, 
+              "4": {
+                "label": "4桁"
+              }, 
+              "5": {
+                "label": "5桁"
+              }, 
+              "6": {
+                "label": "6桁"
+              }, 
+              "7": {
+                "label": "7桁"
+              }, 
+              "8": {
+                "label": "8桁"
+              }, 
+              "9": {
+                "label": "9桁"
+              }
+            }, 
+            "val": "2"
+          }, 
+          "options.amount.format__use_1000_separator": {
+            "type": "checkbox", 
+            "label": "1000セパレータ(.)を使用", 
+            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'", 
+            "val": "true", 
+            "isOn": "true", 
+            "isOff": "false"
+          }, 
+          "options.amount.format__currency_symbol": {
+            "type": "select", 
+            "label": "シンボル", 
+            "show_if": "options.amount.format__category=='currency'", 
+            "required": true, 
+            "options": {
+              "dollar": {
+                "label": "$"
+              }, 
+              "euro": {
+                "label": "€"
+              }, 
+              "pound": {
+                "label": "£"
+              }
+            }, 
+            "val": "dollar"
+          }
+        }
+      }, 
+      "options.standard_table": {
+        "type": "checkbox", 
+        "label": "標準周期表", 
+        "show_if": "options.type=='process'", 
+        "val": "true", 
+        "isOn": "true", 
+        "isOff": "false", 
+        "breakLine": true
+      }, 
+      "options.initial_date": {
+        "type": "select", 
+        "label": "初日", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "options.period": {
+        "type": "select", 
+        "label": "周期（例：毎月、四半期）", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true
+      }, 
+      "options.final_date": {
+        "type": "select", 
+        "label": "最終日", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "breakLine": true
+      }, 
+      "options.volume": {
+        "type": "select", 
+        "label": "量", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS"
+      }, 
+      "options.growth": {
+        "type": "select", 
+        "label": "成長", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "table": "input_table", 
+        "bind": "COLUMNS"
+      }, 
+      "options.growth_period": {
+        "type": "select", 
+        "label": "成長期", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "options": {
+          "selected_period": {
+            "label": "周期に等しい"
+          }, 
+          "week_on_week": {
+            "label": "週ごと"
+          }, 
+          "month_on_month": {
+            "label": "月次"
+          }, 
+          "quarter_on_quarter": {
+            "label": "四半期毎"
+          }, 
+          "year_on_year": {
+            "label": "年次"
+          }, 
+          "column": {
+            "label": "列の選択"
+          }
+        }, 
+        "val": "selected_period"
+      }, 
+      "options.growth_period_column": {
+        "type": "select", 
+        "label": "成長期の列", 
+        "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.use_growth_pattern_column": {
+        "type": "checkbox", 
+        "label": "成長パターンの使用", 
+        "show_if": "options.type=='process' && options.standard_table=='false'", 
+        "val": "false", 
+        "isOn": "true", 
+        "isOff": "false"
+      }, 
+      "options.growth_pattern_column": {
+        "type": "select", 
+        "label": "成長パターン", 
+        "show_if": "options.type=='process' && options.standard_table=='false' && options.use_growth_pattern_column=='true'", 
+        "table": "input_table", 
+        "bind": "COLUMNS", 
+        "required": true, 
+        "breakLine": true
+      }, 
+      "options.end_date": {
+        "type": "date", 
+        "label": "テーブルの終了日", 
+        "show_if": "options.type=='process'", 
+        "val": "", 
+        "required": true, 
+        "style": "width: 300px"
+      }
+    }
+  }
+}
