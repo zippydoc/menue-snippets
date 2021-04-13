@@ -21,65 +21,6 @@
         },
         "val": "write_email"
       },
-      "smtp_config_frame": {
-        "type": "fieldset",
-        "label": "SMTP Connection",
-        "show_if": "options.task_type=='write_series' || options.task_type=='write_email'",
-        "repeat": false,
-        "fields": {
-          "options.smtp.type": {
-            "type": "select",
-            "label": "Select SMTP Server",
-            "options": {
-              "gmail": {
-                "label": "Gmail"
-              },
-              "custom": {
-                "label": "Custom (coming soon)"
-              }
-            },
-            "val": "gmail",
-            "required": true,
-            "breakLine": true
-          },
-          "options.gmail.user": {
-            "type": "text",
-            "label": "Gmail User",
-            "show_if": "options.smtp.type=='gmail'",
-            "required": true
-          },
-          "options.gmail.password": {
-            "type": "password",
-            "label": "Gmail Password",
-            "show_if": "options.smtp.type=='gmail'",
-            "required": true
-          },
-          "options.custom.host": {
-            "type": "text",
-            "label": "SMTP Host",
-            "show_if": "options.smtp.type=='custom'",
-            "required": true
-          },
-          "options.custom.port": {
-            "type": "text",
-            "label": "SMTP Port",
-            "show_if": "options.smtp.type=='custom'",
-            "required": true
-          },
-          "options.custom.user": {
-            "type": "text",
-            "label": "SMTP User",
-            "show_if": "options.smtp.type=='custom'",
-            "required": true
-          },
-          "options.custom.password": {
-            "type": "password",
-            "label": "SMTP Password",
-            "show_if": "options.smtp.type=='custom'",
-            "required": true
-          }
-        }
-      },
       "options.to": {
         "type": "text",
         "label": "To",
@@ -124,6 +65,66 @@
         "val": "",
         "placeholder": "Text",
         "width": "100%"
+      }
+    }
+  },
+  "smtp_config_frame": {
+    "type": "fieldset",
+    "label": "SMTP Connection",
+    "show_if": "options.task_type=='write_series' || options.task_type=='write_email'",
+    "repeat": false,
+    "fields": {
+      "options.smtp.type": {
+        "type": "select",
+        "label": "Select SMTP Server",
+        "options": {
+          "gmail": {
+            "label": "Gmail"
+          },
+          "custom": {
+            "label": "Custom (coming soon)"
+          }
+        },
+        "val": "gmail",
+        "required": true,
+        "breakLine": true
+      },
+      "options.gmail.user": {
+        "type": "text",
+        "label": "Gmail User",
+        "show_if": "options.smtp.type=='gmail'",
+        "required": true,
+        "placeholder": "sender@gmail.com"
+      },
+      "options.gmail.password": {
+        "type": "password",
+        "label": "Gmail Password",
+        "show_if": "options.smtp.type=='gmail'",
+        "required": true
+      },
+      "options.custom.host": {
+        "type": "text",
+        "label": "SMTP Host",
+        "show_if": "options.smtp.type=='custom'",
+        "required": true
+      },
+      "options.custom.port": {
+        "type": "text",
+        "label": "SMTP Port",
+        "show_if": "options.smtp.type=='custom'",
+        "required": true
+      },
+      "options.custom.user": {
+        "type": "text",
+        "label": "SMTP User",
+        "show_if": "options.smtp.type=='custom'",
+        "required": true
+      },
+      "options.custom.password": {
+        "type": "password",
+        "label": "SMTP Password",
+        "show_if": "options.smtp.type=='custom'",
+        "required": true
       }
     }
   }
