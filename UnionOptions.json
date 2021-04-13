@@ -4,7 +4,7 @@
     "label": "Union Options",
     "repeat": false,
     "fields": {
-      "union_type": {
+      "options.union_type": {
         "type": "select",
         "label": "Select Union Type",
         "val": "auto_config_by_name",
@@ -17,10 +17,10 @@
           }
         }
       },
-      "field_output_type": {
+      "options.field_output_type": {
         "type": "select",
         "label": "Column Output Type",
-        "show_if": "union_type=='auto_config_by_name' || union_type=='auto_config_by_position'",
+        "show_if": "options.union_type=='auto_config_by_name' || options.union_type=='auto_config_by_position'",
         "val": "output_all_fields",
         "options": {
           "output_all_fields": {
@@ -29,7 +29,15 @@
           "output_common_fields": {
             "label": "Output Common Columns"
           }
-        }
+        },
+        "breakLine": true
+      },
+      "options.add_table_name_column": {
+        "type": "checkbox",
+        "label": "Add Table name column",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
       }
     }
   }
