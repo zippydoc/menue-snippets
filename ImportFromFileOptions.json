@@ -198,52 +198,42 @@
         "style": "margin-top: 10px",
         "breakLine": true
       },
-      "options.use_filename_as_output_table_name": {
-        "type": "checkbox",
-        "label": "Use filename as table name",
-        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      },
-      "options.unify_in_one_table": {
-        "type": "checkbox",
-        "label": "Unify in one table",
+      "if_dir_frame": {
+        "type": "fieldset",
+        "label": "If import directory",
         "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.suffix": {
-        "type": "select",
-        "label": "Suffix",
-        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true' && options.unify_in_one_table=='false'",
-        "options": {
-          "number": {
-            "label": "Number"
+        "repeat": false,
+        "fields": {
+          "options.unify_in_one_table": {
+            "type": "checkbox",
+            "label": "Unify in one table",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
           },
-          "filename": {
-            "label": "Filename"
+          "options.suffix": {
+            "type": "select",
+            "label": "Suffix",
+            "show_if": "options.unify_in_one_table=='false'",
+            "options": {
+              "number": {
+                "label": "Number"
+              },
+              "filename": {
+                "label": "Filename"
+              }
+            },
+            "val": "number",
+            "required": true,
+            "breakLine": true
           }
-        },
-        "val": "number",
-        "required": true,
-        "breakLine": true
-      },
-      "options.is_github_private": {
-        "type": "checkbox",
-        "label": "Repository is private",
-        "show_if": "options.webservice=='github'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
+        }
       },
       "options.include_subdir": {
         "type": "checkbox",
         "label": "Include Subdirectories",
-        "show_if": "options.output_format=='file_list'",
+        "show_if": "options.output_format=='file_list' || (options.output_format!='file_list' && options.is_cloud_dir=='true')",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -256,30 +246,6 @@
         "val": "false",
         "isOn": "true",
         "isOff": "false",
-        "breakLine": true
-      },
-      "options.github_token": {
-        "type": "text",
-        "label": "specify the Github personal access token",
-        "show_if": "options.webservice=='github' && options.is_github_private=='true'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "options.link_directory": {
-        "type": "text",
-        "label": "Enter link e.g. https://github.com/zippydoc/test",
-        "show_if": "options.webservice=='github' && options.output_format!='file_list' && options.is_cloud_dir=='true'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "options.link_directory_4_file_list": {
-        "type": "text",
-        "label": "Enter link e.g. https://github.com/zippydoc/test",
-        "show_if": "options.webservice=='github' && options.output_format=='file_list'",
-        "required": true,
-        "width": "100%",
         "breakLine": true
       },
       "options.link_file": {
@@ -298,33 +264,10 @@
         "width": "100%",
         "breakLine": true
       },
-      "options.one_drive.access_token": {
-        "type": "text",
-        "label": "OAuth Access Token",
-        "show_if": "options.webservice=='ms_one_drive' && options.is_cloud_dir=='false'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
       "options.one_drive.file_path": {
         "type": "text",
         "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
         "show_if": "options.webservice=='ms_one_drive' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "options.one_drive.dir_path": {
-        "type": "text",
-        "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
-        "show_if": "options.webservice=='ms_one_drive' && (options.output_format=='file_list' || options.is_cloud_dir=='true')",
-        "width": "100%",
-        "breakLine": true
-      },
-      "options.dropbox.auth_code": {
-        "type": "text",
-        "label": "Dropbox Authorization Code",
-        "show_if": "options.webservice=='dropbox' && options.is_cloud_dir=='false'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -337,20 +280,35 @@
         "width": "100%",
         "breakLine": true
       },
-      "options.dropbox.dir_path": {
-        "type": "text",
-        "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
-        "show_if": "options.webservice=='dropbox' && (options.output_format=='file_list' || options.is_cloud_dir=='true')",
-        "width": "100%",
-        "breakLine": true
-      },
-      "dir_filter_frame": {
+      "options.dir_path_filter": {
         "type": "fieldset",
-        "label": "Filter the files in directory",
-        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true'",
-        "repeat": false,
+        "label": "Dir path and filter",
+        "show_if": "options.output_format=='file_list' || options.is_cloud_dir=='true'",
+        "repeat": true,
         "fields": {
-          "options.dir_filter.filter_type": {
+          "github__link_directory": {
+            "type": "text",
+            "label": "Enter link e.g. https://github.com/zippydoc/test",
+            "show_if": "options.webservice=='github'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "one_drive__dir_path": {
+            "type": "text",
+            "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
+            "show_if": "options.webservice=='ms_one_drive'",
+            "width": "100%",
+            "breakLine": true
+          },
+          "dropbox__dir_path": {
+            "type": "text",
+            "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
+            "show_if": "options.webservice=='dropbox'",
+            "width": "100%",
+            "breakLine": true
+          },
+          "dir_filter__filter_type": {
             "type": "select",
             "label": "Filter Type",
             "options": {
@@ -373,14 +331,63 @@
             "val": "all",
             "required": true
           },
-          "options.dir_filter.filter_string": {
+          "dir_filter__filter_string": {
             "type": "text",
             "label": "Enter string",
-            "show_if": "options.dir_filter.filter_type!='all'",
+            "show_if": "this.dir_filter__filter_type!='all'",
             "required": true,
             "width": "100%"
           }
         }
+      },
+      "options.is_github_private": {
+        "type": "checkbox",
+        "label": "Repository is private",
+        "show_if": "options.webservice=='github'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.use_filename_as_output_table_name": {
+        "type": "checkbox",
+        "label": "Use filename as table name",
+        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  },
+  "token_frame": {
+    "type": "fieldset",
+    "label": "Input Token",
+    "repeat": false,
+    "fields": {
+      "options.github_token": {
+        "type": "text",
+        "label": "Github personal access token",
+        "show_if": "options.webservice=='github' && options.is_github_private=='true'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.one_drive.access_token": {
+        "type": "text",
+        "label": "One Drive Access Token",
+        "show_if": "options.webservice=='ms_one_drive' && options.is_cloud_dir=='false'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox.auth_code": {
+        "type": "text",
+        "label": "Dropbox Authorization Code",
+        "show_if": "options.webservice=='dropbox' && options.is_cloud_dir=='false'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
       }
     }
   }
