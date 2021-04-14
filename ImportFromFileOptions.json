@@ -363,12 +363,13 @@
   "token_frame": {
     "type": "fieldset",
     "label": "Input Token",
+    "show_if": "options.webservice!='github' || options.is_github_private=='true'",
     "repeat": false,
     "fields": {
       "options.github_token": {
         "type": "text",
         "label": "Github personal access token",
-        "show_if": "options.webservice=='github' && options.is_github_private=='true'",
+        "show_if": "options.webservice=='github'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -376,7 +377,7 @@
       "options.one_drive.access_token": {
         "type": "text",
         "label": "One Drive Access Token",
-        "show_if": "options.webservice=='ms_one_drive' && options.is_cloud_dir=='false'",
+        "show_if": "options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -384,7 +385,15 @@
       "options.dropbox.auth_code": {
         "type": "text",
         "label": "Dropbox Authorization Code",
-        "show_if": "options.webservice=='dropbox' && options.is_cloud_dir=='false'",
+        "show_if": "options.webservice=='dropbox'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.google_drive.access_token": {
+        "type": "text",
+        "label": "Google Drive Access Token",
+        "show_if": "options.webservice=='google_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true
