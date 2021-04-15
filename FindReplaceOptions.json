@@ -80,13 +80,21 @@
         "required": true
       },
       "incoming_value_to_replace.partial_match": {
-        "type": "checkbox",
+        "type": "select",
         "label": "Partial Match",
         "show_if": "incoming_value_to_replace.type=='user_specified_value' || incoming_value_to_replace.type=='replacement_table'",
-        "val": "true",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
+        "options": {
+          "full_match": {
+            "label": "Full match"
+          },
+          "full_and_partial_match": {
+            "label": "Full and partial match"
+          },
+          "partial_match_only": {
+            "label": "Partial match only"
+          }
+        },
+        "val": "full_and_partial_match"
       },
       "replace_with.value_type": {
         "type": "select",
