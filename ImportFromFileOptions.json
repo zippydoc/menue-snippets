@@ -177,13 +177,21 @@
               }
             }
           },
+          "options.add_filepath_column": {
+            "type": "checkbox",
+            "label": "Add Column for File Path",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "style": "margin-top: 10px",
+            "breakLine": true
+          },
           "options.add_filename_column": {
             "type": "checkbox",
             "label": "Add Column for File Name",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
-            "style": "margin-top: 10px",
             "breakLine": true
           }
         }
@@ -227,13 +235,23 @@
             "val": "number",
             "required": true,
             "breakLine": true
+          },
+          "options.include_subdir": {
+            "type": "checkbox",
+            "label": "Include Subdirectories",
+            "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true,
+            "style": "margin-top: 10px"
           }
         }
       },
-      "options.include_subdir": {
+      "options.file_list.include_subdir": {
         "type": "checkbox",
         "label": "Include Subdirectories",
-        "show_if": "options.output_format=='file_list' || (options.output_format!='file_list' && options.is_cloud_dir=='true')",
+        "show_if": "options.output_format=='file_list'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -283,7 +301,7 @@
       },
       "options.dir_path_filter": {
         "type": "fieldset",
-        "label": "Dir path and filter",
+        "label": "Import Path and File Filter",
         "show_if": "options.output_format=='file_list' || options.is_cloud_dir=='true'",
         "repeat": true,
         "fields": {
