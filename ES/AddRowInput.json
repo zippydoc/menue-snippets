@@ -1,58 +1,58 @@
 {
   "input": {
-    "type": "fieldset", 
-    "label": "Seleccionar Tabla de Entrada", 
-    "repeat": false, 
+    "type": "fieldset",
+    "label": "Seleccionar Tabla de Entrada",
+    "repeat": false,
     "fields": {
       "input_table": {
-        "type": "select", 
-        "label": "Seleccionar Tabla", 
-        "bind": "TABLES", 
-        "empty": "", 
+        "type": "select",
+        "label": "Seleccionar Tabla",
+        "bind": "TABLES",
+        "empty": "",
         "required": true
-      }, 
+      },
       "remove_input_table_after_processing": {
-        "type": "hidden", 
+        "type": "hidden",
         "val": "false"
-      }, 
+      },
       "is_word": {
-        "type": "hidden", 
+        "type": "hidden",
         "val": "false"
-      }, 
+      },
       "table_type": {
-        "type": "select", 
-        "label": “Tipo de Tabla”, 
-        "required": true, 
+        "type": "select",
+        "label": “Tipo de Tabla”,
+        "required": true,
         "options": {
           "header_only": {
             "label": “Solo la Cabecera”
-          }, 
+          },
           "label_only": {
             "label": “Solo la Etiqueta”
-          }, 
+          },
           "matrix": {
             "label": “Matriz”
           }
-        }, 
-        "val": "header_only", 
+        },
+        "val": "header_only",
         "breakLine": true
-      }, 
+      },
       "apply_to_all_columns": {
-        "type": "checkbox", 
-        "label": "Aplicar a todas las columnas", 
-        "show_if": "table_type=='header_only' || table_type=='matrix'", 
-        "val": "true", 
-        "isOn": "true", 
+        "type": "checkbox",
+        "label": "Aplicar a todas las columnas",
+        "show_if": "table_type=='header_only' || table_type=='matrix'",
+        "val": "true",
+        "isOn": "true",
         "isOff": "false"
-      }, 
+      },
       "columns_to_apply": {
-        "type": "select", 
-        "label": “Columnas a aplicar”, 
-        "show_if": "apply_to_all_columns=='false' && (table_type=='header_only' || table_type=='matrix')", 
-        "table": "input_table", 
-        "bind": "COLUMNS", 
-        "multiple": true, 
-        "required": true, 
+        "type": "select",
+        "label": “Columnas a aplicar”,
+        "show_if": "apply_to_all_columns=='false' && (table_type=='header_only' || table_type=='matrix')",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "multiple": true,
+        "required": true,
         "breakLine": true
       }
     }
