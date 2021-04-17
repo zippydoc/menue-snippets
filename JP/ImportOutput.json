@@ -1,501 +1,501 @@
 {
   "output": {
-    "type": "fieldset", 
-    "label": "出力テーブルの定義", 
-    "show_if": "options.from=='database' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='true') || (options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='false' && options.use_filename_as_output_table_name=='false')", 
-    "repeat": false, 
+    "type": "fieldset",
+    "label": "出力テーブルの定義",
+    "show_if": "options.from=='database' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='true') || (options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='false' && options.use_filename_as_output_table_name=='false')",
+    "repeat": false,
     "fields": {
       "output.custom_text": {
-        "type": "text", 
-        "label": "出力テーブル名", 
-        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'", 
-        "minLength": 1, 
-        "val": "", 
-        "width": "100%", 
+        "type": "text",
+        "label": "出力テーブル名",
+        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'",
+        "minLength": 1,
+        "val": "",
+        "width": "100%",
         "breakLine": true
-      }, 
+      },
       "output.set_options": {
-        "type": "checkbox", 
-        "label": "出力オプション", 
-        "val": "false", 
-        "isOn": "true", 
+        "type": "checkbox",
+        "label": "出力オプション",
+        "val": "false",
+        "isOn": "true",
         "isOff": "false"
-      }, 
+      },
       "output_options_box": {
-        "type": "fieldset", 
-        "label": "出力オプション", 
-        "show_if": "output.set_options=='true'", 
-        "repeat": false, 
+        "type": "fieldset",
+        "label": "出力オプション",
+        "show_if": "output.set_options=='true'",
+        "repeat": false,
         "fields": {
           "output.compose_table_name": {
-            "type": "checkbox", 
-            "label": "テーブル名の構成", 
-            "val": "false", 
-            "isOn": "true", 
-            "isOff": "false", 
+            "type": "checkbox",
+            "label": "テーブル名の構成",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
             "breakLine": true
-          }, 
+          },
           "compose_table_name_frame": {
-            "type": "fieldset", 
-            "label": "出力テーブル名の構成", 
-            "show_if": "output.compose_table_name=='true'", 
-            "repeat": false, 
+            "type": "fieldset",
+            "label": "出力テーブル名の構成",
+            "show_if": "output.compose_table_name=='true'",
+            "repeat": false,
             "fields": {
               "output.prefix_rule": {
-                "type": "select", 
-                "label": "プレフィックス", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "empty", 
+                "type": "select",
+                "label": "プレフィックス",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "empty",
                 "options": {
                   "empty": {
                     "label": "-"
-                  }, 
+                  },
                   "script_name": {
                     "label": "タスク名"
-                  }, 
+                  },
                   "date_string_type1": {
                     "label": "日付:  dd_mm_yyyy"
-                  }, 
+                  },
                   "date_string_type2": {
                     "label": "日付:  yyyy_mm_dd"
-                  }, 
+                  },
                   "time_string": {
                     "label": "時間: 時_分_秒"
-                  }, 
+                  },
                   "datetime_string": {
                     "label": "日付_時間"
-                  }, 
+                  },
                   "custom": {
                     "label": "カスタム"
                   }
                 }
-              }, 
+              },
               "output.prefix_text": {
-                "type": "text", 
-                "label": "プレフィックステキスト", 
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'", 
-                "minLength": 1, 
-                "maxLength": 31, 
+                "type": "text",
+                "label": "プレフィックステキスト",
+              }
+                "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
+                "minLength": 1,
+                "maxLength": 31,
                 "val": ""
-              }, 
+              },
               "output.core_delimiter": {
-                "type": "text", 
-                "label": "区切り文字", 
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'", 
-                "val": "_", 
+                "type": "text",
+                "label": "区切り文字",
+                "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
+                "val": "_",
                 "width": "50px"
-              }, 
+              },
               "output.core_rule": {
-                "type": "select", 
-                "label": "列名", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "script_name", 
+                "type": "select",
+                "label": "列名",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "script_name",
                 "options": {
                   "script_name": {
                     "label": "タスク名"
-                  }, 
+                  },
                   "custom": {
                     "label": "カスタム"
                   }
                 }
-              }, 
+              },
               "output.core_text": {
-                "type": "text", 
-                "label": "メインテーブル名", 
-                "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'", 
-                "required": true, 
-                "minLength": 1, 
-                "maxLength": 31, 
+                "type": "text",
+                "label": "メインテーブル名",
+                "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
+                "required": true,
+                "minLength": 1,
+                "maxLength": 31,
                 "val": ""
-              }, 
+              },
               "output.suffix_delimiter": {
-                "type": "text", 
-                "label": "区切り文字", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "_", 
+                "type": "text",
+                "label": "区切り文字",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "_",
                 "width": "50px"
-              }, 
+              },
               "output.suffix_rule": {
-                "type": "select", 
-                "label": "サフィックス", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "script_name", 
+                "type": "select",
+                "label": "サフィックス",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "script_name",
                 "options": {
                   "empty": {
                     "label": "-"
-                  }, 
+                  },
                   "script_name": {
                     "label": "タスク名"
-                  }, 
+                  },
                   "date_string_type1": {
                     "label": "日付:  dd_mm_yyyy"
-                  }, 
+                  },
                   "date_string_type2": {
                     "label": "日付:  yyyy_mm_dd"
-                  }, 
+                  },
                   "time_string": {
                     "label": "時間: 時_分_秒"
-                  }, 
+                  },
                   "datetime_string": {
                     "label": "日付_時間"
-                  }, 
+                  },
                   "custom": {
                     "label": "カスタム"
                   }
                 }
-              }, 
+              },
               "output.suffix_text": {
-                "type": "text", 
-                "label": "サフィックステキスト", 
-                "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'", 
-                "minLength": 1, 
-                "maxLength": 31, 
-                "val": "", 
+                "type": "text",
+                "label": "サフィックステキスト",
+                "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
+                "minLength": 1,
+                "maxLength": 31,
+                "val": "",
                 "breakLine": true
-              }, 
+              },
               "output.timezone": {
-                "type": "select", 
-                "label": "タイムゾーン", 
-                  "MAWT": {
-                    "label": "MAWT（モーソン（南極大陸）時間）"
-                  }, 
-                  "IOT": {
-                "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
-                "val": "CET", 
-                "required": true, 
+                "type": "select",
+                "label": "タイムゾーン",
+                "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+                "val": "CET",
+                "required": true,
                 "options": {
                   "NZDT": {
                     "label": "NZDT（ニュージーランド夏時間）"
-                  }, 
+                  },
                   "IDLE": {
-                    "label": "IDLE（国際日付変更線、東）"
-                  }, 
+                    "label": "IDLE(International Date Line, East)"
+                  },
                   "NZST": {
                     "label": "NZST（ニュージーランド標準時）"
-                  }, 
+                  },
                   "NZT": {
                     "label": "NZT（ニュージーランド時間）"
-                  }, 
+                  },
                   "AESST": {
                     "label": "AESST（オーストラリア東部夏時間）"
-                  }, 
+                  },
                   "ACSST": {
                     "label": "ACSST（中央オーストラリア夏時間）"
-                  }, 
+                  },
                   "CADT": {
                     "label": "CADT（中央オーストラリア夏時間）"
-                  }, 
+                  },
                   "SADT": {
                     "label": "SADT（南オーストラリア夏時間）"
-                  }, 
+                  },
                   "AEST": {
                     "label": "AEST（オーストラリア東部標準時）"
-                  }, 
+                  },
                   "EAST": {
                     "label": "EAST（東オーストラリア標準時）"
-                  }, 
+                  },
                   "GST": {
-                    "label": "GST（グアム標準時、USSRゾーン9）"
-                  }, 
+                    "label": "GST(Guam Standard Time, USSR Zone 9)"
+                  },
                   "LIGT": {
-                    "label": "LIGT（メルボルン、オーストラリア）"
-                  }, 
+                    "label": "LIGT(Melbourne, Australia)"
+                  },
                   "SAST": {
                     "label": "SAST（南オーストラリア標準時）"
-                  }, 
+                  },
                   "CAST": {
                     "label": "CAST（中央オーストラリア標準時）"
-                  }, 
+                  },
                   "AWSST": {
                     "label": "AWSST（オーストラリア西部夏時間）"
-                  }, 
+                  },
                   "JST": {
-                    "label": "JST（日本標準時、USSRゾーン8）"
-                  }, 
+                    "label": "JST(Japan Standard Time,USSR Zone 8)"
+                  },
                   "KST": {
                     "label": "KST（韓国標準時）"
-                  }, 
+                  },
                   "MHT": {
                     "label": "MHT（クェゼリン時間）"
-                  }, 
+                  },
                   "WDT": {
                     "label": "WDT（西オーストラリア夏時間）"
-                  }, 
+                  },
                   "MT": {
                     "label": "MT（マルク諸島時間）"
-                  }, 
+                  },
                   "AWST": {
                     "label": "AWST（オーストラリア西部標準時）"
-                  }, 
+                  },
                   "CCT": {
                     "label": "CCT（中国沿岸時間）"
-                  }, 
+                  },
                   "WADT": {
                     "label": "WADT（西オーストラリア夏時間）"
-                  }, 
+                  },
                   "WST": {
                     "label": "WST（西オーストラリア標準時）"
-                  }, 
+                  },
                   "ALMST": {
                     "label": "ALMST（アルマトイ夏時間）"
-                  }, 
+                  },
                   "WAST": {
                     "label": "WAST（西オーストラリア標準時）"
-                  }, 
+                  },
                   "CXT": {
                     "label": "CXT（クリスマス（島）時間）"
-                  }, 
+                  },
                   "ALMT": {
                     "label": "アライドマテリアル（アルマトイ時間）"
-                  }, 
+                  },
+                  "MAWT": {
+                    "label": "MAWT（モーソン（南極大陸）時間）"
+                  },
+                  "IOT": {
                     "label": "IOT（インドチャゴス時間）"
-                  }, 
+                  },
                   "MVT": {
                     "label": "MVT（モルディブ島時間）"
-                  }, 
+                  },
                   "TFT": {
                     "label": "TFT（ケルゲレン時間）"
-                  }, 
+                  },
                   "AFT": {
                     "label": "AFT（アフガニスタン時間）"
-                  }, 
+                  },
                   "MUT": {
                     "label": "MUT（モーリシャス島時間）"
-                  }, 
+                  },
                   "RET": {
                     "label": "RET（レユニオン島時間）"
-                  }, 
+                  },
                   "SCT": {
                     "label": "SCT（マヘ島時間）"
-                  }, 
+                  },
                   "IT": {
                     "label": "IT（イラン時間）"
-                  }, 
+                  },
                   "EAT": {
-                    "label": "EAT（アンタナナリボ、コモロ時間）"
-                  }, 
+                    "label": "EAT(Antananarivo, Comoro Time)"
+                  },
                   "BT": {
                     "label": "BT（バグダッド時間）"
-                  }, 
+                  },
                   "EETDST": {
                     "label": "EETDST（東ヨーロッパ夏時間）"
-                  }, 
+                  },
                   "HMT": {
                     "label": "HMT（ヘラス地中海時間 (?)）"
-                  }, 
+                  },
                   "BDST": {
                     "label": "BDST（英国ダブル標準時）"
-                  }, 
+                  },
                   "CEST": {
                     "label": "CEST（中央ヨーロッパ夏時間）"
-                  }, 
+                  },
                   "CETDST": {
                     "label": "CETDST（中央ヨーロッパ夏時間）"
-                  }, 
+                  },
                   "EET": {
-                    "label": "EET（東ヨーロッパ、USSRゾーン1）"
-                  }, 
+                    "label": "EET(Eastern Europe, USSR Zone 1)"
+                  },
                   "FWT": {
                     "label": "FWT（フランス冬時間）"
-                  }, 
+                  },
                   "IST": {
                     "label": "IST（イスラエル標準時）"
-                  }, 
+                  },
                   "MEST": {
                     "label": "MEST（中央ヨーロッパ夏時間）"
-                  }, 
+                  },
                   "METDST": {
                     "label": "METDST（中央ヨーロッパ夏時間）"
-                  }, 
+                  },
                   "SST": {
                     "label": "SST（スウェーデン夏時間）"
-                  }, 
+                  },
                   "BST": {
                     "label": "BST（英国夏時間）"
-                  }, 
+                  },
                   "CET": {
                     "label": "CET（中央ヨーロッパ時間）"
-                  }, 
+                  },
                   "DNT": {
                     "label": "DNT（デンマーク標準時）"
-                  }, 
+                  },
                   "FST": {
                     "label": "FST（フランス夏時間）"
-                  }, 
+                  },
                   "MET": {
                     "label": "MET（中央ヨーロッパ時間）"
-                  }, 
+                  },
                   "MEWT": {
                     "label": "MEWT（中央ヨーロッパ冬時間）"
-                  }, 
+                  },
                   "MEZ": {
                     "label": "MEZ（中央ヨーロッパゾーン）"
-                  }, 
+                  },
                   "NOR": {
                     "label": "NOR（ノルウェー標準時）"
-                  }, 
+                  },
                   "SET": {
                     "label": "SET（セーシェル時間）"
-                  }, 
+                  },
                   "SWT": {
                     "label": "SWT（スウェーデン冬時間）"
-                  }, 
+                  },
                   "WETDST": {
                     "label": "WETDST（西ヨーロッパ夏時間）"
-                  }, 
+                  },
                   "GMT": {
                     "label": "GMT（グリニッジ標準時）"
-                  }, 
+                  },
                   "UT": {
                     "label": "UT（世界時）"
-                  }, 
+                  },
                   "UTC": {
-                    "label": "UTC（協定世界時、同調）"
-                  }, 
+                    "label": "UTC(Universal Time, Coordinated)"
+                  },
                   "WET": {
                     "label": "WET（西ヨーロッパ）"
-                  }, 
+                  },
                   "WAT": {
                     "label": "WAT（西アフリカ時間）"
-                  }, 
+                  },
                   "NDT": {
                     "label": "NDT（ニューファンドランド夏時間）"
-                  }, 
+                  },
                   "ADT": {
                     "label": "ADT（大西洋夏時間）"
-                  }, 
+                  },
                   "NFT": {
                     "label": "NFT（ニューファンドランド標準時）"
-                  }, 
+                  },
                   "NST": {
                     "label": "NST（ニューファンドランド標準時）"
-                  }, 
+                  },
                   "AST": {
                     "label": "AST（大西洋標準時（カナダ））"
-                  }, 
+                  },
                   "ACST": {
                     "label": "ACST（大西洋/ポルトアクレ夏時間）"
-                  }, 
+                  },
                   "ACT": {
                     "label": "ACT（大西洋/ポルトアクレ標準時）"
-                  }, 
+                  },
                   "EDT": {
                     "label": "EDT（東部夏時間）"
-                  }, 
+                  },
                   "CDT": {
                     "label": "CDT（中部夏時間）"
-                  }, 
+                  },
                   "EST": {
                     "label": "EST（東部標準時）"
-                  }, 
+                  },
                   "CST": {
                     "label": "CST（中部標準時）"
-                  }, 
+                  },
                   "MDT": {
                     "label": "MDT（山岳部夏時間）"
-                  }, 
+                  },
                   "MST": {
                     "label": "MST（山岳部標準時）"
-                  }, 
+                  },
                   "PDT": {
                     "label": "PDT（太平洋夏時間）"
-                  }, 
+                  },
                   "AKDT": {
                     "label": "AKDT（アラスカ夏時間）"
-                  }, 
+                  },
                   "PST": {
                     "label": "PST（太平洋標準時）"
-                  }, 
+                  },
                   "YDT": {
                     "label": "YDT（ユーコン夏時間）"
-                  }, 
+                  },
                   "AKST": {
                     "label": "AKST（アラスカ標準時）"
-                  }, 
+                  },
                   "HDT": {
                     "label": "HDT（ハワイ/アラスカ夏時間）"
-                  }, 
+                  },
                   "YST": {
                     "label": "YST（ユーコン標準時）"
-                  }, 
+                  },
                   "AHST": {
                     "label": "AHST（アラスカ・ハワイ標準時）"
-                  }, 
+                  },
                   "HST": {
                     "label": "HST（ハワイ標準時）"
-                  }, 
+                  },
                   "CAT": {
                     "label": "CAT（中央アラスカ時間）"
-                  }, 
+                  },
                   "NT": {
                     "label": "NT（ノーム時間）"
-                  }, 
+                  },
                   "IDLW": {
-                    "label": "IDLW（国際日付変更線、西）"
+                    "label": "IDLW(International Date Line, West)"
                   }
-                }, 
+                },
                 "breakLine": true
-              }
             }
-          }, 
+          },
           "output.options.location": {
-            "type": "text", 
-            "label": "場所の指定", 
+            "type": "text",
+            "label": "場所の指定",
             "val": "A1"
-          }, 
+          },
           "output.options.table_mode": {
-            "type": "select", 
-            "label": "貼り付け", 
-            "val": "content_only", 
+            "type": "select",
+            "label": "貼り付け",
+            "val": "content_only",
             "options": {
               "content_only": {
                 "label": "コンテンツのみ"
-              }, 
+              },
               "fully_formatted": {
                 "label": "完全フォーマット済み"
               }
             }
-          }, 
+          },
           "output.options.formatted_as_table": {
-            "type": "checkbox", 
-            "label": "テーブルとしてフォーマット済み", 
-            "val": "true", 
-            "isOn": "true", 
-            "isOff": "false", 
+            "type": "checkbox",
+            "label": "テーブルとしてフォーマット済み",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
             "breakLine": true
-          }, 
+          },
           "output.add_tag": {
-            "type": "checkbox", 
-            "label": "タグの追加", 
-            "val": "false", 
-            "isOn": "true", 
+            "type": "checkbox",
+            "label": "タグの追加",
+            "val": "false",
+            "isOn": "true",
             "isOff": "false"
-          }, 
+          },
           "output.tag_name": {
-            "type": "text", 
-            "label": "タグ名", 
-            "show_if": "output.add_tag=='true'", 
-            "required": true, 
-            "minLength": 1, 
-            "maxLength": 255, 
-            "val": "", 
-            "breakLine": true, 
+            "type": "text",
+            "label": "タグ名",
+            "show_if": "output.add_tag=='true'",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 255,
+            "val": "",
+            "breakLine": true,
             "style": "margin-left: 15px"
-          }, 
+          },
           "output.options.visibility": {
-            "type": "select", 
-            "label": "可視性", 
-            "val": "current_flow", 
+            "type": "select",
+            "label": "可視性",
+            "val": "current_flow",
             "options": {
               "current_flow": {
                 "label": "現在のフロー"
-              }, 
+              },
               "all_flow": {
                 "label": "全てのフロー"
               }
             }
           }
-        }, 
+        },
         "breakLine": true
       }
     }
