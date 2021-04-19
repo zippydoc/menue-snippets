@@ -1,678 +1,678 @@
 {
   "output": {
-    "type": "fieldset", 
-    "label": "定义输出表格", 
-    "show_if": "options.create_new_table=='true'", 
-    "repeat": false, 
+    "type": "fieldset",
+    "label": "定义输出表格",
+    "show_if": "options.create_new_table=='true'",
+    "repeat": false,
     "fields": {
       "output.custom_text": {
-        "type": "text", 
-        "label": "输出表格名称", 
-        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'", 
-        "minLength": 1, 
-        "val": "", 
-        "width": "100%", 
+        "type": "text",
+        "label": "输出表格名称",
+        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'",
+        "minLength": 1,
+        "val": "",
+        "width": "100%",
         "breakLine": true
-      }, 
+      },
       "output.select_output_columns": {
-        "type": "checkbox", 
-        "label": "选择输出列", 
-        "val": "false", 
-        "isOn": "true", 
+        "type": "checkbox",
+        "label": "选择输出列",
+        "val": "false",
+        "isOn": "true",
         "isOff": "false"
-      }, 
+      },
       "output_columns": {
-        "type": "fieldset", 
-        "label": "Select OutputColumns", 
-        "show_if": "output.select_output_columns=='true'", 
-        "repeat": true, 
+        "type": "fieldset",
+        "label": "Select OutputColumns",
+        "show_if": "output.select_output_columns=='true'",
+        "repeat": true,
         "fields": {
           "field_name": {
-            "type": "select", 
-            "label": "选择列", 
-            "table": "input_table", 
-            "bind": "COLUMNS", 
+            "type": "select",
+            "label": "选择列",
+            "table": "input_table",
+            "bind": "COLUMNS",
             "required": true
-          }, 
+          },
           "order": {
-            "type": "select", 
-            "label": "顺序", 
+            "type": "select",
+            "label": "顺序",
             "options": {
               "-": {
                 "label": "-"
-              }, 
+              },
               "asc": {
                 "label": "ASC"
-              }, 
+              },
               "desc": {
                 "label": "DESC"
               }
-            }, 
+            },
             "val": "-"
-          }, 
+          },
           "is_rename": {
-            "type": "checkbox", 
-            "label": "重命名", 
-            "val": "false", 
-            "isOn": "true", 
+            "type": "checkbox",
+            "label": "重命名",
+            "val": "false",
+            "isOn": "true",
             "isOff": "false"
-          }, 
+          },
           "rename": {
-            "show_if": "this.is_rename == 'true'", 
-            "type": "text", 
-            "required": true, 
-            "minLength": 1, 
-            "maxLength": 255, 
-            "label": "新列名", 
+            "show_if": "this.is_rename == 'true'",
+            "type": "text",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 255,
+            "label": "新列名",
             "style": "margin-left: 10px"
-          }, 
+          },
           "format__category": {
-            "type": "select", 
-            "label": "格式", 
-            "required": true, 
+            "type": "select",
+            "label": "格式",
+            "required": true,
             "options": {
               "standard": {
                 "label": "标准"
-              }, 
+              },
               "number": {
                 "label": "数字"
-              }, 
+              },
               "percentage": {
                 "label": "百分比"
-              }, 
+              },
               "text": {
                 "label": "文本"
-              }, 
+              },
               "date": {
                 "label": "日期"
-              }, 
+              },
               "currency": {
                 "label": "货币"
               }
-            }, 
+            },
             "val": "standard"
-          }, 
+          },
           "format__rounding": {
-            "type": "select", 
-            "label": "取整", 
-            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'", 
-            "required": true, 
+            "type": "select",
+            "label": "取整",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "required": true,
             "options": {
               "no_rounding": {
                 "label": "不取整"
-              }, 
+              },
               "0": {
                 "label": "0 位数"
-              }, 
+              },
               "1": {
                 "label": "1 位数"
-              }, 
+              },
               "2": {
                 "label": "2 位数"
-              }, 
+              },
               "3": {
                 "label": "3 位数"
-              }, 
+              },
               "4": {
                 "label": "4 位数"
-              }, 
+              },
               "5": {
                 "label": "5 位数"
-              }, 
+              },
               "6": {
                 "label": "6 位数"
-              }, 
+              },
               "7": {
                 "label": "7 位数"
-              }, 
+              },
               "8": {
                 "label": "8 位数"
-              }, 
+              },
               "9": {
                 "label": "9 位数"
               }
-            }, 
+            },
             "val": "2"
-          }, 
+          },
           "format__use_1000_separator": {
-            "type": "checkbox", 
-            "label": "使用 1000 分隔符（.）", 
-            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'", 
-            "val": "true", 
-            "isOn": "true", 
+            "type": "checkbox",
+            "label": "使用 1000 分隔符（.）",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "val": "true",
+            "isOn": "true",
             "isOff": "false"
-          }, 
+          },
           "format__currency_symbol": {
-            "type": "select", 
-            "label": "符号", 
-            "show_if": "this.format__category=='currency'", 
-            "required": true, 
+            "type": "select",
+            "label": "符号",
+            "show_if": "this.format__category=='currency'",
+            "required": true,
             "options": {
               "dollar": {
                 "label": "$"
-              }, 
+              },
               "euro": {
                 "label": "€"
-              }, 
+              },
               "pound": {
                 "label": "£"
               }
-            }, 
+            },
             "val": "dollar"
-          }, 
+          },
           "format__date_format": {
-            "type": "select", 
-            "label": "类型", 
-            "show_if": "this.format__category=='date'", 
-            "required": true, 
+            "type": "select",
+            "label": "类型",
+            "show_if": "this.format__category=='date'",
+            "required": true,
             "options": {
               "mm/dd/yyyy": {
                 "label": "3/14/2012"
-              }, 
-              "D,  M dd,  Y": {
-                "label": "星期三，3 月 14 日，2012"
-              }, 
+              },
+              "D, M dd, Y": {
+                "label": "Wednesday, March 14, 2012"
+              },
               "yyyy-mm-dd": {
                 "label": "2012-03-14"
               }
-            }, 
-            "val": "mm/dd/yyyy", 
+            },
+            "val": "mm/dd/yyyy",
             "breakLine": true
-          }, 
+          },
           "delete": {
-            "type": "button", 
-            "label": "删除", 
+            "type": "button",
+            "label": "删除",
             "function": "DELETE_ROW"
           }
-        }, 
-        "breakLine": true, 
+        },
+        "breakLine": true,
         "style": "margin-bottom: 20px"
-      }, 
+      },
       "output.set_options": {
-        "type": "checkbox", 
-        "label": "输出选项", 
-        "val": "false", 
-        "isOn": "true", 
+        "type": "checkbox",
+        "label": "输出选项",
+        "val": "false",
+        "isOn": "true",
         "isOff": "false"
-      }, 
+      },
       "output_options_box": {
-        "type": "fieldset", 
-        "label": "输出选项", 
-        "show_if": "output.set_options=='true'", 
-        "repeat": false, 
+        "type": "fieldset",
+        "label": "输出选项",
+        "show_if": "output.set_options=='true'",
+        "repeat": false,
         "fields": {
           "output.compose_table_name": {
-            "type": "checkbox", 
-            "label": "编写表格名称", 
-            "val": "false", 
-            "isOn": "true", 
-            "isOff": "false", 
+            "type": "checkbox",
+            "label": "编写表格名称",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
             "breakLine": true
-          }, 
+          },
           "compose_table_name_frame": {
-            "type": "fieldset", 
-            "label": "编写输出表格名称", 
-            "show_if": "output.compose_table_name=='true'", 
-            "repeat": false, 
+            "type": "fieldset",
+            "label": "编写输出表格名称",
+            "show_if": "output.compose_table_name=='true'",
+            "repeat": false,
             "fields": {
               "output.prefix_rule": {
-                "type": "select", 
-                "label": "前缀", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "empty", 
+                "type": "select",
+                "label": "前缀",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "empty",
                 "options": {
                   "empty": {
                     "label": "-"
-                  }, 
+                  },
                   "script_name": {
                     "label": "任务名称"
-                  }, 
+                  },
                   "date_string_type1": {
                     "label": "Date: dd_mm_yyyy"
-                  }, 
+                  },
                   "date_string_type2": {
                     "label": "Date: yyyy_mm_dd"
-                  }, 
+                  },
                   "time_string": {
                     "label": "时间：h_min_sec"
-                  }, 
+                  },
                   "datetime_string": {
                     "label": "Date_Time"
-                  }, 
+                  },
                   "custom": {
                     "label": "自定义"
                   }
                 }
-              }, 
+              },
               "output.prefix_text": {
-                "type": "text", 
-                "label": "前缀文本", 
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'", 
-                "minLength": 1, 
-                "maxLength": 31, 
+                "type": "text",
+                "label": "前缀文本",
+                "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
+                "minLength": 1,
+                "maxLength": 31,
                 "val": ""
-              }, 
+              },
               "output.core_delimiter": {
-                "type": "text", 
-                "label": "分隔符", 
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'", 
-                "val": "_", 
+                "type": "text",
+                "label": "分隔符",
+                "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
+                "val": "_",
                 "width": "50px"
-              }, 
+              },
               "output.core_rule": {
-                "type": "select", 
-                "label": "表格名称", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "input_table_name", 
+                "type": "select",
+                "label": "表格名称",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "input_table_name",
                 "options": {
                   "input_table_name": {
                     "label": "输入表格名称"
-                  }, 
+                  },
                   "script_name": {
                     "label": "任务名称"
-                  }, 
+                  },
                   "custom": {
                     "label": "自定义"
                   }
                 }
-              }, 
+              },
               "output.core_text": {
-                "type": "text", 
-                "label": "主表格名称", 
-                "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'", 
-                "required": true, 
-                "minLength": 1, 
-                "maxLength": 31, 
+                "type": "text",
+                "label": "主表格名称",
+                "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
+                "required": true,
+                "minLength": 1,
+                "maxLength": 31,
                 "val": ""
-              }, 
+              },
               "output.suffix_delimiter": {
-                "type": "text", 
-                "label": "分隔符", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "_", 
+                "type": "text",
+                "label": "分隔符",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "_",
                 "width": "50px"
-              }, 
+              },
               "output.suffix_rule": {
-                "type": "select", 
-                "label": "后缀", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "script_name", 
+                "type": "select",
+                "label": "后缀",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "script_name",
                 "options": {
                   "empty": {
                     "label": "-"
-                  }, 
+                  },
                   "script_name": {
                     "label": "任务名称"
-                  }, 
+                  },
                   "date_string_type1": {
                     "label": "Date: dd_mm_yyyy"
-                  }, 
+                  },
                   "date_string_type2": {
                     "label": "Date: yyyy_mm_dd"
-                  }, 
+                  },
                   "time_string": {
                     "label": "时间：h_min_sec"
-                  }, 
+                  },
                   "datetime_string": {
                     "label": "Date_Time"
-                  }, 
+                  },
                   "custom": {
                     "label": "自定义"
                   }
                 }
-              }, 
+              },
               "output.suffix_text": {
-                "type": "text", 
-                "label": "后缀文本", 
-                "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'", 
-                "minLength": 1, 
-                "maxLength": 31, 
-                "val": "", 
+                "type": "text",
+                "label": "后缀文本",
+                "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
+                "minLength": 1,
+                "maxLength": 31,
+                "val": "",
                 "breakLine": true
-              }, 
+              },
               "output.timezone": {
-                "type": "select", 
-                "label": "时区", 
-                "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
-                "val": "CET", 
-                "required": true, 
+                "type": "select",
+                "label": "时区",
+                "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+                "val": "CET",
+                "required": true,
                 "options": {
                   "NZDT": {
                     "label": "NZDT（新西兰夏时制）"
-                  }, 
+                  },
                   "IDLE": {
-                    "label": "IDLE（国际日期变更线，东边）"
-                  }, 
+                    "label": "IDLE(International Date Line, East)"
+                  },
                   "NZST": {
                     "label": "NZST（新西兰标准时间）"
-                  }, 
+                  },
                   "NZT": {
                     "label": "NZT（新西兰时间）"
-                  }, 
+                  },
                   "AESST": {
                     "label": "AESST（澳大利亚东部标准夏时制）"
-                  }, 
+                  },
                   "ACSST": {
                     "label": "ACSST（中澳大利亚标准夏时制）"
-                  }, 
+                  },
                   "CADT": {
                     "label": "CADT（中澳大利亚夏时制）"
-                  }, 
+                  },
                   "SADT": {
                     "label": "SADT（南澳大利亚夏时制）"
-                  }, 
+                  },
                   "AEST": {
                     "label": "AEST（澳大利亚东部标准时间）"
-                  }, 
+                  },
                   "EAST": {
                     "label": "EAST（东澳大利亚标准时间）"
-                  }, 
+                  },
                   "GST": {
-                    "label": "GST（关岛标准时间，苏联 9 区）"
-                  }, 
+                    "label": "GST(Guam Standard Time, USSR Zone 9)"
+                  },
                   "LIGT": {
-                    "label": "LIGT（澳大利亚墨尔本）"
-                  }, 
+                    "label": "LIGT(Melbourne, Australia)"
+                  },
                   "SAST": {
                     "label": "SAST（南澳大利亚标准时间）"
-                  }, 
+                  },
                   "CAST": {
                     "label": "CAST（中澳大利亚标准时间）"
-                  }, 
+                  },
                   "AWSST": {
                     "label": "AWSST（澳大利亚西部标准夏时制）"
-                  }, 
+                  },
                   "JST": {
-                    "label": "JST（日本标准时间，苏联 8 区）"
-                  }, 
+                    "label": "JST(Japan Standard Time,USSR Zone 8)"
+                  },
                   "KST": {
                     "label": "KST（韩国/朝鲜标准时间）"
-                  }, 
+                  },
                   "MHT": {
                     "label": "MHT（瓜加林岛时间）"
-                  }, 
+                  },
                   "WDT": {
                     "label": "WDT（西澳大利亚夏时制）"
-                  }, 
+                  },
                   "MT": {
                     "label": "MT（摩鹿加群岛时间）"
-                  }, 
+                  },
                   "AWST": {
                     "label": "AWST（澳大利亚西部标准时间）"
-                  }, 
+                  },
                   "CCT": {
                     "label": "CCT（中国北京时间）"
-                  }, 
+                  },
                   "WADT": {
                     "label": "WADT（西澳大利亚夏时制）"
-                  }, 
+                  },
                   "WST": {
                     "label": "WST（西澳大利亚标准时间）"
-                  }, 
+                  },
                   "ALMST": {
                     "label": "ALMST（阿拉木图夏令时）"
-                  }, 
+                  },
                   "WAST": {
                     "label": "WAST（西澳大利亚标准时间）"
-                  }, 
+                  },
                   "CXT": {
                     "label": "CXT（澳大利亚圣诞岛时间）"
-                  }, 
+                  },
                   "ALMT": {
                     "label": "ALMT（阿拉木图时间）"
-                  }, 
+                  },
                   "MAWT": {
                     "label": "MAWT（莫森（南极洲）时间）"
-                  }, 
+                  },
                   "IOT": {
                     "label": "IOT（印度洋查戈斯时间）"
-                  }, 
+                  },
                   "MVT": {
                     "label": "MVT（马尔代夫时间）"
-                  }, 
+                  },
                   "TFT": {
                     "label": "TFT（凯尔盖朗群岛时间）"
-                  }, 
+                  },
                   "AFT": {
                     "label": "AFT（阿富汗时间）"
-                  }, 
+                  },
                   "MUT": {
                     "label": "MUT（毛里求斯时间）"
-                  }, 
+                  },
                   "RET": {
                     "label": "RET（留尼汪岛时间）"
-                  }, 
+                  },
                   "SCT": {
                     "label": "SCT（马埃岛时间）"
-                  }, 
+                  },
                   "IT": {
                     "label": "IT（伊朗时间）"
-                  }, 
+                  },
                   "EAT": {
-                    "label": "EAT（塔那那利佛，科摩罗时间）"
-                  }, 
+                    "label": "EAT(Antananarivo, Comoro Time)"
+                  },
                   "BT": {
                     "label": "BT（巴格达时间）"
-                  }, 
+                  },
                   "EETDST": {
                     "label": "EETDST（东欧夏时制）"
-                  }, 
+                  },
                   "HMT": {
                     "label": "HMT（希腊地中海时间）"
-                  }, 
+                  },
                   "BDST": {
                     "label": "BDST（英国双重标准时间）"
-                  }, 
+                  },
                   "CEST": {
                     "label": "CEST（中欧夏令时）"
-                  }, 
+                  },
                   "CETDST": {
                     "label": "CETDST（中欧夏时制）"
-                  }, 
+                  },
                   "EET": {
-                    "label": "EET（东欧，苏联 1 区）"
-                  }, 
+                    "label": "EET(Eastern Europe, USSR Zone 1)"
+                  },
                   "FWT": {
                     "label": "FWT（法国冬时制）"
-                  }, 
+                  },
                   "IST": {
                     "label": "IST（以色列标准时间）"
-                  }, 
+                  },
                   "MEST": {
                     "label": "MEST（中欧夏时制）"
-                  }, 
+                  },
                   "METDST": {
                     "label": "METDST（中欧白昼时间）"
-                  }, 
+                  },
                   "SST": {
                     "label": "SST（瑞典夏时制）"
-                  }, 
+                  },
                   "BST": {
                     "label": "BST（英国夏时制）"
-                  }, 
+                  },
                   "CET": {
                     "label": "CET（中欧时间）"
-                  }, 
+                  },
                   "DNT": {
                     "label": "DNT（丹麦正规时间）"
-                  }, 
+                  },
                   "FST": {
                     "label": "FST（法国夏时制）"
-                  }, 
+                  },
                   "MET": {
                     "label": "MET（中欧时间）"
-                  }, 
+                  },
                   "MEWT": {
                     "label": "MEWT（中欧冬时制）"
-                  }, 
+                  },
                   "MEZ": {
                     "label": "MEZ（中欧区）"
-                  }, 
+                  },
                   "NOR": {
                     "label": "NOR（挪威标准时间）"
-                  }, 
+                  },
                   "SET": {
                     "label": "SET（塞舌尔时间）"
-                  }, 
+                  },
                   "SWT": {
                     "label": "SWT（瑞典冬时制）"
-                  }, 
+                  },
                   "WETDST": {
                     "label": "WETDST（西欧夏时制）"
-                  }, 
+                  },
                   "GMT": {
                     "label": "GMT（格林尼治标准时间）"
-                  }, 
+                  },
                   "UT": {
                     "label": "UT（全球时间）"
-                  }, 
+                  },
                   "UTC": {
-                    "label": "UTC（校准的全球时间）"
-                  }, 
+                    "label": "UTC(Universal Time, Coordinated)"
+                  },
                   "WET": {
                     "label": "WET（西欧）"
-                  }, 
+                  },
                   "WAT": {
                     "label": "WAT（西非时间）"
-                  }, 
+                  },
                   "NDT": {
                     "label": "NDT（纽芬兰夏时制）"
-                  }, 
+                  },
                   "ADT": {
                     "label": "ADT（大西洋夏时制）"
-                  }, 
+                  },
                   "NFT": {
                     "label": "NFT（纽芬兰标准时间）"
-                  }, 
+                  },
                   "NST": {
                     "label": "NST（纽芬兰标准时间）"
-                  }, 
+                  },
                   "AST": {
                     "label": "AST（大西洋标准时间（加拿大））"
-                  }, 
+                  },
                   "ACST": {
                     "label": "ACST（大西洋阿雷格里港夏令时）"
-                  }, 
+                  },
                   "ACT": {
                     "label": "ACT（大西洋阿雷格里港标准时间）"
-                  }, 
+                  },
                   "EDT": {
                     "label": "EDT（东部夏时制）"
-                  }, 
+                  },
                   "CDT": {
                     "label": "CDT（中部夏时制）"
-                  }, 
+                  },
                   "EST": {
                     "label": "EST（东部标准时间）"
-                  }, 
+                  },
                   "CST": {
                     "label": "CST（中部标准时间）"
-                  }, 
+                  },
                   "MDT": {
                     "label": "MDT（山地夏时制）"
-                  }, 
+                  },
                   "MST": {
                     "label": "MST（山地标准时间）"
-                  }, 
+                  },
                   "PDT": {
                     "label": "PDT（太平洋夏时制）"
-                  }, 
+                  },
                   "AKDT": {
                     "label": "AKDT（阿拉斯加白昼时间）"
-                  }, 
+                  },
                   "PST": {
                     "label": "PST（太平洋标准时间）"
-                  }, 
+                  },
                   "YDT": {
                     "label": "YDT（育空地区夏时制）"
-                  }, 
+                  },
                   "AKST": {
                     "label": "AKST（阿拉斯加标准时间）"
-                  }, 
+                  },
                   "HDT": {
                     "label": "HDT（夏威夷/阿拉斯加夏时制）"
-                  }, 
+                  },
                   "YST": {
                     "label": "YST（育空地区标准时）"
-                  }, 
+                  },
                   "AHST": {
                     "label": "AHST（夏威夷-阿拉斯加标准时间）"
-                  }, 
+                  },
                   "HST": {
                     "label": "HST（夏威夷标准时间）"
-                  }, 
+                  },
                   "CAT": {
                     "label": "CAT（中阿拉斯加时间）"
-                  }, 
+                  },
                   "NT": {
                     "label": "NT（阿拉斯加诺姆时间）"
-                  }, 
+                  },
                   "IDLW": {
-                    "label": "IDLW（国际日期变更线，西边）"
+                    "label": "IDLW(International Date Line, West)"
                   }
-                }, 
+                },
                 "breakLine": true
               }
             }
-          }, 
+          },
           "output.options.location": {
-            "type": "text", 
-            "label": "指定位置", 
+            "type": "text",
+            "label": "指定位置",
             "val": "A1"
-          }, 
+          },
           "output.options.table_mode": {
-            "type": "select", 
-            "label": "粘贴", 
-            "val": "content_only", 
+            "type": "select",
+            "label": "粘贴",
+            "val": "content_only",
             "options": {
               "content_only": {
                 "label": "仅内容"
-              }, 
+              },
               "fully_formatted": {
                 "label": "完全格式化"
               }
             }
-          }, 
+          },
           "output.options.formatted_as_table": {
-            "type": "checkbox", 
-            "label": "格式化为表格", 
-            "val": "true", 
-            "isOn": "true", 
-            "isOff": "false", 
+            "type": "checkbox",
+            "label": "格式化为表格",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
             "breakLine": true
-          }, 
+          },
           "output.add_tag": {
-            "type": "checkbox", 
-            "label": "添加标记", 
-            "val": "false", 
-            "isOn": "true", 
+            "type": "checkbox",
+            "label": "添加标记",
+            "val": "false",
+            "isOn": "true",
             "isOff": "false"
-          }, 
+          },
           "output.tag_name": {
-            "type": "text", 
-            "label": "标记名称", 
-            "show_if": "output.add_tag=='true'", 
-            "required": true, 
-            "minLength": 1, 
-            "maxLength": 255, 
-            "val": "", 
-            "breakLine": true, 
+            "type": "text",
+            "label": "标记名称",
+            "show_if": "output.add_tag=='true'",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 255,
+            "val": "",
+            "breakLine": true,
             "style": "margin-left: 15px"
-          }, 
+          },
           "output.options.visibility": {
-            "type": "select", 
-            "label": "可见性", 
-            "val": "current_flow", 
+            "type": "select",
+            "label": "可见性",
+            "val": "current_flow",
             "options": {
               "current_flow": {
                 "label": "当前工作流"
-              }, 
+              },
               "all_flow": {
                 "label": "所有工作流"
               }
             }
           }
-        }, 
+        },
         "breakLine": true
       }
     }
