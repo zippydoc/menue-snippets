@@ -92,6 +92,7 @@
             "type": "text",
             "label": "N",
             "show_if": "options.number_range.range_type=='equal_interval'",
+                },
             "val": "3",
             "required": true
           },
@@ -130,46 +131,97 @@
         },
         "breakLine": true
       },
-      "options.lookup_table_id": {
+      "options.lookup_table_type": {
         "type": "select",
-        "label": "Nachschlagetabelle",
+        "label": "Lookup Table Type",
         "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
-        "bind": "TABLES",
-        "empty": "",
-        "required": true
-      },
-      "options.partial_match": {
-        "type": "checkbox",
-        "label": "Teilweise Übereinstimmung",
-        "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.case_sensitive": {
-        "type": "checkbox",
-        "label": "Gehäuse empfindlich",
-        "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      },
-      "options.use_delimiter": {
-        "type": "checkbox",
-        "label": "Benutzerdefinierte Begrenzer",
-        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.delimiter": {
-        "type": "text",
-        "label": "Eingabe-Begrenzer",
-        "show_if": "options.use_delimiter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
-        "val": ";",
         "required": true,
-        "breakLine": true
+        "options": {
+          "select_lookup_table": {
+            "label": "Select Lookup Table"
+          },
+          "custom_lookup_table": {
+            "label": "Custom Lookup Table"
+          }
+        },
+        "val": "select_lookup_table"
+      },
+      "lookup_table_frame": {
+        "type": "fieldset",
+        "label": "",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
+        "repeat": false,
+        "fields": {
+          "options.lookup_table_id": {
+            "type": "select",
+            "label": "Nachschlagetabelle",
+            "show_if": "options.lookup_table_type=='select_lookup_table'",
+            "bind": "TABLES",
+            "empty": "",
+            "required": true,
+            "breakLine": true
+          },
+          "options.custom_lookup_table": {
+            "type": "fieldset",
+            "label": "Custom Lookup Table",
+            "show_if": "options.lookup_table_type=='custom_lookup_table'",
+            "repeat": true,
+            "fields": {
+              "lookup": {
+                "type": "text",
+                "label": "Schlage nach",
+                "val": "",
+                "required": true
+              },
+              "label": {
+                "type": "text",
+                "label": "Beschrifte",
+                "val": "",
+                "required": true
+              },
+              "delete": {
+                "type": "button",
+                "label": "Lösche",
+                "function": "DELETE_ROW"
+              }
+            }
+          },
+          "options.partial_match": {
+            "type": "checkbox",
+            "label": "Teilweise Übereinstimmung",
+            "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "style": "margin-top: 10px",
+            "breakLine": true
+          },
+          "options.case_sensitive": {
+            "type": "checkbox",
+            "label": "Gehäuse empfindlich",
+            "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.use_delimiter": {
+            "type": "checkbox",
+            "label": "Benutzerdefinierte Begrenzer",
+            "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.delimiter": {
+            "type": "text",
+            "label": "Eingabe-Begrenzer",
+            "show_if": "options.use_delimiter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
+            "val": ";",
+            "required": true,
+            "breakLine": true
+          }
+        }
       },
       "options.input_table.use_filter": {
         "type": "checkbox",
@@ -178,6 +230,7 @@
         "val": "false",
         "isOn": "true",
         "isOff": "false",
+        "style": "margin-top: 10px",
         "breakLine": true
       },
       "input_table_filter_box": {
@@ -224,7 +277,6 @@
                   "or_not": {
                     "label": "ODER NICHT"
                   }
-                },
                 "val": "and"
               },
               "column": {
@@ -564,12 +616,6 @@
               "value": {
                 "type": "text",
                 "label": "Eingangswert",
-        "bind": "COLUMNS",
-        "breakLine": true
-      }
-    }
-  }
-}
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
@@ -633,7 +679,8 @@
         "val": "false",
         "isOn": "true",
         "isOff": "false",
-        "style": "margin-top: 10px"
+        "style": "margin-top: 10px",
+        "breakLine": true
       },
       "options.input_table.apply_to_group_for_concatenation.allow_group_lists": {
         "type": "checkbox",
@@ -652,3 +699,9 @@
         "required": true,
         "width": "100%",
         "table": "input_table",
+        "bind": "COLUMNS",
+        "breakLine": true
+      }
+    }
+  }
+}
