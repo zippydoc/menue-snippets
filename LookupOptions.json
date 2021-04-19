@@ -130,20 +130,60 @@
         },
         "breakLine": true
       },
+      "options.lookup_table_type": {
+        "type": "select",
+        "label": "Lookup Table Type",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
+        "required": true,
+        "options": {
+          "select_lookup_table": {
+            "label": "Select Lookup Table"
+          },
+          "custom_lookup_table": {
+            "label": "Custom Lookup Table"
+          }
+        },
+        "val": "select_lookup_table"
+      },
       "lookup_table_frame": {
         "type": "fieldset",
         "label": "",
-        "show_if": "options.task_type!='generate_lookup_table'",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
         "repeat": false,
         "fields": {
           "options.lookup_table_id": {
             "type": "select",
             "label": "Lookup Table",
-            "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
+            "show_if": "options.lookup_table_type=='select_lookup_table'",
             "bind": "TABLES",
             "empty": "",
             "required": true,
             "breakLine": true
+          },
+          "options.custom_lookup_table": {
+            "type": "fieldset",
+            "label": "Custom Lookup Table",
+            "show_if": "options.lookup_table_type=='custom_lookup_table'",
+            "repeat": true,
+            "fields": {
+              "lookup": {
+                "type": "text",
+                "label": "Lookup",
+                "val": "",
+                "required": true
+              },
+              "label": {
+                "type": "text",
+                "label": "Label",
+                "val": "",
+                "required": true
+              },
+              "delete": {
+                "type": "button",
+                "label": "Delete",
+                "function": "DELETE_ROW"
+              }
+            }
           },
           "options.partial_match": {
             "type": "checkbox",
