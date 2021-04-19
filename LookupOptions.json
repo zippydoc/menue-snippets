@@ -130,46 +130,55 @@
         },
         "breakLine": true
       },
-      "options.lookup_table_id": {
-        "type": "select",
-        "label": "Lookup Table",
-        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
-        "bind": "TABLES",
-        "empty": "",
-        "required": true
-      },
-      "options.partial_match": {
-        "type": "checkbox",
-        "label": "Partial Match",
-        "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.case_sensitive": {
-        "type": "checkbox",
-        "label": "Case Sensitive",
-        "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      },
-      "options.use_delimiter": {
-        "type": "checkbox",
-        "label": "Custom Delimiter",
-        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.delimiter": {
-        "type": "text",
-        "label": "Input Delimiter",
-        "show_if": "options.use_delimiter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
-        "val": ";",
-        "required": true,
-        "breakLine": true
+      "lookup_table_frame": {
+        "type": "fieldset",
+        "label": "",
+        "show_if": "options.task_type!='generate_lookup_table'",
+        "repeat": false,
+        "fields": {
+          "options.lookup_table_id": {
+            "type": "select",
+            "label": "Lookup Table",
+            "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
+            "bind": "TABLES",
+            "empty": "",
+            "required": true
+          },
+          "options.partial_match": {
+            "type": "checkbox",
+            "label": "Partial Match",
+            "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.case_sensitive": {
+            "type": "checkbox",
+            "label": "Case Sensitive",
+            "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.use_delimiter": {
+            "type": "checkbox",
+            "label": "Custom Delimiter",
+            "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.delimiter": {
+            "type": "text",
+            "label": "Input Delimiter",
+            "show_if": "options.use_delimiter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
+            "val": ";",
+            "required": true,
+            "breakLine": true
+          }
+        }
       },
       "options.input_table.use_filter": {
         "type": "checkbox",
