@@ -13,7 +13,7 @@
       },
       "options.column_value_type": {
         "type": "select",
-        "label": "Column Value Type",
+        "label": "Type",
         "required": true,
         "options": {
           "static_value": {
@@ -24,9 +24,36 @@
           },
           "text_formula": {
             "label": "Text Formula"
+          },
+          "inc_dec_percent": {
+            "label": "Increase / Decrease (%)"
+          },
+          "inc_dec_abs": {
+            "label": "Increase / Decrease (Absolute)"
           }
         },
         "val": "static_value"
+      },
+      "options.inc_or_dec": {
+        "type": "select",
+        "label": "Increase Type",
+        "show_if": "options.column_value_type=='inc_dec_percent' || options.column_value_type=='inc_dec_abs'",
+        "required": true,
+        "options": {
+          "increase": {
+            "label": "Increase"
+          },
+          "decrease": {
+            "label": "Decrease"
+          }
+        },
+        "val": "static_value"
+      },
+      "options.inc_or_dec_val": {
+        "type": "text",
+        "label": "Input Value",
+        "show_if": "options.column_value_type=='inc_dec_percent' || options.column_value_type=='inc_dec_abs'",
+        "val": "1"
       },
       "options.static_value": {
         "type": "text",
