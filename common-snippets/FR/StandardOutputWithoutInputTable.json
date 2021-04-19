@@ -1,516 +1,501 @@
 {
   "output": {
-    "type": "fieldset", 
-    "label": "Définir le tableau des résultats", 
-    "repeat": false, 
+    "type": "fieldset",
+    "label": "Définir le tableau des résultats",
+    "repeat": false,
     "fields": {
       "output.custom_text": {
-        "type": "text", 
-        "label": "Sortir le nom du tableau", 
-        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'", 
-        "minLength": 1, 
-        "val": "", 
-        "width": "100%", 
+        "type": "text",
+        "label": "Sortir le nom du tableau",
+        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'",
+        "minLength": 1,
+        "val": "",
+        "width": "100%",
         "breakLine": true
-      }, 
+      },
       "output.set_options": {
-        "type": "checkbox", 
-        "label": "Options de sortie", 
-        "val": "false", 
-        "isOn": "true", 
+        "type": "checkbox",
+        "label": "Options de sortie",
+        "val": "false",
+        "isOn": "true",
         "isOff": "false"
-      }, 
+      },
       "output_options_box": {
-        "type": "fieldset", 
-        "label": "Options de sortie", 
-        "show_if": "output.set_options=='true'", 
-        "repeat": false, 
+        "type": "fieldset",
+        "label": "Options de sortie",
+        "show_if": "output.set_options=='true'",
+        "repeat": false,
         "fields": {
           "output.compose_table_name": {
-            "type": "checkbox", 
-            "label": "Saisissez le nom du tableau", 
-            "val": "false", 
-            "isOn": "true", 
-            "isOff": "false", 
+            "type": "checkbox",
+            "label": "Saisissez le nom du tableau",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
             "breakLine": true
-          }, 
+          },
           "compose_table_name_frame": {
-            "type": "fieldset", 
-            "label": "Saisissez le nom du tableau de sortie", 
-            "show_if": "output.compose_table_name=='true'", 
-            "repeat": false, 
+            "type": "fieldset",
+            "label": "Saisissez le nom du tableau de sortie",
+            "show_if": "output.compose_table_name=='true'",
+            "repeat": false,
             "fields": {
               "output.prefix_rule": {
-                "type": "select", 
-                "label": "Préfixe", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "empty", 
+                "type": "select",
+                "label": "Préfixe",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "empty",
                 "options": {
                   "empty": {
                     "label": "-"
-                  }, 
+                  },
                   "script_name": {
                     "label": "Nom de la tâche"
-                  }, 
+                  },
                   "date_string_type1": {
                     "label": "Date : jj_mm_aaaa"
-                  }, 
+                  },
                   "date_string_type2": {
                     "label": "Date : aaaa_mm_jj"
-                  }, 
+                  },
                   "time_string": {
                     "label": "Heure : h_min_sec"
-                  }, 
+                  },
                   "datetime_string": {
                     "label": "Date_heure"
-                  }, 
+                  },
                   "custom": {
                     "label": "Personnaliser"
                   }
                 }
-              }, 
+              },
               "output.prefix_text": {
-                "type": "text", 
-                "label": "Texte du préfixe", 
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'", 
-                "minLength": 1, 
-                "maxLength": 31, 
+                "type": "text",
+                "label": "Texte du préfixe",
+                "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
+                "minLength": 1,
+                "maxLength": 31,
                 "val": ""
-              }, 
+              },
               "output.core_delimiter": {
-                "type": "text", 
-                "label": "Délimiteur", 
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'", 
-                "val": "_", 
+                "type": "text",
+                "label": "Délimiteur",
+                "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
+                "val": "_",
                 "width": "50px"
-              }, 
+              },
               "output.core_rule": {
-                "type": "select", 
-                "label": "Nom du tableau", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "script_name", 
+                "type": "select",
+                "label": "Nom du tableau",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "script_name",
                 "options": {
                   "script_name": {
                     "label": "Nom de la tâche"
-                  }, 
+                  },
                   "custom": {
                     "label": "Personnaliser"
                   }
                 }
-              }, 
+              },
               "output.core_text": {
-                "type": "text", 
-                "label": "Sortir le nom du tableau", 
-                "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'", 
-                "required": true, 
-                "minLength": 1, 
-                "maxLength": 31, 
+                "type": "text",
+                "label": "Sortir le nom du tableau",
+                "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
+                "required": true,
+                "minLength": 1,
+                "maxLength": 31,
                 "val": ""
-              }, 
+              },
               "output.suffix_delimiter": {
-                "type": "text", 
-                "label": "Délimiteur", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "_", 
+                "type": "text",
+                "label": "Délimiteur",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "_",
                 "width": "50px"
-              }, 
+              },
               "output.suffix_rule": {
-                "type": "select", 
-                "label": "Suffixe", 
-                "show_if": "output.compose_table_name=='true'", 
-                "val": "script_name", 
+                "type": "select",
+                "label": "Suffixe",
+                "show_if": "output.compose_table_name=='true'",
+                "val": "script_name",
                 "options": {
                   "empty": {
                     "label": "-"
-                  }, 
+                  },
                   "script_name": {
                     "label": "Nom de la tâche"
-                  }, 
+                  },
                   "date_string_type1": {
                     "label": "Date : jj_mm_aaaa"
-                  }, 
+                  },
                   "date_string_type2": {
                     "label": "Date : aaaa_mm_jj"
-                  }, 
+                  },
                   "time_string": {
                     "label": "Heure : h_min_sec"
-                  }, 
+                  },
                   "datetime_string": {
                     "label": "Date_heure"
-                  }, 
+                  },
                   "custom": {
                     "label": "Personnaliser"
                   }
                 }
-              }, 
+              },
               "output.suffix_text": {
-                "type": "text", 
-                "label": "Texte du suffixe", 
-                "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'", 
-                "minLength": 1, 
-                "maxLength": 31, 
-                "val": "", 
+                "type": "text",
+                "label": "Texte du suffixe",
+                "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
+                "minLength": 1,
+                "maxLength": 31,
+                "val": "",
                 "breakLine": true
-              }, 
+              },
               "output.timezone": {
-                "type": "select", 
-                "label": "Fuseau horaire", 
-                "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')", 
-                "val": "CET", 
-                "required": true, 
+                "type": "select",
+                "label": "Fuseau horaire",
+                "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+                "val": "CET",
+                "required": true,
                 "options": {
                   "NZDT": {
                     "label": "NZDT (Heure d'été Nouvelle-Zélande)"
-                  }, 
+                  },
                   "IDLE": {
-                    "label": "IDLE (ligne de changement de date, Est)
-                  }, 
+                    "label": "IDLE(International Date Line, East)"
+                  },
                   "NZST": {
                     "label": "NZST (Heure standard Nouvelle-Zélande)"
-                  }, 
+                  },
                   "NZT": {
                     "label": "NZT (Heure Nouvelle-Zélande)"
-                  }, 
+                  },
                   "AESST": {
                     "label": "AESST (Heure d'été Australie Est)"
-                  }, 
+                  },
                   "ACSST": {
                     "label": "ACSST(Heure d'été standard Australie centrale)"
-                  }, 
+                  },
                   "CADT": {
                     "label": "CADT (Heure d'été Australie centrale"
-                  }, 
+                  },
                   "SADT": {
                     "label": "SADT (Heure d'été Australie Sud)
-                  }, 
+                  },
                   "AEST": {
                     "label": "AEST (Heure standard Australie Est)"
-                  }, 
+                  },
                   "EAST": {
                     "label": "EAST (Heure standard Australie Est)"
-                  }, 
+                  },
                   "GST": {
-                    "label": "GST (Heure standard Guam, Zone 9 URSS)"
-                  }, 
+                    "label": "GST(Guam Standard Time, USSR Zone 9)"
+                  },
                   "LIGT": {
-                    "label": "LIGT (Melbourne, Australie)"
-                  }, 
+                    "label": "LIGT(Melbourne, Australia)"
+                  },
                   "SAST": {
                     "label": "SAST (Heure standard Australie Sud)"
-                  }, 
+                  },
                   "CAST": {
                     "label": "CAST (Heure standard Australie centrale)"
-                  }, 
+                  },
                   "AWSST": {
                     "label": "AWSST (Heure d'été Australie Ouest)"
-                  }, 
+                  },
                   "JST": {
-                    "label": "JST (Heure standard Japon, Zone 8 URSS)
-                  }, 
+                    "label": "JST(Japan Standard Time,USSR Zone 8)"
+                  },
                   "KST": {
                     "label": "KST (Heure standard Corée)
-                  }, 
+                  },
                   "MHT": {
                     "label": "MHT (Heure Kwajalein)"
-                  }, 
+                  },
                   "WDT": {
                     "label": "WDT (Heure d'été Australie Ouest)"
-                  }, 
+                  },
                   "MT": {
                     "label": "MT (Heure Moluques)"
-                  }, 
+                  },
                   "AWST": {
                     "label": "AWST (Heure standard Australie Ouest)"
-                  }, 
+                  },
                   "CCT": {
                     "label": "CCT (Heure Chine littorale)"
-                  }, 
+                  },
                   "WADT": {
                     "label": "WADT (Heure d'été Australie Ouest)"
-                  }, 
+                  },
                   "WST": {
                     "label": "WST (Heure standard Australie Ouest)"
-                  }, 
+                  },
                   "ALMST": {
                     "label": "ALMST (Heure d'été Almaty)"
-                  }, 
+                  },
                   "WAST": {
                     "label": "WAST (Heure standard Australie Ouest)"
-                  }, 
+                  },
                   "CXT": {
                     "label": "CXT (Heure Île de Christmas)"
-                  }, 
+                  },
                   "ALMT": {
                     "label": "ALMT (Heure Almaty)"
-                  }, 
+                  },
                   "MAWT": {
                     "label": "MAWT (Heure Mawson/Antarctique)
-                  }, 
+                  },
                   "IOT": {
                     "label": "IOT (Heure Chagos)"
-                  }, 
+                  },
                   "MVT": {
                     "label": "MVT (Heure Maldives)"
-                  }, 
+                  },
                   "TFT": {
                     "label": "TFT (Heure Îles Kerguelen)
-                  }, 
+                  },
                   "AFT": {
                     "label": "AFT (Heure Afghanistan)"
-                  }, 
+                  },
                   "MUT": {
                     "label": "MUT (Heure Île Maurice)"
-                  }, 
+                  },
                   "RET": {
                     "label": "RET (Heure Île de la Réunion)
-                  }, 
+                  },
                   "SCT": {
                     "label": "SCT (Heure Île Mahé)"
-                  }, 
+                  },
                   "IT": {
                     "label": "IT (Heure Iran)
-                  }, 
+                  },
                   "EAT": {
-                    "label": "EAT (Heure Comores/Tananarive)"
-                  }, 
+                    "label": "EAT(Antananarivo, Comoro Time)"
+                  },
                   "BT": {
                     "label": "BT (Heure Bagdad)"
-                  }, 
+                  },
                   "EETDST": {
                     "label": "EETDST (Heure d'été Est de l'Europe)"
-                  }, 
+                  },
                   "HMT": {
                     "label": "HMT (Heure Grèce Méditerranée)"
-                  }, 
+                  },
                   "BDST": {
                     "label": "BDST(Double temps d'été britannique)"
-                  }, 
+                  },
                   "CEST": {
                     "label": "CEST (Heure d'été Europe centrale)"
-                  }, 
+                  },
                   "CETDST": {
                     "label": "CETDST (Heure d'été Europe centrale)"
-                  }, 
+                  },
                   "EET": {
-                    "label": "EET (Est de l'Europe, Zone 1 URSS)
-                  }, 
+                    "label": "EET(Eastern Europe, USSR Zone 1)"
+                  },
                   "FWT": {
                     "label": "FWT (Heure d'hiver France)"
-                  }, 
+                  },
                   "IST": {
                     "label": "IST (Heure standard Israël)"
-                  }, 
+                  },
                   "MEST": {
                     "label": "MEST (Heure d'été Europe centrale)
-                  }, 
+                  },
                   "METDST": {
                     "label": "MEDST (Heure d'été Europe centrale)"
-                  }, 
+                  },
                   "SST": {
                     "label": "SST (Heure d'été Suède)"
-                  }, 
+                  },
                   "BST": {
                     "label": "BST (Heure d'été Grande-Bretagne)
-                  }, 
+                  },
                   "CET": {
                     "label": "CET (Heure Europe centrale)"
-                  }, 
+                  },
                   "DNT": {
                     "label": "DNT (Heure standard Danemark)"
-                  }, 
+                  },
                   "FST": {
                     "label": "FST (Heure d'été France)
-                  }, 
+                  },
                   "MET": {
                     "label": "MET (Heure Europe centrale)"
-                  }, 
+                  },
                   "MEWT": {
                     "label": "MEWT (Heure d'hiver Europe centrale)"
-                  }, 
+                  },
                   "MEZ": {
                     "label": "MEZ (Zone Europe centrale)"
-                  }, 
+                  },
                   "NOR": {
                     "label": "NOR (Heure standard Norvège)"
-                  }, 
+                  },
                   "SET": {
                     "label": "SET (Heure Seychelles)
-                  }, 
+                  },
                   "SWT": {
                     "label": "SWT (Heure d'hiver Suède)"
-                  }, 
+                  },
                   "WETDST": {
                     "label": "WETDST (Heure d'été Europe de l'Ouest)
-                  }, 
+                  },
                   "GMT": {
                     "label": "GMT (Heure de Greenwich)"
-                  }, 
+                  },
                   "UT": {
                     "label": "UT (Heure universelle)"
-                  }, 
+                  },
                   "UTC": {
-                    "label": UTC (Heure universelle, coordonné)
-                  }, 
+                    "label": "UTC(Universal Time, Coordinated)"
+                  },
                   "WET": {
                     "label": "WET (Europe de l'Ouest)"
-                  }, 
+                  },
                   "WAT": {
                     "label": "WAT (Heure Afrique Ouest)
-                  }, 
+                  },
                   "NDT": {
                     "label": "NDT (Heure Terre-Neuve)"
-                  }, 
+                  },
                   "ADT": {
                     "label": "ADT (Atlantic Daylight Time)"
-                  }, 
+                  },
                   "NFT": {
                     "label": "NFT (Heure standard Terre-Neuve)"
-                  }, 
+                  },
                   "NST": {
                     "label": "NST (Heure standard Terre-Neuve)"
-                  }, 
+                  },
                   "AST": {
                     "label": "AST (Heure Atlantique standard/Canada)"
-                  }, 
+                  },
                   "ACST": {
                     "label": "ACST(Atlantique/heure d'été Porto Acre)"
-                  }, 
+                  },
                   "ACT": {
                     "label": "ACT(Atlantique/heure d'été Porto Acre)"
-                  }, 
+                  },
                   "EDT": {
                     "label": "EDT (Heure d'été Est)
-                  }, 
+                  },
                   "CDT": {
                     "label": "CDT (Heure d'été Centre)"
-                  }, 
+                  },
                   "EST": {
                     "label": "EST (Heure standard Est)"
-                  }, 
+                  },
                   "CST": {
                     "label": "CST (Heure standard Centre)
-                  }, 
+                  },
                   "MDT": {
                     "label": "MDT (Heure d'été Rocheuses)"
-                  }, 
+                  },
                   "MST": {
                     "label": "MST (Heure standard Rocheuses)"
-                  }, 
+                  },
                   "PDT": {
                     "label": "PDT (Heure d'été Pacifique)"
-                  }, 
+                  },
                   "AKDT": {
                     "label": "AKDT (Heure d'été Alaska)"
-                  }, 
+                  },
                   "PST": {
                     "label": "PST (Heure standard Pacifique)"
-                  }, 
+                  },
                   "YDT": {
                     "label": YDT (Heure d'été Yukon)"
-                  }, 
+                  },
                   "AKST": {
                     "label": "AKST (Heure standard Alaska)"
-                  }, 
+                  },
                   "HDT": {
                     "label": "HDT (Heure d'été Hawaï/Alaska)"
-                  }, 
+                  },
                   "YST": {
                     "label": "YST (Heure standard Yukon)"
-                  }, 
+                  },
                   "AHST": {
                     "label": "AHST (Heure standard Alaska/Hawaï)"
-                  }, 
+                  },
                   "HST": {
                     "label": "HST (Heure standard Hawaï)"
-                  }, 
+                  },
                   "CAT": {
                     "label": "CAT (Heure Alaska centre)"
-                  }, 
+                  },
                   "NT": {
                     "label": "NT (Heure Nome)"
-                  }, 
+                  },
                   "IDLW": {
-                    "label": "IDLW (ligne de changement de date, Ouest)
+                    "label": "IDLW(International Date Line, West)"
                   }
-                }, 
+                },
                 "breakLine": true
               }
             }
-          }, 
+          },
           "output.options.location": {
-            "type": "text", 
-            "label": "Indiquer le lieu", 
+            "type": "text",
+            "label": "Indiquer le lieu",
             "val": "A1"
-          }, 
+          },
           "output.options.table_mode": {
-            "type": "select", 
-            "label": "Coller", 
-            "val": "content_only", 
+            "type": "select",
+            "label": "Coller",
+            "val": "content_only",
             "options": {
               "content_only": {
                 "label": "Contenu uniquement"
-              }, 
+              },
               "fully_formatted": {
                 "label": "Entièrement formaté"
               }
             }
-          }, 
+          },
           "output.options.formatted_as_table": {
-            "type": "checkbox", 
-            "label": "Formaté comme tableau", 
-            "val": "true", 
-            "isOn": "true", 
-            "isOff": "false", 
+            "type": "checkbox",
+            "label": "Formaté comme tableau",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
             "breakLine": true
-          }, 
+          },
           "output.add_tag": {
-            "type": "checkbox", 
-            "label": "Ajouter une étiquette", 
-            "val": "false", 
-            "isOn": "true", 
+            "type": "checkbox",
+            "label": "Ajouter une étiquette",
+            "val": "false",
+            "isOn": "true",
             "isOff": "false"
-          }, 
+          },
           "output.tag_name": {
-            "type": "text", 
-            "label": "Nom de l'étiquette", 
-            "show_if": "output.add_tag=='true'", 
-            "required": true, 
-            "minLength": 1, 
-            "maxLength": 255, 
-            "val": "", 
-            "breakLine": true, 
+            "type": "text",
+            "label": "Nom de l'étiquette",
+            "show_if": "output.add_tag=='true'",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 255,
+            "val": "",
+            "breakLine": true,
             "style": "margin-left: 15px"
-          }, 
+          },
           "output.options.visibility": {
-            "type": "select", 
-            "label": "Visibilité", 
-            "val": "current_flow", 
+            "type": "select",
+            "label": "Visibilité",
+            "val": "current_flow",
             "options": {
               "current_flow": {
                 "label": "Flux actuel"
-              }, 
+              },
               "all_flow": {
                 "label": "Tous les flux"
               }
             }
           }
-        }, 
+        },
         "breakLine": true
-      }, 
-      "options.limit_table_rows": {
-        "type": "checkbox", 
-        "label": "Limit output table rows", 
-        "val": "true", 
-        "isOn": "true", 
-        "isOff": "false"
-      }, 
-      "options.table_rows_limit": {
-        "type": "text", 
-        "label": "Output table rows limit", 
-        "show_if": "options.limit_table_rows=='true'", 
-        "minLength": 1, 
-        "maxLength": 7, 
-        "val": "1000000"
       }
     }
   }
