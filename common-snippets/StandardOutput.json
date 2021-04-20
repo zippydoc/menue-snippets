@@ -373,6 +373,29 @@
             "label": "Append"
           }
         }
+      },
+      "options.output_append_type": {
+        "type": "select",
+        "label": "If duplicated",
+        "show_if": "options.output_duplicated=='append'",
+        "val": "append_all",
+        "options": {
+          "append_all": {
+            "label": "Append All"
+          },
+          "append_not_existing": {
+            "label": "Append not existing"
+          }
+        }
+      },
+      "options.output_append_type": {
+        "type": "select",
+        "label": "Select Column",
+        "show_if": "options.output_duplicated=='append' && options.output_append_type=='append_not_existing'",
+        "required": true,
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "breakLine": true
       }
     }
   }
