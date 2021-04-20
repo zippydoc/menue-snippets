@@ -47,13 +47,14 @@
             "label": "Decrease"
           }
         },
-        "val": "static_value"
+        "val": "increase"
       },
       "options.inc_or_dec_val": {
         "type": "text",
         "label": "Input Value",
         "show_if": "options.column_value_type=='inc_dec_percent' || options.column_value_type=='inc_dec_abs'",
-        "val": "1"
+        "val": "1",
+        "breakLine": true
       },
       "options.static_value": {
         "type": "text",
@@ -79,6 +80,7 @@
       "options.use_multi_row": {
         "type": "checkbox",
         "label": "Multi-Row Options",
+        "show_if": "options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -86,7 +88,7 @@
       "options.if_row_not_exist": {
         "type": "select",
         "label": "If referred row not exist",
-        "show_if": "options.use_multi_row=='true'",
+        "show_if": "(options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula') && options.use_multi_row=='true'",
         "required": true,
         "options": {
           "empty": {
