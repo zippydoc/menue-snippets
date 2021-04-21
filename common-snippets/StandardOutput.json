@@ -7,7 +7,7 @@
       "output.custom_text": {
         "type": "text",
         "label": "Output Table Name",
-        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'",
+        "show_if": "output.compose_table_name=='false'",
         "minLength": 1,
         "val": "",
         "width": "100%",
@@ -274,17 +274,18 @@
           }
         }
       },
-      "output.set_options": {
+      "output.download_setting": {
         "type": "checkbox",
         "label": "Download Settings",
         "val": "false",
         "isOn": "true",
-        "isOff": "false"
+        "isOff": "false",
+        "style": "margin-top: 10px"
       },
-      "output_options_box": {
+      "download_setting_frame": {
         "type": "fieldset",
         "label": "Download Settings",
-        "show_if": "output.set_options=='true'",
+        "show_if": "output.download_setting=='true'",
         "repeat": false,
         "fields": {
           "output.options.location": {
