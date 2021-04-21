@@ -267,6 +267,22 @@
         "isOff": "false",
         "breakLine": true
       },
+      "options.use_filename_as_output_table_name": {
+        "type": "checkbox",
+        "label": "Use filename as table name",
+        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  },
+  "import_link_token_frame": {
+    "type": "fieldset",
+    "label": "Import Link",
+    "repeat": false,
+    "fields": {
       "options.link_csv_file": {
         "type": "text",
         "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.csv",
@@ -372,7 +388,7 @@
       },
       "options.is_github_private": {
         "type": "checkbox",
-        "label": "Repository is private",
+        "label": "Github repository is private",
         "show_if": "options.webservice=='github'",
         "val": "false",
         "isOn": "true",
@@ -380,27 +396,10 @@
         "style": "margin-top: 10px",
         "breakLine": true
       },
-      "options.use_filename_as_output_table_name": {
-        "type": "checkbox",
-        "label": "Use filename as table name",
-        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      }
-    }
-  },
-  "token_frame": {
-    "type": "fieldset",
-    "label": "Input Token",
-    "show_if": "options.webservice!='github' || options.is_github_private=='true'",
-    "repeat": false,
-    "fields": {
       "options.github_token": {
         "type": "text",
         "label": "Github personal access token",
-        "show_if": "options.webservice=='github'",
+        "show_if": "options.webservice=='github' && options.is_github_private=='true'",
         "required": true,
         "width": "100%",
         "breakLine": true
