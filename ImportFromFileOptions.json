@@ -267,6 +267,54 @@
         "isOff": "false",
         "breakLine": true
       },
+      "options.use_filename_as_output_table_name": {
+        "type": "checkbox",
+        "label": "Use filename as table name",
+        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  },
+  "import_link_token_frame": {
+    "type": "fieldset",
+    "label": "Import Link",
+    "repeat": false,
+    "fields": {
+      "options.link_csv_file": {
+        "type": "text",
+        "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.csv",
+        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format=='csv_table'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.link_text_file": {
+        "type": "text",
+        "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.txt(json, csv, etc)",
+        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format!='csv_table' && options.output_format!='file_list'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.one_drive.file_path": {
+        "type": "text",
+        "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
+        "show_if": "options.webservice=='ms_one_drive' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox.file_path": {
+        "type": "text",
+        "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
+        "show_if": "options.webservice=='dropbox' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
       "options.dir_path_filter": {
         "type": "fieldset",
         "label": "Import Path and File Filter",
@@ -337,54 +385,6 @@
             "function": "DELETE_ROW"
           }
         }
-      },
-      "options.use_filename_as_output_table_name": {
-        "type": "checkbox",
-        "label": "Use filename as table name",
-        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      }
-    }
-  },
-  "import_link_token_frame": {
-    "type": "fieldset",
-    "label": "Import Link",
-    "repeat": false,
-    "fields": {
-      "options.link_csv_file": {
-        "type": "text",
-        "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.csv",
-        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format=='csv_table'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "options.link_text_file": {
-        "type": "text",
-        "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.txt(json, csv, etc)",
-        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format!='csv_table' && options.output_format!='file_list'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "options.one_drive.file_path": {
-        "type": "text",
-        "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
-        "show_if": "options.webservice=='ms_one_drive' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "options.dropbox.file_path": {
-        "type": "text",
-        "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
-        "show_if": "options.webservice=='dropbox' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
       },
       "options.is_github_private": {
         "type": "checkbox",
