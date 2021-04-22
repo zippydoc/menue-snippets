@@ -1,186 +1,186 @@
 {
   "actions": {
     "type": "fieldset",
-    "label": "Aktionen hinzufügen",
+    "label": "Adicionar Ações",
     "repeat": true,
     "fields": {
       "column": {
         "type": "select",
-        "label": "Spalte",
+        "label": "Coluna",
         "table": "input_table",
 		"assign_selected_value_to":"this.output_column_name",
         "bind": "COLUMNS"
       },
       "action": {
         "type": "select",
-        "label": "Aktion",
+        "label": "Ação",
         "options": {
           "group_by": {
-            "label": "Gruppe von"
+            "label": "Agrupar por"
           },
           "count": {
-            "label": "Zählen Sie"
+            "label": "Contar"
           },
           "sum": {
-            "label": "Summe"
+            "label": "Soma"
           },
           "first": {
-            "label": "Erste"
+            "label": "Primeiro"
           },
           "last": {
-            "label": "Zuletzt"
+            "label": "Último"
           },
           "shortest": {
-            "label": "Kürzeste"
+            "label": "Mais curto"
           },
           "longest": {
-            "label": "Längste"
+            "label": "Mais comprido"
           },
           "concatenate": {
-            "label": "Verketten"
+            "label": "Concatenar"
           },
           "mathematics": {
-            "label": "Mathematik"
+            "label": "Matemática"
           }
         }
       },
       "count_action_category": {
         "type": "select",
-        "label": "Aktion Typ",
+        "label": "Tipo de Ação",
         "show_if": "this.action==''count''",
         "options": {
           "all": {
-            "label": "Alle"
+            "label": "Todos"
           },
           "distinct": {
-            "label": "Unverwechselbar"
+            "label": "Distinto"
           },
           "empty_or_zero": {
-            "label": "NULL oder Leer oder 0"
+            "label": "Vazio ou 0"
           },
           "non_empty_or_zero": {
-            "label": "Nicht leer oder 0"
+            "label": "Não Vazio ou 0"
           }
         },
         "val": "all"
       },
       "action_type1": {
         "type": "select",
-        "label": "Aktion Sub-Typ",
+        "label": "Subtipo de Ação",
         "show_if": "this.action==''count'' && (this.count_action_category==''all'' || this.count_action_category==''distinct'')",
         "options": {
           "-": {
             "label": "-"
           },
           "non_zero": {
-            "label": "Nicht 0"
+            "label": "Não 0"
           },
           "non_empty": {
-            "label": "Nicht leer"
+            "label": "Não Vazio"
           },
           "non_null": {
-            "label": "Nicht Null"
+            "label": "Não Nulo"
           },
           "non_blank": {
-            "label": "Nicht leer"
+            "label": "Não Em Branco"
           }
         },
         "val": "-"
       },
       "action_type2": {
         "type": "select",
-        "label": "Aktion Sub-Typ",
+        "label": "Subtipo de Ação",
         "show_if": "this.action==''count'' && this.count_action_category==''empty_or_zero''",
         "options": {
           "zero": {
             "label": "0"
           },
           "empty": {
-            "label": "Leer (NULL oder Leer)"
+            "label": "Vazio (Nulo e Em Branco)"
           },
           "null": {
             "label": "Null"
           },
           "blank": {
-            "label": "Leer"
+            "label": "Em Branco"
           }
         },
         "val": "zero"
       },
       "action_type3": {
         "type": "select",
-        "label": "Aktion Sub-Typ",
+        "label": "Subtipo de Ação",
         "show_if": "this.action==''count'' && this.count_action_category==''non_empty_or_zero''",
         "options": {
           "non_zero": {
-            "label": "Nicht 0"
+            "label": "Não 0"
           },
           "non_empty": {
-            "label": "Nicht leer"
+            "label": "Não Vazio"
           },
           "non_null": {
-            "label": "Nicht Null"
+            "label": "Não Nulo"
           },
           "non_blank": {
-            "label": "Nicht leer"
+            "label": "Não Em Branco"
           }
         },
         "val": "non_zero"
       },
       "mathematics_action_category": {
         "type": "select",
-        "label": "Aktion Typ",
+        "label": "Tipo de Ação",
         "show_if": "this.action==''mathematics''",
         "options": {
           "min": {
-            "label": "Min"
+            "label": "Mín"
           },
           "max": {
-            "label": "Max"
+            "label": "Máx"
           },
           "average": {
-            "label": "Durchschnitt"
+            "label": "Média"
           },
           "median": {
-            "label": "Median"
+            "label": "Mediana"
           },
           "standard_deviation": {
-            "label": "Standardabweichung"
+            "label": "Desvio Padrão"
           },
           "variance": {
-            "label": "Abweichung"
+            "label": "Variância"
           }
         },
         "val": "min"
       },
       "action_type4": {
         "type": "select",
-        "label": "Aktion Sub-Typ",
+        "label": "Subtipo de Ação",
         "show_if": "this.action==''mathematics''",
         "options": {
           "include_zero": {
-            "label": "Einschließen 0"
+            "label": "Incluir 0"
           },
           "exclude_zero": {
-            "label": "Ausschließen 0"
+            "label": "Excluir 0"
           }
         },
         "val": "include_zero"
       },
       "concatenate_separator": {
         "type": "text",
-        "label": "Separator",
+        "label": "Separador",
         "show_if": "this.action==''concatenate''",
         "val": ",
       },
       output_column_name": {
         "type": "text",
-        "label": "Name der Ausgabespalte",
+        "label": "Mostrar Nome da Coluna",
         "val": ""
       },
       "delete": {
         "type": "button",
-        "label": "Lösche",
+        "label": "Apagar",
         "function": "DELETE_ROW"
       }
     }
