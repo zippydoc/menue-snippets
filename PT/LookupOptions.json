@@ -1,63 +1,63 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Select Options",
+    "label": "Opções de Seleção",
     "repeat": false,
     "fields": {
       "options.task_type": {
         "type": "select",
-        "label": "Task Type",
+        "label": "Tipo de Tarefa",
         "required": true,
         "options": {
           "generate_lookup_table": {
-            "label": "Generate Lookup-Table"
+            "label": "Gerar Tabela de Pesquisa"
           },
           "apply_lookup_table": {
-            "label": "Apply Lookup-Table"
+            "label": "Aplicar Tabela de Pesquisa"
           },
           "apply_regex_table": {
-            "label": "Apply Regex-Table"
+            "label": "Aplicar Tabela de Expressões Regulares"
           },
           "apply_lookup_table_to_cells": {
-            "label": "Apply Lookup-Table to Cells"
+            "label": "Aplicar Tabela de Pesquisa às Células"
           },
           "apply_regex_table_to_cells": {
-            "label": "Apply Regex-Table to Cells"
+            "label": "Aplicar Tabela de Expressões Regulares às Células"
           }
         },
         "val": "generate_lookup_table"
       },
       "options.pattern_type": {
         "type": "select",
-        "label": "Pattern Type",
+        "label": "Tipo de Padrão",
         "show_if": "options.task_type==''generate_lookup_table'' || options.task_type==''apply_lookup_table'' || options.task_type==''apply_lookup_table_to_cells''",
         "required": true,
         "options": {
           "duplicate_pattern": {
-            "label": "Word Pattern"
+            "label": "Padrão de Palavras"
           },
           "number_range": {
-            "label": "Ranges(e.g. 10 < x <= 100)"
+            "label": "Intervalos (ex. 10 < x <= 100)"
           }
         },
         "val": "duplicate_pattern"
       },
       "duplicate_option_box": {
         "type": "fieldset",
-        "label": "Duplicate Patterns Option",
+        "label": "Opção de Duplicar Padrões",
         "show_if": "options.task_type==''label_duplicates'' || (options.task_type==''generate_lookup_table'' && options.pattern_type==''duplicate_pattern'')",
         "repeat": false,
         "fields": {
           "options.minimum_number_of_matching_characters": {
             "type": "text",
-            "label": "Minimum Number of matching Characters",
+            "label": "Número Mínimo de Caracteres Correspondentes",
             "val": "3",
             "required": true,
             "style": "min-width: 240px"
           },
           "options.minimum_number_of_duplicates": {
             "type": "text",
-            "label": "Minimum Number of duplicates",
+            "label": "Número Mínimo de Duplicados",
             "val": "2",
             "required": true,
             "style": "min-width: 240px",
@@ -67,23 +67,23 @@
       },
       "number_range_option_box": {
         "type": "fieldset",
-        "label": "Number Ranges Option",
+        "label": "Opção de Intervalos Numéricos",
         "show_if": "options.task_type==''generate_lookup_table'' && options.pattern_type==''number_range''",
         "repeat": false,
         "fields": {
           "options.number_range.range_type": {
             "type": "select",
-            "label": "Range Type",
+            "label": "Tipo de Intervalo",
             "required": true,
             "options": {
               "equal_interval": {
-                "label": "N Equal Intervals"
+                "label": "N Intervalos Iguais"
               },
               "equal_range": {
-                "label": "Equal Range"
+                "label": "Igualar Intervalo"
               },
               "custom_range": {
-                "label": "Custom Range"
+                "label": "Personalizar Intervalo"
               }
             },
             "val": "equal_interval"
@@ -97,32 +97,32 @@
           },
           "options.number_range.range_value": {
             "type": "text",
-            "label": "Range",
+            "label": "Intervalo",
             "show_if": "options.number_range.range_type==''equal_range''",
             "val": "10",
             "required": true
           },
           "options.number_range.custom_ranges": {
             "type": "fieldset",
-            "label": "Add Custom Range Pattern",
+            "label": "Adicionar Intervalo Padrão Personalizado",
             "show_if": "options.number_range.range_type==''custom_range''",
             "repeat": true,
             "fields": {
               "pattern": {
                 "type": "text",
-                "label": "Pattern",
+                "label": "Padrão",
                 "val": "0<=x<10",
                 "required": true
               },
               "label": {
                 "type": "text",
-                "label": "Label",
+                "label": "Rotular",
                 "val": "positive10",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "Delete",
+                "label": "Apagar",
                 "function": "DELETE_ROW"
               }
             }
@@ -153,7 +153,7 @@
         "fields": {
           "options.lookup_table_id": {
             "type": "select",
-            "label": "Lookup Table",
+            "label": "Tabela de Pesquisa",
             "show_if": "options.lookup_table_type==''select_lookup_table''",
             "bind": "TABLES",
             "empty": "",
@@ -168,26 +168,26 @@
             "fields": {
               "lookup": {
                 "type": "text",
-                "label": "Lookup",
+                "label": "Pesquisar",
                 "val": "",
                 "required": true
               },
               "label": {
                 "type": "text",
-                "label": "Label",
+                "label": "Rotular",
                 "val": "",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "Delete",
+                "label": "Apagar",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.partial_match": {
             "type": "checkbox",
-            "label": "Partial Match",
+            "label": "Correspondência Parcial",
             "show_if": "options.pattern_type==''duplicate_pattern'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_lookup_table_to_cells'')",
             "val": "false",
             "isOn": "true",
@@ -197,7 +197,7 @@
           },
           "options.case_sensitive": {
             "type": "checkbox",
-            "label": "Case Sensitive",
+            "label": "Sensível a Maiúsculas e Minúsculas",
             "show_if": "options.pattern_type==''duplicate_pattern'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_lookup_table_to_cells'')",
             "val": "false",
             "isOn": "true",
@@ -206,7 +206,7 @@
           },
           "options.use_delimiter": {
             "type": "checkbox",
-            "label": "Custom Delimiter",
+            "label": "Personalizar Delimitador",
             "show_if": "options.task_type==''apply_lookup_table'' || options.task_type==''apply_lookup_table_to_cells''",
             "val": "false",
             "isOn": "true",
@@ -214,7 +214,7 @@
           },
           "options.delimiter": {
             "type": "text",
-            "label": "Input Delimiter",
+            "label": "Introduzir Delimitador",
             "show_if": "options.use_delimiter==''true'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_lookup_table_to_cells'')",
             "val": ";",
             "required": true,
@@ -224,7 +224,7 @@
       },
       "options.input_table.use_filter": {
         "type": "checkbox",
-        "label": "Use Filter for Input table",
+        "label": "Utilizar Filtro para Tabela de Entrada",
         "show_if": "options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'' || options.task_type==''apply_lookup_table_to_cells'' || options.task_type==''apply_regex_table_to_cells''",
         "val": "false",
         "isOn": "true",
@@ -234,18 +234,18 @@
       },
       "input_table_filter_box": {
         "type": "fieldset",
-        "label": "Input Table Filter Options",
+        "label": "Introduzir Opções de Filtro da Tabela",
         "show_if": "options.input_table.use_filter==''true'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'' || options.task_type==''apply_lookup_table_to_cells'' || options.task_type==''apply_regex_table_to_cells'')",
         "repeat": false,
         "fields": {
           "options.input_table.filter": {
             "type": "fieldset",
-            "label": "Add Filter Conditions for Input table",
+            "label": "Adicionar Condições de Filtro para Tabela de Entrada",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Select Logic Operator",
+                "label": "Selecionar Operador Lógico",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
@@ -260,7 +260,7 @@
               },
               "op": {
                 "type": "select",
-                "label": "Select Logic Operator",
+                "label": "Selecionar Operador Lógico",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
@@ -281,123 +281,123 @@
               },
               "column": {
                 "type": "select",
-                "label": "Select Column",
+                "label": "Selecionar Coluna",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Select Operator",
+                "label": "Selecionar Operador",
                 "required": true,
                 "options": {
-                  "CONTAINS": {
-                    "label": "CONTAINS"
+                  "CONTÉM": {
+                    "label": "CONTÉM"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "CONTAINED IN"
+                    "label": "CONTIDO EM"
                   },
-                  "STARTS WITH": {
-                    "label": "STARTS WITH"
+                  "INICIA COM": {
+                    "label": "INICIA COM"
                   },
-                  "ENDS WITH": {
-                    "label": "ENDS WITH"
+                  "TERMINA COM": {
+                    "label": "TERMINA COM"
                   },
                   "=": {
-                    "label": "EQUAL"
+                    "label": "IGUAL"
                   },
                   ">": {
-                    "label": "GREATER THAN"
+                    "label": "MAIOR QUE"
                   },
                   ">=": {
-                    "label": "GREATER OR EQUAL"
+                    "label": "MAIOR OU IGUAL"
                   },
                   "<": {
-                    "label": "SMALLER THAN"
+                    "label": "MENOR QUE"
                   },
                   "<=": {
-                    "label": "SMALLER OR EQUAL"
+                    "label": "MENOR OU IGUAL"
                   },
                   "EMPTY": {
-                    "label": "IS EMPTY"
+                    "label": "ESTÁ VAZIO"
                   },
                   "BLANK": {
-                    "label": "IS BLANK"
+                    "label": "ESTÁ EM BRANCO"
                   },
                   "IS NULL": {
                     "label": "IS NULL"
                   },
-                  "REGEX MATCH": {
-                    "label": "REGEX MATCH"
+                  "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR": {
+                    "label": "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "IN TABLE"
+                    "label": "NA TABELA"
                   },
-                  "IN REGEX TABLE": {
-                    "label": "IN REGEX TABLE"
+                  "NA TABELA DE EXPRESSÕES REGULARES": {
+                    "label": "NA TABELA DE EXPRESSÕES REGULARES"
                   },
-                  "DATE": {
-                    "label": "DATE"
+                  "DATA": {
+                    "label": "DATA"
                   }
                 },
-                "val": "CONTAINS"
+                "val": "CONTÉM"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Select Date Operator",
+                "label": "Selecionar Operador de Data",
                 "required": true,
                 "show_if": "this.condition == ''DATE''",
                 "options": {
                   "<": {
-                    "label": "PRIOR"
+                    "label": "ANTERIOR"
                   },
                   "<=": {
-                    "label": "PRIOR OR EQUAL"
+                    "label": "ANTERIOR OU IGUAL"
                   },
                   "=": {
-                    "label": "EQUAL"
+                    "label": "IGUAL"
                   },
                   ">": {
-                    "label": "AFTER"
+                    "label": "DEPOIS"
                   },
                   ">=": {
-                    "label": "AFTER OR EQUAL"
+                    "label": "DEPOIS OU IGUAL"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Select Case Sensitive",
+                "label": "Selecionar Sensibilidade a Maiúsculas e Minúsculasl",
                 "required": true,
                 "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "options": {
                   "yes": {
-                    "label": "Case Sensitive"
+                    "label": "Sensível a Maiúsculas e Minúsculas"
                   },
                   "no": {
-                    "label": "Case Insensitive"
+                    "label": "Insensível a Maiúsculas e Minúsculas"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Select Date",
+                "label": "Selecionar Data",
                 "show_if": "this.condition==''DATE''",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Input Value",
+                "label": "Introduzir Valor",
                 "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Select Table",
+                "label": "Selecionar Tabela",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
@@ -405,7 +405,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "Select Column",
+                "label": "Selecionar Coluna",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
@@ -413,14 +413,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "Delete",
+                "label": "Apagar",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.input_table.apply_to_record": {
             "type": "checkbox",
-            "label": "Apply to Record for Input table filter",
+            "label": "Aplicar ao Registo para Filtro da Tabela de Entrada",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -429,13 +429,13 @@
           },
           "input_table_apply_to_group_box": {
             "type": "fieldset",
-            "label": "Apply to Group of Input table",
+            "label": "Aplicar ao Grupo da Tabela de Entrada",
             "show_if": "options.input_table.apply_to_record==''false''",
             "repeat": false,
             "fields": {
               "options.input_table.apply_to_group_columns": {
                 "type": "select",
-                "label": "Select Group Columns",
+                "label": "Selecionar Colunas de Grupo",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
@@ -449,7 +449,7 @@
       },
       "options.lookup_table.use_filter": {
         "type": "checkbox",
-        "label": "Use Filter for Lookup table",
+        "label": "Utilizar Filtro para Tabela de Pesquisa",
         "show_if": "options.lookup_table_type==''select_lookup_table'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'' || options.task_type==''apply_lookup_table_to_cells'' || options.task_type==''apply_regex_table_to_cells'')",
         "val": "false",
         "isOn": "true",
@@ -459,18 +459,18 @@
       },
       "lookup_table_filter_box": {
         "type": "fieldset",
-        "label": "Lookup Table Filter Options",
+        "label": "Opções de Filtro da Tabela de Pesquisa",
         "show_if": "options.lookup_table.use_filter==''true'' && options.lookup_table_type==''select_lookup_table'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'' || options.task_type==''apply_lookup_table_to_cells'' || options.task_type==''apply_regex_table_to_cells'')",
         "repeat": false,
         "fields": {
           "options.lookup_table.filter": {
             "type": "fieldset",
-            "label": "Add Filter Conditions for Lookup table",
+            "label": "Adicionar Condições de Filtro para Tabela de Pesquisa",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Select Logic Operator",
+                "label": "Selecionar Operador Lógico",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
@@ -485,7 +485,7 @@
               },
               "op": {
                 "type": "select",
-                "label": "Select Logic Operator",
+                "label": "Selecionar Operador Lógico",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
@@ -506,123 +506,123 @@
               },
               "column": {
                 "type": "select",
-                "label": "Select Column",
+                "label": "Selecionar Coluna",
                 "table": "options.lookup_table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Select Operator",
+                "label": "Selecionar Operador",
                 "required": true,
                 "options": {
-                  "CONTAINS": {
-                    "label": "CONTAINS"
+                  "CONTÉM": {
+                    "label": "CONTÉM"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "CONTAINED IN"
+                    "label": "CONTIDO EM"
                   },
-                  "STARTS WITH": {
-                    "label": "STARTS WITH"
+                  "INICIA COM": {
+                    "label": "INICIA COM"
                   },
-                  "ENDS WITH": {
-                    "label": "ENDS WITH"
+                  "TERMINA COM": {
+                    "label": "TERMINA COM"
                   },
                   "=": {
-                    "label": "EQUAL"
+                    "label": "IGUAL"
                   },
                   ">": {
-                    "label": "GREATER THAN"
+                    "label": "MAIOR QUE"
                   },
                   ">=": {
-                    "label": "GREATER OR EQUAL"
+                    "label": "MAIOR OU IGUAL"
                   },
                   "<": {
-                    "label": "SMALLER THAN"
+                    "label": "MENOR QUE"
                   },
                   "<=": {
-                    "label": "SMALLER OR EQUAL"
+                    "label": "MENOR OU IGUAL"
                   },
                   "EMPTY": {
-                    "label": "IS EMPTY"
+                    "label": "ESTÁ VAZIO"
                   },
                   "BLANK": {
-                    "label": "IS BLANK"
+                    "label": "ESTÁ EM BRANCO"
                   },
                   "IS NULL": {
                     "label": "IS NULL"
                   },
-                  "REGEX MATCH": {
-                    "label": "REGEX MATCH"
+                  "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR": {
+                    "label": "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "IN TABLE"
+                    "label": "NA TABELA"
                   },
-                  "IN REGEX TABLE": {
-                    "label": "IN REGEX TABLE"
+                  "NA TABELA DE EXPRESSÕES REGULARES": {
+                    "label": "NA TABELA DE EXPRESSÕES REGULARES"
                   },
-                  "DATE": {
-                    "label": "DATE"
+                  "DATA": {
+                    "label": "DATA"
                   }
                 },
-                "val": "CONTAINS"
+                "val": "CONTÉM"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Select Date Operator",
+                "label": "Selecionar Operador de Data",
                 "required": true,
                 "show_if": "this.condition == ''DATE''",
                 "options": {
                   "<": {
-                    "label": "PRIOR"
+                    "label": "ANTERIOR"
                   },
                   "<=": {
-                    "label": "PRIOR OR EQUAL"
+                    "label": "ANTERIOR OU IGUAL"
                   },
                   "=": {
-                    "label": "EQUAL"
+                    "label": "IGUAL"
                   },
                   ">": {
-                    "label": "AFTER"
+                    "label": "DEPOIS"
                   },
                   ">=": {
-                    "label": "AFTER OR EQUAL"
+                    "label": "DEPOIS OU IGUAL"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Select Case Sensitive",
+                "label": "Selecionar Sensibilidade a Maiúsculas e Minúsculasl",
                 "required": true,
                 "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "options": {
                   "yes": {
-                    "label": "Case Sensitive"
+                    "label": "Sensível a Maiúsculas e Minúsculas"
                   },
                   "no": {
-                    "label": "Case Insensitive"
+                    "label": "Insensível a Maiúsculas e Minúsculas"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Select Date",
+                "label": "Selecionar Data",
                 "show_if": "this.condition==''DATE''",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Input Value",
+                "label": "Introduzir Valor",
                 "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Select Table",
+                "label": "Selecionar Tabela",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
@@ -630,7 +630,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "Select Column",
+                "label": "Selecionar Coluna",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
@@ -638,14 +638,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "Delete",
+                "label": "Apagar",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.lookup_table.apply_to_record": {
             "type": "checkbox",
-            "label": "Apply to Record for Lookup table filter",
+            "label": "Aplicar ao Registo para Filtro da Tabela de Pesquisa",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -654,13 +654,13 @@
           },
           "lookup_table_apply_to_group_box": {
             "type": "fieldset",
-            "label": "Apply to Group of Lookup table",
+            "label": "Aplicar ao Grupo  da Tabela de Pesquisa",
             "show_if": "options.lookup_table.apply_to_record==''false''",
             "repeat": false,
             "fields": {
               "options.lookup_table.apply_to_group_columns": {
                 "type": "select",
-                "label": "Select Group Columns",
+                "label": "Selecionar Colunas de Grupo",
                 "required": true,
                 "width": "100%",
                 "table": "options.lookup_table",
@@ -674,7 +674,7 @@
       },
       "options.input_table.apply_to_group_for_concatenation.enabled": {
         "type": "checkbox",
-        "label": "Apply to Group for Rows Concatenation",
+        "label": "Aplicar ao Grupo para Concatenação de Linhas",
         "show_if": "options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table''",
         "val": "false",
         "isOn": "true",
@@ -684,7 +684,7 @@
       },
       "options.input_table.apply_to_group_for_concatenation.allow_group_lists": {
         "type": "checkbox",
-        "label": "Allow Group-Lists",
+        "label": "Permitir Listas de Grupo",
         "show_if": "options.input_table.apply_to_group_for_concatenation.enabled==''true'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'')",
         "val": "false",
         "isOn": "true",
@@ -694,7 +694,7 @@
       },
       "options.input_table.apply_to_group_for_concatenation.group_column": {
         "type": "select",
-        "label": "Select Group Column for Rows Concatenation",
+        "label": "Selecionar Coluna de Grupo para Concatenação de Linhas",
         "show_if": "options.input_table.apply_to_group_for_concatenation.enabled==''true'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'')",
         "required": true,
         "width": "100%",
