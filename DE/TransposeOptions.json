@@ -1,21 +1,21 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Opções de Seleção",
+    "label": "Optionen auswählen",
     "repeat": false,
     "fields": {
       "transpose_type": {
         "type": "select",
-        "label": "Tipo de Transposição",
+        "label": "Transponieren Typ",
         "options": {
           "mirror_matrix": {
-            "label": "Espelhar Matriz"
+            "label": "Matrix spiegeln"
           },
           "column_name_to_label": {
-            "label": "Nome da Coluna a Rotular"
+            "label": "Spaltenname zu Label"
           },
           "crosstab": {
-            "label": "Referência Cruzada"
+            "label": "Kreuztabelle"
           }
         },
         "val": "mirror_matrix",
@@ -25,7 +25,7 @@
       },
       "mirror_matrix.convert_header_to_label": {
         "type": "checkbox",
-        "label": "Converter cabeçalho para rótulo",
+        "label": "Kopfzeile in Etikett umwandeln",
         "show_if": "transpose_type==''mirror_matrix''",
         "val": "true",
         "isOn": "true",
@@ -34,7 +34,7 @@
       },
       "column_name_to_label.columns_to_label": {
         "type": "select",
-        "label": "Selecionar Colunas para Converter em Rótulos",
+        "label": "Spalten zum Konvertieren in Etiketten auswählen",
         "show_if": "transpose_type==''column_name_to_label''",
         "table": "input_table",
         "multiple": true,
@@ -45,25 +45,25 @@
       },
       "column_name_to_label.label_column_name": {
         "type": "text",
-        "label": "Nome da Coluna de Rótulos",
+        "label": "Spalte Name der Etikettenspalte",
         "show_if": "transpose_type==''column_name_to_label''",
         "required": true,
-        "val": "Rotular",
+        "val": "Beschrifte",
         "width": "100%",
         "breakLine": true
       },
       "column_name_to_label.value_column_name": {
         "type": "text",
-        "label": "Noma da Coluna de Valores",
+        "label": "Spalte Name der Wertespalte",
         "show_if": "transpose_type==''column_name_to_label''",
         "required": true,
-        "val": "Valor",
+        "val": "Wert",
         "width": "100%",
         "breakLine": true
       },
       "crosstab.group_data_by_these_values": {
         "type": "select",
-        "label": "Agrupar dados por estes valores",
+        "label": "Daten nach diesen Werten gruppieren",
         "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "multiple": true,
@@ -74,7 +74,7 @@
       },
       "crosstab.change_column_headers": {
         "type": "select",
-        "label": "Alterar Cabeçalho da Coluna",
+        "label": "Spaltenüberschrift ändern",
         "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -84,7 +84,7 @@
       },
       "crosstab.values_for_new_columns": {
         "type": "select",
-        "label": "Valores para Novas Colunas",
+        "label": "Werte für neue Spalten",
         "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -94,37 +94,37 @@
       },
       "crosstab.method_for_aggregating_values": {
         "type": "select",
-        "label": "Método de Agregação de Valores",
+        "label": "Methode zum Aggregieren von Werten",
         "show_if": "transpose_type==''crosstab''",
         "options": {
-          "Concatenar": {
-            "label": "Concatenar"
+          "Verketten": {
+            "label": "Verketten"
           },
-          "Primeiro": {
-            "label": "Primeiro"
+          "Erste": {
+            "label": "Erste"
           },
-          "Último": {
-            "label": "Último"
+          "Zuletzt": {
+            "label": "Zuletzt"
           },
-          "Soma": {
-            "label": "Soma"
+          "Summe": {
+            "label": "Summe"
           },
-          "Média": {
-            "label": "Média"
+          "Durchschnitt": {
+            "label": "Durchschnitt"
           },
-          "Contar": {
-            "label": "Contar"
+          "Zählen Sie": {
+            "label": "Zählen Sie"
           },
-          "Definido pelo Utilizador": {
-            "label": "Definido pelo Utilizador"
+          "Benutzerdefiniert": {
+            "label": "Benutzerdefiniert"
           }
         },
-        "val": "Concatenar",
+        "val": "Verketten",
         "required": true
       },
       "crosstab.user_defined_str": {
         "type": "text",
-        "label": "Valor Definido pelo Utilizador",
+        "label": "Benutzerdefinierter Wert",
         "show_if": "transpose_type==''crosstab'' && crosstab.method_for_aggregating_values==''User Defined''",
         "val": "x",
         "trim": "false",
@@ -132,7 +132,7 @@
       },
       "crosstab.separator": {
         "type": "text",
-        "label": "Separador",
+        "label": "Separator",
         "show_if": "transpose_type==''crosstab'' && method_for_aggregating_values==''Concatenate''",
         "val": ",,
         trim": "false",
