@@ -1,7 +1,7 @@
 {
   "options_box": {
     "type": "fieldset",
-    "label": "Options",
+    "label": "Opciones",
     "repeat": false,
     "fields": {
       "options.task": {
@@ -10,41 +10,41 @@
       },
       "options.add_columns": {
         "type": "fieldset",
-        "label": "Add New Columns",
+        "label": "Agregar Nuevas Columnas",
         "repeat": true,
         "fields": {
           "new_column_name": {
             "type": "text",
-            "label": "New Column Name",
+            "label": “Nuevo Nombre de Columna”,
             "val": "",
             "breakLine": true
           },
           "multi_row_functions__function": {
             "type": "select",
-            "label": "Function",
+            "label": "Función",
             "required": true,
             "options": {
               "trailing_row_n_average": {
-                "label": "Trailing Row-N Average"
+                "label": "Promedio Móvil de la Fila N"
               },
               "index_from_row_n": {
-                "label": "Index from Row-N"
+                "label": "Índice de la Fila N"
               },
               "absolute_growth": {
-                "label": "Absolute Growth"
+                "label": "Crecimiento Absoluto"
               },
               "relative_growth": {
-                "label": "Relative Growth"
+                "label": "Crecimiento Relativo"
               },
               "compound_growth": {
-                "label": "Compound Growth"
+                "label": "Crecimiento Compuesto"
               }
             },
             "val": "trailing_row_n_average"
           },
           "multi_row_functions__sel_column": {
             "type": "select",
-            "label": "Column",
+            "label": "Columna",
             "show_if": "this.multi_row_functions__function==''trailing_row_n_average'' || this.multi_row_functions__function==''index_from_row_n'' || this.multi_row_functions__function==''absolute_growth'' || this.multi_row_functions__function==''relative_growth'' || this.multi_row_functions__function==''compound_growth''",
             "table": "input_table",
             "bind": "COLUMNS",
@@ -52,7 +52,7 @@
           },
           "multi_row_functions__n_value": {
             "type": "text",
-            "label": "N (positive integer)",
+            "label": "N (entero positivo)",
             "show_if": "this.multi_row_functions__function==''trailing_row_n_average'' || this.multi_row_functions__function==''index_from_row_n'' || this.multi_row_functions__function==''compound_growth''",
             "val": "1",
             "required": true,
@@ -60,75 +60,75 @@
           },
           "format__category": {
             "type": "select",
-            "label": "Format",
+            "label": "Formato",
             "required": true,
             "options": {
               "standard": {
-                "label": "Standard"
+                "label": "Estándar"
               },
               "number": {
-                "label": "Number"
+                "label": "Número"
               },
               "percentage": {
-                "label": "Percentage"
+                "label": "Porcentaje"
               },
               "text": {
-                "label": "Text"
+                "label": "Texto"
               },
               "date": {
-                "label": "Date"
+                "label": "Fecha"
               },
               "currency": {
-                "label": "Currency"
+                "label": "Moneda"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "Rounding",
+            "label": "Redondeo",
             "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "No rounding"
+                "label": "Redondeo de números"
               },
               "0": {
-                "label": "0 digits"
+                "label": "0 dígitos"
               },
               "1": {
-                "label": "1 digits"
+                "label": "1 dígitos"
               },
               "2": {
-                "label": "2 digits"
+                "label": "2 dígitos"
               },
               "3": {
-                "label": "3 digits"
+                "label": "3 dígitos"
               },
               "4": {
-                "label": "4 digits"
+                "label": "4 dígitos"
               },
               "5": {
-                "label": "5 digits"
+                "label": "5 dígitos"
               },
               "6": {
-                "label": "6 digits"
+                "label": "6 dígitos"
               },
               "7": {
-                "label": "7 digits"
+                "label": "7 dígitos"
               },
               "8": {
-                "label": "8 digits"
+                "label": "8 dígitos"
               },
               "9": {
-                "label": "9 digits"
+                "label": "9 dígitos"
               }
             },
             "val": "2"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Use 1000 Separator(.)",
+            "label": "Usar el Separador de 1000(.)",
             "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
             "val": "true",
             "isOn": "true",
@@ -136,7 +136,7 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "Symbol",
+            "label": "Símbolo",
             "show_if": "this.format__category==''currency''",
             "required": true,
             "options": {
@@ -154,7 +154,7 @@
           },
           "format__date_format": {
             "type": "select",
-            "label": "Type",
+            "label": "Tipo",
             "show_if": "this.format__category==''date''",
             "required": true,
             "options": {
@@ -173,7 +173,7 @@
           },
           "apply_to_group__enabled": {
             "type": "checkbox",
-            "label": "Apply to Group",
+            "label": "Aplicar al Grupo",
             "show_if": "this.task_type!=''static_value''",
             "val": "false",
             "isOn": "true",
@@ -181,7 +181,7 @@
           },
           "apply_to_group__group_columns": {
             "type": "select",
-            "label": "Group Column(s)",
+            "label": "Columna(s) del Grupo",
             "show_if": "this.apply_to_group__enabled == ''true'' && this.task_type!=''static_value''",
             "table": "input_table",
             "bind": "COLUMNS",
@@ -190,14 +190,14 @@
           },
           "delete": {
             "type": "button",
-            "label": "Delete",
+            "label": "Borrar",
             "function": "DELETE_ROW"
           }
         }
       },
       "options.use_filter": {
         "type": "checkbox",
-        "label": "Use Filter",
+        "label": "Usar Filtro",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -206,33 +206,33 @@
       },
       "filter_box": {
         "type": "fieldset",
-        "label": "Filter Options",
+        "label": "Opciones del Filtro",
         "show_if": "options.use_filter==''true''",
         "repeat": false,
         "fields": {
           "options.filter": {
             "type": "fieldset",
-            "label": "Add Filter Conditions",
+            "label": "Agregar Condiciones del Filtro",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Select Logic Operator",
+                "label": "Seleccionar Operador Lógico",
                 "required": true,
                 "show_if" :  "$index == 0",
                 "options": {
                   "if": {
-                    "label": "IF"
+                    "label": "SI"
                   },
                   "if_not": {
-                    "label": "IF NOT"
+                    "label": "SI NO"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "Select Logic Operator",
+                "label": "Seleccionar Operador Lógico",
                 "required": true,
                 "show_if" :  "$index > 0",
                 "options": {
@@ -253,123 +253,123 @@
               },
               "column": {
                 "type": "select",
-                "label": "Select Column",
+                "label": “Seleccionar Columna”,
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Select Operator",
+                "label": "Seleccionar Operador",
                 "required": true,
                 "options": {
-                  "CONTAINS": {
-                    "label": "CONTAINS"
+                  "CONTIENE": {
+                    "label": "CONTIENE"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "CONTAINED IN"
+                    "label": "CONTENIDO EN"
                   },
-                  "STARTS WITH": {
-                    "label": "STARTS WITH"
+                  “EMPEZAR CON”: {
+                    "label": “EMPEZAR CON”
                   },
-                  "ENDS WITH": {
-                    "label": "ENDS WITH"
+                  "TERMINA CON”: {
+                    "label": "TERMINA CON”
                   },
                   "=": {
-                    "label": "EQUAL"
+                    "label": "IGUAL"
                   },
                   ">": {
-                    "label": "GREATER THAN"
+                    "label": "MAYOR QUE"
                   },
                   ">=": {
-                    "label": "GREATER OR EQUAL"
+                    "label": "MAYOR O IGUAL"
                   },
                   "<": {
-                    "label": "SMALLER THAN"
+                    "label": "MENOR QUE"
                   },
                   "<=": {
-                    "label": "SMALLER OR EQUAL"
+                    "label": "MENOR O IGUAL"
                   },
                   "EMPTY": {
-                    "label": "IS EMPTY"
+                    "label": "ESTÁ VACÍO"
                   },
                   "BLANK": {
-                    "label": "IS BLANK"
+                    "label": "ESTÁ EN BLANCO"
                   },
                   "IS NULL": {
                     "label": "IS NULL"
                   },
-                  "REGEX MATCH": {
-                    "label": "REGEX MATCH"
+                  "COINCIDENCIA CON LA EXPRESIÓN REGULAR": {
+                    "label": "COINCIDENCIA CON LA EXPRESIÓN REGULAR"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "IN TABLE"
+                    "label": "EN TABLA"
                   },
-                  "IN REGEX TABLE": {
-                    "label": "IN REGEX TABLE"
+                  "EN LA TABLA DE LAS EXPRESIONES REGULARES": {
+                    "label": "EN LA TABLA DE LAS EXPRESIONES REGULARES"
                   },
-                  "DATE": {
-                    "label": "DATE"
+                  "FECHA": {
+                    "label": "FECHA"
                   }
                 },
-                "val": "CONTAINS"
+                "val": "CONTIENE"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Select Date Operator",
+                "label": "Seleccionar Operador de la Fecha",
                 "required": true,
                 "show_if": "this.condition == ''DATE''",
                 "options": {
                   "<": {
-                    "label": "PRIOR"
+                    "label": "PREVIO"
                   },
                   "<=": {
-                    "label": "PRIOR OR EQUAL"
+                    "label": "PREVIO O IGUAL"
                   },
                   "=": {
-                    "label": "EQUAL"
+                    "label": "IGUAL"
                   },
                   ">": {
-                    "label": "AFTER"
+                    "label": "DESPUÉS"
                   },
                   ">=": {
-                    "label": "AFTER OR EQUAL"
+                    "label": "DESPUÉS O IGUAL"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Select Case Sensitive",
+                "label": "Seleccionar Sensible a Mayúsculas y Minúsculas",
                 "required": true,
                 "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "options": {
                   "yes": {
-                    "label": "Case Sensitive"
+                    "label": "Sensible a Mayúsculas y Minúsculas"
                   },
                   "no": {
-                    "label": "Case Insensitive"
+                    "label": "Insensible a Mayúsculas y Minúsculas"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Select Date",
+                "label": "Seleccionar Fecha",
                 "show_if": "this.condition==''DATE''",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Input Value",
+                "label": "Ingresar Valor",
                 "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Select Table",
+                "label": "Seleccionar Tabla",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
@@ -377,7 +377,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "Select Column",
+                "label": “Seleccionar Columna”,
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
@@ -385,14 +385,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "Delete",
+                "label": "Borrar",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.apply_to_record": {
             "type": "checkbox",
-            "label": "Apply to Record",
+            "label": "Aplicar al Registro",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -401,13 +401,13 @@
           },
           "apply_to_group_box": {
             "type": "fieldset",
-            "label": "Apply to Group",
+            "label": "Aplicar al Grupo",
             "show_if": "options.apply_to_record==''false''",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
                 "type": "select",
-                "label": "Select Group Columns",
+                "label": "Seleccionar Columnas del Grupo",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
