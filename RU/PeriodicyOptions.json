@@ -1,18 +1,18 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Выбрать параметры частоты",
+    "label": "Select Periodicy Options",
     "repeat": false,
     "fields": {
       "options.type": {
         "type": "select",
-        "label": "Тип",
+        "label": "Type",
         "options": {
           "generate": {
-            "label": "Создать пример частоты"
+            "label": "Generate Periodicy Example"
           },
           "process": {
-            "label": "Таблица частоты процесса"
+            "label": "Process Periodicy Table"
           }
         },
         "val": "generate",
@@ -21,83 +21,83 @@
       "amount_formatting_frame": {
         "type": "fieldset",
         "label": "Amount Column Formatting",
-        "show_if": "options.type=='generate'",
+        "show_if": "options.type==''generate''",
         "repeat": false,
         "fields": {
           "options.amount.format__category": {
             "type": "select",
-            "label": "Формат",
+            "label": "Format",
             "required": true,
             "options": {
               "standard": {
-                "label": "Стандартный"
+                "label": "Standard"
               },
               "number": {
-                "label": "Число"
+                "label": "Number"
               },
               "percentage": {
-                "label": "Процент"
+                "label": "Percentage"
               },
               "currency": {
-                "label": "Валюта"
+                "label": "Currency"
               }
             },
             "val": "currency"
           },
           "options.amount.format__rounding": {
             "type": "select",
-            "label": "Округление",
-            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+            "label": "Rounding",
+            "show_if": "options.amount.format__category==''number'' || options.amount.format__category==''percentage'' || options.amount.format__category==''currency''",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Округление чисел"
+                "label": "No rounding"
               },
               "0": {
-                "label": "0 цифр"
+                "label": "0 digits"
               },
               "1": {
-                "label": "1 цифра"
+                "label": "1 digits"
               },
               "2": {
-                "label": "2 цифры"
+                "label": "2 digits"
               },
               "3": {
-                "label": "3 цифры"
+                "label": "3 digits"
               },
               "4": {
-                "label": "4 цифры"
+                "label": "4 digits"
               },
               "5": {
-                "label": "5 цифр"
+                "label": "5 digits"
               },
               "6": {
-                "label": "6 цифр"
+                "label": "6 digits"
               },
               "7": {
-                "label": "7 цифр"
+                "label": "7 digits"
               },
               "8": {
-                "label": "8 цифр"
+                "label": "8 digits"
               },
               "9": {
-                "label": "9 цифр"
+                "label": "9 digits"
               }
             },
             "val": "2"
           },
           "options.amount.format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Используйте сепаратор 1000(.)",
-            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+            "label": "Use 1000 Separator(.)",
+            "show_if": "options.amount.format__category==''number'' || options.amount.format__category==''percentage'' || options.amount.format__category==''currency''",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
           },
           "options.amount.format__currency_symbol": {
             "type": "select",
-            "label": "Символ",
-            "show_if": "options.amount.format__category=='currency'",
+            "label": "Symbol",
+            "show_if": "options.amount.format__category==''currency''",
             "required": true,
             "options": {
               "dollar": {
@@ -116,8 +116,8 @@
       },
       "options.standard_table": {
         "type": "checkbox",
-        "label": "Стандартная таблица частоты",
-        "show_if": "options.type=='process'",
+        "label": "Standard Periodicy Table",
+        "show_if": "options.type==''process''",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -125,8 +125,8 @@
       },
       "options.initial_date": {
         "type": "select",
-        "label": "Начальная дата",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "label": "Initial Date",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
@@ -134,63 +134,63 @@
       "options.period": {
         "type": "select",
         "label": "Periodicy (e.g. Monthly, Quarterly)",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
       },
       "options.final_date": {
         "type": "select",
-        "label": "Заключительная дата",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "label": "Final Date",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS",
         "breakLine": true
       },
       "options.volume": {
         "type": "select",
-        "label": "Сумма",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "label": "Amount",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth": {
         "type": "select",
-        "label": "Рост",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "label": "Growth",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth_period": {
         "type": "select",
-        "label": "Период роста",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "label": "Growth Period",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "options": {
           "selected_period": {
-            "label": "Равно частоте"
+            "label": "Equal to Periodicy"
           },
           "week_on_week": {
-            "label": "Неделя за неделей"
+            "label": "Week on Week"
           },
           "month_on_month": {
-            "label": "Месяц в месяц"
+            "label": "Month on Month"
           },
           "quarter_on_quarter": {
-            "label": "Квартал за кварталом"
+            "label": "Quarter on Quarter"
           },
           "year_on_year": {
-            "label": "Год за годом"
+            "label": "Year on Year"
           },
           "column": {
-            "label": "Выбрать столбец"
+            "label": "Select Column"
           }
         },
         "val": "selected_period"
       },
       "options.growth_period_column": {
         "type": "select",
-        "label": "Колонка периода роста",
-        "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'",
+        "label": "Growth Period Column",
+        "show_if": "options.type==''process'' && options.standard_table==''false'' && options.growth_period==''column''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -198,16 +198,16 @@
       },
       "options.use_growth_pattern_column": {
         "type": "checkbox",
-        "label": "Использовать шаблон роста",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "label": "Use Growth Pattern",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "options.growth_pattern_column": {
         "type": "select",
-        "label": "Модель роста",
-        "show_if": "options.type=='process' && options.standard_table=='false' && options.use_growth_pattern_column=='true'",
+        "label": "Growth Pattern",
+        "show_if": "options.type==''process'' && options.standard_table==''false'' && options.use_growth_pattern_column==''true''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -215,8 +215,8 @@
       },
       "options.end_date": {
         "type": "date",
-        "label": "Конечная дата таблицы",
-        "show_if": "options.type=='process'",
+        "label": "End Date of Table",
+        "show_if": "options.type==''process''",
         "val": "",
         "required": true,
         "style": "width: 300px"
