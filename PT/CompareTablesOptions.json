@@ -1,23 +1,23 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Opções",
+    "label": "Options",
     "repeat": false,
     "fields": {
       "compare_set": {
         "type": "fieldset",
-        "label": "Selecionar Padrões",
+        "label": "Select Patterns",
         "repeat": true,
         "fields": {
           "pattern": {
             "type": "select",
-            "label": "Tipo de Padrão de Tabela",
+            "label": "Table Pattern Type",
             "options": {
               "all_col": {
-                "label": "Todas as colunas idênticas"
+                "label": "All column identity"
               },
               "two_col": {
-                "label": "Duas colunas idênticas"
+                "label": "Two column identity"
               }
             },
             "val": "all_col",
@@ -25,22 +25,22 @@
           },
           "compare_type": {
             "type": "select",
-            "label": "Tipo de Padrão de Célula",
+            "label": "Cell Pattern Type",
             "options": {
               "equal": {
-                "label": "Igual"
+                "label": "Equal"
               },
               "contain": {
-                "label": "Contém"
+                "label": "Contains"
               },
               "start_with": {
-                "label": "Inicia com"
+                "label": "Starts With"
               },
               "end_with": {
-                "label": "Termina Com"
+                "label": "Ends With"
               },
               "reg_exp": {
-                "label": "Expressão Regular"
+                "label": "Regular Expression"
               }
             },
             "val": "equal",
@@ -48,21 +48,21 @@
           },
           "case_sensitive": {
             "type": "select",
-            "label": "Sensível a Maiúsculas e Minúsculas",
+            "label": "Case Sensitivity",
             "required": true,
             "options": {
               "yes": {
-                "label": "Sensível a Maiúsculas e Minúsculas"
+                "label": "Case Sensitive"
               },
               "no": {
-                "label": "Insensível a Maiúsculas e Minúsculas"
+                "label": "Case Insensitive"
               }
             },
             "val": "no"
           },
           "expression": {
             "type": "text",
-            "label": "Expressão",
+            "label": "Expression",
             "show_if": "this.compare_type != ''equal''",
             "required": true,
             "val": ""
@@ -70,7 +70,7 @@
           "delete": {
             "show_if": "this.field_name != ''''",
             "type": "button",
-            "label": "Apagar",
+            "label": "Delete",
             "function": "DELETE_ROW"
           }
         },
@@ -78,13 +78,13 @@
       },
       "target": {
         "type": "select",
-        "label": "Objetivo",
+        "label": "Target",
         "options": {
           "to_table": {
-            "label": "Aplicar à tabela"
+            "label": "Apply to table"
           },
           "to_rows": {
-            "label": "Linha a Linha"
+            "label": "Row by Row"
           }
         },
         "val": "to_table",
@@ -93,16 +93,16 @@
       "match_type": {
         "type": "select",
         "show_if": "target != ''to_table''",
-        "label": "Tipo de Correspondência",
+        "label": "Match Type",
         "options": {
           "match": {
-            "label": "Apenas Correspondências"
+            "label": "Matches Only"
           },
           "nonmatch": {
-            "label": "Apenas Não Correspondências"
+            "label": "Non Matches Only"
           },
           "all": {
-            "label": "Todos"
+            "label": "All"
           }
         },
         "val": "match",
@@ -111,7 +111,7 @@
       },
       "create_sql": {
         "type": "checkbox",
-        "label": "Mostrar Detalhes de SQL",
+        "label": "Show SQL-Details",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
