@@ -1,59 +1,59 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Select Options",
+    "label": "Opções de Seleção",
     "repeat": false,
     "fields": {
       "task_type": {
         "type": "select",
-        "label": "Task Type",
+        "label": "Tipo de Tarefa",
         "required": true,
         "options": {
           "encrypt": {
-            "label": "Encrypt (secure)"
+            "label": "Codificar (seguro)"
           },
           "decrypt": {
-            "label": "Decrypt (secure)"
+            "label": "Descodificar (seguro)"
           },
           "encrypt_simple": {
-            "label": "Encrypt (simple)"
+            "label": "Codificar (simples)"
           },
           "decrypt_simple": {
-            "label": "Decrypt (simple)"
+            "label": "Descodificar (simples)"
           },
           "mask": {
-            "label": "Mask"
+            "label": "Máscara"
           }
         },
         "val": "encrypt"
       },
       "mask_type": {
         "type": "select",
-        "label": "Mask Type",
+        "label": "Tipo de Máscara",
         "show_if": "task_type == ''mask''",
         "required": true,
         "options": {
           "trailing": {
-            "label": "Trailing N Characters"
+            "label": "Primeiros N caracteres"
           },
           "leading": {
-            "label": "Leading N Characters"
+            "label": "Primeiros N Caracteres"
           },
           "numbers": {
-            "label": "Numbers"
+            "label": "Números"
           },
           "alphabets": {
-            "label": "Characters"
+            "label": "Caracteres"
           },
           "regex": {
-            "label": "Regular Expression"
+            "label": "Expressão Regular"
           }
         },
         "val": "trailing"
       },
       "password": {
         "type": "password",
-        "label": "Password",
+        "label": "Palavra-passe",
         "show_if": "task_type != ''mask''",
         "required": true,
         "minLength": 1,
@@ -69,7 +69,7 @@
       },
       "regexp": {
         "type": "text",
-        "label": "Expression",
+        "label": "Expressão",
         "show_if": "task_type == ''mask'' && (mask_type == ''regex'')",
         "required": true,
         "val": "",
@@ -77,7 +77,7 @@
       },
       "replace": {
         "type": "text",
-        "label": "Mask string",
+        "label": "Máscara de string",
         "show_if": "task_type == ''mask'' && (mask_type == ''regex'')",
         "required": true,
         "val": "*"
