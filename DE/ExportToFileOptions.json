@@ -1,5 +1,4 @@
-
-          },{
+{
   "options": {
     "type": "fieldset",
     "label": "Optionen auswählen",
@@ -20,7 +19,7 @@
       "options.file_name_column": {
         "type": "select",
         "label": "Dateinamen-Spalte auswählen",
-        "show_if": "options.export_series=='true'",
+        "show_if": "options.export_series==''true''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -29,7 +28,7 @@
       "options.set_file_path_column": {
         "type": "checkbox",
         "label": "Export to specified path",
-        "show_if": "options.export_series=='true'",
+        "show_if": "options.export_series==''true''",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -38,7 +37,7 @@
       "options.file_path_column": {
         "type": "select",
         "label": "Select File Path Column",
-        "show_if": "options.export_series=='true' && options.set_file_path_column=='true'",
+        "show_if": "options.export_series==''true'' && options.set_file_path_column==''true''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -85,7 +84,7 @@
       "options.github_create_pr": {
         "type": "checkbox",
         "label": "Pull-Anfrage erstellen",
-        "show_if": "options.webservice=='github'",
+        "show_if": "options.webservice==''github''",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -94,7 +93,7 @@
       "options.github_token": {
         "type": "text",
         "label": "Specify the Github personal access token that has write permission:",
-        "show_if": "options.webservice=='github'",
+        "show_if": "options.webservice==''github''",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -102,7 +101,7 @@
       "options.github_url": {
         "type": "text",
         "label": "Link eingeben z. B. https://github.com/zippydoc/test",
-        "show_if": "options.webservice=='github'",
+        "show_if": "options.webservice==''github''",
         "val": "https://github.com/zippydoc/public-tables",
         "required": true,
         "width": "100%",
@@ -111,7 +110,7 @@
       "options.ms_one_drive_token": {
         "type": "text",
         "label": "Microsoft Graph API access token. You can get it here https://ms-oauth.herokuapp.com/",
-        "show_if": "options.webservice=='ms_one_drive'",
+        "show_if": "options.webservice==''ms_one_drive''",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -119,7 +118,7 @@
       "options.google_authorization_code": {
         "type": "text",
         "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
-        "show_if": "options.webservice=='google_drive'",
+        "show_if": "options.webservice==''google_drive''",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -127,7 +126,7 @@
       "options.dropbox_authorization_code": {
         "type": "text",
         "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
-        "show_if": "options.webservice=='dropbox'",
+        "show_if": "options.webservice==''dropbox''",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -135,7 +134,7 @@
       "options.if_duplicated": {
         "type": "select",
         "label": "Wenn dupliziert",
-        "show_if": "options.webservice=='github'",
+        "show_if": "options.webservice==''github''",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
@@ -143,6 +142,7 @@
           },
           "error_if_exist": {
             "label": "Neu erstellen (wirft Fehler, wenn vorhanden)"
+          },
           "error_if_not_exist": {
             "label": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
           },
