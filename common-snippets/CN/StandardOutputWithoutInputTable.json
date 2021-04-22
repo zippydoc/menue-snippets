@@ -7,7 +7,7 @@
       "output.custom_text": {
         "type": "text",
         "label": "输出表格名称",
-        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'",
+        "show_if": "(output.set_options==''true'' && output.compose_table_name==''false'') || output.set_options==''false''",
         "minLength": 1,
         "val": "",
         "width": "100%",
@@ -23,7 +23,7 @@
       "output_options_box": {
         "type": "fieldset",
         "label": "输出选项",
-        "show_if": "output.set_options=='true'",
+        "show_if": "output.set_options==''true''",
         "repeat": false,
         "fields": {
           "output.compose_table_name": {
@@ -37,13 +37,13 @@
           "compose_table_name_frame": {
             "type": "fieldset",
             "label": "编写输出表格名称",
-            "show_if": "output.compose_table_name=='true'",
+            "show_if": "output.compose_table_name==''true''",
             "repeat": false,
             "fields": {
               "output.prefix_rule": {
                 "type": "select",
                 "label": "前缀",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "empty",
                 "options": {
                   "empty": {
@@ -72,7 +72,7 @@
               "output.prefix_text": {
                 "type": "text",
                 "label": "前缀文本",
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
+                "show_if": "output.compose_table_name==''true'' && output.prefix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
                 "val": ""
@@ -80,14 +80,14 @@
               "output.core_delimiter": {
                 "type": "text",
                 "label": "分隔符",
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
+                "show_if": "output.compose_table_name==''true'' && output.prefix_rule!=''empty''",
                 "val": "_",
                 "width": "50px"
               },
               "output.core_rule": {
                 "type": "select",
                 "label": "表格名称",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
                   "script_name": {
@@ -101,7 +101,7 @@
               "output.core_text": {
                 "type": "text",
                 "label": "输出表格名称",
-                "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
+                "show_if": "output.compose_table_name==''true'' && output.core_rule==''custom''",
                 "required": true,
                 "minLength": 1,
                 "maxLength": 31,
@@ -110,14 +110,14 @@
               "output.suffix_delimiter": {
                 "type": "text",
                 "label": "分隔符",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "_",
                 "width": "50px"
               },
               "output.suffix_rule": {
                 "type": "select",
                 "label": "后缀",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
                   "empty": {
@@ -146,7 +146,7 @@
               "output.suffix_text": {
                 "type": "text",
                 "label": "后缀文本",
-                "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
+                "show_if": "output.compose_table_name==''true'' && output.suffix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
                 "val": "",
@@ -155,347 +155,222 @@
               "output.timezone": {
                 "type": "select",
                 "label": "时区",
-                "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
-                "val": "CET",
+                "show_if": "output.compose_table_name==''true'' && (output.prefix_rule==''date_string_type1'' || output.prefix_rule==''date_string_type2'' || output.prefix_rule==''time_string'' || output.prefix_rule==''datetime_string'' || output.core_rule==''date_string_type1'' || output.core_rule==''date_string_type2'' || output.core_rule==''time_string'' || output.core_rule==''datetime_string'' || output.suffix_rule==''date_string_type1'' || output.suffix_rule==''date_string_type2'' || output.suffix_rule==''time_string'' || output.suffix_rule==''datetime_string'')",
+                "val": "欧洲/柏林",
                 "required": true,
                 "options": {
-                  "NZDT": {
-                    "label": "NZDT（新西兰夏时制）"
+                  "America/Adak": {
+                    "label": "Adak, Gambier"
                   },
-                  "IDLE": {
-                    "label": "IDLE(International Date Line, East)"
+                  "Australia/Adelaide": {
+                    "label": "Adelaide, Broken_Hill, Darwin"
                   },
-                  "NZST": {
-                    "label": "NZST（新西兰标准时间）"
+                  "America/Anchorage": {
+                    "label": "Anchorage, Juneau, Sitka"
                   },
-                  "NZT": {
-                    "label": "NZT（新西兰时间）"
+                  "Pacific/Apia": {
+                    "label": "Apia, Asau, Mulifanua, Afega, Leulumoega"
                   },
-                  "AESST": {
-                    "label": "AESST（澳大利亚东部标准夏时制）"
+                  "Pacific/Enderbury": {
+                    "label": "Apia, Fiji, Tongatapu"
                   },
-                  "ACSST": {
-                    "label": "ACSST（中澳大利亚标准夏时制）"
+                  "Antarctica/McMurdo": {
+                    "label": "Auckland, Casey, Davis"
                   },
-                  "CADT": {
-                    "label": "CADT（中澳大利亚夏时制）"
+                  "Pacific/Auckland": {
+                    "label": "Auckland, Wellington, Christchurch"
                   },
-                  "SADT": {
-                    "label": "SADT（南澳大利亚夏时制）"
+                  "Asia/Bangkok": {
+                    "label": "Bangkok, Jakarta, Novosibirsk"
                   },
-                  "AEST": {
-                    "label": "AEST（澳大利亚东部标准时间）"
+                  "欧洲/柏林": {
+                    "label": "Berlin, Paris, Amsterdam"
                   },
-                  "EAST": {
-                    "label": "EAST（东澳大利亚标准时间）"
+                  "Australia/Perth": {
+                    "label": "Brunei, Singapore, Perth"
                   },
-                  "GST": {
-                    "label": "GST(Guam Standard Time, USSR Zone 9)"
+                  "Atlantic/Cape_Verde": {
+                    "label": "Cape_Verde,Praia, Mindelo, Santa Maria"
                   },
-                  "LIGT": {
-                    "label": "LIGT(Melbourne, Australia)"
+                  "America/Belize": {
+                    "label": "Costa_Rica, El_Salvador, Denver"
                   },
-                  "SAST": {
-                    "label": "SAST（南澳大利亚标准时间）"
+                  "Antarctica/Vostok": {
+                    "label": "Dhaka, Bishkek, Omsk"
                   },
-                  "CAST": {
-                    "label": "CAST（中澳大利亚标准时间）"
+                  "Europe/Astrakhan": {
+                    "label": "Dubai, Baku, Tbilisi"
                   },
-                  "AWSST": {
-                    "label": "AWSST（澳大利亚西部标准夏时制）"
+                  "Australia/Eucla": {
+                    "label": "Eucla"
                   },
-                  "JST": {
-                    "label": "JST(Japan Standard Time,USSR Zone 8)"
+                  "Pacific/Honolulu": {
+                    "label": "Honolulu, Rarotonga, Tahiti"
                   },
-                  "KST": {
-                    "label": "KST（韩国/朝鲜标准时间）"
+                  "Asia/Kabul": {
+                    "label": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
                   },
-                  "MHT": {
-                    "label": "MHT（瓜加林岛时间）"
+                  "Asia/Aqtau": {
+                    "label": "Karachi, Tashkent, Maldives"
                   },
-                  "WDT": {
-                    "label": "WDT（西澳大利亚夏时制）"
+                  "Asia/Kathmandu": {
+                    "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
                   },
-                  "MT": {
-                    "label": "MT（摩鹿加群岛时间）"
+                  "Pacific/Kiritimati": {
+                    "label": "Kiritimati"
                   },
-                  "AWST": {
-                    "label": "AWST（澳大利亚西部标准时间）"
+                  "Asia/Colombo": {
+                    "label": "Kolkata, Colombo,Jaffna, Negombo"
                   },
-                  "CCT": {
-                    "label": "CCT（中国北京时间）"
+                  "Europe/Guernsey": {
+                    "label": "London. Dublin, Lisbon"
                   },
-                  "WADT": {
-                    "label": "WADT（西澳大利亚夏时制）"
+                  "Australia/Lord_Howe": {
+                    "label": "Lord_Howe"
                   },
-                  "WST": {
-                    "label": "WST（西澳大利亚标准时间）"
+                  "America/Creston": {
+                    "label": "Los_Angeles, Vancouver, Hermosillo"
                   },
-                  "ALMST": {
-                    "label": "ALMST（阿拉木图夏令时）"
+                  "Pacific/Marquesas": {
+                    "label": "Marquesas,Taiohae"
                   },
-                  "WAST": {
-                    "label": "WAST（西澳大利亚标准时间）"
+                  "America/Cayman": {
+                    "label": "Mexico_City, Panama, Chicago"
                   },
-                  "CXT": {
-                    "label": "CXT（澳大利亚圣诞岛时间）"
+                  "Pacific/Niue": {
+                    "label": "Midway, Niue, Pago_Pago"
                   },
-                  "ALMT": {
-                    "label": "ALMT（阿拉木图时间）"
+                  "Europe/Mariehamn": {
+                    "label": "Moscow, Istanbul, Qatar"
                   },
-                  "MAWT": {
-                    "label": "MAWT（莫森（南极洲）时间）"
+                  "Asia/Kolkata": {
+                    "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
                   },
-                  "IOT": {
-                    "label": "IOT（印度洋查戈斯时间）"
+                  "America/Miquelon": {
+                    "label": "Noronha, Nuuk, Miquelon"
                   },
-                  "MVT": {
-                    "label": "MVT（马尔代夫时间）"
+                  "America/Danmarkshavn": {
+                    "label": "Reykjavik, Dakar, Casablanca"
                   },
-                  "TFT": {
-                    "label": "TFT（凯尔盖朗群岛时间）"
+                  "Pacific/Bougainville": {
+                    "label": "Sakhalin, Norfolk, Bougainville"
                   },
-                  "AFT": {
-                    "label": "AFT（阿富汗时间）"
+                  "America/Araguaina": {
+                    "label": "Sao_Paulo, Buenos_Aires, Montevideo"
                   },
-                  "MUT": {
-                    "label": "MUT（毛里求斯时间）"
+                  "America/St_Johns": {
+                    "label": "St_Johns,Mount Pearl, Corner Brook"
                   },
-                  "RET": {
-                    "label": "RET（留尼汪岛时间）"
+                  "Asia/Tehran": {
+                    "label": "Tehran, Mashhad, Isfahan, Karaj, Tabriz"
                   },
-                  "SCT": {
-                    "label": "SCT（马埃岛时间）"
+                  "Asia/Tokyo": {
+                    "label": "Tokyo, Seoul, Jayapura"
                   },
-                  "IT": {
-                    "label": "IT（伊朗时间）"
+                  "America/New_York": {
+                    "label": "Toronto, Santiago, New_York"
                   },
-                  "EAT": {
-                    "label": "EAT(Antananarivo, Comoro Time)"
+                  "Australia/Sydney": {
+                    "label": "Vladivostok, Sydney, Brisbane"
                   },
-                  "BT": {
-                    "label": "BT（巴格达时间）"
+                  "Asia/Yangon": {
+                    "label": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
                   },
-                  "EETDST": {
-                    "label": "EETDST（东欧夏时制）"
-                  },
-                  "HMT": {
-                    "label": "HMT（希腊地中海时间）"
-                  },
-                  "BDST": {
-                    "label": "BDST（英国双重标准时间）"
-                  },
-                  "CEST": {
-                    "label": "CEST（中欧夏令时）"
-                  },
-                  "CETDST": {
-                    "label": "CETDST（中欧夏时制）"
-                  },
-                  "EET": {
-                    "label": "EET(Eastern Europe, USSR Zone 1)"
-                  },
-                  "FWT": {
-                    "label": "FWT（法国冬时制）"
-                  },
-                  "IST": {
-                    "label": "IST（以色列标准时间）"
-                  },
-                  "MEST": {
-                    "label": "MEST（中欧夏时制）"
-                  },
-                  "METDST": {
-                    "label": "METDST（中欧白昼时间）"
-                  },
-                  "SST": {
-                    "label": "SST（瑞典夏时制）"
-                  },
-                  "BST": {
-                    "label": "BST（英国夏时制）"
-                  },
-                  "CET": {
-                    "label": "CET（中欧时间）"
-                  },
-                  "DNT": {
-                    "label": "DNT（丹麦正规时间）"
-                  },
-                  "FST": {
-                    "label": "FST（法国夏时制）"
-                  },
-                  "MET": {
-                    "label": "MET（中欧时间）"
-                  },
-                  "MEWT": {
-                    "label": "MEWT（中欧冬时制）"
-                  },
-                  "MEZ": {
-                    "label": "MEZ（中欧区）"
-                  },
-                  "NOR": {
-                    "label": "NOR（挪威标准时间）"
-                  },
-                  "SET": {
-                    "label": "SET（塞舌尔时间）"
-                  },
-                  "SWT": {
-                    "label": "SWT（瑞典冬时制）"
-                  },
-                  "WETDST": {
-                    "label": "WETDST（西欧夏时制）"
-                  },
-                  "GMT": {
-                    "label": "GMT（格林尼治标准时间）"
-                  },
-                  "UT": {
-                    "label": "UT（全球时间）"
-                  },
-                  "UTC": {
-                    "label": "UTC(Universal Time, Coordinated)"
-                  },
-                  "WET": {
-                    "label": "WET（西欧）"
-                  },
-                  "WAT": {
-                    "label": "WAT（西非时间）"
-                  },
-                  "NDT": {
-                    "label": "NDT（纽芬兰夏时制）"
-                  },
-                  "ADT": {
-                    "label": "ADT（大西洋夏时制）"
-                  },
-                  "NFT": {
-                    "label": "NFT（纽芬兰标准时间）"
-                  },
-                  "NST": {
-                    "label": "NST（纽芬兰标准时间）"
-                  },
-                  "AST": {
-                    "label": "AST（大西洋标准时间（加拿大））"
-                  },
-                  "ACST": {
-                    "label": "ACST（大西洋阿雷格里港夏令时）"
-                  },
-                  "ACT": {
-                    "label": "ACT（大西洋阿雷格里港标准时间）"
-                  },
-                  "EDT": {
-                    "label": "EDT（东部夏时制）"
-                  },
-                  "CDT": {
-                    "label": "CDT（中部夏时制）"
-                  },
-                  "EST": {
-                    "label": "EST（东部标准时间）"
-                  },
-                  "CST": {
-                    "label": "CST（中部标准时间）"
-                  },
-                  "MDT": {
-                    "label": "MDT（山地夏时制）"
-                  },
-                  "MST": {
-                    "label": "MST（山地标准时间）"
-                  },
-                  "PDT": {
-                    "label": "PDT（太平洋夏时制）"
-                  },
-                  "AKDT": {
-                    "label": "AKDT（阿拉斯加白昼时间）"
-                  },
-                  "PST": {
-                    "label": "PST（太平洋标准时间）"
-                  },
-                  "YDT": {
-                    "label": "YDT（育空地区夏时制）"
-                  },
-                  "AKST": {
-                    "label": "AKST（阿拉斯加标准时间）"
-                  },
-                  "HDT": {
-                    "label": "HDT（夏威夷/阿拉斯加夏时制）"
-                  },
-                  "YST": {
-                    "label": "YST（育空地区标准时）"
-                  },
-                  "AHST": {
-                    "label": "AHST（夏威夷-阿拉斯加标准时间）"
-                  },
-                  "HST": {
-                    "label": "HST（夏威夷标准时间）"
-                  },
-                  "CAT": {
-                    "label": "CAT（中阿拉斯加时间）"
-                  },
-                  "NT": {
-                    "label": "NT（阿拉斯加诺姆时间）"
-                  },
-                  "IDLW": {
-                    "label": "IDLW(International Date Line, West)"
+                  "Indian/Cocos": {
+                    "label": "Yangon, Cocos,West Island"
                   }
                 },
                 "breakLine": true
               }
             }
           },
-          "output.options.location": {
-            "type": "text",
-            "label": "指定位置",
-            "val": "A1"
-          },
-          "output.options.table_mode": {
-            "type": "select",
-            "label": "粘贴",
-            "val": "content_only",
-            "options": {
-              "content_only": {
-                "label": "仅内容"
+          "download_table_setting_frame": {
+            "type": "fieldset",
+            "label": "Download Table Settings",
+            "repeat": false,
+            "fields": {
+              "output.options.location": {
+                "type": "text",
+                "label": "指定位置",
+                "val": "A1",
+                "breakLine": true
               },
-              "fully_formatted": {
-                "label": "完全格式化"
-              }
-            }
-          },
-          "output.options.formatted_as_table": {
-            "type": "checkbox",
-            "label": "格式化为表格",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false",
-            "breakLine": true
-          },
-          "output.add_tag": {
-            "type": "checkbox",
-            "label": "添加标记",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "output.tag_name": {
-            "type": "text",
-            "label": "标记名称",
-            "show_if": "output.add_tag=='true'",
-            "required": true,
-            "minLength": 1,
-            "maxLength": 255,
-            "val": "",
-            "breakLine": true,
-            "style": "margin-left: 15px"
-          },
-          "output.options.visibility": {
-            "type": "select",
-            "label": "可见性",
-            "val": "current_flow",
-            "options": {
-              "current_flow": {
-                "label": "当前工作流"
+              "output.options.formatted_as_table": {
+                "type": "checkbox",
+                "label": "格式化为表格",
+                "val": "true",
+                "isOn": "true",
+                "isOff": "false",
+                "breakLine": true
               },
-              "all_flow": {
-                "label": "所有工作流"
+              "output.add_tag": {
+                "type": "checkbox",
+                "label": "添加标记",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false"
+              },
+              "output.tag_name": {
+                "type": "text",
+                "label": "标记名称",
+                "show_if": "output.add_tag==''true''",
+                "required": true,
+                "minLength": 1,
+                "maxLength": 255,
+                "val": "",
+                "breakLine": true,
+                "style": "margin-left: 15px"
+              },
+              "output.options.visibility": {
+                "type": "select",
+                "label": "可见性",
+                "val": "current_flow",
+                "options": {
+                  "current_flow": {
+                    "label": "当前工作流"
+                  },
+                  "all_flow": {
+                    "label": "所有工作流"
+                  }
+                },
+                "breakLine": true
+              },
+              "output.options.table_mode": {
+                "type": "select",
+                "label": "粘贴",
+                "val": "content_only",
+                "options": {
+                  "content_only": {
+                    "label": "仅内容"
+                  },
+                  "fully_formatted": {
+                    "label": "完全格式化"
+                  }
+                }
               }
             }
           }
         },
         "breakLine": true
+      },
+      "options.output_duplicated": {
+        "type": "select",
+        "label": "如果重复",
+        "val": "drop_if_exist",
+        "options": {
+          "drop_if_exist": {
+            "label": "创建或删除（如存在）"
+          },
+          "error_if_exist": {
+            "label": "新建（如存在则抛出错误）"
+          },
+          "error_if_not_exist": {
+            "label": "删除（如不存在则抛出错误）"
+          },
+          "append": {
+            "label": "追加"
+          }
+        }
       }
     }
   }
