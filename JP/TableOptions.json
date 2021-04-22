@@ -1,7 +1,7 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "オプションの選択",
+    "label": "Select Options",
     "repeat": false,
     "fields": {
       "options.type": {
@@ -16,31 +16,31 @@
       },
       "options.group_label_direction": {
         "type": "select",
-        "label": "方向転換",
-        "show_if": "options.type=='transform_group'",
+        "label": "Transform Direction",
+        "show_if": "options.type==''transform_group''",
         "required": true,
         "options": {
           "group_to_label": {
-            "label": "ラベルへのグループ"
+            "label": "Group to Label"
           },
           "label_to_group": {
-            "label": "グループへのラベル"
+            "label": "Label to Group"
           }
         },
         "val": "group_to_label"
       },
       "options.group_column": {
         "type": "select",
-        "label": "列のグループ",
-        "show_if": "options.type=='transform_group' && options.group_label_direction=='group_to_label'",
+        "label": "Group Column",
+        "show_if": "options.type==''transform_group'' && options.group_label_direction==''group_to_label''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
       },
       "options.group_column_name": {
         "type": "text",
-        "label": "列名のグループ",
-        "show_if": "options.type=='transform_group' && options.group_label_direction=='label_to_group'",
+        "label": "Group Column Name",
+        "show_if": "options.type==''transform_group'' && options.group_label_direction==''label_to_group''",
         "val": "Group",
         "required": true
       }
