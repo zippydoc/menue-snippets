@@ -1,21 +1,21 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "オプションの選択",
+    "label": "Select Options",
     "repeat": false,
     "fields": {
       "transpose_type": {
         "type": "select",
-        "label": "入れ替えタイプ",
+        "label": "Transpose Type",
         "options": {
           "mirror_matrix": {
-            "label": "マトリックスの反映"
+            "label": "Mirror Matrix"
           },
           "column_name_to_label": {
-            "label": "ラベルへの列名"
+            "label": "Column Name to Label"
           },
           "crosstab": {
-            "label": "クロスタブ"
+            "label": "Crosstab"
           }
         },
         "val": "mirror_matrix",
@@ -25,8 +25,8 @@
       },
       "mirror_matrix.convert_header_to_label": {
         "type": "checkbox",
-        "label": "ヘッダからラベルへ変換",
-        "show_if": "transpose_type=='mirror_matrix'",
+        "label": "Convert header to label",
+        "show_if": "transpose_type==''mirror_matrix''",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -34,8 +34,8 @@
       },
       "column_name_to_label.columns_to_label": {
         "type": "select",
-        "label": "ラベルに変換する列を選択",
-        "show_if": "transpose_type=='column_name_to_label'",
+        "label": "Select Columns to Convert into Labels",
+        "show_if": "transpose_type==''column_name_to_label''",
         "table": "input_table",
         "multiple": true,
         "bind": "COLUMNS",
@@ -45,26 +45,26 @@
       },
       "column_name_to_label.label_column_name": {
         "type": "text",
-        "label": "列ラベルの列名",
-        "show_if": "transpose_type=='column_name_to_label'",
+        "label": "Column Name of Label Column",
+        "show_if": "transpose_type==''column_name_to_label''",
         "required": true,
-        "val": "ラベル",
+        "val": "Label",
         "width": "100%",
         "breakLine": true
       },
       "column_name_to_label.value_column_name": {
         "type": "text",
-        "label": "値列の列名",
-        "show_if": "transpose_type=='column_name_to_label'",
+        "label": "Column Name of Value Column",
+        "show_if": "transpose_type==''column_name_to_label''",
         "required": true,
-        "val": "値",
+        "val": "Value",
         "width": "100%",
         "breakLine": true
       },
       "crosstab.group_data_by_these_values": {
         "type": "select",
-        "label": "これらの値によるグループデータ",
-        "show_if": "transpose_type=='crosstab'",
+        "label": "Group data by these values",
+        "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "multiple": true,
         "bind": "COLUMNS",
@@ -74,8 +74,8 @@
       },
       "crosstab.change_column_headers": {
         "type": "select",
-        "label": "列ヘッダの変更",
-        "show_if": "transpose_type=='crosstab'",
+        "label": "Change Column Header",
+        "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -84,8 +84,8 @@
       },
       "crosstab.values_for_new_columns": {
         "type": "select",
-        "label": "新しい列の値",
-        "show_if": "transpose_type=='crosstab'",
+        "label": "Values For New Columns",
+        "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -94,46 +94,46 @@
       },
       "crosstab.method_for_aggregating_values": {
         "type": "select",
-        "label": "値の集計方法",
-        "show_if": "transpose_type=='crosstab'",
+        "label": "Method for Aggregating Values",
+        "show_if": "transpose_type==''crosstab''",
         "options": {
-          "連結": {
-            "label": "連結"
+          "Concatenate": {
+            "label": "Concatenate"
           },
-          "最初": {
-            "label": "最初"
+          "First": {
+            "label": "First"
           },
-          "最後": {
-            "label": "最後"
+          "Last": {
+            "label": "Last"
           },
-          "合計": {
-            "label": "合計"
+          "Sum": {
+            "label": "Sum"
           },
-          "平均": {
-            "label": "平均"
+          "Average": {
+            "label": "Average"
           },
-          "計算": {
-            "label": "計算"
+          "Count": {
+            "label": "Count"
           },
-          "ユーザー定義": {
-            "label": "ユーザー定義"
+          "User Defined": {
+            "label": "User Defined"
           }
         },
-        "val": "連結",
+        "val": "Concatenate",
         "required": true
       },
       "crosstab.user_defined_str": {
         "type": "text",
-        "label": "ユーザー定義値",
-        "show_if": "transpose_type=='crosstab' && crosstab.method_for_aggregating_values=='User Defined'",
+        "label": "User Defined Value",
+        "show_if": "transpose_type==''crosstab'' && crosstab.method_for_aggregating_values==''User Defined''",
         "val": "x",
         "trim": "false",
         "breakLine": true
       },
       "crosstab.separator": {
         "type": "text",
-        "label": "セパレータ",
-        "show_if": "transpose_type=='crosstab' && method_for_aggregating_values=='Concatenate'",
+        "label": "Separator",
+        "show_if": "transpose_type==''crosstab'' && method_for_aggregating_values==''Concatenate''",
         "val": ",,
         trim": "false",
         "required": true,
