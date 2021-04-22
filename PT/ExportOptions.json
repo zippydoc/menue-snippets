@@ -1,18 +1,18 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Opções de Seleção",
+    "label": "Select Options",
     "repeat": false,
     "fields": {
       "options.to": {
         "type": "select",
-        "label": "Tipo",
+        "label": "Type",
         "options": {
           "database": {
-            "label": "Exportar para base de dados"
+            "label": "Export to database"
           },
           "file": {
-            "label": "Exportar para ficheiro"
+            "label": "Export to file"
           }
         },
         "val": "database",
@@ -20,7 +20,7 @@
       },
       "options.export_series": {
         "type": "checkbox",
-        "label": "Exportar Série",
+        "label": "Export Series",
         "show_if": "options.to==''file''",
         "val": "false",
         "isOn": "true",
@@ -29,7 +29,7 @@
       },
       "options.file_name_column": {
         "type": "select",
-        "label": "Selecionar Coluna de Nome de Ficheiro",
+        "label": "Select File Name Column",
         "show_if": "options.to==''file'' && options.export_series==''true''",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -38,13 +38,13 @@
       },
       "postgresql_db_credential_box": {
         "type": "fieldset",
-        "label": "Credenciais de Ligação à Base de Dados",
+        "label": "Database Connection Credentials",
         "show_if": "options.to==''database''",
         "repeat": false,
         "fields": {
           "options.dbms": {
             "type": "select",
-            "label": "Selecionar SGBD",
+            "label": "Select DBMS",
             "options": {
               "postgresql": {
                 "label": "PostgreSQL"
@@ -53,7 +53,7 @@
                 "label": "MySQL"
               },
               "sql_server": {
-                "label": "Servidor MS SQL"
+                "label": "MS SQL Server"
               },
               "oracle": {
                 "label": "Oracle"
@@ -65,7 +65,7 @@
           },
           "options.postgresql_credential.user": {
             "type": "text",
-            "label": "Utilizador",
+            "label": "User",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -73,7 +73,7 @@
           },
           "options.postgresql_credential.password": {
             "type": "text",
-            "label": "Palavra-passe",
+            "label": "Password",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -81,7 +81,7 @@
           },
           "options.postgresql_credential.host": {
             "type": "text",
-            "label": "Anfitrião",
+            "label": "Host",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -89,7 +89,7 @@
           },
           "options.postgresql_credential.database": {
             "type": "text",
-            "label": "Base de Dados",
+            "label": "Database",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -99,7 +99,7 @@
       },
       "options.schema_name_to_export": {
         "type": "text",
-        "label": "Nome do modelo a exportar para",
+        "label": "Schema name to export into",
         "show_if": "options.to==''database'' && options.dbms==''postgresql''",
         "required": true,
         "val": "public",
@@ -108,7 +108,7 @@
       },
       "options.webservice": {
         "type": "select",
-        "label": "Selecionar Serviço Web",
+        "label": "Select Webservice",
         "show_if": "options.to==''file'' || options.to==''mytask''",
         "options": {
           "github": {
@@ -129,17 +129,17 @@
       },
       "options.export_format": {
         "type": "select",
-        "label": "Exportar Formato",
+        "label": "Export Format",
         "show_if": "options.to==''file''",
         "options": {
           "csv_file": {
-            "label": "Ficheiro(s) Csv"
+            "label": "Csv file(s)"
           },
           "word_by_word": {
-            "label": "Palavra a Palavra"
+            "label": "Word by Word"
           },
           "line_by_line": {
-            "label": "Linha a Linha"
+            "label": "Line by Line"
           }
         },
         "val": "csv_file",
@@ -148,7 +148,7 @@
       },
       "options.github_create_pr": {
         "type": "checkbox",
-        "label": "Criar pedido de extração",
+        "label": "Create pull request",
         "show_if": "options.to==''file'' && options.webservice==''github''",
         "val": "false",
         "isOn": "true",
@@ -165,7 +165,7 @@
       },
       "options.github_url": {
         "type": "text",
-        "label": "Introduzir hiperligação, por exemplo https://github.com/zippydoc/test",
+        "label": "Enter link e.g. https://github.com/zippydoc/test",
         "show_if": "options.to==''file'' && options.webservice==''github''",
         "val": "https://github.com/zippydoc/public-tables",
         "required": true,
@@ -198,27 +198,27 @@
       },
       "options.if_duplicated": {
         "type": "select",
-        "label": "Se duplicado",
+        "label": "If duplicated",
         "show_if": "options.to==''database'' || (options.to==''file'' && options.webservice==''github'')",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "Criar ou Descartar (se já existir)"
+            "label": "Create or Drop (if already existing)"
           },
           "error_if_exist": {
-            "label": "Criar Novo (gera erro se existir)"
+            "label": "Create New (throw error if existing)"
           },
           "error_if_not_exist": {
-            "label": "Descartar (gera erro se não existir)"
+            "label": "Drop (throw error if not-existing)"
           },
           "append": {
-            "label": "Anexar"
+            "label": "Append"
           }
         }
       },
       "options.export_task_name": {
         "type": "text",
-        "label": "Introduzir Nome da Tarefa",
+        "label": "Input Task Name",
         "show_if": "options.to==''mytask''",
         "required": true,
         "val": "Flow6_Task1_AddColumns",
