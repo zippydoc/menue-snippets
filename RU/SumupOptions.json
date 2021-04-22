@@ -1,186 +1,186 @@
 {
   "actions": {
     "type": "fieldset",
-    "label": "Add Actions",
+    "label": "Добавить действия",
     "repeat": true,
     "fields": {
       "column": {
         "type": "select",
-        "label": "Column",
+        "label": "Столбец",
         "table": "input_table",
 		"assign_selected_value_to":"this.output_column_name",
         "bind": "COLUMNS"
       },
       "action": {
         "type": "select",
-        "label": "Action",
+        "label": "Действие",
         "options": {
           "group_by": {
-            "label": "Group By"
+            "label": "Группировать по"
           },
           "count": {
-            "label": "Count"
+            "label": "Посчитать"
           },
           "sum": {
-            "label": "Sum"
+            "label": "Сумма"
           },
           "first": {
-            "label": "First"
+            "label": "Первый"
           },
           "last": {
-            "label": "Last"
+            "label": "Последний"
           },
           "shortest": {
-            "label": "Shortest"
+            "label": "Кратчайший"
           },
           "longest": {
-            "label": "Longest"
+            "label": "Самый длинный"
           },
           "concatenate": {
-            "label": "Concatenate"
+            "label": "Обхединить"
           },
           "mathematics": {
-            "label": "Mathematics"
+            "label": "Математика"
           }
         }
       },
       "count_action_category": {
         "type": "select",
-        "label": "Action Type",
+        "label": "Тип действия",
         "show_if": "this.action==''count''",
         "options": {
           "all": {
-            "label": "All"
+            "label": "Все"
           },
           "distinct": {
-            "label": "Distinct"
+            "label": "Различить"
           },
           "empty_or_zero": {
-            "label": "Empty or 0"
+            "label": "Пусто или 0"
           },
           "non_empty_or_zero": {
-            "label": "Non Empty or 0"
+            "label": "Кроме пустых или 0"
           }
         },
         "val": "all"
       },
       "action_type1": {
         "type": "select",
-        "label": "Action Sub Type",
+        "label": "Подтип действия",
         "show_if": "this.action==''count'' && (this.count_action_category==''all'' || this.count_action_category==''distinct'')",
         "options": {
           "-": {
             "label": "-"
           },
           "non_zero": {
-            "label": "Non 0"
+            "label": "Кроме 0"
           },
           "non_empty": {
-            "label": "Non Empty"
+            "label": "Кроме пустых"
           },
           "non_null": {
-            "label": "Non Null"
+            "label": "Кроме ноля"
           },
           "non_blank": {
-            "label": "Non Blank"
+            "label": "Кроме пустых"
           }
         },
         "val": "-"
       },
       "action_type2": {
         "type": "select",
-        "label": "Action Sub Type",
+        "label": "Подтип действия",
         "show_if": "this.action==''count'' && this.count_action_category==''empty_or_zero''",
         "options": {
           "zero": {
             "label": "0"
           },
           "empty": {
-            "label": "Empty (Null & Blank)"
+            "label": "Пусто (Ноль и незаполненно)"
           },
           "null": {
-            "label": "Null"
+            "label": "Ноль"
           },
           "blank": {
-            "label": "Blank"
+            "label": "Пусто"
           }
         },
         "val": "zero"
       },
       "action_type3": {
         "type": "select",
-        "label": "Action Sub Type",
+        "label": "Подтип действия",
         "show_if": "this.action==''count'' && this.count_action_category==''non_empty_or_zero''",
         "options": {
           "non_zero": {
-            "label": "Non 0"
+            "label": "Кроме 0"
           },
           "non_empty": {
-            "label": "Non Empty"
+            "label": "Кроме пустых"
           },
           "non_null": {
-            "label": "Non Null"
+            "label": "Кроме ноля"
           },
           "non_blank": {
-            "label": "Non Blank"
+            "label": "Кроме пустых"
           }
         },
         "val": "non_zero"
       },
       "mathematics_action_category": {
         "type": "select",
-        "label": "Action Type",
+        "label": "Тип действия",
         "show_if": "this.action==''mathematics''",
         "options": {
           "min": {
-            "label": "Min"
+            "label": "Мин"
           },
           "max": {
-            "label": "Max"
+            "label": "Макс"
           },
           "average": {
-            "label": "Average"
+            "label": "Средний"
           },
           "median": {
-            "label": "Median"
+            "label": "Медиана"
           },
           "standard_deviation": {
-            "label": "Standard Deviation"
+            "label": "Стандартное отклонение"
           },
           "variance": {
-            "label": "Variance"
+            "label": "Вариант"
           }
         },
         "val": "min"
       },
       "action_type4": {
         "type": "select",
-        "label": "Action Sub Type",
+        "label": "Подтип действия",
         "show_if": "this.action==''mathematics''",
         "options": {
           "include_zero": {
-            "label": "Include 0"
+            "label": "Включить 0"
           },
           "exclude_zero": {
-            "label": "Exclude 0"
+            "label": "Исключить 0"
           }
         },
         "val": "include_zero"
       },
       "concatenate_separator": {
         "type": "text",
-        "label": "Separator",
+        "label": "Сепаратор",
         "show_if": "this.action==''concatenate''",
         "val": ",
       },
       output_column_name": {
         "type": "text",
-        "label": "Output Column Name",
+        "label": "Вывести название столбца",
         "val": ""
       },
       "delete": {
         "type": "button",
-        "label": "Delete",
+        "label": "Удалить",
         "function": "DELETE_ROW"
       }
     }
