@@ -1,71 +1,71 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "选择选项",
+    "label": "Select Options",
     "repeat": false,
     "fields": {
       "options.split_method": {
         "type": "select",
-        "label": "拆分方式",
+        "label": "Split method",
         "required": true,
         "options": {
           "standard": {
-            "label": "标准"
+            "label": "Standard"
           },
           "regex": {
-            "label": "正则表达式"
+            "label": "RegEx"
           }
         },
         "val": "standard"
       },
       "options.split_type": {
         "type": "select",
-        "label": "拆分类型",
+        "label": "Split type",
         "required": true,
         "options": {
           "split_to_columns": {
-            "label": "拆分为列"
+            "label": "Split to Columns"
           },
           "split_to_rows": {
-            "label": "拆分为行"
+            "label": "Split to Rows"
           }
         },
         "val": "split_to_columns"
       },
       "options.standard_delimiter": {
         "type": "select",
-        "label": "拆分分隔符",
-        "show_if": "options.split_method=='standard'",
+        "label": "Split Delimiter",
+        "show_if": "options.split_method==''standard''",
         "required": true,
         "options": {
           "tabs": {
-            "label": "标签页"
+            "label": "Tabs"
           },
           "space": {
-            "label": "空格"
+            "label": "Space"
           },
           "whitespace": {
-            "label": "空格"
+            "label": "Whitespace"
           },
           "linebreak": {
-            "label": "换行"
+            "label": "Line break"
           },
           "punctuation": {
-            "label": "标点"
+            "label": "Punctuation"
           },
           "punctuation_whitespace": {
-            "label": "标点和空格"
+            "label": "Punctuation and Whitespace"
           },
           "custom": {
-            "label": "自定义"
+            "label": "Custom"
           }
         },
         "val": "punctuation"
       },
       "options.delimiter": {
         "type": "text",
-        "label": "拆分分隔符",
-        "show_if": "options.split_method=='standard' && options.standard_delimiter=='custom'",
+        "label": "Split Delimiter",
+        "show_if": "options.split_method==''standard'' && options.standard_delimiter==''custom''",
         "val": ",,
         trim": "false",
         "required": true,
@@ -73,14 +73,14 @@
       },
       "format_frame": {
         "type": "fieldset",
-        "label": "拆分解析格式",
-        "show_if": "options.split_method=='regex'",
+        "label": "Format to Parse for Split",
+        "show_if": "options.split_method==''regex''",
         "repeat": false,
         "fields": {
           "options.format_to_convert.regular_expression": {
             "type": "text",
-            "label": "Parse Regular Expression ( ex: ([a-z]+)\s([a-z]+) )",
-            "val": "[a-z]+\s[a-z]+",
+            "label": "Parse Regular Expression ( ex: ([a-z]+)\\s([a-z]+) )",
+            "val": "[a-z]+\\s[a-z]+",
             "required": true,
             "width": "100%",
             "trim": "false",
@@ -88,7 +88,7 @@
           },
           "options.format_to_convert.case_insensitive": {
             "type": "checkbox",
-            "label": "不区分大小写",
+            "label": "Case Insensitive",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
