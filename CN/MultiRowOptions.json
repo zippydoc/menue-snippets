@@ -1,143 +1,143 @@
-
-    "fields": {
+{
   "options_box": {
     "type": "fieldset",
-    "label": "选项",
-    "repeat": false,{
+    "label": "Options",
+    "repeat": false,
+    "fields": {
       "options.task": {
         "type": "hidden",
         "val": "multi_row"
       },
       "options.add_columns": {
         "type": "fieldset",
-        "label": "添加新列",
+        "label": "Add New Columns",
         "repeat": true,
         "fields": {
           "new_column_name": {
             "type": "text",
-            "label": "新列名",
+            "label": "New Column Name",
             "val": "",
             "breakLine": true
           },
           "multi_row_functions__function": {
             "type": "select",
-            "label": "函数",
+            "label": "Function",
             "required": true,
             "options": {
               "trailing_row_n_average": {
-                "label": "尾随行-N 平均"
+                "label": "Trailing Row-N Average"
               },
               "index_from_row_n": {
-                "label": "行 N 索引"
+                "label": "Index from Row-N"
               },
               "absolute_growth": {
-                "label": "绝对增长"
+                "label": "Absolute Growth"
               },
               "relative_growth": {
-                "label": "相对增长"
+                "label": "Relative Growth"
               },
               "compound_growth": {
-                "label": "复合增长"
+                "label": "Compound Growth"
               }
             },
             "val": "trailing_row_n_average"
           },
           "multi_row_functions__sel_column": {
             "type": "select",
-            "label": "列",
-            "show_if": "this.multi_row_functions__function=='trailing_row_n_average' || this.multi_row_functions__function=='index_from_row_n' || this.multi_row_functions__function=='absolute_growth' || this.multi_row_functions__function=='relative_growth' || this.multi_row_functions__function=='compound_growth'",
+            "label": "Column",
+            "show_if": "this.multi_row_functions__function==''trailing_row_n_average'' || this.multi_row_functions__function==''index_from_row_n'' || this.multi_row_functions__function==''absolute_growth'' || this.multi_row_functions__function==''relative_growth'' || this.multi_row_functions__function==''compound_growth''",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
           "multi_row_functions__n_value": {
             "type": "text",
-            "label": "N（正整数）",
-            "show_if": "this.multi_row_functions__function=='trailing_row_n_average' || this.multi_row_functions__function=='index_from_row_n' || this.multi_row_functions__function=='compound_growth'",
+            "label": "N (positive integer)",
+            "show_if": "this.multi_row_functions__function==''trailing_row_n_average'' || this.multi_row_functions__function==''index_from_row_n'' || this.multi_row_functions__function==''compound_growth''",
             "val": "1",
             "required": true,
             "breakLine": true
           },
           "format__category": {
             "type": "select",
-            "label": "格式",
+            "label": "Format",
             "required": true,
             "options": {
               "standard": {
-                "label": "标准"
+                "label": "Standard"
               },
               "number": {
-                "label": "数字"
+                "label": "Number"
               },
               "percentage": {
-                "label": "百分比"
+                "label": "Percentage"
               },
               "text": {
-                "label": "文本"
+                "label": "Text"
               },
               "date": {
-                "label": "日期"
+                "label": "Date"
               },
               "currency": {
-                "label": "货币"
+                "label": "Currency"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "取整",
-            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "label": "Rounding",
+            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "不取整"
+                "label": "No rounding"
               },
               "0": {
-                "label": "0 位数"
+                "label": "0 digits"
               },
               "1": {
-                "label": "1 位数"
+                "label": "1 digits"
               },
               "2": {
-                "label": "2 位数"
+                "label": "2 digits"
               },
               "3": {
-                "label": "3 位数"
+                "label": "3 digits"
               },
               "4": {
-                "label": "4 位数"
+                "label": "4 digits"
               },
               "5": {
-                "label": "5 位数"
+                "label": "5 digits"
               },
               "6": {
-                "label": "6 位数"
+                "label": "6 digits"
               },
               "7": {
-                "label": "7 位数"
+                "label": "7 digits"
               },
               "8": {
-                "label": "8 位数"
+                "label": "8 digits"
               },
               "9": {
-                "label": "9 位数"
+                "label": "9 digits"
               }
             },
             "val": "2"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "使用 1000 分隔符（.）",
-            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "label": "Use 1000 Separator(.)",
+            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "符号",
-            "show_if": "this.format__category=='currency'",
+            "label": "Symbol",
+            "show_if": "this.format__category==''currency''",
             "required": true,
             "options": {
               "dollar": {
@@ -154,8 +154,8 @@
           },
           "format__date_format": {
             "type": "select",
-            "label": "类型",
-            "show_if": "this.format__category=='date'",
+            "label": "Type",
+            "show_if": "this.format__category==''date''",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
@@ -173,16 +173,16 @@
           },
           "apply_to_group__enabled": {
             "type": "checkbox",
-            "label": "应用至组",
-            "show_if": "this.task_type!='static_value'",
+            "label": "Apply to Group",
+            "show_if": "this.task_type!=''static_value''",
             "val": "false",
             "isOn": "true",
             "isOff": "false"
           },
           "apply_to_group__group_columns": {
             "type": "select",
-            "label": "组列",
-            "show_if": "this.apply_to_group__enabled == 'true' && this.task_type!='static_value'",
+            "label": "Group Column(s)",
+            "show_if": "this.apply_to_group__enabled == ''true'' && this.task_type!=''static_value''",
             "table": "input_table",
             "bind": "COLUMNS",
             "multiple": true,
@@ -190,14 +190,14 @@
           },
           "delete": {
             "type": "button",
-            "label": "删除",
+            "label": "Delete",
             "function": "DELETE_ROW"
           }
         }
       },
       "options.use_filter": {
         "type": "checkbox",
-        "label": "使用筛选",
+        "label": "Use Filter",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -206,18 +206,18 @@
       },
       "filter_box": {
         "type": "fieldset",
-        "label": "筛选选项",
-        "show_if": "options.use_filter=='true'",
+        "label": "Filter Options",
+        "show_if": "options.use_filter==''true''",
         "repeat": false,
         "fields": {
           "options.filter": {
             "type": "fieldset",
-            "label": "添加筛选条件",
+            "label": "Add Filter Conditions",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "选择逻辑运算符",
+                "label": "Select Logic Operator",
                 "required": true,
                 "show_if" :  "$index == 0",
                 "options": {
@@ -225,14 +225,14 @@
                     "label": "IF"
                   },
                   "if_not": {
-                    "label": "如果不是"
+                    "label": "IF NOT"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "选择逻辑运算符",
+                "label": "Select Logic Operator",
                 "required": true,
                 "show_if" :  "$index > 0",
                 "options": {
@@ -253,146 +253,146 @@
               },
               "column": {
                 "type": "select",
-                "label": "选择列",
+                "label": "Select Column",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "选择运算符",
+                "label": "Select Operator",
                 "required": true,
                 "options": {
-                  "包含": {
-                    "label": "包含"
+                  "CONTAINS": {
+                    "label": "CONTAINS"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "包含于"
+                    "label": "CONTAINED IN"
                   },
-                  "开始于": {
-                    "label": "开始于"
+                  "STARTS WITH": {
+                    "label": "STARTS WITH"
                   },
-                  "结尾是": {
-                    "label": "结尾是"
+                  "ENDS WITH": {
+                    "label": "ENDS WITH"
                   },
                   "=": {
-                    "label": "相等"
+                    "label": "EQUAL"
                   },
                   ">": {
-                    "label": "大于"
+                    "label": "GREATER THAN"
                   },
                   ">=": {
-                    "label": "大于或等于"
+                    "label": "GREATER OR EQUAL"
                   },
                   "<": {
-                    "label": "小于"
+                    "label": "SMALLER THAN"
                   },
                   "<=": {
-                    "label": "小于或等于"
+                    "label": "SMALLER OR EQUAL"
                   },
                   "EMPTY": {
-                    "label": "为空"
+                    "label": "IS EMPTY"
                   },
                   "BLANK": {
-                    "label": "为空白"
+                    "label": "IS BLANK"
                   },
-                  "为 NULL": {
-                    "label": "为 NULL"
+                  "IS NULL": {
+                    "label": "IS NULL"
                   },
-                  "正则表达式匹配": {
-                    "label": "正则表达式匹配"
+                  "REGEX MATCH": {
+                    "label": "REGEX MATCH"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "于表格"
+                    "label": "IN TABLE"
                   },
-                  "于正则表格": {
-                    "label": "于正则表格"
+                  "IN REGEX TABLE": {
+                    "label": "IN REGEX TABLE"
                   },
-                  "日期": {
-                    "label": "日期"
+                  "DATE": {
+                    "label": "DATE"
                   }
                 },
-                "val": "包含"
+                "val": "CONTAINS"
               },
               "date_condition": {
                 "type": "select",
-                "label": "选择日期运算符",
+                "label": "Select Date Operator",
                 "required": true,
-                "show_if": "this.condition == 'DATE'",
+                "show_if": "this.condition == ''DATE''",
                 "options": {
                   "<": {
                     "label": "PRIOR"
                   },
                   "<=": {
-                    "label": "先于或等于"
+                    "label": "PRIOR OR EQUAL"
                   },
                   "=": {
-                    "label": "相等"
+                    "label": "EQUAL"
                   },
                   ">": {
-                    "label": "之后"
+                    "label": "AFTER"
                   },
                   ">=": {
-                    "label": "之后或等于"
+                    "label": "AFTER OR EQUAL"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "选择区分大小写",
+                "label": "Select Case Sensitive",
                 "required": true,
-                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "options": {
                   "yes": {
-                    "label": "区分大小写"
+                    "label": "Case Sensitive"
                   },
                   "no": {
-                    "label": "不区分大小写"
+                    "label": "Case Insensitive"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "选择日期",
-                "show_if": "this.condition=='DATE'",
+                "label": "Select Date",
+                "show_if": "this.condition==''DATE''",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "输入值",
-                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "label": "Input Value",
+                "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "选择表格",
+                "label": "Select Table",
                 "bind": "TABLES",
                 "empty": "",
-                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "required": true
               },
               "compare_column": {
                 "type": "select",
-                "label": "选择列",
+                "label": "Select Column",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
-                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "删除",
+                "label": "Delete",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.apply_to_record": {
             "type": "checkbox",
-            "label": "应用至记录",
+            "label": "Apply to Record",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -401,13 +401,13 @@
           },
           "apply_to_group_box": {
             "type": "fieldset",
-            "label": "应用至组",
-            "show_if": "options.apply_to_record=='false'",
+            "label": "Apply to Group",
+            "show_if": "options.apply_to_record==''false''",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
                 "type": "select",
-                "label": "选择组列",
+                "label": "Select Group Columns",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
