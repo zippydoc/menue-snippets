@@ -1,12 +1,12 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "統合オプションの選択",
+    "label": "Select Join Options",
     "repeat": false,
     "fields": {
       "join_type": {
         "type": "radio",
-        "label": "次で統合",
+        "label": "Join By",
         "val": "join_by_specific_field",
         "values": {
           "join_by_specific_field": "Specific Field",
@@ -16,25 +16,25 @@
       },
       "join_fields": {
         "type": "fieldset",
-        "label": "列で統合",
-        "show_if": "join_type=='join_by_specific_field'",
+        "label": "Join By Columns",
+        "show_if": "join_type==''join_by_specific_field''",
         "repeat": true,
         "fields": {
           "left_table_field": {
             "type": "select",
-            "label": "左テーブル列",
+            "label": "Left Table Column",
             "table": "left_table.table_id",
             "bind": "COLUMNS"
           },
           "right_table_field": {
             "type": "select",
-            "label": "右テーブル列",
+            "label": "Right Table Column",
             "table": "right_table.table_id",
             "bind": "COLUMNS"
           },
           "delete": {
             "type": "button",
-            "label": "削除",
+            "label": "Delete",
             "function": "DELETE_ROW"
           }
         }
