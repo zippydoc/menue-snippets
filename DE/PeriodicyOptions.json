@@ -1,18 +1,18 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Selecionar Opções de Periodicidade",
+    "label": "Optionen für die Periodizität auswählen",
     "repeat": false,
     "fields": {
       "options.type": {
         "type": "select",
-        "label": "Tipo",
+        "label": "Typ",
         "options": {
           "generate": {
-            "label": "Gerar Exemplo de Periodicidade"
+            "label": "Beispiel für das Erzeugen einer Periodizität"
           },
           "process": {
-            "label": "Processar Tabela de Periodicidade"
+            "label": "Prozess-Periodentabelle"
           }
         },
         "val": "generate",
@@ -26,69 +26,69 @@
         "fields": {
           "options.amount.format__category": {
             "type": "select",
-            "label": "Formato",
+            "label": "Format",
             "required": true,
             "options": {
               "standard": {
-                "label": "Padrão"
+                "label": "Standard"
               },
               "number": {
-                "label": "Número"
+                "label": "Nummer"
               },
               "percentage": {
-                "label": "Percentagem"
+                "label": "Prozentsatz"
               },
               "currency": {
-                "label": "Moeda"
+                "label": "Währung"
               }
             },
             "val": "currency"
           },
           "options.amount.format__rounding": {
             "type": "select",
-            "label": "Arredondamento",
+            "label": "Abrunden",
             "show_if": "options.amount.format__category==''number'' || options.amount.format__category==''percentage'' || options.amount.format__category==''currency''",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Arredondamento de números"
+                "label": "Keine Rundung"
               },
               "0": {
-                "label": "0 dígitos"
+                "label": "0 Ziffern"
               },
               "1": {
-                "label": "1 dígito"
+                "label": "1 Ziffern"
               },
               "2": {
-                "label": "2 dígitos"
+                "label": "2 Ziffern"
               },
               "3": {
-                "label": "3 dígitos"
+                "label": "3 Ziffern"
               },
               "4": {
-                "label": "4 dígitos"
+                "label": "4 Ziffern"
               },
               "5": {
-                "label": "5 dígitos"
+                "label": "5 Ziffern"
               },
               "6": {
-                "label": "6 dígitos"
+                "label": "6 Ziffern"
               },
               "7": {
-                "label": "7 dígitos"
+                "label": "7 Ziffern"
               },
               "8": {
-                "label": "8 dígitos"
+                "label": "8 Ziffern"
               },
               "9": {
-                "label": "9 dígitos"
+                "label": "9 Ziffern"
               }
             },
             "val": "2"
           },
           "options.amount.format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Usar Separador(.) 1000",
+            "label": "1000 Trennzeichen(.) verwenden",
             "show_if": "options.amount.format__category==''number'' || options.amount.format__category==''percentage'' || options.amount.format__category==''currency''",
             "val": "true",
             "isOn": "true",
@@ -96,7 +96,7 @@
           },
           "options.amount.format__currency_symbol": {
             "type": "select",
-            "label": "Símbolo",
+            "label": "Symbol",
             "show_if": "options.amount.format__category==''currency''",
             "required": true,
             "options": {
@@ -116,7 +116,7 @@
       },
       "options.standard_table": {
         "type": "checkbox",
-        "label": "Tabela de Periodicidade Padrão",
+        "label": "Standard-Periodensystem",
         "show_if": "options.type==''process''",
         "val": "true",
         "isOn": "true",
@@ -125,7 +125,7 @@
       },
       "options.initial_date": {
         "type": "select",
-        "label": "Data Inicial",
+        "label": "Anfangsdatum",
         "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -141,7 +141,7 @@
       },
       "options.final_date": {
         "type": "select",
-        "label": "Data Final",
+        "label": "Endgültiges Datum",
         "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -149,47 +149,47 @@
       },
       "options.volume": {
         "type": "select",
-        "label": "Montante",
+        "label": "Betrag",
         "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth": {
         "type": "select",
-        "label": "Crescimento",
+        "label": "Wachstum",
         "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth_period": {
         "type": "select",
-        "label": "Período de Crescimento",
+        "label": "Wachstumsperiode",
         "show_if": "options.type==''process'' && options.standard_table==''false''",
         "options": {
           "selected_period": {
-            "label": "Igual à Periodicidade"
+            "label": "Entspricht der Periodizität"
           },
           "week_on_week": {
-            "label": "Semana a Semana"
+            "label": "Woche für Woche"
           },
           "month_on_month": {
-            "label": "Mês a Mês"
+            "label": "Monat für Monat"
           },
           "quarter_on_quarter": {
-            "label": "Trimestre a Trimestre"
+            "label": "Quartal für Quartal"
           },
           "year_on_year": {
-            "label": "Ano a Ano"
+            "label": "Jahr auf Jahr"
           },
           "column": {
-            "label": "Selecionar Coluna"
+            "label": "Spalte auswählen"
           }
         },
         "val": "selected_period"
       },
       "options.growth_period_column": {
         "type": "select",
-        "label": "Coluna de Período de Crescimento",
+        "label": "Spalte "Wachstumsperiode",
         "show_if": "options.type==''process'' && options.standard_table==''false'' && options.growth_period==''column''",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -198,7 +198,7 @@
       },
       "options.use_growth_pattern_column": {
         "type": "checkbox",
-        "label": "Usar Padrão de Crescimento",
+        "label": "Verwendung Wachstumsmuster",
         "show_if": "options.type==''process'' && options.standard_table==''false''",
         "val": "false",
         "isOn": "true",
@@ -206,7 +206,7 @@
       },
       "options.growth_pattern_column": {
         "type": "select",
-        "label": "Padrão de Crescimento",
+        "label": "Wachstumsmuster",
         "show_if": "options.type==''process'' && options.standard_table==''false'' && options.use_growth_pattern_column==''true''",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -215,7 +215,7 @@
       },
       "options.end_date": {
         "type": "date",
-        "label": "Fim de Data de Tabela",
+        "label": "Enddatum der Tabelle",
         "show_if": "options.type==''process''",
         "val": "",
         "required": true,
