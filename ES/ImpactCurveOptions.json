@@ -1,21 +1,21 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Select Options",
+    "label": "Seleccionar Opciones",
     "repeat": false,
     "fields": {
       "options.type": {
         "type": "select",
-        "label": "Type",
+        "label": "Tipo",
         "options": {
           "standard": {
-            "label": "Generate Standard Impact Curve"
+            "label": "Generar Curva de Impacto Estándar"
           },
           "custom": {
-            "label": "Generate Custom Impact Curve"
+            "label": "Generar Curva de Impacto Personalizada"
           },
           "apply": {
-            "label": "Apply Impact Curve"
+            "label": "Aplicar Curva de Impacto"
           }
         },
         "val": "standard",
@@ -23,21 +23,21 @@
       },
       "options.standard.start": {
         "type": "text",
-        "label": "Initial Period",
+        "label": "Período Inicial",
         "show_if": "options.type==''standard'' && options.standard.end_value_equals_initial_value==''no''",
         "val": "1",
         "required": true
       },
       "options.standard.maximum": {
         "type": "text",
-        "label": "Maximum Period",
+        "label": "Período Máximo",
         "show_if": "options.type==''standard''",
         "val": "50",
         "required": true
       },
       "options.standard.end": {
         "type": "text",
-        "label": "End Period",
+        "label": "Fin del Período",
         "show_if": "options.type==''standard''",
         "val": "100",
         "required": true,
@@ -45,7 +45,7 @@
       },
       "options.standard.multiplier_at_maximum_impact_level": {
         "type": "text",
-        "label": "Multiplier At Maximum Impact Level",
+        "label": "Multiplicador en un Nivel de Impacto Máximo",
         "show_if": "options.type==''standard''",
         "width": "100%",
         "val": "2",
@@ -54,7 +54,7 @@
       },
       "options.standard.end_value_equals_initial_value": {
         "type": "checkbox",
-        "label": "End Value Equals Initial Value",
+        "label": "Valor Final Igual al Valor Inicial",
         "show_if": "options.type==''standard''",
         "width": "100%",
         "val": "yes",
@@ -64,7 +64,7 @@
       },
       "options.standard.multiplier_end_value": {
         "type": "text",
-        "label": "Multiplier End Value",
+        "label": "Valor Final del Multiplicador",
         "width": "100%",
         "show_if": "options.type==''standard'' && options.standard.end_value_equals_initial_value==''no''",
         "val": "",
@@ -72,7 +72,7 @@
       },
       "options.standard.maximum_plateau": {
         "type": "checkbox",
-        "label": "Maximum Plateau",
+        "label": "Meseta Máxima",
         "show_if": "options.type==''standard''",
         "width": "100%",
         "val": "yes",
@@ -82,14 +82,14 @@
       },
       "options.standard.no_of_periods_prior_defined_maximum_point": {
         "type": "text",
-        "label": "No of periods prior defined maximum point",
+        "label": "Número de períodos antes del punto máximo definido",
         "show_if": "options.type==''standard'' && options.standard.maximum_plateau==''yes''",
         "val": "0",
         "style": "width: 250px"
       },
       "options.standard.no_of_periods_post_defined_maximum_point": {
         "type": "text",
-        "label": "No of periods post defined maximum point",
+        "label": "Número de períodos después del punto máximo definido",
         "show_if": "options.type==''standard'' && options.standard.maximum_plateau==''yes''",
         "val": "0",
         "style": "width: 250px",
@@ -97,24 +97,24 @@
       },
       "options.standard.left_slope": {
         "type": "select",
-        "label": "Left Slope",
+        "label": "Pendiente Izquierda",
         "show_if": "options.type==''standard''",
         "options": {
           "vertical": {
             "label": "Vertical"
           },
           "linear": {
-            "label": "Linear"
+            "label": "Lineal"
           },
           "standard_distribution": {
-            "label": "Standard Distribution"
+            "label": "Distribución Estándar"
           }
         },
         "val": "standard_distribution"
       },
       "options.standard.use_auto_calculated_sigma_for_left_slope": {
         "type": "checkbox",
-        "label": "Auto calculated left sigma",
+        "label": "Sigma izquierdo calculado automáticamente",
         "show_if": "options.type==''standard'' && options.standard.left_slope==''standard_distribution''",
         "val": "true",
         "isOn": "true",
@@ -122,13 +122,13 @@
       },
       "options.standard.left_slope_sigma": {
         "type": "text",
-        "label": "Left Slope Sigma",
+        "label": "Sigma de la Pendiente Izquierda",
         "show_if": "options.type==''standard'' && options.standard.left_slope==''standard_distribution'' && options.standard.use_auto_calculated_sigma_for_left_slope==''false''",
         "val": ""
       },
       "options.standard.right_slope": {
         "type": "select",
-        "label": "Right Slope",
+        "label": "Pendiente Derecha",
         "show_if": "options.type==''standard''",
         "required": true,
         "options": {
@@ -136,17 +136,17 @@
             "label": "Vertical"
           },
           "linear": {
-            "label": "Linear"
+            "label": "Lineal"
           },
           "standard_distribution": {
-            "label": "Standard Distribution"
+            "label": "Distribución Estándar"
           }
         },
         "val": "standard_distribution"
       },
       "options.standard.use_auto_calculated_sigma_for_right_slope": {
         "type": "checkbox",
-        "label": "Auto calculated right sigma",
+        "label": "Sigma derecho calculado automáticamente",
         "show_if": "options.type==''standard'' && options.standard.right_slope==''standard_distribution''",
         "val": "true",
         "isOn": "true",
@@ -154,20 +154,20 @@
       },
       "options.standard.right_slope_sigma": {
         "type": "text",
-        "label": "Right Slope Sigma",
+        "label": "Sigma de la Pendiente Derecha",
         "show_if": "options.type==''standard'' && options.standard.right_slope==''standard_distribution'' && options.standard.use_auto_calculated_sigma_for_right_slope==''false''",
         "val": "",
         "breakLine": true
       },
       "options.standard.event_name": {
         "type": "text",
-        "label": "Event Name",
+        "label": "Nombre del Evento",
         "show_if": "options.type==''standard''",
         "val": "Event"
       },
       "options.custom.event_table": {
         "type": "select",
-        "label": "Event Table",
+        "label": "Tabla de Eventos",
         "show_if": "options.type==''custom''",
         "bind": "TABLES",
         "empty": "",
@@ -176,7 +176,7 @@
       },
       "options.custom.event_date_column": {
         "type": "select",
-        "label": "Event Date Column",
+        "label": "Columna de la Fecha del Evento",
         "show_if": "options.type==''custom''",
         "required": true,
         "table": "options.custom.event_table",
@@ -184,7 +184,7 @@
       },
       "options.custom.event_name_column": {
         "type": "select",
-        "label": "Event Name Column",
+        "label": "Columna del Nombre del Evento",
         "show_if": "options.type==''custom''",
         "required": true,
         "table": "options.custom.event_table",
@@ -192,7 +192,7 @@
       },
       "options.custom.event_name": {
         "type": "text",
-        "label": "Event Name",
+        "label": "Nombre del Evento",
         "show_if": "options.type==''custom''",
         "val": "Weekend",
         "required": true,
@@ -200,18 +200,18 @@
       },
       "options.custom.base_period": {
         "type": "select",
-        "label": "Base Period",
+        "label": "Período Base",
         "show_if": "options.type==''custom''",
         "required": true,
         "options": {
           "months": {
-            "label": "Prior N Months"
+            "label": "N Meses Previos"
           },
           "weeks": {
-            "label": "Prior N Weeks"
+            "label": "N Semanas Previas"
           },
           "days": {
-            "label": "Prior N Days"
+            "label": "N Días Previos"
           }
         },
         "val": "days"
@@ -226,14 +226,14 @@
       },
       "options.custom.leading_impact_days": {
         "type": "text",
-        "label": "Leading Impact Periods",
+        "label": "Períodos de Impacto de Adelante",
         "show_if": "options.type==''custom''",
         "val": "0",
         "required": true
       },
       "options.custom.trailing_impact_days": {
         "type": "text",
-        "label": "Trailing Impact Periods",
+        "label": "Períodos de Impacto Móviles",
         "show_if": "options.type==''custom''",
         "val": "0",
         "required": true,
@@ -241,7 +241,7 @@
       },
       "options.custom.value_column": {
         "type": "select",
-        "label": "Value Column",
+        "label": "Columna de Valores",
         "show_if": "options.type==''custom''",
         "required": true,
         "table": "options.custom.event_table",
@@ -254,7 +254,7 @@
       },
       "options.apply.event_name": {
         "type": "text",
-        "label": "Event Name",
+        "label": "Nombre del Evento",
         "show_if": "options.type==''apply''",
         "val": "Weekend",
         "required": true,
@@ -262,13 +262,13 @@
       },
       "apply_event_table_box": {
         "type": "fieldset",
-        "label": "Select Event Table",
+        "label": "Seleccionar Tabla de Eventos",
         "show_if": "options.type==''apply''",
         "repeat": false,
         "fields": {
           "options.apply.event_table": {
             "type": "select",
-            "label": "Event Table",
+            "label": "Tabla de Eventos",
             "bind": "TABLES",
             "empty": "",
             "required": true,
@@ -276,21 +276,21 @@
           },
           "options.apply.event_table_event_date_column": {
             "type": "select",
-            "label": "Event Date Column",
+            "label": "Columna de la Fecha del Evento",
             "required": true,
             "table": "options.apply.event_table",
             "bind": "COLUMNS"
           },
           "options.apply.event_table_event_name_column": {
             "type": "select",
-            "label": "Event Name Column",
+            "label": "Columna del Nombre del Evento",
             "required": true,
             "table": "options.apply.event_table",
             "bind": "COLUMNS"
           },
           "options.apply.event_table_value_column": {
             "type": "select",
-            "label": "Value Column",
+            "label": "Columna de Valores",
             "required": true,
             "table": "options.apply.event_table",
             "bind": "COLUMNS",
@@ -300,13 +300,13 @@
       },
       "apply_impact_table_box": {
         "type": "fieldset",
-        "label": "Select Impact Table",
+        "label": "Seleccionar Tabla de Impacto",
         "show_if": "options.type==''apply''",
         "repeat": false,
         "fields": {
           "options.apply.impact_table": {
             "type": "select",
-            "label": "Impact Table",
+            "label": "Tabla de impacto",
             "bind": "TABLES",
             "empty": "",
             "required": true,
@@ -318,21 +318,21 @@
           },
           "options.apply.impact_table_event_date_column": {
             "type": "select",
-            "label": "Event Date Column",
+            "label": "Columna de la Fecha del Evento",
             "required": true,
             "table": "options.apply.impact_table",
             "bind": "COLUMNS"
           },
           "options.apply.impact_table_event_name_column": {
             "type": "select",
-            "label": "Event Name Column",
+            "label": "Columna del Nombre del Evento",
             "required": true,
             "table": "options.apply.impact_table",
             "bind": "COLUMNS"
           },
           "options.apply.impact_table_impact_column": {
             "type": "select",
-            "label": "Impact Column",
+            "label": "Columna de Impacto",
             "required": true,
             "table": "options.apply.impact_table",
             "bind": "COLUMNS",
