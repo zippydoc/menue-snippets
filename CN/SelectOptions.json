@@ -1,46 +1,46 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "选择选项",
+    "label": "Select Options",
     "repeat": false,
     "fields": {
       "type": {
         "type": "select",
-        "label": "选择类型",
+        "label": "Select Type",
         "val": "first_n",
         "options": {
           "first_n": {
-            "label": "前 N"
+            "label": "First N"
           },
           "last_n": {
-            "label": "后 N"
+            "label": "Last N"
           },
           "custom_selection": {
-            "label": "自定义选择"
+            "label": "Custom Selection"
           },
           "skip_first_n": {
-            "label": "跳过前 N"
+            "label": "Skip First N"
           },
           "skip_last_n": {
-            "label": "跳过后 N"
+            "label": "Skip Last N"
           },
           "first_n_percent": {
-            "label": "前 N%"
+            "label": "First N%"
           },
           "last_n_percent": {
-            "label": "后 N%"
+            "label": "Last N%"
           },
           "random_n_records": {
-            "label": "随机 N"
+            "label": "Random N"
           },
           "random_n_percent": {
-            "label": "随机 N%"
+            "label": "Random N%"
           },
           "random_choice_1_n": {
-            "label": "随机选择 1:N"
+            "label": "Random Choice 1:N"
           },
           "every_nth_record": {
-            "label": "每 N 条记录"
+            "label": "Every Nth Record"
           }
         },
         "required": true,
@@ -49,8 +49,8 @@
       },
       "n": {
         "type": "text",
-        "label": "输入 N",
-        "show_if": "type!='custom_selection'",
+        "label": "Input N",
+        "show_if": "type!=''custom_selection''",
         "val": "1",
         "required": true,
         "width": "100%",
@@ -58,8 +58,8 @@
       },
       "ranges": {
         "type": "text",
-        "label": "输入范围",
-        "show_if": "type=='custom_selection'",
+        "label": "Input Ranges",
+        "show_if": "type==''custom_selection''",
         "val": "-2; 4-6; 9; 12+",
         "required": true,
         "width": "100%",
@@ -67,23 +67,23 @@
       },
       "set_offset": {
         "type": "checkbox",
-        "label": "偏移",
-        "show_if": "type=='every_nth_record'",
+        "label": "Offset",
+        "show_if": "type==''every_nth_record''",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "offset": {
         "type": "text",
-        "label": "偏移",
-        "show_if": "type=='every_nth_record' && set_offset=='true'",
+        "label": "Offset",
+        "show_if": "type==''every_nth_record'' && set_offset==''true''",
         "val": "1",
         "required": true,
         "breakLine": true
       },
       "group_by_column": {
         "type": "checkbox",
-        "label": "按列分组",
+        "label": "Group by column",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -91,13 +91,13 @@
       },
       "columns_to_group_box": {
         "type": "fieldset",
-        "label": "按列分组",
-        "show_if": "group_by_column=='true'",
+        "label": "Group by column",
+        "show_if": "group_by_column==''true''",
         "repeat": false,
         "fields": {
           "columns_to_group": {
             "type": "select",
-            "label": "选择组列",
+            "label": "Select Group Columns",
             "required": true,
             "width": "100%",
             "table": "input_table",
