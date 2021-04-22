@@ -1,21 +1,21 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Select Options",
+    "label": "Выбрать параметры",
     "repeat": false,
     "fields": {
       "transpose_type": {
         "type": "select",
-        "label": "Transpose Type",
+        "label": "Тип транспонирования",
         "options": {
           "mirror_matrix": {
-            "label": "Mirror Matrix"
+            "label": "Зеркальная матрица"
           },
           "column_name_to_label": {
-            "label": "Column Name to Label"
+            "label": "Название столбца для метки"
           },
           "crosstab": {
-            "label": "Crosstab"
+            "label": "Кросс-таблица"
           }
         },
         "val": "mirror_matrix",
@@ -25,7 +25,7 @@
       },
       "mirror_matrix.convert_header_to_label": {
         "type": "checkbox",
-        "label": "Convert header to label",
+        "label": "Конвертировать заголовок в метку",
         "show_if": "transpose_type==''mirror_matrix''",
         "val": "true",
         "isOn": "true",
@@ -34,7 +34,7 @@
       },
       "column_name_to_label.columns_to_label": {
         "type": "select",
-        "label": "Select Columns to Convert into Labels",
+        "label": "Выбрать столбцы для конвертации в метки",
         "show_if": "transpose_type==''column_name_to_label''",
         "table": "input_table",
         "multiple": true,
@@ -45,25 +45,25 @@
       },
       "column_name_to_label.label_column_name": {
         "type": "text",
-        "label": "Column Name of Label Column",
+        "label": "Название столбца для столбца метки",
         "show_if": "transpose_type==''column_name_to_label''",
         "required": true,
-        "val": "Label",
+        "val": "Ярлык",
         "width": "100%",
         "breakLine": true
       },
       "column_name_to_label.value_column_name": {
         "type": "text",
-        "label": "Column Name of Value Column",
+        "label": "Название столбца для столбца значения",
         "show_if": "transpose_type==''column_name_to_label''",
         "required": true,
-        "val": "Value",
+        "val": "Значение",
         "width": "100%",
         "breakLine": true
       },
       "crosstab.group_data_by_these_values": {
         "type": "select",
-        "label": "Group data by these values",
+        "label": "Группировать данные по этим значениям",
         "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "multiple": true,
@@ -74,7 +74,7 @@
       },
       "crosstab.change_column_headers": {
         "type": "select",
-        "label": "Change Column Header",
+        "label": "Изменить заголовок столбца",
         "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -84,7 +84,7 @@
       },
       "crosstab.values_for_new_columns": {
         "type": "select",
-        "label": "Values For New Columns",
+        "label": "Значения для новых столбцов",
         "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -94,37 +94,37 @@
       },
       "crosstab.method_for_aggregating_values": {
         "type": "select",
-        "label": "Method for Aggregating Values",
+        "label": "Метод добавления значений",
         "show_if": "transpose_type==''crosstab''",
         "options": {
-          "Concatenate": {
-            "label": "Concatenate"
+          "Обхединить": {
+            "label": "Обхединить"
           },
-          "First": {
-            "label": "First"
+          "Первый": {
+            "label": "Первый"
           },
-          "Last": {
-            "label": "Last"
+          "Последний": {
+            "label": "Последний"
           },
-          "Sum": {
-            "label": "Sum"
+          "Сумма": {
+            "label": "Сумма"
           },
-          "Average": {
-            "label": "Average"
+          "Средний": {
+            "label": "Средний"
           },
-          "Count": {
-            "label": "Count"
+          "Посчитать": {
+            "label": "Посчитать"
           },
-          "User Defined": {
-            "label": "User Defined"
+          "Определяемые пользователем": {
+            "label": "Определяемые пользователем"
           }
         },
-        "val": "Concatenate",
+        "val": "Обхединить",
         "required": true
       },
       "crosstab.user_defined_str": {
         "type": "text",
-        "label": "User Defined Value",
+        "label": "Опрелеляемое пользователем значение",
         "show_if": "transpose_type==''crosstab'' && crosstab.method_for_aggregating_values==''User Defined''",
         "val": "x",
         "trim": "false",
@@ -132,7 +132,7 @@
       },
       "crosstab.separator": {
         "type": "text",
-        "label": "Separator",
+        "label": "Сепаратор",
         "show_if": "transpose_type==''crosstab'' && method_for_aggregating_values==''Concatenate''",
         "val": ",,
         trim": "false",
