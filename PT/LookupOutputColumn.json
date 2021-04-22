@@ -1,8 +1,8 @@
 {
   "output.select_output_columns": {
     "type": "checkbox",
-    "label": "Selecionar Colunas de Saída",
-    "show_if": "options.task_type=='label_duplicates' || options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
+    "label": "Select Output Columns",
+    "show_if": "options.task_type==''label_duplicates'' || options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table''",
     "val": "false",
     "isOn": "true",
     "isOff": "false"
@@ -10,128 +10,128 @@
   "output_columns": {
     "type": "fieldset",
     "label": "Select OutputColumns",
-    "show_if": "output.select_output_columns=='true' && (options.task_type=='label_duplicates' || options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
+    "show_if": "output.select_output_columns==''true'' && (options.task_type==''label_duplicates'' || options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'')",
     "repeat": true,
     "fields": {
       "field_name": {
         "type": "select",
-        "label": "Selecionar Coluna",
+        "label": "Select Column",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
       },
       "order": {
         "type": "select",
-        "label": "Encomendar",
+        "label": "Order",
         "options": {
           "-": {
             "label": "-"
           },
           "asc": {
-            "label": "Ascendente"
+            "label": "Asc"
           },
           "desc": {
-            "label": "Descendente"
+            "label": "Desc"
           }
         },
         "val": "-"
       },
       "is_rename": {
         "type": "checkbox",
-        "label": "Mudar Nome",
+        "label": "Rename",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "rename": {
-        "show_if": "this.is_rename == 'true'",
+        "show_if": "this.is_rename == ''true''",
         "type": "text",
         "required": true,
         "minLength": 1,
         "maxLength": 255,
-        "label": "Novo Nome de Coluna",
+        "label": "New Column Name",
         "style": "margin-left: 10px"
       },
       "format__category": {
         "type": "select",
-        "label": "Formato",
+        "label": "Format",
         "required": true,
         "options": {
           "standard": {
-            "label": "Padrão"
+            "label": "Standard"
           },
           "number": {
-            "label": "Número"
+            "label": "Number"
           },
           "percentage": {
-            "label": "Percentagem"
+            "label": "Percentage"
           },
           "text": {
-            "label": "Texto"
+            "label": "Text"
           },
           "date": {
-            "label": "Data"
+            "label": "Date"
           },
           "currency": {
-            "label": "Moeda"
+            "label": "Currency"
           }
         },
         "val": "standard"
       },
       "format__rounding": {
         "type": "select",
-        "label": "Arredondamento",
-        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+        "label": "Rounding",
+        "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
         "required": true,
         "options": {
           "no_rounding": {
-            "label": "Arredondamento de números"
+            "label": "No rounding"
           },
           "0": {
-            "label": "0 dígitos"
+            "label": "0 digits"
           },
           "1": {
-            "label": "1 dígito"
+            "label": "1 digits"
           },
           "2": {
-            "label": "2 dígitos"
+            "label": "2 digits"
           },
           "3": {
-            "label": "3 dígitos"
+            "label": "3 digits"
           },
           "4": {
-            "label": "4 dígitos"
+            "label": "4 digits"
           },
           "5": {
-            "label": "5 dígitos"
+            "label": "5 digits"
           },
           "6": {
-            "label": "6 dígitos"
+            "label": "6 digits"
           },
           "7": {
-            "label": "7 dígitos"
+            "label": "7 digits"
           },
           "8": {
-            "label": "8 dígitos"
+            "label": "8 digits"
           },
           "9": {
-            "label": "9 dígitos"
+            "label": "9 digits"
           }
         },
         "val": "2"
       },
       "format__use_1000_separator": {
         "type": "checkbox",
-        "label": "Usar Separador(.) 1000",
-        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+        "label": "Use 1000 Separator(.)",
+        "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
         "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
       "format__currency_symbol": {
         "type": "select",
-        "label": "Símbolo",
-        "show_if": "this.format__category=='currency'",
+        "label": "Symbol",
+        "show_if": "this.format__category==''currency''",
         "required": true,
         "options": {
           "dollar": {
@@ -148,8 +148,8 @@
       },
       "format__date_format": {
         "type": "select",
-        "label": "Tipo",
-        "show_if": "this.format__category=='date'",
+        "label": "Type",
+        "show_if": "this.format__category==''date''",
         "required": true,
         "options": {
           "mm/dd/yyyy": {
@@ -167,7 +167,7 @@
       },
       "delete": {
         "type": "button",
-        "label": "Apagar",
+        "label": "Delete",
         "function": "DELETE_ROW"
       }
     },
@@ -176,7 +176,7 @@
   },
   "options.add_filename": {
     "type": "checkbox",
-    "label": "Adicionar Nome de Ficheiro",
+    "label": "Add File Name",
     "val": "false",
     "isOn": "true",
     "isOff": "false",
