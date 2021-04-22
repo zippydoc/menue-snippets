@@ -1,7 +1,7 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Выбрать параметры",
+    "label": "Select Options",
     "repeat": false,
     "fields": {
       "options.from": {
@@ -10,24 +10,24 @@
       },
       "postgresql_db_credential_box": {
         "type": "fieldset",
-        "label": "Учетные данные для подключения к базе данных",
+        "label": "Database Connection Credentials",
         "repeat": false,
         "fields": {
           "options.dbms": {
             "type": "select",
-            "label": "Выбрать СУБД",
+            "label": "Select DBMS",
             "options": {
               "postgresql": {
                 "label": "PostgreSQL"
               },
               "mysql": {
-                "label": "MySQL (Скоро будет...)"
+                "label": "MySQL (Coming soon...)"
               },
               "sql_server": {
-                "label": "MS SQL Сервер (Скоро будет...)"
+                "label": "MS SQL Server (Coming soon...)"
               },
               "oracle": {
-                "label": "Oracle (Скоро будет...)"
+                "label": "Oracle (Coming soon...)"
               }
             },
             "val": "postgresql",
@@ -36,32 +36,32 @@
           },
           "options.postgresql_credential.user": {
             "type": "text",
-            "label": "Пользователь",
-            "show_if": "options.dbms=='postgresql'",
+            "label": "User",
+            "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
             "breakLine": true
           },
           "options.postgresql_credential.password": {
             "type": "text",
-            "label": "Пароль",
-            "show_if": "options.dbms=='postgresql'",
+            "label": "Password",
+            "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
             "breakLine": true
           },
           "options.postgresql_credential.host": {
             "type": "text",
-            "label": "Хост",
-            "show_if": "options.dbms=='postgresql'",
+            "label": "Host",
+            "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
             "breakLine": true
           },
           "options.postgresql_credential.database": {
             "type": "text",
-            "label": "База данных",
-            "show_if": "options.dbms=='postgresql'",
+            "label": "Database",
+            "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
             "breakLine": true
@@ -70,8 +70,8 @@
       },
       "options.schema_name_to_import": {
         "type": "text",
-        "label": "Название схемы, включающее таблицу для импорта",
-        "show_if": "options.dbms=='postgresql'",
+        "label": "Schema name that includes table to import",
+        "show_if": "options.dbms==''postgresql''",
         "required": true,
         "val": "public",
         "width": "100%",
@@ -79,8 +79,8 @@
       },
       "options.table_name_to_import": {
         "type": "text",
-        "label": "Название таблицы для импорта",
-        "show_if": "options.dbms=='postgresql'",
+        "label": "Table name to import",
+        "show_if": "options.dbms==''postgresql''",
         "required": true,
         "width": "100%",
         "breakLine": true
