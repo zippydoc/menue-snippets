@@ -1,63 +1,63 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "选择选项",
+    "label": "Select Options",
     "repeat": false,
     "fields": {
       "options.task_type": {
         "type": "select",
-        "label": "任务类型",
+        "label": "Task Type",
         "required": true,
         "options": {
           "generate_lookup_table": {
-            "label": "生成查找表格"
+            "label": "Generate Lookup-Table"
           },
           "apply_lookup_table": {
-            "label": "应用查找表格"
+            "label": "Apply Lookup-Table"
           },
           "apply_regex_table": {
-            "label": "应用正则表格"
+            "label": "Apply Regex-Table"
           },
           "apply_lookup_table_to_cells": {
-            "label": "在单元格上应用查找表格"
+            "label": "Apply Lookup-Table to Cells"
           },
           "apply_regex_table_to_cells": {
-            "label": "在单元格上应用正则表格"
+            "label": "Apply Regex-Table to Cells"
           }
         },
         "val": "generate_lookup_table"
       },
       "options.pattern_type": {
         "type": "select",
-        "label": "模式类型",
-        "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
+        "label": "Pattern Type",
+        "show_if": "options.task_type==''generate_lookup_table'' || options.task_type==''apply_lookup_table'' || options.task_type==''apply_lookup_table_to_cells''",
         "required": true,
         "options": {
           "duplicate_pattern": {
-            "label": "字词模式"
+            "label": "Word Pattern"
           },
           "number_range": {
-            "label": "范围（如：10 < x ≤ 100）"
+            "label": "Ranges(e.g. 10 < x <= 100)"
           }
         },
         "val": "duplicate_pattern"
       },
       "duplicate_option_box": {
         "type": "fieldset",
-        "label": "重复模式选项",
-        "show_if": "options.task_type=='label_duplicates' || (options.task_type=='generate_lookup_table' && options.pattern_type=='duplicate_pattern')",
+        "label": "Duplicate Patterns Option",
+        "show_if": "options.task_type==''label_duplicates'' || (options.task_type==''generate_lookup_table'' && options.pattern_type==''duplicate_pattern'')",
         "repeat": false,
         "fields": {
           "options.minimum_number_of_matching_characters": {
             "type": "text",
-            "label": "最小匹配字符数",
+            "label": "Minimum Number of matching Characters",
             "val": "3",
             "required": true,
             "style": "min-width: 240px"
           },
           "options.minimum_number_of_duplicates": {
             "type": "text",
-            "label": "最小重复次数",
+            "label": "Minimum Number of duplicates",
             "val": "2",
             "required": true,
             "style": "min-width: 240px",
@@ -67,23 +67,23 @@
       },
       "number_range_option_box": {
         "type": "fieldset",
-        "label": "数字范围选项",
-        "show_if": "options.task_type=='generate_lookup_table' && options.pattern_type=='number_range'",
+        "label": "Number Ranges Option",
+        "show_if": "options.task_type==''generate_lookup_table'' && options.pattern_type==''number_range''",
         "repeat": false,
         "fields": {
           "options.number_range.range_type": {
             "type": "select",
-            "label": "范围类型",
+            "label": "Range Type",
             "required": true,
             "options": {
               "equal_interval": {
-                "label": "N 等间隔"
+                "label": "N Equal Intervals"
               },
               "equal_range": {
-                "label": "相等范围"
+                "label": "Equal Range"
               },
               "custom_range": {
-                "label": "自定义范围"
+                "label": "Custom Range"
               }
             },
             "val": "equal_interval"
@@ -91,38 +91,38 @@
           "options.number_range.n_value": {
             "type": "text",
             "label": "N",
-            "show_if": "options.number_range.range_type=='equal_interval'",
+            "show_if": "options.number_range.range_type==''equal_interval''",
             "val": "3",
             "required": true
           },
           "options.number_range.range_value": {
             "type": "text",
-            "label": "范围",
-            "show_if": "options.number_range.range_type=='equal_range'",
+            "label": "Range",
+            "show_if": "options.number_range.range_type==''equal_range''",
             "val": "10",
             "required": true
           },
           "options.number_range.custom_ranges": {
             "type": "fieldset",
-            "label": "添加自定义范围模式",
-            "show_if": "options.number_range.range_type=='custom_range'",
+            "label": "Add Custom Range Pattern",
+            "show_if": "options.number_range.range_type==''custom_range''",
             "repeat": true,
             "fields": {
               "pattern": {
                 "type": "text",
-                "label": "模式",
+                "label": "Pattern",
                 "val": "0<=x<10",
                 "required": true
               },
               "label": {
                 "type": "text",
-                "label": "标签",
+                "label": "Label",
                 "val": "positive10",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "删除",
+                "label": "Delete",
                 "function": "DELETE_ROW"
               }
             }
@@ -130,70 +130,122 @@
         },
         "breakLine": true
       },
-      "options.lookup_table_id": {
+      "options.lookup_table_type": {
         "type": "select",
-        "label": "查找表格",
-        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
-        "bind": "TABLES",
-        "empty": "",
-        "required": true
-      },
-      "options.partial_match": {
-        "type": "checkbox",
-        "label": "部分匹配",
-        "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.case_sensitive": {
-        "type": "checkbox",
-        "label": "区分大小写",
-        "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      },
-      "options.use_delimiter": {
-        "type": "checkbox",
-        "label": "自定义分隔符",
-        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "options.delimiter": {
-        "type": "text",
-        "label": "输入分隔符",
-        "show_if": "options.use_delimiter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
-        "val": ";",
+        "label": "Lookup Table Type",
+        "show_if": "options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'' || options.task_type==''apply_lookup_table_to_cells'' || options.task_type==''apply_regex_table_to_cells''",
         "required": true,
-        "breakLine": true
+        "options": {
+          "select_lookup_table": {
+            "label": "Select Lookup Table"
+          },
+          "custom_lookup_table": {
+            "label": "Custom Lookup Table"
+          }
+        },
+        "val": "select_lookup_table"
+      },
+      "lookup_table_frame": {
+        "type": "fieldset",
+        "label": "",
+        "show_if": "options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'' || options.task_type==''apply_lookup_table_to_cells'' || options.task_type==''apply_regex_table_to_cells''",
+        "repeat": false,
+        "fields": {
+          "options.lookup_table_id": {
+            "type": "select",
+            "label": "Lookup Table",
+            "show_if": "options.lookup_table_type==''select_lookup_table''",
+            "bind": "TABLES",
+            "empty": "",
+            "required": true,
+            "breakLine": true
+          },
+          "options.custom_lookup_table": {
+            "type": "fieldset",
+            "label": "Custom Lookup Table",
+            "show_if": "options.lookup_table_type==''custom_lookup_table''",
+            "repeat": true,
+            "fields": {
+              "lookup": {
+                "type": "text",
+                "label": "Lookup",
+                "val": "",
+                "required": true
+              },
+              "label": {
+                "type": "text",
+                "label": "Label",
+                "val": "",
+                "required": true
+              },
+              "delete": {
+                "type": "button",
+                "label": "Delete",
+                "function": "DELETE_ROW"
+              }
+            }
+          },
+          "options.partial_match": {
+            "type": "checkbox",
+            "label": "Partial Match",
+            "show_if": "options.pattern_type==''duplicate_pattern'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_lookup_table_to_cells'')",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "style": "margin-top: 10px",
+            "breakLine": true
+          },
+          "options.case_sensitive": {
+            "type": "checkbox",
+            "label": "Case Sensitive",
+            "show_if": "options.pattern_type==''duplicate_pattern'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_lookup_table_to_cells'')",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.use_delimiter": {
+            "type": "checkbox",
+            "label": "Custom Delimiter",
+            "show_if": "options.task_type==''apply_lookup_table'' || options.task_type==''apply_lookup_table_to_cells''",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.delimiter": {
+            "type": "text",
+            "label": "Input Delimiter",
+            "show_if": "options.use_delimiter==''true'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_lookup_table_to_cells'')",
+            "val": ";",
+            "required": true,
+            "breakLine": true
+          }
+        }
       },
       "options.input_table.use_filter": {
         "type": "checkbox",
-        "label": "筛选输入表格",
-        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
+        "label": "Use Filter for Input table",
+        "show_if": "options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'' || options.task_type==''apply_lookup_table_to_cells'' || options.task_type==''apply_regex_table_to_cells''",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
+        "style": "margin-top: 10px",
         "breakLine": true
       },
       "input_table_filter_box": {
         "type": "fieldset",
-        "label": "输入表格筛选选项",
-        "show_if": "options.input_table.use_filter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
+        "label": "Input Table Filter Options",
+        "show_if": "options.input_table.use_filter==''true'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'' || options.task_type==''apply_lookup_table_to_cells'' || options.task_type==''apply_regex_table_to_cells'')",
         "repeat": false,
         "fields": {
           "options.input_table.filter": {
             "type": "fieldset",
-            "label": "为输入表格添加筛选条件",
+            "label": "Add Filter Conditions for Input table",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "选择逻辑运算符",
+                "label": "Select Logic Operator",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
@@ -201,14 +253,14 @@
                     "label": "IF"
                   },
                   "if_not": {
-                    "label": "如果不是"
+                    "label": "IF NOT"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "选择逻辑运算符",
+                "label": "Select Logic Operator",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
@@ -229,146 +281,146 @@
               },
               "column": {
                 "type": "select",
-                "label": "选择列",
+                "label": "Select Column",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "选择运算符",
+                "label": "Select Operator",
                 "required": true,
                 "options": {
-                  "包含": {
-                    "label": "包含"
+                  "CONTAINS": {
+                    "label": "CONTAINS"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "包含于"
+                    "label": "CONTAINED IN"
                   },
-                  "开始于": {
-                    "label": "开始于"
+                  "STARTS WITH": {
+                    "label": "STARTS WITH"
                   },
-                  "结尾是": {
-                    "label": "结尾是"
+                  "ENDS WITH": {
+                    "label": "ENDS WITH"
                   },
                   "=": {
-                    "label": "相等"
+                    "label": "EQUAL"
                   },
                   ">": {
-                    "label": "大于"
+                    "label": "GREATER THAN"
                   },
                   ">=": {
-                    "label": "大于或等于"
+                    "label": "GREATER OR EQUAL"
                   },
                   "<": {
-                    "label": "小于"
+                    "label": "SMALLER THAN"
                   },
                   "<=": {
-                    "label": "小于或等于"
+                    "label": "SMALLER OR EQUAL"
                   },
                   "EMPTY": {
-                    "label": "为空"
+                    "label": "IS EMPTY"
                   },
                   "BLANK": {
-                    "label": "为空白"
+                    "label": "IS BLANK"
                   },
-                  "为 NULL": {
-                    "label": "为 NULL"
+                  "IS NULL": {
+                    "label": "IS NULL"
                   },
-                  "正则表达式匹配": {
-                    "label": "正则表达式匹配"
+                  "REGEX MATCH": {
+                    "label": "REGEX MATCH"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "于表格"
+                    "label": "IN TABLE"
                   },
-                  "于正则表格": {
-                    "label": "于正则表格"
+                  "IN REGEX TABLE": {
+                    "label": "IN REGEX TABLE"
                   },
-                  "日期": {
-                    "label": "日期"
+                  "DATE": {
+                    "label": "DATE"
                   }
                 },
-                "val": "包含"
+                "val": "CONTAINS"
               },
               "date_condition": {
                 "type": "select",
-                "label": "选择日期运算符",
+                "label": "Select Date Operator",
                 "required": true,
-                "show_if": "this.condition == 'DATE'",
+                "show_if": "this.condition == ''DATE''",
                 "options": {
                   "<": {
                     "label": "PRIOR"
                   },
                   "<=": {
-                    "label": "先于或等于"
+                    "label": "PRIOR OR EQUAL"
                   },
                   "=": {
-                    "label": "相等"
+                    "label": "EQUAL"
                   },
                   ">": {
-                    "label": "之后"
+                    "label": "AFTER"
                   },
                   ">=": {
-                    "label": "之后或等于"
+                    "label": "AFTER OR EQUAL"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "选择区分大小写",
+                "label": "Select Case Sensitive",
                 "required": true,
-                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "options": {
                   "yes": {
-                    "label": "区分大小写"
+                    "label": "Case Sensitive"
                   },
                   "no": {
-                    "label": "不区分大小写"
+                    "label": "Case Insensitive"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "选择日期",
-                "show_if": "this.condition=='DATE'",
+                "label": "Select Date",
+                "show_if": "this.condition==''DATE''",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "输入值",
-                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "label": "Input Value",
+                "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "选择表格",
+                "label": "Select Table",
                 "bind": "TABLES",
                 "empty": "",
-                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "required": true
               },
               "compare_column": {
                 "type": "select",
-                "label": "选择列",
+                "label": "Select Column",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
-                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "删除",
+                "label": "Delete",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.input_table.apply_to_record": {
             "type": "checkbox",
-            "label": "为输入表格筛选应用至记录",
+            "label": "Apply to Record for Input table filter",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -377,13 +429,13 @@
           },
           "input_table_apply_to_group_box": {
             "type": "fieldset",
-            "label": "输入表格应用至组",
-            "show_if": "options.input_table.apply_to_record=='false'",
+            "label": "Apply to Group of Input table",
+            "show_if": "options.input_table.apply_to_record==''false''",
             "repeat": false,
             "fields": {
               "options.input_table.apply_to_group_columns": {
                 "type": "select",
-                "label": "选择组列",
+                "label": "Select Group Columns",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
@@ -397,8 +449,8 @@
       },
       "options.lookup_table.use_filter": {
         "type": "checkbox",
-        "label": "筛选查找表格",
-        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
+        "label": "Use Filter for Lookup table",
+        "show_if": "options.lookup_table_type==''select_lookup_table'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'' || options.task_type==''apply_lookup_table_to_cells'' || options.task_type==''apply_regex_table_to_cells'')",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -407,18 +459,18 @@
       },
       "lookup_table_filter_box": {
         "type": "fieldset",
-        "label": "查找表格筛选选项",
-        "show_if": "options.lookup_table.use_filter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
+        "label": "Lookup Table Filter Options",
+        "show_if": "options.lookup_table.use_filter==''true'' && options.lookup_table_type==''select_lookup_table'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'' || options.task_type==''apply_lookup_table_to_cells'' || options.task_type==''apply_regex_table_to_cells'')",
         "repeat": false,
         "fields": {
           "options.lookup_table.filter": {
             "type": "fieldset",
-            "label": "为查找表格添加筛选条件",
+            "label": "Add Filter Conditions for Lookup table",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "选择逻辑运算符",
+                "label": "Select Logic Operator",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
@@ -426,14 +478,14 @@
                     "label": "IF"
                   },
                   "if_not": {
-                    "label": "如果不是"
+                    "label": "IF NOT"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "选择逻辑运算符",
+                "label": "Select Logic Operator",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
@@ -454,152 +506,146 @@
               },
               "column": {
                 "type": "select",
-                "label": "选择列",
+                "label": "Select Column",
                 "table": "options.lookup_table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "选择运算符",
+                "label": "Select Operator",
                 "required": true,
                 "options": {
-                  "包含": {
-                    "label": "包含"
+                  "CONTAINS": {
+                    "label": "CONTAINS"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "包含于"
+                    "label": "CONTAINED IN"
                   },
-                  "开始于": {
-                    "label": "开始于"
+                  "STARTS WITH": {
+                    "label": "STARTS WITH"
                   },
-                  "结尾是": {
-                    "label": "结尾是"
+                  "ENDS WITH": {
+                    "label": "ENDS WITH"
                   },
                   "=": {
-                    "label": "相等"
+                    "label": "EQUAL"
                   },
                   ">": {
-                    "label": "大于"
+                    "label": "GREATER THAN"
                   },
                   ">=": {
-                    "label": "大于或等于"
+                    "label": "GREATER OR EQUAL"
                   },
                   "<": {
-                    "label": "小于"
+                    "label": "SMALLER THAN"
                   },
                   "<=": {
-                    "label": "小于或等于"
+                    "label": "SMALLER OR EQUAL"
                   },
                   "EMPTY": {
-                    "label": "为空"
+                    "label": "IS EMPTY"
                   },
                   "BLANK": {
-                    "label": "为空白"
+                    "label": "IS BLANK"
                   },
-                  "为 NULL": {
-                    "label": "为 NULL"
+                  "IS NULL": {
+                    "label": "IS NULL"
                   },
-                  "正则表达式匹配": {
-                    "label": "正则表达式匹配"
+                  "REGEX MATCH": {
+                    "label": "REGEX MATCH"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "于表格"
+                    "label": "IN TABLE"
                   },
-                  "于正则表格": {
-                    "label": "于正则表格"
+                  "IN REGEX TABLE": {
+                    "label": "IN REGEX TABLE"
                   },
-                  "日期": {
-                    "label": "日期"
+                  "DATE": {
+                    "label": "DATE"
                   }
                 },
-                "val": "包含"
+                "val": "CONTAINS"
               },
               "date_condition": {
                 "type": "select",
-                "label": "选择日期运算符",
+                "label": "Select Date Operator",
                 "required": true,
-                "show_if": "this.condition == 'DATE'",
+                "show_if": "this.condition == ''DATE''",
                 "options": {
                   "<": {
                     "label": "PRIOR"
                   },
                   "<=": {
-                    "label": "先于或等于"
+                    "label": "PRIOR OR EQUAL"
                   },
                   "=": {
-                    "label": "相等"
+                    "label": "EQUAL"
                   },
                   ">": {
-                    "label": "之后"
+                    "label": "AFTER"
                   },
                   ">=": {
-                    "label": "之后或等于"
+                    "label": "AFTER OR EQUAL"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "选择区分大小写",
+                "label": "Select Case Sensitive",
                 "required": true,
-                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "options": {
                   "yes": {
-                    "label": "区分大小写"
+                    "label": "Case Sensitive"
                   },
                   "no": {
-                    "label": "不区分大小写"
+                    "label": "Case Insensitive"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "选择日期",
-                "show_if": "this.condition=='DATE'",
+                "label": "Select Date",
+                "show_if": "this.condition==''DATE''",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "输入值",
-        "bind": "COLUMNS",
-        "breakLine": true
-      }
-    }
-  }
-}
-                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "label": "Input Value",
+                "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "选择表格",
+                "label": "Select Table",
                 "bind": "TABLES",
                 "empty": "",
-                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "required": true
               },
               "compare_column": {
                 "type": "select",
-                "label": "选择列",
+                "label": "Select Column",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
-                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "删除",
+                "label": "Delete",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.lookup_table.apply_to_record": {
             "type": "checkbox",
-            "label": "为查找表格筛选应用至记录",
+            "label": "Apply to Record for Lookup table filter",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -608,13 +654,13 @@
           },
           "lookup_table_apply_to_group_box": {
             "type": "fieldset",
-            "label": "查找表格应用至组",
-            "show_if": "options.lookup_table.apply_to_record=='false'",
+            "label": "Apply to Group of Lookup table",
+            "show_if": "options.lookup_table.apply_to_record==''false''",
             "repeat": false,
             "fields": {
               "options.lookup_table.apply_to_group_columns": {
                 "type": "select",
-                "label": "选择组列",
+                "label": "Select Group Columns",
                 "required": true,
                 "width": "100%",
                 "table": "options.lookup_table",
@@ -628,17 +674,18 @@
       },
       "options.input_table.apply_to_group_for_concatenation.enabled": {
         "type": "checkbox",
-        "label": "行连接应用至组",
-        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
+        "label": "Apply to Group for Rows Concatenation",
+        "show_if": "options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table''",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
-        "style": "margin-top: 10px"
+        "style": "margin-top: 10px",
+        "breakLine": true
       },
       "options.input_table.apply_to_group_for_concatenation.allow_group_lists": {
         "type": "checkbox",
-        "label": "允许组列表",
-        "show_if": "options.input_table.apply_to_group_for_concatenation.enabled=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
+        "label": "Allow Group-Lists",
+        "show_if": "options.input_table.apply_to_group_for_concatenation.enabled==''true'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'')",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -647,8 +694,14 @@
       },
       "options.input_table.apply_to_group_for_concatenation.group_column": {
         "type": "select",
-        "label": "为行连接选择组列",
-        "show_if": "options.input_table.apply_to_group_for_concatenation.enabled=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
+        "label": "Select Group Column for Rows Concatenation",
+        "show_if": "options.input_table.apply_to_group_for_concatenation.enabled==''true'' && (options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'')",
         "required": true,
         "width": "100%",
         "table": "input_table",
+        "bind": "COLUMNS",
+        "breakLine": true
+      }
+    }
+  }
+}
