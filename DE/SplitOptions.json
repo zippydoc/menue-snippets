@@ -1,70 +1,70 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Optionen auswählen",
+    "label": "Opções de Seleção",
     "repeat": false,
     "fields": {
       "options.split_method": {
         "type": "select",
-        "label": "Split-Verfahren",
+        "label": "Método de Divisão",
         "required": true,
         "options": {
           "standard": {
-            "label": "Standard"
+            "label": "Padrão"
           },
           "regex": {
-            "label": "RegEx"
+            "label": "Expressão Regular"
           }
         },
         "val": "standard"
       },
       "options.split_type": {
         "type": "select",
-        "label": "Typ geteilt",
+        "label": "Tipo de divisão",
         "required": true,
         "options": {
           "split_to_columns": {
-            "label": "Auf Spalten aufteilen"
+            "label": "Dividir em Colunas"
           },
           "split_to_rows": {
-            "label": "Aufteilung in Reihen"
+            "label": "Dividir em Linhas"
           }
         },
         "val": "split_to_columns"
       },
       "options.standard_delimiter": {
         "type": "select",
-        "label": "Trennzeichen",
+        "label": "Delimitador de Divisão",
         "show_if": "options.split_method==''standard''",
         "required": true,
         "options": {
           "tabs": {
-            "label": "Tabulator"
+            "label": "Janelas"
           },
           "space": {
-            "label": "Leerzeichen"
+            "label": "Espaço"
           },
           "whitespace": {
-            "label": "Nicht sichtbare Zeichen"
+            "label": "Espaço em Branco"
           },
           "linebreak": {
-            "label": "Zeilenumbruch"
+            "label": "Quebra de linha"
           },
           "punctuation": {
-            "label": "Zeichensetzung"
+            "label": "Pontuação"
           },
           "punctuation_whitespace": {
-            "label": "Interpunktion und Leerzeichen u.ä."
+            "label": "Pontuação e Espaço em Branco"
           },
           "custom": {
-            "label": "Benutzerdefiniert"
+            "label": "Personalizar"
           }
         },
         "val": "punctuation"
       },
       "options.delimiter": {
         "type": "text",
-        "label": "Trennzeichen",
+        "label": "Delimitador de Divisão",
         "show_if": "options.split_method==''standard'' && options.standard_delimiter==''custom''",
         "val": ",,
         trim": "false",
@@ -73,7 +73,7 @@
       },
       "format_frame": {
         "type": "fieldset",
-        "label": "Zu parsendes Format für Split",
+        "label": "Formatar para Análise e Divisão",
         "show_if": "options.split_method==''regex''",
         "repeat": false,
         "fields": {
@@ -88,7 +88,7 @@
           },
           "options.format_to_convert.case_insensitive": {
             "type": "checkbox",
-            "label": "Groß-/Kleinschreibung nicht beachten",
+            "label": "Insensível a Maiúsculas e Minúsculas",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
