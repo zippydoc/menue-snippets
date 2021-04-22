@@ -1,46 +1,46 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Sélectionner les options",
+    "label": "Select Options",
     "repeat": false,
     "fields": {
       "type": {
         "type": "select",
-        "label": "Sélectionner le type",
+        "label": "Select Type",
         "val": "first_n",
         "options": {
           "first_n": {
-            "label": "Premier N"
+            "label": "First N"
           },
           "last_n": {
-            "label": "Dernier N"
+            "label": "Last N"
           },
           "custom_selection": {
-            "label": "Sélection personnalisée"
+            "label": "Custom Selection"
           },
           "skip_first_n": {
-            "label": "Sauter le premier N"
+            "label": "Skip First N"
           },
           "skip_last_n": {
-            "label": "Sauter le dernier N"
+            "label": "Skip Last N"
           },
           "first_n_percent": {
-            "label": "Premier N%"
+            "label": "First N%"
           },
           "last_n_percent": {
-            "label": "Dernier N%"
+            "label": "Last N%"
           },
           "random_n_records": {
-            "label": "N aléatoire"
+            "label": "Random N"
           },
           "random_n_percent": {
-            "label": "N aléatoire"
+            "label": "Random N%"
           },
           "random_choice_1_n": {
-            "label": "Choix aléatoire 1 : N"
+            "label": "Random Choice 1:N"
           },
           "every_nth_record": {
-            "label": "Chaque nième registre"
+            "label": "Every Nth Record"
           }
         },
         "required": true,
@@ -49,8 +49,8 @@
       },
       "n": {
         "type": "text",
-        "label": "Entrée N",
-        "show_if": "type!='custom_selection'",
+        "label": "Input N",
+        "show_if": "type!=''custom_selection''",
         "val": "1",
         "required": true,
         "width": "100%",
@@ -58,8 +58,8 @@
       },
       "ranges": {
         "type": "text",
-        "label": "Intervalles d'entrée",
-        "show_if": "type=='custom_selection'",
+        "label": "Input Ranges",
+        "show_if": "type==''custom_selection''",
         "val": "-2; 4-6; 9; 12+",
         "required": true,
         "width": "100%",
@@ -67,23 +67,23 @@
       },
       "set_offset": {
         "type": "checkbox",
-        "label": "Compensation",
-        "show_if": "type=='every_nth_record'",
+        "label": "Offset",
+        "show_if": "type==''every_nth_record''",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "offset": {
         "type": "text",
-        "label": "Compensation",
-        "show_if": "type=='every_nth_record' && set_offset=='true'",
+        "label": "Offset",
+        "show_if": "type==''every_nth_record'' && set_offset==''true''",
         "val": "1",
         "required": true,
         "breakLine": true
       },
       "group_by_column": {
         "type": "checkbox",
-        "label": "Groupe par colonne",
+        "label": "Group by column",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -91,13 +91,13 @@
       },
       "columns_to_group_box": {
         "type": "fieldset",
-        "label": "Groupe par colonne",
-        "show_if": "group_by_column=='true'",
+        "label": "Group by column",
+        "show_if": "group_by_column==''true''",
         "repeat": false,
         "fields": {
           "columns_to_group": {
             "type": "select",
-            "label": "Sélectionner les colonnes du groupe",
+            "label": "Select Group Columns",
             "required": true,
             "width": "100%",
             "table": "input_table",
