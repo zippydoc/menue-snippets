@@ -1,70 +1,70 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Opções de Seleção",
+    "label": "Optionen auswählen",
     "repeat": false,
     "fields": {
       "options.split_method": {
         "type": "select",
-        "label": "Método de Divisão",
+        "label": "Split-Verfahren",
         "required": true,
         "options": {
           "standard": {
-            "label": "Padrão"
+            "label": "Standard"
           },
           "regex": {
-            "label": "Expressão Regular"
+            "label": "RegEx"
           }
         },
         "val": "standard"
       },
       "options.split_type": {
         "type": "select",
-        "label": "Tipo de divisão",
+        "label": "Typ geteilt",
         "required": true,
         "options": {
           "split_to_columns": {
-            "label": "Dividir em Colunas"
+            "label": "Auf Spalten aufteilen"
           },
           "split_to_rows": {
-            "label": "Dividir em Linhas"
+            "label": "Aufteilung in Reihen"
           }
         },
         "val": "split_to_columns"
       },
       "options.standard_delimiter": {
         "type": "select",
-        "label": "Delimitador de Divisão",
+        "label": "Trennzeichen",
         "show_if": "options.split_method==''standard''",
         "required": true,
         "options": {
           "tabs": {
-            "label": "Janelas"
+            "label": "Tabulator"
           },
           "space": {
-            "label": "Espaço"
+            "label": "Leerzeichen"
           },
           "whitespace": {
-            "label": "Espaço em Branco"
+            "label": "Nicht sichtbare Zeichen"
           },
           "linebreak": {
-            "label": "Quebra de linha"
+            "label": "Zeilenumbruch"
           },
           "punctuation": {
-            "label": "Pontuação"
+            "label": "Zeichensetzung"
           },
           "punctuation_whitespace": {
-            "label": "Pontuação e Espaço em Branco"
+            "label": "Interpunktion und Leerzeichen u.ä."
           },
           "custom": {
-            "label": "Personalizar"
+            "label": "Benutzerdefiniert"
           }
         },
         "val": "punctuation"
       },
       "options.delimiter": {
         "type": "text",
-        "label": "Delimitador de Divisão",
+        "label": "Trennzeichen",
         "show_if": "options.split_method==''standard'' && options.standard_delimiter==''custom''",
         "val": ",,
         trim": "false",
@@ -73,7 +73,7 @@
       },
       "format_frame": {
         "type": "fieldset",
-        "label": "Formatar para Análise e Divisão",
+        "label": "Zu parsendes Format für Split",
         "show_if": "options.split_method==''regex''",
         "repeat": false,
         "fields": {
@@ -88,7 +88,7 @@
           },
           "options.format_to_convert.case_insensitive": {
             "type": "checkbox",
-            "label": "Insensível a Maiúsculas e Minúsculas",
+            "label": "Groß-/Kleinschreibung nicht beachten",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
