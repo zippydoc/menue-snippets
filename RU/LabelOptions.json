@@ -1,40 +1,40 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Добавить метку",
+    "label": "Add Label",
     "repeat": false,
     "fields": {
       "add_column": {
         "type": "text",
-        "label": "Название стобца для метки",
-        "val": "Ярлык",
+        "label": "Column name for label",
+        "val": "Label",
         "required": true,
         "width": "100%",
         "breakLine": true
       },
       "add_label": {
         "type": "text",
-        "label": "Добавить метку",
+        "label": "Add label",
         "val": "label1",
         "required": true
       },
       "use_custom_delimiter": {
         "type": "checkbox",
-        "label": "Пользовательский разделитель",
+        "label": "Custom Delimiter",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "custom_delimiter": {
         "type": "text",
-        "label": "Пользовательский разделитель",
-        "show_if": "use_custom_delimiter=='true'",
+        "label": "Custom Delimiter",
+        "show_if": "use_custom_delimiter==''true''",
         "val": ";",
         "required": true
       },
       "do_not_duplicate": {
         "type": "checkbox",
-        "label": "Не дублируется",
+        "label": "Don''t duplicate",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -42,191 +42,191 @@
       },
       "filter_box": {
         "type": "fieldset",
-        "label": "Настройки фильтра",
+        "label": "Filter Options",
         "repeat": false,
         "fields": {
           "filter": {
             "type": "fieldset",
-            "label": "Выбрать условия для маркировки",
+            "label": "Select Conditions for Labeling",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Выбрать оператора логики",
+                "label": "Select Logic Operator",
                 "required": true,
                 "show_if" :  "$index == 0",
                 "options": {
                   "if": {
-                    "label": "ЕСЛИ"
+                    "label": "IF"
                   },
                   "if_not": {
-                    "label": "ЕСЛИ НЕ"
+                    "label": "IF NOT"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "Выбрать оператора логики",
+                "label": "Select Logic Operator",
                 "show_if" :  "$index > 0",
                 "options": {
                   "and": {
-                    "label": "И"
+                    "label": "AND"
                   },
                   "or": {
-                    "label": "ИЛИ"
+                    "label": "OR"
                   },
                   "and_not": {
-                    "label": "И НЕ"
+                    "label": "AND NOT"
                   },
                   "or_not": {
-                    "label": "ИЛИ НЕ"
+                    "label": "OR NOT"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": "Выбрать столбец",
+                "label": "Select Column",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Выбрать оператора",
+                "label": "Select Operator",
                 "required": true,
                 "options": {
-                  "СОДЕРЖИТ": {
-                    "label": "СОДЕРЖИТ"
+                  "CONTAINS": {
+                    "label": "CONTAINS"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "СОДЕРЖАЛОСЬ В"
+                    "label": "CONTAINED IN"
                   },
-                  "НАЧИНАЕТСЯ С": {
-                    "label": "НАЧИНАЕТСЯ С"
+                  "STARTS WITH": {
+                    "label": "STARTS WITH"
                   },
-                  "ЗАКАНЧИВАЕТСЯ С": {
-                    "label": "ЗАКАНЧИВАЕТСЯ С"
+                  "ENDS WITH": {
+                    "label": "ENDS WITH"
                   },
                   "=": {
-                    "label": "Равный"
+                    "label": "EQUAL"
                   },
                   ">": {
-                    "label": "БОЛЬШЕ ЧЕМ"
+                    "label": "GREATER THAN"
                   },
                   ">=": {
-                    "label": "БОЛЬШИЙ ИЛИ РАВНЫЙ"
+                    "label": "GREATER OR EQUAL"
                   },
                   "<": {
-                    "label": "МЕНЬШЕ ЧЕМ"
+                    "label": "SMALLER THAN"
                   },
                   "<=": {
-                    "label": "МЕНЬШИЙ ИЛИ РАВНЫЙ"
+                    "label": "SMALLER OR EQUAL"
                   },
                   "EMPTY": {
-                    "label": "ПУСТО"
+                    "label": "IS EMPTY"
                   },
                   "BLANK": {
-                    "label": "ПУСТО"
+                    "label": "IS BLANK"
                   },
-                  "НОЛЬ": {
-                    "label": "НОЛЬ"
+                  "IS NULL": {
+                    "label": "IS NULL"
                   },
-                  "Совпадение регулярного выражения": {
-                    "label": "Совпадение регулярного выражения"
+                  "REGEX MATCH": {
+                    "label": "REGEX MATCH"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "В ТАБЛИЦЕ"
+                    "label": "IN TABLE"
                   },
-                  "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ": {
-                    "label": "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ"
+                  "IN REGEX TABLE": {
+                    "label": "IN REGEX TABLE"
                   },
-                  "ДАТА": {
-                    "label": "ДАТА"
+                  "DATE": {
+                    "label": "DATE"
                   }
                 },
-                "val": "СОДЕРЖИТ"
+                "val": "CONTAINS"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Выбрать оператора даты",
+                "label": "Select Date Operator",
                 "required": true,
-                "show_if": "this.condition == 'DATE'",
+                "show_if": "this.condition == ''DATE''",
                 "options": {
                   "<": {
-                    "label": "ПРЕДЫДУЩИЙ"
+                    "label": "PRIOR"
                   },
                   "<=": {
-                    "label": "ПРЕДЫДУЩИЙ ИЛИ РАВНЫЙ"
+                    "label": "PRIOR OR EQUAL"
                   },
                   "=": {
-                    "label": "Равный"
+                    "label": "EQUAL"
                   },
                   ">": {
-                    "label": "ПОСЛЕ"
+                    "label": "AFTER"
                   },
                   ">=": {
-                    "label": "ПОСЛЕ ИЛИ РАВНО"
+                    "label": "AFTER OR EQUAL"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Выбрать с учетом регистра",
+                "label": "Select Case Sensitive",
                 "required": true,
-                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "options": {
                   "yes": {
-                    "label": "С учетом регистра"
+                    "label": "Case Sensitive"
                   },
                   "no": {
-                    "label": "Без учета регистра"
+                    "label": "Case Insensitive"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Выбрать дату",
-                "show_if": "this.condition=='DATE'",
+                "label": "Select Date",
+                "show_if": "this.condition==''DATE''",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Добавить значение",
-                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "label": "Input Value",
+                "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Выбрать таблицу",
+                "label": "Select Table",
                 "bind": "TABLES",
                 "empty": "",
-                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "required": true
               },
               "compare_column": {
                 "type": "select",
-                "label": "Выбрать столбец",
+                "label": "Select Column",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
-                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "Удалить",
+                "label": "Delete",
                 "function": "DELETE_ROW"
               }
             }
           },
           "apply_to_record": {
             "type": "checkbox",
-            "label": "Применить к регистру",
+            "label": "Apply to Record",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -235,13 +235,13 @@
           },
           "apply_to_group_box": {
             "type": "fieldset",
-            "label": "Применить к группе",
-            "show_if": "apply_to_record=='false'",
+            "label": "Apply to Group",
+            "show_if": "apply_to_record==''false''",
             "repeat": false,
             "fields": {
               "apply_to_group_columns": {
                 "type": "select",
-                "label": "Выбрать групповые столбцы",
+                "label": "Select Group Columns",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
