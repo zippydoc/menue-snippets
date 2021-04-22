@@ -1,16 +1,14 @@
-
-                  },
-        },{
+{
   "output": {
     "type": "fieldset",
     "label": "Ausgabetabelle definieren",
-    "show_if": "options.from=='database' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='true') || (options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='false' && options.use_filename_as_output_table_name=='false')",
+    "show_if": "options.from==''database'' || (options.from==''web'' && options.output_format==''file_list'') || (options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''true'') || (options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''false'' && options.use_filename_as_output_table_name==''false'')",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
         "label": "Name der Ausgabetabelle",
-        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'",
+        "show_if": "(output.set_options==''true'' && output.compose_table_name==''false'') || output.set_options==''false''",
         "minLength": 1,
         "val": "",
         "width": "100%",
@@ -26,7 +24,7 @@
       "output_options_box": {
         "type": "fieldset",
         "label": "Ausgabe-Optionen",
-        "show_if": "output.set_options=='true'",
+        "show_if": "output.set_options==''true''",
         "repeat": false,
         "fields": {
           "output.compose_table_name": {
@@ -40,13 +38,13 @@
           "compose_table_name_frame": {
             "type": "fieldset",
             "label": "Name der Ausgabetabelle zusammenstellen",
-            "show_if": "output.compose_table_name=='true'",
+            "show_if": "output.compose_table_name==''true''",
             "repeat": false,
             "fields": {
               "output.prefix_rule": {
                 "type": "select",
                 "label": "Präfix",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "empty",
                 "options": {
                   "empty": {
@@ -75,7 +73,7 @@
               "output.prefix_text": {
                 "type": "text",
                 "label": "Präfix Text",
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
+                "show_if": "output.compose_table_name==''true'' && output.prefix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
                 "val": ""
@@ -83,14 +81,14 @@
               "output.core_delimiter": {
                 "type": "text",
                 "label": "Begrenzer",
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
+                "show_if": "output.compose_table_name==''true'' && output.prefix_rule!=''empty''",
                 "val": "_",
                 "width": "50px"
               },
               "output.core_rule": {
                 "type": "select",
                 "label": "Tabelle Name",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
                   "script_name": {
@@ -104,7 +102,7 @@
               "output.core_text": {
                 "type": "text",
                 "label": "Haupttabelle Name",
-                "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
+                "show_if": "output.compose_table_name==''true'' && output.core_rule==''custom''",
                 "required": true,
                 "minLength": 1,
                 "maxLength": 31,
@@ -113,14 +111,14 @@
               "output.suffix_delimiter": {
                 "type": "text",
                 "label": "Begrenzer",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "_",
                 "width": "50px"
               },
               "output.suffix_rule": {
                 "type": "select",
                 "label": "Suffix",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
                   "empty": {
@@ -149,7 +147,7 @@
               "output.suffix_text": {
                 "type": "text",
                 "label": "Suffix Text",
-                "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
+                "show_if": "output.compose_table_name==''true'' && output.suffix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
                 "val": "",
@@ -158,7 +156,7 @@
               "output.timezone": {
                 "type": "select",
                 "label": "Zeitzone",
-                "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+                "show_if": "output.compose_table_name==''true'' && (output.prefix_rule==''date_string_type1'' || output.prefix_rule==''date_string_type2'' || output.prefix_rule==''time_string'' || output.prefix_rule==''datetime_string'' || output.suffix_rule==''date_string_type1'' || output.suffix_rule==''date_string_type2'' || output.suffix_rule==''time_string'' || output.suffix_rule==''datetime_string'')",
                 "val": "Europa/Berlin",
                 "required": true,
                 "options": {
@@ -245,6 +243,7 @@
                   },
                   "Europe/Mariehamn": {
                     "label": "Moscow, Istanbul, Qatar"
+                  },
                   "Asia/Kolkata": {
                     "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
                   },
@@ -286,64 +285,93 @@
               }
             }
           },
-          "output.options.location": {
-            "type": "text",
-            "label": "Standort angeben",
-            "val": "A1"
-          },
-          "output.options.table_mode": {
-            "type": "select",
-            "label": "Einfügen",
-            "val": "content_only",
-            "options": {
-              "content_only": {
-                "label": "Nur Inhalt"
+          "download_table_setting_frame": {
+            "type": "fieldset",
+            "label": "Download Table Settings",
+            "repeat": false,
+            "fields": {
+              "output.options.location": {
+                "type": "text",
+                "label": "Standort angeben",
+                "val": "A1",
+                "breakLine": true
               },
-              "fully_formatted": {
-                "label": "Vollständig formatiert"
-              }
-            }
-          },
-          "output.options.formatted_as_table": {
-            "type": "checkbox",
-            "label": "Als Tabelle formatiert",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false",
-            "breakLine": true
-          },
-          "output.add_tag": {
-            "type": "checkbox",
-            "label": "Tag hinzufügen",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "output.tag_name": {
-            "type": "text",
-            "label": "Tag Name",
-            "show_if": "output.add_tag=='true'",
-            "required": true,
-            "minLength": 1,
-            "maxLength": 255,
-            "val": "",
-            "breakLine": true,
-            "style": "margin-left: 15px"
-          },
-          "output.options.visibility": {
-            "type": "select",
-            "label": "Sichtbarkeit",
-            "val": "current_flow",
-            "options": {
-              "current_flow": {
-                "label": "Stromfluss"
+              "output.options.formatted_as_table": {
+                "type": "checkbox",
+                "label": "Als Tabelle formatiert",
+                "val": "true",
+                "isOn": "true",
+                "isOff": "false",
+                "breakLine": true
               },
-              "all_flow": {
-                "label": "Alle Flows"
+              "output.add_tag": {
+                "type": "checkbox",
+                "label": "Tag hinzufügen",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false"
+              },
+              "output.tag_name": {
+                "type": "text",
+                "label": "Tag Name",
+                "show_if": "output.add_tag==''true''",
+                "required": true,
+                "minLength": 1,
+                "maxLength": 255,
+                "val": "",
+                "breakLine": true,
+                "style": "margin-left: 15px"
+              },
+              "output.options.visibility": {
+                "type": "select",
+                "label": "Sichtbarkeit",
+                "val": "current_flow",
+                "options": {
+                  "current_flow": {
+                    "label": "Stromfluss"
+                  },
+                  "all_flow": {
+                    "label": "Alle Flows"
+                  }
+                },
+                "breakLine": true
+              },
+              "output.options.table_mode": {
+                "type": "select",
+                "label": "Einfügen",
+                "val": "content_only",
+                "options": {
+                  "content_only": {
+                    "label": "Nur Inhalt"
+                  },
+                  "fully_formatted": {
+                    "label": "Vollständig formatiert"
+                  }
+                }
               }
             }
           }
+        },
         "breakLine": true
+      },
+      "options.output_duplicated": {
+        "type": "select",
+        "label": "Wenn dupliziert",
+        "val": "drop_if_exist",
+        "options": {
+          "drop_if_exist": {
+            "label": "Erstellen oder Verwerfen (falls bereits vorhanden)"
+          },
+          "error_if_exist": {
+            "label": "Neu erstellen (wirft Fehler, wenn vorhanden)"
+          },
+          "error_if_not_exist": {
+            "label": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
+          },
+          "append": {
+            "label": "Tabelle anhängen"
+          }
+        }
       }
     }
   }
