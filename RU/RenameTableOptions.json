@@ -1,41 +1,41 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Опции",
+    "label": "Options",
     "repeat": false,
     "fields": {
       "rename_columns": {
         "type": "checkbox",
-        "label": "Переименовать столбцы",
+        "label": "Rename Columns",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "columns": {
         "type": "fieldset",
-        "label": "Выбрать строки",
-        "show_if": "rename_columns=='true'",
+        "label": "Select Columns",
+        "show_if": "rename_columns==''true''",
         "repeat": true,
         "fields": {
           "field_name": {
             "type": "select",
-            "label": "Выбрать столбец",
+            "label": "Select Column",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
           "rename": {
-            "show_if": "this.field_name != ''",
+            "show_if": "this.field_name != ''''",
             "type": "text",
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "Переименовать на"
+            "label": "Rename to"
           },
           "delete": {
-            "show_if": "this.field_name != ''",
+            "show_if": "this.field_name != ''''",
             "type": "button",
-            "label": "Удалить",
+            "label": "Delete",
             "function": "DELETE_ROW"
           }
         },
@@ -43,7 +43,7 @@
       },
       "rename_rows": {
         "type": "checkbox",
-        "label": "Переименовать метки",
+        "label": "Rename Labels",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -51,29 +51,29 @@
       },
       "rows": {
         "type": "fieldset",
-        "label": "Выбрать метки",
-        "show_if": "rename_rows=='true'",
+        "label": "Select Labels",
+        "show_if": "rename_rows==''true''",
         "repeat": true,
         "fields": {
           "label_name": {
             "type": "select",
-            "label": "Выбрать метку",
+            "label": "Select Label",
             "table": "input_table",
             "bind": "LABELS",
             "required": true
           },
           "rename": {
-            "show_if": "this.label_name != ''",
+            "show_if": "this.label_name != ''''",
             "type": "text",
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "Переименовать на"
+            "label": "Rename to"
           },
           "delete": {
-            "show_if": "this.label_name != ''",
+            "show_if": "this.label_name != ''''",
             "type": "button",
-            "label": "Удалить",
+            "label": "Delete",
             "function": "DELETE_ROW"
           }
         },
