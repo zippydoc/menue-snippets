@@ -1,7 +1,7 @@
 {
   "options_box": {
     "type": "fieldset",
-    "label": "Optionen",
+    "label": "Opções",
     "repeat": false,
     "fields": {
       "options.task": {
@@ -10,68 +10,68 @@
       },
       "options.add_columns": {
         "type": "fieldset",
-        "label": "Neue Spalten hinzufügen",
+        "label": "Adicionar Novas Colunas",
         "repeat": true,
         "fields": {
           "new_column_name": {
             "type": "text",
-            "label": "Neuer Spaltenname",
+            "label": "Novo Nome de Coluna",
             "val": "",
             "breakLine": true
           },
           "multi_column_functions__function": {
             "type": "select",
-            "label": "Funktion",
+            "label": "Função",
             "required": true,
             "options": {
               "sum": {
-                "label": "Summe"
+                "label": "Soma"
               },
               "average": {
-                "label": "Durchschnitt"
+                "label": "Média"
               },
               "median": {
-                "label": "Median"
+                "label": "Mediana"
               },
               "max": {
-                "label": "Max"
+                "label": "Máx"
               },
               "min": {
-                "label": "Min"
+                "label": "Mín"
               },
               "standard_deviation": {
-                "label": "Standardabweichung"
+                "label": "Desvio Padrão"
               },
               "product": {
-                "label": "Produkt"
+                "label": "Produto"
               },
               "quota": {
-                "label": "Kontingent"
+                "label": "Quota"
               },
               "absolute_growth": {
-                "label": "Absolutes Wachstum"
+                "label": "Crescimento Absoluto"
               },
               "relative_growth": {
-                "label": "Relatives Wachstum"
+                "label": "Crescimento Relativo"
               },
               "compound_growth": {
-                "label": "Zusammengesetztes Wachstum"
+                "label": "Crescimento Composto"
               },
               "static_value": {
-                "label": "Statischer Wert"
+                "label": "Valor Estático"
               },
               "numeric_formula": {
-                "label": "Numerische Formel"
+                "label": "Fórmula Numérica"
               },
               "text_formula": {
-                "label": "Text Formel"
+                "label": "Fórmula de Texto"
               }
             },
             "val": "sum"
           },
           "multi_column_functions__sel_columns": {
             "type": "select",
-            "label": "Spalte(n) auswählen",
+            "label": "Selecionar Coluna(s)",
             "show_if": "this.multi_column_functions__function==''sum'' || this.multi_column_functions__function==''average'' || this.multi_column_functions__function==''median'' || this.multi_column_functions__function==''max'' || this.multi_column_functions__function==''min'' || this.multi_column_functions__function==''standard_deviation'' || this.multi_column_functions__function==''product''",
             "table": "input_table",
             "bind": "COLUMNS",
@@ -80,7 +80,7 @@
           },
           "multi_column_functions__column_a": {
             "type": "select",
-            "label": "Spalte A auswählen",
+            "label": "Selecionar Coluna A",
             "show_if": "this.multi_column_functions__function==''quota'' || this.multi_column_functions__function==''absolute_growth'' || this.multi_column_functions__function==''relative_growth'' || this.multi_column_functions__function==''compound_growth''",
             "table": "input_table",
             "bind": "COLUMNS",
@@ -88,7 +88,7 @@
           },
           "multi_column_functions__column_b": {
             "type": "select",
-            "label": "Spalte B auswählen",
+            "label": "Selecionar Coluna B",
             "show_if": "this.multi_column_functions__function==''quota'' || this.multi_column_functions__function==''absolute_growth'' || this.multi_column_functions__function==''relative_growth'' || this.multi_column_functions__function==''compound_growth''",
             "table": "input_table",
             "bind": "COLUMNS",
@@ -96,14 +96,14 @@
           },
           "multi_column_functions__n_value": {
             "type": "text",
-            "label": "N (positive Ganzzahl)",
+            "label": "N (número inteiro positivo)",
             "show_if": "this.multi_column_functions__function==''compound_growth''",
             "val": "1",
             "required": true
           },
           "static_value": {
             "type": "text",
-            "label": "Eingangswert",
+            "label": "Introduzir Valor",
             "show_if": "this.multi_column_functions__function==''static_value''",
             "val": "",
             "width": "100%"
@@ -124,7 +124,7 @@
           },
           "use_multi_row": {
             "type": "checkbox",
-            "label": "Mehrreihige Optionen",
+            "label": "Opções Multi-Linha",
             "show_if": "this.multi_column_functions__function==''numeric_formula'' || this.multi_column_functions__function==''text_formula''",
             "val": "false",
             "isOn": "true",
@@ -132,15 +132,15 @@
           },
           "if_row_not_exist": {
             "type": "select",
-            "label": "Wenn verwiesene Zeile nicht vorhanden",
+            "label": "Se a fila referida não existir",
             "show_if": "this.use_multi_row==''true'' && (this.multi_column_functions__function==''numeric_formula'' || this.multi_column_functions__function==''text_formula'')",
             "required": true,
             "options": {
               "empty": {
-                "label": "NULL oder Leer oder 0"
+                "label": "Vazio ou 0"
               },
               "closest": {
-                "label": "Engster Zeilenwert"
+                "label": "Valor Mais Próximo da Linha"
               }
             },
             "val": "empty",
@@ -148,75 +148,75 @@
           },
           "format__category": {
             "type": "select",
-            "label": "Format",
+            "label": "Formato",
             "required": true,
             "options": {
               "standard": {
-                "label": "Standard"
+                "label": "Padrão"
               },
               "number": {
-                "label": "Nummer"
+                "label": "Número"
               },
               "percentage": {
-                "label": "Prozentsatz"
+                "label": "Percentagem"
               },
               "text": {
-                "label": "Text"
+                "label": "Texto"
               },
               "date": {
-                "label": "Datum"
+                "label": "Data"
               },
               "currency": {
-                "label": "Währung"
+                "label": "Moeda"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "Abrunden",
+            "label": "Arredondamento",
             "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Keine Rundung"
+                "label": "Arredondamento de números"
               },
               "0": {
-                "label": "0 Ziffern"
+                "label": "0 dígitos"
               },
               "1": {
-                "label": "1 Ziffern"
+                "label": "1 dígito"
               },
               "2": {
-                "label": "2 Ziffern"
+                "label": "2 dígitos"
               },
               "3": {
-                "label": "3 Ziffern"
+                "label": "3 dígitos"
               },
               "4": {
-                "label": "4 Ziffern"
+                "label": "4 dígitos"
               },
               "5": {
-                "label": "5 Ziffern"
+                "label": "5 dígitos"
               },
               "6": {
-                "label": "6 Ziffern"
+                "label": "6 dígitos"
               },
               "7": {
-                "label": "7 Ziffern"
+                "label": "7 dígitos"
               },
               "8": {
-                "label": "8 Ziffern"
+                "label": "8 dígitos"
               },
               "9": {
-                "label": "9 Ziffern"
+                "label": "9 dígitos"
               }
             },
             "val": "2"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "1000 Trennzeichen(.) verwenden",
+            "label": "Usar Separador(.) 1000",
             "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
             "val": "true",
             "isOn": "true",
@@ -224,7 +224,7 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "Symbol",
+            "label": "Símbolo",
             "show_if": "this.format__category==''currency''",
             "required": true,
             "options": {
@@ -242,7 +242,7 @@
           },
           "format__date_format": {
             "type": "select",
-            "label": "Typ",
+            "label": "Tipo",
             "show_if": "this.format__category==''date''",
             "required": true,
             "options": {
@@ -261,7 +261,7 @@
           },
           "group_counter__inc_dec_curly_bracket": {
             "type": "checkbox",
-            "label": "Erhöhen/Verringern mit {}",
+            "label": "Aumentar/Diminuir com {}",
             "show_if": "this.task_type==''group_counter''",
             "val": "false",
             "isOn": "true",
@@ -270,7 +270,7 @@
           },
           "group_counter__inc_dec_square_bracket": {
             "type": "checkbox",
-            "label": "Erhöhen/Verringern mit []",
+            "label": "Aumentar/Diminuir com []",
             "show_if": "this.task_type==''group_counter''",
             "val": "false",
             "isOn": "true",
@@ -279,7 +279,7 @@
           },
           "group_counter__inc_dec_parenthesis": {
             "type": "checkbox",
-            "label": "Erhöhen/Verringern mit ()",
+            "label": "Aumentar/Diminuir com ()",
             "show_if": "this.task_type==''group_counter''",
             "val": "false",
             "isOn": "true",
@@ -288,7 +288,7 @@
           },
           "group_counter__custom": {
             "type": "checkbox",
-            "label": "Kundenspezifischer Gruppenzähler",
+            "label": "Contador de Grupo Personalizado",
             "show_if": "this.task_type==''group_counter''",
             "val": "false",
             "isOn": "true",
@@ -297,7 +297,7 @@
           },
           "group_counter__column": {
             "type": "select",
-            "label": "Spalte",
+            "label": "Coluna",
             "show_if": "this.task_type==''group_counter'' && this.group_counter__custom==''true''",
             "table": "input_table",
             "bind": "COLUMNS",
@@ -305,42 +305,42 @@
           },
           "group_counter__type": {
             "type": "select",
-            "label": "Wenn",
+            "label": "Quando",
             "show_if": "this.task_type==''group_counter'' && this.group_counter__custom==''true''",
             "required": true,
             "options": {
               "starts_with": {
-                "label": "STARTET MIT"
+                "label": "INICIA COM"
               },
               "ends_with": {
-                "label": "ENDET MIT"
+                "label": "TERMINA COM"
               },
               "starts_with_regex": {
-                "label": "BEGINNT MIT REGEX"
+                "label": "COMEÇA COM EXPRESSÃO REGULAR"
               },
               "ends_with_regex": {
-                "label": "ENDET MIT REGEX"
+                "label": "TERMINA COM EXPRESSÃO REGULAR"
               }
             },
             "val": "starts_with"
           },
           "group_counter__value": {
             "type": "text",
-            "label": "Eingangswert",
+            "label": "Introduzir Valor",
             "show_if": "this.task_type==''group_counter'' && this.group_counter__custom==''true''",
             "val": ".",
             "breakLine": true
           },
           "group_counter__label": {
             "type": "text",
-            "label": "Eingangsetikett",
+            "label": "Introduzir Rótulo",
             "show_if": "this.task_type==''group_counter'' && this.group_counter__custom==''true''",
             "val": "sentence",
             "breakLine": true
           },
           "group_counter__if_end_of_string_start_labeling_with_next_record": {
             "type": "checkbox",
-            "label": "Wenn End-Of-String, Beschriftung mit nächstem Datensatz beginnen",
+            "label": "Se Fim-da-String, começar a rotular com o registo seguinte",
             "show_if": "this.task_type==''group_counter'' && this.group_counter__custom==''true'' && (this.group_counter__type==''starts_with'' || this.group_counter__type==''starts_with_regex'')",
             "val": "true",
             "isOn": "true",
@@ -348,7 +348,7 @@
           },
           "group_counter__if_begin_of_string_start_labeling_with_previous_record": {
             "type": "checkbox",
-            "label": "Wenn Begin-Of-String die Beschriftung mit dem vorherigen Datensatz beginnt",
+            "label": "Se Início-da-String, começar a rotular com o registo anterior",
             "show_if": "this.task_type==''group_counter'' && this.group_counter__custom==''true'' && (this.group_counter__type==''ends_with'' || this.group_counter__type==''ends_with_regex'')",
             "val": "true",
             "isOn": "true",
@@ -356,7 +356,7 @@
           },
           "group_counter__always_include": {
             "type": "checkbox",
-            "label": "Immer enthalten",
+            "label": "Incluir sempre",
             "show_if": "this.task_type==''group_counter'' && this.group_counter__custom==''true''",
             "val": "true",
             "isOn": "true",
@@ -364,7 +364,7 @@
           },
           "apply_to_group__enabled": {
             "type": "checkbox",
-            "label": "Anwenden auf Gruppe",
+            "label": "Aplicar ao Grupo",
             "show_if": "this.multi_column_functions__function!=''static_value''",
             "val": "false",
             "isOn": "true",
@@ -372,7 +372,7 @@
           },
           "apply_to_group__group_columns": {
             "type": "select",
-            "label": "Gruppenspalte(n)",
+            "label": "Agrupar Coluna(s)",
             "show_if": "this.apply_to_group__enabled == ''true'' && this.multi_column_functions__function!=''static_value''",
             "table": "input_table",
             "bind": "COLUMNS",
@@ -381,14 +381,14 @@
           },
           "delete": {
             "type": "button",
-            "label": "Lösche",
+            "label": "Apagar",
             "function": "DELETE_ROW"
           }
         }
       },
       "options.use_filter": {
         "type": "checkbox",
-        "label": "Filter verwenden",
+        "label": "Utilizar Filtro",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -397,18 +397,18 @@
       },
       "filter_box": {
         "type": "fieldset",
-        "label": "Filter-Optionen",
+        "label": "Opções de Filtro",
         "show_if": "options.use_filter==''true''",
         "repeat": false,
         "fields": {
           "options.filter": {
             "type": "fieldset",
-            "label": "Filterbedingungen hinzufügen",
+            "label": "Adicionar Condições de Filtro",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Logik-Operator auswählen",
+                "label": "Selecionar Operador Lógico",
                 "required": true,
                 "show_if" :  "$index == 0",
                 "options": {
@@ -416,151 +416,151 @@
                     "label": "IF"
                   },
                   "if_not": {
-                    "label": "WENN NICHT"
+                    "label": "IF NOT"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "Logik-Operator auswählen",
+                "label": "Selecionar Operador Lógico",
                 "required": true,
                 "show_if" :  "$index > 0",
                 "options": {
                   "and": {
-                    "label": "UND"
+                    "label": "AND"
                   },
                   "or": {
                     "label": "OR"
                   },
                   "and_not": {
-                    "label": "UND NICHT"
+                    "label": "AND NOT"
                   },
                   "or_not": {
-                    "label": "ODER NICHT"
+                    "label": "OR NOT"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": "Spalte auswählen",
+                "label": "Selecionar Coluna",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Bediener auswählen",
+                "label": "Selecionar Operador",
                 "required": true,
                 "options": {
-                  "ENTHÄLT": {
-                    "label": "ENTHÄLT"
+                  "CONTÉM": {
+                    "label": "CONTÉM"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "ENTHALTEN IN"
+                    "label": "CONTIDO EM"
                   },
-                  "STARTET MIT": {
-                    "label": "STARTET MIT"
+                  "INICIA COM": {
+                    "label": "INICIA COM"
                   },
-                  "ENDET MIT": {
-                    "label": "ENDET MIT"
+                  "TERMINA COM": {
+                    "label": "TERMINA COM"
                   },
                   "=": {
-                    "label": "EQUAL"
+                    "label": "IGUAL"
                   },
                   ">": {
-                    "label": "GRÖSSER ALS"
+                    "label": "MAIOR QUE"
                   },
                   ">=": {
-                    "label": "GRÖSSER ODER GLEICH"
+                    "label": "MAIOR OU IGUAL"
                   },
                   "<": {
-                    "label": "KLEINER ALS"
+                    "label": "MENOR QUE"
                   },
                   "<=": {
-                    "label": "KLEINER ODER GLEICH"
+                    "label": "MENOR OU IGUAL"
                   },
                   "EMPTY": {
-                    "label": "IST LEER"
+                    "label": "ESTÁ VAZIO"
                   },
                   "BLANK": {
-                    "label": "IST BLANK"
+                    "label": "ESTÁ EM BRANCO"
                   },
                   "IS NULL": {
                     "label": "IS NULL"
                   },
-                  "REGEX-MATCH": {
-                    "label": "REGEX-MATCH"
+                  "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR": {
+                    "label": "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "IN TABELLE"
+                    "label": "NA TABELA"
                   },
-                  "IN REGEX-TABELLE": {
-                    "label": "IN REGEX-TABELLE"
+                  "NA TABELA DE EXPRESSÕES REGULARES": {
+                    "label": "NA TABELA DE EXPRESSÕES REGULARES"
                   },
-                  "DATUM": {
-                    "label": "DATUM"
+                  "DATA": {
+                    "label": "DATA"
                   }
                 },
-                "val": "ENTHÄLT"
+                "val": "CONTÉM"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Datumsoperator auswählen",
+                "label": "Selecionar Operador de Data",
                 "required": true,
                 "show_if": "this.condition == ''DATE''",
                 "options": {
                   "<": {
-                    "label": "PRIOR"
+                    "label": "ANTERIOR"
                   },
                   "<=": {
-                    "label": "PRIOR ODER GLEICH"
+                    "label": "ANTERIOR OU IGUAL"
                   },
                   "=": {
-                    "label": "EQUAL"
+                    "label": "IGUAL"
                   },
                   ">": {
-                    "label": "NACH"
+                    "label": "DEPOIS"
                   },
                   ">=": {
-                    "label": "NACHHER ODER GLEICH"
+                    "label": "DEPOIS OU IGUAL"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Wählen Sie Case Sensitive",
+                "label": "Selecionar Sensibilidade a Maiúsculas e Minúsculasl",
                 "required": true,
                 "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
                 "options": {
                   "yes": {
-                    "label": "Gehäuse empfindlich"
+                    "label": "Sensível a Maiúsculas e Minúsculas"
                   },
                   "no": {
-                    "label": "Groß-/Kleinschreibung nicht beachten"
+                    "label": "Insensível a Maiúsculas e Minúsculas"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Datum auswählen",
+                "label": "Selecionar Data",
                 "show_if": "this.condition==''DATE''",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Eingangswert",
+                "label": "Introduzir Valor",
                 "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Tabelle auswählen",
+                "label": "Selecionar Tabela",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
@@ -568,7 +568,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "Spalte auswählen",
+                "label": "Selecionar Coluna",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
@@ -576,14 +576,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "Lösche",
+                "label": "Apagar",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.apply_to_record": {
             "type": "checkbox",
-            "label": "Auf den Datensatz anwenden",
+            "label": "Aplicar ao Registo",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -592,13 +592,13 @@
           },
           "apply_to_group_box": {
             "type": "fieldset",
-            "label": "Anwenden auf Gruppe",
+            "label": "Aplicar ao Grupo",
             "show_if": "options.apply_to_record==''false''",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
                 "type": "select",
-                "label": "Gruppenspalten auswählen",
+                "label": "Selecionar Colunas de Grupo",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
