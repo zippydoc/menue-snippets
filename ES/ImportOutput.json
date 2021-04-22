@@ -1,13 +1,13 @@
 {
   "output": {
     "type": "fieldset",
-    "label": "Define Output Table",
+    "label": "Definir Tabla de Salida",
     "show_if": "options.from==''database'' || (options.from==''web'' && options.output_format==''file_list'') || (options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''true'') || (options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''false'' && options.use_filename_as_output_table_name==''false'')",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
-        "label": "Output Table Name",
+        "label": "Imprimir Nombre de Tabla",
         "show_if": "(output.set_options==''true'' && output.compose_table_name==''false'') || output.set_options==''false''",
         "minLength": 1,
         "val": "",
@@ -16,20 +16,20 @@
       },
       "output.set_options": {
         "type": "checkbox",
-        "label": "Output Options",
+        "label": "Imprimir Opciones",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "output_options_box": {
         "type": "fieldset",
-        "label": "Output Options",
+        "label": "Imprimir Opciones",
         "show_if": "output.set_options==''true''",
         "repeat": false,
         "fields": {
           "output.compose_table_name": {
             "type": "checkbox",
-            "label": "Compose Table Name",
+            "label": “Componer Nombre de la Tabla”,
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -37,13 +37,13 @@
           },
           "compose_table_name_frame": {
             "type": "fieldset",
-            "label": "Compose Output Table Name",
+            "label": “Componer Nombre de la Tabla de Salida”,
             "show_if": "output.compose_table_name==''true''",
             "repeat": false,
             "fields": {
               "output.prefix_rule": {
                 "type": "select",
-                "label": "Prefix",
+                "label": "Prefijo",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "empty",
                 "options": {
@@ -51,28 +51,28 @@
                     "label": "-"
                   },
                   "script_name": {
-                    "label": "Task Name"
+                    "label": "Nombre de la Tarea"
                   },
                   "date_string_type1": {
-                    "label": "Date: dd_mm_yyyy"
+                    "label": "Fecha: dd_mm_aaaa"
                   },
                   "date_string_type2": {
-                    "label": "Date: yyyy_mm_dd"
+                    "label": "Fecha: aaaa_mm_dd"
                   },
                   "time_string": {
-                    "label": "Time: h_min_sec"
+                    "label": "Tempo: h_min_seg"
                   },
                   "datetime_string": {
-                    "label": "Date_Time"
+                    "label": "Fecha_Hora"
                   },
                   "custom": {
-                    "label": "Custom"
+                    "label": "Personalizado"
                   }
                 }
               },
               "output.prefix_text": {
                 "type": "text",
-                "label": "Prefix Text",
+                "label": "Texto del Prefijo",
                 "show_if": "output.compose_table_name==''true'' && output.prefix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
@@ -80,28 +80,28 @@
               },
               "output.core_delimiter": {
                 "type": "text",
-                "label": "Delimiter",
+                "label": "Delimitador",
                 "show_if": "output.compose_table_name==''true'' && output.prefix_rule!=''empty''",
                 "val": "_",
                 "width": "50px"
               },
               "output.core_rule": {
                 "type": "select",
-                "label": "Table Name",
+                "label": "Nombre de la Tabla",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
                   "script_name": {
-                    "label": "Task Name"
+                    "label": "Nombre de la Tarea"
                   },
                   "custom": {
-                    "label": "Custom"
+                    "label": "Personalizado"
                   }
                 }
               },
               "output.core_text": {
                 "type": "text",
-                "label": "Main Table Name",
+                "label": "Nombre de la Tabla Principal",
                 "show_if": "output.compose_table_name==''true'' && output.core_rule==''custom''",
                 "required": true,
                 "minLength": 1,
@@ -110,14 +110,14 @@
               },
               "output.suffix_delimiter": {
                 "type": "text",
-                "label": "Delimiter",
+                "label": "Delimitador",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "_",
                 "width": "50px"
               },
               "output.suffix_rule": {
                 "type": "select",
-                "label": "Suffix",
+                "label": "Sufijo",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
@@ -125,28 +125,28 @@
                     "label": "-"
                   },
                   "script_name": {
-                    "label": "Task Name"
+                    "label": "Nombre de la Tarea"
                   },
                   "date_string_type1": {
-                    "label": "Date: dd_mm_yyyy"
+                    "label": "Fecha: dd_mm_aaaa"
                   },
                   "date_string_type2": {
-                    "label": "Date: yyyy_mm_dd"
+                    "label": "Fecha: aaaa_mm_dd"
                   },
                   "time_string": {
-                    "label": "Time: h_min_sec"
+                    "label": "Tempo: h_min_seg"
                   },
                   "datetime_string": {
-                    "label": "Date_Time"
+                    "label": "Fecha_Hora"
                   },
                   "custom": {
-                    "label": "Custom"
+                    "label": "Personalizado"
                   }
                 }
               },
               "output.suffix_text": {
                 "type": "text",
-                "label": "Suffix Text",
+                "label": "Texto del Sufijo",
                 "show_if": "output.compose_table_name==''true'' && output.suffix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
@@ -155,9 +155,9 @@
               },
               "output.timezone": {
                 "type": "select",
-                "label": "Timezone",
+                "label": "Zona Horaria",
                 "show_if": "output.compose_table_name==''true'' && (output.prefix_rule==''date_string_type1'' || output.prefix_rule==''date_string_type2'' || output.prefix_rule==''time_string'' || output.prefix_rule==''datetime_string'' || output.suffix_rule==''date_string_type1'' || output.suffix_rule==''date_string_type2'' || output.suffix_rule==''time_string'' || output.suffix_rule==''datetime_string'')",
-                "val": "Europe/Berlin",
+                "val": "Europa/Berlín",
                 "required": true,
                 "options": {
                   "America/Adak": {
@@ -184,7 +184,7 @@
                   "Asia/Bangkok": {
                     "label": "Bangkok, Jakarta, Novosibirsk"
                   },
-                  "Europe/Berlin": {
+                  "Europa/Berlín": {
                     "label": "Berlin, Paris, Amsterdam"
                   },
                   "Australia/Perth": {
@@ -292,13 +292,13 @@
             "fields": {
               "output.options.location": {
                 "type": "text",
-                "label": "Specify Location",
+                "label": "Especificar Ubicación",
                 "val": "A1",
                 "breakLine": true
               },
               "output.options.formatted_as_table": {
                 "type": "checkbox",
-                "label": "Formatted as Table",
+                "label": "Formateado como Tabla",
                 "val": "true",
                 "isOn": "true",
                 "isOff": "false",
@@ -306,14 +306,14 @@
               },
               "output.add_tag": {
                 "type": "checkbox",
-                "label": "Add Tag",
+                "label": “Agregar Marcador”,
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
               },
               "output.tag_name": {
                 "type": "text",
-                "label": "Tag Name",
+                "label": "Nombre del marcador",
                 "show_if": "output.add_tag==''true''",
                 "required": true,
                 "minLength": 1,
@@ -324,28 +324,28 @@
               },
               "output.options.visibility": {
                 "type": "select",
-                "label": "Visibility",
+                "label": "Visibilidad",
                 "val": "current_flow",
                 "options": {
                   "current_flow": {
-                    "label": "Current Flow"
+                    "label": "Caudal Actual"
                   },
                   "all_flow": {
-                    "label": "All Flows"
+                    "label": "Todos los Caudales"
                   }
                 },
                 "breakLine": true
               },
               "output.options.table_mode": {
                 "type": "select",
-                "label": "Paste",
+                "label": "Pegar",
                 "val": "content_only",
                 "options": {
                   "content_only": {
-                    "label": "Content Only"
+                    "label": "Sólo Contenido"
                   },
                   "fully_formatted": {
-                    "label": "Fully Formatted"
+                    "label": "Completamente Formateada"
                   }
                 }
               }
@@ -356,20 +356,20 @@
       },
       "options.output_duplicated": {
         "type": "select",
-        "label": "If duplicated",
+        "label": "Si está duplicado",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "Create or Drop (if already existing)"
+            "label": "Crear o Descartar (si ya existe)"
           },
           "error_if_exist": {
-            "label": "Create New (throw error if existing)"
+            "label": "Crear Nuevo (lanza error si existe)"
           },
           "error_if_not_exist": {
-            "label": "Drop (throw error if not-existing)"
+            "label": "Descartar (lanzar error si no existe)"
           },
           "append": {
-            "label": "Append"
+            "label": "Anexar"
           }
         }
       }
