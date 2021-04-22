@@ -1,8 +1,8 @@
 {
   "output.select_output_columns": {
     "type": "checkbox",
-    "label": "Seleccionar Columnas de Salida",
-    "show_if": "options.type=='transform_group'",
+    "label": "Select Output Columns",
+    "show_if": "options.type==''transform_group''",
     "val": "false",
     "isOn": "true",
     "isOff": "false"
@@ -10,35 +10,35 @@
   "output_columns": {
     "type": "fieldset",
     "label": "Select OutputColumns",
-    "show_if": "options.type=='transform_group' && output.select_output_columns=='true'",
+    "show_if": "options.type==''transform_group'' && output.select_output_columns==''true''",
     "repeat": true,
     "fields": {
       "field_name": {
         "type": "select",
-        "label": “Seleccionar Columna”,
+        "label": "Select Column",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
       },
       "is_rename": {
         "type": "checkbox",
-        "label": “Renombrar”,
+        "label": "Rename",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "rename": {
-        "show_if": "this.is_rename == 'true'",
+        "show_if": "this.is_rename == ''true''",
         "type": "text",
         "required": true,
         "minLength": 1,
         "maxLength": 255,
-        "label": “Nuevo Nombre de Columna”,
+        "label": "New Column Name",
         "style": "margin-left: 10px"
       },
       "delete": {
         "type": "button",
-        "label": "Borrar",
+        "label": "Delete",
         "function": "DELETE_ROW"
       }
     },
