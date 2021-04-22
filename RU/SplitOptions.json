@@ -1,70 +1,70 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Select Options",
+    "label": "Выбрать параметры",
     "repeat": false,
     "fields": {
       "options.split_method": {
         "type": "select",
-        "label": "Split method",
+        "label": "Сплит-метод",
         "required": true,
         "options": {
           "standard": {
-            "label": "Standard"
+            "label": "Стандартный"
           },
           "regex": {
-            "label": "RegEx"
+            "label": "Регулярное выражение"
           }
         },
         "val": "standard"
       },
       "options.split_type": {
         "type": "select",
-        "label": "Split type",
+        "label": "Разделить тип",
         "required": true,
         "options": {
           "split_to_columns": {
-            "label": "Split to Columns"
+            "label": "Разделить на столбцы"
           },
           "split_to_rows": {
-            "label": "Split to Rows"
+            "label": "Разделить на строки"
           }
         },
         "val": "split_to_columns"
       },
       "options.standard_delimiter": {
         "type": "select",
-        "label": "Split Delimiter",
+        "label": "Сплит-разделитель",
         "show_if": "options.split_method==''standard''",
         "required": true,
         "options": {
           "tabs": {
-            "label": "Tabs"
+            "label": "Вкладки"
           },
           "space": {
-            "label": "Space"
+            "label": "Пробел"
           },
           "whitespace": {
-            "label": "Whitespace"
+            "label": "Пробел"
           },
           "linebreak": {
-            "label": "Line break"
+            "label": "Разрыв строки"
           },
           "punctuation": {
-            "label": "Punctuation"
+            "label": "Пунктуация"
           },
           "punctuation_whitespace": {
-            "label": "Punctuation and Whitespace"
+            "label": "Пунктуация и пробел"
           },
           "custom": {
-            "label": "Custom"
+            "label": "Пользовательский"
           }
         },
         "val": "punctuation"
       },
       "options.delimiter": {
         "type": "text",
-        "label": "Split Delimiter",
+        "label": "Сплит-разделитель",
         "show_if": "options.split_method==''standard'' && options.standard_delimiter==''custom''",
         "val": ",,
         trim": "false",
@@ -73,7 +73,7 @@
       },
       "format_frame": {
         "type": "fieldset",
-        "label": "Format to Parse for Split",
+        "label": "Формат для разделения на части",
         "show_if": "options.split_method==''regex''",
         "repeat": false,
         "fields": {
@@ -88,7 +88,7 @@
           },
           "options.format_to_convert.case_insensitive": {
             "type": "checkbox",
-            "label": "Case Insensitive",
+            "label": "Без учета регистра",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
