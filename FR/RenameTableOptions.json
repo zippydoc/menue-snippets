@@ -6,36 +6,36 @@
     "fields": {
       "rename_columns": {
         "type": "checkbox",
-        "label": "Renommer les colonnes",
+        "label": "Rename Columns",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "columns": {
         "type": "fieldset",
-        "label": "Sélectionner les colonnes",
-        "show_if": "rename_columns=='true'",
+        "label": "Select Columns",
+        "show_if": "rename_columns==''true''",
         "repeat": true,
         "fields": {
           "field_name": {
             "type": "select",
-            "label": "Sélectionner une colonne",
+            "label": "Select Column",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
           "rename": {
-            "show_if": "this.field_name != ''",
+            "show_if": "this.field_name != ''''",
             "type": "text",
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "Renommer en"
+            "label": "Rename to"
           },
           "delete": {
-            "show_if": "this.field_name != ''",
+            "show_if": "this.field_name != ''''",
             "type": "button",
-            "label": "Supprimer",
+            "label": "Delete",
             "function": "DELETE_ROW"
           }
         },
@@ -43,7 +43,7 @@
       },
       "rename_rows": {
         "type": "checkbox",
-        "label": "Renommer les étiquettes",
+        "label": "Rename Labels",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -51,29 +51,29 @@
       },
       "rows": {
         "type": "fieldset",
-        "label": "Sélectionner les étiquettes",
-        "show_if": "rename_rows=='true'",
+        "label": "Select Labels",
+        "show_if": "rename_rows==''true''",
         "repeat": true,
         "fields": {
           "label_name": {
             "type": "select",
-            "label": "Sélectionner l'étiquette",
+            "label": "Select Label",
             "table": "input_table",
             "bind": "LABELS",
             "required": true
           },
           "rename": {
-            "show_if": "this.label_name != ''",
+            "show_if": "this.label_name != ''''",
             "type": "text",
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "Renommer en"
+            "label": "Rename to"
           },
           "delete": {
-            "show_if": "this.label_name != ''",
+            "show_if": "this.label_name != ''''",
             "type": "button",
-            "label": "Supprimer",
+            "label": "Delete",
             "function": "DELETE_ROW"
           }
         },
