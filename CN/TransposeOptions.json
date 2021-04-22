@@ -1,21 +1,21 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Select Options",
+    "label": "选择选项",
     "repeat": false,
     "fields": {
       "transpose_type": {
         "type": "select",
-        "label": "Transpose Type",
+        "label": "转置类型",
         "options": {
           "mirror_matrix": {
-            "label": "Mirror Matrix"
+            "label": "镜像矩阵"
           },
           "column_name_to_label": {
-            "label": "Column Name to Label"
+            "label": "列名标签"
           },
           "crosstab": {
-            "label": "Crosstab"
+            "label": "交叉表"
           }
         },
         "val": "mirror_matrix",
@@ -25,7 +25,7 @@
       },
       "mirror_matrix.convert_header_to_label": {
         "type": "checkbox",
-        "label": "Convert header to label",
+        "label": "将标题转换为标签",
         "show_if": "transpose_type==''mirror_matrix''",
         "val": "true",
         "isOn": "true",
@@ -34,7 +34,7 @@
       },
       "column_name_to_label.columns_to_label": {
         "type": "select",
-        "label": "Select Columns to Convert into Labels",
+        "label": "选择列以转换为标签",
         "show_if": "transpose_type==''column_name_to_label''",
         "table": "input_table",
         "multiple": true,
@@ -45,25 +45,25 @@
       },
       "column_name_to_label.label_column_name": {
         "type": "text",
-        "label": "Column Name of Label Column",
+        "label": "标签列名",
         "show_if": "transpose_type==''column_name_to_label''",
         "required": true,
-        "val": "Label",
+        "val": "标签",
         "width": "100%",
         "breakLine": true
       },
       "column_name_to_label.value_column_name": {
         "type": "text",
-        "label": "Column Name of Value Column",
+        "label": "值列名",
         "show_if": "transpose_type==''column_name_to_label''",
         "required": true,
-        "val": "Value",
+        "val": "值",
         "width": "100%",
         "breakLine": true
       },
       "crosstab.group_data_by_these_values": {
         "type": "select",
-        "label": "Group data by these values",
+        "label": "根据这些值对数据进行分组",
         "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "multiple": true,
@@ -74,7 +74,7 @@
       },
       "crosstab.change_column_headers": {
         "type": "select",
-        "label": "Change Column Header",
+        "label": "更改列标题",
         "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -84,7 +84,7 @@
       },
       "crosstab.values_for_new_columns": {
         "type": "select",
-        "label": "Values For New Columns",
+        "label": "新列值",
         "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -94,37 +94,37 @@
       },
       "crosstab.method_for_aggregating_values": {
         "type": "select",
-        "label": "Method for Aggregating Values",
+        "label": "聚合值方法",
         "show_if": "transpose_type==''crosstab''",
         "options": {
-          "Concatenate": {
-            "label": "Concatenate"
+          "连接": {
+            "label": "连接"
           },
-          "First": {
-            "label": "First"
+          "首行": {
+            "label": "首行"
           },
-          "Last": {
-            "label": "Last"
+          "后": {
+            "label": "后"
           },
-          "Sum": {
-            "label": "Sum"
+          "总和": {
+            "label": "总和"
           },
-          "Average": {
-            "label": "Average"
+          "平均": {
+            "label": "平均"
           },
-          "Count": {
-            "label": "Count"
+          "计数": {
+            "label": "计数"
           },
-          "User Defined": {
-            "label": "User Defined"
+          "已定义用户": {
+            "label": "已定义用户"
           }
         },
-        "val": "Concatenate",
+        "val": "连接",
         "required": true
       },
       "crosstab.user_defined_str": {
         "type": "text",
-        "label": "User Defined Value",
+        "label": "用户定义值",
         "show_if": "transpose_type==''crosstab'' && crosstab.method_for_aggregating_values==''User Defined''",
         "val": "x",
         "trim": "false",
@@ -132,7 +132,7 @@
       },
       "crosstab.separator": {
         "type": "text",
-        "label": "Separator",
+        "label": "分隔符",
         "show_if": "transpose_type==''crosstab'' && method_for_aggregating_values==''Concatenate''",
         "val": ",,
         trim": "false",
