@@ -1,7 +1,7 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Select Options",
+    "label": "Выбрать параметры",
     "repeat": false,
     "fields": {
       "options.from": {
@@ -10,7 +10,7 @@
       },
       "options.webservice": {
         "type": "select",
-        "label": "Select Webservice",
+        "label": "Выбрать Веб-сервис",
         "options": {
           "github": {
             "label": "Github"
@@ -31,19 +31,19 @@
       },
       "options.output_format": {
         "type": "select",
-        "label": "Select Type",
+        "label": "Выбрать тип",
         "options": {
           "csv_table": {
-            "label": "CSV-Table"
+            "label": "CSV-таблица"
           },
           "line_by_line": {
-            "label": "Line by Line"
+            "label": "Линия за линией"
           },
           "word_by_word": {
-            "label": "Word by Word"
+            "label": "Слово за словом"
           },
           "file_list": {
-            "label": "File List"
+            "label": "Список файлов"
           }
         },
         "val": "csv_table",
@@ -51,11 +51,11 @@
       },
       "options.word_pattern_type": {
         "type": "select",
-        "label": "Word Pattern",
+        "label": "Словесный шаблон",
         "show_if": "options.output_format==''word_by_word'' && options.specify_word_pattern==''true''",
         "options": {
           "regex": {
-            "label": "Regular Expression"
+            "label": "Регулярное выражение"
           }
         },
         "val": "regex",
@@ -63,7 +63,7 @@
       },
       "options.word_pattern_regex": {
         "type": "text",
-        "label": "Regular Expression",
+        "label": "Регулярное выражение",
         "show_if": "options.output_format==''word_by_word'' && options.specify_word_pattern==''true'' && options.word_pattern_type==''regex''",
         "required": true,
         "val": "[a-z][1-9]",
@@ -86,7 +86,7 @@
         "fields": {
           "options.add_row_column": {
             "type": "checkbox",
-            "label": "Add Row Column",
+            "label": "Добавить строку столбца",
             "show_if": "options.output_format==''word_by_word''",
             "val": "true",
             "isOn": "true",
@@ -113,7 +113,7 @@
           },
           "options.add_section_column": {
             "type": "checkbox",
-            "label": "Add Section Column",
+            "label": "Добавить столбец раздела",
             "show_if": "options.output_format==''word_by_word''",
             "val": "true",
             "isOn": "true",
@@ -128,7 +128,7 @@
             "fields": {
               "options.section_columns.add_paragraph_section_column": {
                 "type": "checkbox",
-                "label": "Paragraph",
+                "label": "Параграф",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false",
@@ -136,14 +136,14 @@
               },
               "options.section_columns.add_custom_section_column": {
                 "type": "checkbox",
-                "label": "Custom Section Delimiter",
+                "label": "Пользовательский разделитель",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
               },
               "options.section_columns.custom_delimiter": {
                 "type": "text",
-                "label": "Delimiter(1 character)",
+                "label": "Разделитель (1 символ)",
                 "show_if": "options.section_columns.add_custom_section_column==''true''",
                 "maxLength": 1,
                 "required": true,
@@ -151,7 +151,7 @@
               },
               "options.section_columns.add_brackets_punctuation_section_column": {
                 "type": "checkbox",
-                "label": "Brackets and Punctuation",
+                "label": "Скобки и пунктуация",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
@@ -168,7 +168,7 @@
                     "label": "Inner Bracket"
                   },
                   "show_all": {
-                    "label": "Show All"
+                    "label": "Показать все"
                   }
                 },
                 "val": "nesting_structure",
@@ -188,7 +188,7 @@
           },
           "options.add_filename_column": {
             "type": "checkbox",
-            "label": "Add Column for File Name",
+            "label": "Добавить колонку в Название Файла",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -198,7 +198,7 @@
       },
       "options.is_cloud_dir": {
         "type": "checkbox",
-        "label": "Import directory",
+        "label": "Импортировать каталог",
         "show_if": "options.output_format!=''file_list''",
         "val": "false",
         "isOn": "true",
@@ -214,7 +214,7 @@
         "fields": {
           "options.unify_in_one_table": {
             "type": "checkbox",
-            "label": "Unify in one table",
+            "label": "Объединить в одну таблицу",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -226,10 +226,10 @@
             "show_if": "options.unify_in_one_table==''false''",
             "options": {
               "number": {
-                "label": "Number"
+                "label": "Число"
               },
               "filename": {
-                "label": "Filename"
+                "label": "Название файла"
               }
             },
             "val": "number",
@@ -238,7 +238,7 @@
           },
           "options.include_subdir": {
             "type": "checkbox",
-            "label": "Include Subdirectories",
+            "label": "Включить подкаталоги",
             "show_if": "options.output_format!=''file_list'' && options.is_cloud_dir==''true''",
             "val": "true",
             "isOn": "true",
@@ -250,7 +250,7 @@
       },
       "options.file_list.include_subdir": {
         "type": "checkbox",
-        "label": "Include Subdirectories",
+        "label": "Включить подкаталоги",
         "show_if": "options.output_format==''file_list''",
         "val": "true",
         "isOn": "true",
@@ -260,7 +260,7 @@
       },
       "options.file_list.add_change_date_column": {
         "type": "checkbox",
-        "label": "Add Change Date Column",
+        "label": "Добавить столбец изменения даты",
         "show_if": "options.output_format==''file_list''",
         "val": "false",
         "isOn": "true",
@@ -269,7 +269,7 @@
       },
       "options.use_filename_as_output_table_name": {
         "type": "checkbox",
-        "label": "Use filename as table name",
+        "label": "Использовать имя файла в качестве имени таблицы",
         "show_if": "options.output_format!=''file_list'' && options.is_cloud_dir==''false''",
         "val": "false",
         "isOn": "true",
@@ -285,7 +285,7 @@
     "fields": {
       "options.link_csv_file": {
         "type": "text",
-        "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.csv",
+        "label": "Введите ссылку, например, https://github.com/zippydoc/test/blob/main/example.csv.",
         "show_if": "options.webservice==''github'' && options.is_cloud_dir==''false'' && options.output_format==''csv_table''",
         "required": true,
         "width": "100%",
@@ -323,7 +323,7 @@
         "fields": {
           "github__link_directory": {
             "type": "text",
-            "label": "Enter link e.g. https://github.com/zippydoc/test",
+            "label": "Введите ссылку, например, https://github.com/zippydoc/test.",
             "show_if": "options.webservice==''github''",
             "required": true,
             "width": "100%",
@@ -352,22 +352,22 @@
           },
           "dir_filter__filter_type": {
             "type": "select",
-            "label": "Filter Type",
+            "label": "Тип фильтра",
             "options": {
               "all": {
-                "label": "All"
+                "label": "Все"
               },
               "contains": {
-                "label": "Contains"
+                "label": "Содержит"
               },
               "starts_with": {
-                "label": "Starts With"
+                "label": "Начинается с"
               },
               "ends_with": {
-                "label": "Ends With"
+                "label": "Заканчивается С"
               },
               "regex": {
-                "label": "Regular Expression"
+                "label": "Регулярное выражение"
               }
             },
             "val": "all",
@@ -375,13 +375,13 @@
           },
           "dir_filter__filter_string": {
             "type": "text",
-            "label": "Filter",
+            "label": "Фильтр",
             "show_if": "this.dir_filter__filter_type!=''all''",
             "required": true
           },
           "delete": {
             "type": "button",
-            "label": "Delete",
+            "label": "Удалить",
             "function": "DELETE_ROW"
           }
         }
