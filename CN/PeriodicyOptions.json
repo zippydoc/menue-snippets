@@ -21,7 +21,7 @@
       "amount_formatting_frame": {
         "type": "fieldset",
         "label": "Amount Column Formatting",
-        "show_if": "options.type=='generate'",
+        "show_if": "options.type==''generate''",
         "repeat": false,
         "fields": {
           "options.amount.format__category": {
@@ -47,7 +47,7 @@
           "options.amount.format__rounding": {
             "type": "select",
             "label": "取整",
-            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+            "show_if": "options.amount.format__category==''number'' || options.amount.format__category==''percentage'' || options.amount.format__category==''currency''",
             "required": true,
             "options": {
               "no_rounding": {
@@ -89,7 +89,7 @@
           "options.amount.format__use_1000_separator": {
             "type": "checkbox",
             "label": "使用 1000 分隔符（.）",
-            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+            "show_if": "options.amount.format__category==''number'' || options.amount.format__category==''percentage'' || options.amount.format__category==''currency''",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
@@ -97,7 +97,7 @@
           "options.amount.format__currency_symbol": {
             "type": "select",
             "label": "符号",
-            "show_if": "options.amount.format__category=='currency'",
+            "show_if": "options.amount.format__category==''currency''",
             "required": true,
             "options": {
               "dollar": {
@@ -117,7 +117,7 @@
       "options.standard_table": {
         "type": "checkbox",
         "label": "标准周期表格",
-        "show_if": "options.type=='process'",
+        "show_if": "options.type==''process''",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -126,7 +126,7 @@
       "options.initial_date": {
         "type": "select",
         "label": "初始日期",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
@@ -134,7 +134,7 @@
       "options.period": {
         "type": "select",
         "label": "Periodicy (e.g. Monthly, Quarterly)",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
@@ -142,7 +142,7 @@
       "options.final_date": {
         "type": "select",
         "label": "最后日期",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS",
         "breakLine": true
@@ -150,21 +150,21 @@
       "options.volume": {
         "type": "select",
         "label": "金额",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth": {
         "type": "select",
         "label": "增长",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth_period": {
         "type": "select",
         "label": "增长时段",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "options": {
           "selected_period": {
             "label": "等于周期"
@@ -190,7 +190,7 @@
       "options.growth_period_column": {
         "type": "select",
         "label": "增长时段列",
-        "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'",
+        "show_if": "options.type==''process'' && options.standard_table==''false'' && options.growth_period==''column''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -199,7 +199,7 @@
       "options.use_growth_pattern_column": {
         "type": "checkbox",
         "label": "使用增长模式",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -207,7 +207,7 @@
       "options.growth_pattern_column": {
         "type": "select",
         "label": "增长模式",
-        "show_if": "options.type=='process' && options.standard_table=='false' && options.use_growth_pattern_column=='true'",
+        "show_if": "options.type==''process'' && options.standard_table==''false'' && options.use_growth_pattern_column==''true''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -216,7 +216,7 @@
       "options.end_date": {
         "type": "date",
         "label": "表格结束日期",
-        "show_if": "options.type=='process'",
+        "show_if": "options.type==''process''",
         "val": "",
         "required": true,
         "style": "width: 300px"

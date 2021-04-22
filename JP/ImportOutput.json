@@ -2,13 +2,13 @@
   "output": {
     "type": "fieldset",
     "label": "出力テーブルの定義",
-    "show_if": "options.from=='database' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='true') || (options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='false' && options.use_filename_as_output_table_name=='false')",
+    "show_if": "options.from==''database'' || (options.from==''web'' && options.output_format==''file_list'') || (options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''true'') || (options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''false'' && options.use_filename_as_output_table_name==''false'')",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
         "label": "出力テーブル名",
-        "show_if": "(output.set_options=='true' && output.compose_table_name=='false') || output.set_options=='false'",
+        "show_if": "(output.set_options==''true'' && output.compose_table_name==''false'') || output.set_options==''false''",
         "minLength": 1,
         "val": "",
         "width": "100%",
@@ -24,7 +24,7 @@
       "output_options_box": {
         "type": "fieldset",
         "label": "出力オプション",
-        "show_if": "output.set_options=='true'",
+        "show_if": "output.set_options==''true''",
         "repeat": false,
         "fields": {
           "output.compose_table_name": {
@@ -38,13 +38,13 @@
           "compose_table_name_frame": {
             "type": "fieldset",
             "label": "出力テーブル名の構成",
-            "show_if": "output.compose_table_name=='true'",
+            "show_if": "output.compose_table_name==''true''",
             "repeat": false,
             "fields": {
               "output.prefix_rule": {
                 "type": "select",
                 "label": "プレフィックス",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "empty",
                 "options": {
                   "empty": {
@@ -73,8 +73,7 @@
               "output.prefix_text": {
                 "type": "text",
                 "label": "プレフィックステキスト",
-              }
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
+                "show_if": "output.compose_table_name==''true'' && output.prefix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
                 "val": ""
@@ -82,14 +81,14 @@
               "output.core_delimiter": {
                 "type": "text",
                 "label": "区切り文字",
-                "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
+                "show_if": "output.compose_table_name==''true'' && output.prefix_rule!=''empty''",
                 "val": "_",
                 "width": "50px"
               },
               "output.core_rule": {
                 "type": "select",
                 "label": "列名",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
                   "script_name": {
@@ -103,7 +102,7 @@
               "output.core_text": {
                 "type": "text",
                 "label": "メインテーブル名",
-                "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
+                "show_if": "output.compose_table_name==''true'' && output.core_rule==''custom''",
                 "required": true,
                 "minLength": 1,
                 "maxLength": 31,
@@ -112,14 +111,14 @@
               "output.suffix_delimiter": {
                 "type": "text",
                 "label": "区切り文字",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "_",
                 "width": "50px"
               },
               "output.suffix_rule": {
                 "type": "select",
                 "label": "サフィックス",
-                "show_if": "output.compose_table_name=='true'",
+                "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
                   "empty": {
@@ -148,7 +147,7 @@
               "output.suffix_text": {
                 "type": "text",
                 "label": "サフィックステキスト",
-                "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
+                "show_if": "output.compose_table_name==''true'' && output.suffix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
                 "val": "",
@@ -157,346 +156,222 @@
               "output.timezone": {
                 "type": "select",
                 "label": "タイムゾーン",
-                "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
-                "val": "CET",
+                "show_if": "output.compose_table_name==''true'' && (output.prefix_rule==''date_string_type1'' || output.prefix_rule==''date_string_type2'' || output.prefix_rule==''time_string'' || output.prefix_rule==''datetime_string'' || output.suffix_rule==''date_string_type1'' || output.suffix_rule==''date_string_type2'' || output.suffix_rule==''time_string'' || output.suffix_rule==''datetime_string'')",
+                "val": "ヨーロッパ/ベルリン",
                 "required": true,
                 "options": {
-                  "NZDT": {
-                    "label": "NZDT（ニュージーランド夏時間）"
+                  "America/Adak": {
+                    "label": "Adak, Gambier"
                   },
-                  "IDLE": {
-                    "label": "IDLE(International Date Line, East)"
+                  "Australia/Adelaide": {
+                    "label": "Adelaide, Broken_Hill, Darwin"
                   },
-                  "NZST": {
-                    "label": "NZST（ニュージーランド標準時）"
+                  "America/Anchorage": {
+                    "label": "Anchorage, Juneau, Sitka"
                   },
-                  "NZT": {
-                    "label": "NZT（ニュージーランド時間）"
+                  "Pacific/Apia": {
+                    "label": "Apia, Asau, Mulifanua, Afega, Leulumoega"
                   },
-                  "AESST": {
-                    "label": "AESST（オーストラリア東部夏時間）"
+                  "Pacific/Enderbury": {
+                    "label": "Apia, Fiji, Tongatapu"
                   },
-                  "ACSST": {
-                    "label": "ACSST（中央オーストラリア夏時間）"
+                  "Antarctica/McMurdo": {
+                    "label": "Auckland, Casey, Davis"
                   },
-                  "CADT": {
-                    "label": "CADT（中央オーストラリア夏時間）"
+                  "Pacific/Auckland": {
+                    "label": "Auckland, Wellington, Christchurch"
                   },
-                  "SADT": {
-                    "label": "SADT（南オーストラリア夏時間）"
+                  "Asia/Bangkok": {
+                    "label": "Bangkok, Jakarta, Novosibirsk"
                   },
-                  "AEST": {
-                    "label": "AEST（オーストラリア東部標準時）"
+                  "ヨーロッパ/ベルリン": {
+                    "label": "Berlin, Paris, Amsterdam"
                   },
-                  "EAST": {
-                    "label": "EAST（東オーストラリア標準時）"
+                  "Australia/Perth": {
+                    "label": "Brunei, Singapore, Perth"
                   },
-                  "GST": {
-                    "label": "GST(Guam Standard Time, USSR Zone 9)"
+                  "Atlantic/Cape_Verde": {
+                    "label": "Cape_Verde,Praia, Mindelo, Santa Maria"
                   },
-                  "LIGT": {
-                    "label": "LIGT(Melbourne, Australia)"
+                  "America/Belize": {
+                    "label": "Costa_Rica, El_Salvador, Denver"
                   },
-                  "SAST": {
-                    "label": "SAST（南オーストラリア標準時）"
+                  "Antarctica/Vostok": {
+                    "label": "Dhaka, Bishkek, Omsk"
                   },
-                  "CAST": {
-                    "label": "CAST（中央オーストラリア標準時）"
+                  "Europe/Astrakhan": {
+                    "label": "Dubai, Baku, Tbilisi"
                   },
-                  "AWSST": {
-                    "label": "AWSST（オーストラリア西部夏時間）"
+                  "Australia/Eucla": {
+                    "label": "Eucla"
                   },
-                  "JST": {
-                    "label": "JST(Japan Standard Time,USSR Zone 8)"
+                  "Pacific/Honolulu": {
+                    "label": "Honolulu, Rarotonga, Tahiti"
                   },
-                  "KST": {
-                    "label": "KST（韓国標準時）"
+                  "Asia/Kabul": {
+                    "label": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
                   },
-                  "MHT": {
-                    "label": "MHT（クェゼリン時間）"
+                  "Asia/Aqtau": {
+                    "label": "Karachi, Tashkent, Maldives"
                   },
-                  "WDT": {
-                    "label": "WDT（西オーストラリア夏時間）"
+                  "Asia/Kathmandu": {
+                    "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
                   },
-                  "MT": {
-                    "label": "MT（マルク諸島時間）"
+                  "Pacific/Kiritimati": {
+                    "label": "Kiritimati"
                   },
-                  "AWST": {
-                    "label": "AWST（オーストラリア西部標準時）"
+                  "Asia/Colombo": {
+                    "label": "Kolkata, Colombo,Jaffna, Negombo"
                   },
-                  "CCT": {
-                    "label": "CCT（中国沿岸時間）"
+                  "Europe/Guernsey": {
+                    "label": "London. Dublin, Lisbon"
                   },
-                  "WADT": {
-                    "label": "WADT（西オーストラリア夏時間）"
+                  "Australia/Lord_Howe": {
+                    "label": "Lord_Howe"
                   },
-                  "WST": {
-                    "label": "WST（西オーストラリア標準時）"
+                  "America/Creston": {
+                    "label": "Los_Angeles, Vancouver, Hermosillo"
                   },
-                  "ALMST": {
-                    "label": "ALMST（アルマトイ夏時間）"
+                  "Pacific/Marquesas": {
+                    "label": "Marquesas,Taiohae"
                   },
-                  "WAST": {
-                    "label": "WAST（西オーストラリア標準時）"
+                  "America/Cayman": {
+                    "label": "Mexico_City, Panama, Chicago"
                   },
-                  "CXT": {
-                    "label": "CXT（クリスマス（島）時間）"
+                  "Pacific/Niue": {
+                    "label": "Midway, Niue, Pago_Pago"
                   },
-                  "ALMT": {
-                    "label": "アライドマテリアル（アルマトイ時間）"
+                  "Europe/Mariehamn": {
+                    "label": "Moscow, Istanbul, Qatar"
                   },
-                  "MAWT": {
-                    "label": "MAWT（モーソン（南極大陸）時間）"
+                  "Asia/Kolkata": {
+                    "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
                   },
-                  "IOT": {
-                    "label": "IOT（インドチャゴス時間）"
+                  "America/Miquelon": {
+                    "label": "Noronha, Nuuk, Miquelon"
                   },
-                  "MVT": {
-                    "label": "MVT（モルディブ島時間）"
+                  "America/Danmarkshavn": {
+                    "label": "Reykjavik, Dakar, Casablanca"
                   },
-                  "TFT": {
-                    "label": "TFT（ケルゲレン時間）"
+                  "Pacific/Bougainville": {
+                    "label": "Sakhalin, Norfolk, Bougainville"
                   },
-                  "AFT": {
-                    "label": "AFT（アフガニスタン時間）"
+                  "America/Araguaina": {
+                    "label": "Sao_Paulo, Buenos_Aires, Montevideo"
                   },
-                  "MUT": {
-                    "label": "MUT（モーリシャス島時間）"
+                  "America/St_Johns": {
+                    "label": "St_Johns,Mount Pearl, Corner Brook"
                   },
-                  "RET": {
-                    "label": "RET（レユニオン島時間）"
+                  "Asia/Tehran": {
+                    "label": "Tehran, Mashhad, Isfahan, Karaj, Tabriz"
                   },
-                  "SCT": {
-                    "label": "SCT（マヘ島時間）"
+                  "Asia/Tokyo": {
+                    "label": "Tokyo, Seoul, Jayapura"
                   },
-                  "IT": {
-                    "label": "IT（イラン時間）"
+                  "America/New_York": {
+                    "label": "Toronto, Santiago, New_York"
                   },
-                  "EAT": {
-                    "label": "EAT(Antananarivo, Comoro Time)"
+                  "Australia/Sydney": {
+                    "label": "Vladivostok, Sydney, Brisbane"
                   },
-                  "BT": {
-                    "label": "BT（バグダッド時間）"
+                  "Asia/Yangon": {
+                    "label": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
                   },
-                  "EETDST": {
-                    "label": "EETDST（東ヨーロッパ夏時間）"
-                  },
-                  "HMT": {
-                    "label": "HMT（ヘラス地中海時間 (?)）"
-                  },
-                  "BDST": {
-                    "label": "BDST（英国ダブル標準時）"
-                  },
-                  "CEST": {
-                    "label": "CEST（中央ヨーロッパ夏時間）"
-                  },
-                  "CETDST": {
-                    "label": "CETDST（中央ヨーロッパ夏時間）"
-                  },
-                  "EET": {
-                    "label": "EET(Eastern Europe, USSR Zone 1)"
-                  },
-                  "FWT": {
-                    "label": "FWT（フランス冬時間）"
-                  },
-                  "IST": {
-                    "label": "IST（イスラエル標準時）"
-                  },
-                  "MEST": {
-                    "label": "MEST（中央ヨーロッパ夏時間）"
-                  },
-                  "METDST": {
-                    "label": "METDST（中央ヨーロッパ夏時間）"
-                  },
-                  "SST": {
-                    "label": "SST（スウェーデン夏時間）"
-                  },
-                  "BST": {
-                    "label": "BST（英国夏時間）"
-                  },
-                  "CET": {
-                    "label": "CET（中央ヨーロッパ時間）"
-                  },
-                  "DNT": {
-                    "label": "DNT（デンマーク標準時）"
-                  },
-                  "FST": {
-                    "label": "FST（フランス夏時間）"
-                  },
-                  "MET": {
-                    "label": "MET（中央ヨーロッパ時間）"
-                  },
-                  "MEWT": {
-                    "label": "MEWT（中央ヨーロッパ冬時間）"
-                  },
-                  "MEZ": {
-                    "label": "MEZ（中央ヨーロッパゾーン）"
-                  },
-                  "NOR": {
-                    "label": "NOR（ノルウェー標準時）"
-                  },
-                  "SET": {
-                    "label": "SET（セーシェル時間）"
-                  },
-                  "SWT": {
-                    "label": "SWT（スウェーデン冬時間）"
-                  },
-                  "WETDST": {
-                    "label": "WETDST（西ヨーロッパ夏時間）"
-                  },
-                  "GMT": {
-                    "label": "GMT（グリニッジ標準時）"
-                  },
-                  "UT": {
-                    "label": "UT（世界時）"
-                  },
-                  "UTC": {
-                    "label": "UTC(Universal Time, Coordinated)"
-                  },
-                  "WET": {
-                    "label": "WET（西ヨーロッパ）"
-                  },
-                  "WAT": {
-                    "label": "WAT（西アフリカ時間）"
-                  },
-                  "NDT": {
-                    "label": "NDT（ニューファンドランド夏時間）"
-                  },
-                  "ADT": {
-                    "label": "ADT（大西洋夏時間）"
-                  },
-                  "NFT": {
-                    "label": "NFT（ニューファンドランド標準時）"
-                  },
-                  "NST": {
-                    "label": "NST（ニューファンドランド標準時）"
-                  },
-                  "AST": {
-                    "label": "AST（大西洋標準時（カナダ））"
-                  },
-                  "ACST": {
-                    "label": "ACST（大西洋/ポルトアクレ夏時間）"
-                  },
-                  "ACT": {
-                    "label": "ACT（大西洋/ポルトアクレ標準時）"
-                  },
-                  "EDT": {
-                    "label": "EDT（東部夏時間）"
-                  },
-                  "CDT": {
-                    "label": "CDT（中部夏時間）"
-                  },
-                  "EST": {
-                    "label": "EST（東部標準時）"
-                  },
-                  "CST": {
-                    "label": "CST（中部標準時）"
-                  },
-                  "MDT": {
-                    "label": "MDT（山岳部夏時間）"
-                  },
-                  "MST": {
-                    "label": "MST（山岳部標準時）"
-                  },
-                  "PDT": {
-                    "label": "PDT（太平洋夏時間）"
-                  },
-                  "AKDT": {
-                    "label": "AKDT（アラスカ夏時間）"
-                  },
-                  "PST": {
-                    "label": "PST（太平洋標準時）"
-                  },
-                  "YDT": {
-                    "label": "YDT（ユーコン夏時間）"
-                  },
-                  "AKST": {
-                    "label": "AKST（アラスカ標準時）"
-                  },
-                  "HDT": {
-                    "label": "HDT（ハワイ/アラスカ夏時間）"
-                  },
-                  "YST": {
-                    "label": "YST（ユーコン標準時）"
-                  },
-                  "AHST": {
-                    "label": "AHST（アラスカ・ハワイ標準時）"
-                  },
-                  "HST": {
-                    "label": "HST（ハワイ標準時）"
-                  },
-                  "CAT": {
-                    "label": "CAT（中央アラスカ時間）"
-                  },
-                  "NT": {
-                    "label": "NT（ノーム時間）"
-                  },
-                  "IDLW": {
-                    "label": "IDLW(International Date Line, West)"
+                  "Indian/Cocos": {
+                    "label": "Yangon, Cocos,West Island"
                   }
                 },
                 "breakLine": true
-            }
-          },
-          "output.options.location": {
-            "type": "text",
-            "label": "場所の指定",
-            "val": "A1"
-          },
-          "output.options.table_mode": {
-            "type": "select",
-            "label": "貼り付け",
-            "val": "content_only",
-            "options": {
-              "content_only": {
-                "label": "コンテンツのみ"
-              },
-              "fully_formatted": {
-                "label": "完全フォーマット済み"
               }
             }
           },
-          "output.options.formatted_as_table": {
-            "type": "checkbox",
-            "label": "テーブルとしてフォーマット済み",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false",
-            "breakLine": true
-          },
-          "output.add_tag": {
-            "type": "checkbox",
-            "label": "タグの追加",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "output.tag_name": {
-            "type": "text",
-            "label": "タグ名",
-            "show_if": "output.add_tag=='true'",
-            "required": true,
-            "minLength": 1,
-            "maxLength": 255,
-            "val": "",
-            "breakLine": true,
-            "style": "margin-left: 15px"
-          },
-          "output.options.visibility": {
-            "type": "select",
-            "label": "可視性",
-            "val": "current_flow",
-            "options": {
-              "current_flow": {
-                "label": "現在のフロー"
+          "download_table_setting_frame": {
+            "type": "fieldset",
+            "label": "Download Table Settings",
+            "repeat": false,
+            "fields": {
+              "output.options.location": {
+                "type": "text",
+                "label": "場所の指定",
+                "val": "A1",
+                "breakLine": true
               },
-              "all_flow": {
-                "label": "全てのフロー"
+              "output.options.formatted_as_table": {
+                "type": "checkbox",
+                "label": "テーブルとしてフォーマット済み",
+                "val": "true",
+                "isOn": "true",
+                "isOff": "false",
+                "breakLine": true
+              },
+              "output.add_tag": {
+                "type": "checkbox",
+                "label": "タグの追加",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false"
+              },
+              "output.tag_name": {
+                "type": "text",
+                "label": "タグ名",
+                "show_if": "output.add_tag==''true''",
+                "required": true,
+                "minLength": 1,
+                "maxLength": 255,
+                "val": "",
+                "breakLine": true,
+                "style": "margin-left: 15px"
+              },
+              "output.options.visibility": {
+                "type": "select",
+                "label": "可視性",
+                "val": "current_flow",
+                "options": {
+                  "current_flow": {
+                    "label": "現在のフロー"
+                  },
+                  "all_flow": {
+                    "label": "全てのフロー"
+                  }
+                },
+                "breakLine": true
+              },
+              "output.options.table_mode": {
+                "type": "select",
+                "label": "貼り付け",
+                "val": "content_only",
+                "options": {
+                  "content_only": {
+                    "label": "コンテンツのみ"
+                  },
+                  "fully_formatted": {
+                    "label": "完全フォーマット済み"
+                  }
+                }
               }
             }
           }
         },
         "breakLine": true
+      },
+      "options.output_duplicated": {
+        "type": "select",
+        "label": "重複している場合",
+        "val": "drop_if_exist",
+        "options": {
+          "drop_if_exist": {
+            "label": "作成またはドロップ（既存の場合）"
+          },
+          "error_if_exist": {
+            "label": "新規作成（既存の場合はエラーにする）"
+          },
+          "error_if_not_exist": {
+            "label": "ドロップ（存在しない場合はエラーにする）"
+          },
+          "append": {
+            "label": "追加"
+          }
+        }
       }
     }
   }
