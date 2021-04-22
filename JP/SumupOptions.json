@@ -1,186 +1,186 @@
 {
   "actions": {
     "type": "fieldset",
-    "label": "アクションの追加",
+    "label": "Add Actions",
     "repeat": true,
     "fields": {
       "column": {
         "type": "select",
-        "label": "列",
+        "label": "Column",
         "table": "input_table",
 		"assign_selected_value_to":"this.output_column_name",
         "bind": "COLUMNS"
       },
       "action": {
         "type": "select",
-        "label": "アクション",
+        "label": "Action",
         "options": {
           "group_by": {
-            "label": "グループ別"
+            "label": "Group By"
           },
           "count": {
-            "label": "計算"
+            "label": "Count"
           },
           "sum": {
-            "label": "合計"
+            "label": "Sum"
           },
           "first": {
-            "label": "最初"
+            "label": "First"
           },
           "last": {
-            "label": "最後"
+            "label": "Last"
           },
           "shortest": {
-            "label": "最短"
+            "label": "Shortest"
           },
           "longest": {
-            "label": "最長"
+            "label": "Longest"
           },
           "concatenate": {
-            "label": "連結"
+            "label": "Concatenate"
           },
           "mathematics": {
-            "label": "数学"
+            "label": "Mathematics"
           }
         }
       },
       "count_action_category": {
         "type": "select",
-        "label": "アクションタイプ",
-        "show_if": "this.action=='count'",
+        "label": "Action Type",
+        "show_if": "this.action==''count''",
         "options": {
           "all": {
-            "label": "全て"
+            "label": "All"
           },
           "distinct": {
-            "label": "区別"
+            "label": "Distinct"
           },
           "empty_or_zero": {
-            "label": "空または0"
+            "label": "Empty or 0"
           },
           "non_empty_or_zero": {
-            "label": "空または0以外"
+            "label": "Non Empty or 0"
           }
         },
         "val": "all"
       },
       "action_type1": {
         "type": "select",
-        "label": "アクションサブタイプ",
-        "show_if": "this.action=='count' && (this.count_action_category=='all' || this.count_action_category=='distinct')",
+        "label": "Action Sub Type",
+        "show_if": "this.action==''count'' && (this.count_action_category==''all'' || this.count_action_category==''distinct'')",
         "options": {
           "-": {
             "label": "-"
           },
           "non_zero": {
-            "label": "0以外"
+            "label": "Non 0"
           },
           "non_empty": {
-            "label": "空以外"
+            "label": "Non Empty"
           },
           "non_null": {
-            "label": "無効以外"
+            "label": "Non Null"
           },
           "non_blank": {
-            "label": "空白以外"
+            "label": "Non Blank"
           }
         },
         "val": "-"
       },
       "action_type2": {
         "type": "select",
-        "label": "アクションサブタイプ",
-        "show_if": "this.action=='count' && this.count_action_category=='empty_or_zero'",
+        "label": "Action Sub Type",
+        "show_if": "this.action==''count'' && this.count_action_category==''empty_or_zero''",
         "options": {
           "zero": {
             "label": "0"
           },
           "empty": {
-            "label": "空(無効 & 空欄)"
+            "label": "Empty (Null & Blank)"
           },
           "null": {
             "label": "Null"
           },
           "blank": {
-            "label": "空白"
+            "label": "Blank"
           }
         },
         "val": "zero"
       },
       "action_type3": {
         "type": "select",
-        "label": "アクションサブタイプ",
-        "show_if": "this.action=='count' && this.count_action_category=='non_empty_or_zero'",
+        "label": "Action Sub Type",
+        "show_if": "this.action==''count'' && this.count_action_category==''non_empty_or_zero''",
         "options": {
           "non_zero": {
-            "label": "0以外"
+            "label": "Non 0"
           },
           "non_empty": {
-            "label": "空以外"
+            "label": "Non Empty"
           },
           "non_null": {
-            "label": "無効以外"
+            "label": "Non Null"
           },
           "non_blank": {
-            "label": "空白以外"
+            "label": "Non Blank"
           }
         },
         "val": "non_zero"
       },
       "mathematics_action_category": {
         "type": "select",
-        "label": "アクションタイプ",
-        "show_if": "this.action=='mathematics'",
+        "label": "Action Type",
+        "show_if": "this.action==''mathematics''",
         "options": {
           "min": {
-            "label": "最小"
+            "label": "Min"
           },
           "max": {
-            "label": "最大"
+            "label": "Max"
           },
           "average": {
-            "label": "平均"
+            "label": "Average"
           },
           "median": {
-            "label": "中央値"
+            "label": "Median"
           },
           "standard_deviation": {
-            "label": "標準偏差"
+            "label": "Standard Deviation"
           },
           "variance": {
-            "label": "分散"
+            "label": "Variance"
           }
         },
         "val": "min"
       },
       "action_type4": {
         "type": "select",
-        "label": "アクションサブタイプ",
-        "show_if": "this.action=='mathematics'",
+        "label": "Action Sub Type",
+        "show_if": "this.action==''mathematics''",
         "options": {
           "include_zero": {
-            "label": "0を含む"
+            "label": "Include 0"
           },
           "exclude_zero": {
-            "label": "0を除く"
+            "label": "Exclude 0"
           }
         },
         "val": "include_zero"
       },
       "concatenate_separator": {
         "type": "text",
-        "label": "セパレータ",
-        "show_if": "this.action=='concatenate'",
+        "label": "Separator",
+        "show_if": "this.action==''concatenate''",
         "val": ",
       },
       output_column_name": {
         "type": "text",
-        "label": "列名の出力",
+        "label": "Output Column Name",
         "val": ""
       },
       "delete": {
         "type": "button",
-        "label": "削除",
+        "label": "Delete",
         "function": "DELETE_ROW"
       }
     }
