@@ -1,21 +1,21 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Seleccionar Opciones",
+    "label": "Select Options",
     "repeat": false,
     "fields": {
       "transpose_type": {
         "type": "select",
-        "label": "Tipo de Transposición",
+        "label": "Transpose Type",
         "options": {
           "mirror_matrix": {
-            "label": "Matriz Espejo"
+            "label": "Mirror Matrix"
           },
           "column_name_to_label": {
-            "label": “Nombre de Columna para la Etiqueta”
+            "label": "Column Name to Label"
           },
           "crosstab": {
-            "label": "Referencias cruzadas"
+            "label": "Crosstab"
           }
         },
         "val": "mirror_matrix",
@@ -25,8 +25,8 @@
       },
       "mirror_matrix.convert_header_to_label": {
         "type": "checkbox",
-        "label": "Convertir la cabecera a etiqueta",
-        "show_if": "transpose_type=='mirror_matrix'",
+        "label": "Convert header to label",
+        "show_if": "transpose_type==''mirror_matrix''",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -34,8 +34,8 @@
       },
       "column_name_to_label.columns_to_label": {
         "type": "select",
-        "label": "Seleccionar Columnas para Convertir en Etiquetas",
-        "show_if": "transpose_type=='column_name_to_label'",
+        "label": "Select Columns to Convert into Labels",
+        "show_if": "transpose_type==''column_name_to_label''",
         "table": "input_table",
         "multiple": true,
         "bind": "COLUMNS",
@@ -45,26 +45,26 @@
       },
       "column_name_to_label.label_column_name": {
         "type": "text",
-        "label": "Nombre de Columna de la Columna de Etiquetas",
-        "show_if": "transpose_type=='column_name_to_label'",
+        "label": "Column Name of Label Column",
+        "show_if": "transpose_type==''column_name_to_label''",
         "required": true,
-        "val": "Etiqueta",
+        "val": "Label",
         "width": "100%",
         "breakLine": true
       },
       "column_name_to_label.value_column_name": {
         "type": "text",
-        "label": "Nombre de Columna de la Columna de Valores",
-        "show_if": "transpose_type=='column_name_to_label'",
+        "label": "Column Name of Value Column",
+        "show_if": "transpose_type==''column_name_to_label''",
         "required": true,
-        "val": "Valor",
+        "val": "Value",
         "width": "100%",
         "breakLine": true
       },
       "crosstab.group_data_by_these_values": {
         "type": "select",
-        "label": "Agrupar los datos por estos valores",
-        "show_if": "transpose_type=='crosstab'",
+        "label": "Group data by these values",
+        "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "multiple": true,
         "bind": "COLUMNS",
@@ -74,8 +74,8 @@
       },
       "crosstab.change_column_headers": {
         "type": "select",
-        "label": "Cambiar la Cabecera de la Columna",
-        "show_if": "transpose_type=='crosstab'",
+        "label": "Change Column Header",
+        "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -84,8 +84,8 @@
       },
       "crosstab.values_for_new_columns": {
         "type": "select",
-        "label": "Valores Para las Nuevas Columnas",
-        "show_if": "transpose_type=='crosstab'",
+        "label": "Values For New Columns",
+        "show_if": "transpose_type==''crosstab''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -94,46 +94,46 @@
       },
       "crosstab.method_for_aggregating_values": {
         "type": "select",
-        "label": “Método para Agregar Valores”,
-        "show_if": "transpose_type=='crosstab'",
+        "label": "Method for Aggregating Values",
+        "show_if": "transpose_type==''crosstab''",
         "options": {
-          "Concatenar": {
-            "label": "Concatenar"
+          "Concatenate": {
+            "label": "Concatenate"
           },
-          "Primero": {
-            "label": "Primero"
+          "First": {
+            "label": "First"
           },
-          "Última": {
-            "label": "Última"
+          "Last": {
+            "label": "Last"
           },
-          "Suma": {
-            "label": "Suma"
+          "Sum": {
+            "label": "Sum"
           },
-          "Promedio": {
-            "label": "Promedio"
+          "Average": {
+            "label": "Average"
           },
-          "Cuenta": {
-            "label": "Cuenta"
+          "Count": {
+            "label": "Count"
           },
-          “Definido por el Usuario”: {
-            "label": “Definido por el Usuario”
+          "User Defined": {
+            "label": "User Defined"
           }
         },
-        "val": "Concatenar",
+        "val": "Concatenate",
         "required": true
       },
       "crosstab.user_defined_str": {
         "type": "text",
-        "label": “Valor Definido por el Usuario”,
-        "show_if": "transpose_type=='crosstab' && crosstab.method_for_aggregating_values=='User Defined'",
+        "label": "User Defined Value",
+        "show_if": "transpose_type==''crosstab'' && crosstab.method_for_aggregating_values==''User Defined''",
         "val": "x",
         "trim": "false",
         "breakLine": true
       },
       "crosstab.separator": {
         "type": "text",
-        "label": "Separador",
-        "show_if": "transpose_type=='crosstab' && method_for_aggregating_values=='Concatenate'",
+        "label": "Separator",
+        "show_if": "transpose_type==''crosstab'' && method_for_aggregating_values==''Concatenate''",
         "val": ",,
         trim": "false",
         "required": true,
