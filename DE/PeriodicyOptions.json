@@ -21,7 +21,7 @@
       "amount_formatting_frame": {
         "type": "fieldset",
         "label": "Amount Column Formatting",
-        "show_if": "options.type=='generate'",
+        "show_if": "options.type==''generate''",
         "repeat": false,
         "fields": {
           "options.amount.format__category": {
@@ -47,7 +47,7 @@
           "options.amount.format__rounding": {
             "type": "select",
             "label": "Abrunden",
-            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+            "show_if": "options.amount.format__category==''number'' || options.amount.format__category==''percentage'' || options.amount.format__category==''currency''",
             "required": true,
             "options": {
               "no_rounding": {
@@ -88,8 +88,8 @@
           },
           "options.amount.format__use_1000_separator": {
             "type": "checkbox",
-            "label": "1000 Trennzeichen verwenden",
-            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+            "label": "1000 Trennzeichen(.) verwenden",
+            "show_if": "options.amount.format__category==''number'' || options.amount.format__category==''percentage'' || options.amount.format__category==''currency''",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
@@ -97,7 +97,7 @@
           "options.amount.format__currency_symbol": {
             "type": "select",
             "label": "Symbol",
-            "show_if": "options.amount.format__category=='currency'",
+            "show_if": "options.amount.format__category==''currency''",
             "required": true,
             "options": {
               "dollar": {
@@ -117,7 +117,7 @@
       "options.standard_table": {
         "type": "checkbox",
         "label": "Standard-Periodensystem",
-        "show_if": "options.type=='process'",
+        "show_if": "options.type==''process''",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -126,7 +126,7 @@
       "options.initial_date": {
         "type": "select",
         "label": "Anfangsdatum",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
@@ -134,7 +134,7 @@
       "options.period": {
         "type": "select",
         "label": "Periodicy (e.g. Monthly, Quarterly)",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
@@ -142,7 +142,7 @@
       "options.final_date": {
         "type": "select",
         "label": "Endgültiges Datum",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS",
         "breakLine": true
@@ -150,21 +150,21 @@
       "options.volume": {
         "type": "select",
         "label": "Betrag",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth": {
         "type": "select",
         "label": "Wachstum",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth_period": {
         "type": "select",
         "label": "Wachstumsperiode",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "options": {
           "selected_period": {
             "label": "Entspricht der Periodizität"
@@ -190,7 +190,7 @@
       "options.growth_period_column": {
         "type": "select",
         "label": "Spalte "Wachstumsperiode",
-        "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'",
+        "show_if": "options.type==''process'' && options.standard_table==''false'' && options.growth_period==''column''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -199,7 +199,7 @@
       "options.use_growth_pattern_column": {
         "type": "checkbox",
         "label": "Verwendung Wachstumsmuster",
-        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "show_if": "options.type==''process'' && options.standard_table==''false''",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -207,7 +207,7 @@
       "options.growth_pattern_column": {
         "type": "select",
         "label": "Wachstumsmuster",
-        "show_if": "options.type=='process' && options.standard_table=='false' && options.use_growth_pattern_column=='true'",
+        "show_if": "options.type==''process'' && options.standard_table==''false'' && options.use_growth_pattern_column==''true''",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -216,7 +216,7 @@
       "options.end_date": {
         "type": "date",
         "label": "Enddatum der Tabelle",
-        "show_if": "options.type=='process'",
+        "show_if": "options.type==''process''",
         "val": "",
         "required": true,
         "style": "width: 300px"
