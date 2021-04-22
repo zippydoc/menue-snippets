@@ -1,8 +1,8 @@
 {
   "output.select_output_columns": {
     "type": "checkbox",
-    "label": "Sélectionner les colonnes de sortie",
-    "show_if": "options.type=='process'",
+    "label": "Select Output Columns",
+    "show_if": "options.type==''process''",
     "val": "false",
     "isOn": "true",
     "isOff": "false"
@@ -10,19 +10,19 @@
   "output_columns": {
     "type": "fieldset",
     "label": "Select OutputColumns",
-    "show_if": "options.type=='process' && output.select_output_columns=='true'",
+    "show_if": "options.type==''process'' && output.select_output_columns==''true''",
     "repeat": true,
     "fields": {
       "field_name": {
         "type": "select",
-        "label": "Sélectionner une colonne",
+        "label": "Select Column",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
       },
       "order": {
         "type": "select",
-        "label": "Commander",
+        "label": "Order",
         "options": {
           "-": {
             "label": "-"
@@ -38,18 +38,18 @@
       },
       "is_rename": {
         "type": "checkbox",
-        "label": "Renommer",
+        "label": "Rename",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "rename": {
-        "show_if": "this.is_rename == 'true'",
+        "show_if": "this.is_rename == ''true''",
         "type": "text",
         "required": true,
         "minLength": 1,
         "maxLength": 255,
-        "label": "Nouveau nom de colonne",
+        "label": "New Column Name",
         "style": "margin-left: 10px"
       },
       "format__category": {
@@ -61,77 +61,77 @@
             "label": "Standard"
           },
           "number": {
-            "label": "Numéro"
+            "label": "Number"
           },
           "percentage": {
-            "label": "Pourcentage"
+            "label": "Percentage"
           },
           "text": {
-            "label": "Texte"
+            "label": "Text"
           },
           "date": {
             "label": "Date"
           },
           "currency": {
-            "label": "Monnaie"
+            "label": "Currency"
           }
         },
         "val": "standard"
       },
       "format__rounding": {
         "type": "select",
-        "label": "Arrondi",
-        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+        "label": "Rounding",
+        "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
         "required": true,
         "options": {
           "no_rounding": {
-            "label": "Pas d'arrondi"
+            "label": "No rounding"
           },
           "0": {
-            "label": "0 chiffre"
+            "label": "0 digits"
           },
           "1": {
-            "label": "1 chiffre"
+            "label": "1 digits"
           },
           "2": {
-            "label": "2 chiffres"
+            "label": "2 digits"
           },
           "3": {
-            "label": "3 chiffres"
+            "label": "3 digits"
           },
           "4": {
-            "label": "4 chiffres"
+            "label": "4 digits"
           },
           "5": {
-            "label": "5 chiffres"
+            "label": "5 digits"
           },
           "6": {
-            "label": "6 chiffres"
+            "label": "6 digits"
           },
           "7": {
-            "label": "7 chiffres"
+            "label": "7 digits"
           },
           "8": {
-            "label": "8 chiffres"
+            "label": "8 digits"
           },
           "9": {
-            "label": "9 chiffres"
+            "label": "9 digits"
           }
         },
         "val": "2"
       },
       "format__use_1000_separator": {
         "type": "checkbox",
-        "label": "Utilisez le séparateur 1000 (.)",
-        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+        "label": "Use 1000 Separator(.)",
+        "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
         "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
       "format__currency_symbol": {
         "type": "select",
-        "label": "Symbole",
-        "show_if": "this.format__category=='currency'",
+        "label": "Symbol",
+        "show_if": "this.format__category==''currency''",
         "required": true,
         "options": {
           "dollar": {
@@ -149,7 +149,7 @@
       "format__date_format": {
         "type": "select",
         "label": "Type",
-        "show_if": "this.format__category=='date'",
+        "show_if": "this.format__category==''date''",
         "required": true,
         "options": {
           "mm/dd/yyyy": {
@@ -167,7 +167,7 @@
       },
       "delete": {
         "type": "button",
-        "label": "Supprimer",
+        "label": "Delete",
         "function": "DELETE_ROW"
       }
     },
