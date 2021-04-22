@@ -1,71 +1,71 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Sélectionner les options",
+    "label": "Select Options",
     "repeat": false,
     "fields": {
       "options.split_method": {
         "type": "select",
-        "label": "Méthode de séparation",
+        "label": "Split method",
         "required": true,
         "options": {
           "standard": {
             "label": "Standard"
           },
           "regex": {
-            "label": "Expression régulière"
+            "label": "RegEx"
           }
         },
         "val": "standard"
       },
       "options.split_type": {
         "type": "select",
-        "label": "Type de séparation",
+        "label": "Split type",
         "required": true,
         "options": {
           "split_to_columns": {
-            "label": "Séparer en colonnes"
+            "label": "Split to Columns"
           },
           "split_to_rows": {
-            "label": "Séparer en rangées"
+            "label": "Split to Rows"
           }
         },
         "val": "split_to_columns"
       },
       "options.standard_delimiter": {
         "type": "select",
-        "label": "Délimiteur de séparation",
-        "show_if": "options.split_method=='standard'",
+        "label": "Split Delimiter",
+        "show_if": "options.split_method==''standard''",
         "required": true,
         "options": {
           "tabs": {
-            "label": "Onglets"
+            "label": "Tabs"
           },
           "space": {
-            "label": "Espace"
+            "label": "Space"
           },
           "whitespace": {
-            "label": "Espace"
+            "label": "Whitespace"
           },
           "linebreak": {
-            "label": "Saut de ligne"
+            "label": "Line break"
           },
           "punctuation": {
-            "label": "Ponctuation"
+            "label": "Punctuation"
           },
           "punctuation_whitespace": {
-            "label": "Ponctuation et espaces"
+            "label": "Punctuation and Whitespace"
           },
           "custom": {
-            "label": "Personnaliser"
+            "label": "Custom"
           }
         },
         "val": "punctuation"
       },
       "options.delimiter": {
         "type": "text",
-        "label": "Délimiteur de séparation",
-        "show_if": "options.split_method=='standard' && options.standard_delimiter=='custom'",
+        "label": "Split Delimiter",
+        "show_if": "options.split_method==''standard'' && options.standard_delimiter==''custom''",
         "val": ",,
         trim": "false",
         "required": true,
@@ -73,14 +73,14 @@
       },
       "format_frame": {
         "type": "fieldset",
-        "label": "Format à analyser pour le fractionnement",
-        "show_if": "options.split_method=='regex'",
+        "label": "Format to Parse for Split",
+        "show_if": "options.split_method==''regex''",
         "repeat": false,
         "fields": {
           "options.format_to_convert.regular_expression": {
             "type": "text",
-            "label": "Parse Regular Expression ( ex: ([a-z]+)\s([a-z]+) )",
-            "val": "[a-z]+\s[a-z]+",
+            "label": "Parse Regular Expression ( ex: ([a-z]+)\\s([a-z]+) )",
+            "val": "[a-z]+\\s[a-z]+",
             "required": true,
             "width": "100%",
             "trim": "false",
@@ -88,7 +88,7 @@
           },
           "options.format_to_convert.case_insensitive": {
             "type": "checkbox",
-            "label": "Ignorer la casse",
+            "label": "Case Insensitive",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
