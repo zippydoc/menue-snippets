@@ -1,13 +1,13 @@
 {
   "output": {
     "type": "fieldset",
-    "label": "Define Output Table",
+    "label": "定义输出表格",
     "show_if": "options.from==''database'' || (options.from==''web'' && options.output_format==''file_list'') || (options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''true'') || (options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''false'' && options.use_filename_as_output_table_name==''false'')",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
-        "label": "Output Table Name",
+        "label": "输出表格名称",
         "show_if": "(output.set_options==''true'' && output.compose_table_name==''false'') || output.set_options==''false''",
         "minLength": 1,
         "val": "",
@@ -16,20 +16,20 @@
       },
       "output.set_options": {
         "type": "checkbox",
-        "label": "Output Options",
+        "label": "输出选项",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "output_options_box": {
         "type": "fieldset",
-        "label": "Output Options",
+        "label": "输出选项",
         "show_if": "output.set_options==''true''",
         "repeat": false,
         "fields": {
           "output.compose_table_name": {
             "type": "checkbox",
-            "label": "Compose Table Name",
+            "label": "编写表格名称",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -37,13 +37,13 @@
           },
           "compose_table_name_frame": {
             "type": "fieldset",
-            "label": "Compose Output Table Name",
+            "label": "编写输出表格名称",
             "show_if": "output.compose_table_name==''true''",
             "repeat": false,
             "fields": {
               "output.prefix_rule": {
                 "type": "select",
-                "label": "Prefix",
+                "label": "前缀",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "empty",
                 "options": {
@@ -51,7 +51,7 @@
                     "label": "-"
                   },
                   "script_name": {
-                    "label": "Task Name"
+                    "label": "任务名称"
                   },
                   "date_string_type1": {
                     "label": "Date: dd_mm_yyyy"
@@ -60,19 +60,19 @@
                     "label": "Date: yyyy_mm_dd"
                   },
                   "time_string": {
-                    "label": "Time: h_min_sec"
+                    "label": "时间：h_min_sec"
                   },
                   "datetime_string": {
                     "label": "Date_Time"
                   },
                   "custom": {
-                    "label": "Custom"
+                    "label": "自定义"
                   }
                 }
               },
               "output.prefix_text": {
                 "type": "text",
-                "label": "Prefix Text",
+                "label": "前缀文本",
                 "show_if": "output.compose_table_name==''true'' && output.prefix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
@@ -80,28 +80,28 @@
               },
               "output.core_delimiter": {
                 "type": "text",
-                "label": "Delimiter",
+                "label": "分隔符",
                 "show_if": "output.compose_table_name==''true'' && output.prefix_rule!=''empty''",
                 "val": "_",
                 "width": "50px"
               },
               "output.core_rule": {
                 "type": "select",
-                "label": "Table Name",
+                "label": "表格名称",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
                   "script_name": {
-                    "label": "Task Name"
+                    "label": "任务名称"
                   },
                   "custom": {
-                    "label": "Custom"
+                    "label": "自定义"
                   }
                 }
               },
               "output.core_text": {
                 "type": "text",
-                "label": "Main Table Name",
+                "label": "主表格名称",
                 "show_if": "output.compose_table_name==''true'' && output.core_rule==''custom''",
                 "required": true,
                 "minLength": 1,
@@ -110,14 +110,14 @@
               },
               "output.suffix_delimiter": {
                 "type": "text",
-                "label": "Delimiter",
+                "label": "分隔符",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "_",
                 "width": "50px"
               },
               "output.suffix_rule": {
                 "type": "select",
-                "label": "Suffix",
+                "label": "后缀",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
@@ -125,7 +125,7 @@
                     "label": "-"
                   },
                   "script_name": {
-                    "label": "Task Name"
+                    "label": "任务名称"
                   },
                   "date_string_type1": {
                     "label": "Date: dd_mm_yyyy"
@@ -134,19 +134,19 @@
                     "label": "Date: yyyy_mm_dd"
                   },
                   "time_string": {
-                    "label": "Time: h_min_sec"
+                    "label": "时间：h_min_sec"
                   },
                   "datetime_string": {
                     "label": "Date_Time"
                   },
                   "custom": {
-                    "label": "Custom"
+                    "label": "自定义"
                   }
                 }
               },
               "output.suffix_text": {
                 "type": "text",
-                "label": "Suffix Text",
+                "label": "后缀文本",
                 "show_if": "output.compose_table_name==''true'' && output.suffix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
@@ -155,9 +155,9 @@
               },
               "output.timezone": {
                 "type": "select",
-                "label": "Timezone",
+                "label": "时区",
                 "show_if": "output.compose_table_name==''true'' && (output.prefix_rule==''date_string_type1'' || output.prefix_rule==''date_string_type2'' || output.prefix_rule==''time_string'' || output.prefix_rule==''datetime_string'' || output.suffix_rule==''date_string_type1'' || output.suffix_rule==''date_string_type2'' || output.suffix_rule==''time_string'' || output.suffix_rule==''datetime_string'')",
-                "val": "Europe/Berlin",
+                "val": "欧洲/柏林",
                 "required": true,
                 "options": {
                   "America/Adak": {
@@ -184,7 +184,7 @@
                   "Asia/Bangkok": {
                     "label": "Bangkok, Jakarta, Novosibirsk"
                   },
-                  "Europe/Berlin": {
+                  "欧洲/柏林": {
                     "label": "Berlin, Paris, Amsterdam"
                   },
                   "Australia/Perth": {
@@ -292,13 +292,13 @@
             "fields": {
               "output.options.location": {
                 "type": "text",
-                "label": "Specify Location",
+                "label": "指定位置",
                 "val": "A1",
                 "breakLine": true
               },
               "output.options.formatted_as_table": {
                 "type": "checkbox",
-                "label": "Formatted as Table",
+                "label": "格式化为表格",
                 "val": "true",
                 "isOn": "true",
                 "isOff": "false",
@@ -306,14 +306,14 @@
               },
               "output.add_tag": {
                 "type": "checkbox",
-                "label": "Add Tag",
+                "label": "添加标记",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
               },
               "output.tag_name": {
                 "type": "text",
-                "label": "Tag Name",
+                "label": "标记名称",
                 "show_if": "output.add_tag==''true''",
                 "required": true,
                 "minLength": 1,
@@ -324,28 +324,28 @@
               },
               "output.options.visibility": {
                 "type": "select",
-                "label": "Visibility",
+                "label": "可见性",
                 "val": "current_flow",
                 "options": {
                   "current_flow": {
-                    "label": "Current Flow"
+                    "label": "当前工作流"
                   },
                   "all_flow": {
-                    "label": "All Flows"
+                    "label": "所有工作流"
                   }
                 },
                 "breakLine": true
               },
               "output.options.table_mode": {
                 "type": "select",
-                "label": "Paste",
+                "label": "粘贴",
                 "val": "content_only",
                 "options": {
                   "content_only": {
-                    "label": "Content Only"
+                    "label": "仅内容"
                   },
                   "fully_formatted": {
-                    "label": "Fully Formatted"
+                    "label": "完全格式化"
                   }
                 }
               }
@@ -356,20 +356,20 @@
       },
       "options.output_duplicated": {
         "type": "select",
-        "label": "If duplicated",
+        "label": "如果重复",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "Create or Drop (if already existing)"
+            "label": "创建或删除（如存在）"
           },
           "error_if_exist": {
-            "label": "Create New (throw error if existing)"
+            "label": "新建（如存在则抛出错误）"
           },
           "error_if_not_exist": {
-            "label": "Drop (throw error if not-existing)"
+            "label": "删除（如不存在则抛出错误）"
           },
           "append": {
-            "label": "Append"
+            "label": "追加"
           }
         }
       }
