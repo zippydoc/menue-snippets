@@ -1,16 +1,16 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Select Options",
+    "label": "オプションの選択",
     "repeat": false,
     "fields": {
       "options.split_method": {
         "type": "select",
-        "label": "Split method",
+        "label": "分割方法",
         "required": true,
         "options": {
           "standard": {
-            "label": "Standard"
+            "label": "標準"
           },
           "regex": {
             "label": "RegEx"
@@ -20,51 +20,51 @@
       },
       "options.split_type": {
         "type": "select",
-        "label": "Split type",
+        "label": "分割タイプ",
         "required": true,
         "options": {
           "split_to_columns": {
-            "label": "Split to Columns"
+            "label": "列に分割"
           },
           "split_to_rows": {
-            "label": "Split to Rows"
+            "label": "行に分割"
           }
         },
         "val": "split_to_columns"
       },
       "options.standard_delimiter": {
         "type": "select",
-        "label": "Split Delimiter",
+        "label": "区切り文字の分割",
         "show_if": "options.split_method==''standard''",
         "required": true,
         "options": {
           "tabs": {
-            "label": "Tabs"
+            "label": "タブ"
           },
           "space": {
-            "label": "Space"
+            "label": "スペース"
           },
           "whitespace": {
-            "label": "Whitespace"
+            "label": "空白"
           },
           "linebreak": {
-            "label": "Line break"
+            "label": "改行"
           },
           "punctuation": {
-            "label": "Punctuation"
+            "label": "句読点"
           },
           "punctuation_whitespace": {
-            "label": "Punctuation and Whitespace"
+            "label": "句読点と空白"
           },
           "custom": {
-            "label": "Custom"
+            "label": "カスタム"
           }
         },
         "val": "punctuation"
       },
       "options.delimiter": {
         "type": "text",
-        "label": "Split Delimiter",
+        "label": "区切り文字の分割",
         "show_if": "options.split_method==''standard'' && options.standard_delimiter==''custom''",
         "val": ",,
         trim": "false",
@@ -73,7 +73,7 @@
       },
       "format_frame": {
         "type": "fieldset",
-        "label": "Format to Parse for Split",
+        "label": "分解のため解析フォーマット",
         "show_if": "options.split_method==''regex''",
         "repeat": false,
         "fields": {
@@ -88,7 +88,7 @@
           },
           "options.format_to_convert.case_insensitive": {
             "type": "checkbox",
-            "label": "Case Insensitive",
+            "label": "ケース・インセンシティブ",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
