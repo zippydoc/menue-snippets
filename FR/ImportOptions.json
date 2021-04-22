@@ -1,18 +1,18 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Select Options",
+    "label": "Sélectionner les options",
     "repeat": false,
     "fields": {
       "options.from": {
         "type": "select",
-        "label": "Data Source",
+        "label": "Source des données",
         "options": {
           "web": {
-            "label": "Import from Webservice"
+            "label": "Importer depuis partir du Web"
           },
           "database": {
-            "label": "Import from Database"
+            "label": "Importer à partir de la base de données"
           }
         },
         "val": "web",
@@ -21,25 +21,25 @@
       },
       "postgresql_db_credential_box": {
         "type": "fieldset",
-        "label": "Database Connection Credentials",
+        "label": "Références de connexion à la base de données",
         "show_if": "options.from==''database''",
         "repeat": false,
         "fields": {
           "options.dbms": {
             "type": "select",
-            "label": "Select DBMS",
+            "label": "Sélectionner un SGBD",
             "options": {
               "postgresql": {
                 "label": "PostgreSQL"
               },
               "mysql": {
-                "label": "MySQL (Coming soon...)"
+                "label": "MySQL (prochainement)"
               },
               "sql_server": {
-                "label": "MS SQL Server (Coming soon...)"
+                "label": "Serveur MS SQL (prochainement...)"
               },
               "oracle": {
-                "label": "Oracle (Coming soon...)"
+                "label": "Oracle (prochainement...)"
               }
             },
             "val": "postgresql",
@@ -48,7 +48,7 @@
           },
           "options.postgresql_credential.user": {
             "type": "text",
-            "label": "User",
+            "label": "Utilisateur",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -56,7 +56,7 @@
           },
           "options.postgresql_credential.password": {
             "type": "text",
-            "label": "Password",
+            "label": "Mot de passe",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -64,7 +64,7 @@
           },
           "options.postgresql_credential.host": {
             "type": "text",
-            "label": "Host",
+            "label": "Hôte",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -72,7 +72,7 @@
           },
           "options.postgresql_credential.database": {
             "type": "text",
-            "label": "Database",
+            "label": "Base de données",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -82,7 +82,7 @@
       },
       "options.schema_name_to_import": {
         "type": "text",
-        "label": "Schema name that includes table to import",
+        "label": "Nom du schéma qui inclut le tableau à importer",
         "show_if": "options.from==''database'' && options.dbms==''postgresql''",
         "required": true,
         "val": "public",
@@ -91,7 +91,7 @@
       },
       "options.table_name_to_import": {
         "type": "text",
-        "label": "Table name to import",
+        "label": "Nom de tableau à importer",
         "show_if": "options.from==''database'' && options.dbms==''postgresql''",
         "required": true,
         "width": "100%",
@@ -99,14 +99,14 @@
       },
       "options.webservice": {
         "type": "select",
-        "label": "Select Webservice",
+        "label": "Sélectionner un service web",
         "show_if": "options.from==''web''",
         "options": {
           "github": {
             "label": "Github"
           },
           "ms_one_drive": {
-            "label": "Microsoft OneDrive"
+            "label": " Microsoft OneDrive"
           },
           "dropbox": {
             "label": "Dropbox"
@@ -121,20 +121,20 @@
       },
       "options.output_format": {
         "type": "select",
-        "label": "Select Type",
+        "label": "Sélectionner le type",
         "show_if": "options.from==''web''",
         "options": {
           "csv_table": {
-            "label": "CSV-Table"
+            "label": "Tableau CSV"
           },
           "line_by_line": {
-            "label": "Line by Line"
+            "label": "Ligne par ligne"
           },
           "word_by_word": {
-            "label": "Word by Word"
+            "label": "Mot par mot"
           },
           "file_list": {
-            "label": "File List"
+            "label": "Liste de fichiers"
           }
         },
         "val": "csv_table",
@@ -142,11 +142,11 @@
       },
       "options.word_pattern_type": {
         "type": "select",
-        "label": "Word Pattern",
+        "label": "Pattern de mots",
         "show_if": "options.from==''web'' && options.output_format==''word_by_word'' && options.specify_word_pattern==''true''",
         "options": {
           "regex": {
-            "label": "Regular Expression"
+            "label": "Expression régulière"
           }
         },
         "val": "regex",
@@ -154,7 +154,7 @@
       },
       "options.word_pattern_regex": {
         "type": "text",
-        "label": "Regular Expression",
+        "label": "Expression régulière",
         "show_if": "options.from==''web'' && options.output_format==''word_by_word'' && options.specify_word_pattern==''true'' && options.word_pattern_type==''regex''",
         "required": true,
         "val": "[a-z][1-9]",
@@ -177,7 +177,7 @@
         "fields": {
           "options.add_row_column": {
             "type": "checkbox",
-            "label": "Add Row Column",
+            "label": " Ajouter une colonne de ligne",
             "show_if": "options.from==''web'' && options.output_format==''word_by_word''",
             "val": "true",
             "isOn": "true",
@@ -204,7 +204,7 @@
           },
           "options.add_section_column": {
             "type": "checkbox",
-            "label": "Add Section Column",
+            "label": "Ajouter une colonne de section",
             "show_if": "options.from==''web'' && options.output_format==''word_by_word''",
             "val": "true",
             "isOn": "true",
@@ -219,7 +219,7 @@
             "fields": {
               "options.section_columns.add_paragraph_section_column": {
                 "type": "checkbox",
-                "label": "Paragraph",
+                "label": "Paragraphe",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false",
@@ -227,14 +227,14 @@
               },
               "options.section_columns.add_custom_section_column": {
                 "type": "checkbox",
-                "label": "Custom Section Delimiter",
+                "label": "Personnaliser délimiteur de section",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
               },
               "options.section_columns.custom_delimiter": {
                 "type": "text",
-                "label": "Delimiter(1 character)",
+                "label": "Délimiteur (1 caractère)",
                 "show_if": "options.section_columns.add_custom_section_column==''true''",
                 "maxLength": 1,
                 "required": true,
@@ -242,7 +242,7 @@
               },
               "options.section_columns.add_brackets_punctuation_section_column": {
                 "type": "checkbox",
-                "label": "Brackets and Punctuation",
+                "label": "Parenthèses & ponctuation",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
@@ -259,7 +259,7 @@
                     "label": "Inner Bracket"
                   },
                   "show_all": {
-                    "label": "Show All"
+                    "label": "Tout afficher"
                   }
                 },
                 "val": "nesting_structure",
@@ -270,7 +270,7 @@
           },
           "options.add_filename_column": {
             "type": "checkbox",
-            "label": "Add Column for File Name",
+            "label": "Ajouter une colonne pour le nom du fichier",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -281,7 +281,7 @@
       },
       "options.is_cloud_dir": {
         "type": "checkbox",
-        "label": "Import directory",
+        "label": "Importer répertoire",
         "show_if": "options.from==''web'' && options.output_format!=''file_list''",
         "val": "false",
         "isOn": "true",
@@ -291,7 +291,7 @@
       },
       "options.use_filename_as_output_table_name": {
         "type": "checkbox",
-        "label": "Use filename as table name",
+        "label": "Utiliser le nom de fichier comme nom de table",
         "show_if": "options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''false''",
         "val": "false",
         "isOn": "true",
@@ -300,7 +300,7 @@
       },
       "options.unify_in_one_table": {
         "type": "checkbox",
-        "label": "Unify in one table",
+        "label": "Unir en un tableau",
         "show_if": "options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''true''",
         "val": "false",
         "isOn": "true",
@@ -308,14 +308,14 @@
       },
       "options.suffix": {
         "type": "select",
-        "label": "Suffix",
+        "label": "Suffixe",
         "show_if": "options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''true'' && options.unify_in_one_table==''false''",
         "options": {
           "number": {
-            "label": "Number"
+            "label": "Numéro"
           },
           "filename": {
-            "label": "Filename"
+            "label": "Nom du fichier"
           }
         },
         "val": "number",
@@ -324,7 +324,7 @@
       },
       "options.is_github_private": {
         "type": "checkbox",
-        "label": "Repository is private",
+        "label": "Ce dépôt est privé",
         "show_if": "options.from==''web'' && options.webservice==''github''",
         "val": "false",
         "isOn": "true",
@@ -333,7 +333,7 @@
       },
       "options.include_subdir": {
         "type": "checkbox",
-        "label": "Include Subdirectories",
+        "label": "Inclure les sous-répertoires",
         "show_if": "options.from==''web'' && options.output_format==''file_list''",
         "val": "true",
         "isOn": "true",
@@ -342,7 +342,7 @@
       },
       "options.file_list.add_change_date_column": {
         "type": "checkbox",
-        "label": "Add Change Date Column",
+        "label": "Ajouter une colonne de changement de date",
         "show_if": "options.from==''web'' && options.output_format==''file_list''",
         "val": "false",
         "isOn": "true",
@@ -351,7 +351,7 @@
       },
       "options.github_token": {
         "type": "text",
-        "label": "specify the Github personal access token",
+        "label": "Indiquer le token d'accès personnel Github",
         "show_if": "options.from==''web'' && options.webservice==''github'' && options.is_github_private==''true''",
         "required": true,
         "width": "100%",
@@ -359,7 +359,7 @@
       },
       "options.link_directory": {
         "type": "text",
-        "label": "Enter link e.g. https://github.com/zippydoc/test",
+        "label": "Insérer lien, p. ex. https://github.com/zippydoc/test",
         "show_if": "options.from==''web'' && options.webservice==''github'' && options.output_format!=''file_list'' && options.is_cloud_dir==''true''",
         "required": true,
         "width": "100%",
@@ -367,7 +367,7 @@
       },
       "options.link_directory_4_file_list": {
         "type": "text",
-        "label": "Enter link e.g. https://github.com/zippydoc/test",
+        "label": "Insérer lien, p. ex. https://github.com/zippydoc/test",
         "show_if": "options.from==''web'' && options.webservice==''github'' && options.output_format==''file_list''",
         "required": true,
         "width": "100%",
@@ -375,7 +375,7 @@
       },
       "options.link_file": {
         "type": "text",
-        "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.csv",
+        "label": "Insérer lien, p. ex. https://github.com/zippydoc/test/blob/main/example.csv",
         "show_if": "options.from==''web'' && options.webservice==''github'' && options.is_cloud_dir==''false'' && options.output_format==''csv_table''",
         "required": true,
         "width": "100%",
@@ -437,28 +437,28 @@
       },
       "dir_filter_frame": {
         "type": "fieldset",
-        "label": "Filter the files in directory",
+        "label": "Filtrer les fichiers dans le répertoire",
         "show_if": "options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''true''",
         "repeat": false,
         "fields": {
           "options.dir_filter.filter_type": {
             "type": "select",
-            "label": "Filter Type",
+            "label": "Type de filtre",
             "options": {
               "all": {
-                "label": "All"
+                "label": "Tout"
               },
               "contains": {
-                "label": "Contains"
+                "label": "Contient"
               },
               "starts_with": {
-                "label": "Starts With"
+                "label": "Commence par"
               },
               "ends_with": {
-                "label": "Ends With"
+                "label": "Se termine par"
               },
               "regex": {
-                "label": "Regular Expression"
+                "label": "Expression régulière"
               }
             },
             "val": "all",
@@ -466,7 +466,7 @@
           },
           "options.dir_filter.filter_string": {
             "type": "text",
-            "label": "Enter string",
+            "label": "Saisir la chaîne",
             "show_if": "options.dir_filter.filter_type!=''all''",
             "required": true,
             "width": "100%"
