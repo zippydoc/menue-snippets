@@ -1,12 +1,12 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Seleccionar Opciones de Unión",
+    "label": "Select Join Options",
     "repeat": false,
     "fields": {
       "join_type": {
         "type": "radio",
-        "label": "Unir Por",
+        "label": "Join By",
         "val": "join_by_specific_field",
         "values": {
           "join_by_specific_field": "Specific Field",
@@ -16,25 +16,25 @@
       },
       "join_fields": {
         "type": "fieldset",
-        "label": "Unir Por Columnas",
-        "show_if": "join_type=='join_by_specific_field'",
+        "label": "Join By Columns",
+        "show_if": "join_type==''join_by_specific_field''",
         "repeat": true,
         "fields": {
           "left_table_field": {
             "type": "select",
-            "label": "Columna de la Tabla Izquierda",
+            "label": "Left Table Column",
             "table": "left_table.table_id",
             "bind": "COLUMNS"
           },
           "right_table_field": {
             "type": "select",
-            "label": "Columna de la Tabla Derecha",
+            "label": "Right Table Column",
             "table": "right_table.table_id",
             "bind": "COLUMNS"
           },
           "delete": {
             "type": "button",
-            "label": "Borrar",
+            "label": "Delete",
             "function": "DELETE_ROW"
           }
         }
