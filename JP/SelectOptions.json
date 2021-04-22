@@ -1,46 +1,46 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "オプションの選択",
+    "label": "Select Options",
     "repeat": false,
     "fields": {
       "type": {
         "type": "select",
-        "label": "選択タイプ",
+        "label": "Select Type",
         "val": "first_n",
         "options": {
           "first_n": {
-            "label": "最初のN"
+            "label": "First N"
           },
           "last_n": {
-            "label": "最後のN"
+            "label": "Last N"
           },
           "custom_selection": {
-            "label": "カスタムセレクション"
+            "label": "Custom Selection"
           },
           "skip_first_n": {
-            "label": "最初のNをスキップ"
+            "label": "Skip First N"
           },
           "skip_last_n": {
-            "label": "最後のNをスキップ"
+            "label": "Skip Last N"
           },
           "first_n_percent": {
-            "label": "最初のN%"
+            "label": "First N%"
           },
           "last_n_percent": {
-            "label": "最後のN%"
+            "label": "Last N%"
           },
           "random_n_records": {
-            "label": "ランダムN"
+            "label": "Random N"
           },
           "random_n_percent": {
-            "label": "ランダムN%"
+            "label": "Random N%"
           },
           "random_choice_1_n": {
-            "label": "ランダムチョイス1:N"
+            "label": "Random Choice 1:N"
           },
           "every_nth_record": {
-            "label": "Nレコード毎"
+            "label": "Every Nth Record"
           }
         },
         "required": true,
@@ -49,8 +49,8 @@
       },
       "n": {
         "type": "text",
-        "label": "入力 N",
-        "show_if": "type!='custom_selection'",
+        "label": "Input N",
+        "show_if": "type!=''custom_selection''",
         "val": "1",
         "required": true,
         "width": "100%",
@@ -58,8 +58,8 @@
       },
       "ranges": {
         "type": "text",
-        "label": "範囲の入力",
-        "show_if": "type=='custom_selection'",
+        "label": "Input Ranges",
+        "show_if": "type==''custom_selection''",
         "val": "-2; 4-6; 9; 12+",
         "required": true,
         "width": "100%",
@@ -67,23 +67,23 @@
       },
       "set_offset": {
         "type": "checkbox",
-        "label": "オフセット",
-        "show_if": "type=='every_nth_record'",
+        "label": "Offset",
+        "show_if": "type==''every_nth_record''",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "offset": {
         "type": "text",
-        "label": "オフセット",
-        "show_if": "type=='every_nth_record' && set_offset=='true'",
+        "label": "Offset",
+        "show_if": "type==''every_nth_record'' && set_offset==''true''",
         "val": "1",
         "required": true,
         "breakLine": true
       },
       "group_by_column": {
         "type": "checkbox",
-        "label": "列別グループ",
+        "label": "Group by column",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -91,13 +91,13 @@
       },
       "columns_to_group_box": {
         "type": "fieldset",
-        "label": "列別グループ",
-        "show_if": "group_by_column=='true'",
+        "label": "Group by column",
+        "show_if": "group_by_column==''true''",
         "repeat": false,
         "fields": {
           "columns_to_group": {
             "type": "select",
-            "label": "グループ列の選択",
+            "label": "Select Group Columns",
             "required": true,
             "width": "100%",
             "table": "input_table",
