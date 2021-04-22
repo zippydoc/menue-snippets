@@ -1,13 +1,13 @@
 {
   "output": {
     "type": "fieldset",
-    "label": "Define Output Table",
+    "label": "Определить выходную таблицу",
     "show_if": "options.from==''database'' || (options.from==''web'' && options.output_format==''file_list'') || (options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''true'') || (options.from==''web'' && options.output_format!=''file_list'' && options.is_cloud_dir==''false'' && options.use_filename_as_output_table_name==''false'')",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
-        "label": "Output Table Name",
+        "label": "Вывести название таблицы",
         "show_if": "(output.set_options==''true'' && output.compose_table_name==''false'') || output.set_options==''false''",
         "minLength": 1,
         "val": "",
@@ -16,20 +16,20 @@
       },
       "output.set_options": {
         "type": "checkbox",
-        "label": "Output Options",
+        "label": "Настройки вывода",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "output_options_box": {
         "type": "fieldset",
-        "label": "Output Options",
+        "label": "Настройки вывода",
         "show_if": "output.set_options==''true''",
         "repeat": false,
         "fields": {
           "output.compose_table_name": {
             "type": "checkbox",
-            "label": "Compose Table Name",
+            "label": "Объединить название таблицы",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -37,13 +37,13 @@
           },
           "compose_table_name_frame": {
             "type": "fieldset",
-            "label": "Compose Output Table Name",
+            "label": "Объединить название входной таблицы",
             "show_if": "output.compose_table_name==''true''",
             "repeat": false,
             "fields": {
               "output.prefix_rule": {
                 "type": "select",
-                "label": "Prefix",
+                "label": "Префикс",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "empty",
                 "options": {
@@ -51,28 +51,28 @@
                     "label": "-"
                   },
                   "script_name": {
-                    "label": "Task Name"
+                    "label": "Название задачи"
                   },
                   "date_string_type1": {
-                    "label": "Date: dd_mm_yyyy"
+                    "label": "Дата: дд_мм_гггг"
                   },
                   "date_string_type2": {
-                    "label": "Date: yyyy_mm_dd"
+                    "label": "Дата: гггг_мм_дд"
                   },
                   "time_string": {
-                    "label": "Time: h_min_sec"
+                    "label": "Время: ч_мин_сек"
                   },
                   "datetime_string": {
-                    "label": "Date_Time"
+                    "label": "Дата_время"
                   },
                   "custom": {
-                    "label": "Custom"
+                    "label": "Пользовательский"
                   }
                 }
               },
               "output.prefix_text": {
                 "type": "text",
-                "label": "Prefix Text",
+                "label": "Текст префикса",
                 "show_if": "output.compose_table_name==''true'' && output.prefix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
@@ -80,28 +80,28 @@
               },
               "output.core_delimiter": {
                 "type": "text",
-                "label": "Delimiter",
+                "label": "Разделитель",
                 "show_if": "output.compose_table_name==''true'' && output.prefix_rule!=''empty''",
                 "val": "_",
                 "width": "50px"
               },
               "output.core_rule": {
                 "type": "select",
-                "label": "Table Name",
+                "label": "Название таблицы",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
                   "script_name": {
-                    "label": "Task Name"
+                    "label": "Название задачи"
                   },
                   "custom": {
-                    "label": "Custom"
+                    "label": "Пользовательский"
                   }
                 }
               },
               "output.core_text": {
                 "type": "text",
-                "label": "Main Table Name",
+                "label": "Название основной таблицы",
                 "show_if": "output.compose_table_name==''true'' && output.core_rule==''custom''",
                 "required": true,
                 "minLength": 1,
@@ -110,14 +110,14 @@
               },
               "output.suffix_delimiter": {
                 "type": "text",
-                "label": "Delimiter",
+                "label": "Разделитель",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "_",
                 "width": "50px"
               },
               "output.suffix_rule": {
                 "type": "select",
-                "label": "Suffix",
+                "label": "Суффикс",
                 "show_if": "output.compose_table_name==''true''",
                 "val": "script_name",
                 "options": {
@@ -125,28 +125,28 @@
                     "label": "-"
                   },
                   "script_name": {
-                    "label": "Task Name"
+                    "label": "Название задачи"
                   },
                   "date_string_type1": {
-                    "label": "Date: dd_mm_yyyy"
+                    "label": "Дата: дд_мм_гггг"
                   },
                   "date_string_type2": {
-                    "label": "Date: yyyy_mm_dd"
+                    "label": "Дата: гггг_мм_дд"
                   },
                   "time_string": {
-                    "label": "Time: h_min_sec"
+                    "label": "Время: ч_мин_сек"
                   },
                   "datetime_string": {
-                    "label": "Date_Time"
+                    "label": "Дата_время"
                   },
                   "custom": {
-                    "label": "Custom"
+                    "label": "Пользовательский"
                   }
                 }
               },
               "output.suffix_text": {
                 "type": "text",
-                "label": "Suffix Text",
+                "label": "Текст суффикса",
                 "show_if": "output.compose_table_name==''true'' && output.suffix_rule==''custom''",
                 "minLength": 1,
                 "maxLength": 31,
@@ -155,9 +155,9 @@
               },
               "output.timezone": {
                 "type": "select",
-                "label": "Timezone",
+                "label": "Часовой пояс",
                 "show_if": "output.compose_table_name==''true'' && (output.prefix_rule==''date_string_type1'' || output.prefix_rule==''date_string_type2'' || output.prefix_rule==''time_string'' || output.prefix_rule==''datetime_string'' || output.suffix_rule==''date_string_type1'' || output.suffix_rule==''date_string_type2'' || output.suffix_rule==''time_string'' || output.suffix_rule==''datetime_string'')",
-                "val": "Europe/Berlin",
+                "val": "Европа/Берлин",
                 "required": true,
                 "options": {
                   "America/Adak": {
@@ -184,7 +184,7 @@
                   "Asia/Bangkok": {
                     "label": "Bangkok, Jakarta, Novosibirsk"
                   },
-                  "Europe/Berlin": {
+                  "Европа/Берлин": {
                     "label": "Berlin, Paris, Amsterdam"
                   },
                   "Australia/Perth": {
@@ -292,13 +292,13 @@
             "fields": {
               "output.options.location": {
                 "type": "text",
-                "label": "Specify Location",
+                "label": "Указать местоположение",
                 "val": "A1",
                 "breakLine": true
               },
               "output.options.formatted_as_table": {
                 "type": "checkbox",
-                "label": "Formatted as Table",
+                "label": "Отформатировано как таблица",
                 "val": "true",
                 "isOn": "true",
                 "isOff": "false",
@@ -306,14 +306,14 @@
               },
               "output.add_tag": {
                 "type": "checkbox",
-                "label": "Add Tag",
+                "label": "Добавить тэг",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
               },
               "output.tag_name": {
                 "type": "text",
-                "label": "Tag Name",
+                "label": "Название тэга",
                 "show_if": "output.add_tag==''true''",
                 "required": true,
                 "minLength": 1,
@@ -324,28 +324,28 @@
               },
               "output.options.visibility": {
                 "type": "select",
-                "label": "Visibility",
+                "label": "Видимость",
                 "val": "current_flow",
                 "options": {
                   "current_flow": {
-                    "label": "Current Flow"
+                    "label": "Текущий процесс"
                   },
                   "all_flow": {
-                    "label": "All Flows"
+                    "label": "Все процессы"
                   }
                 },
                 "breakLine": true
               },
               "output.options.table_mode": {
                 "type": "select",
-                "label": "Paste",
+                "label": "Вставить",
                 "val": "content_only",
                 "options": {
                   "content_only": {
-                    "label": "Content Only"
+                    "label": "Только содержание"
                   },
                   "fully_formatted": {
-                    "label": "Fully Formatted"
+                    "label": "Полностью отформатированно"
                   }
                 }
               }
@@ -356,20 +356,20 @@
       },
       "options.output_duplicated": {
         "type": "select",
-        "label": "If duplicated",
+        "label": "Если дублируется",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "Create or Drop (if already existing)"
+            "label": "Создать или сбросить (если уже существует)"
           },
           "error_if_exist": {
-            "label": "Create New (throw error if existing)"
+            "label": "Создать новое (убрать ошибку, если есть)"
           },
           "error_if_not_exist": {
-            "label": "Drop (throw error if not-existing)"
+            "label": "Отменить (убрать ошибку, если ее нет)"
           },
           "append": {
-            "label": "Append"
+            "label": "Добавить"
           }
         }
       }
