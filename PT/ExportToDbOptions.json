@@ -1,7 +1,7 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Select Options",
+    "label": "Opções de Seleção",
     "repeat": false,
     "fields": {
       "options.to": {
@@ -10,12 +10,12 @@
       },
       "postgresql_db_credential_box": {
         "type": "fieldset",
-        "label": "Database Connection Credentials",
+        "label": "Credenciais de Ligação à Base de Dados",
         "repeat": false,
         "fields": {
           "options.dbms": {
             "type": "select",
-            "label": "Select DBMS",
+            "label": "Selecionar SGBD",
             "options": {
               "postgresql": {
                 "label": "PostgreSQL"
@@ -24,7 +24,7 @@
                 "label": "MySQL"
               },
               "sql_server": {
-                "label": "MS SQL Server"
+                "label": "Servidor MS SQL"
               },
               "oracle": {
                 "label": "Oracle"
@@ -36,7 +36,7 @@
           },
           "options.postgresql_credential.user": {
             "type": "text",
-            "label": "User",
+            "label": "Utilizador",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -44,7 +44,7 @@
           },
           "options.postgresql_credential.password": {
             "type": "text",
-            "label": "Password",
+            "label": "Palavra-passe",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -52,7 +52,7 @@
           },
           "options.postgresql_credential.host": {
             "type": "text",
-            "label": "Host",
+            "label": "Anfitrião",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -60,7 +60,7 @@
           },
           "options.postgresql_credential.database": {
             "type": "text",
-            "label": "Database",
+            "label": "Base de Dados",
             "show_if": "options.dbms==''postgresql''",
             "required": true,
             "width": "100%",
@@ -70,7 +70,7 @@
       },
       "options.schema_name_to_export": {
         "type": "text",
-        "label": "Schema name to export into",
+        "label": "Nome do modelo a exportar para",
         "show_if": "options.dbms==''postgresql''",
         "required": true,
         "val": "public",
@@ -79,20 +79,20 @@
       },
       "options.if_duplicated": {
         "type": "select",
-        "label": "If duplicated",
+        "label": "Se duplicado",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "Create or Drop (if already existing)"
+            "label": "Criar ou Descartar (se já existir)"
           },
           "error_if_exist": {
-            "label": "Create New (throw error if existing)"
+            "label": "Criar Novo (gera erro se existir)"
           },
           "error_if_not_exist": {
-            "label": "Drop (throw error if not-existing)"
+            "label": "Descartar (gera erro se não existir)"
           },
           "append": {
-            "label": "Append"
+            "label": "Anexar"
           }
         }
       }
