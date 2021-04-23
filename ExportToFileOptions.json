@@ -8,6 +8,66 @@
         "type": "hidden",
         "val": "file"
       },
+      "options.webservice": {
+        "type": "select",
+        "label": "Select Webservice",
+        "options": {
+          "github": {
+            "label": "Github"
+          },
+          "dropbox": {
+            "label": "Dropbox"
+          },
+          "ms_one_drive": {
+            "label": "Microsoft OneDrive"
+          },
+          "google_drive": {
+            "label": "Google Drive"
+          }
+        },
+        "val": "github",
+        "required": true,
+        "breakLine": true
+      },
+      "options.export_format": {
+        "type": "select",
+        "label": "Export Format",
+        "options": {
+          "csv_file": {
+            "label": "Csv file(s)"
+          },
+          "word_by_word": {
+            "label": "Word by Word"
+          },
+          "line_by_line": {
+            "label": "Line by Line"
+          }
+        },
+        "val": "csv_file",
+        "required": true,
+        "breakLine": true
+      },
+      "options.if_duplicated": {
+        "type": "select",
+        "label": "If existing",
+        "show_if": "options.webservice=='github'",
+        "val": "drop_if_exist",
+        "options": {
+          "drop_if_exist": {
+            "label": "Create or Drop (if already existing)"
+          },
+          "error_if_exist": {
+            "label": "Create New (throw error if existing)"
+          },
+          "error_if_not_exist": {
+            "label": "Drop (throw error if not-existing)"
+          },
+          "append": {
+            "label": "Append"
+          }
+        },
+        "breakLine": true
+      },
       "options.export_series": {
         "type": "checkbox",
         "label": "Export Series",
@@ -42,45 +102,14 @@
         "bind": "COLUMNS",
         "required": true,
         "breakLine": true
-      },
-      "options.webservice": {
-        "type": "select",
-        "label": "Select Webservice",
-        "options": {
-          "github": {
-            "label": "Github"
-          },
-          "dropbox": {
-            "label": "Dropbox"
-          },
-          "ms_one_drive": {
-            "label": "Microsoft OneDrive"
-          },
-          "google_drive": {
-            "label": "Google Drive"
-          }
-        },
-        "val": "github",
-        "required": true
-      },
-      "options.export_format": {
-        "type": "select",
-        "label": "Export Format",
-        "options": {
-          "csv_file": {
-            "label": "Csv file(s)"
-          },
-          "word_by_word": {
-            "label": "Word by Word"
-          },
-          "line_by_line": {
-            "label": "Line by Line"
-          }
-        },
-        "val": "csv_file",
-        "required": true,
-        "breakLine": true
-      },
+      }
+    }
+  },
+  "export_link_token_frame": {
+    "type": "fieldset",
+    "label": "Export Link",
+    "repeat": false,
+    "fields": {
       "options.github_create_pr": {
         "type": "checkbox",
         "label": "Create pull request",
@@ -130,26 +159,6 @@
         "required": true,
         "width": "100%",
         "breakLine": true
-      },
-      "options.if_duplicated": {
-        "type": "select",
-        "label": "If duplicated",
-        "show_if": "options.webservice=='github'",
-        "val": "drop_if_exist",
-        "options": {
-          "drop_if_exist": {
-            "label": "Create or Drop (if already existing)"
-          },
-          "error_if_exist": {
-            "label": "Create New (throw error if existing)"
-          },
-          "error_if_not_exist": {
-            "label": "Drop (throw error if not-existing)"
-          },
-          "append": {
-            "label": "Append"
-          }
-        }
       }
     }
   }
