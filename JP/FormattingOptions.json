@@ -1,109 +1,109 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "オプション",
+    "label": "Opções",
     "repeat": false,
     "fields": {
       "reformat_columns": {
         "type": "checkbox",
-        "label": "列の書式設定",
+        "label": "A Formatar Colunas",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "columns": {
         "type": "fieldset",
-        "label": "列の選択",
-        "show_if": "reformat_columns==''true''",
+        "label": "Selecionar Colunas",
+        "show_if": "reformat_columns=='true'",
         "repeat": true,
         "fields": {
           "field_name": {
             "type": "select",
-            "label": "列の選択",
+            "label": "Selecionar Coluna",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
           "format__category": {
             "type": "select",
-            "label": "フォーマット",
+            "label": "Formato",
             "required": true,
             "options": {
               "standard": {
-                "label": "標準"
+                "label": "Padrão"
               },
               "number": {
-                "label": "数"
+                "label": "Número"
               },
               "percentage": {
-                "label": "割合"
+                "label": "Percentagem"
               },
               "text": {
-                "label": "テキスト"
+                "label": "Texto"
               },
               "date": {
-                "label": "日付"
+                "label": "Data"
               },
               "currency": {
-                "label": "通貨"
+                "label": "Moeda"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "四捨五入",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "label": "Arredondamento",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "四捨五入無し"
+                "label": "Arredondamento de números"
               },
               "0": {
-                "label": "0桁"
+                "label": "0 dígitos"
               },
               "1": {
-                "label": "1桁"
+                "label": "1 dígito"
               },
               "2": {
-                "label": "2桁"
+                "label": "2 dígitos"
               },
               "3": {
-                "label": "3桁"
+                "label": "3 dígitos"
               },
               "4": {
-                "label": "4桁"
+                "label": "4 dígitos"
               },
               "5": {
-                "label": "5桁"
+                "label": "5 dígitos"
               },
               "6": {
-                "label": "6桁"
+                "label": "6 dígitos"
               },
               "7": {
-                "label": "7桁"
+                "label": "7 dígitos"
               },
               "8": {
-                "label": "8桁"
+                "label": "8 dígitos"
               },
               "9": {
-                "label": "9桁"
+                "label": "9 dígitos"
               }
             },
             "val": "2"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "1000セパレータ(.)を使用",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "label": "Usar Separador(.) 1000",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "シンボル",
-            "show_if": "this.format__category==''currency''",
+            "label": "Símbolo",
+            "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
@@ -120,8 +120,8 @@
           },
           "format__date_format": {
             "type": "select",
-            "label": "タイプ",
-            "show_if": "this.format__category==''date''",
+            "label": "Tipo",
+            "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
@@ -138,9 +138,9 @@
             "breakLine": true
           },
           "delete": {
-            "show_if": "this.field_name != ''''",
+            "show_if": "this.field_name != ''",
             "type": "button",
-            "label": "削除",
+            "label": "Apagar",
             "function": "DELETE_ROW"
           }
         },
@@ -148,7 +148,7 @@
       },
       "reformat_rows": {
         "type": "checkbox",
-        "label": "ラベルのフォーマット",
+        "label": "A Formatar Linhas",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -156,97 +156,97 @@
       },
       "rows": {
         "type": "fieldset",
-        "label": "ラベルの選択",
-        "show_if": "reformat_rows==''true''",
+        "label": "Selecionar Rótulos",
+        "show_if": "reformat_rows=='true'",
         "repeat": true,
         "fields": {
           "label_name": {
             "type": "select",
-            "label": "ラベルの選択",
+            "label": "Selecionar Rótulo",
             "table": "input_table",
             "bind": "LABELS",
             "required": true
           },
           "format__category": {
             "type": "select",
-            "label": "フォーマット",
+            "label": "Formato",
             "required": true,
             "options": {
               "standard": {
-                "label": "標準"
+                "label": "Padrão"
               },
               "number": {
-                "label": "数"
+                "label": "Número"
               },
               "percentage": {
-                "label": "割合"
+                "label": "Percentagem"
               },
               "text": {
-                "label": "テキスト"
+                "label": "Texto"
               },
               "date": {
-                "label": "日付"
+                "label": "Data"
               },
               "currency": {
-                "label": "通貨"
+                "label": "Moeda"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "四捨五入",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "label": "Arredondamento",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "四捨五入無し"
+                "label": "Arredondamento de números"
               },
               "0": {
-                "label": "0桁"
+                "label": "0 dígitos"
               },
               "1": {
-                "label": "1桁"
+                "label": "1 dígito"
               },
               "2": {
-                "label": "2桁"
+                "label": "2 dígitos"
               },
               "3": {
-                "label": "3桁"
+                "label": "3 dígitos"
               },
               "4": {
-                "label": "4桁"
+                "label": "4 dígitos"
               },
               "5": {
-                "label": "5桁"
+                "label": "5 dígitos"
               },
               "6": {
-                "label": "6桁"
+                "label": "6 dígitos"
               },
               "7": {
-                "label": "7桁"
+                "label": "7 dígitos"
               },
               "8": {
-                "label": "8桁"
+                "label": "8 dígitos"
               },
               "9": {
-                "label": "9桁"
+                "label": "9 dígitos"
               }
             },
             "val": "2"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "1000セパレータ(.)を使用",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "label": "Usar Separador(.) 1000",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "シンボル",
-            "show_if": "this.format__category==''currency''",
+            "label": "Símbolo",
+            "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
@@ -263,8 +263,8 @@
           },
           "format__date_format": {
             "type": "select",
-            "label": "タイプ",
-            "show_if": "this.format__category==''date''",
+            "label": "Tipo",
+            "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
@@ -281,9 +281,9 @@
             "breakLine": true
           },
           "delete": {
-            "show_if": "this.label_name != ''''",
+            "show_if": "this.label_name != ''",
             "type": "button",
-            "label": "削除",
+            "label": "Apagar",
             "function": "DELETE_ROW"
           }
         },
@@ -291,7 +291,7 @@
       },
       "create_new_table": {
         "type": "checkbox",
-        "label": "新しいテーブルとして出力",
+        "label": "Mostrar como tabela nova",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
