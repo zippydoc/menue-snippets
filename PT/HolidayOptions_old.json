@@ -16,7 +16,7 @@
       "date_period_box": {
         "type": "fieldset",
         "label": "Selecionar Coluna de Data/Hora",
-        "show_if": "options.is_generate_holiday_table==''generate_table''",
+        "show_if": "options.is_generate_holiday_table=='generate_table'",
         "repeat": false,
         "fields": {
           "options.date_period_start": {
@@ -1244,7 +1244,7 @@
       "generate_country_box": {
         "type": "fieldset",
         "label": "Selecionar país para gerar tabela de férias",
-        "show_if": "options.is_generate_holiday_table==''generate_table''",
+        "show_if": "options.is_generate_holiday_table=='generate_table'",
         "repeat": false,
         "fields": {
           "options.generate_country": {
@@ -1264,7 +1264,7 @@
       "generate_state_box": {
         "type": "fieldset",
         "label": "Selecionar estado(s) para gerar tabela de férias",
-        "show_if": "options.is_generate_holiday_table==''generate_table''",
+        "show_if": "options.is_generate_holiday_table=='generate_table'",
         "repeat": false,
         "fields": {
           "options.is_all_states": {
@@ -1277,7 +1277,7 @@
           "options.generate_states": {
             "type": "select",
             "label": "Estado(s)",
-            "show_if": "options.is_all_states==''false''",
+            "show_if": "options.is_all_states=='false'",
             "required": true,
             "multiple": true,
             "options": {
@@ -1338,7 +1338,7 @@
       "date_box": {
         "type": "fieldset",
         "label": "Selecionar Data",
-        "show_if": "options.is_generate_holiday_table==''add_column''",
+        "show_if": "options.is_generate_holiday_table=='add_column'",
         "repeat": false,
         "fields": {
           "input_table": {
@@ -1369,7 +1369,7 @@
       "country_box": {
         "type": "fieldset",
         "label": "Selecionar País",
-        "show_if": "options.is_generate_holiday_table==''add_column''",
+        "show_if": "options.is_generate_holiday_table=='add_column'",
         "repeat": false,
         "fields": {
           "options.is_manual_country": {
@@ -1383,7 +1383,7 @@
           "options.country_column": {
             "type": "select",
             "label": "Selecionar coluna do país",
-            "show_if": "options.is_manual_country==''false''",
+            "show_if": "options.is_manual_country=='false'",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true,
@@ -1394,7 +1394,7 @@
             "type": "select",
             "label": "Selecionar país",
             "required": true,
-            "show_if" :  "options.is_manual_country==''true''",
+            "show_if" :  "options.is_manual_country=='true'",
             "options": {
               "Alemanha": {
                 "label": "Alemanha"
@@ -1409,7 +1409,7 @@
       "state_box": {
         "type": "fieldset",
         "label": "Selecionar Estado",
-        "show_if": "options.is_generate_holiday_table==''add_column''",
+        "show_if": "options.is_generate_holiday_table=='add_column'",
         "repeat": false,
         "fields": {
           "options.is_manual_state": {
@@ -1423,7 +1423,7 @@
           "options.state_column": {
             "type": "select",
             "label": "Selecionar coluna estado",
-            "show_if": "options.is_manual_state==''false''",
+            "show_if": "options.is_manual_state=='false'",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true,
@@ -1434,7 +1434,7 @@
             "type": "select",
             "label": "Selecionar estado",
             "required": true,
-            "show_if" :  "options.is_manual_state==''true''",
+            "show_if" :  "options.is_manual_state=='true'",
             "options": {
               "Baden-Württemberg": {
                 "label": "Baden-Württemberg"
@@ -1500,7 +1500,7 @@
       "output.prefix_rule": {
         "type": "select",
         "label": "Prefixo",
-        "show_if": "options.is_generate_holiday_table==''add_column'' && output.core_rule!=''auto''",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto'",
         "val": "empty",
         "options": {
           "empty": {
@@ -1529,7 +1529,7 @@
       "output.prefix_text": {
         "type": "text",
         "label": "Adicionar Prefixo ao Texto",
-        "show_if": "options.is_generate_holiday_table==''add_column'' && output.prefix_rule==''custom'' && output.core_rule!=''auto''",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.prefix_rule=='custom' && output.core_rule!='auto'",
         "minLength": 1,
         "maxLength": 31,
         "val": ""
@@ -1537,14 +1537,14 @@
       "output.core_delimiter": {
         "type": "text",
         "label": "Delimitador",
-        "show_if": "options.is_generate_holiday_table==''add_column'' && output.core_rule!=''auto'' && output.prefix_rule!=''empty''",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto' && output.prefix_rule!='empty'",
         "val": "_",
         "width": "50px"
       },
       "output.core_rule": {
         "type": "select",
         "label": "Nome da Tabela",
-        "show_if": "options.is_generate_holiday_table==''add_column''",
+        "show_if": "options.is_generate_holiday_table=='add_column'",
         "val": "auto",
         "options": {
           "auto": {
@@ -1564,7 +1564,7 @@
       "output.core_text": {
         "type": "text",
         "label": "Mostrar Nome da Tabela",
-        "show_if": "options.is_generate_holiday_table==''add_column'' && output.core_rule==''custom''",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule=='custom'",
         "required": true,
         "minLength": 1,
         "maxLength": 31,
@@ -1573,14 +1573,14 @@
       "output.suffix_delimiter": {
         "type": "text",
         "label": "Delimitador",
-        "show_if": "options.is_generate_holiday_table==''add_column'' && output.core_rule!=''auto''",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto'",
         "val": "_",
         "width": "50px"
       },
       "output.suffix_rule": {
         "type": "select",
         "label": "Sufixo",
-        "show_if": "options.is_generate_holiday_table==''add_column'' && output.core_rule!=''auto''",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto'",
         "val": "script_name",
         "options": {
           "empty": {
@@ -1609,7 +1609,7 @@
       "output.suffix_text": {
         "type": "text",
         "label": "Juntar Sufixo ao Texto",
-        "show_if": "options.is_generate_holiday_table==''add_column'' && output.suffix_rule==''custom'' && output.core_rule!=''auto''",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.suffix_rule=='custom' && output.core_rule!='auto'",
         "minLength": 1,
         "maxLength": 31,
         "val": "",
@@ -1618,7 +1618,7 @@
       "output.generate_prefix_rule": {
         "type": "select",
         "label": "Prefixo",
-        "show_if": "options.is_generate_holiday_table==''generate_table'' && output.generate_core_rule!=''auto''",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto'",
         "val": "empty",
         "options": {
           "empty": {
@@ -1647,7 +1647,7 @@
       "output.generate_prefix_text": {
         "type": "text",
         "label": "Adicionar Prefixo ao Texto",
-        "show_if": "options.is_generate_holiday_table==''generate_table'' && output.generate_prefix_rule==''custom'' && output.generate_core_rule!=''auto''",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_prefix_rule=='custom' && output.generate_core_rule!='auto'",
         "minLength": 1,
         "maxLength": 31,
         "val": ""
@@ -1655,14 +1655,14 @@
       "output.generate_core_delimiter": {
         "type": "text",
         "label": "Delimitador",
-        "show_if": "options.is_generate_holiday_table==''generate_table'' && output.generate_core_rule!=''auto'' && output.generate_prefix_rule!=''empty''",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto' && output.generate_prefix_rule!='empty'",
         "val": "_",
         "width": "50px"
       },
       "output.generate_core_rule": {
         "type": "select",
         "label": "Nome da Tabela",
-        "show_if": "options.is_generate_holiday_table==''generate_table''",
+        "show_if": "options.is_generate_holiday_table=='generate_table'",
         "val": "auto",
         "options": {
           "auto": {
@@ -1679,7 +1679,7 @@
       "output.generate_core_text": {
         "type": "text",
         "label": "Mostrar Nome da Tabela",
-        "show_if": "options.is_generate_holiday_table==''generate_table'' && output.generate_core_rule==''custom''",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule=='custom'",
         "required": true,
         "minLength": 1,
         "maxLength": 31,
@@ -1688,14 +1688,14 @@
       "output.generate_suffix_delimiter": {
         "type": "text",
         "label": "Delimitador",
-        "show_if": "options.is_generate_holiday_table==''generate_table'' && output.generate_core_rule!=''auto''",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto'",
         "val": "_",
         "width": "50px"
       },
       "output.generate_suffix_rule": {
         "type": "select",
         "label": "Sufixo",
-        "show_if": "options.is_generate_holiday_table==''generate_table'' && output.generate_core_rule!=''auto''",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_core_rule!='auto'",
         "val": "script_name",
         "options": {
           "empty": {
@@ -1724,7 +1724,7 @@
       "output.generate_suffix_text": {
         "type": "text",
         "label": "Juntar Sufixo ao Texto",
-        "show_if": "options.is_generate_holiday_table==''generate_table'' && output.generate_suffix_rule==''custom'' && output.generate_core_rule!=''auto''",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.generate_suffix_rule=='custom' && output.generate_core_rule!='auto'",
         "minLength": 1,
         "maxLength": 31,
         "val": "",
@@ -1733,7 +1733,7 @@
       "output.timezone": {
         "type": "select",
         "label": "Fuso horário",
-        "show_if": "options.is_generate_holiday_table==''add_column'' && output.core_rule!=''auto'' && (output.prefix_rule==''date_string_type1'' || output.prefix_rule==''date_string_type2'' || output.prefix_rule==''time_string'' || output.prefix_rule==''datetime_string'' || output.core_rule==''date_string_type1'' || output.core_rule==''date_string_type2'' || output.core_rule==''time_string'' || output.core_rule==''datetime_string'' || output.suffix_rule==''date_string_type1'' || output.suffix_rule==''date_string_type2'' || output.suffix_rule==''time_string'' || output.suffix_rule==''datetime_string'')",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
         "val": "Europa/Berlim",
         "required": true,
         "options": {
@@ -2016,7 +2016,7 @@
       "output.generate_timezone": {
         "type": "select",
         "label": "Fuso horário",
-        "show_if": "options.is_generate_holiday_table==''generate_table'' && output.core_rule!=''auto'' && (output.prefix_rule==''date_string_type1'' || output.prefix_rule==''date_string_type2'' || output.prefix_rule==''time_string'' || output.prefix_rule==''datetime_string'' || output.core_rule==''date_string_type1'' || output.core_rule==''date_string_type2'' || output.core_rule==''time_string'' || output.core_rule==''datetime_string'' || output.suffix_rule==''date_string_type1'' || output.suffix_rule==''date_string_type2'' || output.suffix_rule==''time_string'' || output.suffix_rule==''datetime_string'')",
+        "show_if": "options.is_generate_holiday_table=='generate_table' && output.core_rule!='auto' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
         "val": "CET",
         "required": true,
         "options": {
@@ -2299,7 +2299,7 @@
       "output.select_output_columns": {
         "type": "checkbox",
         "label": "Selecionar Colunas de Saída",
-        "show_if": "options.is_generate_holiday_table==''add_column''",
+        "show_if": "options.is_generate_holiday_table=='add_column'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -2307,7 +2307,7 @@
       "output_columns": {
         "type": "fieldset",
         "label": "Select OutputColumns",
-        "show_if": "options.is_generate_holiday_table==''add_column'' && output.select_output_columns==''true''",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.select_output_columns=='true'",
         "repeat": true,
         "fields": {
           "field_name": {
@@ -2341,7 +2341,7 @@
             "isOff": "false"
           },
           "rename": {
-            "show_if": "this.is_rename == ''true''",
+            "show_if": "this.is_rename == 'true'",
             "type": "text",
             "required": true,
             "minLength": 1,
@@ -2368,7 +2368,7 @@
       "output.tag_name": {
         "type": "text",
         "label": "Nome do Rótulo",
-        "show_if": "output.add_tag==''true''",
+        "show_if": "output.add_tag=='true'",
         "required": true,
         "minLength": 1,
         "maxLength": 255,
