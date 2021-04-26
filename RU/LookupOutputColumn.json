@@ -1,8 +1,8 @@
 {
   "output.select_output_columns": {
     "type": "checkbox",
-    "label": "Выбрать выходные столбцы",
-    "show_if": "options.task_type==''label_duplicates'' || options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table''",
+    "label": "Selecionar Colunas de Saída",
+    "show_if": "options.task_type=='label_duplicates' || options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
     "val": "false",
     "isOn": "true",
     "isOff": "false"
@@ -10,128 +10,128 @@
   "output_columns": {
     "type": "fieldset",
     "label": "Select OutputColumns",
-    "show_if": "output.select_output_columns==''true'' && (options.task_type==''label_duplicates'' || options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'')",
+    "show_if": "output.select_output_columns=='true' && (options.task_type=='label_duplicates' || options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
     "repeat": true,
     "fields": {
       "field_name": {
         "type": "select",
-        "label": "Выбрать столбец",
+        "label": "Selecionar Coluna",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
       },
       "order": {
         "type": "select",
-        "label": "Заказать",
+        "label": "Encomendar",
         "options": {
           "-": {
             "label": "-"
           },
           "asc": {
-            "label": "Asc"
+            "label": "Ascendente"
           },
           "desc": {
-            "label": "Описание"
+            "label": "Descendente"
           }
         },
         "val": "-"
       },
       "is_rename": {
         "type": "checkbox",
-        "label": ,
+        "label": "Mudar Nome",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "rename": {
-        "show_if": "this.is_rename == ''true''",
+        "show_if": "this.is_rename == 'true'",
         "type": "text",
         "required": true,
         "minLength": 1,
         "maxLength": 255,
-        "label": "Название нового столбца",
+        "label": "Novo Nome de Coluna",
         "style": "margin-left: 10px"
       },
       "format__category": {
         "type": "select",
-        "label": "Формат",
+        "label": "Formato",
         "required": true,
         "options": {
           "standard": {
-            "label": "Стандартный"
+            "label": "Padrão"
           },
           "number": {
-            "label": "Число"
+            "label": "Número"
           },
           "percentage": {
-            "label": "Процент"
+            "label": "Percentagem"
           },
           "text": {
-            "label": "Текст"
+            "label": "Texto"
           },
           "date": {
-            "label": "Дата"
+            "label": "Data"
           },
           "currency": {
-            "label": "Валюта"
+            "label": "Moeda"
           }
         },
         "val": "standard"
       },
       "format__rounding": {
         "type": "select",
-        "label": "Округление",
-        "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+        "label": "Arredondamento",
+        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "required": true,
         "options": {
           "no_rounding": {
-            "label": "Округление чисел"
+            "label": "Arredondamento de números"
           },
           "0": {
-            "label": "0 цифр"
+            "label": "0 dígitos"
           },
           "1": {
-            "label": "1 цифра"
+            "label": "1 dígito"
           },
           "2": {
-            "label": "2 цифры"
+            "label": "2 dígitos"
           },
           "3": {
-            "label": "3 цифры"
+            "label": "3 dígitos"
           },
           "4": {
-            "label": "4 цифры"
+            "label": "4 dígitos"
           },
           "5": {
-            "label": "5 цифр"
+            "label": "5 dígitos"
           },
           "6": {
-            "label": "6 цифр"
+            "label": "6 dígitos"
           },
           "7": {
-            "label": "7 цифр"
+            "label": "7 dígitos"
           },
           "8": {
-            "label": "8 цифр"
+            "label": "8 dígitos"
           },
           "9": {
-            "label": "9 цифр"
+            "label": "9 dígitos"
           }
         },
         "val": "2"
       },
       "format__use_1000_separator": {
         "type": "checkbox",
-        "label": "Используйте сепаратор 1000(.)",
-        "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+        "label": "Usar Separador(.) 1000",
+        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
       "format__currency_symbol": {
         "type": "select",
-        "label": "Символ",
-        "show_if": "this.format__category==''currency''",
+        "label": "Símbolo",
+        "show_if": "this.format__category=='currency'",
         "required": true,
         "options": {
           "dollar": {
@@ -148,8 +148,8 @@
       },
       "format__date_format": {
         "type": "select",
-        "label": "Тип",
-        "show_if": "this.format__category==''date''",
+        "label": "Tipo",
+        "show_if": "this.format__category=='date'",
         "required": true,
         "options": {
           "mm/dd/yyyy": {
@@ -167,7 +167,7 @@
       },
       "delete": {
         "type": "button",
-        "label": "Удалить",
+        "label": "Apagar",
         "function": "DELETE_ROW"
       }
     },
@@ -176,7 +176,7 @@
   },
   "options.add_filename": {
     "type": "checkbox",
-    "label": "Добавить название файла",
+    "label": "Adicionar Nome de Ficheiro",
     "val": "false",
     "isOn": "true",
     "isOff": "false",
