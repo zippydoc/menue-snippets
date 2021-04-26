@@ -52,7 +52,7 @@
       "options.word_pattern_type": {
         "type": "select",
         "label": "Padrão de Palavras",
-        "show_if": "options.output_format==''word_by_word'' && options.specify_word_pattern==''true''",
+        "show_if": "options.output_format=='word_by_word' && options.specify_word_pattern=='true'",
         "options": {
           "regex": {
             "label": "Expressão Regular"
@@ -64,7 +64,7 @@
       "options.word_pattern_regex": {
         "type": "text",
         "label": "Expressão Regular",
-        "show_if": "options.output_format==''word_by_word'' && options.specify_word_pattern==''true'' && options.word_pattern_type==''regex''",
+        "show_if": "options.output_format=='word_by_word' && options.specify_word_pattern=='true' && options.word_pattern_type=='regex'",
         "required": true,
         "val": "[a-z][1-9]",
         "breakLine": true
@@ -72,7 +72,7 @@
       "options.column_setting": {
         "type": "checkbox",
         "label": "Column Settings",
-        "show_if": "options.output_format!=''file_list''",
+        "show_if": "options.output_format!='file_list'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -81,13 +81,13 @@
       "column_setting_frame": {
         "type": "fieldset",
         "label": "Column Settings",
-        "show_if": "options.output_format!=''file_list'' && options.column_setting==''true''",
+        "show_if": "options.output_format!='file_list' && options.column_setting=='true'",
         "repeat": false,
         "fields": {
           "options.add_row_column": {
             "type": "checkbox",
             "label": "Adicionar Coluna Fila",
-            "show_if": "options.output_format==''word_by_word''",
+            "show_if": "options.output_format=='word_by_word'",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -95,8 +95,8 @@
           },
           "options.add_word_count_column": {
             "type": "checkbox",
-            "label": "Add ''Word Count'' Column",
-            "show_if": "options.output_format==''word_by_word''",
+            "label": "Add 'Word Count' Column",
+            "show_if": "options.output_format=='word_by_word'",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -104,8 +104,8 @@
           },
           "options.add_word_nonword_column": {
             "type": "checkbox",
-            "label": "Add ''Word & Non-Word'' Column",
-            "show_if": "options.output_format==''word_by_word''",
+            "label": "Add 'Word & Non-Word' Column",
+            "show_if": "options.output_format=='word_by_word'",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -114,7 +114,7 @@
           "options.add_section_column": {
             "type": "checkbox",
             "label": "Adicionar Coluna Secção",
-            "show_if": "options.output_format==''word_by_word''",
+            "show_if": "options.output_format=='word_by_word'",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -123,7 +123,7 @@
           "section_column_types_frame": {
             "type": "fieldset",
             "label": "Section Column Types",
-            "show_if": "options.output_format==''word_by_word'' && options.add_section_column==''true''",
+            "show_if": "options.output_format=='word_by_word' && options.add_section_column=='true'",
             "repeat": false,
             "fields": {
               "options.section_columns.add_paragraph_section_column": {
@@ -144,7 +144,7 @@
               "options.section_columns.custom_delimiter": {
                 "type": "text",
                 "label": "Delimitador (1 caracter)",
-                "show_if": "options.section_columns.add_custom_section_column==''true''",
+                "show_if": "options.section_columns.add_custom_section_column=='true'",
                 "maxLength": 1,
                 "required": true,
                 "breakLine": true
@@ -159,7 +159,7 @@
               "options.section_columns.brackets_punctuation_section_column_type": {
                 "type": "select",
                 "label": "Brackets Type",
-                "show_if": "options.section_columns.add_brackets_punctuation_section_column==''true''",
+                "show_if": "options.section_columns.add_brackets_punctuation_section_column=='true'",
                 "options": {
                   "nesting_structure": {
                     "label": "Nesting Structure"
@@ -199,7 +199,7 @@
       "options.is_cloud_dir": {
         "type": "checkbox",
         "label": "Importar Diretório",
-        "show_if": "options.output_format!=''file_list''",
+        "show_if": "options.output_format!='file_list'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -209,7 +209,7 @@
       "if_dir_frame": {
         "type": "fieldset",
         "label": "Directory Import Options",
-        "show_if": "options.output_format!=''file_list'' && options.is_cloud_dir==''true''",
+        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true'",
         "repeat": false,
         "fields": {
           "options.unify_in_one_table": {
@@ -223,7 +223,7 @@
           "options.suffix": {
             "type": "select",
             "label": "Output tables suffix",
-            "show_if": "options.unify_in_one_table==''false''",
+            "show_if": "options.unify_in_one_table=='false'",
             "options": {
               "number": {
                 "label": "Número"
@@ -239,7 +239,7 @@
           "options.include_subdir": {
             "type": "checkbox",
             "label": "Incluir Subdiretórios",
-            "show_if": "options.output_format!=''file_list'' && options.is_cloud_dir==''true''",
+            "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true'",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -251,7 +251,7 @@
       "options.file_list.include_subdir": {
         "type": "checkbox",
         "label": "Incluir Subdiretórios",
-        "show_if": "options.output_format==''file_list''",
+        "show_if": "options.output_format=='file_list'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -261,7 +261,7 @@
       "options.file_list.add_change_date_column": {
         "type": "checkbox",
         "label": "Adicionar Coluna de Mudança de Data",
-        "show_if": "options.output_format==''file_list''",
+        "show_if": "options.output_format=='file_list'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -270,7 +270,7 @@
       "options.use_filename_as_output_table_name": {
         "type": "checkbox",
         "label": "Usar nome de ficheiro como nome de tabela",
-        "show_if": "options.output_format!=''file_list'' && options.is_cloud_dir==''false''",
+        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -286,7 +286,7 @@
       "options.link_csv_file": {
         "type": "text",
         "label": "Introduzir hiperligação, por exemplo https://github.com/zippydoc/test/blob/main/example.csv",
-        "show_if": "options.webservice==''github'' && options.is_cloud_dir==''false'' && options.output_format==''csv_table''",
+        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format=='csv_table'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -294,7 +294,7 @@
       "options.link_text_file": {
         "type": "text",
         "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.txt(json, csv, etc)",
-        "show_if": "options.webservice==''github'' && options.is_cloud_dir==''false'' && options.output_format!=''csv_table'' && options.output_format!=''file_list''",
+        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format!='csv_table' && options.output_format!='file_list'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -302,7 +302,7 @@
       "options.one_drive.file_path": {
         "type": "text",
         "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
-        "show_if": "options.webservice==''ms_one_drive'' && options.output_format!=''file_list'' && options.is_cloud_dir==''false''",
+        "show_if": "options.webservice=='ms_one_drive' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -310,7 +310,7 @@
       "options.dropbox.file_path": {
         "type": "text",
         "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
-        "show_if": "options.webservice==''dropbox'' && options.output_format!=''file_list'' && options.is_cloud_dir==''false''",
+        "show_if": "options.webservice=='dropbox' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -318,13 +318,13 @@
       "options.dir_path_filter": {
         "type": "fieldset",
         "label": "Import Path and File Filter",
-        "show_if": "options.output_format==''file_list'' || options.is_cloud_dir==''true''",
+        "show_if": "options.output_format=='file_list' || options.is_cloud_dir=='true'",
         "repeat": true,
         "fields": {
           "github__link_directory": {
             "type": "text",
             "label": "Introduzir hiperligação, por exemplo https://github.com/zippydoc/test",
-            "show_if": "options.webservice==''github''",
+            "show_if": "options.webservice=='github'",
             "required": true,
             "width": "100%",
             "breakLine": true
@@ -332,21 +332,21 @@
           "one_drive__dir_path": {
             "type": "text",
             "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
-            "show_if": "options.webservice==''ms_one_drive''",
+            "show_if": "options.webservice=='ms_one_drive'",
             "width": "100%",
             "breakLine": true
           },
           "dropbox__dir_path": {
             "type": "text",
             "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
-            "show_if": "options.webservice==''dropbox''",
+            "show_if": "options.webservice=='dropbox'",
             "width": "100%",
             "breakLine": true
           },
           "google_drive__dir_path": {
             "type": "text",
             "label": "Enter path to dir",
-            "show_if": "options.webservice==''google_drive''",
+            "show_if": "options.webservice=='google_drive'",
             "width": "100%",
             "breakLine": true
           },
@@ -376,7 +376,7 @@
           "dir_filter__filter_string": {
             "type": "text",
             "label": "Filtrar",
-            "show_if": "this.dir_filter__filter_type!=''all''",
+            "show_if": "this.dir_filter__filter_type!='all'",
             "required": true
           },
           "delete": {
@@ -389,7 +389,7 @@
       "options.is_github_private": {
         "type": "checkbox",
         "label": "Github repository is private",
-        "show_if": "options.webservice==''github''",
+        "show_if": "options.webservice=='github'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -399,7 +399,7 @@
       "options.github_token": {
         "type": "text",
         "label": "Github personal access token",
-        "show_if": "options.webservice==''github'' && options.is_github_private==''true''",
+        "show_if": "options.webservice=='github' && options.is_github_private=='true'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -407,7 +407,7 @@
       "options.one_drive.access_token": {
         "type": "text",
         "label": "One Drive Access Token",
-        "show_if": "options.webservice==''ms_one_drive''",
+        "show_if": "options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -415,7 +415,7 @@
       "options.dropbox.auth_code": {
         "type": "text",
         "label": "Dropbox Authorization Code",
-        "show_if": "options.webservice==''dropbox''",
+        "show_if": "options.webservice=='dropbox'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -423,7 +423,7 @@
       "options.google_drive.access_token": {
         "type": "text",
         "label": "Google Drive Access Token",
-        "show_if": "options.webservice==''google_drive''",
+        "show_if": "options.webservice=='google_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true
