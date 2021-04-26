@@ -45,7 +45,7 @@
           "multi_row_functions__sel_column": {
             "type": "select",
             "label": "Spalte",
-            "show_if": "this.multi_row_functions__function==''trailing_row_n_average'' || this.multi_row_functions__function==''index_from_row_n'' || this.multi_row_functions__function==''absolute_growth'' || this.multi_row_functions__function==''relative_growth'' || this.multi_row_functions__function==''compound_growth''",
+            "show_if": "this.multi_row_functions__function=='trailing_row_n_average' || this.multi_row_functions__function=='index_from_row_n' || this.multi_row_functions__function=='absolute_growth' || this.multi_row_functions__function=='relative_growth' || this.multi_row_functions__function=='compound_growth'",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
@@ -53,7 +53,7 @@
           "multi_row_functions__n_value": {
             "type": "text",
             "label": "N (positive Ganzzahl)",
-            "show_if": "this.multi_row_functions__function==''trailing_row_n_average'' || this.multi_row_functions__function==''index_from_row_n'' || this.multi_row_functions__function==''compound_growth''",
+            "show_if": "this.multi_row_functions__function=='trailing_row_n_average' || this.multi_row_functions__function=='index_from_row_n' || this.multi_row_functions__function=='compound_growth'",
             "val": "1",
             "required": true,
             "breakLine": true
@@ -87,7 +87,7 @@
           "format__rounding": {
             "type": "select",
             "label": "Abrunden",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
@@ -129,7 +129,7 @@
           "format__use_1000_separator": {
             "type": "checkbox",
             "label": "1000 Trennzeichen(.) verwenden",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
@@ -137,7 +137,7 @@
           "format__currency_symbol": {
             "type": "select",
             "label": "Symbol",
-            "show_if": "this.format__category==''currency''",
+            "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
@@ -155,7 +155,7 @@
           "format__date_format": {
             "type": "select",
             "label": "Typ",
-            "show_if": "this.format__category==''date''",
+            "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
@@ -174,7 +174,7 @@
           "apply_to_group__enabled": {
             "type": "checkbox",
             "label": "Anwenden auf Gruppe",
-            "show_if": "this.task_type!=''static_value''",
+            "show_if": "this.task_type!='static_value'",
             "val": "false",
             "isOn": "true",
             "isOff": "false"
@@ -182,7 +182,7 @@
           "apply_to_group__group_columns": {
             "type": "select",
             "label": "Gruppenspalte(n)",
-            "show_if": "this.apply_to_group__enabled == ''true'' && this.task_type!=''static_value''",
+            "show_if": "this.apply_to_group__enabled == 'true' && this.task_type!='static_value'",
             "table": "input_table",
             "bind": "COLUMNS",
             "multiple": true,
@@ -207,7 +207,7 @@
       "filter_box": {
         "type": "fieldset",
         "label": "Filter-Optionen",
-        "show_if": "options.use_filter==''true''",
+        "show_if": "options.use_filter=='true'",
         "repeat": false,
         "fields": {
           "options.filter": {
@@ -318,7 +318,7 @@
                 "type": "select",
                 "label": "Datumsoperator auswählen",
                 "required": true,
-                "show_if": "this.condition == ''DATE''",
+                "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
                     "label": "PRIOR"
@@ -342,7 +342,7 @@
                 "type": "select",
                 "label": "Wählen Sie Case Sensitive",
                 "required": true,
-                "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
                     "label": "Gehäuse empfindlich"
@@ -356,14 +356,14 @@
               "date_value": {
                 "type": "date",
                 "label": "Datum auswählen",
-                "show_if": "this.condition==''DATE''",
+                "show_if": "this.condition=='DATE'",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
                 "label": "Eingangswert",
-                "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
@@ -372,7 +372,7 @@
                 "label": "Tabelle auswählen",
                 "bind": "TABLES",
                 "empty": "",
-                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
               },
               "compare_column": {
@@ -380,7 +380,7 @@
                 "label": "Spalte auswählen",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
-                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
               },
               "delete": {
@@ -402,7 +402,7 @@
           "apply_to_group_box": {
             "type": "fieldset",
             "label": "Anwenden auf Gruppe",
-            "show_if": "options.apply_to_record==''false''",
+            "show_if": "options.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
