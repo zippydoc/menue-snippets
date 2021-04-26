@@ -8,7 +8,7 @@
         "type": "select",
         "label": "选择位置",
         "required": true,
-        "show_if": "table_type==''header_only''",
+        "show_if": "table_type=='header_only'",
         "options": {
           "add_rows_below_selected_row": {
             "label": "在下方添加行"
@@ -32,7 +32,7 @@
       "options.group_column": {
         "type": "select",
         "label": "组列",
-        "show_if": "table_type==''header_only'' && options.position==''add_row_after_each_group''",
+        "show_if": "table_type=='header_only' && options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -41,7 +41,7 @@
       "options.use_filter": {
         "type": "checkbox",
         "label": "使用筛选",
-        "show_if": "table_type==''header_only'' && (options.position==''add_rows_below_selected_row'' || options.position==''add_rows_above_selected_row'' || options.position==''add_rows_at_table_end'')",
+        "show_if": "table_type=='header_only' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -51,7 +51,7 @@
       "filter_box": {
         "type": "fieldset",
         "label": "筛选选项",
-        "show_if": "table_type==''header_only'' && options.use_filter==''true'' && (options.position==''add_rows_below_selected_row'' || options.position==''add_rows_above_selected_row'' || options.position==''add_rows_at_table_end'')",
+        "show_if": "table_type=='header_only' && options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "repeat": false,
         "fields": {
           "options.filter": {
@@ -162,7 +162,7 @@
                 "type": "select",
                 "label": "选择日期运算符",
                 "required": true,
-                "show_if": "this.condition == ''DATE''",
+                "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
                     "label": "PRIOR"
@@ -186,7 +186,7 @@
                 "type": "select",
                 "label": "选择区分大小写",
                 "required": true,
-                "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
                     "label": "区分大小写"
@@ -200,14 +200,14 @@
               "date_value": {
                 "type": "date",
                 "label": "选择日期",
-                "show_if": "this.condition==''DATE''",
+                "show_if": "this.condition=='DATE'",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
                 "label": "输入值",
-                "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
@@ -216,7 +216,7 @@
                 "label": "选择表格",
                 "bind": "TABLES",
                 "empty": "",
-                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
               },
               "compare_column": {
@@ -224,7 +224,7 @@
                 "label": "选择列",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
-                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
               },
               "delete": {
@@ -246,7 +246,7 @@
           "apply_to_group_box": {
             "type": "fieldset",
             "label": "应用至组",
-            "show_if": "options.apply_to_record==''false''",
+            "show_if": "options.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
@@ -291,7 +291,7 @@
           "multi_column_functions__function": {
             "type": "select",
             "label": "选择函数",
-            "show_if": "this.function_type==''multi_column_functions''",
+            "show_if": "this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "absolute_growth": {
@@ -321,7 +321,7 @@
           "multi_row_functions__function": {
             "type": "select",
             "label": "选择函数",
-            "show_if": "this.function_type==''multi_row_functions''",
+            "show_if": "this.function_type=='multi_row_functions'",
             "required": true,
             "options": {
               "sum": {
@@ -351,7 +351,7 @@
           "multi_column_functions__sel_labels": {
             "type": "select",
             "label": "Select Rows(s)",
-            "show_if": "table_type!=''header_only'' && this.function_type==''multi_column_functions'' && (this.multi_column_functions__function==''absolute_growth'' || this.multi_column_functions__function==''relative_growth'' || this.multi_column_functions__function==''trailing_average'' || this.multi_column_functions__function==''index_growth'' || this.multi_column_functions__function==''compound_growth'' || this.multi_column_functions__function==''discount_rate'')",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
             "required": true,
             "table": "input_table",
             "multiple": true,
@@ -360,21 +360,21 @@
           "multi_column_functions__n_value": {
             "type": "text",
             "label": "N（正整数）",
-            "show_if": "this.function_type==''multi_column_functions'' && (this.multi_column_functions__function==''trailing_average'' || this.multi_column_functions__function==''index_growth'' || this.multi_column_functions__function==''compound_growth'')",
+            "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__rate": {
             "type": "text",
             "label": "输入率数据",
-            "show_if": "this.function_type==''multi_column_functions'' && this.multi_column_functions__function==''discount_rate''",
+            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__starting_column": {
             "type": "select",
             "label": "起始列",
-            "show_if": "this.function_type==''multi_column_functions'' && this.multi_column_functions__function==''discount_rate''",
+            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
@@ -382,7 +382,7 @@
           "multi_column_functions__sel_label_a": {
             "type": "select",
             "label": "选择标签 A",
-            "show_if": "table_type!=''header_only'' && this.function_type==''multi_column_functions'' && this.multi_column_functions__function==''quota''",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
@@ -390,7 +390,7 @@
           "multi_column_functions__sel_label_b": {
             "type": "select",
             "label": "选择标签 B",
-            "show_if": "table_type!=''header_only'' && this.function_type==''multi_column_functions'' && this.multi_column_functions__function==''quota''",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
@@ -398,7 +398,7 @@
           "multi_row_functions__sel_label_a": {
             "type": "select",
             "label": "选择标签 A",
-            "show_if": "table_type!=''header_only'' && this.function_type==''multi_row_functions'' && this.multi_row_functions__function==''quota''",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
@@ -406,7 +406,7 @@
           "multi_row_functions__sel_label_b": {
             "type": "select",
             "label": "选择标签 B",
-            "show_if": "table_type!=''header_only'' && this.function_type==''multi_row_functions'' && this.multi_row_functions__function==''quota''",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS",
@@ -415,7 +415,7 @@
           "position": {
             "type": "select",
             "label": "位置",
-            "show_if": "table_type!=''header_only''",
+            "show_if": "table_type!='header_only'",
             "required": true,
             "options": {
               "bottom": {
@@ -436,7 +436,7 @@
           "positioning_row": {
             "type": "select",
             "label": "Positioning Row",
-            "show_if": "table_type!=''header_only'' && (this.position==''above'' || this.position==''below'')",
+            "show_if": "table_type!='header_only' && (this.position=='above' || this.position=='below')",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
@@ -444,7 +444,7 @@
           "multi_column_functions__sel_row_a": {
             "type": "select",
             "label": "选择行 A",
-            "show_if": "table_type==''header_only'' && this.multi_column_functions__function==''quota'' && this.function_type==''multi_column_functions''",
+            "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "row-1": {
@@ -573,7 +573,7 @@
           "multi_column_functions__sel_row_b": {
             "type": "select",
             "label": "选择行 B",
-            "show_if": "table_type==''header_only'' && this.multi_column_functions__function==''quota'' && this.function_type==''multi_column_functions''",
+            "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "row-1": {
@@ -728,7 +728,7 @@
           "format__rounding": {
             "type": "select",
             "label": "取整",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
@@ -770,7 +770,7 @@
           "format__use_1000_separator": {
             "type": "checkbox",
             "label": "使用 1000 分隔符（.）",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "false",
             "isOn": "true",
             "isOff": "false"
@@ -778,7 +778,7 @@
           "format__currency_symbol": {
             "type": "select",
             "label": "符号",
-            "show_if": "this.format__category==''currency''",
+            "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
@@ -796,7 +796,7 @@
           "format__date_format": {
             "type": "select",
             "label": "类型",
-            "show_if": "this.format__category==''date''",
+            "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
