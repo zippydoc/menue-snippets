@@ -1,0 +1,78 @@
+{
+  "output.download_setting": {
+    "type": "checkbox",
+    "label": "Download Settings",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false",
+    "style": "margin-top: 10px"
+  },
+  "download_setting_frame": {
+    "type": "fieldset",
+    "label": "Download Settings",
+    "show_if": "output.download_setting=='true'",
+    "repeat": false,
+    "fields": {
+      "output.options.location": {
+        "type": "text",
+        "label": "Especificar Ubicación",
+        "val": "A1",
+        "breakLine": true
+      },
+      "output.options.formatted_as_table": {
+        "type": "checkbox",
+        "label": "Formateado como Tabla",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "output.add_tag": {
+        "type": "checkbox",
+        "label": “Agregar Marcador”,
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "output.tag_name": {
+        "type": "text",
+        "label": "Nombre del marcador",
+        "show_if": "output.add_tag=='true'",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 255,
+        "val": "",
+        "breakLine": true,
+        "style": "margin-left: 15px"
+      },
+      "output.options.visibility": {
+        "type": "select",
+        "label": "Visibilidad",
+        "val": "current_flow",
+        "options": {
+          "current_flow": {
+            "label": "Caudal Actual"
+          },
+          "all_flow": {
+            "label": "Todos los Caudales"
+          }
+        },
+        "breakLine": true
+      },
+      "output.options.table_mode": {
+        "type": "select",
+        "label": "Pegar",
+        "val": "content_only",
+        "options": {
+          "content_only": {
+            "label": "Sólo Contenido"
+          },
+          "fully_formatted": {
+            "label": "Completamente Formateada"
+          }
+        }
+      }
+    },
+    "breakLine": true
+  }
+}
