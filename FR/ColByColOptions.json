@@ -8,7 +8,7 @@
         "type": "select",
         "label": "Sélectionner une position",
         "required": true,
-        "show_if": "table_type==''header_only''",
+        "show_if": "table_type=='header_only'",
         "options": {
           "add_rows_below_selected_row": {
             "label": "Ajouter des lignes ci-dessous"
@@ -32,7 +32,7 @@
       "options.group_column": {
         "type": "select",
         "label": "Colonne de groupe",
-        "show_if": "table_type==''header_only'' && options.position==''add_row_after_each_group''",
+        "show_if": "table_type=='header_only' && options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -41,7 +41,7 @@
       "options.use_filter": {
         "type": "checkbox",
         "label": "Utiliser un filtre",
-        "show_if": "table_type==''header_only'' && (options.position==''add_rows_below_selected_row'' || options.position==''add_rows_above_selected_row'' || options.position==''add_rows_at_table_end'')",
+        "show_if": "table_type=='header_only' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -51,7 +51,7 @@
       "filter_box": {
         "type": "fieldset",
         "label": "Options de filtrage",
-        "show_if": "table_type==''header_only'' && options.use_filter==''true'' && (options.position==''add_rows_below_selected_row'' || options.position==''add_rows_above_selected_row'' || options.position==''add_rows_at_table_end'')",
+        "show_if": "table_type=='header_only' && options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "repeat": false,
         "fields": {
           "options.filter": {
@@ -162,7 +162,7 @@
                 "type": "select",
                 "label": "Sélectionner l'opérateur de date",
                 "required": true,
-                "show_if": "this.condition == ''DATE''",
+                "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
                     "label": "AVANT"
@@ -186,7 +186,7 @@
                 "type": "select",
                 "label": "Sélectionner la sensibilité à la casse",
                 "required": true,
-                "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
                     "label": "Respecter la casse"
@@ -200,14 +200,14 @@
               "date_value": {
                 "type": "date",
                 "label": "Sélectionner une date",
-                "show_if": "this.condition==''DATE''",
+                "show_if": "this.condition=='DATE'",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
                 "label": "Valeur d'entrée",
-                "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
@@ -216,7 +216,7 @@
                 "label": "Sélectionner un tableau",
                 "bind": "TABLES",
                 "empty": "",
-                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
               },
               "compare_column": {
@@ -224,7 +224,7 @@
                 "label": "Sélectionner une colonne",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
-                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
               },
               "delete": {
@@ -246,7 +246,7 @@
           "apply_to_group_box": {
             "type": "fieldset",
             "label": "Appliquer au groupe",
-            "show_if": "options.apply_to_record==''false''",
+            "show_if": "options.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
@@ -291,7 +291,7 @@
           "multi_column_functions__function": {
             "type": "select",
             "label": "Sélectionner une fonction",
-            "show_if": "this.function_type==''multi_column_functions''",
+            "show_if": "this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "absolute_growth": {
@@ -321,7 +321,7 @@
           "multi_row_functions__function": {
             "type": "select",
             "label": "Sélectionner une fonction",
-            "show_if": "this.function_type==''multi_row_functions''",
+            "show_if": "this.function_type=='multi_row_functions'",
             "required": true,
             "options": {
               "sum": {
@@ -351,7 +351,7 @@
           "multi_column_functions__sel_labels": {
             "type": "select",
             "label": "Select Rows(s)",
-            "show_if": "table_type!=''header_only'' && this.function_type==''multi_column_functions'' && (this.multi_column_functions__function==''absolute_growth'' || this.multi_column_functions__function==''relative_growth'' || this.multi_column_functions__function==''trailing_average'' || this.multi_column_functions__function==''index_growth'' || this.multi_column_functions__function==''compound_growth'' || this.multi_column_functions__function==''discount_rate'')",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
             "required": true,
             "table": "input_table",
             "multiple": true,
@@ -360,21 +360,21 @@
           "multi_column_functions__n_value": {
             "type": "text",
             "label": "N (nombre entier positif)",
-            "show_if": "this.function_type==''multi_column_functions'' && (this.multi_column_functions__function==''trailing_average'' || this.multi_column_functions__function==''index_growth'' || this.multi_column_functions__function==''compound_growth'')",
+            "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__rate": {
             "type": "text",
             "label": "Taux d'entrée",
-            "show_if": "this.function_type==''multi_column_functions'' && this.multi_column_functions__function==''discount_rate''",
+            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__starting_column": {
             "type": "select",
             "label": "Colonne de départ",
-            "show_if": "this.function_type==''multi_column_functions'' && this.multi_column_functions__function==''discount_rate''",
+            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
@@ -382,7 +382,7 @@
           "multi_column_functions__sel_label_a": {
             "type": "select",
             "label": "Sélectionner l'étiquette A",
-            "show_if": "table_type!=''header_only'' && this.function_type==''multi_column_functions'' && this.multi_column_functions__function==''quota''",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
@@ -390,7 +390,7 @@
           "multi_column_functions__sel_label_b": {
             "type": "select",
             "label": "Sélectionner l'étiquette B",
-            "show_if": "table_type!=''header_only'' && this.function_type==''multi_column_functions'' && this.multi_column_functions__function==''quota''",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
@@ -398,7 +398,7 @@
           "multi_row_functions__sel_label_a": {
             "type": "select",
             "label": "Sélectionner l'étiquette A",
-            "show_if": "table_type!=''header_only'' && this.function_type==''multi_row_functions'' && this.multi_row_functions__function==''quota''",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
@@ -406,7 +406,7 @@
           "multi_row_functions__sel_label_b": {
             "type": "select",
             "label": "Sélectionner l'étiquette B",
-            "show_if": "table_type!=''header_only'' && this.function_type==''multi_row_functions'' && this.multi_row_functions__function==''quota''",
+            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS",
@@ -415,7 +415,7 @@
           "position": {
             "type": "select",
             "label": "Position",
-            "show_if": "table_type!=''header_only''",
+            "show_if": "table_type!='header_only'",
             "required": true,
             "options": {
               "bottom": {
@@ -436,7 +436,7 @@
           "positioning_row": {
             "type": "select",
             "label": "Positioning Row",
-            "show_if": "table_type!=''header_only'' && (this.position==''above'' || this.position==''below'')",
+            "show_if": "table_type!='header_only' && (this.position=='above' || this.position=='below')",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
@@ -444,7 +444,7 @@
           "multi_column_functions__sel_row_a": {
             "type": "select",
             "label": "Sélectionner Ligne A",
-            "show_if": "table_type==''header_only'' && this.multi_column_functions__function==''quota'' && this.function_type==''multi_column_functions''",
+            "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "row-1": {
@@ -573,7 +573,7 @@
           "multi_column_functions__sel_row_b": {
             "type": "select",
             "label": "Sélectionner Ligne B",
-            "show_if": "table_type==''header_only'' && this.multi_column_functions__function==''quota'' && this.function_type==''multi_column_functions''",
+            "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "row-1": {
@@ -728,7 +728,7 @@
           "format__rounding": {
             "type": "select",
             "label": "Arrondi",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
@@ -770,7 +770,7 @@
           "format__use_1000_separator": {
             "type": "checkbox",
             "label": "Utilisez le séparateur 1000 (.)",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "false",
             "isOn": "true",
             "isOff": "false"
@@ -778,7 +778,7 @@
           "format__currency_symbol": {
             "type": "select",
             "label": "Symbole",
-            "show_if": "this.format__category==''currency''",
+            "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
@@ -796,7 +796,7 @@
           "format__date_format": {
             "type": "select",
             "label": "Type",
-            "show_if": "this.format__category==''date''",
+            "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
