@@ -7,7 +7,7 @@
       "options.table_permission.set_or_delete": {
         "type": "select",
         "label": "Type of Action",
-        "show_if": "input.table_or_flow==''set_table_permissions''",
+        "show_if": "input.table_or_flow=='set_table_permissions'",
         "required": true,
         "options": {
           "set_permissions": {
@@ -23,14 +23,14 @@
       "options.table_permission.emails": {
         "type": "text",
         "label": "Permitted Users (; separated list)",
-        "show_if": "input.table_or_flow==''set_table_permissions'' && options.table_permission.set_or_delete==''set_permissions''",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
         "required": true,
         "width": "100%"
       },
       "options.table_permission.permissions": {
         "type": "fieldset",
         "label": "Set Permissions",
-        "show_if": "input.table_or_flow==''set_table_permissions'' && options.table_permission.set_or_delete==''set_permissions''",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
         "repeat": true,
         "fields": {
           "rows_or_columns": {
@@ -50,7 +50,7 @@
           "rows": {
             "type": "select",
             "label": "Select Row(s)",
-            "show_if": "this.rows_or_columns==''select_rows''",
+            "show_if": "this.rows_or_columns=='select_rows'",
             "table": "input.table_id",
             "bind": "LABELS",
             "multiple": true,
@@ -59,7 +59,7 @@
           "columns": {
             "type": "select",
             "label": "Select Columns(s)",
-            "show_if": "this.rows_or_columns==''select_columns''",
+            "show_if": "this.rows_or_columns=='select_columns'",
             "table": "input.table_id",
             "bind": "COLUMNS",
             "multiple": true,
@@ -92,7 +92,7 @@
       "options.flow_permission.set_or_delete": {
         "type": "select",
         "label": "Type of Action",
-        "show_if": "input.table_or_flow==''set_flow_permissions''",
+        "show_if": "input.table_or_flow=='set_flow_permissions'",
         "required": true,
         "options": {
           "set_permissions": {
@@ -105,14 +105,14 @@
       "options.flow_permission.emails": {
         "type": "text",
         "label": "Permitted Users (; separated list)",
-        "show_if": "input.table_or_flow==''set_flow_permissions'' && options.flow_permission.set_or_delete==''set_permissions''",
+        "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
         "required": true,
         "width": "100%"
       },
       "options.flow_permission.permissions": {
         "type": "fieldset",
         "label": "Set Permissions",
-        "show_if": "input.table_or_flow==''set_flow_permissions'' && options.flow_permission.set_or_delete==''set_permissions''",
+        "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
         "repeat": true,
         "fields": {
           "permission_type": {
