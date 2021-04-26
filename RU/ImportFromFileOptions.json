@@ -1,7 +1,7 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Выбрать параметры",
+    "label": "Opções de Seleção",
     "repeat": false,
     "fields": {
       "options.from": {
@@ -10,7 +10,7 @@
       },
       "options.webservice": {
         "type": "select",
-        "label": "Выбрать Веб-сервис",
+        "label": "Selecionar Serviço Web",
         "options": {
           "github": {
             "label": "Github"
@@ -31,19 +31,19 @@
       },
       "options.output_format": {
         "type": "select",
-        "label": "Выбрать тип",
+        "label": "Selecionar Tipo",
         "options": {
           "csv_table": {
-            "label": "CSV-таблица"
+            "label": "Tabela CSV"
           },
           "line_by_line": {
-            "label": "Линия за линией"
+            "label": "Linha a Linha"
           },
           "word_by_word": {
-            "label": "Слово за словом"
+            "label": "Palavra a Palavra"
           },
           "file_list": {
-            "label": "Список файлов"
+            "label": "Lista de Ficheiros"
           }
         },
         "val": "csv_table",
@@ -51,11 +51,11 @@
       },
       "options.word_pattern_type": {
         "type": "select",
-        "label": "Словесный шаблон",
-        "show_if": "options.output_format==''word_by_word'' && options.specify_word_pattern==''true''",
+        "label": "Padrão de Palavras",
+        "show_if": "options.output_format=='word_by_word' && options.specify_word_pattern=='true'",
         "options": {
           "regex": {
-            "label": "Регулярное выражение"
+            "label": "Expressão Regular"
           }
         },
         "val": "regex",
@@ -63,8 +63,8 @@
       },
       "options.word_pattern_regex": {
         "type": "text",
-        "label": "Регулярное выражение",
-        "show_if": "options.output_format==''word_by_word'' && options.specify_word_pattern==''true'' && options.word_pattern_type==''regex''",
+        "label": "Expressão Regular",
+        "show_if": "options.output_format=='word_by_word' && options.specify_word_pattern=='true' && options.word_pattern_type=='regex'",
         "required": true,
         "val": "[a-z][1-9]",
         "breakLine": true
@@ -72,7 +72,7 @@
       "options.column_setting": {
         "type": "checkbox",
         "label": "Column Settings",
-        "show_if": "options.output_format!=''file_list''",
+        "show_if": "options.output_format!='file_list'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -81,13 +81,13 @@
       "column_setting_frame": {
         "type": "fieldset",
         "label": "Column Settings",
-        "show_if": "options.output_format!=''file_list'' && options.column_setting==''true''",
+        "show_if": "options.output_format!='file_list' && options.column_setting=='true'",
         "repeat": false,
         "fields": {
           "options.add_row_column": {
             "type": "checkbox",
-            "label": "Добавить строку столбца",
-            "show_if": "options.output_format==''word_by_word''",
+            "label": "Adicionar Coluna Fila",
+            "show_if": "options.output_format=='word_by_word'",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -95,8 +95,8 @@
           },
           "options.add_word_count_column": {
             "type": "checkbox",
-            "label": "Add ''Word Count'' Column",
-            "show_if": "options.output_format==''word_by_word''",
+            "label": "Add 'Word Count' Column",
+            "show_if": "options.output_format=='word_by_word'",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -104,8 +104,8 @@
           },
           "options.add_word_nonword_column": {
             "type": "checkbox",
-            "label": "Add ''Word & Non-Word'' Column",
-            "show_if": "options.output_format==''word_by_word''",
+            "label": "Add 'Word & Non-Word' Column",
+            "show_if": "options.output_format=='word_by_word'",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -113,8 +113,8 @@
           },
           "options.add_section_column": {
             "type": "checkbox",
-            "label": "Добавить столбец раздела",
-            "show_if": "options.output_format==''word_by_word''",
+            "label": "Adicionar Coluna Secção",
+            "show_if": "options.output_format=='word_by_word'",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -123,12 +123,12 @@
           "section_column_types_frame": {
             "type": "fieldset",
             "label": "Section Column Types",
-            "show_if": "options.output_format==''word_by_word'' && options.add_section_column==''true''",
+            "show_if": "options.output_format=='word_by_word' && options.add_section_column=='true'",
             "repeat": false,
             "fields": {
               "options.section_columns.add_paragraph_section_column": {
                 "type": "checkbox",
-                "label": "Параграф",
+                "label": "Parágrafo",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false",
@@ -136,22 +136,22 @@
               },
               "options.section_columns.add_custom_section_column": {
                 "type": "checkbox",
-                "label": "Пользовательский разделитель",
+                "label": "Personalizar Delimitador de Secção",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
               },
               "options.section_columns.custom_delimiter": {
                 "type": "text",
-                "label": "Разделитель (1 символ)",
-                "show_if": "options.section_columns.add_custom_section_column==''true''",
+                "label": "Delimitador (1 caracter)",
+                "show_if": "options.section_columns.add_custom_section_column=='true'",
                 "maxLength": 1,
                 "required": true,
                 "breakLine": true
               },
               "options.section_columns.add_brackets_punctuation_section_column": {
                 "type": "checkbox",
-                "label": "Скобки и пунктуация",
+                "label": "Parêntesis e Pontuação",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
@@ -159,7 +159,7 @@
               "options.section_columns.brackets_punctuation_section_column_type": {
                 "type": "select",
                 "label": "Brackets Type",
-                "show_if": "options.section_columns.add_brackets_punctuation_section_column==''true''",
+                "show_if": "options.section_columns.add_brackets_punctuation_section_column=='true'",
                 "options": {
                   "nesting_structure": {
                     "label": "Nesting Structure"
@@ -168,7 +168,7 @@
                     "label": "Inner Bracket"
                   },
                   "show_all": {
-                    "label": "Показать все"
+                    "label": "Mostrar Todos"
                   }
                 },
                 "val": "nesting_structure",
@@ -188,7 +188,7 @@
           },
           "options.add_filename_column": {
             "type": "checkbox",
-            "label": "Добавить колонку в Название Файла",
+            "label": "Adicionar Coluna Para Nome de Ficheiro",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -198,8 +198,8 @@
       },
       "options.is_cloud_dir": {
         "type": "checkbox",
-        "label": "Импортировать каталог",
-        "show_if": "options.output_format!=''file_list''",
+        "label": "Importar Diretório",
+        "show_if": "options.output_format!='file_list'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -209,12 +209,12 @@
       "if_dir_frame": {
         "type": "fieldset",
         "label": "Directory Import Options",
-        "show_if": "options.output_format!=''file_list'' && options.is_cloud_dir==''true''",
+        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true'",
         "repeat": false,
         "fields": {
           "options.unify_in_one_table": {
             "type": "checkbox",
-            "label": "Объединить в одну таблицу",
+            "label": "Unificar numa só tabela",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -223,13 +223,13 @@
           "options.suffix": {
             "type": "select",
             "label": "Output tables suffix",
-            "show_if": "options.unify_in_one_table==''false''",
+            "show_if": "options.unify_in_one_table=='false'",
             "options": {
               "number": {
-                "label": "Число"
+                "label": "Número"
               },
               "filename": {
-                "label": "Название файла"
+                "label": "Nome do Ficheiro"
               }
             },
             "val": "number",
@@ -238,8 +238,8 @@
           },
           "options.include_subdir": {
             "type": "checkbox",
-            "label": "Включить подкаталоги",
-            "show_if": "options.output_format!=''file_list'' && options.is_cloud_dir==''true''",
+            "label": "Incluir Subdiretórios",
+            "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true'",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -250,8 +250,8 @@
       },
       "options.file_list.include_subdir": {
         "type": "checkbox",
-        "label": "Включить подкаталоги",
-        "show_if": "options.output_format==''file_list''",
+        "label": "Incluir Subdiretórios",
+        "show_if": "options.output_format=='file_list'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -260,8 +260,8 @@
       },
       "options.file_list.add_change_date_column": {
         "type": "checkbox",
-        "label": "Добавить столбец изменения даты",
-        "show_if": "options.output_format==''file_list''",
+        "label": "Adicionar Coluna de Mudança de Data",
+        "show_if": "options.output_format=='file_list'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -269,8 +269,8 @@
       },
       "options.use_filename_as_output_table_name": {
         "type": "checkbox",
-        "label": "Использовать имя файла в качестве имени таблицы",
-        "show_if": "options.output_format!=''file_list'' && options.is_cloud_dir==''false''",
+        "label": "Usar nome de ficheiro como nome de tabela",
+        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -285,8 +285,8 @@
     "fields": {
       "options.link_csv_file": {
         "type": "text",
-        "label": "Введите ссылку, например, https://github.com/zippydoc/test/blob/main/example.csv.",
-        "show_if": "options.webservice==''github'' && options.is_cloud_dir==''false'' && options.output_format==''csv_table''",
+        "label": "Introduzir hiperligação, por exemplo https://github.com/zippydoc/test/blob/main/example.csv",
+        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format=='csv_table'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -294,7 +294,7 @@
       "options.link_text_file": {
         "type": "text",
         "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.txt(json, csv, etc)",
-        "show_if": "options.webservice==''github'' && options.is_cloud_dir==''false'' && options.output_format!=''csv_table'' && options.output_format!=''file_list''",
+        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format!='csv_table' && options.output_format!='file_list'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -302,7 +302,7 @@
       "options.one_drive.file_path": {
         "type": "text",
         "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
-        "show_if": "options.webservice==''ms_one_drive'' && options.output_format!=''file_list'' && options.is_cloud_dir==''false''",
+        "show_if": "options.webservice=='ms_one_drive' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -310,7 +310,7 @@
       "options.dropbox.file_path": {
         "type": "text",
         "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
-        "show_if": "options.webservice==''dropbox'' && options.output_format!=''file_list'' && options.is_cloud_dir==''false''",
+        "show_if": "options.webservice=='dropbox' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -318,13 +318,13 @@
       "options.dir_path_filter": {
         "type": "fieldset",
         "label": "Import Path and File Filter",
-        "show_if": "options.output_format==''file_list'' || options.is_cloud_dir==''true''",
+        "show_if": "options.output_format=='file_list' || options.is_cloud_dir=='true'",
         "repeat": true,
         "fields": {
           "github__link_directory": {
             "type": "text",
-            "label": "Введите ссылку, например, https://github.com/zippydoc/test.",
-            "show_if": "options.webservice==''github''",
+            "label": "Introduzir hiperligação, por exemplo https://github.com/zippydoc/test",
+            "show_if": "options.webservice=='github'",
             "required": true,
             "width": "100%",
             "breakLine": true
@@ -332,42 +332,42 @@
           "one_drive__dir_path": {
             "type": "text",
             "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
-            "show_if": "options.webservice==''ms_one_drive''",
+            "show_if": "options.webservice=='ms_one_drive'",
             "width": "100%",
             "breakLine": true
           },
           "dropbox__dir_path": {
             "type": "text",
             "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
-            "show_if": "options.webservice==''dropbox''",
+            "show_if": "options.webservice=='dropbox'",
             "width": "100%",
             "breakLine": true
           },
           "google_drive__dir_path": {
             "type": "text",
             "label": "Enter path to dir",
-            "show_if": "options.webservice==''google_drive''",
+            "show_if": "options.webservice=='google_drive'",
             "width": "100%",
             "breakLine": true
           },
           "dir_filter__filter_type": {
             "type": "select",
-            "label": "Тип фильтра",
+            "label": "Tipo de Filtro",
             "options": {
               "all": {
-                "label": "Все"
+                "label": "Todos"
               },
               "contains": {
-                "label": "Содержит"
+                "label": "Contém"
               },
               "starts_with": {
-                "label": "Начинается с"
+                "label": "Inicia com"
               },
               "ends_with": {
-                "label": "Заканчивается С"
+                "label": "Termina Com"
               },
               "regex": {
-                "label": "Регулярное выражение"
+                "label": "Expressão Regular"
               }
             },
             "val": "all",
@@ -375,13 +375,13 @@
           },
           "dir_filter__filter_string": {
             "type": "text",
-            "label": "Фильтр",
-            "show_if": "this.dir_filter__filter_type!=''all''",
+            "label": "Filtrar",
+            "show_if": "this.dir_filter__filter_type!='all'",
             "required": true
           },
           "delete": {
             "type": "button",
-            "label": "Удалить",
+            "label": "Apagar",
             "function": "DELETE_ROW"
           }
         }
@@ -389,7 +389,7 @@
       "options.is_github_private": {
         "type": "checkbox",
         "label": "Github repository is private",
-        "show_if": "options.webservice==''github''",
+        "show_if": "options.webservice=='github'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -399,7 +399,7 @@
       "options.github_token": {
         "type": "text",
         "label": "Github personal access token",
-        "show_if": "options.webservice==''github'' && options.is_github_private==''true''",
+        "show_if": "options.webservice=='github' && options.is_github_private=='true'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -407,7 +407,7 @@
       "options.one_drive.access_token": {
         "type": "text",
         "label": "One Drive Access Token",
-        "show_if": "options.webservice==''ms_one_drive''",
+        "show_if": "options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -415,7 +415,7 @@
       "options.dropbox.auth_code": {
         "type": "text",
         "label": "Dropbox Authorization Code",
-        "show_if": "options.webservice==''dropbox''",
+        "show_if": "options.webservice=='dropbox'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -423,7 +423,7 @@
       "options.google_drive.access_token": {
         "type": "text",
         "label": "Google Drive Access Token",
-        "show_if": "options.webservice==''google_drive''",
+        "show_if": "options.webservice=='google_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true
