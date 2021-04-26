@@ -7,7 +7,7 @@
       "output.custom_text": {
         "type": "text",
         "label": "Name der Ausgabetabelle",
-        "show_if": "(output.set_options==''true'' && output.compose_table_name==''false'') || output.set_options==''false''",
+        "show_if": "output.compose_table_name=='false'",
         "minLength": 1,
         "val": "",
         "width": "100%",
@@ -16,7 +16,7 @@
       "output.select_output_columns": {
         "type": "checkbox",
         "label": "Ausgabespalten auswählen",
-        "show_if": "options.is_generate_holiday_table==''add_column''",
+        "show_if": "options.is_generate_holiday_table=='add_column'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -24,7 +24,7 @@
       "output_columns": {
         "type": "fieldset",
         "label": "Select OutputColumns",
-        "show_if": "options.is_generate_holiday_table==''add_column'' && output.select_output_columns==''true''",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.select_output_columns=='true'",
         "repeat": true,
         "fields": {
           "field_name": {
@@ -58,7 +58,7 @@
             "isOff": "false"
           },
           "rename": {
-            "show_if": "this.is_rename == ''true''",
+            "show_if": "this.is_rename == 'true'",
             "type": "text",
             "required": true,
             "minLength": 1,
@@ -95,7 +95,7 @@
           "format__rounding": {
             "type": "select",
             "label": "Abrunden",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
@@ -137,7 +137,7 @@
           "format__use_1000_separator": {
             "type": "checkbox",
             "label": "1000 Trennzeichen(.) verwenden",
-            "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
@@ -145,7 +145,7 @@
           "format__currency_symbol": {
             "type": "select",
             "label": "Symbol",
-            "show_if": "this.format__category==''currency''",
+            "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
@@ -163,7 +163,7 @@
           "format__date_format": {
             "type": "select",
             "label": "Typ",
-            "show_if": "this.format__category==''date''",
+            "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
@@ -188,362 +188,280 @@
         "breakLine": true,
         "style": "margin-bottom: 20px"
       },
-      "output.set_options": {
+      "output.compose_table_name": {
         "type": "checkbox",
-        "label": "Ausgabe-Optionen",
+        "label": "Tabellenname zusammenstellen",
         "val": "false",
         "isOn": "true",
-        "isOff": "false"
+        "isOff": "false",
+        "breakLine": true
       },
-      "output_options_box": {
+      "compose_table_name_frame": {
         "type": "fieldset",
-        "label": "Ausgabe-Optionen",
-        "show_if": "output.set_options==''true''",
+        "label": "Name der Ausgabetabelle zusammenstellen",
+        "show_if": "output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
-          "output.compose_table_name": {
-            "type": "checkbox",
-            "label": "Tabellenname zusammenstellen",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false",
+          "output.prefix_rule": {
+            "type": "select",
+            "label": "Präfix",
+            "show_if": "output.compose_table_name=='true'",
+            "val": "empty",
+            "options": {
+              "empty": {
+                "label": "-"
+              },
+              "script_name": {
+                "label": "Aufgabe Name"
+              },
+              "date_string_type1": {
+                "label": "Datum: tt_mm_jjjj"
+              },
+              "date_string_type2": {
+                "label": "Datum: jjjj_mm_tt"
+              },
+              "time_string": {
+                "label": "Zeit: h_min_sec"
+              },
+              "datetime_string": {
+                "label": "Datum_Zeit"
+              },
+              "custom": {
+                "label": "Benutzerdefiniert"
+              }
+            }
+          },
+          "output.prefix_text": {
+            "type": "text",
+            "label": "Präfix Text",
+            "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
+            "minLength": 1,
+            "maxLength": 31,
+            "val": ""
+          },
+          "output.core_delimiter": {
+            "type": "text",
+            "label": "Begrenzer",
+            "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
+            "val": "_",
+            "width": "50px"
+          },
+          "output.generate_core_rule": {
+            "type": "select",
+            "label": "Tabelle Name",
+            "show_if": "output.compose_table_name=='true' && options.is_generate_holiday_table=='generate_table'",
+            "val": "script_name",
+            "options": {
+              "script_name": {
+                "label": "Aufgabe Name"
+              },
+              "custom": {
+                "label": "Benutzerdefiniert"
+              }
+            }
+          },
+          "output.core_rule": {
+            "type": "select",
+            "label": "Tabelle Name",
+            "show_if": "output.compose_table_name=='true' && options.is_generate_holiday_table=='add_column'",
+            "val": "input_table_name",
+            "options": {
+              "input_table_name": {
+                "label": "Name der Eingangstabelle"
+              },
+              "script_name": {
+                "label": "Aufgabe Name"
+              },
+              "custom": {
+                "label": "Benutzerdefiniert"
+              }
+            }
+          },
+          "output.core_text": {
+            "type": "text",
+            "label": "Haupttabelle Name",
+            "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 31,
+            "val": ""
+          },
+          "output.suffix_delimiter": {
+            "type": "text",
+            "label": "Begrenzer",
+            "show_if": "output.compose_table_name=='true'",
+            "val": "_",
+            "width": "50px"
+          },
+          "output.suffix_rule": {
+            "type": "select",
+            "label": "Suffix",
+            "show_if": "output.compose_table_name=='true'",
+            "val": "script_name",
+            "options": {
+              "empty": {
+                "label": "-"
+              },
+              "script_name": {
+                "label": "Aufgabe Name"
+              },
+              "date_string_type1": {
+                "label": "Datum: tt_mm_jjjj"
+              },
+              "date_string_type2": {
+                "label": "Datum: jjjj_mm_tt"
+              },
+              "time_string": {
+                "label": "Zeit: h_min_sec"
+              },
+              "datetime_string": {
+                "label": "Datum_Zeit"
+              },
+              "custom": {
+                "label": "Benutzerdefiniert"
+              }
+            }
+          },
+          "output.suffix_text": {
+            "type": "text",
+            "label": "Suffix Text",
+            "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
+            "minLength": 1,
+            "maxLength": 31,
+            "val": "",
             "breakLine": true
           },
-          "compose_table_name_frame": {
-            "type": "fieldset",
-            "label": "Name der Ausgabetabelle zusammenstellen",
-            "show_if": "output.compose_table_name==''true''",
-            "repeat": false,
-            "fields": {
-              "output.prefix_rule": {
-                "type": "select",
-                "label": "Präfix",
-                "show_if": "output.compose_table_name==''true''",
-                "val": "empty",
-                "options": {
-                  "empty": {
-                    "label": "-"
-                  },
-                  "script_name": {
-                    "label": "Aufgabe Name"
-                  },
-                  "date_string_type1": {
-                    "label": "Datum: tt_mm_jjjj"
-                  },
-                  "date_string_type2": {
-                    "label": "Datum: jjjj_mm_tt"
-                  },
-                  "time_string": {
-                    "label": "Zeit: h_min_sec"
-                  },
-                  "datetime_string": {
-                    "label": "Datum_Zeit"
-                  },
-                  "custom": {
-                    "label": "Benutzerdefiniert"
-                  }
-                }
+          "output.timezone": {
+            "type": "select",
+            "label": "Zeitzone",
+            "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+            "val": "Europa/Berlin",
+            "required": true,
+            "options": {
+              "America/Adak": {
+                "label": "Adak, Gambier"
               },
-              "output.prefix_text": {
-                "type": "text",
-                "label": "Präfix Text",
-                "show_if": "output.compose_table_name==''true'' && output.prefix_rule==''custom''",
-                "minLength": 1,
-                "maxLength": 31,
-                "val": ""
+              "Australia/Adelaide": {
+                "label": "Adelaide, Broken_Hill, Darwin"
               },
-              "output.core_delimiter": {
-                "type": "text",
-                "label": "Begrenzer",
-                "show_if": "output.compose_table_name==''true'' && output.prefix_rule!=''empty''",
-                "val": "_",
-                "width": "50px"
+              "America/Anchorage": {
+                "label": "Anchorage, Juneau, Sitka"
               },
-              "output.generate_core_rule": {
-                "type": "select",
-                "label": "Tabelle Name",
-                "show_if": "output.compose_table_name==''true'' && options.is_generate_holiday_table==''generate_table''",
-                "val": "script_name",
-                "options": {
-                  "script_name": {
-                    "label": "Aufgabe Name"
-                  },
-                  "custom": {
-                    "label": "Benutzerdefiniert"
-                  }
-                }
+              "Pacific/Apia": {
+                "label": "Apia, Asau, Mulifanua, Afega, Leulumoega"
               },
-              "output.core_rule": {
-                "type": "select",
-                "label": "Tabelle Name",
-                "show_if": "output.compose_table_name==''true'' && options.is_generate_holiday_table==''add_column''",
-                "val": "input_table_name",
-                "options": {
-                  "input_table_name": {
-                    "label": "Name der Eingangstabelle"
-                  },
-                  "script_name": {
-                    "label": "Aufgabe Name"
-                  },
-                  "custom": {
-                    "label": "Benutzerdefiniert"
-                  }
-                }
+              "Pacific/Enderbury": {
+                "label": "Apia, Fiji, Tongatapu"
               },
-              "output.core_text": {
-                "type": "text",
-                "label": "Haupttabelle Name",
-                "show_if": "output.compose_table_name==''true'' && output.core_rule==''custom''",
-                "required": true,
-                "minLength": 1,
-                "maxLength": 31,
-                "val": ""
+              "Antarctica/McMurdo": {
+                "label": "Auckland, Casey, Davis"
               },
-              "output.suffix_delimiter": {
-                "type": "text",
-                "label": "Begrenzer",
-                "show_if": "output.compose_table_name==''true''",
-                "val": "_",
-                "width": "50px"
+              "Pacific/Auckland": {
+                "label": "Auckland, Wellington, Christchurch"
               },
-              "output.suffix_rule": {
-                "type": "select",
-                "label": "Suffix",
-                "show_if": "output.compose_table_name==''true''",
-                "val": "script_name",
-                "options": {
-                  "empty": {
-                    "label": "-"
-                  },
-                  "script_name": {
-                    "label": "Aufgabe Name"
-                  },
-                  "date_string_type1": {
-                    "label": "Datum: tt_mm_jjjj"
-                  },
-                  "date_string_type2": {
-                    "label": "Datum: jjjj_mm_tt"
-                  },
-                  "time_string": {
-                    "label": "Zeit: h_min_sec"
-                  },
-                  "datetime_string": {
-                    "label": "Datum_Zeit"
-                  },
-                  "custom": {
-                    "label": "Benutzerdefiniert"
-                  }
-                }
+              "Asia/Bangkok": {
+                "label": "Bangkok, Jakarta, Novosibirsk"
               },
-              "output.suffix_text": {
-                "type": "text",
-                "label": "Suffix Text",
-                "show_if": "output.compose_table_name==''true'' && output.suffix_rule==''custom''",
-                "minLength": 1,
-                "maxLength": 31,
-                "val": "",
-                "breakLine": true
+              "Europa/Berlin": {
+                "label": "Berlin, Paris, Amsterdam"
               },
-              "output.timezone": {
-                "type": "select",
-                "label": "Zeitzone",
-                "show_if": "output.compose_table_name==''true'' && (output.prefix_rule==''date_string_type1'' || output.prefix_rule==''date_string_type2'' || output.prefix_rule==''time_string'' || output.prefix_rule==''datetime_string'' || output.suffix_rule==''date_string_type1'' || output.suffix_rule==''date_string_type2'' || output.suffix_rule==''time_string'' || output.suffix_rule==''datetime_string'')",
-                "val": "Europa/Berlin",
-                "required": true,
-                "options": {
-                  "America/Adak": {
-                    "label": "Adak, Gambier"
-                  },
-                  "Australia/Adelaide": {
-                    "label": "Adelaide, Broken_Hill, Darwin"
-                  },
-                  "America/Anchorage": {
-                    "label": "Anchorage, Juneau, Sitka"
-                  },
-                  "Pacific/Apia": {
-                    "label": "Apia, Asau, Mulifanua, Afega, Leulumoega"
-                  },
-                  "Pacific/Enderbury": {
-                    "label": "Apia, Fiji, Tongatapu"
-                  },
-                  "Antarctica/McMurdo": {
-                    "label": "Auckland, Casey, Davis"
-                  },
-                  "Pacific/Auckland": {
-                    "label": "Auckland, Wellington, Christchurch"
-                  },
-                  "Asia/Bangkok": {
-                    "label": "Bangkok, Jakarta, Novosibirsk"
-                  },
-                  "Europa/Berlin": {
-                    "label": "Berlin, Paris, Amsterdam"
-                  },
-                  "Australia/Perth": {
-                    "label": "Brunei, Singapore, Perth"
-                  },
-                  "Atlantic/Cape_Verde": {
-                    "label": "Cape_Verde,Praia, Mindelo, Santa Maria"
-                  },
-                  "America/Belize": {
-                    "label": "Costa_Rica, El_Salvador, Denver"
-                  },
-                  "Antarctica/Vostok": {
-                    "label": "Dhaka, Bishkek, Omsk"
-                  },
-                  "Europe/Astrakhan": {
-                    "label": "Dubai, Baku, Tbilisi"
-                  },
-                  "Australia/Eucla": {
-                    "label": "Eucla"
-                  },
-                  "Pacific/Honolulu": {
-                    "label": "Honolulu, Rarotonga, Tahiti"
-                  },
-                  "Asia/Kabul": {
-                    "label": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
-                  },
-                  "Asia/Aqtau": {
-                    "label": "Karachi, Tashkent, Maldives"
-                  },
-                  "Asia/Kathmandu": {
-                    "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
-                  },
-                  "Pacific/Kiritimati": {
-                    "label": "Kiritimati"
-                  },
-                  "Asia/Colombo": {
-                    "label": "Kolkata, Colombo,Jaffna, Negombo"
-                  },
-                  "Europe/Guernsey": {
-                    "label": "London. Dublin, Lisbon"
-                  },
-                  "Australia/Lord_Howe": {
-                    "label": "Lord_Howe"
-                  },
-                  "America/Creston": {
-                    "label": "Los_Angeles, Vancouver, Hermosillo"
-                  },
-                  "Pacific/Marquesas": {
-                    "label": "Marquesas,Taiohae"
-                  },
-                  "America/Cayman": {
-                    "label": "Mexico_City, Panama, Chicago"
-                  },
-                  "Pacific/Niue": {
-                    "label": "Midway, Niue, Pago_Pago"
-                  },
-                  "Europe/Mariehamn": {
-                    "label": "Moscow, Istanbul, Qatar"
-                  },
-                  "Asia/Kolkata": {
-                    "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
-                  },
-                  "America/Miquelon": {
-                    "label": "Noronha, Nuuk, Miquelon"
-                  },
-                  "America/Danmarkshavn": {
-                    "label": "Reykjavik, Dakar, Casablanca"
-                  },
-                  "Pacific/Bougainville": {
-                    "label": "Sakhalin, Norfolk, Bougainville"
-                  },
-                  "America/Araguaina": {
-                    "label": "Sao_Paulo, Buenos_Aires, Montevideo"
-                  },
-                  "America/St_Johns": {
-                    "label": "St_Johns,Mount Pearl, Corner Brook"
-                  },
-                  "Asia/Tehran": {
-                    "label": "Tehran, Mashhad, Isfahan, Karaj, Tabriz"
-                  },
-                  "Asia/Tokyo": {
-                    "label": "Tokyo, Seoul, Jayapura"
-                  },
-                  "America/New_York": {
-                    "label": "Toronto, Santiago, New_York"
-                  },
-                  "Australia/Sydney": {
-                    "label": "Vladivostok, Sydney, Brisbane"
-                  },
-                  "Asia/Yangon": {
-                    "label": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
-                  },
-                  "Indian/Cocos": {
-                    "label": "Yangon, Cocos,West Island"
-                  }
-                },
-                "breakLine": true
+              "Australia/Perth": {
+                "label": "Brunei, Singapore, Perth"
+              },
+              "Atlantic/Cape_Verde": {
+                "label": "Cape_Verde,Praia, Mindelo, Santa Maria"
+              },
+              "America/Belize": {
+                "label": "Costa_Rica, El_Salvador, Denver"
+              },
+              "Antarctica/Vostok": {
+                "label": "Dhaka, Bishkek, Omsk"
+              },
+              "Europe/Astrakhan": {
+                "label": "Dubai, Baku, Tbilisi"
+              },
+              "Australia/Eucla": {
+                "label": "Eucla"
+              },
+              "Pacific/Honolulu": {
+                "label": "Honolulu, Rarotonga, Tahiti"
+              },
+              "Asia/Kabul": {
+                "label": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
+              },
+              "Asia/Aqtau": {
+                "label": "Karachi, Tashkent, Maldives"
+              },
+              "Asia/Kathmandu": {
+                "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
+              },
+              "Pacific/Kiritimati": {
+                "label": "Kiritimati"
+              },
+              "Asia/Colombo": {
+                "label": "Kolkata, Colombo,Jaffna, Negombo"
+              },
+              "Europe/Guernsey": {
+                "label": "London. Dublin, Lisbon"
+              },
+              "Australia/Lord_Howe": {
+                "label": "Lord_Howe"
+              },
+              "America/Creston": {
+                "label": "Los_Angeles, Vancouver, Hermosillo"
+              },
+              "Pacific/Marquesas": {
+                "label": "Marquesas,Taiohae"
+              },
+              "America/Cayman": {
+                "label": "Mexico_City, Panama, Chicago"
+              },
+              "Pacific/Niue": {
+                "label": "Midway, Niue, Pago_Pago"
+              },
+              "Europe/Mariehamn": {
+                "label": "Moscow, Istanbul, Qatar"
+              },
+              "Asia/Kolkata": {
+                "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
+              },
+              "America/Miquelon": {
+                "label": "Noronha, Nuuk, Miquelon"
+              },
+              "America/Danmarkshavn": {
+                "label": "Reykjavik, Dakar, Casablanca"
+              },
+              "Pacific/Bougainville": {
+                "label": "Sakhalin, Norfolk, Bougainville"
+              },
+              "America/Araguaina": {
+                "label": "Sao_Paulo, Buenos_Aires, Montevideo"
+              },
+              "America/St_Johns": {
+                "label": "St_Johns,Mount Pearl, Corner Brook"
+              },
+              "Asia/Tehran": {
+                "label": "Tehran, Mashhad, Isfahan, Karaj, Tabriz"
+              },
+              "Asia/Tokyo": {
+                "label": "Tokyo, Seoul, Jayapura"
+              },
+              "America/New_York": {
+                "label": "Toronto, Santiago, New_York"
+              },
+              "Australia/Sydney": {
+                "label": "Vladivostok, Sydney, Brisbane"
+              },
+              "Asia/Yangon": {
+                "label": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
+              },
+              "Indian/Cocos": {
+                "label": "Yangon, Cocos,West Island"
               }
-            }
-          },
-          "download_table_setting_frame": {
-            "type": "fieldset",
-            "label": "Download Table Settings",
-            "repeat": false,
-            "fields": {
-              "output.options.location": {
-                "type": "text",
-                "label": "Standort angeben",
-                "val": "A1",
-                "breakLine": true
-              },
-              "output.options.formatted_as_table": {
-                "type": "checkbox",
-                "label": "Als Tabelle formatiert",
-                "val": "true",
-                "isOn": "true",
-                "isOff": "false",
-                "breakLine": true
-              },
-              "output.add_tag": {
-                "type": "checkbox",
-                "label": "Tag hinzufügen",
-                "val": "false",
-                "isOn": "true",
-                "isOff": "false"
-              },
-              "output.tag_name": {
-                "type": "text",
-                "label": "Tag Name",
-                "show_if": "output.add_tag==''true''",
-                "required": true,
-                "minLength": 1,
-                "maxLength": 255,
-                "val": "",
-                "breakLine": true,
-                "style": "margin-left: 15px"
-              },
-              "output.options.visibility": {
-                "type": "select",
-                "label": "Sichtbarkeit",
-                "val": "current_flow",
-                "options": {
-                  "current_flow": {
-                    "label": "Stromfluss"
-                  },
-                  "all_flow": {
-                    "label": "Alle Flows"
-                  }
-                },
-                "breakLine": true
-              },
-              "output.options.table_mode": {
-                "type": "select",
-                "label": "Einfügen",
-                "val": "content_only",
-                "options": {
-                  "content_only": {
-                    "label": "Nur Inhalt"
-                  },
-                  "fully_formatted": {
-                    "label": "Vollständig formatiert"
-                  }
-                }
-              }
-            }
+            },
+            "breakLine": true
           }
-        },
-        "breakLine": true
+        }
       }
     }
   }
