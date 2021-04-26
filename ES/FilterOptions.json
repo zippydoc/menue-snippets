@@ -1,32 +1,32 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Seleccionar Opciones de Filtro",
+    "label": "Selecionar Opções de Filtro",
     "repeat": false,
     "fields": {
       "filter": {
         "type": "fieldset",
-        "label": "Agregar Condiciones del Filtro",
+        "label": "Adicionar Condições de Filtro",
         "repeat": true,
         "fields": {
           "initial_op": {
             "type": "select",
-            "label": "Seleccionar Operador Lógico",
+            "label": "Selecionar Operador Lógico",
             "required": true,
             "show_if" :  "$index == 0",
             "options": {
               "if": {
-                "label": "SI"
+                "label": "IF"
               },
               "if_not": {
-                "label": "SI NO"
+                "label": "IF NOT"
               }
             },
             "val": "if"
           },
           "op": {
             "type": "select",
-            "label": "Seleccionar Operador Lógico",
+            "label": "Selecionar Operador Lógico",
             "required": true,
             "show_if" :  "$index > 0",
             "options": {
@@ -47,146 +47,146 @@
           },
           "column": {
             "type": "select",
-            "label": “Seleccionar Columna”,
+            "label": "Selecionar Coluna",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
           "condition": {
             "type": "select",
-            "label": "Seleccionar Operador",
+            "label": "Selecionar Operador",
             "required": true,
             "options": {
-              "CONTIENE": {
-                "label": "CONTIENE"
+              "CONTÉM": {
+                "label": "CONTÉM"
               },
               "CONTAINED IN STRING": {
-                "label": "CONTENIDO EN"
+                "label": "CONTIDO EM"
               },
-              “EMPEZAR CON”: {
-                "label": “EMPEZAR CON”
+              "INICIA COM": {
+                "label": "INICIA COM"
               },
-              "TERMINA CON”: {
-                "label": "TERMINA CON”
+              "TERMINA COM": {
+                "label": "TERMINA COM"
               },
               "=": {
                 "label": "IGUAL"
               },
               ">": {
-                "label": "MAYOR QUE"
+                "label": "MAIOR QUE"
               },
               ">=": {
-                "label": "MAYOR O IGUAL"
+                "label": "MAIOR OU IGUAL"
               },
               "<": {
                 "label": "MENOR QUE"
               },
               "<=": {
-                "label": "MENOR O IGUAL"
+                "label": "MENOR OU IGUAL"
               },
               "EMPTY": {
-                "label": "ESTÁ VACÍO"
+                "label": "ESTÁ VAZIO"
               },
               "BLANK": {
-                "label": "ESTÁ EN BLANCO"
+                "label": "ESTÁ EM BRANCO"
               },
               "IS NULL": {
                 "label": "IS NULL"
               },
-              "COINCIDENCIA CON LA EXPRESIÓN REGULAR": {
-                "label": "COINCIDENCIA CON LA EXPRESIÓN REGULAR"
+              "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR": {
+                "label": "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR"
               },
               "CONTAINED IN TABLE": {
-                "label": "EN TABLA"
+                "label": "NA TABELA"
               },
-              "EN LA TABLA DE LAS EXPRESIONES REGULARES": {
-                "label": "EN LA TABLA DE LAS EXPRESIONES REGULARES"
+              "NA TABELA DE EXPRESSÕES REGULARES": {
+                "label": "NA TABELA DE EXPRESSÕES REGULARES"
               },
-              "FECHA": {
-                "label": "FECHA"
+              "DATA": {
+                "label": "DATA"
               }
             },
-            "val": "CONTIENE"
+            "val": "CONTÉM"
           },
           "date_condition": {
             "type": "select",
-            "label": "Seleccionar Operador de la Fecha",
+            "label": "Selecionar Operador de Data",
             "required": true,
-            "show_if": "this.condition == ''DATE''",
+            "show_if": "this.condition == 'DATE'",
             "options": {
               "<": {
-                "label": "PREVIO"
+                "label": "ANTERIOR"
               },
               "<=": {
-                "label": "PREVIO O IGUAL"
+                "label": "ANTERIOR OU IGUAL"
               },
               "=": {
                 "label": "IGUAL"
               },
               ">": {
-                "label": "DESPUÉS"
+                "label": "DEPOIS"
               },
               ">=": {
-                "label": "DESPUÉS O IGUAL"
+                "label": "DEPOIS OU IGUAL"
               }
             },
             "val": "="
           },
           "case_sensitive": {
             "type": "select",
-            "label": "Seleccionar Sensible a Mayúsculas y Minúsculas",
+            "label": "Selecionar Sensibilidade a Maiúsculas e Minúsculasl",
             "required": true,
-            "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+            "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
             "options": {
               "yes": {
-                "label": "Sensible a Mayúsculas y Minúsculas"
+                "label": "Sensível a Maiúsculas e Minúsculas"
               },
               "no": {
-                "label": "Insensible a Mayúsculas y Minúsculas"
+                "label": "Insensível a Maiúsculas e Minúsculas"
               }
             },
             "val": "yes"
           },
           "date_value": {
             "type": "date",
-            "label": "Seleccionar Fecha",
-            "show_if": "this.condition==''DATE''",
+            "label": "Selecionar Data",
+            "show_if": "this.condition=='DATE'",
             "val": "1/31/2020",
             "required": true
           },
           "value": {
             "type": "text",
-            "label": "Ingresar Valor",
-            "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
+            "label": "Introduzir Valor",
+            "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
             "val": "",
             "required": true
           },
           "compare_table": {
             "type": "select",
-            "label": "Seleccionar Tabla",
+            "label": "Selecionar Tabela",
             "bind": "TABLES",
             "empty": "",
-            "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+            "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
             "required": true
           },
           "compare_column": {
             "type": "select",
-            "label": “Seleccionar Columna”,
+            "label": "Selecionar Coluna",
             "table": "this.compare_table",
             "bind": "COLUMNS",
-            "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+            "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
             "required": true
           },
           "delete": {
             "type": "button",
-            "label": "Borrar",
+            "label": "Apagar",
             "function": "DELETE_ROW"
           }
         }
       },
       "apply_to_record": {
         "type": "checkbox",
-        "label": "Aplicar al Registro",
+        "label": "Aplicar ao Registo",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
@@ -195,13 +195,13 @@
       },
       "apply_to_group_box": {
         "type": "fieldset",
-        "label": "Aplicar al Grupo",
-        "show_if": "apply_to_record==''false''",
+        "label": "Aplicar ao Grupo",
+        "show_if": "apply_to_record=='false'",
         "repeat": false,
         "fields": {
           "apply_to_group_columns": {
             "type": "select",
-            "label": "Seleccionar Columnas del Grupo",
+            "label": "Selecionar Colunas de Grupo",
             "required": true,
             "width": "100%",
             "table": "input_table",
