@@ -21,7 +21,7 @@
       "options.export_series": {
         "type": "checkbox",
         "label": "シリーズのエクスポート",
-        "show_if": "options.to==''file''",
+        "show_if": "options.to=='file'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -30,7 +30,7 @@
       "options.file_name_column": {
         "type": "select",
         "label": "ファイル名列の選択",
-        "show_if": "options.to==''file'' && options.export_series==''true''",
+        "show_if": "options.to=='file' && options.export_series=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -39,7 +39,7 @@
       "postgresql_db_credential_box": {
         "type": "fieldset",
         "label": "データベース接続証明書",
-        "show_if": "options.to==''database''",
+        "show_if": "options.to=='database'",
         "repeat": false,
         "fields": {
           "options.dbms": {
@@ -66,7 +66,7 @@
           "options.postgresql_credential.user": {
             "type": "text",
             "label": "ユーザー",
-            "show_if": "options.dbms==''postgresql''",
+            "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
             "breakLine": true
@@ -74,7 +74,7 @@
           "options.postgresql_credential.password": {
             "type": "text",
             "label": "パスワード",
-            "show_if": "options.dbms==''postgresql''",
+            "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
             "breakLine": true
@@ -82,7 +82,7 @@
           "options.postgresql_credential.host": {
             "type": "text",
             "label": "ホスト",
-            "show_if": "options.dbms==''postgresql''",
+            "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
             "breakLine": true
@@ -90,7 +90,7 @@
           "options.postgresql_credential.database": {
             "type": "text",
             "label": "データベース",
-            "show_if": "options.dbms==''postgresql''",
+            "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
             "breakLine": true
@@ -100,7 +100,7 @@
       "options.schema_name_to_export": {
         "type": "text",
         "label": "エクスポート先のスキーマ名",
-        "show_if": "options.to==''database'' && options.dbms==''postgresql''",
+        "show_if": "options.to=='database' && options.dbms=='postgresql'",
         "required": true,
         "val": "public",
         "width": "100%",
@@ -109,7 +109,7 @@
       "options.webservice": {
         "type": "select",
         "label": "ウェブサービスの選択",
-        "show_if": "options.to==''file'' || options.to==''mytask''",
+        "show_if": "options.to=='file' || options.to=='mytask'",
         "options": {
           "github": {
             "label": "Github"
@@ -130,7 +130,7 @@
       "options.export_format": {
         "type": "select",
         "label": "フォーマットのエクスポート",
-        "show_if": "options.to==''file''",
+        "show_if": "options.to=='file'",
         "options": {
           "csv_file": {
             "label": "Csvファイル(複数可)"
@@ -149,7 +149,7 @@
       "options.github_create_pr": {
         "type": "checkbox",
         "label": "プルリクエストの作成",
-        "show_if": "options.to==''file'' && options.webservice==''github''",
+        "show_if": "options.to=='file' && options.webservice=='github'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -158,7 +158,7 @@
       "options.github_token": {
         "type": "text",
         "label": "Specify the Github personal access token that has write permission:",
-        "show_if": "options.to==''file'' && options.webservice==''github''",
+        "show_if": "options.to=='file' && options.webservice=='github'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -166,7 +166,7 @@
       "options.github_url": {
         "type": "text",
         "label": "リンクを入力 例：https://github.com/zippydoc/test",
-        "show_if": "options.to==''file'' && options.webservice==''github''",
+        "show_if": "options.to=='file' && options.webservice=='github'",
         "val": "https://github.com/zippydoc/public-tables",
         "required": true,
         "width": "100%",
@@ -175,7 +175,7 @@
       "options.ms_one_drive_token": {
         "type": "text",
         "label": "Microsoft Graph API access token. You can get it here https://ms-oauth.herokuapp.com/",
-        "show_if": "options.to==''file'' && options.webservice==''ms_one_drive''",
+        "show_if": "options.to=='file' && options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -183,7 +183,7 @@
       "options.google_authorization_code": {
         "type": "text",
         "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
-        "show_if": "options.to==''file'' && options.webservice==''google_drive''",
+        "show_if": "options.to=='file' && options.webservice=='google_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -191,7 +191,7 @@
       "options.dropbox_authorization_code": {
         "type": "text",
         "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
-        "show_if": "options.to==''file'' && options.webservice==''dropbox''",
+        "show_if": "options.to=='file' && options.webservice=='dropbox'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -199,7 +199,7 @@
       "options.if_duplicated": {
         "type": "select",
         "label": "重複している場合",
-        "show_if": "options.to==''database'' || (options.to==''file'' && options.webservice==''github'')",
+        "show_if": "options.to=='database' || (options.to=='file' && options.webservice=='github')",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
@@ -219,7 +219,7 @@
       "options.export_task_name": {
         "type": "text",
         "label": "タスク名の入力",
-        "show_if": "options.to==''mytask''",
+        "show_if": "options.to=='mytask'",
         "required": true,
         "val": "Flow6_Task1_AddColumns",
         "width": "100%",
