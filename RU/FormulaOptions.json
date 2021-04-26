@@ -1,29 +1,29 @@
 {
   "options_box": {
     "type": "fieldset",
-    "label": "Выбрать параметры",
+    "label": "Opções de Seleção",
     "repeat": false,
     "fields": {
       "options.column": {
         "type": "select",
-        "label": "Столбец для применения",
+        "label": "Coluna a aplicar",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
       },
       "options.column_value_type": {
         "type": "select",
-        "label": "Тип",
+        "label": "Tipo",
         "required": true,
         "options": {
           "static_value": {
-            "label": "Статическое значение"
+            "label": "Valor Estático"
           },
           "numeric_formula": {
-            "label": "Числовая формула"
+            "label": "Fórmula Numérica"
           },
           "text_formula": {
-            "label": "Текстовая формула"
+            "label": "Fórmula de Texto"
           },
           "inc_dec_percent": {
             "label": "Increase / Decrease (%)"
@@ -37,7 +37,7 @@
       "options.inc_or_dec": {
         "type": "select",
         "label": "Increase Type",
-        "show_if": "options.column_value_type==''inc_dec_percent'' || options.column_value_type==''inc_dec_abs''",
+        "show_if": "options.column_value_type=='inc_dec_percent' || options.column_value_type=='inc_dec_abs'",
         "required": true,
         "options": {
           "increase": {
@@ -51,51 +51,51 @@
       },
       "options.inc_or_dec_val": {
         "type": "text",
-        "label": "Добавить значение",
-        "show_if": "options.column_value_type==''inc_dec_percent'' || options.column_value_type==''inc_dec_abs''",
+        "label": "Introduzir Valor",
+        "show_if": "options.column_value_type=='inc_dec_percent' || options.column_value_type=='inc_dec_abs'",
         "val": "1",
         "breakLine": true
       },
       "options.static_value": {
         "type": "text",
-        "label": "Добавить значение",
-        "show_if": "options.column_value_type==''static_value''",
+        "label": "Introduzir Valor",
+        "show_if": "options.column_value_type=='static_value'",
         "val": "",
         "width": "100%"
       },
       "options.numeric_formula": {
         "type": "text",
         "label": "Input Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
-        "show_if": "options.column_value_type==''numeric_formula''",
+        "show_if": "options.column_value_type=='numeric_formula'",
         "val": "",
         "width": "100%"
       },
       "options.text_formula": {
         "type": "text",
-        "label": "Input Formula, e.g. [firstName] + '' '' + [lastName] + '' '' + [Row-1:Column3]",
-        "show_if": "options.column_value_type==''text_formula''",
+        "label": "Input Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
+        "show_if": "options.column_value_type=='text_formula'",
         "val": "",
         "width": "100%"
       },
       "options.use_multi_row": {
         "type": "checkbox",
-        "label": "Настройки нескольких строк",
-        "show_if": "options.column_value_type==''numeric_formula'' || options.column_value_type==''text_formula''",
+        "label": "Opções Multi-Linha",
+        "show_if": "options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "options.if_row_not_exist": {
         "type": "select",
-        "label": "Если упомянутой строки не существует",
-        "show_if": "(options.column_value_type==''numeric_formula'' || options.column_value_type==''text_formula'') && options.use_multi_row==''true''",
+        "label": "Se a fila referida não existir",
+        "show_if": "(options.column_value_type=='numeric_formula' || options.column_value_type=='text_formula') && options.use_multi_row=='true'",
         "required": true,
         "options": {
           "empty": {
-            "label": "Пусто или 0"
+            "label": "Vazio ou 0"
           },
           "closest": {
-            "label": "Значение ближайшей строки"
+            "label": "Valor Mais Próximo da Linha"
           }
         },
         "val": "empty",
@@ -103,7 +103,7 @@
       },
       "options.use_filter": {
         "type": "checkbox",
-        "label": "Использовать фильтр",
+        "label": "Utilizar Filtro",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -111,194 +111,194 @@
       },
       "filter_box": {
         "type": "fieldset",
-        "label": "Настройки фильтра",
-        "show_if": "options.use_filter==''true''",
+        "label": "Opções de Filtro",
+        "show_if": "options.use_filter=='true'",
         "repeat": false,
         "fields": {
           "options.filter": {
             "type": "fieldset",
-            "label": "Добавить условия фильтрации",
-            "show_if": "options.use_filter==''true''",
+            "label": "Adicionar Condições de Filtro",
+            "show_if": "options.use_filter=='true'",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Выбрать оператора логики",
+                "label": "Selecionar Operador Lógico",
                 "required": true,
                 "show_if" :  "$index == 0",
                 "options": {
                   "if": {
-                    "label": "ЕСЛИ"
+                    "label": "IF"
                   },
                   "if_not": {
-                    "label": "ЕСЛИ НЕ"
+                    "label": "IF NOT"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "Выбрать оператора логики",
+                "label": "Selecionar Operador Lógico",
                 "required": true,
                 "show_if" :  "$index > 0",
                 "options": {
                   "and": {
-                    "label": "И"
+                    "label": "AND"
                   },
                   "or": {
-                    "label": "ИЛИ"
+                    "label": "OR"
                   },
                   "and_not": {
-                    "label": "И НЕ"
+                    "label": "AND NOT"
                   },
                   "or_not": {
-                    "label": "ИЛИ НЕ"
+                    "label": "OR NOT"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": "Выбрать столбец",
+                "label": "Selecionar Coluna",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Выбрать оператора",
+                "label": "Selecionar Operador",
                 "required": true,
                 "options": {
-                  "СОДЕРЖИТ": {
-                    "label": "СОДЕРЖИТ"
+                  "CONTÉM": {
+                    "label": "CONTÉM"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "СОДЕРЖАЛОСЬ В"
+                    "label": "CONTIDO EM"
                   },
-                  "НАЧИНАЕТСЯ С": {
-                    "label": "НАЧИНАЕТСЯ С"
+                  "INICIA COM": {
+                    "label": "INICIA COM"
                   },
-                  "ЗАКАНЧИВАЕТСЯ С": {
-                    "label": "ЗАКАНЧИВАЕТСЯ С"
+                  "TERMINA COM": {
+                    "label": "TERMINA COM"
                   },
                   "=": {
-                    "label": "Равный"
+                    "label": "IGUAL"
                   },
                   ">": {
-                    "label": "БОЛЬШЕ ЧЕМ"
+                    "label": "MAIOR QUE"
                   },
                   ">=": {
-                    "label": "БОЛЬШИЙ ИЛИ РАВНЫЙ"
+                    "label": "MAIOR OU IGUAL"
                   },
                   "<": {
-                    "label": "МЕНЬШЕ ЧЕМ"
+                    "label": "MENOR QUE"
                   },
                   "<=": {
-                    "label": "МЕНЬШИЙ ИЛИ РАВНЫЙ"
+                    "label": "MENOR OU IGUAL"
                   },
                   "EMPTY": {
-                    "label": "ПУСТО"
+                    "label": "ESTÁ VAZIO"
                   },
                   "BLANK": {
-                    "label": "ПУСТО"
+                    "label": "ESTÁ EM BRANCO"
                   },
-                  "НОЛЬ": {
-                    "label": "НОЛЬ"
+                  "IS NULL": {
+                    "label": "IS NULL"
                   },
-                  "Совпадение регулярного выражения": {
-                    "label": "Совпадение регулярного выражения"
+                  "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR": {
+                    "label": "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "В ТАБЛИЦЕ"
+                    "label": "NA TABELA"
                   },
-                  "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ": {
-                    "label": "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ"
+                  "NA TABELA DE EXPRESSÕES REGULARES": {
+                    "label": "NA TABELA DE EXPRESSÕES REGULARES"
                   },
-                  "ДАТА": {
-                    "label": "ДАТА"
+                  "DATA": {
+                    "label": "DATA"
                   }
                 },
-                "val": "СОДЕРЖИТ"
+                "val": "CONTÉM"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Выбрать оператора даты",
+                "label": "Selecionar Operador de Data",
                 "required": true,
-                "show_if": "this.condition == ''DATE''",
+                "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "ПРЕДЫДУЩИЙ"
+                    "label": "ANTERIOR"
                   },
                   "<=": {
-                    "label": "ПРЕДЫДУЩИЙ ИЛИ РАВНЫЙ"
+                    "label": "ANTERIOR OU IGUAL"
                   },
                   "=": {
-                    "label": "Равный"
+                    "label": "IGUAL"
                   },
                   ">": {
-                    "label": "ПОСЛЕ"
+                    "label": "DEPOIS"
                   },
                   ">=": {
-                    "label": "ПОСЛЕ ИЛИ РАВНО"
+                    "label": "DEPOIS OU IGUAL"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Выбрать с учетом регистра",
+                "label": "Selecionar Sensibilidade a Maiúsculas e Minúsculasl",
                 "required": true,
-                "show_if": "this.condition == ''CONTAINS'' || this.condition == ''CONTAINED IN STRING'' || this.condition == ''='' || this.condition == ''STARTS WITH'' || this.condition == ''ENDS WITH'' || this.condition == ''REGEX MATCH'' || this.condition == ''NOT REGEX MATCH'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "С учетом регистра"
+                    "label": "Sensível a Maiúsculas e Minúsculas"
                   },
                   "no": {
-                    "label": "Без учета регистра"
+                    "label": "Insensível a Maiúsculas e Minúsculas"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Выбрать дату",
-                "show_if": "this.condition==''DATE''",
+                "label": "Selecionar Data",
+                "show_if": "this.condition=='DATE'",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Добавить значение",
-                "show_if": "this.condition != ''DATE'' && this.condition != ''EMPTY'' && this.condition != ''NOT EMPTY'' && this.condition != ''BLANK'' && this.condition != ''NOT BLANK'' && this.condition != ''IS NULL'' && this.condition != ''IS NOT NULL'' && this.condition != ''CONTAINED IN TABLE'' && this.condition != ''NOT CONTAINED IN TABLE'' && this.condition != ''IN REGEX TABLE'' && this.condition != ''NOT IN REGEX TABLE''",
+                "label": "Introduzir Valor",
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Выбрать таблицу",
+                "label": "Selecionar Tabela",
                 "bind": "TABLES",
                 "empty": "",
-                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
               },
               "compare_column": {
                 "type": "select",
-                "label": "Выбрать столбец",
+                "label": "Selecionar Coluna",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
-                "show_if": "this.condition == ''CONTAINED IN TABLE'' || this.condition == ''NOT CONTAINED IN TABLE'' || this.condition == ''IN REGEX TABLE'' || this.condition == ''NOT IN REGEX TABLE''",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "Удалить",
+                "label": "Apagar",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.apply_to_record": {
             "type": "checkbox",
-            "label": "Применить к регистру",
+            "label": "Aplicar ao Registo",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -307,13 +307,13 @@
           },
           "apply_to_group_box": {
             "type": "fieldset",
-            "label": "Применить к группе",
-            "show_if": "options.apply_to_record==''false''",
+            "label": "Aplicar ao Grupo",
+            "show_if": "options.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
                 "type": "select",
-                "label": "Выбрать групповые столбцы",
+                "label": "Selecionar Colunas de Grupo",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
