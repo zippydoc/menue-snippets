@@ -1,8 +1,8 @@
 {
   "output.select_output_columns": {
     "type": "checkbox",
-    "label": "Sélectionner les colonnes de sortie",
-    "show_if": "options.task_type==''label_duplicates'' || options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table''",
+    "label": "Selecionar Colunas de Saída",
+    "show_if": "options.task_type=='label_duplicates' || options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
     "val": "false",
     "isOn": "true",
     "isOff": "false"
@@ -10,128 +10,128 @@
   "output_columns": {
     "type": "fieldset",
     "label": "Select OutputColumns",
-    "show_if": "output.select_output_columns==''true'' && (options.task_type==''label_duplicates'' || options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'')",
+    "show_if": "output.select_output_columns=='true' && (options.task_type=='label_duplicates' || options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
     "repeat": true,
     "fields": {
       "field_name": {
         "type": "select",
-        "label": "Sélectionner une colonne",
+        "label": "Selecionar Coluna",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
       },
       "order": {
         "type": "select",
-        "label": "Commander",
+        "label": "Encomendar",
         "options": {
           "-": {
             "label": "-"
           },
           "asc": {
-            "label": "Asc"
+            "label": "Ascendente"
           },
           "desc": {
-            "label": "Desc"
+            "label": "Descendente"
           }
         },
         "val": "-"
       },
       "is_rename": {
         "type": "checkbox",
-        "label": "Renommer",
+        "label": "Mudar Nome",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "rename": {
-        "show_if": "this.is_rename == ''true''",
+        "show_if": "this.is_rename == 'true'",
         "type": "text",
         "required": true,
         "minLength": 1,
         "maxLength": 255,
-        "label": "Nouveau nom de colonne",
+        "label": "Novo Nome de Coluna",
         "style": "margin-left: 10px"
       },
       "format__category": {
         "type": "select",
-        "label": "Format",
+        "label": "Formato",
         "required": true,
         "options": {
           "standard": {
-            "label": "Standard"
+            "label": "Padrão"
           },
           "number": {
-            "label": "Numéro"
+            "label": "Número"
           },
           "percentage": {
-            "label": "Pourcentage"
+            "label": "Percentagem"
           },
           "text": {
-            "label": "Texte"
+            "label": "Texto"
           },
           "date": {
-            "label": "Date"
+            "label": "Data"
           },
           "currency": {
-            "label": "Monnaie"
+            "label": "Moeda"
           }
         },
         "val": "standard"
       },
       "format__rounding": {
         "type": "select",
-        "label": "Arrondi",
-        "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+        "label": "Arredondamento",
+        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "required": true,
         "options": {
           "no_rounding": {
-            "label": "Pas d'arrondi"
+            "label": "Arredondamento de números"
           },
           "0": {
-            "label": "0 chiffre"
+            "label": "0 dígitos"
           },
           "1": {
-            "label": "1 chiffre"
+            "label": "1 dígito"
           },
           "2": {
-            "label": "2 chiffres"
+            "label": "2 dígitos"
           },
           "3": {
-            "label": "3 chiffres"
+            "label": "3 dígitos"
           },
           "4": {
-            "label": "4 chiffres"
+            "label": "4 dígitos"
           },
           "5": {
-            "label": "5 chiffres"
+            "label": "5 dígitos"
           },
           "6": {
-            "label": "6 chiffres"
+            "label": "6 dígitos"
           },
           "7": {
-            "label": "7 chiffres"
+            "label": "7 dígitos"
           },
           "8": {
-            "label": "8 chiffres"
+            "label": "8 dígitos"
           },
           "9": {
-            "label": "9 chiffres"
+            "label": "9 dígitos"
           }
         },
         "val": "2"
       },
       "format__use_1000_separator": {
         "type": "checkbox",
-        "label": "Utilisez le séparateur 1000 (.)",
-        "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+        "label": "Usar Separador(.) 1000",
+        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
       "format__currency_symbol": {
         "type": "select",
-        "label": "Symbole",
-        "show_if": "this.format__category==''currency''",
+        "label": "Símbolo",
+        "show_if": "this.format__category=='currency'",
         "required": true,
         "options": {
           "dollar": {
@@ -148,8 +148,8 @@
       },
       "format__date_format": {
         "type": "select",
-        "label": "Type",
-        "show_if": "this.format__category==''date''",
+        "label": "Tipo",
+        "show_if": "this.format__category=='date'",
         "required": true,
         "options": {
           "mm/dd/yyyy": {
@@ -167,7 +167,7 @@
       },
       "delete": {
         "type": "button",
-        "label": "Supprimer",
+        "label": "Apagar",
         "function": "DELETE_ROW"
       }
     },
@@ -176,7 +176,7 @@
   },
   "options.add_filename": {
     "type": "checkbox",
-    "label": "Ajouter un nom de fichier",
+    "label": "Adicionar Nome de Ficheiro",
     "val": "false",
     "isOn": "true",
     "isOff": "false",
