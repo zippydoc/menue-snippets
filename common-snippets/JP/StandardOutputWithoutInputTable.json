@@ -1,12 +1,12 @@
 {
   "output": {
     "type": "fieldset",
-    "label": "出力テーブルの定義",
+    "label": "定义输出表格",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
-        "label": "出力テーブル名",
+        "label": "输出表格名称",
         "show_if": "output.compose_table_name=='false'",
         "minLength": 1,
         "val": "",
@@ -15,7 +15,7 @@
       },
       "output.compose_table_name": {
         "type": "checkbox",
-        "label": "テーブル名の構成",
+        "label": "编写表格名称",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -23,13 +23,13 @@
       },
       "compose_table_name_frame": {
         "type": "fieldset",
-        "label": "出力テーブル名の構成",
+        "label": "编写输出表格名称",
         "show_if": "output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
             "type": "select",
-            "label": "プレフィックス",
+            "label": "前缀",
             "show_if": "output.compose_table_name=='true'",
             "val": "empty",
             "options": {
@@ -37,28 +37,28 @@
                 "label": "-"
               },
               "script_name": {
-                "label": "タスク名"
+                "label": "任务名称"
               },
               "date_string_type1": {
-                "label": "日付:  dd_mm_yyyy"
+                "label": "Date: dd_mm_yyyy"
               },
               "date_string_type2": {
-                "label": "日付:  yyyy_mm_dd"
+                "label": "Date: yyyy_mm_dd"
               },
               "time_string": {
-                "label": "時間: 時_分_秒"
+                "label": "时间：h_min_sec"
               },
               "datetime_string": {
-                "label": "日付_時間"
+                "label": "Date_Time"
               },
               "custom": {
-                "label": "カスタム"
+                "label": "自定义"
               }
             }
           },
           "output.prefix_text": {
             "type": "text",
-            "label": "プレフィックステキスト",
+            "label": "前缀文本",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -66,28 +66,28 @@
           },
           "output.core_delimiter": {
             "type": "text",
-            "label": "区切り文字",
+            "label": "分隔符",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
             "val": "_",
             "width": "50px"
           },
           "output.core_rule": {
             "type": "select",
-            "label": "列名",
+            "label": "表格名称",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "script_name": {
-                "label": "タスク名"
+                "label": "任务名称"
               },
               "custom": {
-                "label": "カスタム"
+                "label": "自定义"
               }
             }
           },
           "output.core_text": {
             "type": "text",
-            "label": "出力テーブル名",
+            "label": "输出表格名称",
             "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
             "required": true,
             "minLength": 1,
@@ -96,14 +96,14 @@
           },
           "output.suffix_delimiter": {
             "type": "text",
-            "label": "区切り文字",
+            "label": "分隔符",
             "show_if": "output.compose_table_name=='true'",
             "val": "_",
             "width": "50px"
           },
           "output.suffix_rule": {
             "type": "select",
-            "label": "サフィックス",
+            "label": "后缀",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
@@ -111,28 +111,28 @@
                 "label": "-"
               },
               "script_name": {
-                "label": "タスク名"
+                "label": "任务名称"
               },
               "date_string_type1": {
-                "label": "日付:  dd_mm_yyyy"
+                "label": "Date: dd_mm_yyyy"
               },
               "date_string_type2": {
-                "label": "日付:  yyyy_mm_dd"
+                "label": "Date: yyyy_mm_dd"
               },
               "time_string": {
-                "label": "時間: 時_分_秒"
+                "label": "时间：h_min_sec"
               },
               "datetime_string": {
-                "label": "日付_時間"
+                "label": "Date_Time"
               },
               "custom": {
-                "label": "カスタム"
+                "label": "自定义"
               }
             }
           },
           "output.suffix_text": {
             "type": "text",
-            "label": "サフィックステキスト",
+            "label": "后缀文本",
             "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -141,9 +141,9 @@
           },
           "output.timezone": {
             "type": "select",
-            "label": "タイムゾーン",
+            "label": "时区",
             "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
-            "val": "ヨーロッパ/ベルリン",
+            "val": "欧洲/柏林",
             "required": true,
             "options": {
               "America/Adak": {
@@ -170,7 +170,7 @@
               "Asia/Bangkok": {
                 "label": "Bangkok, Jakarta, Novosibirsk"
               },
-              "ヨーロッパ/ベルリン": {
+              "欧洲/柏林": {
                 "label": "Berlin, Paris, Amsterdam"
               },
               "Australia/Perth": {
