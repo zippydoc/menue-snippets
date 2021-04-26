@@ -1,12 +1,12 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Выбрать параметры присоединения",
+    "label": "Selecionar Opções de Junção",
     "repeat": false,
     "fields": {
       "join_type": {
         "type": "radio",
-        "label": "Присоединить",
+        "label": "Juntar por",
         "val": "join_by_specific_field",
         "values": {
           "join_by_specific_field": "Specific Field",
@@ -16,25 +16,25 @@
       },
       "join_fields": {
         "type": "fieldset",
-        "label": "Присоединить по столбцам",
-        "show_if": "join_type==''join_by_specific_field''",
+        "label": "Juntar por Colunas",
+        "show_if": "join_type=='join_by_specific_field'",
         "repeat": true,
         "fields": {
           "left_table_field": {
             "type": "select",
-            "label": "Левый столбец таблицы",
+            "label": "Coluna da Tabela da Esquerda",
             "table": "left_table.table_id",
             "bind": "COLUMNS"
           },
           "right_table_field": {
             "type": "select",
-            "label": "Правый столбец таблицы",
+            "label": "Coluna da Tabela da Direita",
             "table": "right_table.table_id",
             "bind": "COLUMNS"
           },
           "delete": {
             "type": "button",
-            "label": "Удалить",
+            "label": "Apagar",
             "function": "DELETE_ROW"
           }
         }
