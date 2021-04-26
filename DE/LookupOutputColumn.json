@@ -2,7 +2,7 @@
   "output.select_output_columns": {
     "type": "checkbox",
     "label": "Ausgabespalten auswählen",
-    "show_if": "options.task_type==''label_duplicates'' || options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table''",
+    "show_if": "options.task_type=='label_duplicates' || options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
     "val": "false",
     "isOn": "true",
     "isOff": "false"
@@ -10,7 +10,7 @@
   "output_columns": {
     "type": "fieldset",
     "label": "Select OutputColumns",
-    "show_if": "output.select_output_columns==''true'' && (options.task_type==''label_duplicates'' || options.task_type==''apply_lookup_table'' || options.task_type==''apply_regex_table'')",
+    "show_if": "output.select_output_columns=='true' && (options.task_type=='label_duplicates' || options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
     "repeat": true,
     "fields": {
       "field_name": {
@@ -44,7 +44,7 @@
         "isOff": "false"
       },
       "rename": {
-        "show_if": "this.is_rename == ''true''",
+        "show_if": "this.is_rename == 'true'",
         "type": "text",
         "required": true,
         "minLength": 1,
@@ -81,7 +81,7 @@
       "format__rounding": {
         "type": "select",
         "label": "Abrunden",
-        "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "required": true,
         "options": {
           "no_rounding": {
@@ -123,7 +123,7 @@
       "format__use_1000_separator": {
         "type": "checkbox",
         "label": "1000 Trennzeichen(.) verwenden",
-        "show_if": "this.format__category==''number'' || this.format__category==''percentage'' || this.format__category==''currency''",
+        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "val": "true",
         "isOn": "true",
         "isOff": "false"
@@ -131,7 +131,7 @@
       "format__currency_symbol": {
         "type": "select",
         "label": "Symbol",
-        "show_if": "this.format__category==''currency''",
+        "show_if": "this.format__category=='currency'",
         "required": true,
         "options": {
           "dollar": {
@@ -149,7 +149,7 @@
       "format__date_format": {
         "type": "select",
         "label": "Typ",
-        "show_if": "this.format__category==''date''",
+        "show_if": "this.format__category=='date'",
         "required": true,
         "options": {
           "mm/dd/yyyy": {
