@@ -7,7 +7,7 @@
       "output.custom_text": {
         "type": "text",
         "label": "Sortir le nom du tableau",
-        "show_if": "output.compose_table_name==''false''",
+        "show_if": "output.compose_table_name=='false'",
         "minLength": 1,
         "val": "",
         "width": "100%",
@@ -24,13 +24,13 @@
       "compose_table_name_frame": {
         "type": "fieldset",
         "label": "Saisissez le nom du tableau de sortie",
-        "show_if": "output.compose_table_name==''true''",
+        "show_if": "output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
             "type": "select",
             "label": "Préfixe",
-            "show_if": "output.compose_table_name==''true''",
+            "show_if": "output.compose_table_name=='true'",
             "val": "empty",
             "options": {
               "empty": {
@@ -59,7 +59,7 @@
           "output.prefix_text": {
             "type": "text",
             "label": "Texte du préfixe",
-            "show_if": "output.compose_table_name==''true'' && output.prefix_rule==''custom''",
+            "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
             "val": ""
@@ -67,14 +67,14 @@
           "output.core_delimiter": {
             "type": "text",
             "label": "Délimiteur",
-            "show_if": "output.compose_table_name==''true'' && output.prefix_rule!=''empty''",
+            "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
             "val": "_",
             "width": "50px"
           },
           "output.core_rule": {
             "type": "select",
             "label": "Nom du tableau",
-            "show_if": "output.compose_table_name==''true''",
+            "show_if": "output.compose_table_name=='true'",
             "val": "input_table_name",
             "options": {
               "input_table_name": {
@@ -91,7 +91,7 @@
           "output.core_text": {
             "type": "text",
             "label": "Nom du tableau principal",
-            "show_if": "output.compose_table_name==''true'' && output.core_rule==''custom''",
+            "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
             "required": true,
             "minLength": 1,
             "maxLength": 31,
@@ -100,14 +100,14 @@
           "output.suffix_delimiter": {
             "type": "text",
             "label": "Délimiteur",
-            "show_if": "output.compose_table_name==''true''",
+            "show_if": "output.compose_table_name=='true'",
             "val": "_",
             "width": "50px"
           },
           "output.suffix_rule": {
             "type": "select",
             "label": "Suffixe",
-            "show_if": "output.compose_table_name==''true''",
+            "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "empty": {
@@ -136,7 +136,7 @@
           "output.suffix_text": {
             "type": "text",
             "label": "Texte du suffixe",
-            "show_if": "output.compose_table_name==''true'' && output.suffix_rule==''custom''",
+            "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
             "val": "",
@@ -145,7 +145,7 @@
           "output.timezone": {
             "type": "select",
             "label": "Fuseau horaire",
-            "show_if": "output.compose_table_name==''true'' && (output.prefix_rule==''date_string_type1'' || output.prefix_rule==''date_string_type2'' || output.prefix_rule==''time_string'' || output.prefix_rule==''datetime_string'' || output.suffix_rule==''date_string_type1'' || output.suffix_rule==''date_string_type2'' || output.suffix_rule==''time_string'' || output.suffix_rule==''datetime_string'')",
+            "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
             "val": "Europe/Berlin",
             "required": true,
             "options": {
@@ -273,129 +273,6 @@
             "breakLine": true
           }
         }
-      },
-      "output.download_setting": {
-        "type": "checkbox",
-        "label": "Download Settings",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "style": "margin-top: 10px"
-      },
-      "download_setting_frame": {
-        "type": "fieldset",
-        "label": "Download Settings",
-        "show_if": "output.download_setting==''true''",
-        "repeat": false,
-        "fields": {
-          "output.options.location": {
-            "type": "text",
-            "label": "Indiquer le lieu",
-            "val": "A1",
-            "breakLine": true
-          },
-          "output.options.formatted_as_table": {
-            "type": "checkbox",
-            "label": "Formaté comme tableau",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false",
-            "breakLine": true
-          },
-          "output.add_tag": {
-            "type": "checkbox",
-            "label": "Ajouter une étiquette",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "output.tag_name": {
-            "type": "text",
-            "label": "Nom de l'étiquette",
-            "show_if": "output.add_tag==''true''",
-            "required": true,
-            "minLength": 1,
-            "maxLength": 255,
-            "val": "",
-            "breakLine": true,
-            "style": "margin-left: 15px"
-          },
-          "output.options.visibility": {
-            "type": "select",
-            "label": "Visibilité",
-            "val": "current_flow",
-            "options": {
-              "current_flow": {
-                "label": "Flux actuel"
-              },
-              "all_flow": {
-                "label": "Tous les flux"
-              }
-            },
-            "breakLine": true
-          },
-          "output.options.table_mode": {
-            "type": "select",
-            "label": "Coller",
-            "val": "content_only",
-            "options": {
-              "content_only": {
-                "label": "Contenu uniquement"
-              },
-              "fully_formatted": {
-                "label": "Entièrement formaté"
-              }
-            }
-          }
-        },
-        "breakLine": true
-      },
-      "output.if_table_exist.type": {
-        "type": "select",
-        "label": "If existing",
-        "val": "drop_if_exist",
-        "options": {
-          "drop_if_exist": {
-            "label": "Créer ou supprimer (si déjà existant)"
-          },
-          "error_if_exist": {
-            "label": "Créer (erreur si déjà existant)"
-          },
-          "error_if_not_exist": {
-            "label": "Ignorer (erreur si non-existant)"
-          },
-          "append_all": {
-            "label": "Append All"
-          },
-          "append_not_existing": {
-            "label": "Append not existing"
-          }
-        }
-      },
-      "output.if_table_exist.append_not_existing_col": {
-        "type": "select",
-        "label": "Sélectionner une colonne",
-        "show_if": "output.if_table_exist.type==''append_not_existing''",
-        "required": true,
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "breakLine": true
-      },
-      "append_not_existing_info1": {
-        "type": "text",
-        "label": "",
-        "show_if": "output.if_table_exist.type==''append_not_existing''",
-        "val": "Appends rows only if the value of the selected column is new in the existing table.",
-        "disabled": true,
-        "style": "width: 100%"
-      },
-      "append_not_existing_info2": {
-        "type": "text",
-        "label": "",
-        "show_if": "output.if_table_exist.type==''append_not_existing''",
-        "val": "It is assumed that the selected column is found in the output and existing table",
-        "disabled": true,
-        "style": "width: 100%"
       }
     }
   }
