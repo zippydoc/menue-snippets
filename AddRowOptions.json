@@ -273,55 +273,9 @@
             "label": "New Row Name",
             "val": ""
           },
-          "function_type": {
-            "type": "select",
-            "label": "Task Type",
-            "show_if": "false",
-            "required": true,
-            "options": {
-              "multi_column_functions": {
-                "label": "Multi-Column"
-              },
-              "multi_row_functions": {
-                "label": "Multi-Row"
-              }
-            },
-            "val": "multi_row_functions"
-          },
-          "multi_column_functions__function": {
-            "type": "select",
-            "label": "Select Function",
-            "show_if": "this.function_type=='multi_column_functions'",
-            "required": true,
-            "options": {
-              "absolute_growth": {
-                "label": "Absolute Growth"
-              },
-              "relative_growth": {
-                "label": "Relative Growth"
-              },
-              "trailing_average": {
-                "label": "Trailing Average"
-              },
-              "index_growth": {
-                "label": "Index Growth"
-              },
-              "compound_growth": {
-                "label": "Compound Growth"
-              },
-              "discount_rate": {
-                "label": "Discount Rate"
-              },
-              "quota": {
-                "label": "Quota"
-              }
-            },
-            "val": "absolute_growth"
-          },
           "multi_row_functions__function": {
             "type": "select",
             "label": "Select Function",
-            "show_if": "this.function_type=='multi_row_functions'",
             "required": true,
             "options": {
               "sum": {
@@ -351,63 +305,7 @@
           "multi_row_functions__sel_labels": {
             "type": "select",
             "label": "Select Rows(s)",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function!='quota'",
-            "required": true,
-            "table": "input_table",
-            "multiple": true,
-            "bind": "LABELS"
-          },
-          "multi_column_functions__sel_labels": {
-            "type": "select",
-            "label": "Select Rows(s)",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
-            "required": true,
-            "table": "input_table",
-            "multiple": true,
-            "bind": "LABELS"
-          },
-          "multi_column_functions__n_value": {
-            "type": "text",
-            "label": "N (positive integer)",
-            "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
-            "val": "1",
-            "required": true
-          },
-          "multi_column_functions__discount_rate__rate": {
-            "type": "text",
-            "label": "Input Rate",
-            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
-            "val": "1",
-            "required": true
-          },
-          "multi_column_functions__discount_rate__starting_column": {
-            "type": "select",
-            "label": "Starting column",
-            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
-            "table": "input_table",
-            "bind": "COLUMNS",
-            "required": true
-          },
-          "multi_column_functions__sel_label_a": {
-            "type": "select",
-            "label": "Select Label A",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
-            "required": true,
-            "table": "input_table",
-            "bind": "LABELS"
-          },
-          "multi_column_functions__sel_label_b": {
-            "type": "select",
-            "label": "Select Label B",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
-            "required": true,
-            "table": "input_table",
-            "bind": "LABELS"
-          },
-          "multi_column_functions__quota_sel_labels": {
-            "type": "select",
-            "label": "Select Rows(s)",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
+            "show_if": "table_type!='header_only' && this.multi_row_functions__function!='quota'",
             "required": true,
             "table": "input_table",
             "multiple": true,
@@ -486,7 +384,7 @@
           "multi_row_functions__sel_label_a": {
             "type": "select",
             "label": "Select Label A",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
+            "show_if": "table_type!='header_only' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
@@ -494,7 +392,7 @@
           "multi_row_functions__sel_label_b": {
             "type": "select",
             "label": "Select Label B",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
+            "show_if": "table_type!='header_only' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS",
@@ -528,264 +426,6 @@
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
-          },
-          "multi_column_functions__sel_row_a": {
-            "type": "select",
-            "label": "Select Row A",
-            "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
-            "required": true,
-            "options": {
-              "row-1": {
-                "label": "Row-1"
-              },
-              "row-2": {
-                "label": "Row-2"
-              },
-              "row-3": {
-                "label": "Row-3"
-              },
-              "row-4": {
-                "label": "Row-4"
-              },
-              "row-5": {
-                "label": "Row-5"
-              },
-              "row-6": {
-                "label": "Row-6"
-              },
-              "row-7": {
-                "label": "Row-7"
-              },
-              "row-8": {
-                "label": "Row-8"
-              },
-              "row-9": {
-                "label": "Row-9"
-              },
-              "row-10": {
-                "label": "Row-10"
-              },
-              "row-11": {
-                "label": "Row-11"
-              },
-              "row-12": {
-                "label": "Row-12"
-              },
-              "row-13": {
-                "label": "Row-13"
-              },
-              "row-14": {
-                "label": "Row-14"
-              },
-              "row-15": {
-                "label": "Row-15"
-              },
-              "row-16": {
-                "label": "Row-16"
-              },
-              "row-17": {
-                "label": "Row-17"
-              },
-              "row-18": {
-                "label": "Row-18"
-              },
-              "row-19": {
-                "label": "Row-19"
-              },
-              "row-20": {
-                "label": "Row-20"
-              },
-              "row+1": {
-                "label": "Row+1"
-              },
-              "row+2": {
-                "label": "Row+2"
-              },
-              "row+3": {
-                "label": "Row+3"
-              },
-              "row+4": {
-                "label": "Row+4"
-              },
-              "row+5": {
-                "label": "Row+5"
-              },
-              "row+6": {
-                "label": "Row+6"
-              },
-              "row+7": {
-                "label": "Row+7"
-              },
-              "row+8": {
-                "label": "Row+8"
-              },
-              "row+9": {
-                "label": "Row+9"
-              },
-              "row+10": {
-                "label": "Row+10"
-              },
-              "row+11": {
-                "label": "Row+11"
-              },
-              "row+12": {
-                "label": "Row+12"
-              },
-              "row+13": {
-                "label": "Row+13"
-              },
-              "row+14": {
-                "label": "Row+14"
-              },
-              "row+15": {
-                "label": "Row+15"
-              },
-              "row+16": {
-                "label": "Row+16"
-              },
-              "row+17": {
-                "label": "Row+17"
-              },
-              "row+18": {
-                "label": "Row+18"
-              },
-              "row+19": {
-                "label": "Row+19"
-              },
-              "row+20": {
-                "label": "Row+20"
-              }
-            },
-            "val": "row-1"
-          },
-          "multi_column_functions__sel_row_b": {
-            "type": "select",
-            "label": "Select Row B",
-            "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
-            "required": true,
-            "options": {
-              "row-1": {
-                "label": "Row-1"
-              },
-              "row-2": {
-                "label": "Row-2"
-              },
-              "row-3": {
-                "label": "Row-3"
-              },
-              "row-4": {
-                "label": "Row-4"
-              },
-              "row-5": {
-                "label": "Row-5"
-              },
-              "row-6": {
-                "label": "Row-6"
-              },
-              "row-7": {
-                "label": "Row-7"
-              },
-              "row-8": {
-                "label": "Row-8"
-              },
-              "row-9": {
-                "label": "Row-9"
-              },
-              "row-10": {
-                "label": "Row-10"
-              },
-              "row-11": {
-                "label": "Row-11"
-              },
-              "row-12": {
-                "label": "Row-12"
-              },
-              "row-13": {
-                "label": "Row-13"
-              },
-              "row-14": {
-                "label": "Row-14"
-              },
-              "row-15": {
-                "label": "Row-15"
-              },
-              "row-16": {
-                "label": "Row-16"
-              },
-              "row-17": {
-                "label": "Row-17"
-              },
-              "row-18": {
-                "label": "Row-18"
-              },
-              "row-19": {
-                "label": "Row-19"
-              },
-              "row-20": {
-                "label": "Row-20"
-              },
-              "row+1": {
-                "label": "Row+1"
-              },
-              "row+2": {
-                "label": "Row+2"
-              },
-              "row+3": {
-                "label": "Row+3"
-              },
-              "row+4": {
-                "label": "Row+4"
-              },
-              "row+5": {
-                "label": "Row+5"
-              },
-              "row+6": {
-                "label": "Row+6"
-              },
-              "row+7": {
-                "label": "Row+7"
-              },
-              "row+8": {
-                "label": "Row+8"
-              },
-              "row+9": {
-                "label": "Row+9"
-              },
-              "row+10": {
-                "label": "Row+10"
-              },
-              "row+11": {
-                "label": "Row+11"
-              },
-              "row+12": {
-                "label": "Row+12"
-              },
-              "row+13": {
-                "label": "Row+13"
-              },
-              "row+14": {
-                "label": "Row+14"
-              },
-              "row+15": {
-                "label": "Row+15"
-              },
-              "row+16": {
-                "label": "Row+16"
-              },
-              "row+17": {
-                "label": "Row+17"
-              },
-              "row+18": {
-                "label": "Row+18"
-              },
-              "row+19": {
-                "label": "Row+19"
-              },
-              "row+20": {
-                "label": "Row+20"
-              }
-            },
-            "val": "row-1"
           },
           "format__category": {
             "type": "select",
