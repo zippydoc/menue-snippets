@@ -276,7 +276,7 @@
           "function_type": {
             "type": "select",
             "label": "Task Type",
-            "show_if": "table_type=='header_only'",
+            "show_if": "false",
             "required": true,
             "options": {
               "multi_column_functions": {
@@ -343,7 +343,8 @@
                 "label": "Product"
               },
               "quota": {
-                "label": "Quota"
+                "label": "Quota",
+                "show_if": "table_type=='header_only' && options.use_filter=='false'"
               }
             },
             "val": "sum"
@@ -416,7 +417,7 @@
           "multi_row_functions__sel_rows": {
             "type": "select",
             "label": "Select Rows",
-            "show_if": "table_type=='header_only' && this.function_type=='multi_row_functions'",
+            "show_if": "table_type=='header_only' && options.use_filter=='false' && this.function_type=='multi_row_functions'",
             "required": true,
             "options": {
               "row-1": {
@@ -480,6 +481,7 @@
                 "label": "Row+10"
               }
             },
+            "multiple": true,
             "val": "row-1"
           },
           "multi_row_functions__sel_label_a": {
