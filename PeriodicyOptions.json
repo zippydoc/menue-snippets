@@ -267,7 +267,6 @@
           "amount_format__category": {
             "type": "select",
             "label": "Amount Format",
-            "show_if" : "$index > 0",
             "required": true,
             "options": {
               "standard": {
@@ -294,7 +293,7 @@
           "amount_format__rounding": {
             "type": "select",
             "label": "Rounding",
-            "show_if": "$index > 0 && (this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency')",
+            "show_if": "this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
@@ -336,7 +335,7 @@
           "amount_format__use_1000_separator": {
             "type": "checkbox",
             "label": "Use 1000 Separator(.)",
-            "show_if": "$index > 0 && (this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency')",
+            "show_if": "this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency'",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
@@ -344,7 +343,7 @@
           "amount_format__currency_symbol": {
             "type": "select",
             "label": "Symbol",
-            "show_if": "$index > 0 && (this.amount_format__category=='currency')",
+            "show_if": "this.amount_format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
@@ -362,7 +361,7 @@
           "amount_format__date_format": {
             "type": "select",
             "label": "Type",
-            "show_if": "$index > 0 && (this.amount_format__category=='date')",
+            "show_if": "this.amount_format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
@@ -391,7 +390,6 @@
           "initial_date_format__date_format": {
             "type": "select",
             "label": "Type",
-            "show_if": "$index > 0",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
