@@ -8,7 +8,7 @@
         "type": "select",
         "label": "Select Position",
         "required": true,
-        "show_if": "$input_table.numOfHeader >= 1",
+        "show_if": "$input_table.numOfHeader >= 1 && $input_table.numOfLabel < 1",
         "options": {
           "add_rows_below_selected_row": {
             "label": "Add rows below"
@@ -32,7 +32,7 @@
       "options.group_column": {
         "type": "select",
         "label": "Group Column",
-        "show_if": "$input_table.numOfHeader >= 1 && options.position=='add_row_after_each_group'",
+        "show_if": "$input_table.numOfHeader >= 1 && $input_table.numOfLabel < 1 && options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -41,7 +41,7 @@
       "options.use_filter": {
         "type": "checkbox",
         "label": "Use Filter",
-        "show_if": "$input_table.numOfHeader >= 1 && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "show_if": "$input_table.numOfHeader >= 1 && $input_table.numOfLabel < 1 && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -51,7 +51,7 @@
       "filter_box": {
         "type": "fieldset",
         "label": "Filter Options",
-        "show_if": "$input_table.numOfHeader >= 1 && options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "show_if": "$input_table.numOfHeader >= 1 && $input_table.numOfLabel < 1 && options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "repeat": false,
         "fields": {
           "options.filter": {
@@ -291,6 +291,7 @@
           "multi_row_functions__function": {
             "type": "select",
             "label": "Select Function",
+            "show_if": "$input_table.numOfLabel >= 1 || ($input_table.numOfHeader >= 1 && $input_table.numOfLabel < 1 && options.use_filter=='false')",
             "required": true,
             "options": {
               "sum": {
@@ -315,12 +316,12 @@
                 "label": "Quota"
               }
             },
-            "val": "$input_table"
+            "val": "sum"
           },
           "multi_row_functions__function_use_filter": {
             "type": "select",
             "label": "Select Function",
-            "show_if": "$input_table.numOfHeader >= 1 && options.use_filter=='true'",
+            "show_if": "$input_table.numOfHeader >= 1 && $input_table.numOfLabel < 1 && options.use_filter=='true'",
             "required": true,
             "options": {
               "sum": {
@@ -347,7 +348,7 @@
           "multi_row_functions__sel_labels": {
             "type": "select",
             "label": "Select Rows(s)",
-            "show_if": "$input_table.numOfHeader < 1 && this.multi_row_functions__function!='quota'",
+            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function!='quota'",
             "required": true,
             "table": "input_table",
             "multiple": true,
@@ -356,7 +357,7 @@
           "multi_row_functions__sel_rows": {
             "type": "select",
             "label": "Select Rows",
-            "show_if": "$input_table.numOfHeader >= 1 && options.use_filter=='false'",
+            "show_if": "$input_table.numOfHeader >= 1 && $input_table.numOfLabel < 1 && options.use_filter=='false'",
             "required": true,
             "options": {
               "row-1": {
@@ -426,7 +427,7 @@
           "multi_row_functions__sel_label_a": {
             "type": "select",
             "label": "Select Label A",
-            "show_if": "$input_table.numOfHeader < 1 && this.multi_row_functions__function=='quota'",
+            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
@@ -434,7 +435,7 @@
           "multi_row_functions__sel_label_b": {
             "type": "select",
             "label": "Select Label B",
-            "show_if": "$input_table.numOfHeader < 1 && this.multi_row_functions__function=='quota'",
+            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS",
@@ -443,7 +444,7 @@
           "position": {
             "type": "select",
             "label": "Position",
-            "show_if": "$input_table.numOfHeader < 1",
+            "show_if": "$input_table.numOfLabel >= 1",
             "required": true,
             "options": {
               "bottom": {
@@ -464,7 +465,7 @@
           "positioning_row": {
             "type": "select",
             "label": "Positioning Row",
-            "show_if": "$input_table.numOfHeader < 1 && (this.position=='above' || this.position=='below')",
+            "show_if": "$input_table.numOfLabel >= 1 && (this.position=='above' || this.position=='below')",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
