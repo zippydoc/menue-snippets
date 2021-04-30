@@ -1,7 +1,7 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Select Options case-8",
+    "label": "Select Options case",
     "repeat": false,
     "fields": {
       "options.position": {
@@ -31,7 +31,7 @@
       "options.group_column": {
         "type": "select",
         "label": "Group Column",
-        "show_if": "$input_table.numOfLabel < 1 && options.position=='add_row_after_each_group'",
+        "show_if": "options.position=='add_row_after_each_group' && $input_table.numOfLabel < 1",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
@@ -50,7 +50,7 @@
       "filter_box": {
         "type": "fieldset",
         "label": "Filter Options",
-        "show_if": "$input_table.numOfLabel < 1 && options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "show_if": "options.use_filter=='true' && $input_table.numOfLabel < 1",
         "repeat": false,
         "fields": {
           "options.filter": {
@@ -328,7 +328,7 @@
           "multi_row_functions__sel_rows": {
             "type": "select",
             "label": "Select Rows",
-            "show_if": "$input_table.numOfLabel < 1 && options.use_filter=='false'",
+            "show_if": "options.use_filter=='false' && $input_table.numOfLabel < 1",
             "required": true,
             "options": {
               "row-1": {
