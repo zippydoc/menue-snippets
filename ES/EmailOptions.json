@@ -1,29 +1,29 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Seleccionar Opciones",
+    "Etiqueta": "Seleccionar Opciones",
     "repeat": false,
     "fields": {
       "options.task_type": {
         "type": "select",
-        "label": "Tipo de Tarea",
+        "Etiqueta": "Tipo de Tarea",
         "required": true,
         "options": {
           "write_series": {
-            "label": "Write e-mail series"
+            "Etiqueta": "Escribir serie de correos electrónicos"
           },
           "write_email": {
-            "label": "Write e-mail"
+            "Etiqueta": "Escribir correo electrónico"
           },
           "read": {
-            "label": "Read e-mails"
+            "Etiqueta": "Leer correos electrónicos"
           }
         },
         "val": "write_email"
       },
       "options.to": {
         "type": "text",
-        "label": "To",
+        "Etiqueta": "Para",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -32,7 +32,7 @@
       },
       "options.cc": {
         "type": "text",
-        "label": "CC",
+        "Etiqueta": "CC",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -41,7 +41,7 @@
       },
       "options.bcc": {
         "type": "text",
-        "label": "BCC",
+        "Etiqueta": "CCO",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -50,16 +50,16 @@
       },
       "options.subject": {
         "type": "text",
-        "label": "Subject",
+        "Etiqueta": "Asunto",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
-        "placeholder": "Subject",
+        "placeholder": "Asunto",
         "width": "100%"
       },
       "options.body": {
         "type": "text",
-        "label": "Body",
+        "Etiqueta": "Cuerpo",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -70,19 +70,19 @@
   },
   "smtp_config_frame": {
     "type": "fieldset",
-    "label": "SMTP Connection",
+    "Etiqueta": "Conexión SMTP",
     "show_if": "options.task_type=='write_series' || options.task_type=='write_email'",
     "repeat": false,
     "fields": {
       "options.smtp.type": {
         "type": "select",
-        "label": "Select SMTP Server",
+        "Etiqueta": "Seleccionar servidor SMTP",
         "options": {
           "gmail": {
-            "label": "Gmail"
+            "Etiqueta": "Gmail"
           },
           "custom": {
-            "label": "Custom (coming soon)"
+            "Etiqueta": "Personalizado (próximamente)"
           }
         },
         "val": "gmail",
@@ -91,7 +91,7 @@
       },
       "gmail_warning": {
         "type": "text",
-        "label": "",
+        "Etiqueta": "",
         "show_if": "options.smtp.type=='gmail'",
         "val": "Turn 'Allow less secure apps' ON in https://myaccount.google.com/lesssecureapps",
         "width": "100%",
@@ -99,38 +99,38 @@
       },
       "options.gmail.user": {
         "type": "text",
-        "label": "Gmail User",
+        "Etiqueta": "Usuario de Gmail",
         "show_if": "options.smtp.type=='gmail'",
         "required": true,
         "placeholder": "sender@gmail.com"
       },
       "options.gmail.password": {
         "type": "password",
-        "label": "Gmail Password",
+        "Etiqueta": "Contraseña de Gmail",
         "show_if": "options.smtp.type=='gmail'",
         "required": true
       },
       "options.custom.host": {
         "type": "text",
-        "label": "SMTP Host",
+        "Etiqueta": "Host SMTP",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.port": {
         "type": "text",
-        "label": "SMTP Port",
+        "Etiqueta": "Puerto SMTP",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.user": {
         "type": "text",
-        "label": "SMTP User",
+        "Etiqueta": "Usuario SMTP",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.password": {
         "type": "password",
-        "label": "SMTP Password",
+        "Etiqueta": "Contraseña SMTP",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       }
