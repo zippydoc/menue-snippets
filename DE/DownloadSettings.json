@@ -1,0 +1,78 @@
+{
+  "output.download_setting": {
+    "type": "checkbox",
+    "Beschriftung": "Einstellungen herunterladen",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false",
+    "style": "margin-top: 10px"
+  },
+  "download_setting_frame": {
+    "type": "fieldset",
+    "Beschriftung": "Einstellungen herunterladen",
+    "show_if": "output.download_setting=='true'",
+    "repeat": false,
+    "fields": {
+      "output.options.location": {
+        "type": "text",
+        "Beschriftung": "Standort angeben",
+        "val": "A1",
+        "breakLine": true
+      },
+      "output.options.formatted_as_table": {
+        "type": "checkbox",
+        "Beschriftung": "Als Tabelle formatiert",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "output.add_tag": {
+        "type": "checkbox",
+        "Beschriftung": "Tag hinzufügen",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "output.tag_name": {
+        "type": "text",
+        "Beschriftung": "Tag Name",
+        "show_if": "output.add_tag=='true'",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 255,
+        "val": "",
+        "breakLine": true,
+        "style": "margin-left: 15px"
+      },
+      "output.options.visibility": {
+        "type": "select",
+        "Beschriftung": "Sichtbarkeit",
+        "val": "current_flow",
+        "options": {
+          "current_flow": {
+            "Beschriftung": "Stromfluss"
+          },
+          "all_flow": {
+            "Beschriftung": "Alle Flows"
+          }
+        },
+        "breakLine": true
+      },
+      "output.options.table_mode": {
+        "type": "select",
+        "Beschriftung": "Einfügen",
+        "val": "content_only",
+        "options": {
+          "content_only": {
+            "Beschriftung": "Nur Inhalt"
+          },
+          "fully_formatted": {
+            "Beschriftung": "Vollständig formatiert"
+          }
+        }
+      }
+    },
+    "breakLine": true
+  }
+}
