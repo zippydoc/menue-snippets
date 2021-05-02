@@ -1,28 +1,28 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Seleccionar Opciones",
+    "Etiqueta": "Seleccionar Opciones",
     "repeat": false,
     "fields": {
       "options.position": {
         "type": "select",
-        "label": "Seleccionar Posición",
+        "Etiqueta": "Seleccionar Posición",
         "required": true,
         "options": {
           "add_rows_below_selected_row": {
-            "label": “Agregar fila debajo de las filas seleccionadas”
+            "Etiqueta": "Agregar fila debajo de las filas seleccionadas"
           },
           "add_rows_above_selected_row": {
-            "label": “Agregar fila arriba de las filas seleccionadas”
+            "Etiqueta": "Agregar fila arriba de las filas seleccionadas"
           },
           "add_rows_at_table_end": {
-            "label": "Agregar filas al final de la tabla"
+            "Etiqueta": "Agregar filas al final de la tabla"
           },
           "add_single_row_at_table_end": {
-            "label": "Agregar una fila al final de la tabla"
+            "Etiqueta": "Agregar una fila al final de la tabla"
           },
           "add_row_after_each_group": {
-            "label": "Agregar fila después de cada grupo"
+            "Etiqueta": "Agregar fila después de cada grupo"
           }
         },
         "val": "add_rows_below_selected_row",
@@ -30,7 +30,7 @@
       },
       "options.group_column": {
         "type": "select",
-        "label": "Columna del Grupo",
+        "Etiqueta": "Columna del Grupo",
         "show_if": "options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -39,15 +39,15 @@
       },
       "options.use_filter": {
         "type": "select",
-        "label": "Seleccionar Tipo",
+        "Etiqueta": "Seleccionar Tipo",
         "show_if": "options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end'",
         "required": true,
         "options": {
           "false": {
-            "label": "Add one row for each table row"
+            "Etiqueta": "Añadir una fila por cada fila de la tabla"
           },
           "true": {
-            "label": "Add one row for each specified row"
+            "Etiqueta": "Añadir una fila por cada fila especificada"
           }
         },
         "val": "false",
@@ -55,170 +55,170 @@
       },
       "filter_box": {
         "type": "fieldset",
-        "label": "Opciones del Filtro",
+        "Etiqueta": "Opciones del Filtro",
         "show_if": "options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "repeat": false,
         "fields": {
           "options.filter": {
             "type": "fieldset",
-            "label": "Agregar Condiciones del Filtro",
+            "Etiqueta": "Agregar Condiciones del Filtro",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Seleccionar Operador Lógico",
+                "Etiqueta": "Seleccionar Operador Lógico",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
                   "if": {
-                    "label": "SI"
+                    "Etiqueta": "SI"
                   },
                   "if_not": {
-                    "label": "SI NO"
+                    "Etiqueta": "SI NO"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "Seleccionar Operador Lógico",
+                "Etiqueta": "Seleccionar Operador Lógico",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
                   "and": {
-                    "label": "AND"
+                    "Etiqueta": "AND"
                   },
                   "or": {
-                    "label": "OR"
+                    "Etiqueta": "OR"
                   },
                   "and_not": {
-                    "label": "AND NOT"
+                    "Etiqueta": "AND NOT"
                   },
                   "or_not": {
-                    "label": "OR NOT"
+                    "Etiqueta": "OR NOT"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": “Seleccionar Columna”,
+                "Etiqueta": "Seleccionar Columna",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Seleccionar Operador",
+                "Etiqueta": "Seleccionar Operador",
                 "required": true,
                 "options": {
                   "CONTIENE": {
-                    "label": "CONTIENE"
+                    "Etiqueta": "CONTIENE"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "CONTENIDO EN"
+                    "Etiqueta": "CONTENIDO EN"
                   },
-                  “EMPEZAR CON”: {
-                    "label": “EMPEZAR CON”
+                  "EMPEZAR CON": {
+                    "Etiqueta": "EMPEZAR CON"
                   },
-                  "TERMINA CON”: {
-                    "label": "TERMINA CON”
+                  "TERMINA CON": {
+                    "Etiqueta": "TERMINA CON"
                   },
                   "=": {
-                    "label": "IGUAL"
+                    "Etiqueta": "IGUAL"
                   },
                   ">": {
-                    "label": "MAYOR QUE"
+                    "Etiqueta": "MAYOR QUE"
                   },
                   ">=": {
-                    "label": "MAYOR O IGUAL"
+                    "Etiqueta": "MAYOR O IGUAL"
                   },
                   "<": {
-                    "label": "MENOR QUE"
+                    "Etiqueta": "MENOR QUE"
                   },
                   "<=": {
-                    "label": "MENOR O IGUAL"
+                    "Etiqueta": "MENOR O IGUAL"
                   },
                   "EMPTY": {
-                    "label": "ESTÁ VACÍO"
+                    "Etiqueta": "ESTÁ VACÍO"
                   },
                   "BLANK": {
-                    "label": "ESTÁ EN BLANCO"
+                    "Etiqueta": "ESTÁ EN BLANCO"
                   },
                   "IS NULL": {
-                    "label": "IS NULL"
+                    "Etiqueta": "IS NULL"
                   },
                   "COINCIDENCIA CON LA EXPRESIÓN REGULAR": {
-                    "label": "COINCIDENCIA CON LA EXPRESIÓN REGULAR"
+                    "Etiqueta": "COINCIDENCIA CON LA EXPRESIÓN REGULAR"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "EN TABLA"
+                    "Etiqueta": "EN TABLA"
                   },
                   "EN LA TABLA DE LAS EXPRESIONES REGULARES": {
-                    "label": "EN LA TABLA DE LAS EXPRESIONES REGULARES"
+                    "Etiqueta": "EN LA TABLA DE LAS EXPRESIONES REGULARES"
                   },
                   "FECHA": {
-                    "label": "FECHA"
+                    "Etiqueta": "FECHA"
                   }
                 },
                 "val": "CONTIENE"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Seleccionar Operador de la Fecha",
+                "Etiqueta": "Seleccionar Operador de la Fecha",
                 "required": true,
                 "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "PREVIO"
+                    "Etiqueta": "PREVIO"
                   },
                   "<=": {
-                    "label": "PREVIO O IGUAL"
+                    "Etiqueta": "PREVIO O IGUAL"
                   },
                   "=": {
-                    "label": "IGUAL"
+                    "Etiqueta": "IGUAL"
                   },
                   ">": {
-                    "label": "DESPUÉS"
+                    "Etiqueta": "DESPUÉS"
                   },
                   ">=": {
-                    "label": "DESPUÉS O IGUAL"
+                    "Etiqueta": "DESPUÉS O IGUAL"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Seleccionar Sensible a Mayúsculas y Minúsculas",
+                "Etiqueta": "Seleccionar Sensible a Mayúsculas y Minúsculas",
                 "required": true,
                 "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "Sensible a Mayúsculas y Minúsculas"
+                    "Etiqueta": "Sensible a Mayúsculas y Minúsculas"
                   },
                   "no": {
-                    "label": "Insensible a Mayúsculas y Minúsculas"
+                    "Etiqueta": "Insensible a Mayúsculas y Minúsculas"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Seleccionar Fecha",
+                "Etiqueta": "Seleccionar Fecha",
                 "show_if": "this.condition=='DATE'",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Ingresar Valor",
+                "Etiqueta": "Ingresar Valor",
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Seleccionar Tabla",
+                "Etiqueta": "Seleccionar Tabla",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -226,7 +226,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": “Seleccionar Columna”,
+                "Etiqueta": "Seleccionar Columna",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -234,14 +234,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "Borrar",
+                "Etiqueta": "Borrar",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.apply_to_record": {
             "type": "checkbox",
-            "label": "Aplicar al Registro",
+            "Etiqueta": "Aplicar al Registro",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -250,13 +250,13 @@
           },
           "apply_to_group_box": {
             "type": "fieldset",
-            "label": "Aplicar al Grupo",
+            "Etiqueta": "Aplicar al Grupo",
             "show_if": "options.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
                 "type": "select",
-                "label": "Seleccionar Columnas del Grupo",
+                "Etiqueta": "Seleccionar Columnas del Grupo",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
@@ -270,101 +270,101 @@
       },
       "options.target_cells": {
         "type": "fieldset",
-        "label": "Define added Row(s)",
+        "Etiqueta": "Definir la(s) fila(s) añadida(s)",
         "repeat": true,
         "fields": {
           "column": {
             "type": "select",
-            "label": “Seleccionar Columna”,
+            "Etiqueta": "Seleccionar Columna",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
           "formula_type": {
             "type": "select",
-            "label": "Tipo de Fórmula",
+            "Etiqueta": "Tipo de Fórmula",
             "required": true,
             "options": {
               "copy_selected": {
-                "label": “Copia Seleccionada”
+                "Etiqueta": "Copia Seleccionada"
               },
               "static_value": {
-                "label": "Valor Estático"
+                "Etiqueta": "Valor Estático"
               },
               "numeric_formula": {
-                "label": "Formula Numérica"
+                "Etiqueta": "Formula Numérica"
               },
               "text_formula": {
-                "label": "Formula del Texto"
+                "Etiqueta": "Formula del Texto"
               }
             },
             "val": "copy_selected"
           },
           "static_value": {
             "type": "text",
-            "label": "Valor",
+            "Etiqueta": "Valor",
             "show_if": "this.formula_type=='static_value'",
             "val": ""
           },
           "numeric_formula": {
             "type": "text",
-            "label": "Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
+            "Etiqueta": "Fórmula, por ejemplo, [Columna1] + 2 * ([Fila-1:Columna3] - [Columna1])",
             "show_if": "this.formula_type=='numeric_formula'",
             "val": "",
             "style": "width: 100%"
           },
           "rounding": {
             "type": "select",
-            "label": "Redondeo",
+            "Etiqueta": "Redondeo",
             "show_if": "this.formula_type=='numeric_formula'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Redondeo de números"
+                "Etiqueta": "Redondeo de números"
               },
               "0": {
-                "label": "0 dígitos"
+                "Etiqueta": "0 dígitos"
               },
               "1": {
-                "label": "1 dígitos"
+                "Etiqueta": "1 dígitos"
               },
               "2": {
-                "label": "2 dígitos"
+                "Etiqueta": "2 dígitos"
               },
               "3": {
-                "label": "3 dígitos"
+                "Etiqueta": "3 dígitos"
               },
               "4": {
-                "label": "4 dígitos"
+                "Etiqueta": "4 dígitos"
               },
               "5": {
-                "label": "5 dígitos"
+                "Etiqueta": "5 dígitos"
               },
               "6": {
-                "label": "6 dígitos"
+                "Etiqueta": "6 dígitos"
               },
               "7": {
-                "label": "7 dígitos"
+                "Etiqueta": "7 dígitos"
               },
               "8": {
-                "label": "8 dígitos"
+                "Etiqueta": "8 dígitos"
               },
               "9": {
-                "label": "9 dígitos"
+                "Etiqueta": "9 dígitos"
               }
             },
             "val": "no_rounding"
           },
           "text_formula": {
             "type": "text",
-            "label": "Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
+            "Etiqueta": "Fórmula, por ejemplo, [firstName] + ' + [lastName] + ' ' + [Row-1:Column3]",
             "show_if": "this.formula_type=='text_formula'",
             "val": "",
             "style": "width: 100%"
           },
           "use_multi_row": {
             "type": "checkbox",
-            "label": "Opciones de Múltiples Filas",
+            "Etiqueta": "Opciones de Múltiples Filas",
             "show_if": "options.position!='add_row_after_each_group' && (this.formula_type=='numeric_formula' || this.formula_type=='text_formula')",
             "val": "false",
             "isOn": "true",
@@ -372,15 +372,15 @@
           },
           "if_row_not_exist": {
             "type": "select",
-            "label": "Si la fila referida no existe",
+            "Etiqueta": "Si la fila referida no existe",
             "show_if": "options.position!='add_row_after_each_group' && this.use_multi_row=='true' && (this.formula_type=='numeric_formula' || this.formula_type=='text_formula')",
             "required": true,
             "options": {
               "empty": {
-                "label": "Vacío o 0"
+                "Etiqueta": "Vacío o 0"
               },
               "closest": {
-                "label": "Valor Más Cercano de la Fila"
+                "Etiqueta": "Valor Más Cercano de la Fila"
               }
             },
             "val": "empty",
@@ -388,7 +388,7 @@
           },
           "delete": {
             "type": "button",
-            "label": "Borrar",
+            "Etiqueta": "Borrar",
             "function": "DELETE_ROW"
           }
         },
@@ -396,7 +396,7 @@
       },
       "options.set_date_column": {
         "type": "checkbox",
-        "label": "Apply time-shift to a selected date column",
+        "Etiqueta": "Aplicar el cambio de hora a una columna de fecha seleccionada",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -405,7 +405,7 @@
       },
       "options.date_column": {
         "type": "select",
-        "label": “Seleccionar Columna de la Fecha”,
+        "Etiqueta": "Seleccionar Columna de la Fecha",
         "show_if": "options.set_date_column=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -413,27 +413,27 @@
       },
       "options.period_shift.number": {
         "type": "text",
-        "label": "Cambio de Período",
+        "Etiqueta": "Cambio de Período",
         "show_if": "options.set_date_column=='true'",
         "required": true,
         "val": "0"
       },
       "options.period_shift.period": {
         "type": "select",
-        "label": "Seleccionar Período",
+        "Etiqueta": "Seleccionar Período",
         "show_if": "options.set_date_column=='true'",
         "options": {
           "day": {
-            "label": "Días"
+            "Etiqueta": "Días"
           },
           "week": {
-            "label": "Semanas"
+            "Etiqueta": "Semanas"
           },
           "month": {
-            "label": "Meses"
+            "Etiqueta": "Meses"
           },
           "year": {
-            "label": "Años"
+            "Etiqueta": "Años"
           }
         },
         "val": "month"
