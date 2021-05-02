@@ -1,18 +1,18 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Optionen auswählen",
+    "Beschriftung": "Optionen auswählen",
     "repeat": false,
     "fields": {
       "options.from": {
         "type": "select",
-        "label": "Datenquelle",
+        "Beschriftung": "Datenquelle",
         "options": {
           "web": {
-            "label": "Importieren von Webservice"
+            "Beschriftung": "Importieren von Webservice"
           },
           "database": {
-            "label": "Importieren aus Datenbank"
+            "Beschriftung": "Importieren aus Datenbank"
           }
         },
         "val": "web",
@@ -21,25 +21,25 @@
       },
       "postgresql_db_credential_box": {
         "type": "fieldset",
-        "label": "Anmeldeinformationen für die Datenbankverbindung",
+        "Beschriftung": "Anmeldeinformationen für die Datenbankverbindung",
         "show_if": "options.from=='database'",
         "repeat": false,
         "fields": {
           "options.dbms": {
             "type": "select",
-            "label": "DBMS auswählen",
+            "Beschriftung": "DBMS auswählen",
             "options": {
               "postgresql": {
-                "label": "PostgreSQL"
+                "Beschriftung": "PostgreSQL"
               },
               "mysql": {
-                "label": "MySQL (Demnächst...)"
+                "Beschriftung": "MySQL (Demnächst...)"
               },
               "sql_server": {
-                "label": "MS SQL Server (Demnächst...)"
+                "Beschriftung": "MS SQL Server (Demnächst...)"
               },
               "oracle": {
-                "label": "Oracle (Demnächst verfügbar...)"
+                "Beschriftung": "Oracle (Demnächst verfügbar...)"
               }
             },
             "val": "postgresql",
@@ -48,7 +48,7 @@
           },
           "options.postgresql_credential.user": {
             "type": "text",
-            "label": "Benutzer",
+            "Beschriftung": "Benutzer",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -56,7 +56,7 @@
           },
           "options.postgresql_credential.password": {
             "type": "text",
-            "label": "Kennwort",
+            "Beschriftung": "Kennwort",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -64,7 +64,7 @@
           },
           "options.postgresql_credential.host": {
             "type": "text",
-            "label": "Host",
+            "Beschriftung": "Host",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -72,7 +72,7 @@
           },
           "options.postgresql_credential.database": {
             "type": "text",
-            "label": "Datenbank",
+            "Beschriftung": "Datenbank",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -82,7 +82,7 @@
       },
       "options.schema_name_to_import": {
         "type": "text",
-        "label": "Schemaname, der die zu importierende Tabelle enthält",
+        "Beschriftung": "Schemaname, der die zu importierende Tabelle enthält",
         "show_if": "options.from=='database' && options.dbms=='postgresql'",
         "required": true,
         "val": "public",
@@ -91,7 +91,7 @@
       },
       "options.table_name_to_import": {
         "type": "text",
-        "label": "Zu importierender Tabellenname",
+        "Beschriftung": "Zu importierender Tabellenname",
         "show_if": "options.from=='database' && options.dbms=='postgresql'",
         "required": true,
         "width": "100%",
@@ -99,20 +99,20 @@
       },
       "options.webservice": {
         "type": "select",
-        "label": "Webservice auswählen",
+        "Beschriftung": "Webservice auswählen",
         "show_if": "options.from=='web'",
         "options": {
           "github": {
-            "label": "Github"
+            "Beschriftung": "Github"
           },
           "ms_one_drive": {
-            "label": "Microsoft OneDrive"
+            "Beschriftung": "Microsoft OneDrive"
           },
           "dropbox": {
-            "label": "Dropbox"
+            "Beschriftung": "Dropbox"
           },
           "google_drive": {
-            "label": "Google Drive (Coming soon)"
+            "Beschriftung": "Google Drive (Demnächst)"
           }
         },
         "val": "github",
@@ -121,20 +121,20 @@
       },
       "options.output_format": {
         "type": "select",
-        "label": "Typ auswählen",
+        "Beschriftung": "Typ auswählen",
         "show_if": "options.from=='web'",
         "options": {
           "csv_table": {
-            "label": "CSV-Tabelle"
+            "Beschriftung": "CSV-Tabelle"
           },
           "line_by_line": {
-            "label": "Zeile für Zeile"
+            "Beschriftung": "Zeile für Zeile"
           },
           "word_by_word": {
-            "label": "Wort für Wort"
+            "Beschriftung": "Wort für Wort"
           },
           "file_list": {
-            "label": "Dateiliste"
+            "Beschriftung": "Dateiliste"
           }
         },
         "val": "csv_table",
@@ -142,11 +142,11 @@
       },
       "options.word_pattern_type": {
         "type": "select",
-        "label": "Wort-Muster",
+        "Beschriftung": "Wort-Muster",
         "show_if": "options.from=='web' && options.output_format=='word_by_word' && options.specify_word_pattern=='true'",
         "options": {
           "regex": {
-            "label": "Regulärer Ausdruck"
+            "Beschriftung": "Regulärer Ausdruck"
           }
         },
         "val": "regex",
@@ -154,7 +154,7 @@
       },
       "options.word_pattern_regex": {
         "type": "text",
-        "label": "Regulärer Ausdruck",
+        "Beschriftung": "Regulärer Ausdruck",
         "show_if": "options.from=='web' && options.output_format=='word_by_word' && options.specify_word_pattern=='true' && options.word_pattern_type=='regex'",
         "required": true,
         "val": "[a-z][1-9]",
@@ -162,7 +162,7 @@
       },
       "options.column_setting": {
         "type": "checkbox",
-        "label": "Column Settings",
+        "Beschriftung": "Spalteneinstellungen",
         "show_if": "options.from=='web' && options.output_format!='file_list'",
         "val": "false",
         "isOn": "true",
@@ -171,13 +171,13 @@
       },
       "column_setting_frame": {
         "type": "fieldset",
-        "label": "Column Settings",
+        "Beschriftung": "Spalteneinstellungen",
         "show_if": "options.from=='web' && options.output_format!='file_list' && options.column_setting=='true'",
         "repeat": false,
         "fields": {
           "options.add_row_column": {
             "type": "checkbox",
-            "label": "Spalte "Zeile hinzufügen"",
+            "Beschriftung": "Spalte "Zeile hinzufügen"",
             "show_if": "options.from=='web' && options.output_format=='word_by_word'",
             "val": "true",
             "isOn": "true",
@@ -186,7 +186,7 @@
           },
           "options.add_word_count_column": {
             "type": "checkbox",
-            "label": "Add 'Word Count' Column",
+            "Beschriftung": "Spalte 'Wortanzahl' hinzufügen",
             "show_if": "options.from=='web' && options.output_format=='word_by_word'",
             "val": "false",
             "isOn": "true",
@@ -195,7 +195,7 @@
           },
           "options.add_word_nonword_column": {
             "type": "checkbox",
-            "label": "Add 'Word & Non-Word' Column",
+            "Beschriftung": "Spalte 'Wort & Nicht-Wort' hinzufügen",
             "show_if": "options.from=='web' && options.output_format=='word_by_word'",
             "val": "false",
             "isOn": "true",
@@ -204,7 +204,7 @@
           },
           "options.add_section_column": {
             "type": "checkbox",
-            "label": "Abschnittsspalte hinzufügen",
+            "Beschriftung": "Abschnittsspalte hinzufügen",
             "show_if": "options.from=='web' && options.output_format=='word_by_word'",
             "val": "true",
             "isOn": "true",
@@ -213,13 +213,13 @@
           },
           "section_column_types_frame": {
             "type": "fieldset",
-            "label": "Section Column Types",
+            "Beschriftung": "Abschnitt Spaltentypen",
             "show_if": "options.from=='web' && options.output_format=='word_by_word' && options.add_section_column=='true'",
             "repeat": false,
             "fields": {
               "options.section_columns.add_paragraph_section_column": {
                 "type": "checkbox",
-                "label": "Absatz",
+                "Beschriftung": "Absatz",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false",
@@ -227,14 +227,14 @@
               },
               "options.section_columns.add_custom_section_column": {
                 "type": "checkbox",
-                "label": "Benutzerdefiniertes Abschnittsbegrenzungszeichen",
+                "Beschriftung": "Benutzerdefiniertes Abschnittsbegrenzungszeichen",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
               },
               "options.section_columns.custom_delimiter": {
                 "type": "text",
-                "label": "Begrenzer(1 Zeichen)",
+                "Beschriftung": "Begrenzer(1 Zeichen)",
                 "show_if": "options.section_columns.add_custom_section_column=='true'",
                 "maxLength": 1,
                 "required": true,
@@ -242,24 +242,24 @@
               },
               "options.section_columns.add_brackets_punctuation_section_column": {
                 "type": "checkbox",
-                "label": "Klammern und Interpunktion",
+                "Beschriftung": "Klammern und Interpunktion",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
               },
               "options.section_columns.brackets_punctuation_section_column_type": {
                 "type": "select",
-                "label": "Brackets Type",
+                "Beschriftung": "Klammertyp",
                 "show_if": "options.section_columns.add_brackets_punctuation_section_column=='true'",
                 "options": {
                   "nesting_structure": {
-                    "label": "Nesting Structure"
+                    "Beschriftung": "Verschachtelte Struktur"
                   },
                   "inner_bracket": {
-                    "label": "Inner Bracket"
+                    "Beschriftung": "Innere Klammer"
                   },
                   "show_all": {
-                    "label": "Alles anzeigen"
+                    "Beschriftung": "Alles anzeigen"
                   }
                 },
                 "val": "nesting_structure",
@@ -270,7 +270,7 @@
           },
           "options.add_filename_column": {
             "type": "checkbox",
-            "label": "Spalte für Dateinamen hinzufügen",
+            "Beschriftung": "Spalte für Dateinamen hinzufügen",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -281,7 +281,7 @@
       },
       "options.is_cloud_dir": {
         "type": "checkbox",
-        "label": "Verzeichnis importieren",
+        "Beschriftung": "Verzeichnis importieren",
         "show_if": "options.from=='web' && options.output_format!='file_list'",
         "val": "false",
         "isOn": "true",
@@ -291,7 +291,7 @@
       },
       "options.use_filename_as_output_table_name": {
         "type": "checkbox",
-        "label": "Dateiname als Tabellenname verwenden",
+        "Beschriftung": "Dateiname als Tabellenname verwenden",
         "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "val": "false",
         "isOn": "true",
@@ -300,22 +300,22 @@
       },
       "options.unify_in_one_table": {
         "type": "checkbox",
-        "label": "Vereinheitlichen in einer Tabelle",
+        "Beschriftung": "Vereinheitlichen in einer Tabelle",
         "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='true'",
-        "val": "false",
+        "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
       "options.suffix": {
         "type": "select",
-        "label": "Suffix",
+        "Beschriftung": "Suffix",
         "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='true' && options.unify_in_one_table=='false'",
         "options": {
           "number": {
-            "label": "Nummer"
+            "Beschriftung": "Nummer"
           },
           "filename": {
-            "label": "Dateiname"
+            "Beschriftung": "Dateiname"
           }
         },
         "val": "number",
@@ -324,7 +324,7 @@
       },
       "options.is_github_private": {
         "type": "checkbox",
-        "label": "Repository ist privat",
+        "Beschriftung": "Repository ist privat",
         "show_if": "options.from=='web' && options.webservice=='github'",
         "val": "false",
         "isOn": "true",
@@ -333,16 +333,16 @@
       },
       "options.include_subdir": {
         "type": "checkbox",
-        "label": "Unterverzeichnisse einbeziehen",
+        "Beschriftung": "Unterverzeichnisse einbeziehen",
         "show_if": "options.from=='web' && options.output_format=='file_list'",
-        "val": "true",
+        "val": "false",
         "isOn": "true",
         "isOff": "false",
         "breakLine": true
       },
       "options.file_list.add_change_date_column": {
         "type": "checkbox",
-        "label": "Spalte "Änderungsdatum hinzufügen"",
+        "Beschriftung": "Spalte "Änderungsdatum hinzufügen"",
         "show_if": "options.from=='web' && options.output_format=='file_list'",
         "val": "false",
         "isOn": "true",
@@ -351,7 +351,7 @@
       },
       "options.github_token": {
         "type": "text",
-        "label": "das persönliche Github-Zugangs-Token angeben",
+        "Beschriftung": "das persönliche Github-Zugangs-Token angeben",
         "show_if": "options.from=='web' && options.webservice=='github' && options.is_github_private=='true'",
         "required": true,
         "width": "100%",
@@ -359,7 +359,7 @@
       },
       "options.link_directory": {
         "type": "text",
-        "label": "Link eingeben z. B. https://github.com/zippydoc/test",
+        "Beschriftung": "Link eingeben z. B. https://github.com/zippydoc/test",
         "show_if": "options.from=='web' && options.webservice=='github' && options.output_format!='file_list' && options.is_cloud_dir=='true'",
         "required": true,
         "width": "100%",
@@ -367,7 +367,7 @@
       },
       "options.link_directory_4_file_list": {
         "type": "text",
-        "label": "Link eingeben z. B. https://github.com/zippydoc/test",
+        "Beschriftung": "Link eingeben z. B. https://github.com/zippydoc/test",
         "show_if": "options.from=='web' && options.webservice=='github' && options.output_format=='file_list'",
         "required": true,
         "width": "100%",
@@ -375,7 +375,7 @@
       },
       "options.link_file": {
         "type": "text",
-        "label": "Link eingeben z. B. https://github.com/zippydoc/test/blob/main/example.csv",
+        "Beschriftung": "Link eingeben z. B. https://github.com/zippydoc/test/blob/main/example.csv",
         "show_if": "options.from=='web' && options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format=='csv_table'",
         "required": true,
         "width": "100%",
@@ -383,7 +383,7 @@
       },
       "options.link_text_file": {
         "type": "text",
-        "label": "Enter link e.g. https://github.com/zippydoc/test/blob/main/example.txt(json, csv, etc)",
+        "Beschriftung": "Link eingeben z.B. https://github.com/zippydoc/test/blob/main/example.txt(json, csv, etc)",
         "show_if": "options.from=='web' && options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format!='csv_table' && options.output_format!='file_list'",
         "required": true,
         "width": "100%",
@@ -391,7 +391,7 @@
       },
       "options.one_drive.access_token": {
         "type": "text",
-        "label": "OAuth Access Token",
+        "Beschriftung": "OAuth-Zugriffstoken",
         "show_if": "options.from=='web' && options.webservice=='ms_one_drive' && options.is_cloud_dir=='false'",
         "required": true,
         "width": "100%",
@@ -399,7 +399,7 @@
       },
       "options.one_drive.file_path": {
         "type": "text",
-        "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
+        "Beschriftung": "Pfad zur Datei eingeben, z. B. ZippyDoc/Subdir1/test.txt",
         "show_if": "options.from=='web' && options.webservice=='ms_one_drive' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "required": true,
         "width": "100%",
@@ -407,14 +407,14 @@
       },
       "options.one_drive.dir_path": {
         "type": "text",
-        "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
+        "Beschriftung": "Pfad zum Verzeichnis eingeben, z. B. ZippyDoc/Subdir1",
         "show_if": "options.from=='web' && options.webservice=='ms_one_drive' && (options.output_format=='file_list' || options.is_cloud_dir=='true')",
         "width": "100%",
         "breakLine": true
       },
       "options.dropbox.auth_code": {
         "type": "text",
-        "label": "Dropbox Authorization Code",
+        "Beschriftung": "Dropbox-Autorisierungscode",
         "show_if": "options.from=='web' && options.webservice=='dropbox' && options.is_cloud_dir=='false'",
         "required": true,
         "width": "100%",
@@ -422,7 +422,7 @@
       },
       "options.dropbox.file_path": {
         "type": "text",
-        "label": "Enter path to file e.g. ZippyDoc/Subdir1/test.txt",
+        "Beschriftung": "Pfad zur Datei eingeben, z. B. ZippyDoc/Subdir1/test.txt",
         "show_if": "options.from=='web' && options.webservice=='dropbox' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "required": true,
         "width": "100%",
@@ -430,35 +430,35 @@
       },
       "options.dropbox.dir_path": {
         "type": "text",
-        "label": "Enter path to dir e.g. ZippyDoc/Subdir1",
+        "Beschriftung": "Pfad zum Verzeichnis eingeben, z. B. ZippyDoc/Subdir1",
         "show_if": "options.from=='web' && options.webservice=='dropbox' && (options.output_format=='file_list' || options.is_cloud_dir=='true')",
         "width": "100%",
         "breakLine": true
       },
       "dir_filter_frame": {
         "type": "fieldset",
-        "label": "Filtern der Dateien im Verzeichnis",
+        "Beschriftung": "Filtern der Dateien im Verzeichnis",
         "show_if": "options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='true'",
         "repeat": false,
         "fields": {
           "options.dir_filter.filter_type": {
             "type": "select",
-            "label": "Filter Typ",
+            "Beschriftung": "Filter Typ",
             "options": {
               "all": {
-                "label": "Alle"
+                "Beschriftung": "Alle"
               },
               "contains": {
-                "label": "Enthält"
+                "Beschriftung": "Enthält"
               },
               "starts_with": {
-                "label": "Beginnt mit"
+                "Beschriftung": "Beginnt mit"
               },
               "ends_with": {
-                "label": "Endet mit"
+                "Beschriftung": "Endet mit"
               },
               "regex": {
-                "label": "Regulärer Ausdruck"
+                "Beschriftung": "Regulärer Ausdruck"
               }
             },
             "val": "all",
@@ -466,7 +466,7 @@
           },
           "options.dir_filter.filter_string": {
             "type": "text",
-            "label": "Zeichenfolge eingeben",
+            "Beschriftung": "Zeichenfolge eingeben",
             "show_if": "options.dir_filter.filter_type!='all'",
             "required": true,
             "width": "100%"
