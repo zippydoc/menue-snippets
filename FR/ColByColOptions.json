@@ -1,29 +1,29 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Sélectionner les options",
+    "Étiquette": "Sélectionner les options",
     "repeat": false,
     "fields": {
       "options.position": {
         "type": "select",
-        "label": "Sélectionner une position",
+        "Étiquette": "Sélectionner une position",
         "required": true,
         "show_if": "table_type=='header_only'",
         "options": {
           "add_rows_below_selected_row": {
-            "label": "Ajouter des lignes ci-dessous"
+            "Étiquette": "Ajouter des lignes ci-dessous"
           },
           "add_rows_above_selected_row": {
-            "label": "Ajouter des lignes au-dessus"
+            "Étiquette": "Ajouter des lignes au-dessus"
           },
           "add_rows_at_table_end": {
-            "label": "Ajouter des lignes à la fin du tableau"
+            "Étiquette": "Ajouter des lignes à la fin du tableau"
           },
           "add_single_row_at_table_end": {
-            "label": "Ajouter une seule ligne à la fin du tableau"
+            "Étiquette": "Ajouter une seule ligne à la fin du tableau"
           },
           "add_row_after_each_group": {
-            "label": "Ajouter une ligne après chaque groupe"
+            "Étiquette": "Ajouter une ligne après chaque groupe"
           }
         },
         "val": "add_rows_below_selected_row",
@@ -31,7 +31,7 @@
       },
       "options.group_column": {
         "type": "select",
-        "label": "Colonne de groupe",
+        "Étiquette": "Colonne de groupe",
         "show_if": "table_type=='header_only' && options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -40,7 +40,7 @@
       },
       "options.use_filter": {
         "type": "checkbox",
-        "label": "Utiliser un filtre",
+        "Étiquette": "Utiliser un filtre",
         "show_if": "table_type=='header_only' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "val": "false",
         "isOn": "true",
@@ -50,170 +50,170 @@
       },
       "filter_box": {
         "type": "fieldset",
-        "label": "Options de filtrage",
+        "Étiquette": "Options de filtrage",
         "show_if": "table_type=='header_only' && options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "repeat": false,
         "fields": {
           "options.filter": {
             "type": "fieldset",
-            "label": "Ajouter des filtres",
+            "Étiquette": "Ajouter des filtres",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Sélectionner l'opérateur logique",
+                "Étiquette": "Sélectionner l'opérateur logique",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
                   "if": {
-                    "label": "SI"
+                    "Étiquette": "SI"
                   },
                   "if_not": {
-                    "label": "SINON"
+                    "Étiquette": "SINON"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "Sélectionner l'opérateur logique",
+                "Étiquette": "Sélectionner l'opérateur logique",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
                   "and": {
-                    "label": "ET"
+                    "Étiquette": "ET"
                   },
                   "or": {
-                    "label": "OU"
+                    "Étiquette": "OU"
                   },
                   "and_not": {
-                    "label": "ET NON"
+                    "Étiquette": "ET NON"
                   },
                   "or_not": {
-                    "label": "OU NON"
+                    "Étiquette": "OU NON"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": "Sélectionner une colonne",
+                "Étiquette": "Sélectionner une colonne",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Sélectionner un opérateur",
+                "Étiquette": "Sélectionner un opérateur",
                 "required": true,
                 "options": {
                   "CONTIENT": {
-                    "label": "CONTIENT"
+                    "Étiquette": "CONTIENT"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "CONTENU DANS"
+                    "Étiquette": "CONTENU DANS"
                   },
                   "COMMENCE AVEC": {
-                    "label": "COMMENCE AVEC"
+                    "Étiquette": "COMMENCE AVEC"
                   },
                   "SE TERMINE PAR": {
-                    "label": "SE TERMINE PAR"
+                    "Étiquette": "SE TERMINE PAR"
                   },
                   "=": {
-                    "label": "ÉGAL"
+                    "Étiquette": "ÉGAL"
                   },
                   ">": {
-                    "label": "SUPÉRIEUR À"
+                    "Étiquette": "SUPÉRIEUR À"
                   },
                   ">=": {
-                    "label": "SUPÉRIEUR OU ÉGAL"
+                    "Étiquette": "SUPÉRIEUR OU ÉGAL"
                   },
                   "<": {
-                    "label": "INFÉRIEUR À"
+                    "Étiquette": "INFÉRIEUR À"
                   },
                   "<=": {
-                    "label": "INFÉRIEUR OU ÉGAL"
+                    "Étiquette": "INFÉRIEUR OU ÉGAL"
                   },
                   "EMPTY": {
-                    "label": "EST VIDE"
+                    "Étiquette": "EST VIDE"
                   },
                   "BLANK": {
-                    "label": "EST BLANC"
+                    "Étiquette": "EST BLANC"
                   },
                   "EST NUL": {
-                    "label": "EST NUL"
+                    "Étiquette": "EST NUL"
                   },
                   "CORRESPONDANCE EXPRESSION RÉGULIÈRE": {
-                    "label": "CORRESPONDANCE EXPRESSION RÉGULIÈRE"
+                    "Étiquette": "CORRESPONDANCE EXPRESSION RÉGULIÈRE"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "EN TABLE"
+                    "Étiquette": "EN TABLE"
                   },
                   "DANS LE TABLEAU D'EXPRESSIONS RÉGULIÈRES": {
-                    "label": "DANS LE TABLEAU D'EXPRESSIONS RÉGULIÈRES"
+                    "Étiquette": "DANS LE TABLEAU D'EXPRESSIONS RÉGULIÈRES"
                   },
                   "DATE": {
-                    "label": "DATE"
+                    "Étiquette": "DATE"
                   }
                 },
                 "val": "CONTIENT"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Sélectionner l'opérateur de date",
+                "Étiquette": "Sélectionner l'opérateur de date",
                 "required": true,
                 "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "AVANT"
+                    "Étiquette": "AVANT"
                   },
                   "<=": {
-                    "label": "AVANT OU ÉGAL"
+                    "Étiquette": "AVANT OU ÉGAL"
                   },
                   "=": {
-                    "label": "ÉGAL"
+                    "Étiquette": "ÉGAL"
                   },
                   ">": {
-                    "label": "APRÈS"
+                    "Étiquette": "APRÈS"
                   },
                   ">=": {
-                    "label": "APRÈS OU ÉGAL"
+                    "Étiquette": "APRÈS OU ÉGAL"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Sélectionner la sensibilité à la casse",
+                "Étiquette": "Sélectionner la sensibilité à la casse",
                 "required": true,
                 "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "Respecter la casse"
+                    "Étiquette": "Respecter la casse"
                   },
                   "no": {
-                    "label": "Ignorer la casse"
+                    "Étiquette": "Ignorer la casse"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Sélectionner une date",
+                "Étiquette": "Sélectionner une date",
                 "show_if": "this.condition=='DATE'",
                 "val": "1/31/2020",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Valeur d'entrée",
+                "Étiquette": "Valeur d'entrée",
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Sélectionner un tableau",
+                "Étiquette": "Sélectionner un tableau",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -221,7 +221,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "Sélectionner une colonne",
+                "Étiquette": "Sélectionner une colonne",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -229,14 +229,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "Supprimer",
+                "Étiquette": "Supprimer",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.apply_to_record": {
             "type": "checkbox",
-            "label": "Appliquer au registre",
+            "Étiquette": "Appliquer au registre",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -245,13 +245,13 @@
           },
           "apply_to_group_box": {
             "type": "fieldset",
-            "label": "Appliquer au groupe",
+            "Étiquette": "Appliquer au groupe",
             "show_if": "options.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
                 "type": "select",
-                "label": "Sélectionner les colonnes du groupe",
+                "Étiquette": "Sélectionner les colonnes du groupe",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
@@ -265,92 +265,92 @@
       },
       "options.add_rows": {
         "type": "fieldset",
-        "label": "Option de nouvelle colonne",
+        "Étiquette": "Option de nouvelle colonne",
         "repeat": true,
         "fields": {
           "new_row_name": {
             "type": "text",
-            "label": "Nom de nouvelle colonne",
+            "Étiquette": "Nom de nouvelle colonne",
             "val": ""
           },
           "function_type": {
             "type": "select",
-            "label": "Type de tâche",
+            "Étiquette": "Type de tâche",
             "show_if": "false",
             "required": true,
             "options": {
               "multi_column_functions": {
-                "label": "Multi-Colonne"
+                "Étiquette": "Multi-Colonne"
               },
               "multi_row_functions": {
-                "label": "Multi-rangs"
+                "Étiquette": "Multi-rangs"
               }
             },
             "val": "multi_column_functions"
           },
           "multi_column_functions__function": {
             "type": "select",
-            "label": "Sélectionner une fonction",
+            "Étiquette": "Sélectionner une fonction",
             "show_if": "this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "absolute_growth": {
-                "label": "Croissance absolue"
+                "Étiquette": "Croissance absolue"
               },
               "relative_growth": {
-                "label": "Croissance relative"
+                "Étiquette": "Croissance relative"
               },
               "trailing_average": {
-                "label": "Moyenne mobile"
+                "Étiquette": "Moyenne mobile"
               },
               "index_growth": {
-                "label": "Croissance de l'indice"
+                "Étiquette": "Croissance de l'indice"
               },
               "compound_growth": {
-                "label": "Croissance composée"
+                "Étiquette": "Croissance composée"
               },
               "discount_rate": {
-                "label": "Taux de remise"
+                "Étiquette": "Taux de remise"
               },
               "quota": {
-                "label": "Quota"
+                "Étiquette": "Quota"
               }
             },
             "val": "absolute_growth"
           },
           "multi_row_functions__function": {
             "type": "select",
-            "label": "Sélectionner une fonction",
+            "Étiquette": "Sélectionner une fonction",
             "show_if": "this.function_type=='multi_row_functions'",
             "required": true,
             "options": {
               "sum": {
-                "label": "Somme"
+                "Étiquette": "Somme"
               },
               "average": {
-                "label": "Moyenne"
+                "Étiquette": "Moyenne"
               },
               "median": {
-                "label": "Médiane"
+                "Étiquette": "Médiane"
               },
               "standard_deviation": {
-                "label": "Écart type"
+                "Étiquette": "Écart type"
               },
               "variance": {
-                "label": "Variance"
+                "Étiquette": "Variance"
               },
               "product": {
-                "label": "Produit"
+                "Étiquette": "Produit"
               },
               "quota": {
-                "label": "Quota"
+                "Étiquette": "Quota"
               }
             },
             "val": "sum"
           },
           "multi_column_functions__sel_labels": {
             "type": "select",
-            "label": "Select Rows(s)",
+            "Étiquette": "Sélectionner les rangées",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
             "required": true,
             "table": "input_table",
@@ -359,21 +359,21 @@
           },
           "multi_column_functions__n_value": {
             "type": "text",
-            "label": "N (nombre entier positif)",
+            "Étiquette": "N (nombre entier positif)",
             "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__rate": {
             "type": "text",
-            "label": "Taux d'entrée",
+            "Étiquette": "Taux d'entrée",
             "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__starting_column": {
             "type": "select",
-            "label": "Colonne de départ",
+            "Étiquette": "Colonne de départ",
             "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "table": "input_table",
             "bind": "COLUMNS",
@@ -381,7 +381,7 @@
           },
           "multi_column_functions__sel_label_a": {
             "type": "select",
-            "label": "Sélectionner l'étiquette A",
+            "Étiquette": "Sélectionner l'étiquette A",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -389,7 +389,7 @@
           },
           "multi_column_functions__sel_label_b": {
             "type": "select",
-            "label": "Sélectionner l'étiquette B",
+            "Étiquette": "Sélectionner l'étiquette B",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -397,7 +397,7 @@
           },
           "multi_row_functions__sel_label_a": {
             "type": "select",
-            "label": "Sélectionner l'étiquette A",
+            "Étiquette": "Sélectionner l'étiquette A",
             "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -405,7 +405,7 @@
           },
           "multi_row_functions__sel_label_b": {
             "type": "select",
-            "label": "Sélectionner l'étiquette B",
+            "Étiquette": "Sélectionner l'étiquette B",
             "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -414,28 +414,28 @@
           },
           "position": {
             "type": "select",
-            "label": "Position",
+            "Étiquette": "Position",
             "show_if": "table_type!='header_only'",
             "required": true,
             "options": {
               "bottom": {
-                "label": "BOTTOM"
+                "Étiquette": "BOTTOM"
               },
               "top": {
-                "label": "TOP"
+                "Étiquette": "TOP"
               },
               "above": {
-                "label": "PLUS HAUT"
+                "Étiquette": "PLUS HAUT"
               },
               "below": {
-                "label": "DESSOUS"
+                "Étiquette": "DESSOUS"
               }
             },
             "val": "bottom"
           },
           "positioning_row": {
             "type": "select",
-            "label": "Positioning Row",
+            "Étiquette": "Positionnement de la rangée",
             "show_if": "table_type!='header_only' && (this.position=='above' || this.position=='below')",
             "required": true,
             "table": "input_table",
@@ -443,333 +443,333 @@
           },
           "multi_column_functions__sel_row_a": {
             "type": "select",
-            "label": "Sélectionner Ligne A",
+            "Étiquette": "Sélectionner Ligne A",
             "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "row-1": {
-                "label": "Ligne-1"
+                "Étiquette": "Ligne-1"
               },
               "row-2": {
-                "label": "Row-2"
+                "Étiquette": "Row-2"
               },
               "row-3": {
-                "label": "Row-3"
+                "Étiquette": "Row-3"
               },
               "row-4": {
-                "label": "Row-4"
+                "Étiquette": "Row-4"
               },
               "row-5": {
-                "label": "Row-5"
+                "Étiquette": "Rang 5"
               },
               "row-6": {
-                "label": "Row-6"
+                "Étiquette": "Rang-6"
               },
               "row-7": {
-                "label": "Row-7"
+                "Étiquette": "Rangée 7"
               },
               "row-8": {
-                "label": "Row-8"
+                "Étiquette": "Rang 8"
               },
               "row-9": {
-                "label": "Row-9"
+                "Étiquette": "Rangée 9"
               },
               "row-10": {
-                "label": "Row-10"
+                "Étiquette": "Rangée-10"
               },
               "row-11": {
-                "label": "Row-11"
+                "Étiquette": "Row-11"
               },
               "row-12": {
-                "label": "Row-12"
+                "Étiquette": "Row-12"
               },
               "row-13": {
-                "label": "Row-13"
+                "Étiquette": "Row-13"
               },
               "row-14": {
-                "label": "Row-14"
+                "Étiquette": "Rang-14"
               },
               "row-15": {
-                "label": "Row-15"
+                "Étiquette": "Rang-15"
               },
               "row-16": {
-                "label": "Row-16"
+                "Étiquette": "Rangée 16
               },
               "row-17": {
-                "label": "Row-17"
+                "Étiquette": "Rangée 17
               },
               "row-18": {
-                "label": "Row-18"
+                "Étiquette": "Rangée 18
               },
               "row-19": {
-                "label": "Row-19"
+                "Étiquette": "Rangée 19"
               },
               "row-20": {
-                "label": "Row-20"
+                "Étiquette": "Rangée 20"
               },
               "row+1": {
-                "label": "Row+1"
+                "Étiquette": "Rangée+1"
               },
               "row+2": {
-                "label": "Row+2"
+                "Étiquette": "Row+2"
               },
               "row+3": {
-                "label": "Row+3"
+                "Étiquette": "Row+3"
               },
               "row+4": {
-                "label": "Row+4"
+                "Étiquette": "Rangée 4"
               },
               "row+5": {
-                "label": "Row+5"
+                "Étiquette": "Rang+5"
               },
               "row+6": {
-                "label": "Row+6"
+                "Étiquette": "Rangée + 6"
               },
               "row+7": {
-                "label": "Row+7"
+                "Étiquette": "Rangée + 7"
               },
               "row+8": {
-                "label": "Row+8"
+                "Étiquette": "Rangée + 8"
               },
               "row+9": {
-                "label": "Row+9"
+                "Étiquette": "Rangée + 9"
               },
               "row+10": {
-                "label": "Row+10"
+                "Étiquette": "Rang+10"
               },
               "row+11": {
-                "label": "Row+11"
+                "Étiquette": "Row+11"
               },
               "row+12": {
-                "label": "Row+12"
+                "Étiquette": "Row+12"
               },
               "row+13": {
-                "label": "Row+13"
+                "Étiquette": "Rangée 13"
               },
               "row+14": {
-                "label": "Row+14"
+                "Étiquette": "Rangée + 14"
               },
               "row+15": {
-                "label": "Row+15"
+                "Étiquette": "Rangée + 15"
               },
               "row+16": {
-                "label": "Row+16"
+                "Étiquette": "Rangée + 16"
               },
               "row+17": {
-                "label": "Row+17"
+                "Étiquette": "Rangée 17"
               },
               "row+18": {
-                "label": "Row+18"
+                "Étiquette": "Rangée + 18"
               },
               "row+19": {
-                "label": "Row+19"
+                "Étiquette": "Rangée + 19"
               },
               "row+20": {
-                "label": "Row+20"
+                "Étiquette": "Ligne+20"
               }
             },
             "val": "row-1"
           },
           "multi_column_functions__sel_row_b": {
             "type": "select",
-            "label": "Sélectionner Ligne B",
+            "Étiquette": "Sélectionner Ligne B",
             "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "row-1": {
-                "label": "Ligne-1"
+                "Étiquette": "Ligne-1"
               },
               "row-2": {
-                "label": "Row-2"
+                "Étiquette": "Row-2"
               },
               "row-3": {
-                "label": "Row-3"
+                "Étiquette": "Row-3"
               },
               "row-4": {
-                "label": "Row-4"
+                "Étiquette": "Row-4"
               },
               "row-5": {
-                "label": "Row-5"
+                "Étiquette": "Rang 5"
               },
               "row-6": {
-                "label": "Row-6"
+                "Étiquette": "Rang-6"
               },
               "row-7": {
-                "label": "Row-7"
+                "Étiquette": "Rangée 7"
               },
               "row-8": {
-                "label": "Row-8"
+                "Étiquette": "Rang 8"
               },
               "row-9": {
-                "label": "Row-9"
+                "Étiquette": "Rangée 9"
               },
               "row-10": {
-                "label": "Row-10"
+                "Étiquette": "Rangée-10"
               },
               "row-11": {
-                "label": "Row-11"
+                "Étiquette": "Row-11"
               },
               "row-12": {
-                "label": "Row-12"
+                "Étiquette": "Row-12"
               },
               "row-13": {
-                "label": "Row-13"
+                "Étiquette": "Row-13"
               },
               "row-14": {
-                "label": "Row-14"
+                "Étiquette": "Rang-14"
               },
               "row-15": {
-                "label": "Row-15"
+                "Étiquette": "Rang-15"
               },
               "row-16": {
-                "label": "Row-16"
+                "Étiquette": "Rangée 16
               },
               "row-17": {
-                "label": "Row-17"
+                "Étiquette": "Rangée 17
               },
               "row-18": {
-                "label": "Row-18"
+                "Étiquette": "Rangée 18
               },
               "row-19": {
-                "label": "Row-19"
+                "Étiquette": "Rangée 19"
               },
               "row-20": {
-                "label": "Row-20"
+                "Étiquette": "Rangée 20"
               },
               "row+1": {
-                "label": "Row+1"
+                "Étiquette": "Rangée+1"
               },
               "row+2": {
-                "label": "Row+2"
+                "Étiquette": "Row+2"
               },
               "row+3": {
-                "label": "Row+3"
+                "Étiquette": "Row+3"
               },
               "row+4": {
-                "label": "Row+4"
+                "Étiquette": "Rangée 4"
               },
               "row+5": {
-                "label": "Row+5"
+                "Étiquette": "Rang+5"
               },
               "row+6": {
-                "label": "Row+6"
+                "Étiquette": "Rangée + 6"
               },
               "row+7": {
-                "label": "Row+7"
+                "Étiquette": "Rangée + 7"
               },
               "row+8": {
-                "label": "Row+8"
+                "Étiquette": "Rangée + 8"
               },
               "row+9": {
-                "label": "Row+9"
+                "Étiquette": "Rangée + 9"
               },
               "row+10": {
-                "label": "Row+10"
+                "Étiquette": "Rang+10"
               },
               "row+11": {
-                "label": "Row+11"
+                "Étiquette": "Row+11"
               },
               "row+12": {
-                "label": "Row+12"
+                "Étiquette": "Row+12"
               },
               "row+13": {
-                "label": "Row+13"
+                "Étiquette": "Rangée 13"
               },
               "row+14": {
-                "label": "Row+14"
+                "Étiquette": "Rangée + 14"
               },
               "row+15": {
-                "label": "Row+15"
+                "Étiquette": "Rangée + 15"
               },
               "row+16": {
-                "label": "Row+16"
+                "Étiquette": "Rangée + 16"
               },
               "row+17": {
-                "label": "Row+17"
+                "Étiquette": "Rangée 17"
               },
               "row+18": {
-                "label": "Row+18"
+                "Étiquette": "Rangée + 18"
               },
               "row+19": {
-                "label": "Row+19"
+                "Étiquette": "Rangée + 19"
               },
               "row+20": {
-                "label": "Row+20"
+                "Étiquette": "Ligne+20"
               }
             },
             "val": "row-1"
           },
           "format__category": {
             "type": "select",
-            "label": "Format",
+            "Étiquette": "Format",
             "required": true,
             "options": {
               "standard": {
-                "label": "Standard"
+                "Étiquette": "Standard"
               },
               "number": {
-                "label": "Numéro"
+                "Étiquette": "Numéro"
               },
               "percentage": {
-                "label": "Pourcentage"
+                "Étiquette": "Pourcentage"
               },
               "text": {
-                "label": "Texte"
+                "Étiquette": "Texte"
               },
               "date": {
-                "label": "Date"
+                "Étiquette": "Date"
               },
               "currency": {
-                "label": "Monnaie"
+                "Étiquette": "Monnaie"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "Arrondi",
+            "Étiquette": "Arrondi",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Pas d'arrondi"
+                "Étiquette": "Pas d'arrondi"
               },
               "0": {
-                "label": "0 chiffre"
+                "Étiquette": "0 chiffre"
               },
               "1": {
-                "label": "1 chiffre"
+                "Étiquette": "1 chiffre"
               },
               "2": {
-                "label": "2 chiffres"
+                "Étiquette": "2 chiffres"
               },
               "3": {
-                "label": "3 chiffres"
+                "Étiquette": "3 chiffres"
               },
               "4": {
-                "label": "4 chiffres"
+                "Étiquette": "4 chiffres"
               },
               "5": {
-                "label": "5 chiffres"
+                "Étiquette": "5 chiffres"
               },
               "6": {
-                "label": "6 chiffres"
+                "Étiquette": "6 chiffres"
               },
               "7": {
-                "label": "7 chiffres"
+                "Étiquette": "7 chiffres"
               },
               "8": {
-                "label": "8 chiffres"
+                "Étiquette": "8 chiffres"
               },
               "9": {
-                "label": "9 chiffres"
+                "Étiquette": "9 chiffres"
               }
             },
             "val": "no_rounding"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Utilisez le séparateur 1000 (.)",
+            "Étiquette": "Utilisez le séparateur 1000 (.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "false",
             "isOn": "true",
@@ -777,43 +777,43 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "Symbole",
+            "Étiquette": "Symbole",
             "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "Étiquette": "$"
               },
               "euro": {
-                "label": "€"
+                "Étiquette": "€"
               },
               "pound": {
-                "label": "£"
+                "Étiquette": "£"
               }
             },
             "val": "dollar"
           },
           "format__date_format": {
             "type": "select",
-            "label": "Type",
+            "Étiquette": "Type",
             "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "Étiquette": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "Étiquette": "Mercredi 14 mars 2012"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "Étiquette": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy"
           },
           "delete": {
             "type": "button",
-            "label": "Supprimer",
+            "Étiquette": "Supprimer",
             "function": "DELETE_ROW"
           }
         }
