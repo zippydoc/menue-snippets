@@ -1,0 +1,85 @@
+{
+  "output.if_table_exist.type": {
+    "type": "select",
+    "Beschriftung": "Wenn vorhanden",
+    "val": "drop_if_exist",
+    "options": {
+      "drop_if_exist": {
+        "Beschriftung": "Erstellen oder Verwerfen (falls bereits vorhanden)"
+      },
+      "error_if_exist": {
+        "Beschriftung": "Neu erstellen (wirft Fehler, wenn vorhanden)"
+      },
+      "error_if_not_exist": {
+        "Beschriftung": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
+      },
+      "append_all": {
+        "Beschriftung": "Alles anhängen"
+      },
+      "append_not_existing": {
+        "Beschriftung": "Nicht vorhanden anhängen"
+      },
+      "append_changes": {
+        "Beschriftung": "Änderungen anhängen"
+      }
+    }
+  },
+  "output.if_table_exist.append_not_existing_cols": {
+    "type": "select",
+    "Beschriftung": "Spalte(n) auswählen",
+    "show_if": "output.if_table_exist.type=='append_not_existing'",
+    "table": "input_table",
+    "bind": "COLUMNS",
+    "multiple": true,
+    "required": true,
+    "breakLine": true
+  },
+  "output.if_table_exist.append_changes__add_timestamp": {
+    "type": "checkbox",
+    "Beschriftung": "Zeitstempel hinzufügen",
+    "show_if": "output.if_table_exist.type=='append_changes'",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "output.if_table_exist.append_changes__timestamp_colname": {
+    "type": "text",
+    "Beschriftung": "Zeitstempel-Spaltenname",
+    "show_if": "output.if_table_exist.type=='append_changes' && output.if_table_exist.append_changes__add_timestamp=='true'",
+    "val": "Timestamp",
+    "required": true,
+    "breakLine": true
+  },
+  "output.if_table_exist.append_changes__add_row": {
+    "type": "checkbox",
+    "Beschriftung": "Neue Reihe",
+    "show_if": "output.if_table_exist.type=='append_changes'",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "output.if_table_exist.append_changes__row_colname": {
+    "type": "text",
+    "Beschriftung": "Zeilenspaltenname",
+    "show_if": "output.if_table_exist.type=='append_changes' && output.if_table_exist.append_changes__add_row=='true'",
+    "val": "Row",
+    "required": true,
+    "breakLine": true
+  },
+  "append_not_existing_info1": {
+    "type": "text",
+    "Beschriftung": "",
+    "show_if": "output.if_table_exist.type=='append_not_existing'",
+    "val": "Appends rows only if the value of the selected column is new in the existing table.",
+    "disabled": true,
+    "style": "width: 100%"
+  },
+  "append_not_existing_info2": {
+    "type": "text",
+    "Beschriftung": "",
+    "show_if": "output.if_table_exist.type=='append_not_existing'",
+    "val": "It is assumed that the selected column is found in the output and existing table",
+    "disabled": true,
+    "style": "width: 100%"
+  }
+}
