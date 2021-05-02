@@ -1,32 +1,32 @@
 {
   "output.if_table_exist.type": {
     "type": "select",
-    "ラベル": "既存の場合,
+    "Метка": "Если существует",
     "val": "drop_if_exist",
     "options": {
       "drop_if_exist": {
-        "ラベル": "作成またはドロップ（既存の場合）"
+        "Метка": "Создать или сбросить (если уже существует)"
       },
       "error_if_exist": {
-        "ラベル": "新規作成（既存の場合はエラーにする）"
+        "Метка": "Создать новое (убрать ошибку, если есть)"
       },
       "error_if_not_exist": {
-        "ラベル": "ドロップ（存在しない場合はエラーにする）"
+        "Метка": "Отменить (убрать ошибку, если ее нет)"
       },
       "append_all": {
-        "ラベル": "Append All"
+        "Метка": "Добавить все"
       },
       "append_not_existing": {
-        "ラベル": "既存でない場合
+        "Метка": "Применить не существующие"
       },
       "append_changes": {
-        "ラベル": "変更の追加
+        "Метка": "Применить изменения"
       }
     }
   },
   "output.if_table_exist.append_not_existing_cols": {
     "type": "select",
-    "ラベル": "列(複数可)の選択",
+    "Метка": "Выбрать столбец(цы)",
     "show_if": "output.if_table_exist.type=='append_not_existing'",
     "table": "input_table",
     "bind": "COLUMNS",
@@ -36,7 +36,7 @@
   },
   "output.if_table_exist.append_changes__add_timestamp": {
     "type": "checkbox",
-    "ラベル": "Add Timestamp",
+    "Метка": "Добавить метку времени",
     "show_if": "output.if_table_exist.type=='append_changes'",
     "val": "false",
     "isOn": "true",
@@ -44,7 +44,7 @@
   },
   "output.if_table_exist.append_changes__timestamp_colname": {
     "type": "text",
-    "ラベル": "タイムスタンプの列名,
+    "Метка": "Имя столбца временной метки",
     "show_if": "output.if_table_exist.type=='append_changes' && output.if_table_exist.append_changes__add_timestamp=='true'",
     "val": "Timestamp",
     "required": true,
@@ -52,7 +52,7 @@
   },
   "output.if_table_exist.append_changes__add_row": {
     "type": "checkbox",
-    "ラベル": "行の追加",
+    "Метка": "Добавить Ряд",
     "show_if": "output.if_table_exist.type=='append_changes'",
     "val": "false",
     "isOn": "true",
@@ -60,7 +60,7 @@
   },
   "output.if_table_exist.append_changes__row_colname": {
     "type": "text",
-    "ラベル": "行のカラム名,
+    "Метка": "Имя столбца строки",
     "show_if": "output.if_table_exist.type=='append_changes' && output.if_table_exist.append_changes__add_row=='true'",
     "val": "Row",
     "required": true,
@@ -68,7 +68,7 @@
   },
   "append_not_existing_info1": {
     "type": "text",
-    "ラベル": "",
+    "Метка": "",
     "show_if": "output.if_table_exist.type=='append_not_existing'",
     "val": "Appends rows only if the value of the selected column is new in the existing table.",
     "disabled": true,
@@ -76,7 +76,7 @@
   },
   "append_not_existing_info2": {
     "type": "text",
-    "ラベル": "",
+    "Метка": "",
     "show_if": "output.if_table_exist.type=='append_not_existing'",
     "val": "It is assumed that the selected column is found in the output and existing table",
     "disabled": true,
