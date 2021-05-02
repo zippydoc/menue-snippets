@@ -1,7 +1,7 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Seleccionar Opciones",
+    "Etiqueta": "Seleccionar Opciones",
     "repeat": false,
     "fields": {
       "options.to": {
@@ -10,19 +10,19 @@
       },
       "options.webservice": {
         "type": "select",
-        "label": "Seleccionar Servicio Web",
+        "Etiqueta": "Seleccionar Servicio Web",
         "options": {
           "github": {
-            "label": "Github"
+            "Etiqueta": "Github"
           },
           "dropbox": {
-            "label": “Buzón”
+            "Etiqueta": "Buzón"
           },
           "ms_one_drive": {
-            "label": "Microsoft OneDrive"
+            "Etiqueta": "Microsoft OneDrive"
           },
           "google_drive": {
-            "label": “Google Drive”
+            "Etiqueta": "Google Drive"
           }
         },
         "val": "github",
@@ -31,16 +31,16 @@
       },
       "options.export_format": {
         "type": "select",
-        "label": "Exportar Formato",
+        "Etiqueta": "Exportar Formato",
         "options": {
           "csv_file": {
-            "label": "Archivo(s) Csv"
+            "Etiqueta": "Archivo(s) Csv"
           },
           "word_by_word": {
-            "label": "Palabra por Palabra"
+            "Etiqueta": "Palabra por Palabra"
           },
           "line_by_line": {
-            "label": "Línea por Línea"
+            "Etiqueta": "Línea por Línea"
           }
         },
         "val": "csv_file",
@@ -49,28 +49,28 @@
       },
       "options.if_duplicated": {
         "type": "select",
-        "label": "If existing",
+        "Etiqueta": "Si existe",
         "show_if": "options.webservice=='github'",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "Crear o Descartar (si ya existe)"
+            "Etiqueta": "Crear o Descartar (si ya existe)"
           },
           "error_if_exist": {
-            "label": "Crear Nuevo (lanza error si existe)"
+            "Etiqueta": "Crear Nuevo (lanza error si existe)"
           },
           "error_if_not_exist": {
-            "label": "Descartar (lanzar error si no existe)"
+            "Etiqueta": "Descartar (lanzar error si no existe)"
           },
           "append": {
-            "label": "Anexar"
+            "Etiqueta": "Anexar"
           }
         },
         "breakLine": true
       },
       "options.export_series": {
         "type": "checkbox",
-        "label": "Exportar Series",
+        "Etiqueta": "Exportar Series",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -78,7 +78,7 @@
       },
       "options.file_name_column": {
         "type": "select",
-        "label": "Seleccionar Columna del Nombre del Archivo",
+        "Etiqueta": "Seleccionar Columna del Nombre del Archivo",
         "show_if": "options.export_series=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -87,7 +87,7 @@
       },
       "options.set_file_path_column": {
         "type": "checkbox",
-        "label": "Export to specified path",
+        "Etiqueta": "Exportar a la ruta especificada",
         "show_if": "options.export_series=='true'",
         "val": "false",
         "isOn": "true",
@@ -96,7 +96,7 @@
       },
       "options.file_path_column": {
         "type": "select",
-        "label": "Select File Path Column",
+        "Etiqueta": "Seleccionar la columna de la ruta del archivo",
         "show_if": "options.export_series=='true' && options.set_file_path_column=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -107,12 +107,12 @@
   },
   "export_link_token_frame": {
     "type": "fieldset",
-    "label": "Export Link",
+    "Etiqueta": "Exportar enlace",
     "repeat": false,
     "fields": {
       "options.github_url": {
         "type": "text",
-        "label": "Ingresar enlace, por ejemplo, https://github.com/zippydoc/test",
+        "Etiqueta": "Ingresar enlace, por ejemplo, https://github.com/zippydoc/test",
         "show_if": "options.webservice=='github'",
         "val": "",
         "required": true,
@@ -121,7 +121,7 @@
       },
       "options.github_token": {
         "type": "text",
-        "label": "Specify the Github personal access token that has write permission:",
+        "Etiqueta": "Especifica el token de acceso personal de Github que tiene permiso de escritura:",
         "show_if": "options.webservice=='github'",
         "required": true,
         "width": "100%",
@@ -129,7 +129,7 @@
       },
       "options.github_create_pr": {
         "type": "checkbox",
-        "label": “Crear solicitud de extracción”,
+        "Etiqueta": "Crear solicitud de extracción",
         "show_if": "options.webservice=='github'",
         "val": "false",
         "isOn": "true",
@@ -138,7 +138,7 @@
       },
       "options.ms_one_drive_token": {
         "type": "text",
-        "label": "Microsoft Graph API access token. You can get it here https://ms-oauth.herokuapp.com/",
+        "Etiqueta": "Token de acceso a la API de Microsoft Graph. Puedes obtenerlo aquí https://ms-oauth.herokuapp.com/",
         "show_if": "options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
@@ -146,7 +146,7 @@
       },
       "options.google_authorization_code": {
         "type": "text",
-        "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
+        "Etiqueta": "Código de autorización de Google OAuth con alcance https://www.googleapis.com/auth/drive. Puedes obtenerlo aquí https://developers.google.com/oauthplayground/",
         "show_if": "options.webservice=='google_drive'",
         "required": true,
         "width": "100%",
@@ -154,7 +154,7 @@
       },
       "options.dropbox_authorization_code": {
         "type": "text",
-        "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "Etiqueta": "Código de autorización de Dropbox. Puedes obtenerlo aquí https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
         "show_if": "options.webservice=='dropbox'",
         "required": true,
         "width": "100%",
