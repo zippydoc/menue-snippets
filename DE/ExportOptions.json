@@ -1,18 +1,18 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Optionen auswählen",
+    "Beschriftung": "Optionen auswählen",
     "repeat": false,
     "fields": {
       "options.to": {
         "type": "select",
-        "label": "Typ",
+        "Beschriftung": "Typ",
         "options": {
           "database": {
-            "label": "Exportieren in die Datenbank"
+            "Beschriftung": "Exportieren in die Datenbank"
           },
           "file": {
-            "label": "In Datei exportieren"
+            "Beschriftung": "In Datei exportieren"
           }
         },
         "val": "database",
@@ -20,7 +20,7 @@
       },
       "options.export_series": {
         "type": "checkbox",
-        "label": "Serie exportieren",
+        "Beschriftung": "Serie exportieren",
         "show_if": "options.to=='file'",
         "val": "false",
         "isOn": "true",
@@ -29,7 +29,7 @@
       },
       "options.file_name_column": {
         "type": "select",
-        "label": "Dateinamen-Spalte auswählen",
+        "Beschriftung": "Dateinamen-Spalte auswählen",
         "show_if": "options.to=='file' && options.export_series=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -38,25 +38,25 @@
       },
       "postgresql_db_credential_box": {
         "type": "fieldset",
-        "label": "Anmeldeinformationen für die Datenbankverbindung",
+        "Beschriftung": "Anmeldeinformationen für die Datenbankverbindung",
         "show_if": "options.to=='database'",
         "repeat": false,
         "fields": {
           "options.dbms": {
             "type": "select",
-            "label": "DBMS auswählen",
+            "Beschriftung": "DBMS auswählen",
             "options": {
               "postgresql": {
-                "label": "PostgreSQL"
+                "Beschriftung": "PostgreSQL"
               },
               "mysql": {
-                "label": "MySQL"
+                "Beschriftung": "MySQL"
               },
               "sql_server": {
-                "label": "MS SQL-Server"
+                "Beschriftung": "MS SQL-Server"
               },
               "oracle": {
-                "label": "Oracle"
+                "Beschriftung": "Oracle"
               }
             },
             "val": "postgresql",
@@ -65,7 +65,7 @@
           },
           "options.postgresql_credential.user": {
             "type": "text",
-            "label": "Benutzer",
+            "Beschriftung": "Benutzer",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -73,7 +73,7 @@
           },
           "options.postgresql_credential.password": {
             "type": "text",
-            "label": "Kennwort",
+            "Beschriftung": "Kennwort",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -81,7 +81,7 @@
           },
           "options.postgresql_credential.host": {
             "type": "text",
-            "label": "Host",
+            "Beschriftung": "Host",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -89,7 +89,7 @@
           },
           "options.postgresql_credential.database": {
             "type": "text",
-            "label": "Datenbank",
+            "Beschriftung": "Datenbank",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -99,7 +99,7 @@
       },
       "options.schema_name_to_export": {
         "type": "text",
-        "label": "Name des Schemas, in das exportiert werden soll",
+        "Beschriftung": "Name des Schemas, in das exportiert werden soll",
         "show_if": "options.to=='database' && options.dbms=='postgresql'",
         "required": true,
         "val": "public",
@@ -108,20 +108,20 @@
       },
       "options.webservice": {
         "type": "select",
-        "label": "Webservice auswählen",
+        "Beschriftung": "Webservice auswählen",
         "show_if": "options.to=='file' || options.to=='mytask'",
         "options": {
           "github": {
-            "label": "Github"
+            "Beschriftung": "Github"
           },
           "dropbox": {
-            "label": "Dropbox"
+            "Beschriftung": "Dropbox"
           },
           "ms_one_drive": {
-            "label": "Microsoft OneDrive"
+            "Beschriftung": "Microsoft OneDrive"
           },
           "google_drive": {
-            "label": "Google Drive"
+            "Beschriftung": "Google Drive"
           }
         },
         "val": "github",
@@ -129,17 +129,17 @@
       },
       "options.export_format": {
         "type": "select",
-        "label": "Format exportieren",
+        "Beschriftung": "Format exportieren",
         "show_if": "options.to=='file'",
         "options": {
           "csv_file": {
-            "label": "Csv-Datei(en)"
+            "Beschriftung": "Csv-Datei(en)"
           },
           "word_by_word": {
-            "label": "Wort für Wort"
+            "Beschriftung": "Wort für Wort"
           },
           "line_by_line": {
-            "label": "Zeile für Zeile"
+            "Beschriftung": "Zeile für Zeile"
           }
         },
         "val": "csv_file",
@@ -148,7 +148,7 @@
       },
       "options.github_create_pr": {
         "type": "checkbox",
-        "label": "Pull-Anfrage erstellen",
+        "Beschriftung": "Pull-Anfrage erstellen",
         "show_if": "options.to=='file' && options.webservice=='github'",
         "val": "false",
         "isOn": "true",
@@ -157,7 +157,7 @@
       },
       "options.github_token": {
         "type": "text",
-        "label": "Specify the Github personal access token that has write permission:",
+        "Beschriftung": "Geben Sie das persönliche Github-Zugriffstoken an, das Schreibrechte hat:",
         "show_if": "options.to=='file' && options.webservice=='github'",
         "required": true,
         "width": "100%",
@@ -165,7 +165,7 @@
       },
       "options.github_url": {
         "type": "text",
-        "label": "Link eingeben z. B. https://github.com/zippydoc/test",
+        "Beschriftung": "Link eingeben z. B. https://github.com/zippydoc/test",
         "show_if": "options.to=='file' && options.webservice=='github'",
         "val": "https://github.com/zippydoc/public-tables",
         "required": true,
@@ -174,7 +174,7 @@
       },
       "options.ms_one_drive_token": {
         "type": "text",
-        "label": "Microsoft Graph API access token. You can get it here https://ms-oauth.herokuapp.com/",
+        "Beschriftung": "Microsoft Graph API Zugriffstoken. Sie können es hier erhalten https://ms-oauth.herokuapp.com/",
         "show_if": "options.to=='file' && options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
@@ -182,7 +182,7 @@
       },
       "options.google_authorization_code": {
         "type": "text",
-        "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
+        "Beschriftung": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
         "show_if": "options.to=='file' && options.webservice=='google_drive'",
         "required": true,
         "width": "100%",
@@ -190,7 +190,7 @@
       },
       "options.dropbox_authorization_code": {
         "type": "text",
-        "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "Beschriftung": "Dropbox-Autorisierungscode. Sie können ihn hier erhalten https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
         "show_if": "options.to=='file' && options.webservice=='dropbox'",
         "required": true,
         "width": "100%",
@@ -198,27 +198,27 @@
       },
       "options.if_duplicated": {
         "type": "select",
-        "label": "Wenn dupliziert",
+        "Beschriftung": "Wenn dupliziert",
         "show_if": "options.to=='database' || (options.to=='file' && options.webservice=='github')",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "Erstellen oder Verwerfen (falls bereits vorhanden)"
+            "Beschriftung": "Erstellen oder Verwerfen (falls bereits vorhanden)"
           },
           "error_if_exist": {
-            "label": "Neu erstellen (wirft Fehler, wenn vorhanden)"
+            "Beschriftung": "Neu erstellen (wirft Fehler, wenn vorhanden)"
           },
           "error_if_not_exist": {
-            "label": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
+            "Beschriftung": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
           },
           "append": {
-            "label": "Tabelle anhängen"
+            "Beschriftung": "Anhängen"
           }
         }
       },
       "options.export_task_name": {
         "type": "text",
-        "label": "Eingabe Task-Name",
+        "Beschriftung": "Eingabe Task-Name",
         "show_if": "options.to=='mytask'",
         "required": true,
         "val": "Flow6_Task1_AddColumns",
