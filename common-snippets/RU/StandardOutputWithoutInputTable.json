@@ -1,12 +1,12 @@
 {
   "output": {
     "type": "fieldset",
-    "label": "Определить выходную таблицу",
+    "Метка": "Определить выходную таблицу",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
-        "label": "Вывести название таблицы",
+        "Метка": "Вывести название таблицы",
         "show_if": "output.compose_table_name=='false'",
         "minLength": 1,
         "val": "",
@@ -15,7 +15,7 @@
       },
       "output.compose_table_name": {
         "type": "checkbox",
-        "label": "Объединить название таблицы",
+        "Метка": "Объединить название таблицы",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -23,42 +23,42 @@
       },
       "compose_table_name_frame": {
         "type": "fieldset",
-        "label": "Объединить название входной таблицы",
+        "Метка": "Объединить название входной таблицы",
         "show_if": "output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
             "type": "select",
-            "label": "Префикс",
+            "Метка": "Префикс",
             "show_if": "output.compose_table_name=='true'",
             "val": "empty",
             "options": {
               "empty": {
-                "label": "-"
+                "Метка": "-"
               },
               "script_name": {
-                "label": "Название задачи"
+                "Метка": "Название задачи"
               },
               "date_string_type1": {
-                "label": "Дата: дд_мм_гггг"
+                "Метка": "Дата: дд_мм_гггг"
               },
               "date_string_type2": {
-                "label": "Дата: гггг_мм_дд"
+                "Метка": "Дата: гггг_мм_дд"
               },
               "time_string": {
-                "label": "Время: ч_мин_сек"
+                "Метка": "Время: ч_мин_сек"
               },
               "datetime_string": {
-                "label": "Дата_время"
+                "Метка": "Дата_время"
               },
               "custom": {
-                "label": "Пользовательский"
+                "Метка": "Пользовательский"
               }
             }
           },
           "output.prefix_text": {
             "type": "text",
-            "label": "Текст префикса",
+            "Метка": "Текст префикса",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -66,28 +66,28 @@
           },
           "output.core_delimiter": {
             "type": "text",
-            "label": "Разделитель",
+            "Метка": "Разделитель",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
             "val": "_",
             "width": "50px"
           },
           "output.core_rule": {
             "type": "select",
-            "label": "Название таблицы",
+            "Метка": "Название таблицы",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "script_name": {
-                "label": "Название задачи"
+                "Метка": "Название задачи"
               },
               "custom": {
-                "label": "Пользовательский"
+                "Метка": "Пользовательский"
               }
             }
           },
           "output.core_text": {
             "type": "text",
-            "label": "Вывести название таблицы",
+            "Метка": "Вывести название таблицы",
             "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
             "required": true,
             "minLength": 1,
@@ -96,43 +96,43 @@
           },
           "output.suffix_delimiter": {
             "type": "text",
-            "label": "Разделитель",
+            "Метка": "Разделитель",
             "show_if": "output.compose_table_name=='true'",
             "val": "_",
             "width": "50px"
           },
           "output.suffix_rule": {
             "type": "select",
-            "label": "Суффикс",
+            "Метка": "Суффикс",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "empty": {
-                "label": "-"
+                "Метка": "-"
               },
               "script_name": {
-                "label": "Название задачи"
+                "Метка": "Название задачи"
               },
               "date_string_type1": {
-                "label": "Дата: дд_мм_гггг"
+                "Метка": "Дата: дд_мм_гггг"
               },
               "date_string_type2": {
-                "label": "Дата: гггг_мм_дд"
+                "Метка": "Дата: гггг_мм_дд"
               },
               "time_string": {
-                "label": "Время: ч_мин_сек"
+                "Метка": "Время: ч_мин_сек"
               },
               "datetime_string": {
-                "label": "Дата_время"
+                "Метка": "Дата_время"
               },
               "custom": {
-                "label": "Пользовательский"
+                "Метка": "Пользовательский"
               }
             }
           },
           "output.suffix_text": {
             "type": "text",
-            "label": "Текст суффикса",
+            "Метка": "Текст суффикса",
             "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -141,130 +141,130 @@
           },
           "output.timezone": {
             "type": "select",
-            "label": "Часовой пояс",
+            "Метка": "Часовой пояс",
             "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
             "val": "Европа/Берлин",
             "required": true,
             "options": {
               "America/Adak": {
-                "label": "Adak, Gambier"
+                "Метка": "Адак, Гамбиер"
               },
               "Australia/Adelaide": {
-                "label": "Adelaide, Broken_Hill, Darwin"
+                "Метка": "Аделаида, Брокен Хилл, Дарвин"
               },
               "America/Anchorage": {
-                "label": "Anchorage, Juneau, Sitka"
+                "Метка": "Анкоридж, Джуно, Ситка"
               },
               "Pacific/Apia": {
-                "label": "Apia, Asau, Mulifanua, Afega, Leulumoega"
+                "Метка": "Апиа, Асау, Мулифануа, Афега, Леулумоэга"
               },
               "Pacific/Enderbury": {
-                "label": "Apia, Fiji, Tongatapu"
+                "Метка": "Апиа, Фиджи, Тонгатапу"
               },
               "Antarctica/McMurdo": {
-                "label": "Auckland, Casey, Davis"
+                "Метка": "Окленд, Кейси, Дэвис"
               },
               "Pacific/Auckland": {
-                "label": "Auckland, Wellington, Christchurch"
+                "Метка": "Окленд, Веллингтон, Крайстчерч"
               },
               "Asia/Bangkok": {
-                "label": "Bangkok, Jakarta, Novosibirsk"
+                "Метка": "Бангкок, Джакарта, Новосибирск"
               },
               "Европа/Берлин": {
-                "label": "Berlin, Paris, Amsterdam"
+                "Метка": "Берлин, Париж, Амстердам"
               },
               "Australia/Perth": {
-                "label": "Brunei, Singapore, Perth"
+                "Метка": "Бруней, Сингапур, Перт"
               },
               "Atlantic/Cape_Verde": {
-                "label": "Cape_Verde,Praia, Mindelo, Santa Maria"
+                "Метка": "Cape Verde,Praia, Mindelo, Santa Maria"
               },
               "America/Belize": {
-                "label": "Costa_Rica, El_Salvador, Denver"
+                "Метка": "Коста-Рика, Сальвадор, Денвер"
               },
               "Antarctica/Vostok": {
-                "label": "Dhaka, Bishkek, Omsk"
+                "Метка": "Дакка, Бишкек, Омск"
               },
               "Europe/Astrakhan": {
-                "label": "Dubai, Baku, Tbilisi"
+                "Метка": "Дубай, Баку, Тбилиси"
               },
               "Australia/Eucla": {
-                "label": "Eucla"
+                "Метка": "Эвкла"
               },
               "Pacific/Honolulu": {
-                "label": "Honolulu, Rarotonga, Tahiti"
+                "Метка": "Гонолулу, Раротонга, Таити"
               },
               "Asia/Kabul": {
-                "label": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
+                "Метка": "Кабул, Кандагар, Мазар-е Шариф, Герат, Джалалабад"
               },
               "Asia/Aqtau": {
-                "label": "Karachi, Tashkent, Maldives"
+                "Метка": "Карачи, Ташкент, Мальдивы"
               },
               "Asia/Kathmandu": {
-                "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
+                "Метка": "Катманду, Покхара, Патан, Биратнагар"
               },
               "Pacific/Kiritimati": {
-                "label": "Kiritimati"
+                "Метка": "Киритимати"
               },
               "Asia/Colombo": {
-                "label": "Kolkata, Colombo,Jaffna, Negombo"
+                "Метка": "Калькутта, Коломбо, Джафна, Негомбо"
               },
               "Europe/Guernsey": {
-                "label": "London. Dublin, Lisbon"
+                "Метка": "Лондон, Дублин, Лиссабон"
               },
               "Australia/Lord_Howe": {
-                "label": "Lord_Howe"
+                "Метка": "Лорд Хау"
               },
               "America/Creston": {
-                "label": "Los_Angeles, Vancouver, Hermosillo"
+                "Метка": "Лос-Анджелес, Ванкувер, Эрмосильо"
               },
               "Pacific/Marquesas": {
-                "label": "Marquesas,Taiohae"
+                "Метка": "Маркизские острова, Тайохаэ"
               },
               "America/Cayman": {
-                "label": "Mexico_City, Panama, Chicago"
+                "Метка": "Мехико, Панама, Чикаго"
               },
               "Pacific/Niue": {
-                "label": "Midway, Niue, Pago_Pago"
+                "Метка": "Мидуэй, Ниуэ, Паго-Паго"
               },
               "Europe/Mariehamn": {
-                "label": "Moscow, Istanbul, Qatar"
+                "Метка": "Москва, Стамбул, Катар"
               },
               "Asia/Kolkata": {
-                "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
+                "Метка": "Мумбаи, Дели, Бенгалуру, Калькутта, Ченнаи"
               },
               "America/Miquelon": {
-                "label": "Noronha, Nuuk, Miquelon"
+                "Метка": "Норонья, Нуук, Микелон"
               },
               "America/Danmarkshavn": {
-                "label": "Reykjavik, Dakar, Casablanca"
+                "Метка": "Рейкьявик, Дакар, Касабланка"
               },
               "Pacific/Bougainville": {
-                "label": "Sakhalin, Norfolk, Bougainville"
+                "Метка": "Сахалин, Норфолк, Бугенвиль"
               },
               "America/Araguaina": {
-                "label": "Sao_Paulo, Buenos_Aires, Montevideo"
+                "Метка": "Сан-Паулу, Буэнос-Айрес, Монтевидео"
               },
               "America/St_Johns": {
-                "label": "St_Johns,Mount Pearl, Corner Brook"
+                "Метка": "Сент-Джонс, Маунт-Перл, Корнер-Брук"
               },
               "Asia/Tehran": {
-                "label": "Tehran, Mashhad, Isfahan, Karaj, Tabriz"
+                "Метка": "Тегеран, Мешхед, Исфахан, Карадж, Тебриз"
               },
               "Asia/Tokyo": {
-                "label": "Tokyo, Seoul, Jayapura"
+                "Метка": "Токио, Сеул, Джаяпура"
               },
               "America/New_York": {
-                "label": "Toronto, Santiago, New_York"
+                "Метка": "Торонто, Сантьяго, Нью-Йорк"
               },
               "Australia/Sydney": {
-                "label": "Vladivostok, Sydney, Brisbane"
+                "Метка": "Владивосток, Сидней, Брисбен"
               },
               "Asia/Yangon": {
-                "label": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
+                "Метка": "Янгон, Кокос, Мандалай, Нейпьидо, Мавламьин"
               },
               "Indian/Cocos": {
-                "label": "Yangon, Cocos,West Island"
+                "Метка": "Янгон, Кокос, Западный остров"
               }
             },
             "breakLine": true
