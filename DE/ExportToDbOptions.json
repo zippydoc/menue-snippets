@@ -1,0 +1,101 @@
+{
+  "options": {
+    "type": "fieldset",
+    "Beschriftung": "Optionen auswählen",
+    "repeat": false,
+    "fields": {
+      "options.to": {
+        "type": "hidden",
+        "val": "database"
+      },
+      "postgresql_db_credential_box": {
+        "type": "fieldset",
+        "Beschriftung": "Anmeldeinformationen für die Datenbankverbindung",
+        "repeat": false,
+        "fields": {
+          "options.dbms": {
+            "type": "select",
+            "Beschriftung": "DBMS auswählen",
+            "options": {
+              "postgresql": {
+                "Beschriftung": "PostgreSQL"
+              },
+              "mysql": {
+                "Beschriftung": "MySQL"
+              },
+              "sql_server": {
+                "Beschriftung": "MS SQL-Server"
+              },
+              "oracle": {
+                "Beschriftung": "Oracle"
+              }
+            },
+            "val": "postgresql",
+            "required": true,
+            "breakLine": true
+          },
+          "options.postgresql_credential.user": {
+            "type": "text",
+            "Beschriftung": "Benutzer",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.postgresql_credential.password": {
+            "type": "text",
+            "Beschriftung": "Kennwort",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.postgresql_credential.host": {
+            "type": "text",
+            "Beschriftung": "Host",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.postgresql_credential.database": {
+            "type": "text",
+            "Beschriftung": "Datenbank",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          }
+        }
+      },
+      "options.schema_name_to_export": {
+        "type": "text",
+        "Beschriftung": "Name des Schemas, in das exportiert werden soll",
+        "show_if": "options.dbms=='postgresql'",
+        "required": true,
+        "val": "public",
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.if_duplicated": {
+        "type": "select",
+        "Beschriftung": "Wenn dupliziert",
+        "val": "drop_if_exist",
+        "options": {
+          "drop_if_exist": {
+            "Beschriftung": "Erstellen oder Verwerfen (falls bereits vorhanden)"
+          },
+          "error_if_exist": {
+            "Beschriftung": "Neu erstellen (wirft Fehler, wenn vorhanden)"
+          },
+          "error_if_not_exist": {
+            "Beschriftung": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
+          },
+          "append": {
+            "Beschriftung": "Anhängen"
+          }
+        }
+      }
+    }
+  }
+}
