@@ -1,0 +1,50 @@
+{
+  "output.if_table_exist.type": {
+    "type": "select",
+    "Beschriftung": "Wenn vorhanden",
+    "val": "drop_if_exist",
+    "options": {
+      "drop_if_exist": {
+        "Beschriftung": "Erstellen oder Verwerfen (falls bereits vorhanden)"
+      },
+      "error_if_exist": {
+        "Beschriftung": "Neu erstellen (wirft Fehler, wenn vorhanden)"
+      },
+      "error_if_not_exist": {
+        "Beschriftung": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
+      },
+      "append_all": {
+        "Beschriftung": "Alles anhängen"
+      },
+      "append_not_existing": {
+        "Beschriftung": "Nicht vorhanden anhängen"
+      }
+    }
+  },
+  "output.if_table_exist.append_not_existing_cols": {
+    "type": "select",
+    "Beschriftung": "Spalte(n) auswählen",
+    "show_if": "output.if_table_exist.type=='append_not_existing'",
+    "table": "target_table.table",
+    "bind": "COLUMNS",
+    "multiple": true,
+    "required": true,
+    "breakLine": true
+  },
+  "append_not_existing_info1": {
+    "type": "text",
+    "Beschriftung": "",
+    "show_if": "output.if_table_exist.type=='append_not_existing'",
+    "val": "Appends rows only if the value of the selected column is new in the existing table.",
+    "disabled": true,
+    "style": "width: 100%"
+  },
+  "append_not_existing_info2": {
+    "type": "text",
+    "Beschriftung": "",
+    "show_if": "output.if_table_exist.type=='append_not_existing'",
+    "val": "It is assumed that the selected column is found in the output and existing table",
+    "disabled": true,
+    "style": "width: 100%"
+  }
+}
