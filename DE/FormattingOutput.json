@@ -1,0 +1,280 @@
+{
+  "output": {
+    "type": "fieldset",
+    "Beschriftung": "Ausgabetabelle definieren",
+    "show_if": "create_new_table=='true'",
+    "repeat": false,
+    "fields": {
+      "output.custom_text": {
+        "type": "text",
+        "Beschriftung": "Name der Ausgabetabelle",
+        "show_if": "output.compose_table_name=='false'",
+        "minLength": 1,
+        "val": "",
+        "width": "100%",
+        "breakLine": true
+      },
+      "output.compose_table_name": {
+        "type": "checkbox",
+        "Beschriftung": "Tabellenname zusammenstellen",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "compose_table_name_frame": {
+        "type": "fieldset",
+        "Beschriftung": "Name der Ausgabetabelle zusammenstellen",
+        "show_if": "output.compose_table_name=='true'",
+        "repeat": false,
+        "fields": {
+          "output.prefix_rule": {
+            "type": "select",
+            "Beschriftung": "Präfix",
+            "show_if": "output.compose_table_name=='true'",
+            "val": "empty",
+            "options": {
+              "empty": {
+                "Beschriftung": "-"
+              },
+              "script_name": {
+                "Beschriftung": "Aufgabe Name"
+              },
+              "date_string_type1": {
+                "Beschriftung": "Datum: tt_mm_jjjj"
+              },
+              "date_string_type2": {
+                "Beschriftung": "Datum: jjjj_mm_tt"
+              },
+              "time_string": {
+                "Beschriftung": "Zeit: h_min_sec"
+              },
+              "datetime_string": {
+                "Beschriftung": "Datum_Zeit"
+              },
+              "custom": {
+                "Beschriftung": "Benutzerdefiniert"
+              }
+            }
+          },
+          "output.prefix_text": {
+            "type": "text",
+            "Beschriftung": "Präfix Text",
+            "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
+            "minLength": 1,
+            "maxLength": 31,
+            "val": ""
+          },
+          "output.core_delimiter": {
+            "type": "text",
+            "Beschriftung": "Begrenzer",
+            "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
+            "val": "_",
+            "width": "50px"
+          },
+          "output.core_rule": {
+            "type": "select",
+            "Beschriftung": "Tabelle Name",
+            "show_if": "output.compose_table_name=='true'",
+            "val": "input_table_name",
+            "options": {
+              "input_table_name": {
+                "Beschriftung": "Name der Eingangstabelle"
+              },
+              "script_name": {
+                "Beschriftung": "Aufgabe Name"
+              },
+              "custom": {
+                "Beschriftung": "Benutzerdefiniert"
+              }
+            }
+          },
+          "output.core_text": {
+            "type": "text",
+            "Beschriftung": "Haupttabelle Name",
+            "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 31,
+            "val": ""
+          },
+          "output.suffix_delimiter": {
+            "type": "text",
+            "Beschriftung": "Begrenzer",
+            "show_if": "output.compose_table_name=='true'",
+            "val": "_",
+            "width": "50px"
+          },
+          "output.suffix_rule": {
+            "type": "select",
+            "Beschriftung": "Suffix",
+            "show_if": "output.compose_table_name=='true'",
+            "val": "script_name",
+            "options": {
+              "empty": {
+                "Beschriftung": "-"
+              },
+              "script_name": {
+                "Beschriftung": "Aufgabe Name"
+              },
+              "date_string_type1": {
+                "Beschriftung": "Datum: tt_mm_jjjj"
+              },
+              "date_string_type2": {
+                "Beschriftung": "Datum: jjjj_mm_tt"
+              },
+              "time_string": {
+                "Beschriftung": "Zeit: h_min_sec"
+              },
+              "datetime_string": {
+                "Beschriftung": "Datum_Zeit"
+              },
+              "custom": {
+                "Beschriftung": "Benutzerdefiniert"
+              }
+            }
+          },
+          "output.suffix_text": {
+            "type": "text",
+            "Beschriftung": "Suffix Text",
+            "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
+            "minLength": 1,
+            "maxLength": 31,
+            "val": "",
+            "breakLine": true
+          },
+          "output.timezone": {
+            "type": "select",
+            "Beschriftung": "Zeitzone",
+            "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+            "val": "Europa/Berlin",
+            "required": true,
+            "options": {
+              "America/Adak": {
+                "Beschriftung": "Adak, Gambier"
+              },
+              "Australia/Adelaide": {
+                "Beschriftung": "Adelaide, Broken_Hill, Darwin"
+              },
+              "America/Anchorage": {
+                "Beschriftung": "Anchorage, Juneau, Sitka"
+              },
+              "Pacific/Apia": {
+                "Beschriftung": "Apia, Asau, Mulifanua, Afega, Leulumoega"
+              },
+              "Pacific/Enderbury": {
+                "Beschriftung": "Apia, Fiji, Tongatapu"
+              },
+              "Antarctica/McMurdo": {
+                "Beschriftung": "Auckland, Casey, Davis"
+              },
+              "Pacific/Auckland": {
+                "Beschriftung": "Auckland, Wellington, Christchurch"
+              },
+              "Asia/Bangkok": {
+                "Beschriftung": "Bangkok, Jakarta, Nowosibirsk"
+              },
+              "Europa/Berlin": {
+                "Beschriftung": "Berlin, Paris, Amsterdam"
+              },
+              "Australia/Perth": {
+                "Beschriftung": "Brunei, Singapur, Perth"
+              },
+              "Atlantic/Cape_Verde": {
+                "Beschriftung": "Cape_Verde,Praia, Mindelo, Santa Maria"
+              },
+              "America/Belize": {
+                "Beschriftung": "Costa_Rica, El_Salvador, Denver"
+              },
+              "Antarctica/Vostok": {
+                "Beschriftung": "Dhaka, Bishkek, Omsk"
+              },
+              "Europe/Astrakhan": {
+                "Beschriftung": "Dubai, Baku, Tiflis"
+              },
+              "Australia/Eucla": {
+                "Beschriftung": "Eucla"
+              },
+              "Pacific/Honolulu": {
+                "Beschriftung": "Honolulu, Rarotonga, Tahiti"
+              },
+              "Asia/Kabul": {
+                "Beschriftung": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
+              },
+              "Asia/Aqtau": {
+                "Beschriftung": "Karatschi, Taschkent, Malediven"
+              },
+              "Asia/Kathmandu": {
+                "Beschriftung": "Kathmandu,Pokhara, Pātan, Biratnagar"
+              },
+              "Pacific/Kiritimati": {
+                "Beschriftung": "Kiritimati"
+              },
+              "Asia/Colombo": {
+                "Beschriftung": "Kolkata, Colombo,Jaffna, Negombo"
+              },
+              "Europe/Guernsey": {
+                "Beschriftung": "London. Dublin, Lisbon"
+              },
+              "Australia/Lord_Howe": {
+                "Beschriftung": "Lord_Howe"
+              },
+              "America/Creston": {
+                "Beschriftung": "Los_Angeles, Vancouver, Hermosillo"
+              },
+              "Pacific/Marquesas": {
+                "Beschriftung": "Marquesas,Taiohae"
+              },
+              "America/Cayman": {
+                "Beschriftung": "Mexico_City, Panama, Chicago"
+              },
+              "Pacific/Niue": {
+                "Beschriftung": "Midway, Niue, Pago_Pago"
+              },
+              "Europe/Mariehamn": {
+                "Beschriftung": "Moskau, Istanbul, Katar"
+              },
+              "Asia/Kolkata": {
+                "Beschriftung": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
+              },
+              "America/Miquelon": {
+                "Beschriftung": "Noronha, Nuuk, Miquelon"
+              },
+              "America/Danmarkshavn": {
+                "Beschriftung": "Reykjavik, Dakar, Casablanca"
+              },
+              "Pacific/Bougainville": {
+                "Beschriftung": "Sakhalin, Norfolk, Bougainville"
+              },
+              "America/Araguaina": {
+                "Beschriftung": "Sao_Paulo, Buenos_Aires, Montevideo"
+              },
+              "America/St_Johns": {
+                "Beschriftung": "St_Johns,Mount Pearl, Corner Brook"
+              },
+              "Asia/Tehran": {
+                "Beschriftung": "Teheran, Mashhad, Isfahan, Karaj, Tabriz"
+              },
+              "Asia/Tokyo": {
+                "Beschriftung": "Tokio, Seoul, Jayapura"
+              },
+              "America/New_York": {
+                "Beschriftung": "Toronto, Santiago, New_York"
+              },
+              "Australia/Sydney": {
+                "Beschriftung": "Wladiwostok, Sydney, Brisbane"
+              },
+              "Asia/Yangon": {
+                "Beschriftung": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
+              },
+              "Indian/Cocos": {
+                "Beschriftung": "Yangon, Cocos,West Island"
+              }
+            },
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}
