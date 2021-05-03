@@ -10,10 +10,10 @@
         "required": true,
         "options": {
           "add_rows_below_selected_row": {
-            "label": "Add rows below"
+            "label": "Add rows below selected rows"
           },
           "add_rows_above_selected_row": {
-            "label": "Add rows above"
+            "label": "Add rows above selected rows"
           },
           "add_rows_at_table_end": {
             "label": "Add rows at table end"
@@ -38,12 +38,19 @@
         "breakLine": true
       },
       "options.use_filter": {
-        "type": "checkbox",
-        "label": "Use Filter",
+        "type": "select",
+        "label": "Select Type",
         "show_if": "$input_table.numOfLabel < 1 && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "required": true,
+        "options": {
+          "false": {
+            "label": "Add one row for each table row"
+          },
+          "true": {
+            "label": "Add one row for each specified row"
+          }
+        },
         "val": "false",
-        "isOn": "true",
-        "isOff": "false",
         "breakLine": true,
         "style": "margin-top: 10px"
       },
