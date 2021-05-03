@@ -1,29 +1,32 @@
 {
   "output.if_table_exist.type": {
     "type": "select",
-    "label": "If existing",
+    "etiqueta": "Se existir",
     "val": "drop_if_exist",
     "options": {
       "drop_if_exist": {
-        "label": "Criar ou Descartar (se já existir)"
+        "etiqueta": "Criar ou Descartar (se já existir)"
       },
       "error_if_exist": {
-        "label": "Criar Novo (gera erro se existir)"
+        "etiqueta": "Criar Novo (gera erro se existir)"
       },
       "error_if_not_exist": {
-        "label": "Descartar (gera erro se não existir)"
+        "etiqueta": "Descartar (gera erro se não existir)"
       },
       "append_all": {
-        "label": "Append All"
+        "etiqueta": "Acrescentar tudo"
       },
       "append_not_existing": {
-        "label": "Append not existing"
+        "etiqueta": "Anexar não existente"
+      },
+      "append_changes": {
+        "etiqueta": "Anexar alterações"
       }
     }
   },
   "output.if_table_exist.append_not_existing_cols": {
     "type": "select",
-    "label": "Selecionar Coluna(s)",
+    "etiqueta": "Selecionar Coluna(s)",
     "show_if": "output.if_table_exist.type=='append_not_existing'",
     "table": "input_table",
     "bind": "COLUMNS",
@@ -31,9 +34,41 @@
     "required": true,
     "breakLine": true
   },
+  "output.if_table_exist.append_changes__add_timestamp": {
+    "type": "checkbox",
+    "etiqueta": "Adicionar carimbo temporal",
+    "show_if": "output.if_table_exist.type=='append_changes'",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "output.if_table_exist.append_changes__timestamp_colname": {
+    "type": "text",
+    "etiqueta": "Nome da coluna do timestamp",
+    "show_if": "output.if_table_exist.type=='append_changes' && output.if_table_exist.append_changes__add_timestamp=='true'",
+    "val": "Timestamp",
+    "required": true,
+    "breakLine": true
+  },
+  "output.if_table_exist.append_changes__add_row": {
+    "type": "checkbox",
+    "etiqueta": "Adicionar Linha",
+    "show_if": "output.if_table_exist.type=='append_changes'",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "output.if_table_exist.append_changes__row_colname": {
+    "type": "text",
+    "etiqueta": "Nome da coluna da fila",
+    "show_if": "output.if_table_exist.type=='append_changes' && output.if_table_exist.append_changes__add_row=='true'",
+    "val": "Row",
+    "required": true,
+    "breakLine": true
+  },
   "append_not_existing_info1": {
     "type": "text",
-    "label": "",
+    "etiqueta": "",
     "show_if": "output.if_table_exist.type=='append_not_existing'",
     "val": "Appends rows only if the value of the selected column is new in the existing table.",
     "disabled": true,
@@ -41,7 +76,7 @@
   },
   "append_not_existing_info2": {
     "type": "text",
-    "label": "",
+    "etiqueta": "",
     "show_if": "output.if_table_exist.type=='append_not_existing'",
     "val": "It is assumed that the selected column is found in the output and existing table",
     "disabled": true,

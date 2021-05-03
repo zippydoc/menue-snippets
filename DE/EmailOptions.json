@@ -1,29 +1,29 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Optionen auswählen",
+    "Beschriftung": "Optionen auswählen",
     "repeat": false,
     "fields": {
       "options.task_type": {
         "type": "select",
-        "label": "Aufgaben-Typ",
+        "Beschriftung": "Aufgaben-Typ",
         "required": true,
         "options": {
           "write_series": {
-            "label": "Write e-mail series"
+            "Beschriftung": "E-Mail-Serie schreiben"
           },
           "write_email": {
-            "label": "Write e-mail"
+            "Beschriftung": "E-Mail schreiben"
           },
           "read": {
-            "label": "Read e-mails"
+            "Beschriftung": "E-Mails lesen"
           }
         },
         "val": "write_email"
       },
       "options.to": {
         "type": "text",
-        "label": "To",
+        "Beschriftung": "An",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -32,7 +32,7 @@
       },
       "options.cc": {
         "type": "text",
-        "label": "CC",
+        "Beschriftung": "CC",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -41,7 +41,7 @@
       },
       "options.bcc": {
         "type": "text",
-        "label": "BCC",
+        "Beschriftung": "BCC",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -50,16 +50,16 @@
       },
       "options.subject": {
         "type": "text",
-        "label": "Subject",
+        "Beschriftung": "Betreff",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
-        "placeholder": "Subject",
+        "placeholder": "Betreff",
         "width": "100%"
       },
       "options.body": {
         "type": "text",
-        "label": "Body",
+        "Beschriftung": "Body",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -70,19 +70,19 @@
   },
   "smtp_config_frame": {
     "type": "fieldset",
-    "label": "SMTP Connection",
+    "Beschriftung": "SMTP-Verbindung",
     "show_if": "options.task_type=='write_series' || options.task_type=='write_email'",
     "repeat": false,
     "fields": {
       "options.smtp.type": {
         "type": "select",
-        "label": "Select SMTP Server",
+        "Beschriftung": "SMTP-Server auswählen",
         "options": {
           "gmail": {
-            "label": "Gmail"
+            "Beschriftung": "Gmail"
           },
           "custom": {
-            "label": "Custom (coming soon)"
+            "Beschriftung": "Benutzerdefiniert (kommt bald)"
           }
         },
         "val": "gmail",
@@ -91,7 +91,7 @@
       },
       "gmail_warning": {
         "type": "text",
-        "label": "",
+        "Beschriftung": "",
         "show_if": "options.smtp.type=='gmail'",
         "val": "Turn 'Allow less secure apps' ON in https://myaccount.google.com/lesssecureapps",
         "width": "100%",
@@ -99,38 +99,38 @@
       },
       "options.gmail.user": {
         "type": "text",
-        "label": "Gmail User",
+        "Beschriftung": "Gmail-Benutzer",
         "show_if": "options.smtp.type=='gmail'",
         "required": true,
         "placeholder": "sender@gmail.com"
       },
       "options.gmail.password": {
         "type": "password",
-        "label": "Gmail Password",
+        "Beschriftung": "Gmail-Kennwort",
         "show_if": "options.smtp.type=='gmail'",
         "required": true
       },
       "options.custom.host": {
         "type": "text",
-        "label": "SMTP Host",
+        "Beschriftung": "SMTP-Host",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.port": {
         "type": "text",
-        "label": "SMTP Port",
+        "Beschriftung": "SMTP-Anschluss",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.user": {
         "type": "text",
-        "label": "SMTP User",
+        "Beschriftung": "SMTP-Benutzer",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.password": {
         "type": "password",
-        "label": "SMTP Password",
+        "Beschriftung": "SMTP-Kennwort",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       }

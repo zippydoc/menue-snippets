@@ -1,12 +1,12 @@
 {
   "output": {
     "type": "fieldset",
-    "label": "Ausgabetabelle definieren",
+    "Beschriftung": "Ausgabetabelle definieren",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
-        "label": "Name der Ausgabetabelle",
+        "Beschriftung": "Name der Ausgabetabelle",
         "show_if": "output.compose_table_name=='false'",
         "minLength": 1,
         "val": "",
@@ -15,7 +15,7 @@
       },
       "output.select_output_columns": {
         "type": "checkbox",
-        "label": "Ausgabespalten auswählen",
+        "Beschriftung": "OutputColumns auswählen",
         "show_if": "options.is_generate_holiday_table=='add_column'",
         "val": "false",
         "isOn": "true",
@@ -23,36 +23,36 @@
       },
       "output_columns": {
         "type": "fieldset",
-        "label": "Select OutputColumns",
+        "Beschriftung": "Select OutputColumns",
         "show_if": "options.is_generate_holiday_table=='add_column' && output.select_output_columns=='true'",
         "repeat": true,
         "fields": {
           "field_name": {
             "type": "select",
-            "label": "Spalte auswählen",
+            "Beschriftung": "Spalte auswählen",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
           "order": {
             "type": "select",
-            "label": "Bestellung",
+            "Beschriftung": "Bestellung",
             "options": {
               "-": {
-                "label": "-"
+                "Beschriftung": "-"
               },
               "asc": {
-                "label": "Asc"
+                "Beschriftung": "Asc"
               },
               "desc": {
-                "label": "Desc"
+                "Beschriftung": "Desc"
               }
             },
             "val": "-"
           },
           "is_rename": {
             "type": "checkbox",
-            "label": "Umbenennen",
+            "Beschriftung": "Umbenennen",
             "val": "false",
             "isOn": "true",
             "isOff": "false"
@@ -63,80 +63,80 @@
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "Neuer Spaltenname",
+            "Beschriftung": "Neuer Spaltenname",
             "style": "margin-left: 10px"
           },
           "format__category": {
             "type": "select",
-            "label": "Format",
+            "Beschriftung": "Format",
             "required": true,
             "options": {
               "standard": {
-                "label": "Standard"
+                "Beschriftung": "Standard"
               },
               "number": {
-                "label": "Nummer"
+                "Beschriftung": "Nummer"
               },
               "percentage": {
-                "label": "Prozentsatz"
+                "Beschriftung": "Prozentsatz"
               },
               "text": {
-                "label": "Text"
+                "Beschriftung": "Text"
               },
               "date": {
-                "label": "Datum"
+                "Beschriftung": "Datum"
               },
               "currency": {
-                "label": "Währung"
+                "Beschriftung": "Währung"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "Abrunden",
+            "Beschriftung": "Abrunden",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Keine Rundung"
+                "Beschriftung": "Keine Rundung"
               },
               "0": {
-                "label": "0 Ziffern"
+                "Beschriftung": "0 Ziffern"
               },
               "1": {
-                "label": "1 Ziffern"
+                "Beschriftung": "1 Ziffern"
               },
               "2": {
-                "label": "2 Ziffern"
+                "Beschriftung": "2 Ziffern"
               },
               "3": {
-                "label": "3 Ziffern"
+                "Beschriftung": "3 Ziffern"
               },
               "4": {
-                "label": "4 Ziffern"
+                "Beschriftung": "4 Ziffern"
               },
               "5": {
-                "label": "5 Ziffern"
+                "Beschriftung": "5 Ziffern"
               },
               "6": {
-                "label": "6 Ziffern"
+                "Beschriftung": "6 Ziffern"
               },
               "7": {
-                "label": "7 Ziffern"
+                "Beschriftung": "7 Ziffern"
               },
               "8": {
-                "label": "8 Ziffern"
+                "Beschriftung": "8 Ziffern"
               },
               "9": {
-                "label": "9 Ziffern"
+                "Beschriftung": "9 Ziffern"
               }
             },
             "val": "2"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "1000 Trennzeichen(.) verwenden",
+            "Beschriftung": "1000 Trennzeichen(.) verwenden",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -144,36 +144,36 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "Symbol",
+            "Beschriftung": "Symbol",
             "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "Beschriftung": "$"
               },
               "euro": {
-                "label": "€"
+                "Beschriftung": "€"
               },
               "pound": {
-                "label": "£"
+                "Beschriftung": "£"
               }
             },
             "val": "dollar"
           },
           "format__date_format": {
             "type": "select",
-            "label": "Typ",
+            "Beschriftung": "Typ",
             "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "Beschriftung": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "Beschriftung": "Mittwoch, 14. März 2012"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "Beschriftung": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy",
@@ -181,7 +181,7 @@
           },
           "delete": {
             "type": "button",
-            "label": "Lösche",
+            "Beschriftung": "Lösche",
             "function": "DELETE_ROW"
           }
         },
@@ -190,7 +190,7 @@
       },
       "output.compose_table_name": {
         "type": "checkbox",
-        "label": "Tabellenname zusammenstellen",
+        "Beschriftung": "Tabellenname zusammenstellen",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -198,42 +198,42 @@
       },
       "compose_table_name_frame": {
         "type": "fieldset",
-        "label": "Name der Ausgabetabelle zusammenstellen",
+        "Beschriftung": "Name der Ausgabetabelle zusammenstellen",
         "show_if": "output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
             "type": "select",
-            "label": "Präfix",
+            "Beschriftung": "Präfix",
             "show_if": "output.compose_table_name=='true'",
             "val": "empty",
             "options": {
               "empty": {
-                "label": "-"
+                "Beschriftung": "-"
               },
               "script_name": {
-                "label": "Aufgabe Name"
+                "Beschriftung": "Aufgabe Name"
               },
               "date_string_type1": {
-                "label": "Datum: tt_mm_jjjj"
+                "Beschriftung": "Datum: tt_mm_jjjj"
               },
               "date_string_type2": {
-                "label": "Datum: jjjj_mm_tt"
+                "Beschriftung": "Datum: jjjj_mm_tt"
               },
               "time_string": {
-                "label": "Zeit: h_min_sec"
+                "Beschriftung": "Zeit: h_min_sec"
               },
               "datetime_string": {
-                "label": "Datum_Zeit"
+                "Beschriftung": "Datum_Zeit"
               },
               "custom": {
-                "label": "Benutzerdefiniert"
+                "Beschriftung": "Benutzerdefiniert"
               }
             }
           },
           "output.prefix_text": {
             "type": "text",
-            "label": "Präfix Text",
+            "Beschriftung": "Präfix Text",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -241,45 +241,45 @@
           },
           "output.core_delimiter": {
             "type": "text",
-            "label": "Begrenzer",
+            "Beschriftung": "Begrenzer",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
             "val": "_",
             "width": "50px"
           },
           "output.generate_core_rule": {
             "type": "select",
-            "label": "Tabelle Name",
+            "Beschriftung": "Tabelle Name",
             "show_if": "output.compose_table_name=='true' && options.is_generate_holiday_table=='generate_table'",
             "val": "script_name",
             "options": {
               "script_name": {
-                "label": "Aufgabe Name"
+                "Beschriftung": "Aufgabe Name"
               },
               "custom": {
-                "label": "Benutzerdefiniert"
+                "Beschriftung": "Benutzerdefiniert"
               }
             }
           },
           "output.core_rule": {
             "type": "select",
-            "label": "Tabelle Name",
+            "Beschriftung": "Tabelle Name",
             "show_if": "output.compose_table_name=='true' && options.is_generate_holiday_table=='add_column'",
             "val": "input_table_name",
             "options": {
               "input_table_name": {
-                "label": "Name der Eingangstabelle"
+                "Beschriftung": "Name der Eingangstabelle"
               },
               "script_name": {
-                "label": "Aufgabe Name"
+                "Beschriftung": "Aufgabe Name"
               },
               "custom": {
-                "label": "Benutzerdefiniert"
+                "Beschriftung": "Benutzerdefiniert"
               }
             }
           },
           "output.core_text": {
             "type": "text",
-            "label": "Haupttabelle Name",
+            "Beschriftung": "Haupttabelle Name",
             "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
             "required": true,
             "minLength": 1,
@@ -288,43 +288,43 @@
           },
           "output.suffix_delimiter": {
             "type": "text",
-            "label": "Begrenzer",
+            "Beschriftung": "Begrenzer",
             "show_if": "output.compose_table_name=='true'",
             "val": "_",
             "width": "50px"
           },
           "output.suffix_rule": {
             "type": "select",
-            "label": "Suffix",
+            "Beschriftung": "Suffix",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "empty": {
-                "label": "-"
+                "Beschriftung": "-"
               },
               "script_name": {
-                "label": "Aufgabe Name"
+                "Beschriftung": "Aufgabe Name"
               },
               "date_string_type1": {
-                "label": "Datum: tt_mm_jjjj"
+                "Beschriftung": "Datum: tt_mm_jjjj"
               },
               "date_string_type2": {
-                "label": "Datum: jjjj_mm_tt"
+                "Beschriftung": "Datum: jjjj_mm_tt"
               },
               "time_string": {
-                "label": "Zeit: h_min_sec"
+                "Beschriftung": "Zeit: h_min_sec"
               },
               "datetime_string": {
-                "label": "Datum_Zeit"
+                "Beschriftung": "Datum_Zeit"
               },
               "custom": {
-                "label": "Benutzerdefiniert"
+                "Beschriftung": "Benutzerdefiniert"
               }
             }
           },
           "output.suffix_text": {
             "type": "text",
-            "label": "Suffix Text",
+            "Beschriftung": "Suffix Text",
             "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -333,130 +333,130 @@
           },
           "output.timezone": {
             "type": "select",
-            "label": "Zeitzone",
+            "Beschriftung": "Zeitzone",
             "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
             "val": "Europa/Berlin",
             "required": true,
             "options": {
               "America/Adak": {
-                "label": "Adak, Gambier"
+                "Beschriftung": "Adak, Gambier"
               },
               "Australia/Adelaide": {
-                "label": "Adelaide, Broken_Hill, Darwin"
+                "Beschriftung": "Adelaide, Broken_Hill, Darwin"
               },
               "America/Anchorage": {
-                "label": "Anchorage, Juneau, Sitka"
+                "Beschriftung": "Anchorage, Juneau, Sitka"
               },
               "Pacific/Apia": {
-                "label": "Apia, Asau, Mulifanua, Afega, Leulumoega"
+                "Beschriftung": "Apia, Asau, Mulifanua, Afega, Leulumoega"
               },
               "Pacific/Enderbury": {
-                "label": "Apia, Fiji, Tongatapu"
+                "Beschriftung": "Apia, Fiji, Tongatapu"
               },
               "Antarctica/McMurdo": {
-                "label": "Auckland, Casey, Davis"
+                "Beschriftung": "Auckland, Casey, Davis"
               },
               "Pacific/Auckland": {
-                "label": "Auckland, Wellington, Christchurch"
+                "Beschriftung": "Auckland, Wellington, Christchurch"
               },
               "Asia/Bangkok": {
-                "label": "Bangkok, Jakarta, Novosibirsk"
+                "Beschriftung": "Bangkok, Jakarta, Nowosibirsk"
               },
               "Europa/Berlin": {
-                "label": "Berlin, Paris, Amsterdam"
+                "Beschriftung": "Berlin, Paris, Amsterdam"
               },
               "Australia/Perth": {
-                "label": "Brunei, Singapore, Perth"
+                "Beschriftung": "Brunei, Singapur, Perth"
               },
               "Atlantic/Cape_Verde": {
-                "label": "Cape_Verde,Praia, Mindelo, Santa Maria"
+                "Beschriftung": "Cape_Verde,Praia, Mindelo, Santa Maria"
               },
               "America/Belize": {
-                "label": "Costa_Rica, El_Salvador, Denver"
+                "Beschriftung": "Costa_Rica, El_Salvador, Denver"
               },
               "Antarctica/Vostok": {
-                "label": "Dhaka, Bishkek, Omsk"
+                "Beschriftung": "Dhaka, Bishkek, Omsk"
               },
               "Europe/Astrakhan": {
-                "label": "Dubai, Baku, Tbilisi"
+                "Beschriftung": "Dubai, Baku, Tiflis"
               },
               "Australia/Eucla": {
-                "label": "Eucla"
+                "Beschriftung": "Eucla"
               },
               "Pacific/Honolulu": {
-                "label": "Honolulu, Rarotonga, Tahiti"
+                "Beschriftung": "Honolulu, Rarotonga, Tahiti"
               },
               "Asia/Kabul": {
-                "label": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
+                "Beschriftung": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
               },
               "Asia/Aqtau": {
-                "label": "Karachi, Tashkent, Maldives"
+                "Beschriftung": "Karatschi, Taschkent, Malediven"
               },
               "Asia/Kathmandu": {
-                "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
+                "Beschriftung": "Kathmandu,Pokhara, Pātan, Biratnagar"
               },
               "Pacific/Kiritimati": {
-                "label": "Kiritimati"
+                "Beschriftung": "Kiritimati"
               },
               "Asia/Colombo": {
-                "label": "Kolkata, Colombo,Jaffna, Negombo"
+                "Beschriftung": "Kolkata, Colombo,Jaffna, Negombo"
               },
               "Europe/Guernsey": {
-                "label": "London. Dublin, Lisbon"
+                "Beschriftung": "London. Dublin, Lisbon"
               },
               "Australia/Lord_Howe": {
-                "label": "Lord_Howe"
+                "Beschriftung": "Lord_Howe"
               },
               "America/Creston": {
-                "label": "Los_Angeles, Vancouver, Hermosillo"
+                "Beschriftung": "Los_Angeles, Vancouver, Hermosillo"
               },
               "Pacific/Marquesas": {
-                "label": "Marquesas,Taiohae"
+                "Beschriftung": "Marquesas,Taiohae"
               },
               "America/Cayman": {
-                "label": "Mexico_City, Panama, Chicago"
+                "Beschriftung": "Mexico_City, Panama, Chicago"
               },
               "Pacific/Niue": {
-                "label": "Midway, Niue, Pago_Pago"
+                "Beschriftung": "Midway, Niue, Pago_Pago"
               },
               "Europe/Mariehamn": {
-                "label": "Moscow, Istanbul, Qatar"
+                "Beschriftung": "Moskau, Istanbul, Katar"
               },
               "Asia/Kolkata": {
-                "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
+                "Beschriftung": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
               },
               "America/Miquelon": {
-                "label": "Noronha, Nuuk, Miquelon"
+                "Beschriftung": "Noronha, Nuuk, Miquelon"
               },
               "America/Danmarkshavn": {
-                "label": "Reykjavik, Dakar, Casablanca"
+                "Beschriftung": "Reykjavik, Dakar, Casablanca"
               },
               "Pacific/Bougainville": {
-                "label": "Sakhalin, Norfolk, Bougainville"
+                "Beschriftung": "Sakhalin, Norfolk, Bougainville"
               },
               "America/Araguaina": {
-                "label": "Sao_Paulo, Buenos_Aires, Montevideo"
+                "Beschriftung": "Sao_Paulo, Buenos_Aires, Montevideo"
               },
               "America/St_Johns": {
-                "label": "St_Johns,Mount Pearl, Corner Brook"
+                "Beschriftung": "St_Johns,Mount Pearl, Corner Brook"
               },
               "Asia/Tehran": {
-                "label": "Tehran, Mashhad, Isfahan, Karaj, Tabriz"
+                "Beschriftung": "Teheran, Mashhad, Isfahan, Karaj, Tabriz"
               },
               "Asia/Tokyo": {
-                "label": "Tokyo, Seoul, Jayapura"
+                "Beschriftung": "Tokio, Seoul, Jayapura"
               },
               "America/New_York": {
-                "label": "Toronto, Santiago, New_York"
+                "Beschriftung": "Toronto, Santiago, New_York"
               },
               "Australia/Sydney": {
-                "label": "Vladivostok, Sydney, Brisbane"
+                "Beschriftung": "Wladiwostok, Sydney, Brisbane"
               },
               "Asia/Yangon": {
-                "label": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
+                "Beschriftung": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
               },
               "Indian/Cocos": {
-                "label": "Yangon, Cocos,West Island"
+                "Beschriftung": "Yangon, Cocos,West Island"
               }
             },
             "breakLine": true

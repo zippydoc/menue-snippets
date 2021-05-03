@@ -1,12 +1,12 @@
 {
   "input": {
     "type": "fieldset",
-    "label": "Selecionar Tabela de Entrada",
+    "etiqueta": "Selecionar Tabela de Entrada",
     "repeat": false,
     "fields": {
       "input_table": {
         "type": "select",
-        "label": "Selecionar Tabela",
+        "etiqueta": "Selecionar Tabela",
         "bind": "TABLES",
         "empty": "",
         "required": true
@@ -19,27 +19,9 @@
         "type": "hidden",
         "val": "false"
       },
-      "table_type": {
-        "type": "select",
-        "label": "Tipo de Tabela",
-        "required": true,
-        "options": {
-          "header_only": {
-            "label": "Apenas cabeçalho"
-          },
-          "label_only": {
-            "label": "Apenas rótulo"
-          },
-          "matrix": {
-            "label": "Matriz"
-          }
-        },
-        "val": "header_only",
-        "breakLine": true
-      },
       "apply_to_all_columns": {
         "type": "checkbox",
-        "label": "Aplicar a todas as colunas",
+        "etiqueta": "Aplicar a todas as colunas",
         "show_if": "table_type=='header_only' || table_type=='matrix'",
         "val": "true",
         "isOn": "true",
@@ -47,7 +29,7 @@
       },
       "columns_to_apply": {
         "type": "select",
-        "label": "Colunas a aplicar",
+        "etiqueta": "Colunas a aplicar",
         "show_if": "apply_to_all_columns=='false' && (table_type=='header_only' || table_type=='matrix')",
         "table": "input_table",
         "bind": "COLUMNS",

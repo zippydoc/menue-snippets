@@ -1,59 +1,59 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Opções de Seleção",
+    "etiqueta": "Opções de Seleção",
     "repeat": false,
     "fields": {
       "task_type": {
         "type": "select",
-        "label": "Tipo de Tarefa",
+        "etiqueta": "Tipo de Tarefa",
         "required": true,
         "options": {
           "encrypt": {
-            "label": "Codificar (seguro)"
+            "etiqueta": "Codificar (seguro)"
           },
           "decrypt": {
-            "label": "Descodificar (seguro)"
+            "etiqueta": "Descodificar (seguro)"
           },
           "encrypt_simple": {
-            "label": "Codificar (simples)"
+            "etiqueta": "Codificar (simples)"
           },
           "decrypt_simple": {
-            "label": "Descodificar (simples)"
+            "etiqueta": "Descodificar (simples)"
           },
           "mask": {
-            "label": "Máscara"
+            "etiqueta": "Máscara"
           }
         },
         "val": "encrypt"
       },
       "mask_type": {
         "type": "select",
-        "label": "Tipo de Máscara",
+        "etiqueta": "Tipo de Máscara",
         "show_if": "task_type == 'mask'",
         "required": true,
         "options": {
           "trailing": {
-            "label": "Primeiros N caracteres"
+            "etiqueta": "Primeiros N caracteres"
           },
           "leading": {
-            "label": "Primeiros N Caracteres"
+            "etiqueta": "Primeiros N Caracteres"
           },
           "numbers": {
-            "label": "Números"
+            "etiqueta": "Números"
           },
           "alphabets": {
-            "label": "Caracteres"
+            "etiqueta": "Caracteres"
           },
           "regex": {
-            "label": "Expressão Regular"
+            "etiqueta": "Expressão Regular"
           }
         },
         "val": "trailing"
       },
       "password": {
         "type": "password",
-        "label": "Palavra-passe",
+        "etiqueta": "Palavra-passe",
         "show_if": "task_type != 'mask'",
         "required": true,
         "minLength": 1,
@@ -62,14 +62,14 @@
       },
       "varn": {
         "type": "number",
-        "label": "N",
+        "etiqueta": "N",
         "show_if": "task_type == 'mask' && (mask_type == 'trailing' || mask_type == 'leading')",
         "required": true,
         "val": "1"
       },
       "regexp": {
         "type": "text",
-        "label": "Expressão",
+        "etiqueta": "Expressão",
         "show_if": "task_type == 'mask' && (mask_type == 'regex')",
         "required": true,
         "val": "",
@@ -77,7 +77,7 @@
       },
       "replace": {
         "type": "text",
-        "label": "Máscara de string",
+        "etiqueta": "Máscara de string",
         "show_if": "task_type == 'mask' && (mask_type == 'regex')",
         "required": true,
         "val": "*"

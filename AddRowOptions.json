@@ -10,10 +10,10 @@
         "required": true,
         "options": {
           "add_rows_below_selected_row": {
-            "label": "Add rows below"
+            "label": "Add rows below selected rows"
           },
           "add_rows_above_selected_row": {
-            "label": "Add rows above"
+            "label": "Add rows above selected rows"
           },
           "add_rows_at_table_end": {
             "label": "Add rows at table end"
@@ -38,12 +38,19 @@
         "breakLine": true
       },
       "options.use_filter": {
-        "type": "checkbox",
-        "label": "Use Filter",
+        "type": "select",
+        "label": "Select Type",
         "show_if": "$input_table.numOfLabel < 1 && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "required": true,
+        "options": {
+          "false": {
+            "label": "Add one row for each table row"
+          },
+          "true": {
+            "label": "Add one row for each specified row"
+          }
+        },
         "val": "false",
-        "isOn": "true",
-        "isOff": "false",
         "breakLine": true,
         "style": "margin-top: 10px"
       },
@@ -290,6 +297,7 @@
           "multi_row_functions__function": {
             "type": "select",
             "label": "Select Functions",
+            "show_if": "$input_table.numOfLabel >= 1",
             "required": true,
             "options": {
               "sum": {
@@ -316,6 +324,33 @@
             },
             "val": "sum"
           },
+          "multi_row_functions__function_use_filter": {
+            "type": "select",
+            "label": "Select Functions",
+            "show_if": "$input_table.numOfLabel < 1",
+            "required": true,
+            "options": {
+              "sum": {
+                "label": "Sum"
+              },
+              "average": {
+                "label": "Average"
+              },
+              "median": {
+                "label": "Median"
+              },
+              "standard_deviation": {
+                "label": "Standard Deviation"
+              },
+              "variance": {
+                "label": "Variance"
+              },
+              "product": {
+                "label": "Product"
+              }
+            },
+            "val": "sum"
+          },
           "multi_row_functions__sel_labels": {
             "type": "select",
             "label": "Select Rows(s)",
@@ -328,7 +363,7 @@
           "multi_row_functions__sel_rows": {
             "type": "select",
             "label": "Select Rows",
-            "show_if": "options.use_filter=='false' && $input_table.numOfLabel < 1",
+            "show_if": "false",
             "required": true,
             "options": {
               "row-1": {

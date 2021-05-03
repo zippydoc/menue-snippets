@@ -1,21 +1,21 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Sélectionner les options",
+    "Étiquette": "Sélectionner les options",
     "repeat": false,
     "fields": {
       "options.to": {
         "type": "select",
-        "label": "Type",
+        "Étiquette": "Type",
         "options": {
           "database": {
-            "label": "Exportation vers la base de données"
+            "Étiquette": "Exportation vers la base de données"
           },
           "file": {
-            "label": "Exporter vers le fichier"
+            "Étiquette": "Exporter vers le fichier"
           },
           "mytask": {
-            "label": "Exporter MyTask"
+            "Étiquette": "Exporter MyTask"
           }
         },
         "val": "database",
@@ -23,7 +23,7 @@
       },
       "options.export_series": {
         "type": "checkbox",
-        "label": "Exporter série",
+        "Étiquette": "Exporter série",
         "show_if": "options.to=='file'",
         "val": "false",
         "isOn": "true",
@@ -32,7 +32,7 @@
       },
       "options.file_name_column": {
         "type": "select",
-        "label": "Sélectionner la colonne de nom du fichier",
+        "Étiquette": "Sélectionner la colonne de nom du fichier",
         "show_if": "options.to=='file' && options.export_series=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -41,25 +41,25 @@
       },
       "postgresql_db_credential_box": {
         "type": "fieldset",
-        "label": "Références de connexion à la base de données",
+        "Étiquette": "Références de connexion à la base de données",
         "show_if": "options.to=='database'",
         "repeat": false,
         "fields": {
           "options.dbms": {
             "type": "select",
-            "label": "Sélectionner un SGBD",
+            "Étiquette": "Sélectionner un SGBD",
             "options": {
               "postgresql": {
-                "label": "PostgreSQL"
+                "Étiquette": "PostgreSQL"
               },
               "mysql": {
-                "label": "MySQL"
+                "Étiquette": "MySQL"
               },
               "sql_server": {
-                "label": "Serveur MS SQL"
+                "Étiquette": "Serveur MS SQL"
               },
               "oracle": {
-                "label": "Oracle"
+                "Étiquette": "Oracle"
               }
             },
             "val": "postgresql",
@@ -68,7 +68,7 @@
           },
           "options.postgresql_credential.user": {
             "type": "text",
-            "label": "Utilisateur",
+            "Étiquette": "Utilisateur",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -76,7 +76,7 @@
           },
           "options.postgresql_credential.password": {
             "type": "text",
-            "label": "Mot de passe",
+            "Étiquette": "Mot de passe",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -84,7 +84,7 @@
           },
           "options.postgresql_credential.host": {
             "type": "text",
-            "label": "Hôte",
+            "Étiquette": "Hôte",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -92,7 +92,7 @@
           },
           "options.postgresql_credential.database": {
             "type": "text",
-            "label": "Base de données",
+            "Étiquette": "Base de données",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -102,7 +102,7 @@
       },
       "options.schema_name_to_export": {
         "type": "text",
-        "label": "Nom du schéma vers lequel exporter",
+        "Étiquette": "Nom du schéma vers lequel exporter",
         "show_if": "options.to=='database' && options.dbms=='postgresql'",
         "required": true,
         "val": "public",
@@ -111,11 +111,11 @@
       },
       "options.webservice": {
         "type": "select",
-        "label": "Sélectionner un service web",
+        "Étiquette": "Sélectionner un service web",
         "show_if": "options.to=='file' || options.to=='mytask'",
         "options": {
           "github": {
-            "label": "Github"
+            "Étiquette": "Github"
           }
         },
         "val": "github",
@@ -123,17 +123,17 @@
       },
       "options.export_format": {
         "type": "select",
-        "label": "Format d'exportation",
+        "Étiquette": "Format d'exportation",
         "show_if": "options.to=='file'",
         "options": {
           "csv_file": {
-            "label": "Fichier(s) Csv"
+            "Étiquette": "Fichier(s) Csv"
           },
           "word_by_word": {
-            "label": "Mot par mot"
+            "Étiquette": "Mot par mot"
           },
           "line_by_line": {
-            "label": "Ligne par ligne"
+            "Étiquette": "Ligne par ligne"
           }
         },
         "val": "csv_file",
@@ -142,7 +142,7 @@
       },
       "options.github_token": {
         "type": "text",
-        "label": "Indiquez le token d'accès personnel Github avec autorisation d'écriture :",
+        "Étiquette": "Indiquez le token d'accès personnel Github avec autorisation d'écriture :",
         "show_if": "options.to=='file' || options.to=='mytask'",
         "required": true,
         "width": "100%",
@@ -150,7 +150,7 @@
       },
       "options.github_url": {
         "type": "text",
-        "label": "Insérer lien, p. ex. https://github.com/zippydoc/test",
+        "Étiquette": "Insérer lien, p. ex. https://github.com/zippydoc/test",
         "show_if": "options.to=='file' || options.to=='mytask'",
         "val": "https://github.com/zippydoc/public-tables",
         "required": true,
@@ -159,26 +159,26 @@
       },
       "options.if_duplicated": {
         "type": "select",
-        "label": "Si duplicata",
+        "Étiquette": "Si duplicata",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "Créer ou supprimer (si déjà existant)"
+            "Étiquette": "Créer ou supprimer (si déjà existant)"
           },
           "error_if_exist": {
-            "label": "Créer (erreur si déjà existant)"
+            "Étiquette": "Créer (erreur si déjà existant)"
           },
           "error_if_not_exist": {
-            "label": "Ignorer (erreur si non-existant)"
+            "Étiquette": "Ignorer (erreur si non-existant)"
           },
           "append": {
-            "label": "Joindre"
+            "Étiquette": "Annexer"
           }
         }
       },
       "options.export_task_name": {
         "type": "text",
-        "label": "Nom de la tâche d'entrée",
+        "Étiquette": "Nom de la tâche d'entrée",
         "show_if": "options.to=='mytask'",
         "required": true,
         "val": "Flow6_Task1_AddColumns",

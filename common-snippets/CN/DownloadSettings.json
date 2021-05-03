@@ -1,0 +1,78 @@
+{
+  "output.download_setting": {
+    "type": "checkbox",
+    "标签": "下载设置",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false",
+    "style": "margin-top: 10px"
+  },
+  "download_setting_frame": {
+    "type": "fieldset",
+    "标签": "下载设置",
+    "show_if": "output.download_setting=='true'",
+    "repeat": false,
+    "fields": {
+      "output.options.location": {
+        "type": "text",
+        "标签": "指定位置",
+        "val": "A1",
+        "breakLine": true
+      },
+      "output.options.formatted_as_table": {
+        "type": "checkbox",
+        "标签": "格式化为表格",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "output.add_tag": {
+        "type": "checkbox",
+        "标签": "添加标记",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "output.tag_name": {
+        "type": "text",
+        "标签": "标记名称",
+        "show_if": "output.add_tag=='true'",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 255,
+        "val": "",
+        "breakLine": true,
+        "style": "margin-left: 15px"
+      },
+      "output.options.visibility": {
+        "type": "select",
+        "标签": "可见性",
+        "val": "current_flow",
+        "options": {
+          "current_flow": {
+            "标签": "当前工作流"
+          },
+          "all_flow": {
+            "标签": "所有工作流"
+          }
+        },
+        "breakLine": true
+      },
+      "output.options.table_mode": {
+        "type": "select",
+        "标签": "粘贴",
+        "val": "content_only",
+        "options": {
+          "content_only": {
+            "标签": "仅内容"
+          },
+          "fully_formatted": {
+            "标签": "完全格式化"
+          }
+        }
+      }
+    },
+    "breakLine": true
+  }
+}

@@ -1,20 +1,20 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Opções de Seleção",
+    "etiqueta": "Opções de Seleção",
     "repeat": false,
     "fields": {
       "options.table_permission.set_or_delete": {
         "type": "select",
-        "label": "Type of Action",
+        "etiqueta": "Tipo de acção,
         "show_if": "input.table_or_flow=='set_table_permissions'",
         "required": true,
         "options": {
           "set_permissions": {
-            "label": "Set permissions"
+            "etiqueta": "Definir permissões"
           },
           "delete_permissions": {
-            "label": "Delete all permissions"
+            "etiqueta": "Eliminar todas as permissões"
           }
         },
         "val": "set_permissions",
@@ -22,34 +22,34 @@
       },
       "options.table_permission.emails": {
         "type": "text",
-        "label": "Permitted Users (; separated list)",
+        "etiqueta": "Utilizadores Permitidos (; lista separada)",
         "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
         "required": true,
         "width": "100%"
       },
       "options.table_permission.permissions": {
         "type": "fieldset",
-        "label": "Set Permissions",
+        "etiqueta": "Definir permissões",
         "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
         "repeat": true,
         "fields": {
           "rows_or_columns": {
             "type": "select",
-            "label": "Type for Table",
+            "etiqueta": "Tipo para mesa",
             "required": true,
             "options": {
               "select_rows": {
-                "label": "Select Row(s)"
+                "etiqueta": "Seleccionar Fila(s)"
               },
               "select_columns": {
-                "label": "Selecionar Coluna(s)"
+                "etiqueta": "Selecionar Coluna(s)"
               }
             },
             "val": "select_columns"
           },
           "rows": {
             "type": "select",
-            "label": "Select Row(s)",
+            "etiqueta": "Seleccionar Fila(s)",
             "show_if": "this.rows_or_columns=='select_rows'",
             "table": "input.table_id",
             "bind": "LABELS",
@@ -58,7 +58,7 @@
           },
           "columns": {
             "type": "select",
-            "label": "Select Columns(s)",
+            "etiqueta": "Seleccione Colunas(s)",
             "show_if": "this.rows_or_columns=='select_columns'",
             "table": "input.table_id",
             "bind": "COLUMNS",
@@ -67,36 +67,36 @@
           },
           "permission_type": {
             "type": "select",
-            "label": "Permission Type",
+            "etiqueta": "Tipo de permissão",
             "required": true,
             "options": {
               "READ": {
-                "label": "Read"
+                "etiqueta": "Ler"
               },
               "WRITE": {
-                "label": "Write"
+                "etiqueta": "Escrever"
               },
               "PASS-ON": {
-                "label": "Pass-On"
+                "etiqueta": "Pass-On"
               }
             },
             "val": "READ"
           },
           "delete": {
             "type": "button",
-            "label": "Apagar",
+            "etiqueta": "Apagar",
             "function": "DELETE_ROW"
           }
         }
       },
       "options.flow_permission.set_or_delete": {
         "type": "select",
-        "label": "Type of Action",
+        "etiqueta": "Tipo de acção,
         "show_if": "input.table_or_flow=='set_flow_permissions'",
         "required": true,
         "options": {
           "set_permissions": {
-            "label": "Set permissions"
+            "etiqueta": "Definir permissões"
           }
         },
         "val": "set_permissions",
@@ -104,37 +104,37 @@
       },
       "options.flow_permission.emails": {
         "type": "text",
-        "label": "Permitted Users (; separated list)",
+        "etiqueta": "Utilizadores Permitidos (; lista separada)",
         "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
         "required": true,
         "width": "100%"
       },
       "options.flow_permission.permissions": {
         "type": "fieldset",
-        "label": "Set Permissions",
+        "etiqueta": "Definir permissões",
         "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
         "repeat": true,
         "fields": {
           "permission_type": {
             "type": "select",
-            "label": "Permission Type",
+            "etiqueta": "Tipo de permissão",
             "required": true,
             "options": {
               "READ": {
-                "label": "Read"
+                "etiqueta": "Ler"
               },
               "WRITE": {
-                "label": "Write"
+                "etiqueta": "Escrever"
               },
               "PASS-ON": {
-                "label": "Pass-On"
+                "etiqueta": "Pass-On"
               }
             },
             "val": "READ"
           },
           "delete": {
             "type": "button",
-            "label": "Apagar",
+            "etiqueta": "Apagar",
             "function": "DELETE_ROW"
           }
         }
