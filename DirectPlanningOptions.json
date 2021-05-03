@@ -13,72 +13,91 @@
         "label": "Planning Position",
         "repeat": true,
         "fields": {
-          "item": {
-            "type": "text",
-            "label": "Item",
-            "val": "",
-            "required": true
-          },
           "position": {
             "type": "select",
             "label": "Position",
             "options": {
-              "sales revenues": {
-                "label": "sales revenues"
+              "Sales Revenues": {
+                "label": "Sales Revenues"
               },
-              "other revenues": {
-                "label": "other revenues"
+              "Other Revenues": {
+                "label": "Other Revenues"
               },
-              "cost of goods sold": {
-                "label": "cost of goods sold"
+              "Cost of Goods Sold": {
+                "label": "Cost of Goods Sold"
               },
-              "marketing expenses": {
-                "label": "marketing expenses"
+              "Marketing Expenses": {
+                "label": "Marketing Expenses"
               },
-              "operating expenses": {
-                "label": "operating expenses"
+              "Operating Expenses": {
+                "label": "Operating Expenses"
               },
-              "general and administration expenses": {
-                "label": "general and administration expenses"
+              "General and Administration Expenses": {
+                "label": "General and Administration Expenses"
               },
-              "rental expenses": {
-                "label": "rental expenses"
+              "Rental Expenses": {
+                "label": "Rental Expenses"
               },
-              "salaries": {
-                "label": "salaries"
+              "Personnel Expenses": {
+                "label": "Personnel Expenses"
               },
-              "tax": {
-                "label": "tax"
+              "Tax": {
+                "label": "Tax"
               },
-              "interest income": {
-                "label": "interest income"
+              "Interest Income": {
+                "label": "Interest Income"
               },
-              "interest expenses": {
-                "label": "interest expenses"
+              "Interest Expenses": {
+                "label": "Interest Expenses"
               },
-              "capital expenditure": {
-                "label": "capital expenditure"
+              "Capital Expenditure": {
+                "label": "Capital Expenditure"
               },
-              "maintenance capex": {
-                "label": "maintenance capex"
+              "Maintenance Capex": {
+                "label": "Maintenance Capex"
               },
-              "expansion capex": {
-                "label": "expansion capex,"
+              "Expansion Capex": {
+                "label": "Expansion Capex,"
               },
-              "depreciation": {
-                "label": "depreciation"
+              "Depreciation": {
+                "label": "Depreciation"
               },
-              "amortization": {
-                "label": "amortization"
+              "Amortization": {
+                "label": "Amortization"
               },
-              "extraordinary income": {
-                "label": "extraordinary income"
+              "Extraordinary Income": {
+                "label": "Extraordinary Income"
               },
-              "extraordinary expenses": {
-                "label": "extraordinary expenses"
+              "Extraordinary Expenses": {
+                "label": "Extraordinary Expenses"
               }
             },
-            "val": "sales revenues",
+            "val": "Sales Revenues",
+            "required": true
+          },
+          "sub_position": {
+            "type": "select",
+            "label": "Sub Position",
+            "show_if": "this.position=='Personnel Expenses'",
+            "options": {
+              "Fix Salary": {
+                "label": "Fix Salary"
+              },
+              "Bonus": {
+                "label": "Bonus"
+              },
+              "Other Compensation": {
+                "label": "Other Compensation"
+              }
+            },
+            "val": "Fix Salary",
+            "required": true,
+            "breakLine": true
+          },
+          "item": {
+            "type": "text",
+            "label": "Item",
+            "val": "",
             "required": true
           },
           "amount": {
@@ -179,13 +198,44 @@
           }
         }
       },
-      "options.end_date": {
-        "type": "date",
-        "label": "End Date of Table",
-        "show_if": "options.type=='process' || options.type=='custom'",
-        "val": "",
-        "required": true,
-        "style": "width: 300px"
+      "planning_configuration_frame": {
+        "type": "fieldset",
+        "label": "Planning Configuration",
+        "repeat": false,
+        "fields": {
+          "options.end_date": {
+            "type": "date",
+            "label": "End Date of Table",
+            "show_if": "options.type=='process' || options.type=='custom'",
+            "val": "",
+            "required": true,
+            "style": "width: 300px"
+          },
+          "options.categories": {
+            "type": "fieldset",
+            "label": "Add Categories",
+            "repeat": true,
+            "fields": {
+              "category": {
+                "type": "text",
+                "label": "Category",
+                "val": "",
+                "required": true
+              },
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "val": "",
+                "required": true
+              },
+              "delete": {
+                "type": "button",
+                "label": "Delete",
+                "function": "DELETE_ROW"
+              }
+            }
+          }
+        }
       }
     }
   }
