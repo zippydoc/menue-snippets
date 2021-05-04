@@ -13,9 +13,18 @@
         "width": "100%",
         "breakLine": true
       },
+      "output.custom_options": {
+        "type": "checkbox",
+        "label": "Output Options",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "output.compose_table_name": {
         "type": "checkbox",
         "label": "Compose Table Name",
+        "show_if": "output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -24,7 +33,7 @@
       "compose_table_name_frame": {
         "type": "fieldset",
         "label": "Compose Output Table Name",
-        "show_if": "output.compose_table_name=='true'",
+        "show_if": "output.custom_options=='true' && output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
