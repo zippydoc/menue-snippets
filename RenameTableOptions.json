@@ -7,6 +7,7 @@
       "rename_columns": {
         "type": "checkbox",
         "label": "Rename Columns",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -14,7 +15,7 @@
       "columns": {
         "type": "fieldset",
         "label": "Select Columns",
-        "show_if": "rename_columns=='true'",
+        "show_if": "$input_table.numOfHeader >= 1",
         "repeat": true,
         "fields": {
           "field_name": {
@@ -44,6 +45,7 @@
       "rename_rows": {
         "type": "checkbox",
         "label": "Rename Labels",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -52,7 +54,7 @@
       "rows": {
         "type": "fieldset",
         "label": "Select Labels",
-        "show_if": "rename_rows=='true'",
+        "show_if": "$input_table.numOfLabel >= 1",
         "repeat": true,
         "fields": {
           "label_name": {
