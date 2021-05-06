@@ -36,6 +36,7 @@
           "rows_or_columns": {
             "type": "select",
             "label": "Type for Table",
+            "show_if": "$input_table.numOfHeader >= 1 && $input_table.numOfLabel >= 1",
             "required": true,
             "options": {
               "select_rows": {
@@ -50,7 +51,7 @@
           "rows": {
             "type": "select",
             "label": "Select Row(s)",
-            "show_if": "this.rows_or_columns=='select_rows'",
+            "show_if": "$input_table.numOfLabel >= 1 && this.rows_or_columns=='select_rows'",
             "table": "input.table_id",
             "bind": "LABELS",
             "multiple": true,
@@ -59,7 +60,7 @@
           "columns": {
             "type": "select",
             "label": "Select Columns(s)",
-            "show_if": "this.rows_or_columns=='select_columns'",
+            "show_if": "$input_table.numOfHeader >= 1 && this.rows_or_columns=='select_columns'",
             "table": "input.table_id",
             "bind": "COLUMNS",
             "multiple": true,

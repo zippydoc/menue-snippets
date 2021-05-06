@@ -9,17 +9,17 @@
         "label": "Select Position",
         "required": true,
         "options": {
-          "add_rows_below_selected_row": {
-            "label": "Add rows below selected rows"
+          "add_rows_at_table_end": {
+            "label": "Add row on bottom"
+          },
+          "add_row_on_top": {
+            "label": "Add row on top"
           },
           "add_rows_above_selected_row": {
-            "label": "Add rows above selected rows"
+            "label": "Add row above selection"
           },
-          "add_rows_at_table_end": {
-            "label": "Add rows at table end"
-          },
-          "add_single_row_at_table_end": {
-            "label": "Add single row at table end"
+          "add_rows_below_selected_row": {
+            "label": "Add row below selection"
           },
           "add_row_after_each_group": {
             "label": "Add row after each group"
@@ -40,7 +40,7 @@
       "options.use_filter": {
         "type": "select",
         "label": "Select Type",
-        "show_if": "$input_table.numOfLabel < 1 && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "show_if": "false",
         "required": true,
         "options": {
           "false": {
@@ -271,7 +271,7 @@
       },
       "options.add_rows": {
         "type": "fieldset",
-        "label": "New Rows Option",
+        "label": "New Row Option",
         "repeat": true,
         "fields": {
           "new_row_name": {
@@ -350,6 +350,15 @@
               }
             },
             "val": "sum"
+          },
+          "multi_row_functions__sel_columns": {
+            "type": "select",
+            "label": "Select Columns(s)",
+            "show_if": "$input_table.numOfHeader >= 1",
+            "required": true,
+            "table": "input_table",
+            "multiple": true,
+            "bind": "COLUMNS"
           },
           "multi_row_functions__sel_labels": {
             "type": "select",
