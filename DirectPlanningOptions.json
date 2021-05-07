@@ -331,9 +331,17 @@
             "required": true,
             "style": "width: 300px"
           },
+          "options.add_categories": {
+            "type": "checkbox",
+            "label": "Add Categories",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
           "options.categories": {
             "type": "fieldset",
             "label": "Add Categories",
+            "show_if": "options.add_categories=='true'",
             "repeat": true,
             "fields": {
               "category": {
@@ -354,9 +362,17 @@
               }
             }
           },
+          "options.set_amount_column_formatting": {
+            "type": "checkbox",
+            "label": "Set Amount Column Formatting",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
           "formatting_frame": {
             "type": "fieldset",
-            "label": "Formatting Options",
+            "label": "Amount Column Formatting",
+            "show_if": "options.set_amount_column_formatting=='true'",
             "repeat": false,
             "fields": {
               "options.amount_format__category": {
