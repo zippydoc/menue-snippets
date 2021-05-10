@@ -273,12 +273,12 @@
       "options.add_rows": {
         "type": "fieldset",
         "label": "New Row Option",
-        "repeat": true,
+        "repeat": false,
         "fields": {
           "new_row_name": {
             "type": "text",
             "label": "New Row Name",
-            "show_if": "$input_table.numOfLabel >= 1",
+            "show_if": "$input_table.numOfLabel >= 1 || this.options.add_new_row == 'true'",
             "val": ""
           },
           "function_type": {
@@ -596,6 +596,16 @@
             "function": "DELETE_ROW"
           }
         }
+      },
+      "options.add_new_row": {
+        "type": "checkbox",
+        "label": "Add New Row",
+        "show_if": "$input_table.numOfLabel < 1",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
       },
       "options.insert_on_top": {
         "type": "checkbox",
