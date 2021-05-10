@@ -1,0 +1,90 @@
+{
+  "input": {
+    "type": "fieldset",
+    "label": "Select Input Table",
+    "repeat": false,
+    "fields": {
+      "tables": {
+        "type": "fieldset",
+        "label": "Select Tables",
+        "repeat": true,
+        "fields": {
+          "table_id": {
+            "type": "select",
+            "label": "Lookup Table",
+            "bind": "TABLES",
+            "required": true
+          },
+          "lookup_header_column": {
+            "type": "select",
+            "label": "Header Column",
+            "table": "this.table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "lookup_value_column": {
+            "type": "select",
+            "label": "Value Column",
+            "table": "this.table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "lookup_mapping_column": {
+            "type": "select",
+            "label": "Mapping Column",
+            "table": "this.table_id",
+            "bind": "COLUMNS"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.treatment": {
+        "type": "select",
+        "label": "Treatment of multiple occurances",
+        "required": true,
+        "options": {
+          "sum": {
+            "label": "Sum"
+          },
+          "min": {
+            "label": "Min"
+          },
+          "max": {
+            "label": "Max"
+          },
+          "shortest": {
+            "label": "Shortest"
+          },
+          "longest": {
+            "label": "Longest"
+          },
+          "first": {
+            "label": "First"
+          },
+          "last": {
+            "label": "Last"
+          },
+          "concatenate": {
+            "label": "Concatenate"
+          }
+        },
+        "val": "sum",
+        "style": "min-width: 200px"
+      },
+      "options.treatment_delimiter": {
+        "type": "text",
+        "label": "Delimiter",
+        "show_if": "options.treatment=='concatenate'",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 255,
+        "val": ";",
+        "breakLine": true
+      }
+    }
+  }
+}

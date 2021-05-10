@@ -1,0 +1,344 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Select Cleaning Options",
+    "repeat": false,
+    "fields": {
+      "formatting": {
+        "type": "fieldset",
+        "label": "Copy Formatting Options",
+        "repeat": false,
+        "fields": {
+          "format__category": {
+            "type": "select",
+            "label": "Format",
+            "required": true,
+            "options": {
+              "standard": {
+                "label": "Standard"
+              },
+              "number": {
+                "label": "Number"
+              },
+              "percentage": {
+                "label": "Percentage"
+              },
+              "text": {
+                "label": "Text"
+              },
+              "date": {
+                "label": "Date"
+              },
+              "currency": {
+                "label": "Currency"
+              }
+            },
+            "val": "standard"
+          },
+          "format__rounding": {
+            "type": "select",
+            "label": "Rounding",
+            "show_if": "format__category=='number' || format__category=='percentage' || format__category=='currency'",
+            "required": true,
+            "options": {
+              "no_rounding": {
+                "label": "No rounding"
+              },
+              "0": {
+                "label": "0 digits"
+              },
+              "1": {
+                "label": "1 digits"
+              },
+              "2": {
+                "label": "2 digits"
+              },
+              "3": {
+                "label": "3 digits"
+              },
+              "4": {
+                "label": "4 digits"
+              },
+              "5": {
+                "label": "5 digits"
+              },
+              "6": {
+                "label": "6 digits"
+              },
+              "7": {
+                "label": "7 digits"
+              },
+              "8": {
+                "label": "8 digits"
+              },
+              "9": {
+                "label": "9 digits"
+              }
+            },
+            "val": "2"
+          },
+          "format__use_1000_separator": {
+            "type": "checkbox",
+            "label": "Use 1000 Separator(.)",
+            "show_if": "format__category=='number' || format__category=='percentage' || format__category=='currency'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "format__currency_symbol": {
+            "type": "select",
+            "label": "Symbol",
+            "show_if": "format__category=='currency'",
+            "required": true,
+            "options": {
+              "dollar": {
+                "label": "$"
+              },
+              "euro": {
+                "label": "€"
+              },
+              "pound": {
+                "label": "£"
+              }
+            },
+            "val": "dollar"
+          },
+          "format__date_format": {
+            "type": "select",
+            "label": "Type",
+            "show_if": "format__category=='date'",
+            "required": true,
+            "options": {
+              "mm/dd/yyyy": {
+                "label": "3/14/2012"
+              },
+              "D, M dd, Y": {
+                "label": "Wednesday, March 14, 2012"
+              },
+              "yyyy-mm-dd": {
+                "label": "2012-03-14"
+              }
+            },
+            "val": "mm/dd/yyyy",
+            "breakLine": true
+          }
+        }
+      },
+      "replace_null": {
+        "type": "fieldset",
+        "label": "Empty Records",
+        "repeat": false,
+        "fields": {
+          "replace_null": {
+            "type": "checkbox",
+            "label": "Empty Records",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "replace_null_target": {
+            "type": "select",
+            "label": "Replace",
+            "show_if": "replace_null=='true'",
+            "options": {
+              "empty": {
+                "label": "Empty"
+              },
+              "blank": {
+                "label": "Blank"
+              },
+              "null": {
+                "label": "NULL"
+              }
+            },
+            "val": "empty",
+            "breakLine": true
+          },
+          "replace_null_by": {
+            "type": "radio",
+            "show_if": "replace_null=='true'",
+            "val": "by_blank",
+            "values": {
+              "by_blank": "By Blank",
+              "by_zero": "By Zero"
+            },
+            "breakLine": true
+          }
+        }
+      },
+      "remove_whitespace": {
+        "type": "fieldset",
+        "label": "Remove Whitespace",
+        "repeat": false,
+        "fields": {
+          "remove_characters.all_whitespace": {
+            "type": "checkbox",
+            "label": "All Whitespace",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "remove_characters.leading_whitespace": {
+            "type": "checkbox",
+            "label": "Leading Whitespace",
+            "show_if": "remove_characters.all_whitespace=='false'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "remove_characters.trailing_whitespace": {
+            "type": "checkbox",
+            "label": "Trailing Whitespace",
+            "show_if": "remove_characters.all_whitespace=='false'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "remove_characters.whitespace": {
+            "type": "checkbox",
+            "label": "Space",
+            "show_if": "remove_characters.all_whitespace=='false'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "remove_characters.tabs": {
+            "type": "checkbox",
+            "label": "Tabs",
+            "show_if": "remove_characters.all_whitespace=='false'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "remove_characters.line_breaks": {
+            "type": "checkbox",
+            "label": "Line Breaks",
+            "show_if": "remove_characters.all_whitespace=='false'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "remove_characters.duplicate_whitespace": {
+            "type": "checkbox",
+            "label": "Duplicate Whitespace",
+            "show_if": "remove_characters.all_whitespace=='false'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          }
+        }
+      },
+      "remove_duplicates": {
+        "type": "fieldset",
+        "label": "Remove Duplicates",
+        "repeat": false,
+        "fields": {
+          "remove_duplicates.cell": {
+            "type": "checkbox",
+            "label": "Duplicates in Cell",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "remove_duplicates.custom_delimiter": {
+            "type": "checkbox",
+            "label": "Custom Delimiter",
+            "show_if": "remove_duplicates.cell=='true'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "remove_duplicates.delimiter": {
+            "type": "text",
+            "label": "Custom Delimiter",
+            "show_if": "remove_duplicates.custom_delimiter=='true'",
+            "val": ";",
+            "required": true
+          },
+          "remove_duplicates.include_whitespace": {
+            "type": "checkbox",
+            "label": "(include whitespace)",
+            "show_if": "remove_duplicates.cell=='true'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "remove_duplicates.rows": {
+            "type": "checkbox",
+            "label": "Duplicate Rows",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          }
+        }
+      },
+      "remove_characters": {
+        "type": "fieldset",
+        "label": "Remove Characters",
+        "repeat": false,
+        "fields": {
+          "remove_characters.letters": {
+            "type": "checkbox",
+            "label": "Letters",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "remove_characters.numbers": {
+            "type": "checkbox",
+            "label": "Numbers",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "remove_characters.punctuation": {
+            "type": "checkbox",
+            "label": "Punctuation",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          }
+        }
+      },
+      "modify_case": {
+        "type": "fieldset",
+        "label": "Modify Case",
+        "repeat": false,
+        "fields": {
+          "modify_case": {
+            "type": "checkbox",
+            "label": "Modify Case",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "modify_case_by": {
+            "type": "radio",
+            "show_if": "modify_case=='true'",
+            "val": "upper",
+            "values": {
+              "upper": "to Upper Case",
+              "lower": "to Lower Case",
+              "title": "to Title Case"
+            },
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}
