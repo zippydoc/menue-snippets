@@ -278,7 +278,7 @@
           "new_row_name": {
             "type": "text",
             "label": "New Row Name",
-            "show_if": "$input_table.numOfLabel >= 1 || options.add_new_row == 'true'",
+            "show_if": "$input_table.numOfLabel >= 1",
             "val": ""
           },
           "function_type": {
@@ -352,15 +352,6 @@
               }
             },
             "val": "sum"
-          },
-          "multi_row_functions__sel_column": {
-            "type": "select",
-            "label": "Select Column",
-            "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
-            "required": true,
-            "table": "input_table",
-            "multiple": false,
-            "bind": "COLUMNS"
           },
           "multi_row_functions__sel_labels": {
             "type": "select",
@@ -614,6 +605,22 @@
         "isOn": "true",
         "isOff": "false",
         "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.new_row_label": {
+        "type": "text",
+        "label": "New Row Label",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "val": ""
+      },
+      "options.new_sel_column": {
+        "type": "select",
+        "label": "Select Column",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "required": true,
+        "table": "input_table",
+        "multiple": false,
+        "bind": "COLUMNS",
         "breakLine": true
       },
       "options.insert_on_top": {
