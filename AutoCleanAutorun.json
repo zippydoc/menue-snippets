@@ -1,0 +1,73 @@
+{
+  "output_autorun_frame": {
+    "type": "fieldset",
+    "label": "Table Trigger Vector",
+    "show_if": "output.auto_run=='true'",
+    "repeat": false,
+    "fields": {
+      "output.autorun.tasks": {
+        "type": "text",
+        "label": "Autorun the following Tasks",
+        "val": "",
+        "placeholder": "';' separated list",
+        "required": true,
+        "style": "width: 100%"
+      },
+      "output.autorun.define_type": {
+        "type": "select",
+        "label": "Define type",
+        "required": true,
+        "options": {
+          "manually": {
+            "label": "Define manually"
+          },
+          "table_content": {
+            "label": "Define by table content"
+          }
+        },
+        "val": "if"
+      },
+      "output.autorun.names": {
+        "type": "fieldset",
+        "label": "Define names",
+        "show_if": "output.autorun.define_type=='manually'",
+        "repeat": true,
+        "fields": {
+          "name": {
+            "type": "text",
+            "label": "Name",
+            "val": "",
+            "required": true
+          },
+          "value": {
+            "type": "text",
+            "label": "Value(real number)",
+            "val": "",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "output.autorun.name_column": {
+        "type": "select",
+        "label": "Select Name Column",
+        "show_if": "output.autorun.define_type=='table_content'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "output.autorun.value_column": {
+        "type": "select",
+        "label": "Select Value Column",
+        "show_if": "output.autorun.define_type=='table_content'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      }
+    }
+  }
+}

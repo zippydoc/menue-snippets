@@ -1,0 +1,48 @@
+{
+  "options.auto_run": {
+    "type": "checkbox",
+    "label": "Autorun Task",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "trigger_vector_frame": {
+    "type": "fieldset",
+    "label": "Task Trigger Vector",
+    "repeat": false,
+    "fields": {
+      "options.autorun_tables": {
+        "type": "select",
+        "label": "Autorun on table change",
+        "show_if": "options.auto_run=='true'",
+        "bind": "TABLES",
+        "multiple": true,
+        "required": true
+      },
+      "options.names": {
+        "type": "fieldset",
+        "label": "Add New Columns",
+        "repeat": true,
+        "fields": {
+          "name": {
+            "type": "text",
+            "label": "Name",
+            "val": "",
+            "required": true
+          },
+          "value": {
+            "type": "text",
+            "label": "Value(real number)",
+            "val": "",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
