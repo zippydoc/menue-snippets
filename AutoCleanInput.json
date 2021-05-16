@@ -12,6 +12,13 @@
     "show_if": "options.auto_run=='true'",
     "repeat": false,
     "fields": {
+		"options.all_tables": {
+		"type": "checkbox",
+		"label": "Autorun always",
+		"val": "false",
+		"isOn": "true",
+		"isOff": "false"
+		},
       "options.autorun_tables": {
         "type": "select",
         "label": "Autorun on table change",
@@ -53,6 +60,9 @@
         "type": "select",
         "label": "Trigger Method",
         "options": {
+          "no_lock": {
+            "label": "Run without Task Lock"
+          },
           "scalar_product_compound": {
             "label": "Compound Scalar Product"
           },
@@ -66,7 +76,7 @@
             "label": "Pin by Pin - one match"
           }
         },
-        "val": "larger_or_equal",
+        "val": "scalar_product_compound",
         "breakLine": true
       },
       "options.names": {
