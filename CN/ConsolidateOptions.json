@@ -1,0 +1,146 @@
+{
+  "input": {
+    "type": "fieldset",
+    "标签": "Consolidate Options",
+    "repeat": true,
+    "fields": {
+      "new_position": {
+        "type": "text",
+        "标签": "New Position",
+        "val": "",
+        "placeholder": "文本",
+        "required": true
+      },
+      "input_table": {
+        "type": "select",
+        "标签": "选择表格",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      },
+      "multiple_selection": {
+        "type": "select",
+        "标签": "Multiple Selection",
+        "required": true,
+        "table": "this.input_table",
+        "multiple": true,
+        "bind": "LABELS",
+        "breakLine": true
+      },
+      "format__category": {
+        "type": "select",
+        "标签": "格式",
+        "required": true,
+        "options": {
+          "standard": {
+            "标签": "标准"
+          },
+          "number": {
+            "标签": "数字"
+          },
+          "percentage": {
+            "标签": "百分比"
+          },
+          "text": {
+            "标签": "文本"
+          },
+          "date": {
+            "标签": "日期"
+          },
+          "currency": {
+            "标签": "货币"
+          }
+        },
+        "val": "standard"
+      },
+      "format__rounding": {
+        "type": "select",
+        "标签": "取整",
+        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+        "required": true,
+        "options": {
+          "no_rounding": {
+            "标签": "不取整"
+          },
+          "0": {
+            "标签": "0 位数"
+          },
+          "1": {
+            "标签": "1 位数"
+          },
+          "2": {
+            "标签": "2 位数"
+          },
+          "3": {
+            "标签": "3 位数"
+          },
+          "4": {
+            "标签": "4 位数"
+          },
+          "5": {
+            "标签": "5 位数"
+          },
+          "6": {
+            "标签": "6 位数"
+          },
+          "7": {
+            "标签": "7 位数"
+          },
+          "8": {
+            "标签": "8 位数"
+          },
+          "9": {
+            "标签": "9 位数"
+          }
+        },
+        "val": "2"
+      },
+      "format__use_1000_separator": {
+        "type": "checkbox",
+        "标签": "Use 1000 Separator(.)",
+        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "format__currency_symbol": {
+        "type": "select",
+        "标签": "符号",
+        "show_if": "this.format__category=='currency'",
+        "required": true,
+        "options": {
+          "dollar": {
+            "标签": "$"
+          },
+          "euro": {
+            "标签": "€"
+          },
+          "pound": {
+            "标签": "£"
+          }
+        },
+        "val": "dollar"
+      },
+      "format__date_format": {
+        "type": "select",
+        "标签": "类型",
+        "show_if": "this.format__category=='date'",
+        "required": true,
+        "options": {
+          "mm/dd/yyyy": {
+            "标签": "3/14/2012"
+          },
+          "D, M dd, Y": {
+            "标签": "2012年3月14日，星期三"
+          },
+          "yyyy-mm-dd": {
+            "标签": "2012-03-14"
+          }
+        },
+        "val": "mm/dd/yyyy",
+        "breakLine": true
+      }
+    }
+  }
+}
