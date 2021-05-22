@@ -1,8 +1,8 @@
 {
   "output.add_period": {
     "type": "checkbox",
-    "label": "Adicionar Periodicidade",
-    "show_if": "options.type=='process'",
+    "etiqueta": "Adicionar Periodicidade",
+    "show_if": "options.type=='process' || options.type=='custom'",
     "val": "false",
     "isOn": "true",
     "isOff": "false",
@@ -11,24 +11,24 @@
   },
   "output.period": {
     "type": "select",
-    "label": "Periodicidade",
-    "show_if": "options.type=='process' && output.add_period=='true'",
+    "etiqueta": "Periodicidade",
+    "show_if": "(options.type=='process' || options.type=='custom') && output.add_period=='true'",
     "multiple": true,
     "options": {
       "year": {
-        "label": "Ano"
+        "etiqueta": "Ano"
       },
       "half-year": {
-        "label": "Semestre"
+        "etiqueta": "Semestre"
       },
       "quarter": {
-        "label": "Trimestre"
+        "etiqueta": "Trimestre"
       },
       "month": {
-        "label": "Mês"
+        "etiqueta": "Mês"
       },
       "week": {
-        "label": "Semana"
+        "etiqueta": "Semana"
       }
     },
     "val": "",
@@ -36,8 +36,8 @@
   },
   "output.period_concatenate": {
     "type": "checkbox",
-    "label": "Concatenar",
-    "show_if": "options.type=='process' && output.add_period=='true'",
+    "etiqueta": "Concatenar",
+    "show_if": "(options.type=='process' || options.type=='custom') && output.add_period=='true'",
     "val": "false",
     "isOn": "true",
     "isOff": "false",
