@@ -1,0 +1,188 @@
+{
+  "actions": {
+    "type": "fieldset",
+    "Beschriftung": "Aktionen hinzufügen",
+    "repeat": true,
+    "fields": {
+      "column": {
+        "type": "select",
+        "Beschriftung": "Spalte",
+        "table": "input_table",
+		"assign_selected_value_to":"this.output_column_name",
+        "bind": "COLUMNS"
+      },
+      "action": {
+        "type": "select",
+        "Beschriftung": "Aktion",
+        "options": {
+          "group_by": {
+            "Beschriftung": "Gruppe von"
+          },
+          "count": {
+            "Beschriftung": "Zählen Sie"
+          },
+          "sum": {
+            "Beschriftung": "Summe"
+          },
+          "first": {
+            "Beschriftung": "Erste"
+          },
+          "last": {
+            "Beschriftung": "Zuletzt"
+          },
+          "shortest": {
+            "Beschriftung": "Kürzeste"
+          },
+          "longest": {
+            "Beschriftung": "Längste"
+          },
+          "concatenate": {
+            "Beschriftung": "Verketten"
+          },
+          "mathematics": {
+            "Beschriftung": "Mathematik"
+          }
+        }
+      },
+      "count_action_category": {
+        "type": "select",
+        "Beschriftung": "Aktion Typ",
+        "show_if": "this.action=='count'",
+        "options": {
+          "all": {
+            "Beschriftung": "Alle"
+          },
+          "distinct": {
+            "Beschriftung": "Unverwechselbar"
+          },
+          "empty_or_zero": {
+            "Beschriftung": "NULL oder Leer oder 0"
+          },
+          "non_empty_or_zero": {
+            "Beschriftung": "Nicht leer oder 0"
+          }
+        },
+        "val": "all"
+      },
+      "action_type1": {
+        "type": "select",
+        "Beschriftung": "Aktion Sub-Typ",
+        "show_if": "this.action=='count' && (this.count_action_category=='all' || this.count_action_category=='distinct')",
+        "options": {
+          "-": {
+            "Beschriftung": "-"
+          },
+          "non_zero": {
+            "Beschriftung": "Nicht 0"
+          },
+          "non_empty": {
+            "Beschriftung": "Nicht leer"
+          },
+          "non_null": {
+            "Beschriftung": "Nicht Null"
+          },
+          "non_blank": {
+            "Beschriftung": "Nicht leer"
+          }
+        },
+        "val": "-"
+      },
+      "action_type2": {
+        "type": "select",
+        "Beschriftung": "Aktion Sub-Typ",
+        "show_if": "this.action=='count' && this.count_action_category=='empty_or_zero'",
+        "options": {
+          "zero": {
+            "Beschriftung": "0"
+          },
+          "empty": {
+            "Beschriftung": "Leer (NULL oder Leer)"
+          },
+          "null": {
+            "Beschriftung": "Null"
+          },
+          "blank": {
+            "Beschriftung": "Leer"
+          }
+        },
+        "val": "zero"
+      },
+      "action_type3": {
+        "type": "select",
+        "Beschriftung": "Aktion Sub-Typ",
+        "show_if": "this.action=='count' && this.count_action_category=='non_empty_or_zero'",
+        "options": {
+          "non_zero": {
+            "Beschriftung": "Nicht 0"
+          },
+          "non_empty": {
+            "Beschriftung": "Nicht leer"
+          },
+          "non_null": {
+            "Beschriftung": "Nicht Null"
+          },
+          "non_blank": {
+            "Beschriftung": "Nicht leer"
+          }
+        },
+        "val": "non_zero"
+      },
+      "mathematics_action_category": {
+        "type": "select",
+        "Beschriftung": "Aktion Typ",
+        "show_if": "this.action=='mathematics'",
+        "options": {
+          "min": {
+            "Beschriftung": "Min"
+          },
+          "max": {
+            "Beschriftung": "Max"
+          },
+          "average": {
+            "Beschriftung": "Durchschnitt"
+          },
+          "median": {
+            "Beschriftung": "Median"
+          },
+          "standard_deviation": {
+            "Beschriftung": "Standardabweichung"
+          },
+          "variance": {
+            "Beschriftung": "Abweichung"
+          }
+        },
+        "val": "min"
+      },
+      "action_type4": {
+        "type": "select",
+        "Beschriftung": "Aktion Sub-Typ",
+        "show_if": "this.action=='mathematics'",
+        "options": {
+          "include_zero": {
+            "Beschriftung": "Einschließen 0"
+          },
+          "exclude_zero": {
+            "Beschriftung": "Ausschließen 0"
+          }
+        },
+        "val": "include_zero"
+      },
+      "concatenate_separator": {
+        "type": "text",
+        "Beschriftung": "Separator",
+        "show_if": "this.action=='concatenate'",
+        "val": ","
+      },
+      "output_column_name": {
+        "type": "text",
+        "Beschriftung": "Name der Ausgabespalte",
+        "val": ""
+      },
+      "delete": {
+        "type": "button",
+        "Beschriftung": "Lösche",
+        "function": "DELETE_ROW"
+      }
+    }
+  }
+}
