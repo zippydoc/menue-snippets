@@ -1,59 +1,59 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "选择选项",
+    "标签": "选择选项",
     "repeat": false,
     "fields": {
       "task_type": {
         "type": "select",
-        "label": "任务类型",
+        "标签": "任务类型",
         "required": true,
         "options": {
           "encrypt": {
-            "label": "加密（安全）"
+            "标签": "加密（安全）"
           },
           "decrypt": {
-            "label": "解密（安全）"
+            "标签": "解密（安全）"
           },
           "encrypt_simple": {
-            "label": "加密（简单）"
+            "标签": "加密（简单）"
           },
           "decrypt_simple": {
-            "label": "解密（简单）"
+            "标签": "解密（简单）"
           },
           "mask": {
-            "label": "遮蔽"
+            "标签": "遮蔽"
           }
         },
         "val": "encrypt"
       },
       "mask_type": {
         "type": "select",
-        "label": "遮蔽类型",
+        "标签": "遮蔽类型",
         "show_if": "task_type == 'mask'",
         "required": true,
         "options": {
           "trailing": {
-            "label": "尾随 N 字符"
+            "标签": "尾随 N 字符"
           },
           "leading": {
-            "label": "前导 N 字符"
+            "标签": "前导 N 字符"
           },
           "numbers": {
-            "label": "数字"
+            "标签": "数字"
           },
           "alphabets": {
-            "label": "字符"
+            "标签": "字符"
           },
           "regex": {
-            "label": "正则表达式"
+            "标签": "正则表达式"
           }
         },
         "val": "trailing"
       },
       "password": {
         "type": "password",
-        "label": "密码",
+        "标签": "密码",
         "show_if": "task_type != 'mask'",
         "required": true,
         "minLength": 1,
@@ -62,14 +62,14 @@
       },
       "varn": {
         "type": "number",
-        "label": "N",
+        "标签": "N",
         "show_if": "task_type == 'mask' && (mask_type == 'trailing' || mask_type == 'leading')",
         "required": true,
         "val": "1"
       },
       "regexp": {
         "type": "text",
-        "label": "表达式",
+        "标签": "表达式",
         "show_if": "task_type == 'mask' && (mask_type == 'regex')",
         "required": true,
         "val": "",
@@ -77,7 +77,7 @@
       },
       "replace": {
         "type": "text",
-        "label": "遮蔽字符串",
+        "标签": "遮蔽字符串",
         "show_if": "task_type == 'mask' && (mask_type == 'regex')",
         "required": true,
         "val": "*"
