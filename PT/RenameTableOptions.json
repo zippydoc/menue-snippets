@@ -1,25 +1,26 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Opções",
+    "etiqueta": "Opções",
     "repeat": false,
     "fields": {
       "rename_columns": {
         "type": "checkbox",
-        "label": "Mudar Nome de Colunas",
+        "etiqueta": "Mudar Nome de Colunas",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "columns": {
         "type": "fieldset",
-        "label": "Selecionar Colunas",
-        "show_if": "rename_columns=='true'",
+        "etiqueta": "Selecionar Colunas",
+        "show_if": "$input_table.numOfHeader >= 1",
         "repeat": true,
         "fields": {
           "field_name": {
             "type": "select",
-            "label": "Selecionar Coluna",
+            "etiqueta": "Selecionar Coluna",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
@@ -30,12 +31,12 @@
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "Mudar nome para"
+            "etiqueta": "Mudar nome para"
           },
           "delete": {
             "show_if": "this.field_name != ''",
             "type": "button",
-            "label": "Apagar",
+            "etiqueta": "Apagar",
             "function": "DELETE_ROW"
           }
         },
@@ -43,7 +44,8 @@
       },
       "rename_rows": {
         "type": "checkbox",
-        "label": "Mudar Nome de Rótulos",
+        "etiqueta": "Mudar Nome de Rótulos",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -51,13 +53,13 @@
       },
       "rows": {
         "type": "fieldset",
-        "label": "Selecionar Rótulos",
-        "show_if": "rename_rows=='true'",
+        "etiqueta": "Selecionar Rótulos",
+        "show_if": "$input_table.numOfLabel >= 1",
         "repeat": true,
         "fields": {
           "label_name": {
             "type": "select",
-            "label": "Selecionar Rótulo",
+            "etiqueta": "Selecionar Rótulo",
             "table": "input_table",
             "bind": "LABELS",
             "required": true
@@ -68,12 +70,12 @@
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "Mudar nome para"
+            "etiqueta": "Mudar nome para"
           },
           "delete": {
             "show_if": "this.label_name != ''",
             "type": "button",
-            "label": "Apagar",
+            "etiqueta": "Apagar",
             "function": "DELETE_ROW"
           }
         },
