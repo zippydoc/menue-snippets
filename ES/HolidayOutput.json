@@ -7,24 +7,32 @@
       "output.custom_text": {
         "type": "text",
         "Etiqueta": "Imprimir Nombre de Tabla",
-        "show_if": "output.compose_table_name=='false'",
+        "show_if": "output.custom_options=='false' || (output.custom_options=='true' && output.compose_table_name=='false')",
         "minLength": 1,
         "val": "",
         "width": "100%",
         "breakLine": true
       },
+      "output.custom_options": {
+        "type": "checkbox",
+        "Etiqueta": "Imprimir Opciones",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "output.select_output_columns": {
         "type": "checkbox",
-        "Etiqueta": "Seleccionar Columnas de Salida",
-        "show_if": "options.is_generate_holiday_table=='add_column'",
+        "Etiqueta": "Seleccionar columnas de salida",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "output_columns": {
         "type": "fieldset",
-        "Etiqueta": "Seleccionar columnas de salida",
-        "show_if": "options.is_generate_holiday_table=='add_column' && output.select_output_columns=='true'",
+        "Etiqueta": "Select OutputColumns",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.custom_options=='true' && output.select_output_columns=='true'",
         "repeat": true,
         "fields": {
           "field_name": {
@@ -136,7 +144,7 @@
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "Etiqueta": "Usar el Separador de 1000(.)",
+            "Etiqueta": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -191,6 +199,7 @@
       "output.compose_table_name": {
         "type": "checkbox",
         "Etiqueta": "Componer Nombre de la Tabla",
+        "show_if": "output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -199,7 +208,7 @@
       "compose_table_name_frame": {
         "type": "fieldset",
         "Etiqueta": "Componer Nombre de la Tabla de Salida",
-        "show_if": "output.compose_table_name=='true'",
+        "show_if": "output.custom_options=='true' && output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
