@@ -1,21 +1,21 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Seleccionar Opciones de Periodicidad",
+    "Etiqueta": "Seleccionar Opciones de Periodicidad",
     "repeat": false,
     "fields": {
       "options.type": {
         "type": "select",
-        "label": "Tipo",
+        "Etiqueta": "Tipo",
         "options": {
           "generate": {
-            "label": "Generar Ejemplo de Periodicidad"
+            "Etiqueta": "Generar Ejemplo de Periodicidad"
           },
           "process": {
-            "label": "Tabla de Periodicidad del Proceso"
+            "Etiqueta": "Tabla de Periodicidad del Proceso"
           },
           "custom": {
-            "label": "Personalizado"
+            "Etiqueta": "Personalizado"
           }
         },
         "val": "custom",
@@ -23,13 +23,13 @@
       },
       "input": {
         "type": "fieldset",
-        "label": "Seleccionar Tabla de Entrada",
+        "Etiqueta": "Seleccionar Tabla de Entrada",
         "show_if": "options.type=='process'",
         "repeat": false,
         "fields": {
           "input_table": {
             "type": "select",
-            "label": "Seleccionar Tabla",
+            "Etiqueta": "Seleccionar Tabla",
             "bind": "TABLES",
             "empty": "",
             "required": true
@@ -47,75 +47,75 @@
       },
       "amount_formatting_frame": {
         "type": "fieldset",
-        "label": "Amount Column Formatting",
+        "Etiqueta": "Formato de la columna de importes",
         "show_if": "options.type=='generate'",
         "repeat": false,
         "fields": {
           "options.amount.format__category": {
             "type": "select",
-            "label": "Formato",
+            "Etiqueta": "Formato",
             "required": true,
             "options": {
               "standard": {
-                "label": "Estándar"
+                "Etiqueta": "Estándar"
               },
               "number": {
-                "label": "Número"
+                "Etiqueta": "Número"
               },
               "percentage": {
-                "label": "Porcentaje"
+                "Etiqueta": "Porcentaje"
               },
               "currency": {
-                "label": "Moneda"
+                "Etiqueta": "Moneda"
               }
             },
             "val": "currency"
           },
           "options.amount.format__rounding": {
             "type": "select",
-            "label": "Redondeo",
+            "Etiqueta": "Redondeo",
             "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Redondeo de números"
+                "Etiqueta": "Redondeo de números"
               },
               "0": {
-                "label": "0 dígitos"
+                "Etiqueta": "0 dígitos"
               },
               "1": {
-                "label": "1 dígitos"
+                "Etiqueta": "1 dígitos"
               },
               "2": {
-                "label": "2 dígitos"
+                "Etiqueta": "2 dígitos"
               },
               "3": {
-                "label": "3 dígitos"
+                "Etiqueta": "3 dígitos"
               },
               "4": {
-                "label": "4 dígitos"
+                "Etiqueta": "4 dígitos"
               },
               "5": {
-                "label": "5 dígitos"
+                "Etiqueta": "5 dígitos"
               },
               "6": {
-                "label": "6 dígitos"
+                "Etiqueta": "6 dígitos"
               },
               "7": {
-                "label": "7 dígitos"
+                "Etiqueta": "7 dígitos"
               },
               "8": {
-                "label": "8 dígitos"
+                "Etiqueta": "8 dígitos"
               },
               "9": {
-                "label": "9 dígitos"
+                "Etiqueta": "9 dígitos"
               }
             },
             "val": "2"
           },
           "options.amount.format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Usar el Separador de 1000(.)",
+            "Etiqueta": "Use 1000 Separator(.)",
             "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -123,18 +123,18 @@
           },
           "options.amount.format__currency_symbol": {
             "type": "select",
-            "label": "Símbolo",
+            "Etiqueta": "Símbolo",
             "show_if": "options.amount.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "Etiqueta": "$"
               },
               "euro": {
-                "label": "€"
+                "Etiqueta": "€"
               },
               "pound": {
-                "label": "£"
+                "Etiqueta": "£"
               }
             },
             "val": "dollar"
@@ -143,16 +143,17 @@
       },
       "options.standard_table": {
         "type": "checkbox",
-        "label": "Tabla de Periodicidad Estándar",
+        "Etiqueta": "Tabla de Periodicidad Estándar",
         "show_if": "options.type=='process'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
+        "style": "margin-top: 10px",
         "breakLine": true
       },
       "options.initial_date": {
         "type": "select",
-        "label": "Fecha Inicial",
+        "Etiqueta": "Fecha Inicial",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -160,7 +161,7 @@
       },
       "options.period": {
         "type": "select",
-        "label": "Periodicy (e.g. Monthly, Quarterly)",
+        "Etiqueta": "Periodicidad (por ejemplo, mensual, trimestral)",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -168,7 +169,7 @@
       },
       "options.final_date": {
         "type": "select",
-        "label": "Fecha Final",
+        "Etiqueta": "Fecha Final",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -176,47 +177,47 @@
       },
       "options.volume": {
         "type": "select",
-        "label": "Cantidad",
+        "Etiqueta": "Cantidad",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth": {
         "type": "select",
-        "label": "Crecimiento",
+        "Etiqueta": "Crecimiento",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth_period": {
         "type": "select",
-        "label": "Período de Crecimiento",
+        "Etiqueta": "Período de Crecimiento",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "options": {
           "selected_period": {
-            "label": "Igual a la Periodicidad"
+            "Etiqueta": "Igual a la Periodicidad"
           },
           "week_on_week": {
-            "label": "Semana a Semana"
+            "Etiqueta": "Semana a Semana"
           },
           "month_on_month": {
-            "label": "Mes a Mes"
+            "Etiqueta": "Mes a Mes"
           },
           "quarter_on_quarter": {
-            "label": "Trimestre a Trimestre"
+            "Etiqueta": "Trimestre a Trimestre"
           },
           "year_on_year": {
-            "label": "Año a Año"
+            "Etiqueta": "Año a Año"
           },
           "column": {
-            "label": “Seleccionar Columna”
+            "Etiqueta": "Seleccionar Columna"
           }
         },
         "val": "selected_period"
       },
       "options.growth_period_column": {
         "type": "select",
-        "label": "Columna del Período de Crecimiento",
+        "Etiqueta": "Columna del Período de Crecimiento",
         "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -225,7 +226,7 @@
       },
       "options.use_growth_pattern_column": {
         "type": "checkbox",
-        "label": "Usar Patrón de Crecimiento",
+        "Etiqueta": "Usar Patrón de Crecimiento",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "val": "false",
         "isOn": "true",
@@ -233,7 +234,7 @@
       },
       "options.growth_pattern_column": {
         "type": "select",
-        "label": "Patrón de Crecimiento",
+        "Etiqueta": "Patrón de Crecimiento",
         "show_if": "options.type=='process' && options.standard_table=='false' && options.use_growth_pattern_column=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -242,137 +243,138 @@
       },
       "options.custom.table": {
         "type": "fieldset",
-        "label": "Planning Position",
+        "Etiqueta": "Posición de planificación",
         "show_if": "options.type=='custom'",
         "repeat": true,
         "fields": {
           "item": {
             "type": "text",
-            "label": "Item",
+            "Etiqueta": "Partida",
             "val": "",
             "required": true
           },
           "position": {
             "type": "text",
-            "label": "Posición",
+            "Etiqueta": "Posición",
             "val": "",
             "required": true,
             "breakLine": true
           },
           "amount": {
             "type": "number",
-            "label": "Cantidad",
+            "Etiqueta": "Cantidad",
             "val": "",
             "required": true
           },
           "amount_format__category": {
             "type": "select",
-            "label": "Amount Format",
+            "Etiqueta": "Formato de importe",
+            "show_if" : "$index == 0",
             "required": true,
             "options": {
               "standard": {
-                "label": "Estándar"
+                "Etiqueta": "Estándar"
               },
               "number": {
-                "label": "Número"
+                "Etiqueta": "Número"
               },
               "percentage": {
-                "label": "Porcentaje"
+                "Etiqueta": "Porcentaje"
               },
               "text": {
-                "label": "Texto"
+                "Etiqueta": "Texto"
               },
               "date": {
-                "label": "Fecha"
+                "Etiqueta": "Fecha"
               },
               "currency": {
-                "label": "Moneda"
+                "Etiqueta": "Moneda"
               }
             },
-            "val": "standard"
+            "val": "number"
           },
           "amount_format__rounding": {
             "type": "select",
-            "label": "Redondeo",
-            "show_if": "this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency'",
+            "Etiqueta": "Redondeo",
+            "show_if": "$index == 0 && (this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency')",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Redondeo de números"
+                "Etiqueta": "Redondeo de números"
               },
               "0": {
-                "label": "0 dígitos"
+                "Etiqueta": "0 dígitos"
               },
               "1": {
-                "label": "1 dígitos"
+                "Etiqueta": "1 dígitos"
               },
               "2": {
-                "label": "2 dígitos"
+                "Etiqueta": "2 dígitos"
               },
               "3": {
-                "label": "3 dígitos"
+                "Etiqueta": "3 dígitos"
               },
               "4": {
-                "label": "4 dígitos"
+                "Etiqueta": "4 dígitos"
               },
               "5": {
-                "label": "5 dígitos"
+                "Etiqueta": "5 dígitos"
               },
               "6": {
-                "label": "6 dígitos"
+                "Etiqueta": "6 dígitos"
               },
               "7": {
-                "label": "7 dígitos"
+                "Etiqueta": "7 dígitos"
               },
               "8": {
-                "label": "8 dígitos"
+                "Etiqueta": "8 dígitos"
               },
               "9": {
-                "label": "9 dígitos"
+                "Etiqueta": "9 dígitos"
               }
             },
             "val": "2"
           },
           "amount_format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Usar el Separador de 1000(.)",
-            "show_if": "this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency'",
+            "Etiqueta": "Use 1000 Separator(.)",
+            "show_if": "$index == 0 && (this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency')",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
           },
           "amount_format__currency_symbol": {
             "type": "select",
-            "label": "Símbolo",
-            "show_if": "this.amount_format__category=='currency'",
+            "Etiqueta": "Símbolo",
+            "show_if": "$index == 0 && (this.amount_format__category=='currency')",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "Etiqueta": "$"
               },
               "euro": {
-                "label": "€"
+                "Etiqueta": "€"
               },
               "pound": {
-                "label": "£"
+                "Etiqueta": "£"
               }
             },
             "val": "dollar"
           },
           "amount_format__date_format": {
             "type": "select",
-            "label": "Tipo",
-            "show_if": "this.amount_format__category=='date'",
+            "Etiqueta": "Tipo",
+            "show_if": "$index == 0 && (this.amount_format__category=='date')",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "Etiqueta": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "Etiqueta": "Miércoles, 14 de marzo de 2012"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "Etiqueta": "40982"
               }
             },
             "val": "mm/dd/yyyy",
@@ -380,27 +382,24 @@
           },
           "initial_date": {
             "type": "date",
-            "label": "Fecha Inicial",
+            "Etiqueta": "Fecha Inicial",
             "val": "",
             "required": true
           },
-          "initial_date__category": {
-            "type": "hidden",
-            "val": "date"
-          },
           "initial_date_format__date_format": {
             "type": "select",
-            "label": "Tipo",
+            "Etiqueta": "Formato de fecha inicial",
+            "show_if": "$index == 0",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "Etiqueta": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "Etiqueta": "Miércoles, 14 de marzo de 2012"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "Etiqueta": "40982"
               }
             },
             "val": "mm/dd/yyyy",
@@ -408,231 +407,93 @@
           },
           "periodicy": {
             "type": "select",
-            "label": "Periodicidad",
+            "Etiqueta": "Periodicidad",
             "required": true,
             "options": {
-              "one_off": {
-                "label": "One-Off"
+              "One-Off": {
+                "Etiqueta": "One-Off"
               },
-              "daily": {
-                "label": "Daily"
+              "Diario": {
+                "Etiqueta": "Diario"
               },
-              "work_daily": {
-                "label": "Work-Daily"
+              "Trabajo-Diario": {
+                "Etiqueta": "Trabajo-Diario"
               },
-              "weekly": {
-                "label": "Weekly"
+              "semanal": {
+                "Etiqueta": "semanal"
               },
-              "monthly": {
-                "label": "Monthly"
+              "Mensual": {
+                "Etiqueta": "Mensual"
               },
-              "quarterly": {
-                "label": "Quarterly"
+              "Trimestral": {
+                "Etiqueta": "Trimestral"
               },
-              "yearly": {
-                "label": "Yearly"
+              "Anual": {
+                "Etiqueta": "Anual"
               }
             },
-            "val": "one_off"
+            "val": "One-Off"
           },
           "growth": {
             "type": "number",
-            "label": "Crecimiento",
-            "show_if": "this.periodicy!='one_off'",
+            "Etiqueta": "Crecimiento",
+            "show_if": "this.periodicy!='One-Off'",
             "val": "",
             "required": true
-          },
-          "growth_format__category": {
-            "type": "select",
-            "label": "Growth Format",
-            "show_if": "this.periodicy!='one_off'",
-            "required": true,
-            "options": {
-              "standard": {
-                "label": "Estándar"
-              },
-              "number": {
-                "label": "Número"
-              },
-              "percentage": {
-                "label": "Porcentaje"
-              },
-              "text": {
-                "label": "Texto"
-              },
-              "date": {
-                "label": "Fecha"
-              },
-              "currency": {
-                "label": "Moneda"
-              }
-            },
-            "val": "standard"
-          },
-          "growth_format__rounding": {
-            "type": "select",
-            "label": "Redondeo",
-            "show_if": "this.periodicy!='one_off' && (this.growth_format__category=='number' || this.growth_format__category=='percentage' || this.growth_format__category=='currency')",
-            "required": true,
-            "options": {
-              "no_rounding": {
-                "label": "Redondeo de números"
-              },
-              "0": {
-                "label": "0 dígitos"
-              },
-              "1": {
-                "label": "1 dígitos"
-              },
-              "2": {
-                "label": "2 dígitos"
-              },
-              "3": {
-                "label": "3 dígitos"
-              },
-              "4": {
-                "label": "4 dígitos"
-              },
-              "5": {
-                "label": "5 dígitos"
-              },
-              "6": {
-                "label": "6 dígitos"
-              },
-              "7": {
-                "label": "7 dígitos"
-              },
-              "8": {
-                "label": "8 dígitos"
-              },
-              "9": {
-                "label": "9 dígitos"
-              }
-            },
-            "val": "2"
-          },
-          "growth_format__use_1000_separator": {
-            "type": "checkbox",
-            "label": "Usar el Separador de 1000(.)",
-            "show_if": "this.periodicy!='one_off' && (this.growth_format__category=='number' || this.growth_format__category=='percentage' || this.growth_format__category=='currency')",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "growth_format__currency_symbol": {
-            "type": "select",
-            "label": "Símbolo",
-            "show_if": "this.periodicy!='one_off' && this.growth_format__category=='currency'",
-            "required": true,
-            "options": {
-              "dollar": {
-                "label": "$"
-              },
-              "euro": {
-                "label": "€"
-              },
-              "pound": {
-                "label": "£"
-              }
-            },
-            "val": "dollar"
-          },
-          "growth_format__date_format": {
-            "type": "select",
-            "label": "Tipo",
-            "show_if": "this.periodicy!='one_off' && this.growth_format__category=='date'",
-            "required": true,
-            "options": {
-              "mm/dd/yyyy": {
-                "label": "3/14/2012"
-              },
-              "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
-              },
-              "yyyy-mm-dd": {
-                "label": "2012-03-14"
-              }
-            },
-            "val": "mm/dd/yyyy",
-            "breakLine": true
           },
           "growth_period": {
             "type": "select",
-            "label": "Período de Crecimiento",
-            "show_if": "this.periodicy!='one_off'",
+            "Etiqueta": "Período de Crecimiento",
+            "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "week_on_week": {
-                "label": "Semana a Semana"
+              "semanal": {
+                "Etiqueta": "semanal"
               },
-              "month_on_month": {
-                "label": "Mes a Mes"
+              "Mensual": {
+                "Etiqueta": "Mes a Mes"
               },
-              "quarter_on_quarter": {
-                "label": "Trimestre a Trimestre"
+              "Trimestral": {
+                "Etiqueta": "Trimestre a Trimestre"
               },
-              "year_on_year": {
-                "label": "Año a Año"
+              "Anual": {
+                "Etiqueta": "Año a Año"
               }
             },
-            "val": "week_on_week"
+            "val": "semanal"
           },
           "growth_pattern": {
             "type": "select",
-            "label": "Patrón de Crecimiento",
-            "show_if": "this.periodicy!='one_off'",
+            "Etiqueta": "Patrón de Crecimiento",
+            "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "compounding": {
-                "label": "Compounding"
+              "Compuesto": {
+                "Etiqueta": "Compuesto"
               },
-              "linear": {
-                "label": "Lineal"
+              "Lineal": {
+                "Etiqueta": "Lineal"
               },
-              "jump_fix": {
-                "label": "Jump-Fix"
+              "Jump-Fix": {
+                "Etiqueta": "Jump-Fix"
               }
             },
-            "val": "compounding"
+            "val": "Compuesto"
           },
           "final_date": {
             "type": "date",
-            "label": "Fecha Final",
-            "show_if": "this.periodicy!='one_off'",
-            "val": "",
-            "required": true
-          },
-          "final_date_format__category": {
-            "type": "hidden",
-            "val": "date"
-          },
-          "final_date_format__date_format": {
-            "type": "select",
-            "label": "Tipo",
-            "show_if": "this.periodicy!='one_off'",
-            "required": true,
-            "options": {
-              "mm/dd/yyyy": {
-                "label": "3/14/2012"
-              },
-              "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
-              },
-              "yyyy-mm-dd": {
-                "label": "2012-03-14"
-              }
-            },
-            "val": "mm/dd/yyyy",
-            "breakLine": true
+            "Etiqueta": "Fecha Final",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": ""
           },
           "delete": {
             "type": "button",
-            "label": "Borrar",
+            "Etiqueta": "Borrar",
             "function": "DELETE_ROW"
           }
         }
       },
       "options.end_date": {
         "type": "date",
-        "label": "Fecha de Finalización de la Tabla",
+        "Etiqueta": "Fecha de Finalización de la Tabla",
         "show_if": "options.type=='process' || options.type=='custom'",
         "val": "",
         "required": true,
