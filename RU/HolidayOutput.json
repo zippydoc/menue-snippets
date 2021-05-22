@@ -1,58 +1,66 @@
 {
   "output": {
     "type": "fieldset",
-    "label": "Definir Tabela de Saída",
+    "Метка": "Определить выходную таблицу",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
-        "label": "Mostrar Nome da Tabela",
-        "show_if": "output.compose_table_name=='false'",
+        "Метка": "Вывести название таблицы",
+        "show_if": "output.custom_options=='false' || (output.custom_options=='true' && output.compose_table_name=='false')",
         "minLength": 1,
         "val": "",
         "width": "100%",
         "breakLine": true
       },
+      "output.custom_options": {
+        "type": "checkbox",
+        "Метка": "Настройки вывода",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "output.select_output_columns": {
         "type": "checkbox",
-        "label": "Selecionar Colunas de Saída",
-        "show_if": "options.is_generate_holiday_table=='add_column'",
+        "Метка": "Выбрать выходные колонки",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "output_columns": {
         "type": "fieldset",
-        "label": "Select OutputColumns",
-        "show_if": "options.is_generate_holiday_table=='add_column' && output.select_output_columns=='true'",
+        "Метка": "Select OutputColumns",
+        "show_if": "options.is_generate_holiday_table=='add_column' && output.custom_options=='true' && output.select_output_columns=='true'",
         "repeat": true,
         "fields": {
           "field_name": {
             "type": "select",
-            "label": "Selecionar Coluna",
+            "Метка": "Выбрать столбец",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
           "order": {
             "type": "select",
-            "label": "Encomendar",
+            "Метка": "Заказать",
             "options": {
               "-": {
-                "label": "-"
+                "Метка": "-"
               },
               "asc": {
-                "label": "Ascendente"
+                "Метка": "Asc"
               },
               "desc": {
-                "label": "Descendente"
+                "Метка": "Описание"
               }
             },
             "val": "-"
           },
           "is_rename": {
             "type": "checkbox",
-            "label": "Mudar Nome",
+            "Метка": "Переименовать",
             "val": "false",
             "isOn": "true",
             "isOff": "false"
@@ -63,80 +71,80 @@
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "Novo Nome de Coluna",
+            "Метка": "Название нового столбца",
             "style": "margin-left: 10px"
           },
           "format__category": {
             "type": "select",
-            "label": "Formato",
+            "Метка": "Формат",
             "required": true,
             "options": {
               "standard": {
-                "label": "Padrão"
+                "Метка": "Стандартный"
               },
               "number": {
-                "label": "Número"
+                "Метка": "Число"
               },
               "percentage": {
-                "label": "Percentagem"
+                "Метка": "Процент"
               },
               "text": {
-                "label": "Texto"
+                "Метка": "Текст"
               },
               "date": {
-                "label": "Data"
+                "Метка": "Дата"
               },
               "currency": {
-                "label": "Moeda"
+                "Метка": "Валюта"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "Arredondamento",
+            "Метка": "Округление",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Arredondamento de números"
+                "Метка": "Округление чисел"
               },
               "0": {
-                "label": "0 dígitos"
+                "Метка": "0 цифр"
               },
               "1": {
-                "label": "1 dígito"
+                "Метка": "1 цифра"
               },
               "2": {
-                "label": "2 dígitos"
+                "Метка": "2 цифры"
               },
               "3": {
-                "label": "3 dígitos"
+                "Метка": "3 цифры"
               },
               "4": {
-                "label": "4 dígitos"
+                "Метка": "4 цифры"
               },
               "5": {
-                "label": "5 dígitos"
+                "Метка": "5 цифр"
               },
               "6": {
-                "label": "6 dígitos"
+                "Метка": "6 цифр"
               },
               "7": {
-                "label": "7 dígitos"
+                "Метка": "7 цифр"
               },
               "8": {
-                "label": "8 dígitos"
+                "Метка": "8 цифр"
               },
               "9": {
-                "label": "9 dígitos"
+                "Метка": "9 цифр"
               }
             },
             "val": "2"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Usar Separador(.) 1000",
+            "Метка": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -144,36 +152,36 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "Símbolo",
+            "Метка": "Символ",
             "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "Метка": "$"
               },
               "euro": {
-                "label": "€"
+                "Метка": "€"
               },
               "pound": {
-                "label": "£"
+                "Метка": "£"
               }
             },
             "val": "dollar"
           },
           "format__date_format": {
             "type": "select",
-            "label": "Tipo",
+            "Метка": "Тип",
             "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "Метка": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "Метка": "Среда, 14 марта 2012 года"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "Метка": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy",
@@ -181,7 +189,7 @@
           },
           "delete": {
             "type": "button",
-            "label": "Apagar",
+            "Метка": "Удалить",
             "function": "DELETE_ROW"
           }
         },
@@ -190,7 +198,8 @@
       },
       "output.compose_table_name": {
         "type": "checkbox",
-        "label": "Compôr Nome de Tabela",
+        "Метка": "Объединить название таблицы",
+        "show_if": "output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -198,42 +207,42 @@
       },
       "compose_table_name_frame": {
         "type": "fieldset",
-        "label": "Compôr Nome de Tabela de Saída",
-        "show_if": "output.compose_table_name=='true'",
+        "Метка": "Объединить название входной таблицы",
+        "show_if": "output.custom_options=='true' && output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
             "type": "select",
-            "label": "Prefixo",
+            "Метка": "Префикс",
             "show_if": "output.compose_table_name=='true'",
             "val": "empty",
             "options": {
               "empty": {
-                "label": "-"
+                "Метка": "-"
               },
               "script_name": {
-                "label": "Nome da Tarefa"
+                "Метка": "Название задачи"
               },
               "date_string_type1": {
-                "label": "Data: dd_mm_aaaa"
+                "Метка": "Дата: дд_мм_гггг"
               },
               "date_string_type2": {
-                "label": "Data: aaaa_mm_dd"
+                "Метка": "Дата: гггг_мм_дд"
               },
               "time_string": {
-                "label": "Hora: h_min_seg"
+                "Метка": "Время: ч_мин_сек"
               },
               "datetime_string": {
-                "label": "Data_Hora"
+                "Метка": "Дата_время"
               },
               "custom": {
-                "label": "Personalizar"
+                "Метка": "Пользовательский"
               }
             }
           },
           "output.prefix_text": {
             "type": "text",
-            "label": "Adicionar Prefixo ao Texto",
+            "Метка": "Текст префикса",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -241,45 +250,45 @@
           },
           "output.core_delimiter": {
             "type": "text",
-            "label": "Delimitador",
+            "Метка": "Разделитель",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
             "val": "_",
             "width": "50px"
           },
           "output.generate_core_rule": {
             "type": "select",
-            "label": "Nome da Tabela",
+            "Метка": "Название таблицы",
             "show_if": "output.compose_table_name=='true' && options.is_generate_holiday_table=='generate_table'",
             "val": "script_name",
             "options": {
               "script_name": {
-                "label": "Nome da Tarefa"
+                "Метка": "Название задачи"
               },
               "custom": {
-                "label": "Personalizar"
+                "Метка": "Пользовательский"
               }
             }
           },
           "output.core_rule": {
             "type": "select",
-            "label": "Nome da Tabela",
+            "Метка": "Название таблицы",
             "show_if": "output.compose_table_name=='true' && options.is_generate_holiday_table=='add_column'",
             "val": "input_table_name",
             "options": {
               "input_table_name": {
-                "label": "Introduzir Nome da Tabela"
+                "Метка": "Добавить название таблицы"
               },
               "script_name": {
-                "label": "Nome da Tarefa"
+                "Метка": "Название задачи"
               },
               "custom": {
-                "label": "Personalizar"
+                "Метка": "Пользовательский"
               }
             }
           },
           "output.core_text": {
             "type": "text",
-            "label": "Nome da Tabela Principal",
+            "Метка": "Название основной таблицы",
             "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
             "required": true,
             "minLength": 1,
@@ -288,43 +297,43 @@
           },
           "output.suffix_delimiter": {
             "type": "text",
-            "label": "Delimitador",
+            "Метка": "Разделитель",
             "show_if": "output.compose_table_name=='true'",
             "val": "_",
             "width": "50px"
           },
           "output.suffix_rule": {
             "type": "select",
-            "label": "Sufixo",
+            "Метка": "Суффикс",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "empty": {
-                "label": "-"
+                "Метка": "-"
               },
               "script_name": {
-                "label": "Nome da Tarefa"
+                "Метка": "Название задачи"
               },
               "date_string_type1": {
-                "label": "Data: dd_mm_aaaa"
+                "Метка": "Дата: дд_мм_гггг"
               },
               "date_string_type2": {
-                "label": "Data: aaaa_mm_dd"
+                "Метка": "Дата: гггг_мм_дд"
               },
               "time_string": {
-                "label": "Hora: h_min_seg"
+                "Метка": "Время: ч_мин_сек"
               },
               "datetime_string": {
-                "label": "Data_Hora"
+                "Метка": "Дата_время"
               },
               "custom": {
-                "label": "Personalizar"
+                "Метка": "Пользовательский"
               }
             }
           },
           "output.suffix_text": {
             "type": "text",
-            "label": "Juntar Sufixo ao Texto",
+            "Метка": "Текст суффикса",
             "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -333,130 +342,130 @@
           },
           "output.timezone": {
             "type": "select",
-            "label": "Fuso horário",
+            "Метка": "Часовой пояс",
             "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
-            "val": "Europa/Berlim",
+            "val": "Европа/Берлин",
             "required": true,
             "options": {
               "America/Adak": {
-                "label": "Adak, Gambier"
+                "Метка": "Адак, Гамбиер"
               },
               "Australia/Adelaide": {
-                "label": "Adelaide, Broken_Hill, Darwin"
+                "Метка": "Adelaide, Broken_Hill, Darwin"
               },
               "America/Anchorage": {
-                "label": "Anchorage, Juneau, Sitka"
+                "Метка": "Анкоридж, Джуно, Ситка"
               },
               "Pacific/Apia": {
-                "label": "Apia, Asau, Mulifanua, Afega, Leulumoega"
+                "Метка": "Апиа, Асау, Мулифануа, Афега, Леулумоэга"
               },
               "Pacific/Enderbury": {
-                "label": "Apia, Fiji, Tongatapu"
+                "Метка": "Апиа, Фиджи, Тонгатапу"
               },
               "Antarctica/McMurdo": {
-                "label": "Auckland, Casey, Davis"
+                "Метка": "Окленд, Кейси, Дэвис"
               },
               "Pacific/Auckland": {
-                "label": "Auckland, Wellington, Christchurch"
+                "Метка": "Окленд, Веллингтон, Крайстчерч"
               },
               "Asia/Bangkok": {
-                "label": "Bangkok, Jakarta, Novosibirsk"
+                "Метка": "Бангкок, Джакарта, Новосибирск"
               },
-              "Europa/Berlim": {
-                "label": "Berlin, Paris, Amsterdam"
+              "Европа/Берлин": {
+                "Метка": "Берлин, Париж, Амстердам"
               },
               "Australia/Perth": {
-                "label": "Brunei, Singapore, Perth"
+                "Метка": "Бруней, Сингапур, Перт"
               },
               "Atlantic/Cape_Verde": {
-                "label": "Cape_Verde,Praia, Mindelo, Santa Maria"
+                "Метка": "Cape_Verde,Praia, Mindelo, Santa Maria"
               },
               "America/Belize": {
-                "label": "Costa_Rica, El_Salvador, Denver"
+                "Метка": "Costa_Rica, El_Salvador, Denver"
               },
               "Antarctica/Vostok": {
-                "label": "Dhaka, Bishkek, Omsk"
+                "Метка": "Дакка, Бишкек, Омск"
               },
               "Europe/Astrakhan": {
-                "label": "Dubai, Baku, Tbilisi"
+                "Метка": "Дубай, Баку, Тбилиси"
               },
               "Australia/Eucla": {
-                "label": "Eucla"
+                "Метка": "Эвкла"
               },
               "Pacific/Honolulu": {
-                "label": "Honolulu, Rarotonga, Tahiti"
+                "Метка": "Гонолулу, Раротонга, Таити"
               },
               "Asia/Kabul": {
-                "label": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
+                "Метка": "Кабул, Кандагар, Мазар-е Шариф, Герат, Джалалабад"
               },
               "Asia/Aqtau": {
-                "label": "Karachi, Tashkent, Maldives"
+                "Метка": "Карачи, Ташкент, Мальдивы"
               },
               "Asia/Kathmandu": {
-                "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
+                "Метка": "Kathmandu,Pokhara, Pātan, Biratnagar"
               },
               "Pacific/Kiritimati": {
-                "label": "Kiritimati"
+                "Метка": "Киритимати"
               },
               "Asia/Colombo": {
-                "label": "Kolkata, Colombo,Jaffna, Negombo"
+                "Метка": "Kolkata, Colombo,Jaffna, Negombo"
               },
               "Europe/Guernsey": {
-                "label": "London. Dublin, Lisbon"
+                "Метка": "London. Dublin, Lisbon"
               },
               "Australia/Lord_Howe": {
-                "label": "Lord_Howe"
+                "Метка": "Lord_Howe"
               },
               "America/Creston": {
-                "label": "Los_Angeles, Vancouver, Hermosillo"
+                "Метка": "Los_Angeles, Vancouver, Hermosillo"
               },
               "Pacific/Marquesas": {
-                "label": "Marquesas,Taiohae"
+                "Метка": "Marquesas,Taiohae"
               },
               "America/Cayman": {
-                "label": "Mexico_City, Panama, Chicago"
+                "Метка": "Mexico_City, Panama, Chicago"
               },
               "Pacific/Niue": {
-                "label": "Midway, Niue, Pago_Pago"
+                "Метка": "Midway, Niue, Pago_Pago"
               },
               "Europe/Mariehamn": {
-                "label": "Moscow, Istanbul, Qatar"
+                "Метка": "Москва, Стамбул, Катар"
               },
               "Asia/Kolkata": {
-                "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
+                "Метка": "Мумбаи, Дели, Бенгалуру, Калькутта, Ченнаи"
               },
               "America/Miquelon": {
-                "label": "Noronha, Nuuk, Miquelon"
+                "Метка": "Норонья, Нуук, Микелон"
               },
               "America/Danmarkshavn": {
-                "label": "Reykjavik, Dakar, Casablanca"
+                "Метка": "Рейкьявик, Дакар, Касабланка"
               },
               "Pacific/Bougainville": {
-                "label": "Sakhalin, Norfolk, Bougainville"
+                "Метка": "Сахалин, Норфолк, Бугенвиль"
               },
               "America/Araguaina": {
-                "label": "Sao_Paulo, Buenos_Aires, Montevideo"
+                "Метка": "Sao_Paulo, Buenos_Aires, Montevideo"
               },
               "America/St_Johns": {
-                "label": "St_Johns,Mount Pearl, Corner Brook"
+                "Метка": "St_Johns,Mount Pearl, Corner Brook"
               },
               "Asia/Tehran": {
-                "label": "Tehran, Mashhad, Isfahan, Karaj, Tabriz"
+                "Метка": "Тегеран, Мешхед, Исфахан, Карадж, Тебриз"
               },
               "Asia/Tokyo": {
-                "label": "Tokyo, Seoul, Jayapura"
+                "Метка": "Токио, Сеул, Джаяпура"
               },
               "America/New_York": {
-                "label": "Toronto, Santiago, New_York"
+                "Метка": "Toronto, Santiago, New_York"
               },
               "Australia/Sydney": {
-                "label": "Vladivostok, Sydney, Brisbane"
+                "Метка": "Владивосток, Сидней, Брисбен"
               },
               "Asia/Yangon": {
-                "label": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
+                "Метка": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
               },
               "Indian/Cocos": {
-                "label": "Yangon, Cocos,West Island"
+                "Метка": "Yangon, Cocos,West Island"
               }
             },
             "breakLine": true
