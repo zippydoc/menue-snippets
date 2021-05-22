@@ -1,18 +1,18 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "オプションの選択",
+    "ラベル": "オプションの選択",
     "repeat": false,
     "fields": {
       "options.to": {
         "type": "select",
-        "label": "タイプ",
+        "ラベル": "タイプ",
         "options": {
           "database": {
-            "label": "データベースへのエクスポート"
+            "ラベル": "データベースへのエクスポート"
           },
           "file": {
-            "label": "ファイルへのエクスポート"
+            "ラベル": "ファイルへのエクスポート"
           }
         },
         "val": "database",
@@ -20,7 +20,7 @@
       },
       "options.export_series": {
         "type": "checkbox",
-        "label": "シリーズのエクスポート",
+        "ラベル": "シリーズのエクスポート",
         "show_if": "options.to=='file'",
         "val": "false",
         "isOn": "true",
@@ -29,7 +29,7 @@
       },
       "options.file_name_column": {
         "type": "select",
-        "label": "ファイル名列の選択",
+        "ラベル": "ファイル名列の選択",
         "show_if": "options.to=='file' && options.export_series=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -38,25 +38,25 @@
       },
       "postgresql_db_credential_box": {
         "type": "fieldset",
-        "label": "データベース接続証明書",
+        "ラベル": "データベース接続証明書",
         "show_if": "options.to=='database'",
         "repeat": false,
         "fields": {
           "options.dbms": {
             "type": "select",
-            "label": "DBMSの選択",
+            "ラベル": "DBMSの選択",
             "options": {
               "postgresql": {
-                "label": "PostgreSQL"
+                "ラベル": "PostgreSQL"
               },
               "mysql": {
-                "label": "MySQL"
+                "ラベル": "MySQL"
               },
               "sql_server": {
-                "label": "MS SQL Server"
+                "ラベル": "MS SQL Server"
               },
               "oracle": {
-                "label": "Oracle"
+                "ラベル": "Oracle"
               }
             },
             "val": "postgresql",
@@ -65,7 +65,7 @@
           },
           "options.postgresql_credential.user": {
             "type": "text",
-            "label": "ユーザー",
+            "ラベル": "ユーザー",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -73,7 +73,7 @@
           },
           "options.postgresql_credential.password": {
             "type": "text",
-            "label": "パスワード",
+            "ラベル": "パスワード",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -81,7 +81,7 @@
           },
           "options.postgresql_credential.host": {
             "type": "text",
-            "label": "ホスト",
+            "ラベル": "ホスト",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -89,7 +89,7 @@
           },
           "options.postgresql_credential.database": {
             "type": "text",
-            "label": "データベース",
+            "ラベル": "データベース",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -99,7 +99,7 @@
       },
       "options.schema_name_to_export": {
         "type": "text",
-        "label": "エクスポート先のスキーマ名",
+        "ラベル": "エクスポート先のスキーマ名",
         "show_if": "options.to=='database' && options.dbms=='postgresql'",
         "required": true,
         "val": "public",
@@ -108,20 +108,20 @@
       },
       "options.webservice": {
         "type": "select",
-        "label": "ウェブサービスの選択",
+        "ラベル": "ウェブサービスの選択",
         "show_if": "options.to=='file' || options.to=='mytask'",
         "options": {
           "github": {
-            "label": "Github"
+            "ラベル": "Github"
           },
           "dropbox": {
-            "label": "Dropbox"
+            "ラベル": "Dropbox"
           },
           "ms_one_drive": {
-            "label": "Microsoft OneDrive"
+            "ラベル": "Microsoft OneDrive"
           },
           "google_drive": {
-            "label": "Google Drive"
+            "ラベル": "Google Drive"
           }
         },
         "val": "github",
@@ -129,17 +129,17 @@
       },
       "options.export_format": {
         "type": "select",
-        "label": "フォーマットのエクスポート",
+        "ラベル": "フォーマットのエクスポート",
         "show_if": "options.to=='file'",
         "options": {
           "csv_file": {
-            "label": "Csvファイル(複数可)"
+            "ラベル": "Csvファイル(複数可)"
           },
           "word_by_word": {
-            "label": "単語ごと"
+            "ラベル": "単語ごと"
           },
           "line_by_line": {
-            "label": "行ごと"
+            "ラベル": "行ごと"
           }
         },
         "val": "csv_file",
@@ -148,7 +148,7 @@
       },
       "options.github_create_pr": {
         "type": "checkbox",
-        "label": "プルリクエストの作成",
+        "ラベル": "プルリクエストの作成",
         "show_if": "options.to=='file' && options.webservice=='github'",
         "val": "false",
         "isOn": "true",
@@ -157,7 +157,7 @@
       },
       "options.github_token": {
         "type": "text",
-        "label": "Specify the Github personal access token that has write permission:",
+        "ラベル": "書き込み権限のあるGithubパーソナルアクセストークンを指定：",
         "show_if": "options.to=='file' && options.webservice=='github'",
         "required": true,
         "width": "100%",
@@ -165,7 +165,7 @@
       },
       "options.github_url": {
         "type": "text",
-        "label": "リンクを入力 例：https://github.com/zippydoc/test",
+        "ラベル": "リンクを入力 例：https://github.com/zippydoc/test",
         "show_if": "options.to=='file' && options.webservice=='github'",
         "val": "https://github.com/zippydoc/public-tables",
         "required": true,
@@ -174,7 +174,7 @@
       },
       "options.ms_one_drive_token": {
         "type": "text",
-        "label": "Microsoft Graph API access token. You can get it here https://ms-oauth.herokuapp.com/",
+        "ラベル": "Microsoft Graph APIアクセストークン。You can get it here https://ms-oauth.herokuapp.com/",
         "show_if": "options.to=='file' && options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
@@ -182,7 +182,7 @@
       },
       "options.google_authorization_code": {
         "type": "text",
-        "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
+        "ラベル": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. ここで取得できます https://developers.google.com/oauthplayground/",
         "show_if": "options.to=='file' && options.webservice=='google_drive'",
         "required": true,
         "width": "100%",
@@ -190,7 +190,7 @@
       },
       "options.dropbox_authorization_code": {
         "type": "text",
-        "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "ラベル": "Dropboxの認証コードです。ここで取得できます https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
         "show_if": "options.to=='file' && options.webservice=='dropbox'",
         "required": true,
         "width": "100%",
@@ -198,27 +198,27 @@
       },
       "options.if_duplicated": {
         "type": "select",
-        "label": "重複している場合",
+        "ラベル": "重複している場合",
         "show_if": "options.to=='database' || (options.to=='file' && options.webservice=='github')",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "作成またはドロップ（既存の場合）"
+            "ラベル": "作成またはドロップ（既存の場合）"
           },
           "error_if_exist": {
-            "label": "新規作成（既存の場合はエラーにする）"
+            "ラベル": "新規作成（既存の場合はエラーにする）"
           },
           "error_if_not_exist": {
-            "label": "ドロップ（存在しない場合はエラーにする）"
+            "ラベル": "ドロップ（存在しない場合はエラーにする）"
           },
           "append": {
-            "label": "追加"
+            "ラベル": "追加"
           }
         }
       },
       "options.export_task_name": {
         "type": "text",
-        "label": "タスク名の入力",
+        "ラベル": "タスク名の入力",
         "show_if": "options.to=='mytask'",
         "required": true,
         "val": "Flow6_Task1_AddColumns",
