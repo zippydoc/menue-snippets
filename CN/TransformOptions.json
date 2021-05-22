@@ -1,0 +1,47 @@
+{
+  "options": {
+    "type": "fieldset",
+    "标签": "选择选项",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "radio",
+        "val": "transform_group",
+        "show_if": "false",
+        "values": {
+          "transform_group": "Transform Group"
+        },
+        "breakLine": true
+      },
+      "options.group_label_direction": {
+        "type": "select",
+        "标签": "变换方向",
+        "required": true,
+        "options": {
+          "group_to_label": {
+            "标签": "需要标签的组"
+          },
+          "label_to_group": {
+            "标签": "标签至组"
+          }
+        },
+        "val": "group_to_label"
+      },
+      "options.group_column": {
+        "type": "select",
+        "标签": "组列",
+        "show_if": "options.group_label_direction=='group_to_label'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.group_column_name": {
+        "type": "text",
+        "标签": "组列名",
+        "show_if": "options.group_label_direction=='label_to_group'",
+        "val": "Group",
+        "required": true
+      }
+    }
+  }
+}
