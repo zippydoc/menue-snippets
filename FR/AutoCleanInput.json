@@ -1,0 +1,124 @@
+{
+  "options.auto_run": {
+    "type": "checkbox",
+    "Étiquette": "Autorun Task",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "trigger_vector_frame": {
+    "type": "fieldset",
+    "Étiquette": "Task Lock",
+    "show_if": "options.auto_run=='true'",
+    "repeat": false,
+	"fields": {
+		"options.table_filter": {
+        "type": "select",
+        "Étiquette": "Key-Lock pair filter",
+        "options": {
+          "specific_tables": {
+            "Étiquette": "Specify Table(s)"
+          },
+          "current_flow_tables": {
+            "Étiquette": "Current Flow Tables"
+          },
+          "flow_tables": {
+            "Étiquette": "Specify Flow(s)"
+          },
+          "all_tables": {
+            "Étiquette": "All Tables"
+          }
+		 }
+		},
+      "options.autorun_tables": {
+        "type": "select",
+        "Étiquette": "Autorun on table change",
+        "bind": "TABLES",
+        "multiple": true,
+        "required": false
+      },
+      "trigger_key": {
+        "type": "select",
+        "Étiquette": "Trigger Key",
+        "options": {
+          "greater": {
+            "Étiquette": "SUPÉRIEUR À"
+          },
+          "greater_or_equal": {
+            "Étiquette": "SUPÉRIEUR OU ÉGAL"
+          },
+          "equal": {
+            "Étiquette": "ÉGAL"
+          },
+          "smaller_or_equal": {
+            "Étiquette": "INFÉRIEUR OU ÉGAL"
+          },
+          "smaller": {
+            "Étiquette": "INFÉRIEUR À"
+          }
+        },
+        "val": "larger_or_equal"
+      },
+      "key_number": {
+        "type": "text",
+        "Étiquette": "Key",
+        "val": "1",
+        "required": true,
+        "breakLine": true
+      },  	  
+      "trigger_method": {
+        "type": "select",
+        "Étiquette": "Trigger Method",
+        "options": {
+          "no_lock": {
+            "Étiquette": "Run without Task Lock"
+          },
+          "scalar_product_compound": {
+            "Étiquette": "Compound AxB"
+          },
+          "scalar_product_all_pins": {
+            "Étiquette": "Pin by Pin AxB - each matching"
+          },
+          "scalar_product_min_one_pin": {
+            "Étiquette": "Pin by Pin AxB - one or more matches"
+          },
+          "scalar_product_one_pin": {
+            "Étiquette": "Pin by Pin AxB - one match"
+          },
+          "concatenate": {
+            "Étiquette": "Match concatenation"
+          },		  
+          "matching_array": {
+            "Étiquette": "Match all elements (unordered)"
+          }
+        },
+        "val": "scalar_product_compound",
+        "breakLine": true
+      },
+      "options.names": {
+        "type": "fieldset",
+        "Étiquette": "Task Lock Definition",
+        "repeat": true,
+        "fields": {
+          "name": {
+            "type": "text",
+            "Étiquette": "Key Pin",
+            "val": "",
+            "required": true
+          },
+          "value": {
+            "type": "text",
+            "Étiquette": "Multiplier",
+            "val": "",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "Étiquette": "Supprimer",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
