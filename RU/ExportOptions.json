@@ -1,18 +1,18 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Выбрать параметры",
+    "Метка": "Выбрать параметры",
     "repeat": false,
     "fields": {
       "options.to": {
         "type": "select",
-        "label": "Тип",
+        "Метка": "Тип",
         "options": {
           "database": {
-            "label": "Экспорт в базу данных"
+            "Метка": "Экспорт в базу данных"
           },
           "file": {
-            "label": "Экспорт в файл"
+            "Метка": "Экспорт в файл"
           }
         },
         "val": "database",
@@ -20,7 +20,7 @@
       },
       "options.export_series": {
         "type": "checkbox",
-        "label": "Экспорт серий",
+        "Метка": "Экспорт серий",
         "show_if": "options.to=='file'",
         "val": "false",
         "isOn": "true",
@@ -29,7 +29,7 @@
       },
       "options.file_name_column": {
         "type": "select",
-        "label": "Выбрать столбец с названием файла",
+        "Метка": "Выбрать столбец с названием файла",
         "show_if": "options.to=='file' && options.export_series=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -38,25 +38,25 @@
       },
       "postgresql_db_credential_box": {
         "type": "fieldset",
-        "label": "Учетные данные для подключения к базе данных",
+        "Метка": "Учетные данные для подключения к базе данных",
         "show_if": "options.to=='database'",
         "repeat": false,
         "fields": {
           "options.dbms": {
             "type": "select",
-            "label": "Выбрать СУБД",
+            "Метка": "Выбрать СУБД",
             "options": {
               "postgresql": {
-                "label": "PostgreSQL"
+                "Метка": "PostgreSQL"
               },
               "mysql": {
-                "label": "MySQL"
+                "Метка": "MySQL"
               },
               "sql_server": {
-                "label": "MS SQL Сервер"
+                "Метка": "MS SQL Сервер"
               },
               "oracle": {
-                "label": "Oracle"
+                "Метка": "Oracle"
               }
             },
             "val": "postgresql",
@@ -65,7 +65,7 @@
           },
           "options.postgresql_credential.user": {
             "type": "text",
-            "label": "Пользователь",
+            "Метка": "Пользователь",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -73,7 +73,7 @@
           },
           "options.postgresql_credential.password": {
             "type": "text",
-            "label": "Пароль",
+            "Метка": "Пароль",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -81,7 +81,7 @@
           },
           "options.postgresql_credential.host": {
             "type": "text",
-            "label": "Хост",
+            "Метка": "Хост",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -89,7 +89,7 @@
           },
           "options.postgresql_credential.database": {
             "type": "text",
-            "label": "База данных",
+            "Метка": "База данных",
             "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
@@ -99,7 +99,7 @@
       },
       "options.schema_name_to_export": {
         "type": "text",
-        "label": "Название схемы для экспорта",
+        "Метка": "Название схемы для экспорта",
         "show_if": "options.to=='database' && options.dbms=='postgresql'",
         "required": true,
         "val": "public",
@@ -108,20 +108,20 @@
       },
       "options.webservice": {
         "type": "select",
-        "label": "Выбрать Веб-сервис",
+        "Метка": "Выбрать Веб-сервис",
         "show_if": "options.to=='file' || options.to=='mytask'",
         "options": {
           "github": {
-            "label": "Github"
+            "Метка": "Github"
           },
           "dropbox": {
-            "label": "Dropbox"
+            "Метка": "Dropbox"
           },
           "ms_one_drive": {
-            "label": "Microsoft OneDrive"
+            "Метка": "Microsoft OneDrive"
           },
           "google_drive": {
-            "label": "Google Drive"
+            "Метка": "Google Drive"
           }
         },
         "val": "github",
@@ -129,17 +129,17 @@
       },
       "options.export_format": {
         "type": "select",
-        "label": "Формат экспорта",
+        "Метка": "Формат экспорта",
         "show_if": "options.to=='file'",
         "options": {
           "csv_file": {
-            "label": "Csv-файл(ы)"
+            "Метка": "Csv-файл(ы)"
           },
           "word_by_word": {
-            "label": "Слово за словом"
+            "Метка": "Слово за словом"
           },
           "line_by_line": {
-            "label": "Линия за линией"
+            "Метка": "Линия за линией"
           }
         },
         "val": "csv_file",
@@ -148,7 +148,7 @@
       },
       "options.github_create_pr": {
         "type": "checkbox",
-        "label": "Создать пул-реквест",
+        "Метка": "Создать пул-реквест",
         "show_if": "options.to=='file' && options.webservice=='github'",
         "val": "false",
         "isOn": "true",
@@ -157,7 +157,7 @@
       },
       "options.github_token": {
         "type": "text",
-        "label": "Specify the Github personal access token that has write permission:",
+        "Метка": "Укажите персональный токен доступа Github, имеющий право на запись:".,
         "show_if": "options.to=='file' && options.webservice=='github'",
         "required": true,
         "width": "100%",
@@ -165,7 +165,7 @@
       },
       "options.github_url": {
         "type": "text",
-        "label": "Введите ссылку, например, https://github.com/zippydoc/test.",
+        "Метка": "Введите ссылку, например, https://github.com/zippydoc/test.",
         "show_if": "options.to=='file' && options.webservice=='github'",
         "val": "https://github.com/zippydoc/public-tables",
         "required": true,
@@ -174,7 +174,7 @@
       },
       "options.ms_one_drive_token": {
         "type": "text",
-        "label": "Microsoft Graph API access token. You can get it here https://ms-oauth.herokuapp.com/",
+        "Метка": "Токен доступа к Microsoft Graph API. Вы можете получить его здесь https://ms-oauth.herokuapp.com/",
         "show_if": "options.to=='file' && options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
@@ -182,7 +182,7 @@
       },
       "options.google_authorization_code": {
         "type": "text",
-        "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
+        "Метка": "Код авторизации Google OAuth с областью действия https://www.googleapis.com/auth/drive. Вы можете получить его здесь https://developers.google.com/oauthplayground/",
         "show_if": "options.to=='file' && options.webservice=='google_drive'",
         "required": true,
         "width": "100%",
@@ -190,7 +190,7 @@
       },
       "options.dropbox_authorization_code": {
         "type": "text",
-        "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "Метка": "Код авторизации Dropbox. Вы можете получить его здесь https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
         "show_if": "options.to=='file' && options.webservice=='dropbox'",
         "required": true,
         "width": "100%",
@@ -198,27 +198,27 @@
       },
       "options.if_duplicated": {
         "type": "select",
-        "label": "Если дублируется",
+        "Метка": "Если дублируется",
         "show_if": "options.to=='database' || (options.to=='file' && options.webservice=='github')",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "Создать или сбросить (если уже существует)"
+            "Метка": "Создать или сбросить (если уже существует)"
           },
           "error_if_exist": {
-            "label": "Создать новое (убрать ошибку, если есть)"
+            "Метка": "Создать новое (убрать ошибку, если есть)"
           },
           "error_if_not_exist": {
-            "label": "Отменить (убрать ошибку, если ее нет)"
+            "Метка": "Отменить (убрать ошибку, если ее нет)"
           },
           "append": {
-            "label": "Добавить"
+            "Метка": "Прикрепить"
           }
         }
       },
       "options.export_task_name": {
         "type": "text",
-        "label": "Добавить название задачи",
+        "Метка": "Добавить название задачи",
         "show_if": "options.to=='mytask'",
         "required": true,
         "val": "Flow6_Task1_AddColumns",
