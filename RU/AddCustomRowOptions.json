@@ -1,28 +1,28 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Выбрать параметры",
+    "Метка": "Выбрать параметры",
     "repeat": false,
     "fields": {
       "options.position": {
         "type": "select",
-        "label": "Выбрать позицию",
+        "Метка": "Выбрать позицию",
         "required": true,
         "options": {
           "add_rows_below_selected_row": {
-            "label": "Добавить строки под выбранными строками"
+            "Метка": "Добавить строки под выбранными строками"
           },
           "add_rows_above_selected_row": {
-            "label": "Добавить строки над выбранными строками"
+            "Метка": "Добавить строки над выбранными строками"
           },
           "add_rows_at_table_end": {
-            "label": "Добавить строки в конце таблицы"
+            "Метка": "Добавить строки в конце таблицы"
           },
           "add_single_row_at_table_end": {
-            "label": "Добавить одну строку в конце таблицы"
+            "Метка": "Добавить одну строку в конце таблицы"
           },
           "add_row_after_each_group": {
-            "label": "Добавлять строку после каждой группы"
+            "Метка": "Добавлять строку после каждой группы"
           }
         },
         "val": "add_rows_below_selected_row",
@@ -30,7 +30,7 @@
       },
       "options.group_column": {
         "type": "select",
-        "label": "Групповой столбец",
+        "Метка": "Групповой столбец",
         "show_if": "options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -39,15 +39,15 @@
       },
       "options.use_filter": {
         "type": "select",
-        "label": "Выбрать тип",
+        "Метка": "Выбрать тип",
         "show_if": "options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end'",
         "required": true,
         "options": {
           "false": {
-            "label": "Add one row for each table row"
+            "Метка": "Добавить одну строку для каждой строки таблицы"
           },
           "true": {
-            "label": "Add one row for each specified row"
+            "Метка": "Добавить одну строку для каждой указанной строки"
           }
         },
         "val": "false",
@@ -55,170 +55,170 @@
       },
       "filter_box": {
         "type": "fieldset",
-        "label": "Настройки фильтра",
+        "Метка": "Настройки фильтра",
         "show_if": "options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "repeat": false,
         "fields": {
           "options.filter": {
             "type": "fieldset",
-            "label": "Добавить условия фильтрации",
+            "Метка": "Добавить условия фильтрации",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Выбрать оператора логики",
+                "Метка": "Выбрать оператора логики",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
                   "if": {
-                    "label": "ЕСЛИ"
+                    "Метка": "ЕСЛИ"
                   },
                   "if_not": {
-                    "label": "ЕСЛИ НЕ"
+                    "Метка": "ЕСЛИ НЕ"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "Выбрать оператора логики",
+                "Метка": "Выбрать оператора логики",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
                   "and": {
-                    "label": "И"
+                    "Метка": "И"
                   },
                   "or": {
-                    "label": "ИЛИ"
+                    "Метка": "ИЛИ"
                   },
                   "and_not": {
-                    "label": "И НЕ"
+                    "Метка": "И НЕ"
                   },
                   "or_not": {
-                    "label": "ИЛИ НЕ"
+                    "Метка": "ИЛИ НЕ"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": "Выбрать столбец",
+                "Метка": "Выбрать столбец",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Выбрать оператора",
+                "Метка": "Выбрать оператора",
                 "required": true,
                 "options": {
                   "СОДЕРЖИТ": {
-                    "label": "СОДЕРЖИТ"
+                    "Метка": "СОДЕРЖИТ"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "СОДЕРЖАЛОСЬ В"
+                    "Метка": "СОДЕРЖАЛОСЬ В"
                   },
                   "НАЧИНАЕТСЯ С": {
-                    "label": "НАЧИНАЕТСЯ С"
+                    "Метка": "НАЧИНАЕТСЯ С"
                   },
                   "ЗАКАНЧИВАЕТСЯ С": {
-                    "label": "ЗАКАНЧИВАЕТСЯ С"
+                    "Метка": "ЗАКАНЧИВАЕТСЯ С"
                   },
                   "=": {
-                    "label": "Равный"
+                    "Метка": "Равный"
                   },
                   ">": {
-                    "label": "БОЛЬШЕ ЧЕМ"
+                    "Метка": "БОЛЬШЕ ЧЕМ"
                   },
                   ">=": {
-                    "label": "БОЛЬШИЙ ИЛИ РАВНЫЙ"
+                    "Метка": "БОЛЬШИЙ ИЛИ РАВНЫЙ"
                   },
                   "<": {
-                    "label": "МЕНЬШЕ ЧЕМ"
+                    "Метка": "МЕНЬШЕ ЧЕМ"
                   },
                   "<=": {
-                    "label": "МЕНЬШИЙ ИЛИ РАВНЫЙ"
+                    "Метка": "МЕНЬШИЙ ИЛИ РАВНЫЙ"
                   },
                   "EMPTY": {
-                    "label": "ПУСТО"
+                    "Метка": "ПУСТО"
                   },
                   "BLANK": {
-                    "label": "ПУСТО"
+                    "Метка": "ПУСТО"
                   },
                   "НОЛЬ": {
-                    "label": "НОЛЬ"
+                    "Метка": "НОЛЬ"
                   },
                   "Совпадение регулярного выражения": {
-                    "label": "Совпадение регулярного выражения"
+                    "Метка": "Совпадение регулярного выражения"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "В ТАБЛИЦЕ"
+                    "Метка": "В ТАБЛИЦЕ"
                   },
                   "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ": {
-                    "label": "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ"
+                    "Метка": "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ"
                   },
                   "ДАТА": {
-                    "label": "ДАТА"
+                    "Метка": "ДАТА"
                   }
                 },
                 "val": "СОДЕРЖИТ"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Выбрать оператора даты",
+                "Метка": "Выбрать оператора даты",
                 "required": true,
                 "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "ПРЕДЫДУЩИЙ"
+                    "Метка": "ПРЕДЫДУЩИЙ"
                   },
                   "<=": {
-                    "label": "ПРЕДЫДУЩИЙ ИЛИ РАВНЫЙ"
+                    "Метка": "ПРЕДЫДУЩИЙ ИЛИ РАВНЫЙ"
                   },
                   "=": {
-                    "label": "Равный"
+                    "Метка": "Равный"
                   },
                   ">": {
-                    "label": "ПОСЛЕ"
+                    "Метка": "ПОСЛЕ"
                   },
                   ">=": {
-                    "label": "ПОСЛЕ ИЛИ РАВНО"
+                    "Метка": "ПОСЛЕ ИЛИ РАВНО"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Выбрать с учетом регистра",
+                "Метка": "Выбрать с учетом регистра",
                 "required": true,
                 "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "С учетом регистра"
+                    "Метка": "С учетом регистра"
                   },
                   "no": {
-                    "label": "Без учета регистра"
+                    "Метка": "Без учета регистра"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Выбрать дату",
+                "Метка": "Выбрать дату",
                 "show_if": "this.condition=='DATE'",
-                "val": "1/31/2020",
+                "val": "",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Добавить значение",
+                "Метка": "Добавить значение",
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Выбрать таблицу",
+                "Метка": "Выбрать таблицу",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -226,7 +226,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "Выбрать столбец",
+                "Метка": "Выбрать столбец",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -234,14 +234,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "Удалить",
+                "Метка": "Удалить",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.apply_to_record": {
             "type": "checkbox",
-            "label": "Применить к регистру",
+            "Метка": "Применить к регистру",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -250,13 +250,13 @@
           },
           "apply_to_group_box": {
             "type": "fieldset",
-            "label": "Применить к группе",
+            "Метка": "Применить к группе",
             "show_if": "options.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
                 "type": "select",
-                "label": "Выбрать групповые столбцы",
+                "Метка": "Выбрать групповые столбцы",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
@@ -270,101 +270,101 @@
       },
       "options.target_cells": {
         "type": "fieldset",
-        "label": "Define added Row(s)",
+        "Метка": "Определить добавленную строку (строки)",
         "repeat": true,
         "fields": {
           "column": {
             "type": "select",
-            "label": "Выбрать столбец",
+            "Метка": "Выбрать столбец",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
           "formula_type": {
             "type": "select",
-            "label": "Тип формулы",
+            "Метка": "Тип формулы",
             "required": true,
             "options": {
               "copy_selected": {
-                "label": "Копировать выбранное"
+                "Метка": "Копировать выбранное"
               },
               "static_value": {
-                "label": "Статическое значение"
+                "Метка": "Статическое значение"
               },
               "numeric_formula": {
-                "label": "Числовая формула"
+                "Метка": "Числовая формула"
               },
               "text_formula": {
-                "label": "Текстовая формула"
+                "Метка": "Текстовая формула"
               }
             },
             "val": "copy_selected"
           },
           "static_value": {
             "type": "text",
-            "label": "Значение",
+            "Метка": "Значение",
             "show_if": "this.formula_type=='static_value'",
             "val": ""
           },
           "numeric_formula": {
             "type": "text",
-            "label": "Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
+            "Метка": "Формула, например [Column1] + 2 * ([Row-1:Column3] - [Column1])",
             "show_if": "this.formula_type=='numeric_formula'",
             "val": "",
             "style": "width: 100%"
           },
           "rounding": {
             "type": "select",
-            "label": "Округление",
+            "Метка": "Округление",
             "show_if": "this.formula_type=='numeric_formula'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Округление чисел"
+                "Метка": "Округление чисел"
               },
               "0": {
-                "label": "0 цифр"
+                "Метка": "0 цифр"
               },
               "1": {
-                "label": "1 цифра"
+                "Метка": "1 цифра"
               },
               "2": {
-                "label": "2 цифры"
+                "Метка": "2 цифры"
               },
               "3": {
-                "label": "3 цифры"
+                "Метка": "3 цифры"
               },
               "4": {
-                "label": "4 цифры"
+                "Метка": "4 цифры"
               },
               "5": {
-                "label": "5 цифр"
+                "Метка": "5 цифр"
               },
               "6": {
-                "label": "6 цифр"
+                "Метка": "6 цифр"
               },
               "7": {
-                "label": "7 цифр"
+                "Метка": "7 цифр"
               },
               "8": {
-                "label": "8 цифр"
+                "Метка": "8 цифр"
               },
               "9": {
-                "label": "9 цифр"
+                "Метка": "9 цифр"
               }
             },
             "val": "no_rounding"
           },
           "text_formula": {
             "type": "text",
-            "label": "Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
+            "Метка": "Формула, например, [FirstName] + ' ' + [LastName] + ' ' + [Row-1:Column3]".,
             "show_if": "this.formula_type=='text_formula'",
             "val": "",
             "style": "width: 100%"
           },
           "use_multi_row": {
             "type": "checkbox",
-            "label": "Настройки нескольких строк",
+            "Метка": "Настройки нескольких строк",
             "show_if": "options.position!='add_row_after_each_group' && (this.formula_type=='numeric_formula' || this.formula_type=='text_formula')",
             "val": "false",
             "isOn": "true",
@@ -372,15 +372,15 @@
           },
           "if_row_not_exist": {
             "type": "select",
-            "label": "Если упомянутой строки не существует",
+            "Метка": "Если упомянутой строки не существует",
             "show_if": "options.position!='add_row_after_each_group' && this.use_multi_row=='true' && (this.formula_type=='numeric_formula' || this.formula_type=='text_formula')",
             "required": true,
             "options": {
               "empty": {
-                "label": "Пусто или 0"
+                "Метка": "Пусто или 0"
               },
               "closest": {
-                "label": "Значение ближайшей строки"
+                "Метка": "Значение ближайшей строки"
               }
             },
             "val": "empty",
@@ -388,7 +388,7 @@
           },
           "delete": {
             "type": "button",
-            "label": "Удалить",
+            "Метка": "Удалить",
             "function": "DELETE_ROW"
           }
         },
@@ -396,7 +396,7 @@
       },
       "options.set_date_column": {
         "type": "checkbox",
-        "label": "Apply time-shift to a selected date column",
+        "Метка": "Применить временной сдвиг к выбранному столбцу даты",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -405,7 +405,7 @@
       },
       "options.date_column": {
         "type": "select",
-        "label": "Выбрать столбец с датой",
+        "Метка": "Выбрать столбец с датой",
         "show_if": "options.set_date_column=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -413,27 +413,27 @@
       },
       "options.period_shift.number": {
         "type": "text",
-        "label": "Сдвиг периода",
+        "Метка": "Сдвиг периода",
         "show_if": "options.set_date_column=='true'",
         "required": true,
         "val": "0"
       },
       "options.period_shift.period": {
         "type": "select",
-        "label": "Выбрать период",
+        "Метка": "Выбрать период",
         "show_if": "options.set_date_column=='true'",
         "options": {
           "day": {
-            "label": "Дни"
+            "Метка": "Дни"
           },
           "week": {
-            "label": "Недели"
+            "Метка": "Недели"
           },
           "month": {
-            "label": "Месяцы"
+            "Метка": "Месяцы"
           },
           "year": {
-            "label": "Годы"
+            "Метка": "Годы"
           }
         },
         "val": "month"
