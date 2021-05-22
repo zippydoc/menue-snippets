@@ -1,100 +1,101 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Opções",
+    "Метка": "Опции",
     "repeat": false,
     "fields": {
       "reformat_columns": {
         "type": "checkbox",
-        "label": "A Formatar Colunas",
+        "Метка": "Форматирование столбцов",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "columns": {
         "type": "fieldset",
-        "label": "Selecionar Colunas",
-        "show_if": "reformat_columns=='true'",
+        "Метка": "Выбрать строки",
+        "show_if": "$input_table.numOfHeader >= 1",
         "repeat": true,
         "fields": {
           "field_name": {
             "type": "select",
-            "label": "Selecionar Coluna",
+            "Метка": "Выбрать столбец",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
           "format__category": {
             "type": "select",
-            "label": "Formato",
+            "Метка": "Формат",
             "required": true,
             "options": {
               "standard": {
-                "label": "Padrão"
+                "Метка": "Стандартный"
               },
               "number": {
-                "label": "Número"
+                "Метка": "Число"
               },
               "percentage": {
-                "label": "Percentagem"
+                "Метка": "Процент"
               },
               "text": {
-                "label": "Texto"
+                "Метка": "Текст"
               },
               "date": {
-                "label": "Data"
+                "Метка": "Дата"
               },
               "currency": {
-                "label": "Moeda"
+                "Метка": "Валюта"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "Arredondamento",
+            "Метка": "Округление",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Arredondamento de números"
+                "Метка": "Округление чисел"
               },
               "0": {
-                "label": "0 dígitos"
+                "Метка": "0 цифр"
               },
               "1": {
-                "label": "1 dígito"
+                "Метка": "1 цифра"
               },
               "2": {
-                "label": "2 dígitos"
+                "Метка": "2 цифры"
               },
               "3": {
-                "label": "3 dígitos"
+                "Метка": "3 цифры"
               },
               "4": {
-                "label": "4 dígitos"
+                "Метка": "4 цифры"
               },
               "5": {
-                "label": "5 dígitos"
+                "Метка": "5 цифр"
               },
               "6": {
-                "label": "6 dígitos"
+                "Метка": "6 цифр"
               },
               "7": {
-                "label": "7 dígitos"
+                "Метка": "7 цифр"
               },
               "8": {
-                "label": "8 dígitos"
+                "Метка": "8 цифр"
               },
               "9": {
-                "label": "9 dígitos"
+                "Метка": "9 цифр"
               }
             },
             "val": "2"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Usar Separador(.) 1000",
+            "Метка": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -102,36 +103,36 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "Símbolo",
+            "Метка": "Символ",
             "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "Метка": "$"
               },
               "euro": {
-                "label": "€"
+                "Метка": "€"
               },
               "pound": {
-                "label": "£"
+                "Метка": "£"
               }
             },
             "val": "dollar"
           },
           "format__date_format": {
             "type": "select",
-            "label": "Tipo",
+            "Метка": "Тип",
             "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "Метка": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "Метка": "Среда, 14 марта 2012 года"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "Метка": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy",
@@ -140,7 +141,7 @@
           "delete": {
             "show_if": "this.field_name != ''",
             "type": "button",
-            "label": "Apagar",
+            "Метка": "Удалить",
             "function": "DELETE_ROW"
           }
         },
@@ -148,7 +149,8 @@
       },
       "reformat_rows": {
         "type": "checkbox",
-        "label": "A Formatar Linhas",
+        "Метка": "Форматирование меток",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -156,88 +158,88 @@
       },
       "rows": {
         "type": "fieldset",
-        "label": "Selecionar Rótulos",
-        "show_if": "reformat_rows=='true'",
+        "Метка": "Выбрать метки",
+        "show_if": "$input_table.numOfLabel >= 1",
         "repeat": true,
         "fields": {
           "label_name": {
             "type": "select",
-            "label": "Selecionar Rótulo",
+            "Метка": "Выбрать метку",
             "table": "input_table",
             "bind": "LABELS",
             "required": true
           },
           "format__category": {
             "type": "select",
-            "label": "Formato",
+            "Метка": "Формат",
             "required": true,
             "options": {
               "standard": {
-                "label": "Padrão"
+                "Метка": "Стандартный"
               },
               "number": {
-                "label": "Número"
+                "Метка": "Число"
               },
               "percentage": {
-                "label": "Percentagem"
+                "Метка": "Процент"
               },
               "text": {
-                "label": "Texto"
+                "Метка": "Текст"
               },
               "date": {
-                "label": "Data"
+                "Метка": "Дата"
               },
               "currency": {
-                "label": "Moeda"
+                "Метка": "Валюта"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "Arredondamento",
+            "Метка": "Округление",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Arredondamento de números"
+                "Метка": "Округление чисел"
               },
               "0": {
-                "label": "0 dígitos"
+                "Метка": "0 цифр"
               },
               "1": {
-                "label": "1 dígito"
+                "Метка": "1 цифра"
               },
               "2": {
-                "label": "2 dígitos"
+                "Метка": "2 цифры"
               },
               "3": {
-                "label": "3 dígitos"
+                "Метка": "3 цифры"
               },
               "4": {
-                "label": "4 dígitos"
+                "Метка": "4 цифры"
               },
               "5": {
-                "label": "5 dígitos"
+                "Метка": "5 цифр"
               },
               "6": {
-                "label": "6 dígitos"
+                "Метка": "6 цифр"
               },
               "7": {
-                "label": "7 dígitos"
+                "Метка": "7 цифр"
               },
               "8": {
-                "label": "8 dígitos"
+                "Метка": "8 цифр"
               },
               "9": {
-                "label": "9 dígitos"
+                "Метка": "9 цифр"
               }
             },
             "val": "2"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Usar Separador(.) 1000",
+            "Метка": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -245,36 +247,36 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "Símbolo",
+            "Метка": "Символ",
             "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "Метка": "$"
               },
               "euro": {
-                "label": "€"
+                "Метка": "€"
               },
               "pound": {
-                "label": "£"
+                "Метка": "£"
               }
             },
             "val": "dollar"
           },
           "format__date_format": {
             "type": "select",
-            "label": "Tipo",
+            "Метка": "Тип",
             "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "Метка": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "Метка": "Среда, 14 марта 2012 года"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "Метка": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy",
@@ -283,7 +285,7 @@
           "delete": {
             "show_if": "this.label_name != ''",
             "type": "button",
-            "label": "Apagar",
+            "Метка": "Удалить",
             "function": "DELETE_ROW"
           }
         },
@@ -291,7 +293,7 @@
       },
       "create_new_table": {
         "type": "checkbox",
-        "label": "Mostrar como tabela nova",
+        "Метка": "Вывести как новую таблицу",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
