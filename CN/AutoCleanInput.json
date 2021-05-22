@@ -1,0 +1,124 @@
+{
+  "options.auto_run": {
+    "type": "checkbox",
+    "标签": "Autorun Task",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "trigger_vector_frame": {
+    "type": "fieldset",
+    "标签": "Task Lock",
+    "show_if": "options.auto_run=='true'",
+    "repeat": false,
+	"fields": {
+		"options.table_filter": {
+        "type": "select",
+        "标签": "Key-Lock pair filter",
+        "options": {
+          "specific_tables": {
+            "标签": "Specify Table(s)"
+          },
+          "current_flow_tables": {
+            "标签": "Current Flow Tables"
+          },
+          "flow_tables": {
+            "标签": "Specify Flow(s)"
+          },
+          "all_tables": {
+            "标签": "All Tables"
+          }
+		 }
+		},
+      "options.autorun_tables": {
+        "type": "select",
+        "标签": "Autorun on table change",
+        "bind": "TABLES",
+        "multiple": true,
+        "required": false
+      },
+      "trigger_key": {
+        "type": "select",
+        "标签": "Trigger Key",
+        "options": {
+          "greater": {
+            "标签": "大于"
+          },
+          "greater_or_equal": {
+            "标签": "大于或等于"
+          },
+          "equal": {
+            "标签": "相等"
+          },
+          "smaller_or_equal": {
+            "标签": "小于或等于"
+          },
+          "smaller": {
+            "标签": "小于"
+          }
+        },
+        "val": "larger_or_equal"
+      },
+      "key_number": {
+        "type": "text",
+        "标签": "Key",
+        "val": "1",
+        "required": true,
+        "breakLine": true
+      },  	  
+      "trigger_method": {
+        "type": "select",
+        "标签": "Trigger Method",
+        "options": {
+          "no_lock": {
+            "标签": "Run without Task Lock"
+          },
+          "scalar_product_compound": {
+            "标签": "Compound AxB"
+          },
+          "scalar_product_all_pins": {
+            "标签": "Pin by Pin AxB - each matching"
+          },
+          "scalar_product_min_one_pin": {
+            "标签": "Pin by Pin AxB - one or more matches"
+          },
+          "scalar_product_one_pin": {
+            "标签": "Pin by Pin AxB - one match"
+          },
+          "concatenate": {
+            "标签": "Match concatenation"
+          },		  
+          "matching_array": {
+            "标签": "Match all elements (unordered)"
+          }
+        },
+        "val": "scalar_product_compound",
+        "breakLine": true
+      },
+      "options.names": {
+        "type": "fieldset",
+        "标签": "Task Lock Definition",
+        "repeat": true,
+        "fields": {
+          "name": {
+            "type": "text",
+            "标签": "Key Pin",
+            "val": "",
+            "required": true
+          },
+          "value": {
+            "type": "text",
+            "标签": "Multiplier",
+            "val": "",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "标签": "删除",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
