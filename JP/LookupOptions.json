@@ -1,63 +1,63 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Opções de Seleção",
+    "ラベル": "オプションの選択",
     "repeat": false,
     "fields": {
       "options.task_type": {
         "type": "select",
-        "label": "Tipo de Tarefa",
+        "ラベル": "タスクタイプ",
         "required": true,
         "options": {
           "generate_lookup_table": {
-            "label": "Gerar Tabela de Pesquisa"
+            "ラベル": "ルックアップテーブルの生成"
           },
           "apply_lookup_table": {
-            "label": "Aplicar Tabela de Pesquisa"
+            "ラベル": "ルックアップテーブルの適用"
           },
           "apply_regex_table": {
-            "label": "Aplicar Tabela de Expressões Regulares"
+            "ラベル": "Regexテーブルの適用"
           },
           "apply_lookup_table_to_cells": {
-            "label": "Aplicar Tabela de Pesquisa às Células"
+            "ラベル": "セルにルックアップテーブルを適用"
           },
           "apply_regex_table_to_cells": {
-            "label": "Aplicar Tabela de Expressões Regulares às Células"
+            "ラベル": "セルにRegexテーブルを適用"
           }
         },
         "val": "generate_lookup_table"
       },
       "options.pattern_type": {
         "type": "select",
-        "label": "Tipo de Padrão",
+        "ラベル": "パターンタイプ",
         "show_if": "options.task_type=='generate_lookup_table' || options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
         "required": true,
         "options": {
           "duplicate_pattern": {
-            "label": "Padrão de Palavras"
+            "ラベル": "単語パターン"
           },
           "number_range": {
-            "label": "Intervalos (ex. 10 < x <= 100)"
+            "ラベル": "範囲(例：10 < x <= 100)"
           }
         },
         "val": "duplicate_pattern"
       },
       "duplicate_option_box": {
         "type": "fieldset",
-        "label": "Opção de Duplicar Padrões",
+        "ラベル": "パターンオプションの重複",
         "show_if": "options.task_type=='label_duplicates' || (options.task_type=='generate_lookup_table' && options.pattern_type=='duplicate_pattern')",
         "repeat": false,
         "fields": {
           "options.minimum_number_of_matching_characters": {
             "type": "text",
-            "label": "Número Mínimo de Caracteres Correspondentes",
+            "ラベル": "一致する文字の最小数",
             "val": "3",
             "required": true,
             "style": "min-width: 240px"
           },
           "options.minimum_number_of_duplicates": {
             "type": "text",
-            "label": "Número Mínimo de Duplicados",
+            "ラベル": "重複の最小数",
             "val": "2",
             "required": true,
             "style": "min-width: 240px",
@@ -67,94 +67,102 @@
       },
       "number_range_option_box": {
         "type": "fieldset",
-        "label": "Opção de Intervalos Numéricos",
+        "ラベル": "オプションの数範囲",
         "show_if": "options.task_type=='generate_lookup_table' && options.pattern_type=='number_range'",
         "repeat": false,
         "fields": {
           "options.number_range.range_type": {
             "type": "select",
-            "label": "Tipo de Intervalo",
+            "ラベル": "範囲タイプ",
             "required": true,
             "options": {
               "equal_interval": {
-                "label": "N Intervalos Iguais"
+                "ラベル": "N 等間隔"
               },
               "equal_range": {
-                "label": "Igualar Intervalo"
+                "ラベル": "等しい範囲"
               },
               "custom_range": {
-                "label": "Personalizar Intervalo"
+                "ラベル": "カスタム範囲"
               }
             },
             "val": "equal_interval"
           },
           "options.number_range.n_value": {
             "type": "text",
-            "label": "N",
+            "ラベル": "N",
             "show_if": "options.number_range.range_type=='equal_interval'",
             "val": "3",
             "required": true
           },
           "options.number_range.range_value": {
             "type": "text",
-            "label": "Intervalo",
+            "ラベル": "範囲",
             "show_if": "options.number_range.range_type=='equal_range'",
             "val": "10",
             "required": true
           },
           "options.number_range.custom_ranges": {
             "type": "fieldset",
-            "label": "Adicionar Intervalo Padrão Personalizado",
+            "ラベル": "カスタム範囲パターンの追加",
             "show_if": "options.number_range.range_type=='custom_range'",
             "repeat": true,
             "fields": {
               "pattern": {
                 "type": "text",
-                "label": "Padrão",
+                "ラベル": "パターン",
                 "val": "0<=x<10",
                 "required": true
               },
-              "label": {
+              "ラベル": {
                 "type": "text",
-                "label": "Rotular",
+                "ラベル": "ラベル",
                 "val": "positive10",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "Apagar",
+                "ラベル": "削除",
                 "function": "DELETE_ROW"
               }
             }
           }
-        },
+        }
+      },
+      "options.custom_lookup_table": {
+        "type": "checkbox",
+        "ラベル": "カスタムルックアップテーブル",
+        "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
         "breakLine": true
       },
       "options.lookup_table_type": {
         "type": "select",
-        "label": "Lookup Table Type",
+        "ラベル": "ルックアップテーブルタイプ",
         "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
         "required": true,
         "options": {
           "select_lookup_table": {
-            "label": "Select Lookup Table"
+            "ラベル": "ルックアップテーブルの選択"
           },
           "custom_lookup_table": {
-            "label": "Custom Lookup Table"
+            "ラベル": "カスタムルックアップテーブル"
           }
         },
         "val": "select_lookup_table"
       },
       "lookup_table_frame": {
         "type": "fieldset",
-        "label": "",
+        "ラベル": "",
         "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
         "repeat": false,
         "fields": {
           "options.lookup_table_id": {
             "type": "select",
-            "label": "Tabela de Pesquisa",
-            "show_if": "options.lookup_table_type=='select_lookup_table'",
+            "ラベル": "ルックアップテーブル",
+            "show_if": "options.custom_lookup_table=='false'",
             "bind": "TABLES",
             "empty": "",
             "required": true,
@@ -162,32 +170,34 @@
           },
           "options.custom_lookup_table": {
             "type": "fieldset",
-            "label": "Custom Lookup Table",
-            "show_if": "options.lookup_table_type=='custom_lookup_table'",
+            "ラベル": "カスタムルックアップテーブル",
+            "show_if": "options.custom_lookup_table=='true'",
             "repeat": true,
             "fields": {
               "lookup": {
                 "type": "text",
-                "label": "Pesquisar",
+                "ラベル": "ルックアップ",
+                "placeholder": "10 < x <= 100",
                 "val": "",
                 "required": true
               },
-              "label": {
+              "ラベル": {
                 "type": "text",
-                "label": "Rotular",
+                "ラベル": "ラベル",
+                "placeholder": "10 < x <= 100",
                 "val": "",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "Apagar",
+                "ラベル": "削除",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.partial_match": {
             "type": "checkbox",
-            "label": "Correspondência Parcial",
+            "ラベル": "部分一致",
             "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
             "val": "false",
             "isOn": "true",
@@ -197,7 +207,7 @@
           },
           "options.case_sensitive": {
             "type": "checkbox",
-            "label": "Sensível a Maiúsculas e Minúsculas",
+            "ラベル": "ケース・センシティブ",
             "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
             "val": "false",
             "isOn": "true",
@@ -206,7 +216,7 @@
           },
           "options.use_delimiter": {
             "type": "checkbox",
-            "label": "Personalizar Delimitador",
+            "ラベル": "カスタム区切り文字",
             "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
             "val": "false",
             "isOn": "true",
@@ -215,7 +225,7 @@
           },
           "options.delimiter": {
             "type": "text",
-            "label": "Introduzir Delimitador",
+            "ラベル": "区切り文字の入力",
             "show_if": "options.use_delimiter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
             "val": ";",
             "required": true,
@@ -225,7 +235,7 @@
       },
       "options.input_table.use_filter": {
         "type": "checkbox",
-        "label": "Utilizar Filtro para Tabela de Entrada",
+        "ラベル": "入力テーブルにフィルターを使用",
         "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
         "val": "false",
         "isOn": "true",
@@ -235,170 +245,170 @@
       },
       "input_table_filter_box": {
         "type": "fieldset",
-        "label": "Introduzir Opções de Filtro da Tabela",
+        "ラベル": "テーブルフィルターオプションの入力",
         "show_if": "options.input_table.use_filter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
         "repeat": false,
         "fields": {
           "options.input_table.filter": {
             "type": "fieldset",
-            "label": "Adicionar Condições de Filtro para Tabela de Entrada",
+            "ラベル": "入力テーブルのフィルター条件を追加",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Selecionar Operador Lógico",
+                "ラベル": "論理オペレータの選択",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
                   "if": {
-                    "label": "IF"
+                    "ラベル": "IF"
                   },
                   "if_not": {
-                    "label": "IF NOT"
+                    "ラベル": "IF NOT"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "Selecionar Operador Lógico",
+                "ラベル": "論理オペレータの選択",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
                   "and": {
-                    "label": "AND"
+                    "ラベル": "AND"
                   },
                   "or": {
-                    "label": "OR"
+                    "ラベル": "OR"
                   },
                   "and_not": {
-                    "label": "AND NOT"
+                    "ラベル": "AND NOT"
                   },
                   "or_not": {
-                    "label": "OR NOT"
+                    "ラベル": "OR NOT"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": "Selecionar Coluna",
+                "ラベル": "列の選択",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Selecionar Operador",
+                "ラベル": "オペレータの選択",
                 "required": true,
                 "options": {
-                  "CONTÉM": {
-                    "label": "CONTÉM"
+                  "含む": {
+                    "ラベル": "含む"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "CONTIDO EM"
+                    "ラベル": "次の中に含む"
                   },
-                  "INICIA COM": {
-                    "label": "INICIA COM"
+                  "次で開始": {
+                    "ラベル": "次で開始"
                   },
-                  "TERMINA COM": {
-                    "label": "TERMINA COM"
+                  "次で終了": {
+                    "ラベル": "次で終了"
                   },
                   "=": {
-                    "label": "IGUAL"
+                    "ラベル": "等しい"
                   },
                   ">": {
-                    "label": "MAIOR QUE"
+                    "ラベル": "超"
                   },
                   ">=": {
-                    "label": "MAIOR OU IGUAL"
+                    "ラベル": "以上"
                   },
                   "<": {
-                    "label": "MENOR QUE"
+                    "ラベル": "より小さい"
                   },
                   "<=": {
-                    "label": "MENOR OU IGUAL"
+                    "ラベル": "より小さいまたは等しい"
                   },
                   "EMPTY": {
-                    "label": "ESTÁ VAZIO"
+                    "ラベル": "空です"
                   },
                   "BLANK": {
-                    "label": "ESTÁ EM BRANCO"
+                    "ラベル": "空白です"
                   },
-                  "IS NULL": {
-                    "label": "IS NULL"
+                  "無効です": {
+                    "ラベル": "無効です"
                   },
-                  "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR": {
-                    "label": "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR"
+                  "REGEXの一致": {
+                    "ラベル": "REGEXの一致"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "NA TABELA"
+                    "ラベル": "テーブル内"
                   },
-                  "NA TABELA DE EXPRESSÕES REGULARES": {
-                    "label": "NA TABELA DE EXPRESSÕES REGULARES"
+                  "REGEXテーブル内": {
+                    "ラベル": "REGEXテーブル内"
                   },
-                  "DATA": {
-                    "label": "DATA"
+                  "日付": {
+                    "ラベル": "日付"
                   }
                 },
-                "val": "CONTÉM"
+                "val": "含む"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Selecionar Operador de Data",
+                "ラベル": "日付オペレータの選択",
                 "required": true,
                 "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "ANTERIOR"
+                    "ラベル": "前"
                   },
                   "<=": {
-                    "label": "ANTERIOR OU IGUAL"
+                    "ラベル": "前または等しい"
                   },
                   "=": {
-                    "label": "IGUAL"
+                    "ラベル": "等しい"
                   },
                   ">": {
-                    "label": "DEPOIS"
+                    "ラベル": "以降"
                   },
                   ">=": {
-                    "label": "DEPOIS OU IGUAL"
+                    "ラベル": "以降または等しい"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Selecionar Sensibilidade a Maiúsculas e Minúsculasl",
+                "ラベル": "ケース・センシティブの選択",
                 "required": true,
                 "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "Sensível a Maiúsculas e Minúsculas"
+                    "ラベル": "ケース・センシティブ"
                   },
                   "no": {
-                    "label": "Insensível a Maiúsculas e Minúsculas"
+                    "ラベル": "ケース・インセンシティブ"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Selecionar Data",
+                "ラベル": "日付の選択",
                 "show_if": "this.condition=='DATE'",
-                "val": "1/31/2020",
+                "val": "",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Introduzir Valor",
+                "ラベル": "値の入力",
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Selecionar Tabela",
+                "ラベル": "テーブルの選択",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -406,7 +416,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "Selecionar Coluna",
+                "ラベル": "列の選択",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -414,14 +424,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "Apagar",
+                "ラベル": "削除",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.input_table.apply_to_record": {
             "type": "checkbox",
-            "label": "Aplicar ao Registo para Filtro da Tabela de Entrada",
+            "ラベル": "入力テーブルフィルターのレコードに適用",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -430,13 +440,13 @@
           },
           "input_table_apply_to_group_box": {
             "type": "fieldset",
-            "label": "Aplicar ao Grupo da Tabela de Entrada",
+            "ラベル": "入力テーブルのグループに適用",
             "show_if": "options.input_table.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.input_table.apply_to_group_columns": {
                 "type": "select",
-                "label": "Selecionar Colunas de Grupo",
+                "ラベル": "グループ列の選択",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
@@ -450,8 +460,8 @@
       },
       "options.lookup_table.use_filter": {
         "type": "checkbox",
-        "label": "Utilizar Filtro para Tabela de Pesquisa",
-        "show_if": "options.lookup_table_type=='select_lookup_table' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
+        "ラベル": "ルックアップテーブルにフィルターを使用",
+        "show_if": "options.custom_lookup_table=='false' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -460,170 +470,170 @@
       },
       "lookup_table_filter_box": {
         "type": "fieldset",
-        "label": "Opções de Filtro da Tabela de Pesquisa",
-        "show_if": "options.lookup_table.use_filter=='true' && options.lookup_table_type=='select_lookup_table' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
+        "ラベル": "ルックアップテーブルフィルターオプション",
+        "show_if": "options.lookup_table.use_filter=='true' && options.custom_lookup_table=='false' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
         "repeat": false,
         "fields": {
           "options.lookup_table.filter": {
             "type": "fieldset",
-            "label": "Adicionar Condições de Filtro para Tabela de Pesquisa",
+            "ラベル": "ルックアップテーブルのフィルター条件を追加",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Selecionar Operador Lógico",
+                "ラベル": "論理オペレータの選択",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
                   "if": {
-                    "label": "IF"
+                    "ラベル": "IF"
                   },
                   "if_not": {
-                    "label": "IF NOT"
+                    "ラベル": "IF NOT"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "Selecionar Operador Lógico",
+                "ラベル": "論理オペレータの選択",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
                   "and": {
-                    "label": "AND"
+                    "ラベル": "AND"
                   },
                   "or": {
-                    "label": "OR"
+                    "ラベル": "OR"
                   },
                   "and_not": {
-                    "label": "AND NOT"
+                    "ラベル": "AND NOT"
                   },
                   "or_not": {
-                    "label": "OR NOT"
+                    "ラベル": "OR NOT"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": "Selecionar Coluna",
+                "ラベル": "列の選択",
                 "table": "options.lookup_table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Selecionar Operador",
+                "ラベル": "オペレータの選択",
                 "required": true,
                 "options": {
-                  "CONTÉM": {
-                    "label": "CONTÉM"
+                  "含む": {
+                    "ラベル": "含む"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "CONTIDO EM"
+                    "ラベル": "次の中に含む"
                   },
-                  "INICIA COM": {
-                    "label": "INICIA COM"
+                  "次で開始": {
+                    "ラベル": "次で開始"
                   },
-                  "TERMINA COM": {
-                    "label": "TERMINA COM"
+                  "次で終了": {
+                    "ラベル": "次で終了"
                   },
                   "=": {
-                    "label": "IGUAL"
+                    "ラベル": "等しい"
                   },
                   ">": {
-                    "label": "MAIOR QUE"
+                    "ラベル": "超"
                   },
                   ">=": {
-                    "label": "MAIOR OU IGUAL"
+                    "ラベル": "以上"
                   },
                   "<": {
-                    "label": "MENOR QUE"
+                    "ラベル": "より小さい"
                   },
                   "<=": {
-                    "label": "MENOR OU IGUAL"
+                    "ラベル": "より小さいまたは等しい"
                   },
                   "EMPTY": {
-                    "label": "ESTÁ VAZIO"
+                    "ラベル": "空です"
                   },
                   "BLANK": {
-                    "label": "ESTÁ EM BRANCO"
+                    "ラベル": "空白です"
                   },
-                  "IS NULL": {
-                    "label": "IS NULL"
+                  "無効です": {
+                    "ラベル": "無効です"
                   },
-                  "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR": {
-                    "label": "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR"
+                  "REGEXの一致": {
+                    "ラベル": "REGEXの一致"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "NA TABELA"
+                    "ラベル": "テーブル内"
                   },
-                  "NA TABELA DE EXPRESSÕES REGULARES": {
-                    "label": "NA TABELA DE EXPRESSÕES REGULARES"
+                  "REGEXテーブル内": {
+                    "ラベル": "REGEXテーブル内"
                   },
-                  "DATA": {
-                    "label": "DATA"
+                  "日付": {
+                    "ラベル": "日付"
                   }
                 },
-                "val": "CONTÉM"
+                "val": "含む"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Selecionar Operador de Data",
+                "ラベル": "日付オペレータの選択",
                 "required": true,
                 "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "ANTERIOR"
+                    "ラベル": "前"
                   },
                   "<=": {
-                    "label": "ANTERIOR OU IGUAL"
+                    "ラベル": "前または等しい"
                   },
                   "=": {
-                    "label": "IGUAL"
+                    "ラベル": "等しい"
                   },
                   ">": {
-                    "label": "DEPOIS"
+                    "ラベル": "以降"
                   },
                   ">=": {
-                    "label": "DEPOIS OU IGUAL"
+                    "ラベル": "以降または等しい"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Selecionar Sensibilidade a Maiúsculas e Minúsculasl",
+                "ラベル": "ケース・センシティブの選択",
                 "required": true,
                 "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "Sensível a Maiúsculas e Minúsculas"
+                    "ラベル": "ケース・センシティブ"
                   },
                   "no": {
-                    "label": "Insensível a Maiúsculas e Minúsculas"
+                    "ラベル": "ケース・インセンシティブ"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Selecionar Data",
+                "ラベル": "日付の選択",
                 "show_if": "this.condition=='DATE'",
-                "val": "1/31/2020",
+                "val": "",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Introduzir Valor",
+                "ラベル": "値の入力",
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Selecionar Tabela",
+                "ラベル": "テーブルの選択",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -631,7 +641,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "Selecionar Coluna",
+                "ラベル": "列の選択",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -639,14 +649,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "Apagar",
+                "ラベル": "削除",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.lookup_table.apply_to_record": {
             "type": "checkbox",
-            "label": "Aplicar ao Registo para Filtro da Tabela de Pesquisa",
+            "ラベル": "ルックアップテーブルフィルターのレコードに適用",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -655,13 +665,13 @@
           },
           "lookup_table_apply_to_group_box": {
             "type": "fieldset",
-            "label": "Aplicar ao Grupo  da Tabela de Pesquisa",
+            "ラベル": "ルックアップテーブルのグループに適用",
             "show_if": "options.lookup_table.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.lookup_table.apply_to_group_columns": {
                 "type": "select",
-                "label": "Selecionar Colunas de Grupo",
+                "ラベル": "グループ列の選択",
                 "required": true,
                 "width": "100%",
                 "table": "options.lookup_table",
@@ -675,7 +685,7 @@
       },
       "options.input_table.apply_to_group_for_concatenation.enabled": {
         "type": "checkbox",
-        "label": "Aplicar ao Grupo para Concatenação de Linhas",
+        "ラベル": "行の連結をグループに適用",
         "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
         "val": "false",
         "isOn": "true",
@@ -685,7 +695,7 @@
       },
       "options.input_table.apply_to_group_for_concatenation.allow_group_lists": {
         "type": "checkbox",
-        "label": "Permitir Listas de Grupo",
+        "ラベル": "グループリストの許可",
         "show_if": "options.input_table.apply_to_group_for_concatenation.enabled=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
         "val": "false",
         "isOn": "true",
@@ -695,7 +705,7 @@
       },
       "options.input_table.apply_to_group_for_concatenation.group_column": {
         "type": "select",
-        "label": "Selecionar Coluna de Grupo para Concatenação de Linhas",
+        "ラベル": "行の連結のためのグループ列を選択",
         "show_if": "options.input_table.apply_to_group_for_concatenation.enabled=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
         "required": true,
         "width": "100%",
