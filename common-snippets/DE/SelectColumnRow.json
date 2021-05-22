@@ -5,7 +5,8 @@
   "apply_to_all_columns": {
     "type": "checkbox",
     "Beschriftung": "Alle Spalten",
-    "val": "true",
+    "show_if": "false",
+    "val": "false",
     "isOn": "true",
     "isOff": "false",
     "breakLine": true	
@@ -13,7 +14,7 @@
   "apply_columns": {
     "type": "select",
     "Beschriftung": "Spalten zum Anwenden auswählen",
-    "show_if": "apply_to_all_columns=='false'",
+    "show_if": "$input_table.numOfHeader >= 1",
     "required": true,
     "table": "input_table",
     "multiple": true,
@@ -23,7 +24,8 @@
   "apply_to_all_rows": {
     "type": "checkbox",
     "Beschriftung": "Alle Zeilen",
-    "val": "true",
+    "show_if": "false",
+    "val": "false",
     "isOn": "true",
     "isOff": "false",
     "breakLine": true
@@ -31,7 +33,7 @@
   "apply_rows": {
     "type": "select",
     "Beschriftung": "Zu übertragende Zeilen auswählen",
-    "show_if": "apply_to_all_rows=='false'",
+    "show_if": "$input_table.numOfLabel >= 1",
     "required": true,
     "table": "input_table",
     "multiple": true,
