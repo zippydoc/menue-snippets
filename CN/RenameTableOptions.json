@@ -1,25 +1,26 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "选项",
+    "标签": "选项",
     "repeat": false,
     "fields": {
       "rename_columns": {
         "type": "checkbox",
-        "label": "重命名列",
+        "标签": "重命名列",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "columns": {
         "type": "fieldset",
-        "label": "选择列",
-        "show_if": "rename_columns=='true'",
+        "标签": "选择列",
+        "show_if": "$input_table.numOfHeader >= 1",
         "repeat": true,
         "fields": {
           "field_name": {
             "type": "select",
-            "label": "选择列",
+            "标签": "选择列",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
@@ -30,12 +31,12 @@
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "重命名为"
+            "标签": "重命名为"
           },
           "delete": {
             "show_if": "this.field_name != ''",
             "type": "button",
-            "label": "删除",
+            "标签": "删除",
             "function": "DELETE_ROW"
           }
         },
@@ -43,7 +44,8 @@
       },
       "rename_rows": {
         "type": "checkbox",
-        "label": "重命名标签",
+        "标签": "重命名标签",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -51,13 +53,13 @@
       },
       "rows": {
         "type": "fieldset",
-        "label": "选择标签",
-        "show_if": "rename_rows=='true'",
+        "标签": "选择标签",
+        "show_if": "$input_table.numOfLabel >= 1",
         "repeat": true,
         "fields": {
           "label_name": {
             "type": "select",
-            "label": "选择标签",
+            "标签": "选择标签",
             "table": "input_table",
             "bind": "LABELS",
             "required": true
@@ -68,12 +70,12 @@
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "重命名为"
+            "标签": "重命名为"
           },
           "delete": {
             "show_if": "this.label_name != ''",
             "type": "button",
-            "label": "删除",
+            "标签": "删除",
             "function": "DELETE_ROW"
           }
         },
