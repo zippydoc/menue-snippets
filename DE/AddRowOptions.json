@@ -1,49 +1,57 @@
 {
   "options": {
     "type": "fieldset",
-    "Beschriftung": "Fall Optionen auswählen",
+    "Beschriftung": "Optionen auswählen",
     "repeat": false,
     "fields": {
       "options.position": {
         "type": "select",
         "Beschriftung": "Position wählen",
+        "show_if": "$input_table.numOfLabel >= 1",
         "required": true,
         "options": {
-          "add_rows_below_selected_row": {
-            "Beschriftung": "Zeilen unten hinzufügen"
+          "add_rows_at_table_end": {
+            "Beschriftung": "Add row on bottom"
+          },
+          "add_row_on_top": {
+            "Beschriftung": "Add row on top"
           },
           "add_rows_above_selected_row": {
-            "Beschriftung": "Zeilen oben hinzufügen"
+            "Beschriftung": "Add row above selection"
           },
-          "add_rows_at_table_end": {
-            "Beschriftung": "Zeilen am Tabellenende hinzufügen"
-          },
-          "add_single_row_at_table_end": {
-            "Beschriftung": "Einzelne Zeile am Tabellenende hinzufügen"
+          "add_rows_below_selected_row": {
+            "Beschriftung": "Add row below selection"
           },
           "add_row_after_each_group": {
             "Beschriftung": "Zeile nach jeder Gruppe hinzufügen"
           }
         },
-        "val": "add_rows_below_selected_row",
+        "val": "add_rows_at_table_end",
         "breakLine": true
       },
       "options.group_column": {
         "type": "select",
         "Beschriftung": "Gruppenspalte",
-        "show_if": "options.position=='add_row_after_each_group' && $input_table.numOfLabel < 1",
+        "show_if": "$input_table.numOfLabel < 1 && options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
         "breakLine": true
       },
       "options.use_filter": {
-        "type": "checkbox",
-        "Beschriftung": "Filter verwenden",
-        "show_if": "$input_table.numOfLabel < 1 && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "type": "select",
+        "Beschriftung": "Typ auswählen",
+        "show_if": "false",
+        "required": true,
+        "options": {
+          "false": {
+            "Beschriftung": "Für jede Tabellenzeile eine Zeile hinzufügen"
+          },
+          "true": {
+            "Beschriftung": "Eine Zeile für jede angegebene Zeile hinzufügen"
+          }
+        },
         "val": "false",
-        "isOn": "true",
-        "isOff": "false",
         "breakLine": true,
         "style": "margin-top: 10px"
       },
@@ -200,7 +208,7 @@
                 "type": "date",
                 "Beschriftung": "Datum auswählen",
                 "show_if": "this.condition=='DATE'",
-                "val": "1/31/2020",
+                "val": "",
                 "required": true
               },
               "value": {
@@ -264,12 +272,13 @@
       },
       "options.add_rows": {
         "type": "fieldset",
-        "Beschriftung": "Neue Zeilen Option",
+        "Beschriftung": "Neue Zeilenoption",
         "repeat": true,
         "fields": {
           "new_row_name": {
             "type": "text",
             "Beschriftung": "Neuer Zeilenname",
+            "show_if": "$input_table.numOfLabel >= 1",
             "val": ""
           },
           "function_type": {
@@ -539,7 +548,7 @@
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "Beschriftung": "1000 Trennzeichen(.) verwenden",
+            "Beschriftung": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "false",
             "isOn": "true",
@@ -587,6 +596,42 @@
             "function": "DELETE_ROW"
           }
         }
+      },
+      "options.add_new_row": {
+        "type": "checkbox",
+        "Beschriftung": "Etikett hinzufügen",
+        "show_if": "$input_table.numOfLabel < 1",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.new_row_label": {
+        "type": "text",
+        "Beschriftung": "Label Name",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "val": ""
+      },
+      "options.new_sel_column": {
+        "type": "select",
+        "Beschriftung": "Spalte auswählen",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "required": true,
+        "table": "input_table",
+        "multiple": false,
+        "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.insert_on_top": {
+        "type": "checkbox",
+        "Beschriftung": "Insert on Top",
+        "show_if": "$input_table.numOfLabel < 1",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
       }
     }
   }
