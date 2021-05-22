@@ -1,0 +1,558 @@
+{
+  "options": {
+    "type": "fieldset",
+    "标签": "选择选项",
+    "repeat": false,
+    "fields": {
+      "options.taskname": {
+        "type": "hidden",
+        "val": "direct_planning"
+      },
+      "options.type": {
+        "type": "hidden",
+        "val": "custom"
+      },
+      "options.custom.table": {
+        "type": "fieldset",
+        "标签": "计划职位",
+        "repeat": true,
+        "fields": {
+          "position": {
+            "type": "select",
+            "标签": "位置",
+            "options": {
+              "Revenues": {
+                "标签": "Revenues"
+              },
+              "Cost of Goods Sold": {
+                "标签": "Cost of Goods Sold"
+              },
+              "Marketing Expenses": {
+                "标签": "Marketing Expenses"
+              },
+              "Operating Expenses": {
+                "标签": "Operating Expenses"
+              },
+              "General and Administration Expenses": {
+                "标签": "General and Administration Expenses"
+              },
+              "Personnel Expenses": {
+                "标签": "Personnel Expenses"
+              },
+              "Tax": {
+                "标签": "Tax"
+              },
+              "Capital Expenditure": {
+                "标签": "Capital Expenditure"
+              },
+              "Depreciation": {
+                "标签": "Depreciation"
+              },
+              "Amortization": {
+                "标签": "Amortization"
+              },
+              "Extraordinary Items": {
+                "标签": "Extraordinary Items"
+              },
+              "Depretiation & Amortisation": {
+                "标签": "Depretiation & Amortisation"
+              }
+            },
+            "val": "Revenues",
+            "required": true
+          },
+          "revenues__sub_position": {
+            "type": "select",
+            "标签": "Sub Position",
+            "show_if": "this.position=='Revenues'",
+            "options": {
+              "Sales": {
+                "标签": "Sales"
+              },
+              "Increase(+)/Decrease(-) Inventories": {
+                "标签": "Increase(+)/Decrease(-) Inventories"
+              },
+              "Other Revenues": {
+                "标签": "Other Revenues"
+              }
+            },
+            "val": "Sales",
+            "required": true
+          },
+          "cost_of_goods_sold__sub_position": {
+            "type": "select",
+            "标签": "Sub Position",
+            "show_if": "this.position=='Cost of Goods Sold'",
+            "options": {
+              "Material Costs": {
+                "标签": "Material Costs"
+              },
+              "Purchased Services": {
+                "标签": "Purchased Services"
+              }
+            },
+            "val": "Material Costs",
+            "required": true
+          },
+          "general_administration_expenses__sub_position": {
+            "type": "select",
+            "标签": "Sub Position",
+            "show_if": "this.position=='General and Administration Expenses'",
+            "options": {
+              "Rental Expenses": {
+                "标签": "Rental Expenses"
+              },
+              "Cleaning": {
+                "标签": "Cleaning"
+              },
+              "Office Items": {
+                "标签": "Office Items"
+              },
+              "Consulting": {
+                "标签": "Consulting"
+              },
+              "Recruiting": {
+                "标签": "Recruiting"
+              }
+            },
+            "val": "Rental Expenses",
+            "required": true
+          },
+          "personnel_expenses__sub_position": {
+            "type": "select",
+            "标签": "Sub Position",
+            "show_if": "this.position=='Personnel Expenses'",
+            "options": {
+              "Fix Salary": {
+                "标签": "Fix Salary"
+              },
+              "Bonus": {
+                "标签": "Bonus"
+              },
+              "Other Compensation": {
+                "标签": "Other Compensation"
+              }
+            },
+            "val": "Fix Salary",
+            "required": true
+          },
+          "capital_expenditure__sub_position": {
+            "type": "select",
+            "标签": "Sub Position",
+            "show_if": "this.position=='Capital Expenditure'",
+            "options": {
+              "Maintenance Capex": {
+                "标签": "Maintenance Capex"
+              },
+              "Expansion Capex": {
+                "标签": "Expansion Capex"
+              }
+            },
+            "val": "Maintenance Capex",
+            "required": true
+          },
+          "extraordinary_items__sub_position": {
+            "type": "select",
+            "标签": "Sub Position",
+            "show_if": "this.position=='Extraordinary Items'",
+            "options": {
+              "Extraordinary Income": {
+                "标签": "Extraordinary Income"
+              },
+              "Extraordinary Expenses": {
+                "标签": "Extraordinary Expenses"
+              }
+            },
+            "val": "Extraordinary Income",
+            "required": true
+          },
+          "tax__sub_position": {
+            "type": "select",
+            "标签": "Sub Position",
+            "show_if": "this.position=='Tax'",
+            "options": {
+              "Value Added Tax": {
+                "标签": "Value Added Tax"
+              },
+              "Corporate Tax": {
+                "标签": "Corporate Tax"
+              },
+              "Trade Tax": {
+                "标签": "Trade Tax"
+              }
+            },
+            "val": "Value Added Tax",
+            "required": true
+          },
+          "interest__sub_position": {
+            "type": "select",
+            "标签": "Sub Position",
+            "show_if": "this.position=='Interest'",
+            "options": {
+              "Interest Income": {
+                "标签": "Interest Income"
+              },
+              "Interest Expenses": {
+                "标签": "Interest Expenses"
+              }
+            },
+            "val": "Interest Income",
+            "required": true
+          },
+          "depretiation_amortisation__sub_position": {
+            "type": "select",
+            "标签": "Sub Position",
+            "show_if": "this.position=='Depretiation & Amortisation'",
+            "options": {
+              "Depretiation": {
+                "标签": "Depretiation"
+              },
+              "Amortisation": {
+                "标签": "Amortisation"
+              }
+            },
+            "val": "Depretiation",
+            "required": true
+          },
+          "item": {
+            "type": "text",
+            "标签": "项目",
+            "val": ""
+          },
+          "amount": {
+            "type": "number",
+            "标签": "金额",
+            "val": "",
+            "required": true
+          },
+          "periodicy": {
+            "type": "select",
+            "标签": "周期",
+            "required": true,
+            "options": {
+              "一次性的": {
+                "标签": "一次性的"
+              },
+              "每日": {
+                "标签": "每日"
+              },
+              "每周": {
+                "标签": "每周"
+              },
+              "每月": {
+                "标签": "每月"
+              },
+              "季度": {
+                "标签": "季度"
+              },
+              "一年一度": {
+                "标签": "一年一度"
+              }
+            },
+            "val": "一年一度",
+            "breakLine": true
+          },
+          "growth": {
+            "type": "number",
+            "标签": "Growth in %",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": "",
+            "required": true
+          },
+          "growth_period": {
+            "type": "select",
+            "标签": "增长时段",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "每周": {
+                "标签": "周环比"
+              },
+              "每月": {
+                "标签": "月环比"
+              },
+              "季度": {
+                "标签": "季环比"
+              },
+              "一年一度": {
+                "标签": "年环比"
+              }
+            },
+            "val": "一年一度"
+          },
+          "growth_pattern": {
+            "type": "select",
+            "标签": "增长模式",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "复利": {
+                "标签": "复利"
+              },
+              "线性": {
+                "标签": "线性"
+              },
+              "跳跃式修复": {
+                "标签": "跳跃式修复"
+              }
+            },
+            "val": "跳跃式修复",
+            "breakLine": true
+          },
+          "initial_date": {
+            "type": "date",
+            "标签": "初始日期",
+            "val": "",
+            "required": true
+          },
+          "final_date": {
+            "type": "date",
+            "标签": "最后日期",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": ""
+          },
+          "delete": {
+            "type": "button",
+            "标签": "删除",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.output_type": {
+        "type": "select",
+        "标签": "输出类型",
+        "required": true,
+        "options": {
+          "planning_table": {
+            "标签": "Planning Table"
+          },
+          "periodicy_table": {
+            "标签": "Periodicy Table"
+          },
+          "summary_table": {
+            "标签": "Summary Table"
+          }
+        },
+        "val": "summary_table"
+      },
+      "options.summary_table__group_by": {
+        "type": "select",
+        "标签": "分组方式：",
+        "show_if": "options.output_type=='summary_table'",
+        "multiple": true,
+        "options": {
+          "年": {
+            "标签": "年"
+          },
+          "季度": {
+            "标签": "季度"
+          },
+          "月": {
+            "标签": "月"
+          },
+          "周": {
+            "标签": "周"
+          },
+          "Day": {
+            "标签": "Day"
+          },
+          "位置": {
+            "标签": "位置"
+          },
+          "Sub Position": {
+            "标签": "Sub Position"
+          },
+          "项目": {
+            "标签": "项目"
+          }
+        },
+        "val": ["年", "季度", "月", "位置"],
+        "required": true,
+        "breakLine": true
+      },
+      "options.set_plan_config": {
+        "type": "checkbox",
+        "标签": "Planning Configuration",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "planning_configuration_frame": {
+        "type": "fieldset",
+        "标签": "Planning Configuration",
+        "show_if": "options.set_plan_config=='true'",
+        "repeat": false,
+        "fields": {
+          "options.add_categories": {
+            "type": "checkbox",
+            "标签": "Add Categories",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.categories": {
+            "type": "fieldset",
+            "标签": "Add Categories",
+            "show_if": "options.add_categories=='true'",
+            "repeat": true,
+            "fields": {
+              "category": {
+                "type": "text",
+                "标签": "Category",
+                "val": "",
+                "required": true
+              },
+              "value": {
+                "type": "text",
+                "标签": "值",
+                "val": ""
+              },
+              "delete": {
+                "type": "button",
+                "标签": "删除",
+                "function": "DELETE_ROW"
+              }
+            },
+            "breakLine": true
+          },
+          "options.set_amount_column_formatting": {
+            "type": "checkbox",
+            "标签": "Set Amount Column Formatting",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "style": "margin-top: 10px"
+          },
+          "formatting_frame": {
+            "type": "fieldset",
+            "标签": "金额栏的格式",
+            "show_if": "options.set_amount_column_formatting=='true'",
+            "repeat": false,
+            "fields": {
+              "options.amount.format__category": {
+                "type": "select",
+                "标签": "金额格式",
+                "required": true,
+                "options": {
+                  "standard": {
+                    "标签": "标准"
+                  },
+                  "number": {
+                    "标签": "数字"
+                  },
+                  "percentage": {
+                    "标签": "百分比"
+                  },
+                  "text": {
+                    "标签": "文本"
+                  },
+                  "date": {
+                    "标签": "日期"
+                  },
+                  "currency": {
+                    "标签": "货币"
+                  }
+                },
+                "val": "currency"
+              },
+              "options.amount.format__rounding": {
+                "type": "select",
+                "标签": "取整",
+                "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+                "required": true,
+                "options": {
+                  "no_rounding": {
+                    "标签": "不取整"
+                  },
+                  "0": {
+                    "标签": "0 位数"
+                  },
+                  "1": {
+                    "标签": "1 位数"
+                  },
+                  "2": {
+                    "标签": "2 位数"
+                  },
+                  "3": {
+                    "标签": "3 位数"
+                  },
+                  "4": {
+                    "标签": "4 位数"
+                  },
+                  "5": {
+                    "标签": "5 位数"
+                  },
+                  "6": {
+                    "标签": "6 位数"
+                  },
+                  "7": {
+                    "标签": "7 位数"
+                  },
+                  "8": {
+                    "标签": "8 位数"
+                  },
+                  "9": {
+                    "标签": "9 位数"
+                  }
+                },
+                "val": "2"
+              },
+              "options.amount.format__use_1000_separator": {
+                "type": "checkbox",
+                "标签": "使用 1000 分隔符（.）",
+                "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+                "val": "true",
+                "isOn": "true",
+                "isOff": "false"
+              },
+              "options.amount.format__currency_symbol": {
+                "type": "select",
+                "标签": "符号",
+                "show_if": "options.amount.format__category=='currency'",
+                "required": true,
+                "options": {
+                  "dollar": {
+                    "标签": "$"
+                  },
+                  "euro": {
+                    "标签": "€"
+                  },
+                  "pound": {
+                    "标签": "£"
+                  }
+                },
+                "val": "dollar"
+              },
+              "options.amount.format__date_format": {
+                "type": "select",
+                "标签": "类型",
+                "show_if": "options.amount.format__category=='date'",
+                "required": true,
+                "options": {
+                  "mm/dd/yyyy": {
+                    "标签": "3/14/2012"
+                  },
+                  "D, M dd, Y": {
+                    "标签": "2012年3月14日，星期三"
+                  },
+                  "yyyy-mm-dd": {
+                    "标签": "2012-03-14"
+                  }
+                },
+                "val": "mm/dd/yyyy",
+                "breakLine": true
+              }
+            },
+            "breakLine": true
+          },
+          "options.end_date": {
+            "type": "date",
+            "标签": "表格结束日期",
+            "show_if": "options.type=='process' || options.type=='custom'",
+            "val": "",
+            "style": "width: 300px",
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}
