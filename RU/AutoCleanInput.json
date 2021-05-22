@@ -1,0 +1,124 @@
+{
+  "options.auto_run": {
+    "type": "checkbox",
+    "Метка": "Autorun Task",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "trigger_vector_frame": {
+    "type": "fieldset",
+    "Метка": "Task Lock",
+    "show_if": "options.auto_run=='true'",
+    "repeat": false,
+	"fields": {
+		"options.table_filter": {
+        "type": "select",
+        "Метка": "Key-Lock pair filter",
+        "options": {
+          "specific_tables": {
+            "Метка": "Specify Table(s)"
+          },
+          "current_flow_tables": {
+            "Метка": "Current Flow Tables"
+          },
+          "flow_tables": {
+            "Метка": "Specify Flow(s)"
+          },
+          "all_tables": {
+            "Метка": "All Tables"
+          }
+		 }
+		},
+      "options.autorun_tables": {
+        "type": "select",
+        "Метка": "Autorun on table change",
+        "bind": "TABLES",
+        "multiple": true,
+        "required": false
+      },
+      "trigger_key": {
+        "type": "select",
+        "Метка": "Trigger Key",
+        "options": {
+          "greater": {
+            "Метка": "БОЛЬШЕ ЧЕМ"
+          },
+          "greater_or_equal": {
+            "Метка": "БОЛЬШИЙ ИЛИ РАВНЫЙ"
+          },
+          "equal": {
+            "Метка": "Равный"
+          },
+          "smaller_or_equal": {
+            "Метка": "МЕНЬШИЙ ИЛИ РАВНЫЙ"
+          },
+          "smaller": {
+            "Метка": "МЕНЬШЕ ЧЕМ"
+          }
+        },
+        "val": "larger_or_equal"
+      },
+      "key_number": {
+        "type": "text",
+        "Метка": "Key",
+        "val": "1",
+        "required": true,
+        "breakLine": true
+      },  	  
+      "trigger_method": {
+        "type": "select",
+        "Метка": "Trigger Method",
+        "options": {
+          "no_lock": {
+            "Метка": "Run without Task Lock"
+          },
+          "scalar_product_compound": {
+            "Метка": "Compound AxB"
+          },
+          "scalar_product_all_pins": {
+            "Метка": "Pin by Pin AxB - each matching"
+          },
+          "scalar_product_min_one_pin": {
+            "Метка": "Pin by Pin AxB - one or more matches"
+          },
+          "scalar_product_one_pin": {
+            "Метка": "Pin by Pin AxB - one match"
+          },
+          "concatenate": {
+            "Метка": "Match concatenation"
+          },		  
+          "matching_array": {
+            "Метка": "Match all elements (unordered)"
+          }
+        },
+        "val": "scalar_product_compound",
+        "breakLine": true
+      },
+      "options.names": {
+        "type": "fieldset",
+        "Метка": "Task Lock Definition",
+        "repeat": true,
+        "fields": {
+          "name": {
+            "type": "text",
+            "Метка": "Key Pin",
+            "val": "",
+            "required": true
+          },
+          "value": {
+            "type": "text",
+            "Метка": "Multiplier",
+            "val": "",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "Метка": "Удалить",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
