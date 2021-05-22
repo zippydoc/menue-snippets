@@ -1,29 +1,29 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "オプションの選択",
+    "ラベル": "オプションの選択",
     "repeat": false,
     "fields": {
       "options.position": {
         "type": "select",
-        "label": "位置の選択",
+        "ラベル": "位置の選択",
         "required": true,
         "show_if": "table_type=='header_only'",
         "options": {
           "add_rows_below_selected_row": {
-            "label": "下に行を追加"
+            "ラベル": "下に行を追加"
           },
           "add_rows_above_selected_row": {
-            "label": "上に行を追加"
+            "ラベル": "上に行を追加"
           },
           "add_rows_at_table_end": {
-            "label": "テーブルの最後に行を追加"
+            "ラベル": "テーブルの最後に行を追加"
           },
           "add_single_row_at_table_end": {
-            "label": "テーブルの最後に1行追加"
+            "ラベル": "テーブルの最後に1行追加"
           },
           "add_row_after_each_group": {
-            "label": "各グループの後に行を追加"
+            "ラベル": "各グループの後に行を追加"
           }
         },
         "val": "add_rows_below_selected_row",
@@ -31,7 +31,7 @@
       },
       "options.group_column": {
         "type": "select",
-        "label": "列のグループ",
+        "ラベル": "列のグループ",
         "show_if": "table_type=='header_only' && options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -40,7 +40,7 @@
       },
       "options.use_filter": {
         "type": "checkbox",
-        "label": "フィルターの使用",
+        "ラベル": "フィルターの使用",
         "show_if": "table_type=='header_only' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "val": "false",
         "isOn": "true",
@@ -50,170 +50,170 @@
       },
       "filter_box": {
         "type": "fieldset",
-        "label": "フィルターオプション",
+        "ラベル": "フィルターオプション",
         "show_if": "table_type=='header_only' && options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "repeat": false,
         "fields": {
           "options.filter": {
             "type": "fieldset",
-            "label": "フィルター条件の追加",
+            "ラベル": "フィルター条件の追加",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "論理オペレータの選択",
+                "ラベル": "論理オペレータの選択",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
                   "if": {
-                    "label": "IF"
+                    "ラベル": "IF"
                   },
                   "if_not": {
-                    "label": "IF NOT"
+                    "ラベル": "IF NOT"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "論理オペレータの選択",
+                "ラベル": "論理オペレータの選択",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
                   "and": {
-                    "label": "AND"
+                    "ラベル": "AND"
                   },
                   "or": {
-                    "label": "OR"
+                    "ラベル": "OR"
                   },
                   "and_not": {
-                    "label": "AND NOT"
+                    "ラベル": "AND NOT"
                   },
                   "or_not": {
-                    "label": "OR NOT"
+                    "ラベル": "OR NOT"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": "列の選択",
+                "ラベル": "列の選択",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "オペレータの選択",
+                "ラベル": "オペレータの選択",
                 "required": true,
                 "options": {
                   "含む": {
-                    "label": "含む"
+                    "ラベル": "含む"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "次の中に含む"
+                    "ラベル": "次の中に含む"
                   },
                   "次で開始": {
-                    "label": "次で開始"
+                    "ラベル": "次で開始"
                   },
                   "次で終了": {
-                    "label": "次で終了"
+                    "ラベル": "次で終了"
                   },
                   "=": {
-                    "label": "等しい"
+                    "ラベル": "等しい"
                   },
                   ">": {
-                    "label": "超"
+                    "ラベル": "超"
                   },
                   ">=": {
-                    "label": "以上"
+                    "ラベル": "以上"
                   },
                   "<": {
-                    "label": "より小さい"
+                    "ラベル": "より小さい"
                   },
                   "<=": {
-                    "label": "より小さいまたは等しい"
+                    "ラベル": "より小さいまたは等しい"
                   },
                   "EMPTY": {
-                    "label": "空です"
+                    "ラベル": "空です"
                   },
                   "BLANK": {
-                    "label": "空白です"
+                    "ラベル": "空白です"
                   },
                   "無効です": {
-                    "label": "無効です"
+                    "ラベル": "無効です"
                   },
                   "REGEXの一致": {
-                    "label": "REGEXの一致"
+                    "ラベル": "REGEXの一致"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "テーブル内"
+                    "ラベル": "テーブル内"
                   },
                   "REGEXテーブル内": {
-                    "label": "REGEXテーブル内"
+                    "ラベル": "REGEXテーブル内"
                   },
                   "日付": {
-                    "label": "日付"
+                    "ラベル": "日付"
                   }
                 },
                 "val": "含む"
               },
               "date_condition": {
                 "type": "select",
-                "label": "日付オペレータの選択",
+                "ラベル": "日付オペレータの選択",
                 "required": true,
                 "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "前"
+                    "ラベル": "前"
                   },
                   "<=": {
-                    "label": "前または等しい"
+                    "ラベル": "前または等しい"
                   },
                   "=": {
-                    "label": "等しい"
+                    "ラベル": "等しい"
                   },
                   ">": {
-                    "label": "以降"
+                    "ラベル": "以降"
                   },
                   ">=": {
-                    "label": "以降または等しい"
+                    "ラベル": "以降または等しい"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "ケース・センシティブの選択",
+                "ラベル": "ケース・センシティブの選択",
                 "required": true,
                 "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "ケース・センシティブ"
+                    "ラベル": "ケース・センシティブ"
                   },
                   "no": {
-                    "label": "ケース・インセンシティブ"
+                    "ラベル": "ケース・インセンシティブ"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "日付の選択",
+                "ラベル": "日付の選択",
                 "show_if": "this.condition=='DATE'",
-                "val": "1/31/2020",
+                "val": "",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "値の入力",
+                "ラベル": "値の入力",
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "テーブルの選択",
+                "ラベル": "テーブルの選択",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -221,7 +221,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "列の選択",
+                "ラベル": "列の選択",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -229,14 +229,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "削除",
+                "ラベル": "削除",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.apply_to_record": {
             "type": "checkbox",
-            "label": "レコードに適用",
+            "ラベル": "レコードに適用",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -245,13 +245,13 @@
           },
           "apply_to_group_box": {
             "type": "fieldset",
-            "label": "グループに適用",
+            "ラベル": "グループに適用",
             "show_if": "options.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
                 "type": "select",
-                "label": "グループ列の選択",
+                "ラベル": "グループ列の選択",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
@@ -265,92 +265,92 @@
       },
       "options.add_rows": {
         "type": "fieldset",
-        "label": "新しい行オプション",
+        "ラベル": "新しい行オプション",
         "repeat": true,
         "fields": {
           "new_row_name": {
             "type": "text",
-            "label": "新しい行名",
+            "ラベル": "新しい行名",
             "val": ""
           },
           "function_type": {
             "type": "select",
-            "label": "タスクタイプ",
+            "ラベル": "タスクタイプ",
             "show_if": "false",
             "required": true,
             "options": {
               "multi_column_functions": {
-                "label": "複数列"
+                "ラベル": "複数列"
               },
               "multi_row_functions": {
-                "label": "複数行"
+                "ラベル": "複数行"
               }
             },
             "val": "multi_column_functions"
           },
           "multi_column_functions__function": {
             "type": "select",
-            "label": "機能の選択",
+            "ラベル": "機能の選択",
             "show_if": "this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "absolute_growth": {
-                "label": "絶対成長"
+                "ラベル": "絶対成長"
               },
               "relative_growth": {
-                "label": "相対的成長"
+                "ラベル": "相対的成長"
               },
               "trailing_average": {
-                "label": "末尾平均"
+                "ラベル": "末尾平均"
               },
               "index_growth": {
-                "label": "指数成長"
+                "ラベル": "指数成長"
               },
               "compound_growth": {
-                "label": "複合成長"
+                "ラベル": "複合成長"
               },
               "discount_rate": {
-                "label": "割引率"
+                "ラベル": "割引率"
               },
               "quota": {
-                "label": "割当"
+                "ラベル": "割当"
               }
             },
             "val": "absolute_growth"
           },
           "multi_row_functions__function": {
             "type": "select",
-            "label": "機能の選択",
+            "ラベル": "機能の選択",
             "show_if": "this.function_type=='multi_row_functions'",
             "required": true,
             "options": {
               "sum": {
-                "label": "合計"
+                "ラベル": "合計"
               },
               "average": {
-                "label": "平均"
+                "ラベル": "平均"
               },
               "median": {
-                "label": "中央値"
+                "ラベル": "中央値"
               },
               "standard_deviation": {
-                "label": "標準偏差"
+                "ラベル": "標準偏差"
               },
               "variance": {
-                "label": "分散"
+                "ラベル": "分散"
               },
               "product": {
-                "label": "製品"
+                "ラベル": "製品"
               },
               "quota": {
-                "label": "割当"
+                "ラベル": "割当"
               }
             },
             "val": "sum"
           },
           "multi_column_functions__sel_labels": {
             "type": "select",
-            "label": "Select Rows(s)",
+            "ラベル": "Select Rows(s)",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
             "required": true,
             "table": "input_table",
@@ -359,21 +359,21 @@
           },
           "multi_column_functions__n_value": {
             "type": "text",
-            "label": "N (正の整数)",
+            "ラベル": "N (正の整数)",
             "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__rate": {
             "type": "text",
-            "label": "比率の入力",
+            "ラベル": "比率の入力",
             "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__starting_column": {
             "type": "select",
-            "label": "開始列",
+            "ラベル": "開始列",
             "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "table": "input_table",
             "bind": "COLUMNS",
@@ -381,7 +381,7 @@
           },
           "multi_column_functions__sel_label_a": {
             "type": "select",
-            "label": "ラベルAの選択",
+            "ラベル": "ラベルAの選択",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -389,7 +389,7 @@
           },
           "multi_column_functions__sel_label_b": {
             "type": "select",
-            "label": "選択ラベルBの選択",
+            "ラベル": "選択ラベルBの選択",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -397,7 +397,7 @@
           },
           "multi_row_functions__sel_label_a": {
             "type": "select",
-            "label": "ラベルAの選択",
+            "ラベル": "ラベルAの選択",
             "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -405,7 +405,7 @@
           },
           "multi_row_functions__sel_label_b": {
             "type": "select",
-            "label": "選択ラベルBの選択",
+            "ラベル": "選択ラベルBの選択",
             "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -414,28 +414,28 @@
           },
           "position": {
             "type": "select",
-            "label": "ポジション",
+            "ラベル": "ポジション",
             "show_if": "table_type!='header_only'",
             "required": true,
             "options": {
               "bottom": {
-                "label": "BOTTOM"
+                "ラベル": "BOTTOM"
               },
               "top": {
-                "label": "TOP"
+                "ラベル": "TOP"
               },
               "above": {
-                "label": "上"
+                "ラベル": "上"
               },
               "below": {
-                "label": "下"
+                "ラベル": "下"
               }
             },
             "val": "bottom"
           },
           "positioning_row": {
             "type": "select",
-            "label": "Positioning Row",
+            "ラベル": "行の位置決め",
             "show_if": "table_type!='header_only' && (this.position=='above' || this.position=='below')",
             "required": true,
             "table": "input_table",
@@ -443,333 +443,333 @@
           },
           "multi_column_functions__sel_row_a": {
             "type": "select",
-            "label": "行Aの選択",
+            "ラベル": "行Aの選択",
             "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "row-1": {
-                "label": "行-1"
+                "ラベル": "行-1"
               },
               "row-2": {
-                "label": "Row-2"
+                "ラベル": "Row-2"
               },
               "row-3": {
-                "label": "Row-3"
+                "ラベル": "Row-3"
               },
               "row-4": {
-                "label": "Row-4"
+                "ラベル": "Row-4"
               },
               "row-5": {
-                "label": "Row-5"
+                "ラベル": "Row-5"
               },
               "row-6": {
-                "label": "Row-6"
+                "ラベル": "Row-6"
               },
               "row-7": {
-                "label": "Row-7"
+                "ラベル": "Row-7"
               },
               "row-8": {
-                "label": "Row-8"
+                "ラベル": "Row-8"
               },
               "row-9": {
-                "label": "Row-9"
+                "ラベル": "Row-9"
               },
               "row-10": {
-                "label": "Row-10"
+                "ラベル": "Row-10"
               },
               "row-11": {
-                "label": "Row-11"
+                "ラベル": "Row-11"
               },
               "row-12": {
-                "label": "Row-12"
+                "ラベル": "Row-12"
               },
               "row-13": {
-                "label": "Row-13"
+                "ラベル": "Row-13"
               },
               "row-14": {
-                "label": "Row-14"
+                "ラベル": "Row-14"
               },
               "row-15": {
-                "label": "Row-15"
+                "ラベル": "Row-15"
               },
               "row-16": {
-                "label": "Row-16"
+                "ラベル": "Row-16"
               },
               "row-17": {
-                "label": "Row-17"
+                "ラベル": "Row-17"
               },
               "row-18": {
-                "label": "Row-18"
+                "ラベル": "Row-18"
               },
               "row-19": {
-                "label": "Row-19"
+                "ラベル": "Row-19"
               },
               "row-20": {
-                "label": "Row-20"
+                "ラベル": "Row-20"
               },
               "row+1": {
-                "label": "Row+1"
+                "ラベル": "Row+1"
               },
               "row+2": {
-                "label": "Row+2"
+                "ラベル": "Row+2"
               },
               "row+3": {
-                "label": "Row+3"
+                "ラベル": "Row+3"
               },
               "row+4": {
-                "label": "Row+4"
+                "ラベル": "Row+4"
               },
               "row+5": {
-                "label": "Row+5"
+                "ラベル": "Row+5"
               },
               "row+6": {
-                "label": "Row+6"
+                "ラベル": "Row+6"
               },
               "row+7": {
-                "label": "Row+7"
+                "ラベル": "Row+7"
               },
               "row+8": {
-                "label": "Row+8"
+                "ラベル": "Row+8"
               },
               "row+9": {
-                "label": "Row+9"
+                "ラベル": "Row+9"
               },
               "row+10": {
-                "label": "Row+10"
+                "ラベル": "Row+10"
               },
               "row+11": {
-                "label": "Row+11"
+                "ラベル": "Row+11"
               },
               "row+12": {
-                "label": "Row+12"
+                "ラベル": "Row+12"
               },
               "row+13": {
-                "label": "Row+13"
+                "ラベル": "Row+13"
               },
               "row+14": {
-                "label": "Row+14"
+                "ラベル": "Row+14"
               },
               "row+15": {
-                "label": "Row+15"
+                "ラベル": "Row+15"
               },
               "row+16": {
-                "label": "Row+16"
+                "ラベル": "Row+16"
               },
               "row+17": {
-                "label": "Row+17"
+                "ラベル": "Row+17"
               },
               "row+18": {
-                "label": "Row+18"
+                "ラベル": "Row+18"
               },
               "row+19": {
-                "label": "Row+19"
+                "ラベル": "Row+19"
               },
               "row+20": {
-                "label": "Row+20"
+                "ラベル": "Row+20"
               }
             },
             "val": "row-1"
           },
           "multi_column_functions__sel_row_b": {
             "type": "select",
-            "label": "行Bの選択",
+            "ラベル": "行Bの選択",
             "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "row-1": {
-                "label": "行-1"
+                "ラベル": "行-1"
               },
               "row-2": {
-                "label": "Row-2"
+                "ラベル": "Row-2"
               },
               "row-3": {
-                "label": "Row-3"
+                "ラベル": "Row-3"
               },
               "row-4": {
-                "label": "Row-4"
+                "ラベル": "Row-4"
               },
               "row-5": {
-                "label": "Row-5"
+                "ラベル": "Row-5"
               },
               "row-6": {
-                "label": "Row-6"
+                "ラベル": "Row-6"
               },
               "row-7": {
-                "label": "Row-7"
+                "ラベル": "Row-7"
               },
               "row-8": {
-                "label": "Row-8"
+                "ラベル": "Row-8"
               },
               "row-9": {
-                "label": "Row-9"
+                "ラベル": "Row-9"
               },
               "row-10": {
-                "label": "Row-10"
+                "ラベル": "Row-10"
               },
               "row-11": {
-                "label": "Row-11"
+                "ラベル": "Row-11"
               },
               "row-12": {
-                "label": "Row-12"
+                "ラベル": "Row-12"
               },
               "row-13": {
-                "label": "Row-13"
+                "ラベル": "Row-13"
               },
               "row-14": {
-                "label": "Row-14"
+                "ラベル": "Row-14"
               },
               "row-15": {
-                "label": "Row-15"
+                "ラベル": "Row-15"
               },
               "row-16": {
-                "label": "Row-16"
+                "ラベル": "Row-16"
               },
               "row-17": {
-                "label": "Row-17"
+                "ラベル": "Row-17"
               },
               "row-18": {
-                "label": "Row-18"
+                "ラベル": "Row-18"
               },
               "row-19": {
-                "label": "Row-19"
+                "ラベル": "Row-19"
               },
               "row-20": {
-                "label": "Row-20"
+                "ラベル": "Row-20"
               },
               "row+1": {
-                "label": "Row+1"
+                "ラベル": "Row+1"
               },
               "row+2": {
-                "label": "Row+2"
+                "ラベル": "Row+2"
               },
               "row+3": {
-                "label": "Row+3"
+                "ラベル": "Row+3"
               },
               "row+4": {
-                "label": "Row+4"
+                "ラベル": "Row+4"
               },
               "row+5": {
-                "label": "Row+5"
+                "ラベル": "Row+5"
               },
               "row+6": {
-                "label": "Row+6"
+                "ラベル": "Row+6"
               },
               "row+7": {
-                "label": "Row+7"
+                "ラベル": "Row+7"
               },
               "row+8": {
-                "label": "Row+8"
+                "ラベル": "Row+8"
               },
               "row+9": {
-                "label": "Row+9"
+                "ラベル": "Row+9"
               },
               "row+10": {
-                "label": "Row+10"
+                "ラベル": "Row+10"
               },
               "row+11": {
-                "label": "Row+11"
+                "ラベル": "Row+11"
               },
               "row+12": {
-                "label": "Row+12"
+                "ラベル": "Row+12"
               },
               "row+13": {
-                "label": "Row+13"
+                "ラベル": "Row+13"
               },
               "row+14": {
-                "label": "Row+14"
+                "ラベル": "Row+14"
               },
               "row+15": {
-                "label": "Row+15"
+                "ラベル": "Row+15"
               },
               "row+16": {
-                "label": "Row+16"
+                "ラベル": "Row+16"
               },
               "row+17": {
-                "label": "Row+17"
+                "ラベル": "Row+17"
               },
               "row+18": {
-                "label": "Row+18"
+                "ラベル": "Row+18"
               },
               "row+19": {
-                "label": "Row+19"
+                "ラベル": "Row+19"
               },
               "row+20": {
-                "label": "Row+20"
+                "ラベル": "Row+20"
               }
             },
             "val": "row-1"
           },
           "format__category": {
             "type": "select",
-            "label": "フォーマット",
+            "ラベル": "フォーマット",
             "required": true,
             "options": {
               "standard": {
-                "label": "標準"
+                "ラベル": "標準"
               },
               "number": {
-                "label": "数"
+                "ラベル": "数"
               },
               "percentage": {
-                "label": "割合"
+                "ラベル": "割合"
               },
               "text": {
-                "label": "テキスト"
+                "ラベル": "テキスト"
               },
               "date": {
-                "label": "日付"
+                "ラベル": "日付"
               },
               "currency": {
-                "label": "通貨"
+                "ラベル": "通貨"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "四捨五入",
+            "ラベル": "四捨五入",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "四捨五入無し"
+                "ラベル": "四捨五入無し"
               },
               "0": {
-                "label": "0桁"
+                "ラベル": "0桁"
               },
               "1": {
-                "label": "1桁"
+                "ラベル": "1桁"
               },
               "2": {
-                "label": "2桁"
+                "ラベル": "2桁"
               },
               "3": {
-                "label": "3桁"
+                "ラベル": "3桁"
               },
               "4": {
-                "label": "4桁"
+                "ラベル": "4桁"
               },
               "5": {
-                "label": "5桁"
+                "ラベル": "5桁"
               },
               "6": {
-                "label": "6桁"
+                "ラベル": "6桁"
               },
               "7": {
-                "label": "7桁"
+                "ラベル": "7桁"
               },
               "8": {
-                "label": "8桁"
+                "ラベル": "8桁"
               },
               "9": {
-                "label": "9桁"
+                "ラベル": "9桁"
               }
             },
             "val": "no_rounding"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "1000セパレータ(.)を使用",
+            "ラベル": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "false",
             "isOn": "true",
@@ -777,43 +777,43 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "シンボル",
+            "ラベル": "シンボル",
             "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "ラベル": "$"
               },
               "euro": {
-                "label": "€"
+                "ラベル": "€"
               },
               "pound": {
-                "label": "£"
+                "ラベル": "£"
               }
             },
             "val": "dollar"
           },
           "format__date_format": {
             "type": "select",
-            "label": "タイプ",
+            "ラベル": "タイプ",
             "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "ラベル": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "ラベル": "水曜日、3月14日、2012"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "ラベル": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy"
           },
           "delete": {
             "type": "button",
-            "label": "削除",
+            "ラベル": "削除",
             "function": "DELETE_ROW"
           }
         }
