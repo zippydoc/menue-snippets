@@ -1,44 +1,44 @@
 {
   "output.select_output_columns": {
     "type": "checkbox",
-    "label": "Sélectionner les colonnes de sortie",
-    "show_if": "options.type=='process'",
+    "Étiquette": "Sélectionner les colonnes de sortie",
+    "show_if": "options.type=='process' && output.custom_options=='true'",
     "val": "false",
     "isOn": "true",
     "isOff": "false"
   },
   "output_columns": {
     "type": "fieldset",
-    "label": "Select OutputColumns",
-    "show_if": "options.type=='process' && output.select_output_columns=='true'",
+    "Étiquette": "Select OutputColumns",
+    "show_if": "options.type=='process' && output.custom_options=='true' && output.select_output_columns=='true'",
     "repeat": true,
     "fields": {
       "field_name": {
         "type": "select",
-        "label": "Sélectionner une colonne",
+        "Étiquette": "Sélectionner une colonne",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
       },
       "order": {
         "type": "select",
-        "label": "Commander",
+        "Étiquette": "Commander",
         "options": {
           "-": {
-            "label": "-"
+            "Étiquette": "-"
           },
           "asc": {
-            "label": "Asc"
+            "Étiquette": "Asc"
           },
           "desc": {
-            "label": "Desc"
+            "Étiquette": "Desc"
           }
         },
         "val": "-"
       },
       "is_rename": {
         "type": "checkbox",
-        "label": "Renommer",
+        "Étiquette": "Renommer",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -49,80 +49,80 @@
         "required": true,
         "minLength": 1,
         "maxLength": 255,
-        "label": "Nouveau nom de colonne",
+        "Étiquette": "Nouveau nom de colonne",
         "style": "margin-left: 10px"
       },
       "format__category": {
         "type": "select",
-        "label": "Format",
+        "Étiquette": "Format",
         "required": true,
         "options": {
           "standard": {
-            "label": "Standard"
+            "Étiquette": "Standard"
           },
           "number": {
-            "label": "Numéro"
+            "Étiquette": "Numéro"
           },
           "percentage": {
-            "label": "Pourcentage"
+            "Étiquette": "Pourcentage"
           },
           "text": {
-            "label": "Texte"
+            "Étiquette": "Texte"
           },
           "date": {
-            "label": "Date"
+            "Étiquette": "Date"
           },
           "currency": {
-            "label": "Monnaie"
+            "Étiquette": "Monnaie"
           }
         },
         "val": "standard"
       },
       "format__rounding": {
         "type": "select",
-        "label": "Arrondi",
+        "Étiquette": "Arrondi",
         "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "required": true,
         "options": {
           "no_rounding": {
-            "label": "Pas d'arrondi"
+            "Étiquette": "Pas d'arrondi"
           },
           "0": {
-            "label": "0 chiffre"
+            "Étiquette": "0 chiffre"
           },
           "1": {
-            "label": "1 chiffre"
+            "Étiquette": "1 chiffre"
           },
           "2": {
-            "label": "2 chiffres"
+            "Étiquette": "2 chiffres"
           },
           "3": {
-            "label": "3 chiffres"
+            "Étiquette": "3 chiffres"
           },
           "4": {
-            "label": "4 chiffres"
+            "Étiquette": "4 chiffres"
           },
           "5": {
-            "label": "5 chiffres"
+            "Étiquette": "5 chiffres"
           },
           "6": {
-            "label": "6 chiffres"
+            "Étiquette": "6 chiffres"
           },
           "7": {
-            "label": "7 chiffres"
+            "Étiquette": "7 chiffres"
           },
           "8": {
-            "label": "8 chiffres"
+            "Étiquette": "8 chiffres"
           },
           "9": {
-            "label": "9 chiffres"
+            "Étiquette": "9 chiffres"
           }
         },
         "val": "2"
       },
       "format__use_1000_separator": {
         "type": "checkbox",
-        "label": "Utilisez le séparateur 1000 (.)",
+        "Étiquette": "Use 1000 Separator(.)",
         "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "val": "true",
         "isOn": "true",
@@ -130,36 +130,36 @@
       },
       "format__currency_symbol": {
         "type": "select",
-        "label": "Symbole",
+        "Étiquette": "Symbole",
         "show_if": "this.format__category=='currency'",
         "required": true,
         "options": {
           "dollar": {
-            "label": "$"
+            "Étiquette": "$"
           },
           "euro": {
-            "label": "€"
+            "Étiquette": "€"
           },
           "pound": {
-            "label": "£"
+            "Étiquette": "£"
           }
         },
         "val": "dollar"
       },
       "format__date_format": {
         "type": "select",
-        "label": "Type",
+        "Étiquette": "Type",
         "show_if": "this.format__category=='date'",
         "required": true,
         "options": {
           "mm/dd/yyyy": {
-            "label": "3/14/2012"
+            "Étiquette": "3/14/2012"
           },
           "D, M dd, Y": {
-            "label": "Wednesday, March 14, 2012"
+            "Étiquette": "Mercredi 14 mars 2012"
           },
           "yyyy-mm-dd": {
-            "label": "2012-03-14"
+            "Étiquette": "2012-03-14"
           }
         },
         "val": "mm/dd/yyyy",
@@ -167,7 +167,7 @@
       },
       "delete": {
         "type": "button",
-        "label": "Supprimer",
+        "Étiquette": "Supprimer",
         "function": "DELETE_ROW"
       }
     },
