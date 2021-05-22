@@ -1,0 +1,91 @@
+{
+  "output_autorun_frame": {
+    "type": "fieldset",
+    "标签": "Table Key",
+    "show_if": "output.auto_run=='true'",
+    "repeat": false,
+    "fields": {
+		"options.task_filter": {
+        "type": "select",
+        "标签": "Key-Lock pair filter",
+        "options": {
+          "specific_tables": {
+            "标签": "Specify Task(s)"
+          },
+          "current_flow_tables": {
+            "标签": "Current Flow Tasks"
+          },
+          "flow_tables": {
+            "标签": "Specify Flow(s)"
+          },
+          "all_tables": {
+            "标签": "All Tasks"
+          }
+		 }
+		},
+      "output.autorun.tasks": {
+        "type": "text",
+        "标签": "Autorun the following Tasks",
+        "val": "",
+        "placeholder": "';' separated list",
+        "required": true,
+        "style": "width: 100%"
+      },
+      "output.autorun.define_type": {
+        "type": "select",
+        "标签": "Define type",
+        "required": true,
+        "options": {
+          "manually": {
+            "标签": "Define manually"
+          },
+          "table_content": {
+            "标签": "Define by table content"
+          }
+        },
+        "val": "manually"
+      },
+      "output.autorun.names": {
+        "type": "fieldset",
+        "标签": "Define Key Pins",
+        "show_if": "output.autorun.define_type=='manually'",
+        "repeat": true,
+        "fields": {
+          "name": {
+            "type": "text",
+            "标签": "Key Pin",
+            "val": "",
+            "required": true
+          },
+          "value": {
+            "type": "text",
+            "标签": "Key Pin Value",
+            "val": "",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "标签": "删除",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "output.autorun.name_column": {
+        "type": "select",
+        "标签": "Select Key Pin Column",
+        "show_if": "output.autorun.define_type=='table_content'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "output.autorun.value_column": {
+        "type": "select",
+        "标签": "Select Key Pin Value Column",
+        "show_if": "output.autorun.define_type=='table_content'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      }
+    }
+  }
+}
