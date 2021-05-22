@@ -1,0 +1,129 @@
+{
+  "options": {
+    "type": "fieldset",
+    "ラベル": "オプションの選択",
+    "repeat": false,
+    "fields": {
+      "transpose_type": {
+        "type": "hidden",
+        "val": "crosstab"
+      },
+      "mirror_matrix.convert_header_to_label": {
+        "type": "checkbox",
+        "ラベル": "ヘッダからラベルへ変換",
+        "show_if": "transpose_type=='mirror_matrix'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "column_name_to_label.columns_to_label": {
+        "type": "select",
+        "ラベル": "ラベルに変換する列を選択",
+        "show_if": "transpose_type=='column_name_to_label'",
+        "table": "input_table",
+        "multiple": true,
+        "bind": "COLUMNS",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "column_name_to_label.label_column_name": {
+        "type": "text",
+        "ラベル": "列ラベルの列名",
+        "show_if": "transpose_type=='column_name_to_label'",
+        "required": true,
+        "val": "ラベル",
+        "width": "100%",
+        "breakLine": true
+      },
+      "column_name_to_label.value_column_name": {
+        "type": "text",
+        "ラベル": "値列の列名",
+        "show_if": "transpose_type=='column_name_to_label'",
+        "required": true,
+        "val": "値",
+        "width": "100%",
+        "breakLine": true
+      },
+      "crosstab.group_data_by_these_values": {
+        "type": "select",
+        "ラベル": "これらの値によるグループデータ",
+        "show_if": "transpose_type=='crosstab'",
+        "table": "input_table",
+        "multiple": true,
+        "bind": "COLUMNS",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "crosstab.change_column_headers": {
+        "type": "select",
+        "ラベル": "列ヘッダの変更",
+        "show_if": "transpose_type=='crosstab'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "crosstab.values_for_new_columns": {
+        "type": "select",
+        "ラベル": "新しい列の値",
+        "show_if": "transpose_type=='crosstab'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "crosstab.method_for_aggregating_values": {
+        "type": "select",
+        "ラベル": "値の集計方法",
+        "show_if": "transpose_type=='crosstab'",
+        "options": {
+          "連結": {
+            "ラベル": "連結"
+          },
+          "最初": {
+            "ラベル": "最初"
+          },
+          "最後": {
+            "ラベル": "最後"
+          },
+          "合計": {
+            "ラベル": "合計"
+          },
+          "平均": {
+            "ラベル": "平均"
+          },
+          "計算": {
+            "ラベル": "計算"
+          },
+          "ユーザー定義": {
+            "ラベル": "ユーザー定義"
+          }
+        },
+        "val": "連結",
+        "required": true
+      },
+      "crosstab.user_defined_str": {
+        "type": "text",
+        "ラベル": "ユーザー定義値",
+        "show_if": "transpose_type=='crosstab' && crosstab.method_for_aggregating_values=='User Defined'",
+        "val": "x",
+        "trim": "false",
+        "breakLine": true
+      },
+      "crosstab.separator": {
+        "type": "text",
+        "ラベル": "セパレータ",
+        "show_if": "transpose_type=='crosstab' && method_for_aggregating_values=='Concatenate'",
+        "val": ",",
+        "trim": "false",
+        "required": true,
+        "breakLine": true
+      }
+    }
+  }
+}
