@@ -1,12 +1,12 @@
 {
   "input": {
     "type": "fieldset",
-    "label": "选择输入表格",
+    "标签": "选择输入表格",
     "repeat": false,
     "fields": {
       "input_table": {
         "type": "select",
-        "label": "选择表格",
+        "标签": "选择表格",
         "bind": "TABLES",
         "empty": "",
         "required": true
@@ -19,36 +19,18 @@
         "type": "hidden",
         "val": "false"
       },
-      "table_type": {
-        "type": "select",
-        "label": "表格类型",
-        "required": true,
-        "options": {
-          "header_only": {
-            "label": "仅标题"
-          },
-          "label_only": {
-            "label": "仅标签"
-          },
-          "matrix": {
-            "label": "矩阵"
-          }
-        },
-        "val": "header_only",
-        "breakLine": true
-      },
       "apply_to_all_columns": {
         "type": "checkbox",
-        "label": "应用至所有列",
-        "show_if": "table_type=='header_only' || table_type=='matrix'",
+        "标签": "应用至所有列",
+        "show_if": "false",
         "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
       "columns_to_apply": {
         "type": "select",
-        "label": "需应用的列",
-        "show_if": "apply_to_all_columns=='false' && (table_type=='header_only' || table_type=='matrix')",
+        "标签": "需应用的列",
+        "show_if": "$input_table.numOfHeader >= 1",
         "table": "input_table",
         "bind": "COLUMNS",
         "multiple": true,
