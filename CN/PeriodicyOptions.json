@@ -1,21 +1,21 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "选择周期选项",
+    "标签": "选择周期选项",
     "repeat": false,
     "fields": {
       "options.type": {
         "type": "select",
-        "label": "类型",
+        "标签": "类型",
         "options": {
           "generate": {
-            "label": "生成周期示例"
+            "标签": "生成周期示例"
           },
           "process": {
-            "label": "处理周期表格"
+            "标签": "处理周期表格"
           },
           "custom": {
-            "label": "自定义"
+            "标签": "自定义"
           }
         },
         "val": "custom",
@@ -23,13 +23,13 @@
       },
       "input": {
         "type": "fieldset",
-        "label": "选择输入表格",
+        "标签": "选择输入表格",
         "show_if": "options.type=='process'",
         "repeat": false,
         "fields": {
           "input_table": {
             "type": "select",
-            "label": "选择表格",
+            "标签": "选择表格",
             "bind": "TABLES",
             "empty": "",
             "required": true
@@ -47,75 +47,75 @@
       },
       "amount_formatting_frame": {
         "type": "fieldset",
-        "label": "Amount Column Formatting",
+        "标签": "金额栏的格式",
         "show_if": "options.type=='generate'",
         "repeat": false,
         "fields": {
           "options.amount.format__category": {
             "type": "select",
-            "label": "格式",
+            "标签": "格式",
             "required": true,
             "options": {
               "standard": {
-                "label": "标准"
+                "标签": "标准"
               },
               "number": {
-                "label": "数字"
+                "标签": "数字"
               },
               "percentage": {
-                "label": "百分比"
+                "标签": "百分比"
               },
               "currency": {
-                "label": "货币"
+                "标签": "货币"
               }
             },
             "val": "currency"
           },
           "options.amount.format__rounding": {
             "type": "select",
-            "label": "取整",
+            "标签": "取整",
             "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "不取整"
+                "标签": "不取整"
               },
               "0": {
-                "label": "0 位数"
+                "标签": "0 位数"
               },
               "1": {
-                "label": "1 位数"
+                "标签": "1 位数"
               },
               "2": {
-                "label": "2 位数"
+                "标签": "2 位数"
               },
               "3": {
-                "label": "3 位数"
+                "标签": "3 位数"
               },
               "4": {
-                "label": "4 位数"
+                "标签": "4 位数"
               },
               "5": {
-                "label": "5 位数"
+                "标签": "5 位数"
               },
               "6": {
-                "label": "6 位数"
+                "标签": "6 位数"
               },
               "7": {
-                "label": "7 位数"
+                "标签": "7 位数"
               },
               "8": {
-                "label": "8 位数"
+                "标签": "8 位数"
               },
               "9": {
-                "label": "9 位数"
+                "标签": "9 位数"
               }
             },
             "val": "2"
           },
           "options.amount.format__use_1000_separator": {
             "type": "checkbox",
-            "label": "使用 1000 分隔符（.）",
+            "标签": "Use 1000 Separator(.)",
             "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -123,18 +123,18 @@
           },
           "options.amount.format__currency_symbol": {
             "type": "select",
-            "label": "符号",
+            "标签": "符号",
             "show_if": "options.amount.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "标签": "$"
               },
               "euro": {
-                "label": "€"
+                "标签": "€"
               },
               "pound": {
-                "label": "£"
+                "标签": "£"
               }
             },
             "val": "dollar"
@@ -143,16 +143,17 @@
       },
       "options.standard_table": {
         "type": "checkbox",
-        "label": "标准周期表格",
+        "标签": "标准周期表格",
         "show_if": "options.type=='process'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
+        "style": "margin-top: 10px",
         "breakLine": true
       },
       "options.initial_date": {
         "type": "select",
-        "label": "初始日期",
+        "标签": "初始日期",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -160,7 +161,7 @@
       },
       "options.period": {
         "type": "select",
-        "label": "Periodicy (e.g. Monthly, Quarterly)",
+        "标签": "周期性（如每月、每季度）",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -168,7 +169,7 @@
       },
       "options.final_date": {
         "type": "select",
-        "label": "最后日期",
+        "标签": "最后日期",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -176,47 +177,47 @@
       },
       "options.volume": {
         "type": "select",
-        "label": "金额",
+        "标签": "金额",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth": {
         "type": "select",
-        "label": "增长",
+        "标签": "增长",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth_period": {
         "type": "select",
-        "label": "增长时段",
+        "标签": "增长时段",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "options": {
           "selected_period": {
-            "label": "等于周期"
+            "标签": "等于周期"
           },
           "week_on_week": {
-            "label": "周环比"
+            "标签": "周环比"
           },
           "month_on_month": {
-            "label": "月环比"
+            "标签": "月环比"
           },
           "quarter_on_quarter": {
-            "label": "季环比"
+            "标签": "季环比"
           },
           "year_on_year": {
-            "label": "年环比"
+            "标签": "年环比"
           },
           "column": {
-            "label": "选择列"
+            "标签": "选择列"
           }
         },
         "val": "selected_period"
       },
       "options.growth_period_column": {
         "type": "select",
-        "label": "增长时段列",
+        "标签": "增长时段列",
         "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -225,7 +226,7 @@
       },
       "options.use_growth_pattern_column": {
         "type": "checkbox",
-        "label": "使用增长模式",
+        "标签": "使用增长模式",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "val": "false",
         "isOn": "true",
@@ -233,7 +234,7 @@
       },
       "options.growth_pattern_column": {
         "type": "select",
-        "label": "增长模式",
+        "标签": "增长模式",
         "show_if": "options.type=='process' && options.standard_table=='false' && options.use_growth_pattern_column=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -242,137 +243,138 @@
       },
       "options.custom.table": {
         "type": "fieldset",
-        "label": "Planning Position",
+        "标签": "计划职位",
         "show_if": "options.type=='custom'",
         "repeat": true,
         "fields": {
           "item": {
             "type": "text",
-            "label": "Item",
+            "标签": "项目",
             "val": "",
             "required": true
           },
           "position": {
             "type": "text",
-            "label": "位置",
+            "标签": "位置",
             "val": "",
             "required": true,
             "breakLine": true
           },
           "amount": {
             "type": "number",
-            "label": "金额",
+            "标签": "金额",
             "val": "",
             "required": true
           },
           "amount_format__category": {
             "type": "select",
-            "label": "Amount Format",
+            "标签": "金额格式",
+            "show_if" : "$index == 0",
             "required": true,
             "options": {
               "standard": {
-                "label": "标准"
+                "标签": "标准"
               },
               "number": {
-                "label": "数字"
+                "标签": "数字"
               },
               "percentage": {
-                "label": "百分比"
+                "标签": "百分比"
               },
               "text": {
-                "label": "文本"
+                "标签": "文本"
               },
               "date": {
-                "label": "日期"
+                "标签": "日期"
               },
               "currency": {
-                "label": "货币"
+                "标签": "货币"
               }
             },
-            "val": "standard"
+            "val": "number"
           },
           "amount_format__rounding": {
             "type": "select",
-            "label": "取整",
-            "show_if": "this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency'",
+            "标签": "取整",
+            "show_if": "$index == 0 && (this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency')",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "不取整"
+                "标签": "不取整"
               },
               "0": {
-                "label": "0 位数"
+                "标签": "0 位数"
               },
               "1": {
-                "label": "1 位数"
+                "标签": "1 位数"
               },
               "2": {
-                "label": "2 位数"
+                "标签": "2 位数"
               },
               "3": {
-                "label": "3 位数"
+                "标签": "3 位数"
               },
               "4": {
-                "label": "4 位数"
+                "标签": "4 位数"
               },
               "5": {
-                "label": "5 位数"
+                "标签": "5 位数"
               },
               "6": {
-                "label": "6 位数"
+                "标签": "6 位数"
               },
               "7": {
-                "label": "7 位数"
+                "标签": "7 位数"
               },
               "8": {
-                "label": "8 位数"
+                "标签": "8 位数"
               },
               "9": {
-                "label": "9 位数"
+                "标签": "9 位数"
               }
             },
             "val": "2"
           },
           "amount_format__use_1000_separator": {
             "type": "checkbox",
-            "label": "使用 1000 分隔符（.）",
-            "show_if": "this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency'",
+            "标签": "Use 1000 Separator(.)",
+            "show_if": "$index == 0 && (this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency')",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
           },
           "amount_format__currency_symbol": {
             "type": "select",
-            "label": "符号",
-            "show_if": "this.amount_format__category=='currency'",
+            "标签": "符号",
+            "show_if": "$index == 0 && (this.amount_format__category=='currency')",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "标签": "$"
               },
               "euro": {
-                "label": "€"
+                "标签": "€"
               },
               "pound": {
-                "label": "£"
+                "标签": "£"
               }
             },
             "val": "dollar"
           },
           "amount_format__date_format": {
             "type": "select",
-            "label": "类型",
-            "show_if": "this.amount_format__category=='date'",
+            "标签": "类型",
+            "show_if": "$index == 0 && (this.amount_format__category=='date')",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "标签": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "标签": "2012年3月14日，星期三"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "标签": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy",
@@ -380,27 +382,24 @@
           },
           "initial_date": {
             "type": "date",
-            "label": "初始日期",
+            "标签": "初始日期",
             "val": "",
             "required": true
           },
-          "initial_date__category": {
-            "type": "hidden",
-            "val": "date"
-          },
           "initial_date_format__date_format": {
             "type": "select",
-            "label": "类型",
+            "标签": "初始日期格式",
+            "show_if": "$index == 0",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "标签": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "标签": "2012年3月14日，星期三"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "标签": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy",
@@ -408,231 +407,93 @@
           },
           "periodicy": {
             "type": "select",
-            "label": "周期",
+            "标签": "周期",
             "required": true,
             "options": {
-              "one_off": {
-                "label": "One-Off"
+              "一次性的": {
+                "标签": "一次性的"
               },
-              "daily": {
-                "label": "Daily"
+              "每日": {
+                "标签": "每日"
               },
-              "work_daily": {
-                "label": "Work-Daily"
+              "工作-日": {
+                "标签": "工作-日"
               },
-              "weekly": {
-                "label": "Weekly"
+              "每周": {
+                "标签": "每周"
               },
-              "monthly": {
-                "label": "Monthly"
+              "每月": {
+                "标签": "每月"
               },
-              "quarterly": {
-                "label": "Quarterly"
+              "季度": {
+                "标签": "季度"
               },
-              "yearly": {
-                "label": "Yearly"
+              "一年一度": {
+                "标签": "一年一度"
               }
             },
-            "val": "one_off"
+            "val": "一次性的"
           },
           "growth": {
             "type": "number",
-            "label": "增长",
-            "show_if": "this.periodicy!='one_off'",
+            "标签": "增长",
+            "show_if": "this.periodicy!='One-Off'",
             "val": "",
             "required": true
-          },
-          "growth_format__category": {
-            "type": "select",
-            "label": "Growth Format",
-            "show_if": "this.periodicy!='one_off'",
-            "required": true,
-            "options": {
-              "standard": {
-                "label": "标准"
-              },
-              "number": {
-                "label": "数字"
-              },
-              "percentage": {
-                "label": "百分比"
-              },
-              "text": {
-                "label": "文本"
-              },
-              "date": {
-                "label": "日期"
-              },
-              "currency": {
-                "label": "货币"
-              }
-            },
-            "val": "standard"
-          },
-          "growth_format__rounding": {
-            "type": "select",
-            "label": "取整",
-            "show_if": "this.periodicy!='one_off' && (this.growth_format__category=='number' || this.growth_format__category=='percentage' || this.growth_format__category=='currency')",
-            "required": true,
-            "options": {
-              "no_rounding": {
-                "label": "不取整"
-              },
-              "0": {
-                "label": "0 位数"
-              },
-              "1": {
-                "label": "1 位数"
-              },
-              "2": {
-                "label": "2 位数"
-              },
-              "3": {
-                "label": "3 位数"
-              },
-              "4": {
-                "label": "4 位数"
-              },
-              "5": {
-                "label": "5 位数"
-              },
-              "6": {
-                "label": "6 位数"
-              },
-              "7": {
-                "label": "7 位数"
-              },
-              "8": {
-                "label": "8 位数"
-              },
-              "9": {
-                "label": "9 位数"
-              }
-            },
-            "val": "2"
-          },
-          "growth_format__use_1000_separator": {
-            "type": "checkbox",
-            "label": "使用 1000 分隔符（.）",
-            "show_if": "this.periodicy!='one_off' && (this.growth_format__category=='number' || this.growth_format__category=='percentage' || this.growth_format__category=='currency')",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "growth_format__currency_symbol": {
-            "type": "select",
-            "label": "符号",
-            "show_if": "this.periodicy!='one_off' && this.growth_format__category=='currency'",
-            "required": true,
-            "options": {
-              "dollar": {
-                "label": "$"
-              },
-              "euro": {
-                "label": "€"
-              },
-              "pound": {
-                "label": "£"
-              }
-            },
-            "val": "dollar"
-          },
-          "growth_format__date_format": {
-            "type": "select",
-            "label": "类型",
-            "show_if": "this.periodicy!='one_off' && this.growth_format__category=='date'",
-            "required": true,
-            "options": {
-              "mm/dd/yyyy": {
-                "label": "3/14/2012"
-              },
-              "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
-              },
-              "yyyy-mm-dd": {
-                "label": "2012-03-14"
-              }
-            },
-            "val": "mm/dd/yyyy",
-            "breakLine": true
           },
           "growth_period": {
             "type": "select",
-            "label": "增长时段",
-            "show_if": "this.periodicy!='one_off'",
+            "标签": "增长时段",
+            "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "week_on_week": {
-                "label": "周环比"
+              "每周": {
+                "标签": "每周"
               },
-              "month_on_month": {
-                "label": "月环比"
+              "每月": {
+                "标签": "月环比"
               },
-              "quarter_on_quarter": {
-                "label": "季环比"
+              "季度": {
+                "标签": "季环比"
               },
-              "year_on_year": {
-                "label": "年环比"
+              "一年一度": {
+                "标签": "年环比"
               }
             },
-            "val": "week_on_week"
+            "val": "每周"
           },
           "growth_pattern": {
             "type": "select",
-            "label": "增长模式",
-            "show_if": "this.periodicy!='one_off'",
+            "标签": "增长模式",
+            "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "compounding": {
-                "label": "Compounding"
+              "复利": {
+                "标签": "复利"
               },
-              "linear": {
-                "label": "线性"
+              "线性": {
+                "标签": "线性"
               },
-              "jump_fix": {
-                "label": "Jump-Fix"
+              "跳跃式修复": {
+                "标签": "跳跃式修复"
               }
             },
-            "val": "compounding"
+            "val": "复利"
           },
           "final_date": {
             "type": "date",
-            "label": "最后日期",
-            "show_if": "this.periodicy!='one_off'",
-            "val": "",
-            "required": true
-          },
-          "final_date_format__category": {
-            "type": "hidden",
-            "val": "date"
-          },
-          "final_date_format__date_format": {
-            "type": "select",
-            "label": "类型",
-            "show_if": "this.periodicy!='one_off'",
-            "required": true,
-            "options": {
-              "mm/dd/yyyy": {
-                "label": "3/14/2012"
-              },
-              "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
-              },
-              "yyyy-mm-dd": {
-                "label": "2012-03-14"
-              }
-            },
-            "val": "mm/dd/yyyy",
-            "breakLine": true
+            "标签": "最后日期",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": ""
           },
           "delete": {
             "type": "button",
-            "label": "删除",
+            "标签": "删除",
             "function": "DELETE_ROW"
           }
         }
       },
       "options.end_date": {
         "type": "date",
-        "label": "表格结束日期",
+        "标签": "表格结束日期",
         "show_if": "options.type=='process' || options.type=='custom'",
         "val": "",
         "required": true,
