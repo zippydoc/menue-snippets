@@ -7,15 +7,24 @@
       "output.custom_text": {
         "type": "text",
         "Beschriftung": "Name der Ausgabetabelle",
-        "show_if": "output.compose_table_name=='false'",
+        "show_if": "output.custom_options=='false' || (output.custom_options=='true' && output.compose_table_name=='false')",
         "minLength": 1,
         "val": "",
         "width": "100%",
         "breakLine": true
       },
+      "output.custom_options": {
+        "type": "checkbox",
+        "Beschriftung": "Ausgabe-Optionen",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "output.compose_table_name": {
         "type": "checkbox",
         "Beschriftung": "Tabellenname zusammenstellen",
+        "show_if": "output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -24,7 +33,7 @@
       "compose_table_name_frame": {
         "type": "fieldset",
         "Beschriftung": "Name der Ausgabetabelle zusammenstellen",
-        "show_if": "output.compose_table_name=='true'",
+        "show_if": "output.custom_options=='true' && output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
