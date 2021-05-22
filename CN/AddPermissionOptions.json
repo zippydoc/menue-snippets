@@ -1,20 +1,20 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "选择选项",
+    "标签": "选择选项",
     "repeat": false,
     "fields": {
       "options.table_permission.set_or_delete": {
         "type": "select",
-        "label": "Type of Action",
+        "标签": "行动类型",
         "show_if": "input.table_or_flow=='set_table_permissions'",
         "required": true,
         "options": {
           "set_permissions": {
-            "label": "Set permissions"
+            "标签": "设置权限"
           },
           "delete_permissions": {
-            "label": "Delete all permissions"
+            "标签": "删除所有权限"
           }
         },
         "val": "set_permissions",
@@ -22,34 +22,34 @@
       },
       "options.table_permission.emails": {
         "type": "text",
-        "label": "Permitted Users (; separated list)",
+        "标签": "允许的用户（；分隔的列表）",
         "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
         "required": true,
         "width": "100%"
       },
       "options.table_permission.permissions": {
         "type": "fieldset",
-        "label": "Set Permissions",
+        "标签": "设置权限",
         "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
         "repeat": true,
         "fields": {
           "rows_or_columns": {
             "type": "select",
-            "label": "Type for Table",
+            "标签": "表的类型",
             "required": true,
             "options": {
               "select_rows": {
-                "label": "Select Row(s)"
+                "标签": "选择行"
               },
               "select_columns": {
-                "label": "选择列"
+                "标签": "选择列"
               }
             },
             "val": "select_columns"
           },
           "rows": {
             "type": "select",
-            "label": "Select Row(s)",
+            "标签": "选择行",
             "show_if": "this.rows_or_columns=='select_rows'",
             "table": "input.table_id",
             "bind": "LABELS",
@@ -58,7 +58,7 @@
           },
           "columns": {
             "type": "select",
-            "label": "Select Columns(s)",
+            "标签": "选择列(s)",
             "show_if": "this.rows_or_columns=='select_columns'",
             "table": "input.table_id",
             "bind": "COLUMNS",
@@ -67,36 +67,36 @@
           },
           "permission_type": {
             "type": "select",
-            "label": "Permission Type",
+            "标签": "权限类型",
             "required": true,
             "options": {
               "READ": {
-                "label": "Read"
+                "标签": "阅读"
               },
               "WRITE": {
-                "label": "Write"
+                "标签": "写入"
               },
               "PASS-ON": {
-                "label": "Pass-On"
+                "标签": "传入"
               }
             },
             "val": "READ"
           },
           "delete": {
             "type": "button",
-            "label": "删除",
+            "标签": "删除",
             "function": "DELETE_ROW"
           }
         }
       },
       "options.flow_permission.set_or_delete": {
         "type": "select",
-        "label": "Type of Action",
+        "标签": "行动类型",
         "show_if": "input.table_or_flow=='set_flow_permissions'",
         "required": true,
         "options": {
           "set_permissions": {
-            "label": "Set permissions"
+            "标签": "设置权限"
           }
         },
         "val": "set_permissions",
@@ -104,37 +104,37 @@
       },
       "options.flow_permission.emails": {
         "type": "text",
-        "label": "Permitted Users (; separated list)",
+        "标签": "允许的用户（；分隔的列表）",
         "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
         "required": true,
         "width": "100%"
       },
       "options.flow_permission.permissions": {
         "type": "fieldset",
-        "label": "Set Permissions",
+        "标签": "设置权限",
         "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
         "repeat": true,
         "fields": {
           "permission_type": {
             "type": "select",
-            "label": "Permission Type",
+            "标签": "权限类型",
             "required": true,
             "options": {
               "READ": {
-                "label": "Read"
+                "标签": "阅读"
               },
               "WRITE": {
-                "label": "Write"
+                "标签": "写入"
               },
               "PASS-ON": {
-                "label": "Pass-On"
+                "标签": "传入"
               }
             },
             "val": "READ"
           },
           "delete": {
             "type": "button",
-            "label": "删除",
+            "标签": "删除",
             "function": "DELETE_ROW"
           }
         }
