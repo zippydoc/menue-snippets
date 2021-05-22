@@ -21,6 +21,22 @@
         },
         "val": "write_email"
       },
+      "input_table": {
+        "type": "select",
+        "etiqueta": "Selecionar Tabela",
+        "show_if": "options.task_type=='write_series'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true
+      },
+      "info1": {
+        "type": "text",
+        "etiqueta": "",
+        "show_if": "options.task_type=='write_series'",
+        "val": "Table-Type: TO | CC | BCC | SUBJECT | BODY",
+        "disabled": true,
+        "style": "width: 100%"
+      },
       "options.to": {
         "type": "text",
         "etiqueta": "Para",
@@ -34,7 +50,6 @@
         "type": "text",
         "etiqueta": "CC",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "ccuser1@domain.com; ccuser2@domain.com",
         "width": "100%"
@@ -43,7 +58,6 @@
         "type": "text",
         "etiqueta": "BCC",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "bccuser1@domain.com; bccuser1@domain.com",
         "width": "100%"
@@ -58,12 +72,13 @@
         "width": "100%"
       },
       "options.body": {
-        "type": "text",
+        "type": "textarea",
         "etiqueta": "Corpo",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "Texto",
+        "md_no_resize": true,
+        "rows": 3,
         "width": "100%"
       }
     }
