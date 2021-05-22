@@ -1,186 +1,186 @@
 {
   "actions": {
     "type": "fieldset",
-    "label": "Ajouter des actions",
+    "Étiquette": "Ajouter des actions",
     "repeat": true,
     "fields": {
       "column": {
         "type": "select",
-        "label": "Colonne",
+        "Étiquette": "Colonne",
         "table": "input_table",
 		"assign_selected_value_to":"this.output_column_name",
         "bind": "COLUMNS"
       },
       "action": {
         "type": "select",
-        "label": "Action",
+        "Étiquette": "Action",
         "options": {
           "group_by": {
-            "label": "Grouper par"
+            "Étiquette": "Grouper par"
           },
           "count": {
-            "label": "Compter"
+            "Étiquette": "Compter"
           },
           "sum": {
-            "label": "Somme"
+            "Étiquette": "Somme"
           },
           "first": {
-            "label": "Premier"
+            "Étiquette": "Premier"
           },
           "last": {
-            "label": "Dernier"
+            "Étiquette": "Dernier"
           },
           "shortest": {
-            "label": "Le plus court"
+            "Étiquette": "Le plus court"
           },
           "longest": {
-            "label": "La plus longue"
+            "Étiquette": "La plus longue"
           },
           "concatenate": {
-            "label": "Concaténer"
+            "Étiquette": "Concaténer"
           },
           "mathematics": {
-            "label": "Mathématiques"
+            "Étiquette": "Mathématiques"
           }
         }
       },
       "count_action_category": {
         "type": "select",
-        "label": "Type d'action",
+        "Étiquette": "Type d'action",
         "show_if": "this.action=='count'",
         "options": {
           "all": {
-            "label": "Tout"
+            "Étiquette": "Tout"
           },
           "distinct": {
-            "label": "Distinct"
+            "Étiquette": "Distinct"
           },
           "empty_or_zero": {
-            "label": "Vide ou 0"
+            "Étiquette": "Vide ou 0"
           },
           "non_empty_or_zero": {
-            "label": "Non vide ou 0"
+            "Étiquette": "Non vide ou 0"
           }
         },
         "val": "all"
       },
       "action_type1": {
         "type": "select",
-        "label": "Sous-type d'action",
+        "Étiquette": "Sous-type d'action",
         "show_if": "this.action=='count' && (this.count_action_category=='all' || this.count_action_category=='distinct')",
         "options": {
           "-": {
-            "label": "-"
+            "Étiquette": "-"
           },
           "non_zero": {
-            "label": "Non 0"
+            "Étiquette": "Non 0"
           },
           "non_empty": {
-            "label": "Non vide"
+            "Étiquette": "Non vide"
           },
           "non_null": {
-            "label": "Non nul"
+            "Étiquette": "Non nul"
           },
           "non_blank": {
-            "label": "Non blanc"
+            "Étiquette": "Non blanc"
           }
         },
         "val": "-"
       },
       "action_type2": {
         "type": "select",
-        "label": "Sous-type d'action",
+        "Étiquette": "Sous-type d'action",
         "show_if": "this.action=='count' && this.count_action_category=='empty_or_zero'",
         "options": {
           "zero": {
-            "label": "0"
+            "Étiquette": "0"
           },
           "empty": {
-            "label": "Vide (nul et blanc)"
+            "Étiquette": "Vide (nul et blanc)"
           },
           "null": {
-            "label": "Null"
+            "Étiquette": "Null"
           },
           "blank": {
-            "label": "Vide"
+            "Étiquette": "Vide"
           }
         },
         "val": "zero"
       },
       "action_type3": {
         "type": "select",
-        "label": "Sous-type d'action",
+        "Étiquette": "Sous-type d'action",
         "show_if": "this.action=='count' && this.count_action_category=='non_empty_or_zero'",
         "options": {
           "non_zero": {
-            "label": "Non 0"
+            "Étiquette": "Non 0"
           },
           "non_empty": {
-            "label": "Non vide"
+            "Étiquette": "Non vide"
           },
           "non_null": {
-            "label": "Non nul"
+            "Étiquette": "Non nul"
           },
           "non_blank": {
-            "label": "Non blanc"
+            "Étiquette": "Non blanc"
           }
         },
         "val": "non_zero"
       },
       "mathematics_action_category": {
         "type": "select",
-        "label": "Type d'action",
+        "Étiquette": "Type d'action",
         "show_if": "this.action=='mathematics'",
         "options": {
           "min": {
-            "label": "Min"
+            "Étiquette": "Min"
           },
           "max": {
-            "label": "Max"
+            "Étiquette": "Max"
           },
           "average": {
-            "label": "Moyenne"
+            "Étiquette": "Moyenne"
           },
           "median": {
-            "label": "Médiane"
+            "Étiquette": "Médiane"
           },
           "standard_deviation": {
-            "label": "Écart type"
+            "Étiquette": "Écart type"
           },
           "variance": {
-            "label": "Variance"
+            "Étiquette": "Variance"
           }
         },
         "val": "min"
       },
       "action_type4": {
         "type": "select",
-        "label": "Sous-type d'action",
+        "Étiquette": "Sous-type d'action",
         "show_if": "this.action=='mathematics'",
         "options": {
           "include_zero": {
-            "label": "Inclure 0"
+            "Étiquette": "Inclure 0"
           },
           "exclude_zero": {
-            "label": "Exclure 0"
+            "Étiquette": "Exclure 0"
           }
         },
         "val": "include_zero"
       },
       "concatenate_separator": {
         "type": "text",
-        "label": "Séparateur",
+        "Étiquette": "Séparateur",
         "show_if": "this.action=='concatenate'",
-        "val": ",
+        "val": ","
       },
-      output_column_name": {
+      "output_column_name": {
         "type": "text",
-        "label": "Sortir le nom de la colonne",
+        "Étiquette": "Sortir le nom de la colonne",
         "val": ""
       },
       "delete": {
         "type": "button",
-        "label": "Supprimer",
+        "Étiquette": "Supprimer",
         "function": "DELETE_ROW"
       }
     }
