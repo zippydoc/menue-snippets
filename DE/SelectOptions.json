@@ -1,0 +1,112 @@
+{
+  "options": {
+    "type": "fieldset",
+    "Beschriftung": "Optionen auswählen",
+    "repeat": false,
+    "fields": {
+      "type": {
+        "type": "select",
+        "Beschriftung": "Typ auswählen",
+        "val": "first_n",
+        "options": {
+          "first_n": {
+            "Beschriftung": "Erste N"
+          },
+          "last_n": {
+            "Beschriftung": "Letzte N"
+          },
+          "custom_selection": {
+            "Beschriftung": "Benutzerdefinierte Auswahl"
+          },
+          "skip_first_n": {
+            "Beschriftung": "Erste überspringen N"
+          },
+          "skip_last_n": {
+            "Beschriftung": "Letztes N überspringen"
+          },
+          "first_n_percent": {
+            "Beschriftung": "Erste N%"
+          },
+          "last_n_percent": {
+            "Beschriftung": "Letzte N%"
+          },
+          "random_n_records": {
+            "Beschriftung": "Zufällig N"
+          },
+          "random_n_percent": {
+            "Beschriftung": "Zufällig N%"
+          },
+          "random_choice_1_n": {
+            "Beschriftung": "Zufallsauswahl 1:N"
+          },
+          "every_nth_record": {
+            "Beschriftung": "Jeder N-te Datensatz"
+          }
+        },
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "n": {
+        "type": "text",
+        "Beschriftung": "Eingang N",
+        "show_if": "type!='custom_selection'",
+        "val": "1",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "ranges": {
+        "type": "text",
+        "Beschriftung": "Eingangsbereiche",
+        "show_if": "type=='custom_selection'",
+        "val": "-2; 4-6; 9; 12+",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "set_offset": {
+        "type": "checkbox",
+        "Beschriftung": "Versetzt",
+        "show_if": "type=='every_nth_record'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "offset": {
+        "type": "text",
+        "Beschriftung": "Versetzt",
+        "show_if": "type=='every_nth_record' && set_offset=='true'",
+        "val": "1",
+        "required": true,
+        "breakLine": true
+      },
+      "group_by_column": {
+        "type": "checkbox",
+        "Beschriftung": "Gruppieren nach Spalte",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "columns_to_group_box": {
+        "type": "fieldset",
+        "Beschriftung": "Gruppieren nach Spalte",
+        "show_if": "group_by_column=='true'",
+        "repeat": false,
+        "fields": {
+          "columns_to_group": {
+            "type": "select",
+            "Beschriftung": "Gruppenspalten auswählen",
+            "required": true,
+            "width": "100%",
+            "table": "input_table",
+            "multiple": true,
+            "bind": "COLUMNS",
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}
