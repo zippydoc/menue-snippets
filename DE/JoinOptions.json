@@ -1,0 +1,44 @@
+{
+  "options": {
+    "type": "fieldset",
+    "Beschriftung": "Verbindungsoptionen auswählen",
+    "repeat": false,
+    "fields": {
+      "join_type": {
+        "type": "radio",
+        "Beschriftung": "Beitreten durch",
+        "val": "join_by_specific_field",
+        "values": {
+          "join_by_specific_field": "Specific Field",
+          "join_by_record_position": "Record Position"
+        },
+        "breakLine": true
+      },
+      "join_fields": {
+        "type": "fieldset",
+        "Beschriftung": "Verbinden nach Spalten",
+        "show_if": "join_type=='join_by_specific_field'",
+        "repeat": true,
+        "fields": {
+          "left_table_field": {
+            "type": "select",
+            "Beschriftung": "Linke Tabellenspalte",
+            "table": "left_table.table_id",
+            "bind": "COLUMNS"
+          },
+          "right_table_field": {
+            "type": "select",
+            "Beschriftung": "Rechte Tabellenspalte",
+            "table": "right_table.table_id",
+            "bind": "COLUMNS"
+          },
+          "delete": {
+            "type": "button",
+            "Beschriftung": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
