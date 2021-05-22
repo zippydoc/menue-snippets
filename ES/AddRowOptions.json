@@ -1,49 +1,57 @@
 {
   "options": {
     "type": "fieldset",
-    "Etiqueta": "Seleccionar caso de opciones",
+    "Etiqueta": "Seleccionar Opciones",
     "repeat": false,
     "fields": {
       "options.position": {
         "type": "select",
         "Etiqueta": "Seleccionar Posición",
+        "show_if": "$input_table.numOfLabel >= 1",
         "required": true,
         "options": {
-          "add_rows_below_selected_row": {
-            "Etiqueta": "Agregar filas debajo"
+          "add_rows_at_table_end": {
+            "Etiqueta": "Add row on bottom"
+          },
+          "add_row_on_top": {
+            "Etiqueta": "Add row on top"
           },
           "add_rows_above_selected_row": {
-            "Etiqueta": "Agregar filas arriba"
+            "Etiqueta": "Add row above selection"
           },
-          "add_rows_at_table_end": {
-            "Etiqueta": "Agregar filas al final de la tabla"
-          },
-          "add_single_row_at_table_end": {
-            "Etiqueta": "Agregar una fila al final de la tabla"
+          "add_rows_below_selected_row": {
+            "Etiqueta": "Add row below selection"
           },
           "add_row_after_each_group": {
             "Etiqueta": "Agregar fila después de cada grupo"
           }
         },
-        "val": "add_rows_below_selected_row",
+        "val": "add_rows_at_table_end",
         "breakLine": true
       },
       "options.group_column": {
         "type": "select",
         "Etiqueta": "Columna del Grupo",
-        "show_if": "options.position=='add_row_after_each_group' && $input_table.numOfLabel < 1",
+        "show_if": "$input_table.numOfLabel < 1 && options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
         "breakLine": true
       },
       "options.use_filter": {
-        "type": "checkbox",
-        "Etiqueta": "Usar Filtro",
-        "show_if": "$input_table.numOfLabel < 1 && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "type": "select",
+        "Etiqueta": "Seleccionar Tipo",
+        "show_if": "false",
+        "required": true,
+        "options": {
+          "false": {
+            "Etiqueta": "Añadir una fila por cada fila de la tabla"
+          },
+          "true": {
+            "Etiqueta": "Añadir una fila por cada fila especificada"
+          }
+        },
         "val": "false",
-        "isOn": "true",
-        "isOff": "false",
         "breakLine": true,
         "style": "margin-top: 10px"
       },
@@ -200,7 +208,7 @@
                 "type": "date",
                 "Etiqueta": "Seleccionar Fecha",
                 "show_if": "this.condition=='DATE'",
-                "val": "1/31/2020",
+                "val": "",
                 "required": true
               },
               "value": {
@@ -264,12 +272,13 @@
       },
       "options.add_rows": {
         "type": "fieldset",
-        "Etiqueta": "Opción de las Nuevas Filas",
+        "Etiqueta": "Nueva Opción de la Fila",
         "repeat": true,
         "fields": {
           "new_row_name": {
             "type": "text",
             "Etiqueta": "Nombre de la Nueva Fila",
+            "show_if": "$input_table.numOfLabel >= 1",
             "val": ""
           },
           "function_type": {
@@ -539,7 +548,7 @@
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "Etiqueta": "Usar el Separador de 1000(.)",
+            "Etiqueta": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "false",
             "isOn": "true",
@@ -587,6 +596,42 @@
             "function": "DELETE_ROW"
           }
         }
+      },
+      "options.add_new_row": {
+        "type": "checkbox",
+        "Etiqueta": "Agregar Etiqueta",
+        "show_if": "$input_table.numOfLabel < 1",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.new_row_label": {
+        "type": "text",
+        "Etiqueta": "Label Name",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "val": ""
+      },
+      "options.new_sel_column": {
+        "type": "select",
+        "Etiqueta": "Seleccionar Columna",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "required": true,
+        "table": "input_table",
+        "multiple": false,
+        "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.insert_on_top": {
+        "type": "checkbox",
+        "Etiqueta": "Insert on Top",
+        "show_if": "$input_table.numOfLabel < 1",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
       }
     }
   }
