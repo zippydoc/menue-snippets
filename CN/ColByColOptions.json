@@ -1,29 +1,29 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "选择选项",
+    "标签": "选择选项",
     "repeat": false,
     "fields": {
       "options.position": {
         "type": "select",
-        "label": "选择位置",
+        "标签": "选择位置",
         "required": true,
         "show_if": "table_type=='header_only'",
         "options": {
           "add_rows_below_selected_row": {
-            "label": "在下方添加行"
+            "标签": "在下方添加行"
           },
           "add_rows_above_selected_row": {
-            "label": "在上方添加行"
+            "标签": "在上方添加行"
           },
           "add_rows_at_table_end": {
-            "label": "在表格末尾添加行"
+            "标签": "在表格末尾添加行"
           },
           "add_single_row_at_table_end": {
-            "label": "在表格末尾添加单行"
+            "标签": "在表格末尾添加单行"
           },
           "add_row_after_each_group": {
-            "label": "在各组后添加行"
+            "标签": "在各组后添加行"
           }
         },
         "val": "add_rows_below_selected_row",
@@ -31,7 +31,7 @@
       },
       "options.group_column": {
         "type": "select",
-        "label": "组列",
+        "标签": "组列",
         "show_if": "table_type=='header_only' && options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -40,7 +40,7 @@
       },
       "options.use_filter": {
         "type": "checkbox",
-        "label": "使用筛选",
+        "标签": "使用筛选",
         "show_if": "table_type=='header_only' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "val": "false",
         "isOn": "true",
@@ -50,170 +50,170 @@
       },
       "filter_box": {
         "type": "fieldset",
-        "label": "筛选选项",
+        "标签": "筛选选项",
         "show_if": "table_type=='header_only' && options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
         "repeat": false,
         "fields": {
           "options.filter": {
             "type": "fieldset",
-            "label": "添加筛选条件",
+            "标签": "添加筛选条件",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "选择逻辑运算符",
+                "标签": "选择逻辑运算符",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
                   "if": {
-                    "label": "IF"
+                    "标签": "IF"
                   },
                   "if_not": {
-                    "label": "如果不是"
+                    "标签": "如果不是"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "选择逻辑运算符",
+                "标签": "选择逻辑运算符",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
                   "and": {
-                    "label": "AND"
+                    "标签": "AND"
                   },
                   "or": {
-                    "label": "OR"
+                    "标签": "OR"
                   },
                   "and_not": {
-                    "label": "AND NOT"
+                    "标签": "AND NOT"
                   },
                   "or_not": {
-                    "label": "OR NOT"
+                    "标签": "OR NOT"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": "选择列",
+                "标签": "选择列",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "选择运算符",
+                "标签": "选择运算符",
                 "required": true,
                 "options": {
                   "包含": {
-                    "label": "包含"
+                    "标签": "包含"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "包含于"
+                    "标签": "包含于"
                   },
                   "开始于": {
-                    "label": "开始于"
+                    "标签": "开始于"
                   },
                   "结尾是": {
-                    "label": "结尾是"
+                    "标签": "结尾是"
                   },
                   "=": {
-                    "label": "相等"
+                    "标签": "相等"
                   },
                   ">": {
-                    "label": "大于"
+                    "标签": "大于"
                   },
                   ">=": {
-                    "label": "大于或等于"
+                    "标签": "大于或等于"
                   },
                   "<": {
-                    "label": "小于"
+                    "标签": "小于"
                   },
                   "<=": {
-                    "label": "小于或等于"
+                    "标签": "小于或等于"
                   },
                   "EMPTY": {
-                    "label": "为空"
+                    "标签": "为空"
                   },
                   "BLANK": {
-                    "label": "为空白"
+                    "标签": "为空白"
                   },
                   "为 NULL": {
-                    "label": "为 NULL"
+                    "标签": "为 NULL"
                   },
                   "正则表达式匹配": {
-                    "label": "正则表达式匹配"
+                    "标签": "正则表达式匹配"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "于表格"
+                    "标签": "于表格"
                   },
                   "于正则表格": {
-                    "label": "于正则表格"
+                    "标签": "于正则表格"
                   },
                   "日期": {
-                    "label": "日期"
+                    "标签": "日期"
                   }
                 },
                 "val": "包含"
               },
               "date_condition": {
                 "type": "select",
-                "label": "选择日期运算符",
+                "标签": "选择日期运算符",
                 "required": true,
                 "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "PRIOR"
+                    "标签": "PRIOR"
                   },
                   "<=": {
-                    "label": "先于或等于"
+                    "标签": "先于或等于"
                   },
                   "=": {
-                    "label": "相等"
+                    "标签": "相等"
                   },
                   ">": {
-                    "label": "之后"
+                    "标签": "之后"
                   },
                   ">=": {
-                    "label": "之后或等于"
+                    "标签": "之后或等于"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "选择区分大小写",
+                "标签": "选择区分大小写",
                 "required": true,
                 "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "区分大小写"
+                    "标签": "区分大小写"
                   },
                   "no": {
-                    "label": "不区分大小写"
+                    "标签": "不区分大小写"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "选择日期",
+                "标签": "选择日期",
                 "show_if": "this.condition=='DATE'",
-                "val": "1/31/2020",
+                "val": "",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "输入值",
+                "标签": "输入值",
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "选择表格",
+                "标签": "选择表格",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -221,7 +221,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "选择列",
+                "标签": "选择列",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -229,14 +229,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "删除",
+                "标签": "删除",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.apply_to_record": {
             "type": "checkbox",
-            "label": "应用至记录",
+            "标签": "应用至记录",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -245,13 +245,13 @@
           },
           "apply_to_group_box": {
             "type": "fieldset",
-            "label": "应用至组",
+            "标签": "应用至组",
             "show_if": "options.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
                 "type": "select",
-                "label": "选择组列",
+                "标签": "选择组列",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
@@ -265,92 +265,92 @@
       },
       "options.add_rows": {
         "type": "fieldset",
-        "label": "新行选项",
+        "标签": "新行选项",
         "repeat": true,
         "fields": {
           "new_row_name": {
             "type": "text",
-            "label": "新行名称",
+            "标签": "新行名称",
             "val": ""
           },
           "function_type": {
             "type": "select",
-            "label": "任务类型",
+            "标签": "任务类型",
             "show_if": "false",
             "required": true,
             "options": {
               "multi_column_functions": {
-                "label": "多列"
+                "标签": "多列"
               },
               "multi_row_functions": {
-                "label": "多行"
+                "标签": "多行"
               }
             },
             "val": "multi_column_functions"
           },
           "multi_column_functions__function": {
             "type": "select",
-            "label": "选择函数",
+            "标签": "选择函数",
             "show_if": "this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "absolute_growth": {
-                "label": "绝对增长"
+                "标签": "绝对增长"
               },
               "relative_growth": {
-                "label": "相对增长"
+                "标签": "相对增长"
               },
               "trailing_average": {
-                "label": "尾随平均"
+                "标签": "尾随平均"
               },
               "index_growth": {
-                "label": "索引增长"
+                "标签": "索引增长"
               },
               "compound_growth": {
-                "label": "复合增长"
+                "标签": "复合增长"
               },
               "discount_rate": {
-                "label": "折现率"
+                "标签": "折现率"
               },
               "quota": {
-                "label": "比例"
+                "标签": "比例"
               }
             },
             "val": "absolute_growth"
           },
           "multi_row_functions__function": {
             "type": "select",
-            "label": "选择函数",
+            "标签": "选择函数",
             "show_if": "this.function_type=='multi_row_functions'",
             "required": true,
             "options": {
               "sum": {
-                "label": "总和"
+                "标签": "总和"
               },
               "average": {
-                "label": "平均"
+                "标签": "平均"
               },
               "median": {
-                "label": "中位数"
+                "标签": "中位数"
               },
               "standard_deviation": {
-                "label": "标准差"
+                "标签": "标准差"
               },
               "variance": {
-                "label": "方差"
+                "标签": "方差"
               },
               "product": {
-                "label": "产品"
+                "标签": "产品"
               },
               "quota": {
-                "label": "比例"
+                "标签": "比例"
               }
             },
             "val": "sum"
           },
           "multi_column_functions__sel_labels": {
             "type": "select",
-            "label": "Select Rows(s)",
+            "标签": "选择行(s)",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
             "required": true,
             "table": "input_table",
@@ -359,21 +359,21 @@
           },
           "multi_column_functions__n_value": {
             "type": "text",
-            "label": "N（正整数）",
+            "标签": "N（正整数）",
             "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__rate": {
             "type": "text",
-            "label": "输入率数据",
+            "标签": "输入率数据",
             "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "val": "1",
             "required": true
           },
           "multi_column_functions__discount_rate__starting_column": {
             "type": "select",
-            "label": "起始列",
+            "标签": "起始列",
             "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
             "table": "input_table",
             "bind": "COLUMNS",
@@ -381,7 +381,7 @@
           },
           "multi_column_functions__sel_label_a": {
             "type": "select",
-            "label": "选择标签 A",
+            "标签": "选择标签 A",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -389,7 +389,7 @@
           },
           "multi_column_functions__sel_label_b": {
             "type": "select",
-            "label": "选择标签 B",
+            "标签": "选择标签 B",
             "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -397,7 +397,7 @@
           },
           "multi_row_functions__sel_label_a": {
             "type": "select",
-            "label": "选择标签 A",
+            "标签": "选择标签 A",
             "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -405,7 +405,7 @@
           },
           "multi_row_functions__sel_label_b": {
             "type": "select",
-            "label": "选择标签 B",
+            "标签": "选择标签 B",
             "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
@@ -414,28 +414,28 @@
           },
           "position": {
             "type": "select",
-            "label": "位置",
+            "标签": "位置",
             "show_if": "table_type!='header_only'",
             "required": true,
             "options": {
               "bottom": {
-                "label": "BOTTOM"
+                "标签": "底部"
               },
               "top": {
-                "label": "TOP"
+                "标签": "顶部"
               },
               "above": {
-                "label": "之上"
+                "标签": "之上"
               },
               "below": {
-                "label": "之下"
+                "标签": "之下"
               }
             },
             "val": "bottom"
           },
           "positioning_row": {
             "type": "select",
-            "label": "Positioning Row",
+            "标签": "定位行",
             "show_if": "table_type!='header_only' && (this.position=='above' || this.position=='below')",
             "required": true,
             "table": "input_table",
@@ -443,333 +443,333 @@
           },
           "multi_column_functions__sel_row_a": {
             "type": "select",
-            "label": "选择行 A",
+            "标签": "选择行 A",
             "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "row-1": {
-                "label": "行-1"
+                "标签": "行-1"
               },
               "row-2": {
-                "label": "Row-2"
+                "标签": "第2行"
               },
               "row-3": {
-                "label": "Row-3"
+                "标签": "第3行"
               },
               "row-4": {
-                "label": "Row-4"
+                "标签": "第4行"
               },
               "row-5": {
-                "label": "Row-5"
+                "标签": "第5行"
               },
               "row-6": {
-                "label": "Row-6"
+                "标签": "第6行"
               },
               "row-7": {
-                "label": "Row-7"
+                "标签": "第7行"
               },
               "row-8": {
-                "label": "Row-8"
+                "标签": "第8行"
               },
               "row-9": {
-                "label": "Row-9"
+                "标签": "第9行"
               },
               "row-10": {
-                "label": "Row-10"
+                "标签": "第10行"
               },
               "row-11": {
-                "label": "Row-11"
+                "标签": "第11行"
               },
               "row-12": {
-                "label": "Row-12"
+                "标签": "第12行"
               },
               "row-13": {
-                "label": "Row-13"
+                "标签": "第13行"
               },
               "row-14": {
-                "label": "Row-14"
+                "标签": "第14行"
               },
               "row-15": {
-                "label": "Row-15"
+                "标签": "第15行"
               },
               "row-16": {
-                "label": "Row-16"
+                "标签": "第16行"
               },
               "row-17": {
-                "label": "Row-17"
+                "标签": "第17行"
               },
               "row-18": {
-                "label": "Row-18"
+                "标签": "第18行"
               },
               "row-19": {
-                "label": "Row-19"
+                "标签": "第19行"
               },
               "row-20": {
-                "label": "Row-20"
+                "标签": "第20行"
               },
               "row+1": {
-                "label": "Row+1"
+                "标签": "行+1"
               },
               "row+2": {
-                "label": "Row+2"
+                "标签": "行+2"
               },
               "row+3": {
-                "label": "Row+3"
+                "标签": "行+3"
               },
               "row+4": {
-                "label": "Row+4"
+                "标签": "行+4"
               },
               "row+5": {
-                "label": "Row+5"
+                "标签": "行+5"
               },
               "row+6": {
-                "label": "Row+6"
+                "标签": "行+6"
               },
               "row+7": {
-                "label": "Row+7"
+                "标签": "行+7"
               },
               "row+8": {
-                "label": "Row+8"
+                "标签": "行+8"
               },
               "row+9": {
-                "label": "Row+9"
+                "标签": "行+9"
               },
               "row+10": {
-                "label": "Row+10"
+                "标签": "行+10"
               },
               "row+11": {
-                "label": "Row+11"
+                "标签": "行+11"
               },
               "row+12": {
-                "label": "Row+12"
+                "标签": "行+12"
               },
               "row+13": {
-                "label": "Row+13"
+                "标签": "行+13"
               },
               "row+14": {
-                "label": "Row+14"
+                "标签": "行+14"
               },
               "row+15": {
-                "label": "Row+15"
+                "标签": "行+15"
               },
               "row+16": {
-                "label": "Row+16"
+                "标签": "行+16"
               },
               "row+17": {
-                "label": "Row+17"
+                "标签": "行+17"
               },
               "row+18": {
-                "label": "Row+18"
+                "标签": "行+18"
               },
               "row+19": {
-                "label": "Row+19"
+                "标签": "行+19"
               },
               "row+20": {
-                "label": "Row+20"
+                "标签": "行+20"
               }
             },
             "val": "row-1"
           },
           "multi_column_functions__sel_row_b": {
             "type": "select",
-            "label": "选择行 B",
+            "标签": "选择行 B",
             "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
             "required": true,
             "options": {
               "row-1": {
-                "label": "行-1"
+                "标签": "行-1"
               },
               "row-2": {
-                "label": "Row-2"
+                "标签": "第2行"
               },
               "row-3": {
-                "label": "Row-3"
+                "标签": "第3行"
               },
               "row-4": {
-                "label": "Row-4"
+                "标签": "第4行"
               },
               "row-5": {
-                "label": "Row-5"
+                "标签": "第5行"
               },
               "row-6": {
-                "label": "Row-6"
+                "标签": "第6行"
               },
               "row-7": {
-                "label": "Row-7"
+                "标签": "第7行"
               },
               "row-8": {
-                "label": "Row-8"
+                "标签": "第8行"
               },
               "row-9": {
-                "label": "Row-9"
+                "标签": "第9行"
               },
               "row-10": {
-                "label": "Row-10"
+                "标签": "第10行"
               },
               "row-11": {
-                "label": "Row-11"
+                "标签": "第11行"
               },
               "row-12": {
-                "label": "Row-12"
+                "标签": "第12行"
               },
               "row-13": {
-                "label": "Row-13"
+                "标签": "第13行"
               },
               "row-14": {
-                "label": "Row-14"
+                "标签": "第14行"
               },
               "row-15": {
-                "label": "Row-15"
+                "标签": "第15行"
               },
               "row-16": {
-                "label": "Row-16"
+                "标签": "第16行"
               },
               "row-17": {
-                "label": "Row-17"
+                "标签": "第17行"
               },
               "row-18": {
-                "label": "Row-18"
+                "标签": "第18行"
               },
               "row-19": {
-                "label": "Row-19"
+                "标签": "第19行"
               },
               "row-20": {
-                "label": "Row-20"
+                "标签": "第20行"
               },
               "row+1": {
-                "label": "Row+1"
+                "标签": "行+1"
               },
               "row+2": {
-                "label": "Row+2"
+                "标签": "行+2"
               },
               "row+3": {
-                "label": "Row+3"
+                "标签": "行+3"
               },
               "row+4": {
-                "label": "Row+4"
+                "标签": "行+4"
               },
               "row+5": {
-                "label": "Row+5"
+                "标签": "行+5"
               },
               "row+6": {
-                "label": "Row+6"
+                "标签": "行+6"
               },
               "row+7": {
-                "label": "Row+7"
+                "标签": "行+7"
               },
               "row+8": {
-                "label": "Row+8"
+                "标签": "行+8"
               },
               "row+9": {
-                "label": "Row+9"
+                "标签": "行+9"
               },
               "row+10": {
-                "label": "Row+10"
+                "标签": "行+10"
               },
               "row+11": {
-                "label": "Row+11"
+                "标签": "行+11"
               },
               "row+12": {
-                "label": "Row+12"
+                "标签": "行+12"
               },
               "row+13": {
-                "label": "Row+13"
+                "标签": "行+13"
               },
               "row+14": {
-                "label": "Row+14"
+                "标签": "行+14"
               },
               "row+15": {
-                "label": "Row+15"
+                "标签": "行+15"
               },
               "row+16": {
-                "label": "Row+16"
+                "标签": "行+16"
               },
               "row+17": {
-                "label": "Row+17"
+                "标签": "行+17"
               },
               "row+18": {
-                "label": "Row+18"
+                "标签": "行+18"
               },
               "row+19": {
-                "label": "Row+19"
+                "标签": "行+19"
               },
               "row+20": {
-                "label": "Row+20"
+                "标签": "行+20"
               }
             },
             "val": "row-1"
           },
           "format__category": {
             "type": "select",
-            "label": "格式",
+            "标签": "格式",
             "required": true,
             "options": {
               "standard": {
-                "label": "标准"
+                "标签": "标准"
               },
               "number": {
-                "label": "数字"
+                "标签": "数字"
               },
               "percentage": {
-                "label": "百分比"
+                "标签": "百分比"
               },
               "text": {
-                "label": "文本"
+                "标签": "文本"
               },
               "date": {
-                "label": "日期"
+                "标签": "日期"
               },
               "currency": {
-                "label": "货币"
+                "标签": "货币"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "取整",
+            "标签": "取整",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "不取整"
+                "标签": "不取整"
               },
               "0": {
-                "label": "0 位数"
+                "标签": "0 位数"
               },
               "1": {
-                "label": "1 位数"
+                "标签": "1 位数"
               },
               "2": {
-                "label": "2 位数"
+                "标签": "2 位数"
               },
               "3": {
-                "label": "3 位数"
+                "标签": "3 位数"
               },
               "4": {
-                "label": "4 位数"
+                "标签": "4 位数"
               },
               "5": {
-                "label": "5 位数"
+                "标签": "5 位数"
               },
               "6": {
-                "label": "6 位数"
+                "标签": "6 位数"
               },
               "7": {
-                "label": "7 位数"
+                "标签": "7 位数"
               },
               "8": {
-                "label": "8 位数"
+                "标签": "8 位数"
               },
               "9": {
-                "label": "9 位数"
+                "标签": "9 位数"
               }
             },
             "val": "no_rounding"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "使用 1000 分隔符（.）",
+            "标签": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "false",
             "isOn": "true",
@@ -777,43 +777,43 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "符号",
+            "标签": "符号",
             "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "标签": "$"
               },
               "euro": {
-                "label": "€"
+                "标签": "€"
               },
               "pound": {
-                "label": "£"
+                "标签": "£"
               }
             },
             "val": "dollar"
           },
           "format__date_format": {
             "type": "select",
-            "label": "类型",
+            "标签": "类型",
             "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "标签": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "标签": "2012年3月14日，星期三"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "标签": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy"
           },
           "delete": {
             "type": "button",
-            "label": "删除",
+            "标签": "删除",
             "function": "DELETE_ROW"
           }
         }
