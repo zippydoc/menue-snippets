@@ -1,22 +1,31 @@
 {
   "output": {
     "type": "fieldset",
-    "label": "Definir Tabela de Saída",
+    "标签": "定义输出表格",
     "show_if": "options.from=='database' || (options.from=='web' && options.output_format=='file_list') || (options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='true') || (options.from=='web' && options.output_format!='file_list' && options.is_cloud_dir=='false' && options.use_filename_as_output_table_name=='false')",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
-        "label": "Mostrar Nome da Tabela",
-        "show_if": "output.compose_table_name=='false'",
+        "标签": "输出表格名称",
+        "show_if": "output.custom_options=='false' || (output.custom_options=='true' && output.compose_table_name=='false')",
         "minLength": 1,
         "val": "",
         "width": "100%",
         "breakLine": true
       },
+      "output.custom_options": {
+        "type": "checkbox",
+        "标签": "输出选项",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "output.compose_table_name": {
         "type": "checkbox",
-        "label": "Compôr Nome de Tabela",
+        "标签": "编写表格名称",
+        "show_if": "output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -24,42 +33,42 @@
       },
       "compose_table_name_frame": {
         "type": "fieldset",
-        "label": "Compôr Nome de Tabela de Saída",
-        "show_if": "output.compose_table_name=='true'",
+        "标签": "编写输出表格名称",
+        "show_if": "output.custom_options=='true' && output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
             "type": "select",
-            "label": "Prefixo",
+            "标签": "前缀",
             "show_if": "output.compose_table_name=='true'",
             "val": "empty",
             "options": {
               "empty": {
-                "label": "-"
+                "标签": "-"
               },
               "script_name": {
-                "label": "Nome da Tarefa"
+                "标签": "任务名称"
               },
               "date_string_type1": {
-                "label": "Data: dd_mm_aaaa"
+                "标签": "Date: dd_mm_yyyy"
               },
               "date_string_type2": {
-                "label": "Data: aaaa_mm_dd"
+                "标签": "Date: yyyy_mm_dd"
               },
               "time_string": {
-                "label": "Hora: h_min_seg"
+                "标签": "时间：h_min_sec"
               },
               "datetime_string": {
-                "label": "Data_Hora"
+                "标签": "Date_Time"
               },
               "custom": {
-                "label": "Personalizar"
+                "标签": "自定义"
               }
             }
           },
           "output.prefix_text": {
             "type": "text",
-            "label": "Adicionar Prefixo ao Texto",
+            "标签": "前缀文本",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -67,28 +76,28 @@
           },
           "output.core_delimiter": {
             "type": "text",
-            "label": "Delimitador",
+            "标签": "分隔符",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
             "val": "_",
             "width": "50px"
           },
           "output.core_rule": {
             "type": "select",
-            "label": "Nome da Tabela",
+            "标签": "表格名称",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "script_name": {
-                "label": "Nome da Tarefa"
+                "标签": "任务名称"
               },
               "custom": {
-                "label": "Personalizar"
+                "标签": "自定义"
               }
             }
           },
           "output.core_text": {
             "type": "text",
-            "label": "Nome da Tabela Principal",
+            "标签": "主表格名称",
             "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
             "required": true,
             "minLength": 1,
@@ -97,43 +106,43 @@
           },
           "output.suffix_delimiter": {
             "type": "text",
-            "label": "Delimitador",
+            "标签": "分隔符",
             "show_if": "output.compose_table_name=='true'",
             "val": "_",
             "width": "50px"
           },
           "output.suffix_rule": {
             "type": "select",
-            "label": "Sufixo",
+            "标签": "后缀",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "empty": {
-                "label": "-"
+                "标签": "-"
               },
               "script_name": {
-                "label": "Nome da Tarefa"
+                "标签": "任务名称"
               },
               "date_string_type1": {
-                "label": "Data: dd_mm_aaaa"
+                "标签": "Date: dd_mm_yyyy"
               },
               "date_string_type2": {
-                "label": "Data: aaaa_mm_dd"
+                "标签": "Date: yyyy_mm_dd"
               },
               "time_string": {
-                "label": "Hora: h_min_seg"
+                "标签": "时间：h_min_sec"
               },
               "datetime_string": {
-                "label": "Data_Hora"
+                "标签": "Date_Time"
               },
               "custom": {
-                "label": "Personalizar"
+                "标签": "自定义"
               }
             }
           },
           "output.suffix_text": {
             "type": "text",
-            "label": "Juntar Sufixo ao Texto",
+            "标签": "后缀文本",
             "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -142,130 +151,130 @@
           },
           "output.timezone": {
             "type": "select",
-            "label": "Fuso horário",
+            "标签": "时区",
             "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
-            "val": "Europa/Berlim",
+            "val": "欧洲/柏林",
             "required": true,
             "options": {
               "America/Adak": {
-                "label": "Adak, Gambier"
+                "标签": "阿达克、甘比尔"
               },
               "Australia/Adelaide": {
-                "label": "Adelaide, Broken_Hill, Darwin"
+                "标签": "Adelaide, Broken_Hill, Darwin"
               },
               "America/Anchorage": {
-                "label": "Anchorage, Juneau, Sitka"
+                "标签": "安克雷奇、朱诺、西特卡"
               },
               "Pacific/Apia": {
-                "label": "Apia, Asau, Mulifanua, Afega, Leulumoega"
+                "标签": "阿皮亚、阿绍、穆利法努阿、阿费加、卢卢莫加"
               },
               "Pacific/Enderbury": {
-                "label": "Apia, Fiji, Tongatapu"
+                "标签": "阿皮亚、斐济、汤加塔普"
               },
               "Antarctica/McMurdo": {
-                "label": "Auckland, Casey, Davis"
+                "标签": "奥克兰、凯西、戴维斯"
               },
               "Pacific/Auckland": {
-                "label": "Auckland, Wellington, Christchurch"
+                "标签": "奥克兰、惠灵顿、基督城"
               },
               "Asia/Bangkok": {
-                "label": "Bangkok, Jakarta, Novosibirsk"
+                "标签": "曼谷、雅加达、新西伯利亚"
               },
-              "Europa/Berlim": {
-                "label": "Berlin, Paris, Amsterdam"
+              "欧洲/柏林": {
+                "标签": "柏林、巴黎、阿姆斯特丹"
               },
               "Australia/Perth": {
-                "label": "Brunei, Singapore, Perth"
+                "标签": "文莱、新加坡、珀斯"
               },
               "Atlantic/Cape_Verde": {
-                "label": "Cape_Verde,Praia, Mindelo, Santa Maria"
+                "标签": "Cape_Verde,Praia, Mindelo, Santa Maria"
               },
               "America/Belize": {
-                "label": "Costa_Rica, El_Salvador, Denver"
+                "标签": "Costa_Rica, El_Salvador, Denver"
               },
               "Antarctica/Vostok": {
-                "label": "Dhaka, Bishkek, Omsk"
+                "标签": "达卡、比什凯克、鄂木斯克"
               },
               "Europe/Astrakhan": {
-                "label": "Dubai, Baku, Tbilisi"
+                "标签": "迪拜、巴库、第比利斯"
               },
               "Australia/Eucla": {
-                "label": "Eucla"
+                "标签": "欧克拉"
               },
               "Pacific/Honolulu": {
-                "label": "Honolulu, Rarotonga, Tahiti"
+                "标签": "火奴鲁鲁、拉罗汤加、大溪地"
               },
               "Asia/Kabul": {
-                "label": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
+                "标签": "喀布尔、坎大哈、马扎尔-谢里夫、赫拉特、贾拉巴德
               },
               "Asia/Aqtau": {
-                "label": "Karachi, Tashkent, Maldives"
+                "标签": "卡拉奇、塔什干、马尔代夫"
               },
               "Asia/Kathmandu": {
-                "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
+                "标签": "Kathmandu,Pokhara, Pātan, Biratnagar"
               },
               "Pacific/Kiritimati": {
-                "label": "Kiritimati"
+                "标签": "Kiritimati"
               },
               "Asia/Colombo": {
-                "label": "Kolkata, Colombo,Jaffna, Negombo"
+                "标签": "Kolkata, Colombo,Jaffna, Negombo"
               },
               "Europe/Guernsey": {
-                "label": "London. Dublin, Lisbon"
+                "标签": "London. Dublin, Lisbon"
               },
               "Australia/Lord_Howe": {
-                "label": "Lord_Howe"
+                "标签": "Lord_Howe"
               },
               "America/Creston": {
-                "label": "Los_Angeles, Vancouver, Hermosillo"
+                "标签": "Los_Angeles, Vancouver, Hermosillo"
               },
               "Pacific/Marquesas": {
-                "label": "Marquesas,Taiohae"
+                "标签": "Marquesas,Taiohae"
               },
               "America/Cayman": {
-                "label": "Mexico_City, Panama, Chicago"
+                "标签": "Mexico_City, Panama, Chicago"
               },
               "Pacific/Niue": {
-                "label": "Midway, Niue, Pago_Pago"
+                "标签": "Midway, Niue, Pago_Pago"
               },
               "Europe/Mariehamn": {
-                "label": "Moscow, Istanbul, Qatar"
+                "标签": "莫斯科、伊斯坦布尔、卡塔尔"
               },
               "Asia/Kolkata": {
-                "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
+                "标签": "孟买、德里、班加罗尔、加尔各答、钦奈"
               },
               "America/Miquelon": {
-                "label": "Noronha, Nuuk, Miquelon"
+                "标签": "诺罗尼亚、努克、米克朗"
               },
               "America/Danmarkshavn": {
-                "label": "Reykjavik, Dakar, Casablanca"
+                "标签": "雷克雅未克、达喀尔、卡萨布兰卡"
               },
               "Pacific/Bougainville": {
-                "label": "Sakhalin, Norfolk, Bougainville"
+                "标签": "萨哈林岛、诺福克、布干维尔"
               },
               "America/Araguaina": {
-                "label": "Sao_Paulo, Buenos_Aires, Montevideo"
+                "标签": "Sao_Paulo, Buenos_Aires, Montevideo"
               },
               "America/St_Johns": {
-                "label": "St_Johns,Mount Pearl, Corner Brook"
+                "标签": "St_Johns,Mount Pearl, Corner Brook"
               },
               "Asia/Tehran": {
-                "label": "Tehran, Mashhad, Isfahan, Karaj, Tabriz"
+                "标签": "德黑兰、马什哈德、伊斯法罕、卡拉吉、大不里士
               },
               "Asia/Tokyo": {
-                "label": "Tokyo, Seoul, Jayapura"
+                "标签": "东京、首尔、查亚普拉"
               },
               "America/New_York": {
-                "label": "Toronto, Santiago, New_York"
+                "标签": "Toronto, Santiago, New_York"
               },
               "Australia/Sydney": {
-                "label": "Vladivostok, Sydney, Brisbane"
+                "标签": "符拉迪沃斯托克、悉尼、布里斯班"
               },
               "Asia/Yangon": {
-                "label": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
+                "标签": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
               },
               "Indian/Cocos": {
-                "label": "Yangon, Cocos,West Island"
+                "标签": "Yangon, Cocos,West Island"
               }
             },
             "breakLine": true
