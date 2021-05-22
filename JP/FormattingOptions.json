@@ -1,100 +1,101 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Opções",
+    "ラベル": "オプション",
     "repeat": false,
     "fields": {
       "reformat_columns": {
         "type": "checkbox",
-        "label": "A Formatar Colunas",
+        "ラベル": "列の書式設定",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
       },
       "columns": {
         "type": "fieldset",
-        "label": "Selecionar Colunas",
-        "show_if": "reformat_columns=='true'",
+        "ラベル": "列の選択",
+        "show_if": "$input_table.numOfHeader >= 1",
         "repeat": true,
         "fields": {
           "field_name": {
             "type": "select",
-            "label": "Selecionar Coluna",
+            "ラベル": "列の選択",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
           "format__category": {
             "type": "select",
-            "label": "Formato",
+            "ラベル": "フォーマット",
             "required": true,
             "options": {
               "standard": {
-                "label": "Padrão"
+                "ラベル": "標準"
               },
               "number": {
-                "label": "Número"
+                "ラベル": "数"
               },
               "percentage": {
-                "label": "Percentagem"
+                "ラベル": "割合"
               },
               "text": {
-                "label": "Texto"
+                "ラベル": "テキスト"
               },
               "date": {
-                "label": "Data"
+                "ラベル": "日付"
               },
               "currency": {
-                "label": "Moeda"
+                "ラベル": "通貨"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "Arredondamento",
+            "ラベル": "四捨五入",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Arredondamento de números"
+                "ラベル": "四捨五入無し"
               },
               "0": {
-                "label": "0 dígitos"
+                "ラベル": "0桁"
               },
               "1": {
-                "label": "1 dígito"
+                "ラベル": "1桁"
               },
               "2": {
-                "label": "2 dígitos"
+                "ラベル": "2桁"
               },
               "3": {
-                "label": "3 dígitos"
+                "ラベル": "3桁"
               },
               "4": {
-                "label": "4 dígitos"
+                "ラベル": "4桁"
               },
               "5": {
-                "label": "5 dígitos"
+                "ラベル": "5桁"
               },
               "6": {
-                "label": "6 dígitos"
+                "ラベル": "6桁"
               },
               "7": {
-                "label": "7 dígitos"
+                "ラベル": "7桁"
               },
               "8": {
-                "label": "8 dígitos"
+                "ラベル": "8桁"
               },
               "9": {
-                "label": "9 dígitos"
+                "ラベル": "9桁"
               }
             },
             "val": "2"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Usar Separador(.) 1000",
+            "ラベル": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -102,36 +103,36 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "Símbolo",
+            "ラベル": "シンボル",
             "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "ラベル": "$"
               },
               "euro": {
-                "label": "€"
+                "ラベル": "€"
               },
               "pound": {
-                "label": "£"
+                "ラベル": "£"
               }
             },
             "val": "dollar"
           },
           "format__date_format": {
             "type": "select",
-            "label": "Tipo",
+            "ラベル": "タイプ",
             "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "ラベル": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "ラベル": "水曜日、3月14日、2012"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "ラベル": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy",
@@ -140,7 +141,7 @@
           "delete": {
             "show_if": "this.field_name != ''",
             "type": "button",
-            "label": "Apagar",
+            "ラベル": "削除",
             "function": "DELETE_ROW"
           }
         },
@@ -148,7 +149,8 @@
       },
       "reformat_rows": {
         "type": "checkbox",
-        "label": "A Formatar Linhas",
+        "ラベル": "ラベルのフォーマット",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -156,88 +158,88 @@
       },
       "rows": {
         "type": "fieldset",
-        "label": "Selecionar Rótulos",
-        "show_if": "reformat_rows=='true'",
+        "ラベル": "ラベルの選択",
+        "show_if": "$input_table.numOfLabel >= 1",
         "repeat": true,
         "fields": {
           "label_name": {
             "type": "select",
-            "label": "Selecionar Rótulo",
+            "ラベル": "ラベルの選択",
             "table": "input_table",
             "bind": "LABELS",
             "required": true
           },
           "format__category": {
             "type": "select",
-            "label": "Formato",
+            "ラベル": "フォーマット",
             "required": true,
             "options": {
               "standard": {
-                "label": "Padrão"
+                "ラベル": "標準"
               },
               "number": {
-                "label": "Número"
+                "ラベル": "数"
               },
               "percentage": {
-                "label": "Percentagem"
+                "ラベル": "割合"
               },
               "text": {
-                "label": "Texto"
+                "ラベル": "テキスト"
               },
               "date": {
-                "label": "Data"
+                "ラベル": "日付"
               },
               "currency": {
-                "label": "Moeda"
+                "ラベル": "通貨"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "Arredondamento",
+            "ラベル": "四捨五入",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Arredondamento de números"
+                "ラベル": "四捨五入無し"
               },
               "0": {
-                "label": "0 dígitos"
+                "ラベル": "0桁"
               },
               "1": {
-                "label": "1 dígito"
+                "ラベル": "1桁"
               },
               "2": {
-                "label": "2 dígitos"
+                "ラベル": "2桁"
               },
               "3": {
-                "label": "3 dígitos"
+                "ラベル": "3桁"
               },
               "4": {
-                "label": "4 dígitos"
+                "ラベル": "4桁"
               },
               "5": {
-                "label": "5 dígitos"
+                "ラベル": "5桁"
               },
               "6": {
-                "label": "6 dígitos"
+                "ラベル": "6桁"
               },
               "7": {
-                "label": "7 dígitos"
+                "ラベル": "7桁"
               },
               "8": {
-                "label": "8 dígitos"
+                "ラベル": "8桁"
               },
               "9": {
-                "label": "9 dígitos"
+                "ラベル": "9桁"
               }
             },
             "val": "2"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Usar Separador(.) 1000",
+            "ラベル": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -245,36 +247,36 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "Símbolo",
+            "ラベル": "シンボル",
             "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "ラベル": "$"
               },
               "euro": {
-                "label": "€"
+                "ラベル": "€"
               },
               "pound": {
-                "label": "£"
+                "ラベル": "£"
               }
             },
             "val": "dollar"
           },
           "format__date_format": {
             "type": "select",
-            "label": "Tipo",
+            "ラベル": "タイプ",
             "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "ラベル": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "ラベル": "水曜日、3月14日、2012"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "ラベル": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy",
@@ -283,7 +285,7 @@
           "delete": {
             "show_if": "this.label_name != ''",
             "type": "button",
-            "label": "Apagar",
+            "ラベル": "削除",
             "function": "DELETE_ROW"
           }
         },
@@ -291,7 +293,7 @@
       },
       "create_new_table": {
         "type": "checkbox",
-        "label": "Mostrar como tabela nova",
+        "ラベル": "新しいテーブルとして出力",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
