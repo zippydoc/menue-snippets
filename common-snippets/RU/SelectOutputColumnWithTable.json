@@ -1,15 +1,17 @@
 {
   "output.select_output_columns": {
     "type": "checkbox",
-    "Метка": "Выбрать выходные таблицы",
+    "Метка": "Выбрать выходные колонки",
+    "show_if": "output.custom_options=='true'",
     "val": "false",
     "isOn": "true",
-    "isOff": "false"
+    "isOff": "false",
+    "style": "margin-top: 10px"
   },
   "output_columns": {
     "type": "fieldset",
-    "Метка": "Select OutputColumns",
-    "show_if": "output.select_output_columns=='true'",
+    "Метка": "Выбрать выходные колонки",
+    "show_if": "output.custom_options=='true' && output.select_output_columns=='true'",
     "repeat": true,
     "fields": {
       "table_id": {
@@ -127,7 +129,7 @@
       },
       "format__use_1000_separator": {
         "type": "checkbox",
-        "Метка": "Используйте сепаратор 1000(.)",
+        "Метка": "Use 1000 Separator(.)",
         "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "val": "true",
         "isOn": "true",
