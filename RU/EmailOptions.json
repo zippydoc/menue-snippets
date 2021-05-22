@@ -1,29 +1,45 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Выбрать параметры",
+    "Метка": "Выбрать параметры",
     "repeat": false,
     "fields": {
       "options.task_type": {
         "type": "select",
-        "label": "Тип задачи",
+        "Метка": "Тип задачи",
         "required": true,
         "options": {
           "write_series": {
-            "label": "Write e-mail series"
+            "Метка": "Написать серию писем"
           },
           "write_email": {
-            "label": "Write e-mail"
+            "Метка": "Написать электронное письмо"
           },
           "read": {
-            "label": "Read e-mails"
+            "Метка": "Читать письма"
           }
         },
         "val": "write_email"
       },
+      "input_table": {
+        "type": "select",
+        "Метка": "Выбрать таблицу",
+        "show_if": "options.task_type=='write_series'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true
+      },
+      "info1": {
+        "type": "text",
+        "Метка": "",
+        "show_if": "options.task_type=='write_series'",
+        "val": "Table-Type: TO | CC | BCC | SUBJECT | BODY",
+        "disabled": true,
+        "style": "width: 100%"
+      },
       "options.to": {
         "type": "text",
-        "label": "To",
+        "Метка": "Кому",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -32,25 +48,23 @@
       },
       "options.cc": {
         "type": "text",
-        "label": "CC",
+        "Метка": "CC",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "ccuser1@domain.com; ccuser2@domain.com",
         "width": "100%"
       },
       "options.bcc": {
         "type": "text",
-        "label": "BCC",
+        "Метка": "BCC",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "bccuser1@domain.com; bccuser1@domain.com",
         "width": "100%"
       },
       "options.subject": {
         "type": "text",
-        "label": "Subject",
+        "Метка": "Subject",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -58,31 +72,32 @@
         "width": "100%"
       },
       "options.body": {
-        "type": "text",
-        "label": "Body",
+        "type": "textarea",
+        "Метка": "Body",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "Текст",
+        "md_no_resize": true,
+        "rows": 3,
         "width": "100%"
       }
     }
   },
   "smtp_config_frame": {
     "type": "fieldset",
-    "label": "SMTP Connection",
+    "Метка": "SMTP соединение",
     "show_if": "options.task_type=='write_series' || options.task_type=='write_email'",
     "repeat": false,
     "fields": {
       "options.smtp.type": {
         "type": "select",
-        "label": "Select SMTP Server",
+        "Метка": "Выбрать SMTP-сервер",
         "options": {
           "gmail": {
-            "label": "Gmail"
+            "Метка": "Gmail"
           },
           "custom": {
-            "label": "Custom (coming soon)"
+            "Метка": "Custom (скоро появится)"
           }
         },
         "val": "gmail",
@@ -91,7 +106,7 @@
       },
       "gmail_warning": {
         "type": "text",
-        "label": "",
+        "Метка": "",
         "show_if": "options.smtp.type=='gmail'",
         "val": "Turn 'Allow less secure apps' ON in https://myaccount.google.com/lesssecureapps",
         "width": "100%",
@@ -99,38 +114,38 @@
       },
       "options.gmail.user": {
         "type": "text",
-        "label": "Gmail User",
+        "Метка": "Пользователь Gmail",
         "show_if": "options.smtp.type=='gmail'",
         "required": true,
         "placeholder": "sender@gmail.com"
       },
       "options.gmail.password": {
         "type": "password",
-        "label": "Gmail Password",
+        "Метка": "Пароль Gmail",
         "show_if": "options.smtp.type=='gmail'",
         "required": true
       },
       "options.custom.host": {
         "type": "text",
-        "label": "SMTP Host",
+        "Метка": "SMTP Host",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.port": {
         "type": "text",
-        "label": "SMTP Port",
+        "Метка": "SMTP порт",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.user": {
         "type": "text",
-        "label": "SMTP User",
+        "Метка": "Пользователь SMTP",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.password": {
         "type": "password",
-        "label": "SMTP Password",
+        "Метка": "Пароль SMTP",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       }
