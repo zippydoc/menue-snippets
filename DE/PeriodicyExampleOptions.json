@@ -1,0 +1,491 @@
+{
+  "options": {
+    "type": "fieldset",
+    "Beschriftung": "Optionen für die Periodizität auswählen",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "hidden",
+        "val": "generate"
+      },
+      "input": {
+        "type": "fieldset",
+        "Beschriftung": "Eingangstabelle auswählen",
+        "show_if": "options.type=='process'",
+        "repeat": false,
+        "fields": {
+          "input_table": {
+            "type": "select",
+            "Beschriftung": "Tabelle auswählen",
+            "bind": "TABLES",
+            "empty": "",
+            "required": true
+          },
+          "remove_input_table_after_processing": {
+            "type": "hidden",
+            "val": "false"
+          },
+          "is_word": {
+            "type": "hidden",
+            "val": "false"
+          }
+        },
+        "breakLine": true
+      },
+      "amount_formatting_frame": {
+        "type": "fieldset",
+        "Beschriftung": "Betrags-Spalten-Formatierung",
+        "show_if": "options.type=='generate'",
+        "repeat": false,
+        "fields": {
+          "options.amount.format__category": {
+            "type": "select",
+            "Beschriftung": "Format",
+            "required": true,
+            "options": {
+              "standard": {
+                "Beschriftung": "Standard"
+              },
+              "number": {
+                "Beschriftung": "Nummer"
+              },
+              "percentage": {
+                "Beschriftung": "Prozentsatz"
+              },
+              "currency": {
+                "Beschriftung": "Währung"
+              }
+            },
+            "val": "currency"
+          },
+          "options.amount.format__rounding": {
+            "type": "select",
+            "Beschriftung": "Abrunden",
+            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+            "required": true,
+            "options": {
+              "no_rounding": {
+                "Beschriftung": "Keine Rundung"
+              },
+              "0": {
+                "Beschriftung": "0 Ziffern"
+              },
+              "1": {
+                "Beschriftung": "1 Ziffern"
+              },
+              "2": {
+                "Beschriftung": "2 Ziffern"
+              },
+              "3": {
+                "Beschriftung": "3 Ziffern"
+              },
+              "4": {
+                "Beschriftung": "4 Ziffern"
+              },
+              "5": {
+                "Beschriftung": "5 Ziffern"
+              },
+              "6": {
+                "Beschriftung": "6 Ziffern"
+              },
+              "7": {
+                "Beschriftung": "7 Ziffern"
+              },
+              "8": {
+                "Beschriftung": "8 Ziffern"
+              },
+              "9": {
+                "Beschriftung": "9 Ziffern"
+              }
+            },
+            "val": "2"
+          },
+          "options.amount.format__use_1000_separator": {
+            "type": "checkbox",
+            "Beschriftung": "Use 1000 Separator(.)",
+            "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.amount.format__currency_symbol": {
+            "type": "select",
+            "Beschriftung": "Symbol",
+            "show_if": "options.amount.format__category=='currency'",
+            "required": true,
+            "options": {
+              "dollar": {
+                "Beschriftung": "$"
+              },
+              "euro": {
+                "Beschriftung": "€"
+              },
+              "pound": {
+                "Beschriftung": "£"
+              }
+            },
+            "val": "dollar"
+          }
+        }
+      },
+      "options.standard_table": {
+        "type": "checkbox",
+        "Beschriftung": "Standard-Periodensystem",
+        "show_if": "options.type=='process'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.initial_date": {
+        "type": "select",
+        "Beschriftung": "Anfangsdatum",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.period": {
+        "type": "select",
+        "Beschriftung": "Periodizität (z.B. Monatlich, Vierteljährlich)",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.final_date": {
+        "type": "select",
+        "Beschriftung": "Endgültiges Datum",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.volume": {
+        "type": "select",
+        "Beschriftung": "Betrag",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS"
+      },
+      "options.growth": {
+        "type": "select",
+        "Beschriftung": "Wachstum",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS"
+      },
+      "options.growth_period": {
+        "type": "select",
+        "Beschriftung": "Wachstumsperiode",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "options": {
+          "selected_period": {
+            "Beschriftung": "Entspricht der Periodizität"
+          },
+          "week_on_week": {
+            "Beschriftung": "Woche für Woche"
+          },
+          "month_on_month": {
+            "Beschriftung": "Monat für Monat"
+          },
+          "quarter_on_quarter": {
+            "Beschriftung": "Quartal für Quartal"
+          },
+          "year_on_year": {
+            "Beschriftung": "Jahr auf Jahr"
+          },
+          "column": {
+            "Beschriftung": "Spalte auswählen"
+          }
+        },
+        "val": "selected_period"
+      },
+      "options.growth_period_column": {
+        "type": "select",
+        "Beschriftung": "Spalte "Wachstumsperiode",
+        "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.use_growth_pattern_column": {
+        "type": "checkbox",
+        "Beschriftung": "Verwendung Wachstumsmuster",
+        "show_if": "options.type=='process' && options.standard_table=='false'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.growth_pattern_column": {
+        "type": "select",
+        "Beschriftung": "Wachstumsmuster",
+        "show_if": "options.type=='process' && options.standard_table=='false' && options.use_growth_pattern_column=='true'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.custom.table": {
+        "type": "fieldset",
+        "Beschriftung": "Planungsposition",
+        "show_if": "options.type=='custom'",
+        "repeat": true,
+        "fields": {
+          "item": {
+            "type": "text",
+            "Beschriftung": "Posten",
+            "val": "",
+            "required": true
+          },
+          "position": {
+            "type": "text",
+            "Beschriftung": "Position",
+            "val": "",
+            "required": true,
+            "breakLine": true
+          },
+          "amount": {
+            "type": "number",
+            "Beschriftung": "Betrag",
+            "val": "",
+            "required": true
+          },
+          "amount_format__category": {
+            "type": "select",
+            "Beschriftung": "Betragsformat",
+            "show_if" : "$index == 0",
+            "required": true,
+            "options": {
+              "standard": {
+                "Beschriftung": "Standard"
+              },
+              "number": {
+                "Beschriftung": "Nummer"
+              },
+              "percentage": {
+                "Beschriftung": "Prozentsatz"
+              },
+              "text": {
+                "Beschriftung": "Text"
+              },
+              "date": {
+                "Beschriftung": "Datum"
+              },
+              "currency": {
+                "Beschriftung": "Währung"
+              }
+            },
+            "val": "number"
+          },
+          "amount_format__rounding": {
+            "type": "select",
+            "Beschriftung": "Abrunden",
+            "show_if": "$index == 0 && (this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency')",
+            "required": true,
+            "options": {
+              "no_rounding": {
+                "Beschriftung": "Keine Rundung"
+              },
+              "0": {
+                "Beschriftung": "0 Ziffern"
+              },
+              "1": {
+                "Beschriftung": "1 Ziffern"
+              },
+              "2": {
+                "Beschriftung": "2 Ziffern"
+              },
+              "3": {
+                "Beschriftung": "3 Ziffern"
+              },
+              "4": {
+                "Beschriftung": "4 Ziffern"
+              },
+              "5": {
+                "Beschriftung": "5 Ziffern"
+              },
+              "6": {
+                "Beschriftung": "6 Ziffern"
+              },
+              "7": {
+                "Beschriftung": "7 Ziffern"
+              },
+              "8": {
+                "Beschriftung": "8 Ziffern"
+              },
+              "9": {
+                "Beschriftung": "9 Ziffern"
+              }
+            },
+            "val": "2"
+          },
+          "amount_format__use_1000_separator": {
+            "type": "checkbox",
+            "Beschriftung": "Use 1000 Separator(.)",
+            "show_if": "$index == 0 && (this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency')",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "amount_format__currency_symbol": {
+            "type": "select",
+            "Beschriftung": "Symbol",
+            "show_if": "$index == 0 && (this.amount_format__category=='currency')",
+            "required": true,
+            "options": {
+              "dollar": {
+                "Beschriftung": "$"
+              },
+              "euro": {
+                "Beschriftung": "€"
+              },
+              "pound": {
+                "Beschriftung": "£"
+              }
+            },
+            "val": "dollar"
+          },
+          "amount_format__date_format": {
+            "type": "select",
+            "Beschriftung": "Typ",
+            "show_if": "$index == 0 && (this.amount_format__category=='date')",
+            "required": true,
+            "options": {
+              "mm/dd/yyyy": {
+                "Beschriftung": "3/14/2012"
+              },
+              "D, M dd, Y": {
+                "Beschriftung": "Mittwoch, 14. März 2012"
+              },
+              "yyyy-mm-dd": {
+                "Beschriftung": "2012-03-14"
+              }
+            },
+            "val": "mm/dd/yyyy",
+            "breakLine": true
+          },
+          "initial_date": {
+            "type": "date",
+            "Beschriftung": "Anfangsdatum",
+            "val": "",
+            "required": true
+          },
+          "initial_date_format__date_format": {
+            "type": "select",
+            "Beschriftung": "Anfangsdatum-Format",
+            "show_if": "$index == 0",
+            "required": true,
+            "options": {
+              "mm/dd/yyyy": {
+                "Beschriftung": "3/14/2012"
+              },
+              "D, M dd, Y": {
+                "Beschriftung": "Mittwoch, 14. März 2012"
+              },
+              "yyyy-mm-dd": {
+                "Beschriftung": "2012-03-14"
+              }
+            },
+            "val": "mm/dd/yyyy",
+            "breakLine": true
+          },
+          "periodicy": {
+            "type": "select",
+            "Beschriftung": "Periodizität",
+            "required": true,
+            "options": {
+              "Einmalig": {
+                "Beschriftung": "Einmalig"
+              },
+              "Täglich": {
+                "Beschriftung": "Täglich"
+              },
+              "Werktäglich": {
+                "Beschriftung": "Werktäglich"
+              },
+              "Wöchentlich": {
+                "Beschriftung": "Wöchentlich"
+              },
+              "Monatlich": {
+                "Beschriftung": "Monatlich"
+              },
+              "vierteljährlich": {
+                "Beschriftung": "vierteljährlich"
+              },
+              "Jährlich": {
+                "Beschriftung": "Jährlich"
+              }
+            },
+            "val": "Einmalig"
+          },
+          "growth": {
+            "type": "number",
+            "Beschriftung": "Wachstum",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": "",
+            "required": true
+          },
+          "growth_period": {
+            "type": "select",
+            "Beschriftung": "Wachstumsperiode",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "Wöchentlich": {
+                "Beschriftung": "Wöchentlich"
+              },
+              "Monatlich": {
+                "Beschriftung": "Monat für Monat"
+              },
+              "vierteljährlich": {
+                "Beschriftung": "Quartal für Quartal"
+              },
+              "Jährlich": {
+                "Beschriftung": "Jahr auf Jahr"
+              }
+            },
+            "val": "Wöchentlich"
+          },
+          "growth_pattern": {
+            "type": "select",
+            "Beschriftung": "Wachstumsmuster",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "Aufsummierung": {
+                "Beschriftung": "Aufsummierung"
+              },
+              "Linear": {
+                "Beschriftung": "Linear"
+              },
+              "Jump-Fix": {
+                "Beschriftung": "Jump-Fix"
+              }
+            },
+            "val": "Aufsummierung"
+          },
+          "final_date": {
+            "type": "date",
+            "Beschriftung": "Endgültiges Datum",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": ""
+          },
+          "delete": {
+            "type": "button",
+            "Beschriftung": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.end_date": {
+        "type": "date",
+        "Beschriftung": "Enddatum der Tabelle",
+        "show_if": "options.type=='process' || options.type=='custom'",
+        "val": "",
+        "required": true,
+        "style": "width: 300px"
+      }
+    }
+  }
+}
