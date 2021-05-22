@@ -2,14 +2,16 @@
   "output.select_output_columns": {
     "type": "checkbox",
     "ラベル": "出力列の選択",
+    "show_if": "output.custom_options=='true'",
     "val": "false",
     "isOn": "true",
-    "isOff": "false"
+    "isOff": "false",
+    "style": "margin-top: 10px"
   },
   "output_columns": {
     "type": "fieldset",
     "ラベル": "出力列の選択",
-    "show_if": "output.select_output_columns=='true'",
+    "show_if": "output.custom_options=='true' && output.select_output_columns=='true'",
     "repeat": true,
     "fields": {
       "table_id": {
@@ -111,7 +113,7 @@
       },
       "format__use_1000_separator": {
         "type": "checkbox",
-        "ラベル": "1000セパレータ(.)を使用",
+        "ラベル": "Use 1000 Separator(.)",
         "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "val": "true",
         "isOn": "true",
