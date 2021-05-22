@@ -1,0 +1,119 @@
+{
+  "options": {
+    "type": "fieldset",
+    "ラベル": "周期オプションの選択",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "hidden",
+        "val": "process"
+      },
+      "options.standard_table": {
+        "type": "checkbox",
+        "ラベル": "標準周期表",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.initial_date": {
+        "type": "select",
+        "ラベル": "初日",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.period": {
+        "type": "select",
+        "ラベル": "ピリオディシー（例：月次、四半期）",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.final_date": {
+        "type": "select",
+        "ラベル": "最終日",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.volume": {
+        "type": "select",
+        "ラベル": "量",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS"
+      },
+      "options.growth": {
+        "type": "select",
+        "ラベル": "成長",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS"
+      },
+      "options.growth_period": {
+        "type": "select",
+        "ラベル": "成長期",
+        "show_if": "options.standard_table=='false'",
+        "options": {
+          "selected_period": {
+            "ラベル": "周期に等しい"
+          },
+          "week_on_week": {
+            "ラベル": "週ごと"
+          },
+          "month_on_month": {
+            "ラベル": "月次"
+          },
+          "quarter_on_quarter": {
+            "ラベル": "四半期毎"
+          },
+          "year_on_year": {
+            "ラベル": "年次"
+          },
+          "column": {
+            "ラベル": "列の選択"
+          }
+        },
+        "val": "selected_period"
+      },
+      "options.growth_period_column": {
+        "type": "select",
+        "ラベル": "成長期の列",
+        "show_if": "options.standard_table=='false' && options.growth_period=='column'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.use_growth_pattern_column": {
+        "type": "checkbox",
+        "ラベル": "成長パターンの使用",
+        "show_if": "options.standard_table=='false'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.growth_pattern_column": {
+        "type": "select",
+        "ラベル": "成長パターン",
+        "show_if": "options.standard_table=='false' && options.use_growth_pattern_column=='true'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.end_date": {
+        "type": "date",
+        "ラベル": "テーブルの終了日",
+        "val": "",
+        "required": true,
+        "style": "width: 300px"
+      }
+    }
+  }
+}
