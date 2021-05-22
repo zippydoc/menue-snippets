@@ -1,21 +1,21 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "周期オプションの選択",
+    "ラベル": "周期オプションの選択",
     "repeat": false,
     "fields": {
       "options.type": {
         "type": "select",
-        "label": "タイプ",
+        "ラベル": "タイプ",
         "options": {
           "generate": {
-            "label": "周期例の生成"
+            "ラベル": "周期例の生成"
           },
           "process": {
-            "label": "プロセス周期表"
+            "ラベル": "プロセス周期表"
           },
           "custom": {
-            "label": "カスタム"
+            "ラベル": "カスタム"
           }
         },
         "val": "custom",
@@ -23,13 +23,13 @@
       },
       "input": {
         "type": "fieldset",
-        "label": "入力テーブルの選択",
+        "ラベル": "入力テーブルの選択",
         "show_if": "options.type=='process'",
         "repeat": false,
         "fields": {
           "input_table": {
             "type": "select",
-            "label": "テーブルの選択",
+            "ラベル": "テーブルの選択",
             "bind": "TABLES",
             "empty": "",
             "required": true
@@ -47,75 +47,75 @@
       },
       "amount_formatting_frame": {
         "type": "fieldset",
-        "label": "Amount Column Formatting",
+        "ラベル": "金額欄のフォーマット",
         "show_if": "options.type=='generate'",
         "repeat": false,
         "fields": {
           "options.amount.format__category": {
             "type": "select",
-            "label": "フォーマット",
+            "ラベル": "フォーマット",
             "required": true,
             "options": {
               "standard": {
-                "label": "標準"
+                "ラベル": "標準"
               },
               "number": {
-                "label": "数"
+                "ラベル": "数"
               },
               "percentage": {
-                "label": "割合"
+                "ラベル": "割合"
               },
               "currency": {
-                "label": "通貨"
+                "ラベル": "通貨"
               }
             },
             "val": "currency"
           },
           "options.amount.format__rounding": {
             "type": "select",
-            "label": "四捨五入",
+            "ラベル": "四捨五入",
             "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "四捨五入無し"
+                "ラベル": "四捨五入無し"
               },
               "0": {
-                "label": "0桁"
+                "ラベル": "0桁"
               },
               "1": {
-                "label": "1桁"
+                "ラベル": "1桁"
               },
               "2": {
-                "label": "2桁"
+                "ラベル": "2桁"
               },
               "3": {
-                "label": "3桁"
+                "ラベル": "3桁"
               },
               "4": {
-                "label": "4桁"
+                "ラベル": "4桁"
               },
               "5": {
-                "label": "5桁"
+                "ラベル": "5桁"
               },
               "6": {
-                "label": "6桁"
+                "ラベル": "6桁"
               },
               "7": {
-                "label": "7桁"
+                "ラベル": "7桁"
               },
               "8": {
-                "label": "8桁"
+                "ラベル": "8桁"
               },
               "9": {
-                "label": "9桁"
+                "ラベル": "9桁"
               }
             },
             "val": "2"
           },
           "options.amount.format__use_1000_separator": {
             "type": "checkbox",
-            "label": "1000セパレータ(.)を使用",
+            "ラベル": "Use 1000 Separator(.)",
             "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -123,18 +123,18 @@
           },
           "options.amount.format__currency_symbol": {
             "type": "select",
-            "label": "シンボル",
+            "ラベル": "シンボル",
             "show_if": "options.amount.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "ラベル": "$"
               },
               "euro": {
-                "label": "€"
+                "ラベル": "€"
               },
               "pound": {
-                "label": "£"
+                "ラベル": "£"
               }
             },
             "val": "dollar"
@@ -143,16 +143,17 @@
       },
       "options.standard_table": {
         "type": "checkbox",
-        "label": "標準周期表",
+        "ラベル": "標準周期表",
         "show_if": "options.type=='process'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
+        "style": "margin-top: 10px",
         "breakLine": true
       },
       "options.initial_date": {
         "type": "select",
-        "label": "初日",
+        "ラベル": "初日",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -160,7 +161,7 @@
       },
       "options.period": {
         "type": "select",
-        "label": "Periodicy (e.g. Monthly, Quarterly)",
+        "ラベル": "ピリオディシー（例：月次、四半期）",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -168,7 +169,7 @@
       },
       "options.final_date": {
         "type": "select",
-        "label": "最終日",
+        "ラベル": "最終日",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -176,47 +177,47 @@
       },
       "options.volume": {
         "type": "select",
-        "label": "量",
+        "ラベル": "量",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth": {
         "type": "select",
-        "label": "成長",
+        "ラベル": "成長",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth_period": {
         "type": "select",
-        "label": "成長期",
+        "ラベル": "成長期",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "options": {
           "selected_period": {
-            "label": "周期に等しい"
+            "ラベル": "周期に等しい"
           },
           "week_on_week": {
-            "label": "週ごと"
+            "ラベル": "週ごと"
           },
           "month_on_month": {
-            "label": "月次"
+            "ラベル": "月次"
           },
           "quarter_on_quarter": {
-            "label": "四半期毎"
+            "ラベル": "四半期毎"
           },
           "year_on_year": {
-            "label": "年次"
+            "ラベル": "年次"
           },
           "column": {
-            "label": "列の選択"
+            "ラベル": "列の選択"
           }
         },
         "val": "selected_period"
       },
       "options.growth_period_column": {
         "type": "select",
-        "label": "成長期の列",
+        "ラベル": "成長期の列",
         "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -225,7 +226,7 @@
       },
       "options.use_growth_pattern_column": {
         "type": "checkbox",
-        "label": "成長パターンの使用",
+        "ラベル": "成長パターンの使用",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "val": "false",
         "isOn": "true",
@@ -233,7 +234,7 @@
       },
       "options.growth_pattern_column": {
         "type": "select",
-        "label": "成長パターン",
+        "ラベル": "成長パターン",
         "show_if": "options.type=='process' && options.standard_table=='false' && options.use_growth_pattern_column=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -242,137 +243,138 @@
       },
       "options.custom.table": {
         "type": "fieldset",
-        "label": "Planning Position",
+        "ラベル": "企画ポジション",
         "show_if": "options.type=='custom'",
         "repeat": true,
         "fields": {
           "item": {
             "type": "text",
-            "label": "Item",
+            "ラベル": "Item",
             "val": "",
             "required": true
           },
           "position": {
             "type": "text",
-            "label": "ポジション",
+            "ラベル": "ポジション",
             "val": "",
             "required": true,
             "breakLine": true
           },
           "amount": {
             "type": "number",
-            "label": "量",
+            "ラベル": "量",
             "val": "",
             "required": true
           },
           "amount_format__category": {
             "type": "select",
-            "label": "Amount Format",
+            "ラベル": "金額のフォーマット",
+            "show_if" : "$index == 0",
             "required": true,
             "options": {
               "standard": {
-                "label": "標準"
+                "ラベル": "標準"
               },
               "number": {
-                "label": "数"
+                "ラベル": "数"
               },
               "percentage": {
-                "label": "割合"
+                "ラベル": "割合"
               },
               "text": {
-                "label": "テキスト"
+                "ラベル": "テキスト"
               },
               "date": {
-                "label": "日付"
+                "ラベル": "日付"
               },
               "currency": {
-                "label": "通貨"
+                "ラベル": "通貨"
               }
             },
-            "val": "standard"
+            "val": "number"
           },
           "amount_format__rounding": {
             "type": "select",
-            "label": "四捨五入",
-            "show_if": "this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency'",
+            "ラベル": "四捨五入",
+            "show_if": "$index == 0 && (this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency')",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "四捨五入無し"
+                "ラベル": "四捨五入無し"
               },
               "0": {
-                "label": "0桁"
+                "ラベル": "0桁"
               },
               "1": {
-                "label": "1桁"
+                "ラベル": "1桁"
               },
               "2": {
-                "label": "2桁"
+                "ラベル": "2桁"
               },
               "3": {
-                "label": "3桁"
+                "ラベル": "3桁"
               },
               "4": {
-                "label": "4桁"
+                "ラベル": "4桁"
               },
               "5": {
-                "label": "5桁"
+                "ラベル": "5桁"
               },
               "6": {
-                "label": "6桁"
+                "ラベル": "6桁"
               },
               "7": {
-                "label": "7桁"
+                "ラベル": "7桁"
               },
               "8": {
-                "label": "8桁"
+                "ラベル": "8桁"
               },
               "9": {
-                "label": "9桁"
+                "ラベル": "9桁"
               }
             },
             "val": "2"
           },
           "amount_format__use_1000_separator": {
             "type": "checkbox",
-            "label": "1000セパレータ(.)を使用",
-            "show_if": "this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency'",
+            "ラベル": "Use 1000 Separator(.)",
+            "show_if": "$index == 0 && (this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency')",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
           },
           "amount_format__currency_symbol": {
             "type": "select",
-            "label": "シンボル",
-            "show_if": "this.amount_format__category=='currency'",
+            "ラベル": "シンボル",
+            "show_if": "$index == 0 && (this.amount_format__category=='currency')",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "ラベル": "$"
               },
               "euro": {
-                "label": "€"
+                "ラベル": "€"
               },
               "pound": {
-                "label": "£"
+                "ラベル": "£"
               }
             },
             "val": "dollar"
           },
           "amount_format__date_format": {
             "type": "select",
-            "label": "タイプ",
-            "show_if": "this.amount_format__category=='date'",
+            "ラベル": "タイプ",
+            "show_if": "$index == 0 && (this.amount_format__category=='date')",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "ラベル": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "ラベル": "水曜日、3月14日、2012"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "ラベル": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy",
@@ -380,27 +382,24 @@
           },
           "initial_date": {
             "type": "date",
-            "label": "初日",
+            "ラベル": "初日",
             "val": "",
             "required": true
           },
-          "initial_date__category": {
-            "type": "hidden",
-            "val": "date"
-          },
           "initial_date_format__date_format": {
             "type": "select",
-            "label": "タイプ",
+            "ラベル": "初期日付のフォーマット",
+            "show_if": "$index == 0",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "ラベル": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "ラベル": "水曜日、3月14日、2012"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "ラベル": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy",
@@ -408,231 +407,93 @@
           },
           "periodicy": {
             "type": "select",
-            "label": "周期",
+            "ラベル": "周期",
             "required": true,
             "options": {
-              "one_off": {
-                "label": "One-Off"
+              "One-Off": {
+                "ラベル": "One-Off"
               },
-              "daily": {
-                "label": "Daily"
+              "デイリー": {
+                "ラベル": "デイリー"
               },
-              "work_daily": {
-                "label": "Work-Daily"
+              "Work-Daily": {
+                "ラベル": "Work-Daily"
               },
-              "weekly": {
-                "label": "Weekly"
+              "ウィークリー": {
+                "ラベル": "ウィークリー"
               },
-              "monthly": {
-                "label": "Monthly"
+              "月次": {
+                "ラベル": "月次"
               },
-              "quarterly": {
-                "label": "Quarterly"
+              "四半期": {
+                "ラベル": "四半期"
               },
-              "yearly": {
-                "label": "Yearly"
+              "Yearly": {
+                "ラベル": "Yearly"
               }
             },
-            "val": "one_off"
+            "val": "One-Off"
           },
           "growth": {
             "type": "number",
-            "label": "成長",
-            "show_if": "this.periodicy!='one_off'",
+            "ラベル": "成長",
+            "show_if": "this.periodicy!='One-Off'",
             "val": "",
             "required": true
-          },
-          "growth_format__category": {
-            "type": "select",
-            "label": "Growth Format",
-            "show_if": "this.periodicy!='one_off'",
-            "required": true,
-            "options": {
-              "standard": {
-                "label": "標準"
-              },
-              "number": {
-                "label": "数"
-              },
-              "percentage": {
-                "label": "割合"
-              },
-              "text": {
-                "label": "テキスト"
-              },
-              "date": {
-                "label": "日付"
-              },
-              "currency": {
-                "label": "通貨"
-              }
-            },
-            "val": "standard"
-          },
-          "growth_format__rounding": {
-            "type": "select",
-            "label": "四捨五入",
-            "show_if": "this.periodicy!='one_off' && (this.growth_format__category=='number' || this.growth_format__category=='percentage' || this.growth_format__category=='currency')",
-            "required": true,
-            "options": {
-              "no_rounding": {
-                "label": "四捨五入無し"
-              },
-              "0": {
-                "label": "0桁"
-              },
-              "1": {
-                "label": "1桁"
-              },
-              "2": {
-                "label": "2桁"
-              },
-              "3": {
-                "label": "3桁"
-              },
-              "4": {
-                "label": "4桁"
-              },
-              "5": {
-                "label": "5桁"
-              },
-              "6": {
-                "label": "6桁"
-              },
-              "7": {
-                "label": "7桁"
-              },
-              "8": {
-                "label": "8桁"
-              },
-              "9": {
-                "label": "9桁"
-              }
-            },
-            "val": "2"
-          },
-          "growth_format__use_1000_separator": {
-            "type": "checkbox",
-            "label": "1000セパレータ(.)を使用",
-            "show_if": "this.periodicy!='one_off' && (this.growth_format__category=='number' || this.growth_format__category=='percentage' || this.growth_format__category=='currency')",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "growth_format__currency_symbol": {
-            "type": "select",
-            "label": "シンボル",
-            "show_if": "this.periodicy!='one_off' && this.growth_format__category=='currency'",
-            "required": true,
-            "options": {
-              "dollar": {
-                "label": "$"
-              },
-              "euro": {
-                "label": "€"
-              },
-              "pound": {
-                "label": "£"
-              }
-            },
-            "val": "dollar"
-          },
-          "growth_format__date_format": {
-            "type": "select",
-            "label": "タイプ",
-            "show_if": "this.periodicy!='one_off' && this.growth_format__category=='date'",
-            "required": true,
-            "options": {
-              "mm/dd/yyyy": {
-                "label": "3/14/2012"
-              },
-              "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
-              },
-              "yyyy-mm-dd": {
-                "label": "2012-03-14"
-              }
-            },
-            "val": "mm/dd/yyyy",
-            "breakLine": true
           },
           "growth_period": {
             "type": "select",
-            "label": "成長期",
-            "show_if": "this.periodicy!='one_off'",
+            "ラベル": "成長期",
+            "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "week_on_week": {
-                "label": "週ごと"
+              "ウィークリー": {
+                "ラベル": "ウィークリー"
               },
-              "month_on_month": {
-                "label": "月次"
+              "月次": {
+                "ラベル": "月次"
               },
-              "quarter_on_quarter": {
-                "label": "四半期毎"
+              "四半期": {
+                "ラベル": "四半期毎"
               },
-              "year_on_year": {
-                "label": "年次"
+              "Yearly": {
+                "ラベル": "年次"
               }
             },
-            "val": "week_on_week"
+            "val": "ウィークリー"
           },
           "growth_pattern": {
             "type": "select",
-            "label": "成長パターン",
-            "show_if": "this.periodicy!='one_off'",
+            "ラベル": "成長パターン",
+            "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "compounding": {
-                "label": "Compounding"
+              "複利計算": {
+                "ラベル": "複利計算"
               },
-              "linear": {
-                "label": "線形"
+              "線形": {
+                "ラベル": "線形"
               },
-              "jump_fix": {
-                "label": "Jump-Fix"
+              "Jump-Fix": {
+                "ラベル": "Jump-Fix"
               }
             },
-            "val": "compounding"
+            "val": "複利計算"
           },
           "final_date": {
             "type": "date",
-            "label": "最終日",
-            "show_if": "this.periodicy!='one_off'",
-            "val": "",
-            "required": true
-          },
-          "final_date_format__category": {
-            "type": "hidden",
-            "val": "date"
-          },
-          "final_date_format__date_format": {
-            "type": "select",
-            "label": "タイプ",
-            "show_if": "this.periodicy!='one_off'",
-            "required": true,
-            "options": {
-              "mm/dd/yyyy": {
-                "label": "3/14/2012"
-              },
-              "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
-              },
-              "yyyy-mm-dd": {
-                "label": "2012-03-14"
-              }
-            },
-            "val": "mm/dd/yyyy",
-            "breakLine": true
+            "ラベル": "最終日",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": ""
           },
           "delete": {
             "type": "button",
-            "label": "削除",
+            "ラベル": "削除",
             "function": "DELETE_ROW"
           }
         }
       },
       "options.end_date": {
         "type": "date",
-        "label": "テーブルの終了日",
+        "ラベル": "テーブルの終了日",
         "show_if": "options.type=='process' || options.type=='custom'",
         "val": "",
         "required": true,
