@@ -1,0 +1,91 @@
+{
+  "output_autorun_frame": {
+    "type": "fieldset",
+    "ラベル": "Table Key",
+    "show_if": "output.auto_run=='true'",
+    "repeat": false,
+    "fields": {
+		"options.task_filter": {
+        "type": "select",
+        "ラベル": "Key-Lock pair filter",
+        "options": {
+          "specific_tables": {
+            "ラベル": "Specify Task(s)"
+          },
+          "current_flow_tables": {
+            "ラベル": "Current Flow Tasks"
+          },
+          "flow_tables": {
+            "ラベル": "Specify Flow(s)"
+          },
+          "all_tables": {
+            "ラベル": "All Tasks"
+          }
+		 }
+		},
+      "output.autorun.tasks": {
+        "type": "text",
+        "ラベル": "Autorun the following Tasks",
+        "val": "",
+        "placeholder": "';' separated list",
+        "required": true,
+        "style": "width: 100%"
+      },
+      "output.autorun.define_type": {
+        "type": "select",
+        "ラベル": "Define type",
+        "required": true,
+        "options": {
+          "manually": {
+            "ラベル": "Define manually"
+          },
+          "table_content": {
+            "ラベル": "Define by table content"
+          }
+        },
+        "val": "manually"
+      },
+      "output.autorun.names": {
+        "type": "fieldset",
+        "ラベル": "Define Key Pins",
+        "show_if": "output.autorun.define_type=='manually'",
+        "repeat": true,
+        "fields": {
+          "name": {
+            "type": "text",
+            "ラベル": "Key Pin",
+            "val": "",
+            "required": true
+          },
+          "value": {
+            "type": "text",
+            "ラベル": "Key Pin Value",
+            "val": "",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "ラベル": "削除",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "output.autorun.name_column": {
+        "type": "select",
+        "ラベル": "Select Key Pin Column",
+        "show_if": "output.autorun.define_type=='table_content'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "output.autorun.value_column": {
+        "type": "select",
+        "ラベル": "Select Key Pin Value Column",
+        "show_if": "output.autorun.define_type=='table_content'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      }
+    }
+  }
+}
