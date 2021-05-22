@@ -7,6 +7,7 @@
       "reformat_columns": {
         "type": "checkbox",
         "Etiqueta": "Formateando Columnas",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -14,7 +15,7 @@
       "columns": {
         "type": "fieldset",
         "Etiqueta": "Seleccionar Columnas",
-        "show_if": "reformat_columns=='true'",
+        "show_if": "$input_table.numOfHeader >= 1",
         "repeat": true,
         "fields": {
           "field_name": {
@@ -94,7 +95,7 @@
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "Etiqueta": "Usar el Separador de 1000(.)",
+            "Etiqueta": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -149,6 +150,7 @@
       "reformat_rows": {
         "type": "checkbox",
         "Etiqueta": "Formateando Etiquetas",
+        "show_if": "false",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -157,7 +159,7 @@
       "rows": {
         "type": "fieldset",
         "Etiqueta": "Seleccionar Etiquetas",
-        "show_if": "reformat_rows=='true'",
+        "show_if": "$input_table.numOfLabel >= 1",
         "repeat": true,
         "fields": {
           "label_name": {
@@ -237,7 +239,7 @@
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "Etiqueta": "Usar el Separador de 1000(.)",
+            "Etiqueta": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
