@@ -1,49 +1,57 @@
 {
   "options": {
     "type": "fieldset",
-    "Étiquette": "Sélectionner le cas des options",
+    "Étiquette": "Sélectionner les options",
     "repeat": false,
     "fields": {
       "options.position": {
         "type": "select",
         "Étiquette": "Sélectionner une position",
+        "show_if": "$input_table.numOfLabel >= 1",
         "required": true,
         "options": {
-          "add_rows_below_selected_row": {
-            "Étiquette": "Ajouter des lignes ci-dessous"
+          "add_rows_at_table_end": {
+            "Étiquette": "Add row on bottom"
+          },
+          "add_row_on_top": {
+            "Étiquette": "Add row on top"
           },
           "add_rows_above_selected_row": {
-            "Étiquette": "Ajouter des lignes au-dessus"
+            "Étiquette": "Add row above selection"
           },
-          "add_rows_at_table_end": {
-            "Étiquette": "Ajouter des lignes à la fin du tableau"
-          },
-          "add_single_row_at_table_end": {
-            "Étiquette": "Ajouter une seule ligne à la fin du tableau"
+          "add_rows_below_selected_row": {
+            "Étiquette": "Add row below selection"
           },
           "add_row_after_each_group": {
             "Étiquette": "Ajouter une ligne après chaque groupe"
           }
         },
-        "val": "add_rows_below_selected_row",
+        "val": "add_rows_at_table_end",
         "breakLine": true
       },
       "options.group_column": {
         "type": "select",
         "Étiquette": "Colonne de groupe",
-        "show_if": "options.position=='add_row_after_each_group' && $input_table.numOfLabel < 1",
+        "show_if": "$input_table.numOfLabel < 1 && options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
         "breakLine": true
       },
       "options.use_filter": {
-        "type": "checkbox",
-        "Étiquette": "Utiliser un filtre",
-        "show_if": "$input_table.numOfLabel < 1 && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "type": "select",
+        "Étiquette": "Sélectionner le type",
+        "show_if": "false",
+        "required": true,
+        "options": {
+          "false": {
+            "Étiquette": "Ajouter une ligne pour chaque ligne du tableau"
+          },
+          "true": {
+            "Étiquette": "Ajouter une ligne pour chaque ligne spécifiée"
+          }
+        },
         "val": "false",
-        "isOn": "true",
-        "isOff": "false",
         "breakLine": true,
         "style": "margin-top: 10px"
       },
@@ -200,7 +208,7 @@
                 "type": "date",
                 "Étiquette": "Sélectionner une date",
                 "show_if": "this.condition=='DATE'",
-                "val": "1/31/2020",
+                "val": "",
                 "required": true
               },
               "value": {
@@ -264,12 +272,13 @@
       },
       "options.add_rows": {
         "type": "fieldset",
-        "Étiquette": "Option de nouvelle colonne",
+        "Étiquette": "Nouvelle option de ligne",
         "repeat": true,
         "fields": {
           "new_row_name": {
             "type": "text",
             "Étiquette": "Nom de nouvelle colonne",
+            "show_if": "$input_table.numOfLabel >= 1",
             "val": ""
           },
           "function_type": {
@@ -539,7 +548,7 @@
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "Étiquette": "Utilisez le séparateur 1000 (.)",
+            "Étiquette": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "false",
             "isOn": "true",
@@ -587,6 +596,42 @@
             "function": "DELETE_ROW"
           }
         }
+      },
+      "options.add_new_row": {
+        "type": "checkbox",
+        "Étiquette": "Ajouter une Étiquette",
+        "show_if": "$input_table.numOfLabel < 1",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.new_row_label": {
+        "type": "text",
+        "Étiquette": "Label Name",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "val": ""
+      },
+      "options.new_sel_column": {
+        "type": "select",
+        "Étiquette": "Sélectionner une colonne",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "required": true,
+        "table": "input_table",
+        "multiple": false,
+        "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.insert_on_top": {
+        "type": "checkbox",
+        "Étiquette": "Insert on Top",
+        "show_if": "$input_table.numOfLabel < 1",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
       }
     }
   }
