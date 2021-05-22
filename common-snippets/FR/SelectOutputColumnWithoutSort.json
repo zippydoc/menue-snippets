@@ -2,14 +2,16 @@
   "output.select_output_columns": {
     "type": "checkbox",
     "Étiquette": "Sélectionner les colonnes de sortie",
+    "show_if": "output.custom_options=='true'",
     "val": "false",
     "isOn": "true",
-    "isOff": "false"
+    "isOff": "false",
+    "style": "margin-top: 10px"
   },
   "output_columns": {
     "type": "fieldset",
     "Étiquette": "Sélectionner les colonnes de sortie",
-    "show_if": "output.select_output_columns=='true'",
+    "show_if": "output.custom_options=='true' && output.select_output_columns=='true'",
     "repeat": true,
     "fields": {
       "field_name": {
@@ -105,7 +107,7 @@
       },
       "format__use_1000_separator": {
         "type": "checkbox",
-        "Étiquette": "Utilisez le séparateur 1000 (.)",
+        "Étiquette": "Use 1000 Separator(.)",
         "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "val": "true",
         "isOn": "true",
