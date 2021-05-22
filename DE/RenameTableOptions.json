@@ -1,0 +1,86 @@
+{
+  "options": {
+    "type": "fieldset",
+    "Beschriftung": "Optionen",
+    "repeat": false,
+    "fields": {
+      "rename_columns": {
+        "type": "checkbox",
+        "Beschriftung": "Spalten umbenennen",
+        "show_if": "false",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "columns": {
+        "type": "fieldset",
+        "Beschriftung": "Spalten auswählen",
+        "show_if": "$input_table.numOfHeader >= 1",
+        "repeat": true,
+        "fields": {
+          "field_name": {
+            "type": "select",
+            "Beschriftung": "Spalte auswählen",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "rename": {
+            "show_if": "this.field_name != ''",
+            "type": "text",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 255,
+            "Beschriftung": "Umbenennen in"
+          },
+          "delete": {
+            "show_if": "this.field_name != ''",
+            "type": "button",
+            "Beschriftung": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        },
+        "breakLine": true
+      },
+      "rename_rows": {
+        "type": "checkbox",
+        "Beschriftung": "Beschriftungen umbenennen",
+        "show_if": "false",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px"
+      },
+      "rows": {
+        "type": "fieldset",
+        "Beschriftung": "Etiketten auswählen",
+        "show_if": "$input_table.numOfLabel >= 1",
+        "repeat": true,
+        "fields": {
+          "label_name": {
+            "type": "select",
+            "Beschriftung": "Label auswählen",
+            "table": "input_table",
+            "bind": "LABELS",
+            "required": true
+          },
+          "rename": {
+            "show_if": "this.label_name != ''",
+            "type": "text",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 255,
+            "Beschriftung": "Umbenennen in"
+          },
+          "delete": {
+            "show_if": "this.label_name != ''",
+            "type": "button",
+            "Beschriftung": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        },
+        "breakLine": true
+      }
+    }
+  }
+}
