@@ -1,0 +1,48 @@
+{
+  "output.select_output_columns": {
+    "type": "checkbox",
+    "etiqueta": "Seleccionar colunas de saída",
+    "show_if": "options.type=='transform_group' && output.custom_options=='true'",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "output_columns": {
+    "type": "fieldset",
+    "etiqueta": "Select OutputColumns",
+    "show_if": "options.type=='transform_group' && output.custom_options=='true' && output.select_output_columns=='true'",
+    "repeat": true,
+    "fields": {
+      "field_name": {
+        "type": "select",
+        "etiqueta": "Selecionar Coluna",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "is_rename": {
+        "type": "checkbox",
+        "etiqueta": "Mudar Nome",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "rename": {
+        "show_if": "this.is_rename == 'true'",
+        "type": "text",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 255,
+        "etiqueta": "Novo Nome de Coluna",
+        "style": "margin-left: 10px"
+      },
+      "delete": {
+        "type": "button",
+        "etiqueta": "Apagar",
+        "function": "DELETE_ROW"
+      }
+    },
+    "breakLine": true,
+    "style": "margin-bottom: 20px"
+  }
+}
