@@ -1,29 +1,45 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "オプションの選択",
+    "ラベル": "オプションの選択",
     "repeat": false,
     "fields": {
       "options.task_type": {
         "type": "select",
-        "label": "タスクタイプ",
+        "ラベル": "タスクタイプ",
         "required": true,
         "options": {
           "write_series": {
-            "label": "Write e-mail series"
+            "ラベル": "一連のメールを書く
           },
           "write_email": {
-            "label": "Write e-mail"
+            "ラベル": "Write e-mail"
           },
           "read": {
-            "label": "Read e-mails"
+            "ラベル": "Read e-mails"
           }
         },
         "val": "write_email"
       },
+      "input_table": {
+        "type": "select",
+        "ラベル": "テーブルの選択",
+        "show_if": "options.task_type=='write_series'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true
+      },
+      "info1": {
+        "type": "text",
+        "ラベル": "",
+        "show_if": "options.task_type=='write_series'",
+        "val": "Table-Type: TO | CC | BCC | SUBJECT | BODY",
+        "disabled": true,
+        "style": "width: 100%"
+      },
       "options.to": {
         "type": "text",
-        "label": "To",
+        "ラベル": "To",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -32,57 +48,56 @@
       },
       "options.cc": {
         "type": "text",
-        "label": "CC",
+        "ラベル": "CC",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "ccuser1@domain.com; ccuser2@domain.com",
         "width": "100%"
       },
       "options.bcc": {
         "type": "text",
-        "label": "BCC",
+        "ラベル": "BCC",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "bccuser1@domain.com; bccuser1@domain.com",
         "width": "100%"
       },
       "options.subject": {
         "type": "text",
-        "label": "Subject",
+        "ラベル": "Subject" (件名),
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
-        "placeholder": "Subject",
+        "placeholder": "Subject" (件名),
         "width": "100%"
       },
       "options.body": {
-        "type": "text",
-        "label": "Body",
+        "type": "textarea",
+        "ラベル": "本文",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "テキスト",
+        "md_no_resize": true,
+        "rows": 3,
         "width": "100%"
       }
     }
   },
   "smtp_config_frame": {
     "type": "fieldset",
-    "label": "SMTP Connection",
+    "ラベル": "SMTP接続",
     "show_if": "options.task_type=='write_series' || options.task_type=='write_email'",
     "repeat": false,
     "fields": {
       "options.smtp.type": {
         "type": "select",
-        "label": "Select SMTP Server",
+        "ラベル": "Select SMTP Server",
         "options": {
           "gmail": {
-            "label": "Gmail"
+            "ラベル": "Gmail"
           },
           "custom": {
-            "label": "Custom (coming soon)"
+            "ラベル": "カスタム（近日公開予定）"
           }
         },
         "val": "gmail",
@@ -91,7 +106,7 @@
       },
       "gmail_warning": {
         "type": "text",
-        "label": "",
+        "ラベル": "",
         "show_if": "options.smtp.type=='gmail'",
         "val": "Turn 'Allow less secure apps' ON in https://myaccount.google.com/lesssecureapps",
         "width": "100%",
@@ -99,38 +114,38 @@
       },
       "options.gmail.user": {
         "type": "text",
-        "label": "Gmail User",
+        "ラベル": "Gmailユーザー",
         "show_if": "options.smtp.type=='gmail'",
         "required": true,
         "placeholder": "sender@gmail.com"
       },
       "options.gmail.password": {
         "type": "password",
-        "label": "Gmail Password",
+        "ラベル": "Gmailのパスワード",
         "show_if": "options.smtp.type=='gmail'",
         "required": true
       },
       "options.custom.host": {
         "type": "text",
-        "label": "SMTP Host",
+        "ラベル": "SMTPホスト",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.port": {
         "type": "text",
-        "label": "SMTP Port",
+        "ラベル": "SMTPポート,
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.user": {
         "type": "text",
-        "label": "SMTP User",
+        "ラベル": "SMTPユーザー",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.password": {
         "type": "password",
-        "label": "SMTP Password",
+        "ラベル": "SMTPパスワード,
         "show_if": "options.smtp.type=='custom'",
         "required": true
       }
