@@ -1,0 +1,119 @@
+{
+  "options": {
+    "type": "fieldset",
+    "Étiquette": "Sélectionner les options de périodicité",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "hidden",
+        "val": "process"
+      },
+      "options.standard_table": {
+        "type": "checkbox",
+        "Étiquette": "Tableau de périodicité standard",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.initial_date": {
+        "type": "select",
+        "Étiquette": "Date initiale",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.period": {
+        "type": "select",
+        "Étiquette": "Périodicité (ex : mensuel, trimestriel)",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.final_date": {
+        "type": "select",
+        "Étiquette": "Date finale",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.volume": {
+        "type": "select",
+        "Étiquette": "Montant",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS"
+      },
+      "options.growth": {
+        "type": "select",
+        "Étiquette": "Croissance",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS"
+      },
+      "options.growth_period": {
+        "type": "select",
+        "Étiquette": "Période de croissance",
+        "show_if": "options.standard_table=='false'",
+        "options": {
+          "selected_period": {
+            "Étiquette": "Égaliser à la périodicité"
+          },
+          "week_on_week": {
+            "Étiquette": "Semaine sur semaine"
+          },
+          "month_on_month": {
+            "Étiquette": "Mois à mois"
+          },
+          "quarter_on_quarter": {
+            "Étiquette": "Trimestre sur trimestre"
+          },
+          "year_on_year": {
+            "Étiquette": "Année sur année"
+          },
+          "column": {
+            "Étiquette": "Sélectionner une colonne"
+          }
+        },
+        "val": "selected_period"
+      },
+      "options.growth_period_column": {
+        "type": "select",
+        "Étiquette": "Colonne de période de croissance",
+        "show_if": "options.standard_table=='false' && options.growth_period=='column'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.use_growth_pattern_column": {
+        "type": "checkbox",
+        "Étiquette": "Utiliser le modèle de croissance",
+        "show_if": "options.standard_table=='false'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.growth_pattern_column": {
+        "type": "select",
+        "Étiquette": "Modèle de croissance",
+        "show_if": "options.standard_table=='false' && options.use_growth_pattern_column=='true'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.end_date": {
+        "type": "date",
+        "Étiquette": "Date de fin du tableau",
+        "val": "",
+        "required": true,
+        "style": "width: 300px"
+      }
+    }
+  }
+}
