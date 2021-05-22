@@ -1,0 +1,124 @@
+{
+  "options.auto_run": {
+    "type": "checkbox",
+    "Beschriftung": "Autorun Task",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "trigger_vector_frame": {
+    "type": "fieldset",
+    "Beschriftung": "Task Lock",
+    "show_if": "options.auto_run=='true'",
+    "repeat": false,
+	"fields": {
+		"options.table_filter": {
+        "type": "select",
+        "Beschriftung": "Key-Lock pair filter",
+        "options": {
+          "specific_tables": {
+            "Beschriftung": "Specify Table(s)"
+          },
+          "current_flow_tables": {
+            "Beschriftung": "Current Flow Tables"
+          },
+          "flow_tables": {
+            "Beschriftung": "Specify Flow(s)"
+          },
+          "all_tables": {
+            "Beschriftung": "All Tables"
+          }
+		 }
+		},
+      "options.autorun_tables": {
+        "type": "select",
+        "Beschriftung": "Autorun on table change",
+        "bind": "TABLES",
+        "multiple": true,
+        "required": false
+      },
+      "trigger_key": {
+        "type": "select",
+        "Beschriftung": "Trigger Key",
+        "options": {
+          "greater": {
+            "Beschriftung": "GRÖSSER ALS"
+          },
+          "greater_or_equal": {
+            "Beschriftung": "GRÖSSER ODER GLEICH"
+          },
+          "equal": {
+            "Beschriftung": "EQUAL"
+          },
+          "smaller_or_equal": {
+            "Beschriftung": "KLEINER ODER GLEICH"
+          },
+          "smaller": {
+            "Beschriftung": "KLEINER ALS"
+          }
+        },
+        "val": "larger_or_equal"
+      },
+      "key_number": {
+        "type": "text",
+        "Beschriftung": "Key",
+        "val": "1",
+        "required": true,
+        "breakLine": true
+      },  	  
+      "trigger_method": {
+        "type": "select",
+        "Beschriftung": "Trigger Method",
+        "options": {
+          "no_lock": {
+            "Beschriftung": "Run without Task Lock"
+          },
+          "scalar_product_compound": {
+            "Beschriftung": "Compound AxB"
+          },
+          "scalar_product_all_pins": {
+            "Beschriftung": "Pin by Pin AxB - each matching"
+          },
+          "scalar_product_min_one_pin": {
+            "Beschriftung": "Pin by Pin AxB - one or more matches"
+          },
+          "scalar_product_one_pin": {
+            "Beschriftung": "Pin by Pin AxB - one match"
+          },
+          "concatenate": {
+            "Beschriftung": "Match concatenation"
+          },		  
+          "matching_array": {
+            "Beschriftung": "Match all elements (unordered)"
+          }
+        },
+        "val": "scalar_product_compound",
+        "breakLine": true
+      },
+      "options.names": {
+        "type": "fieldset",
+        "Beschriftung": "Task Lock Definition",
+        "repeat": true,
+        "fields": {
+          "name": {
+            "type": "text",
+            "Beschriftung": "Key Pin",
+            "val": "",
+            "required": true
+          },
+          "value": {
+            "type": "text",
+            "Beschriftung": "Multiplier",
+            "val": "",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "Beschriftung": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
