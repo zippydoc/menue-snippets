@@ -1,0 +1,48 @@
+{
+  "output.select_output_columns": {
+    "type": "checkbox",
+    "Метка": "Выбрать выходные колонки",
+    "show_if": "options.type=='transform_group' && output.custom_options=='true'",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "output_columns": {
+    "type": "fieldset",
+    "Метка": "Select OutputColumns",
+    "show_if": "options.type=='transform_group' && output.custom_options=='true' && output.select_output_columns=='true'",
+    "repeat": true,
+    "fields": {
+      "field_name": {
+        "type": "select",
+        "Метка": "Выбрать столбец",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "is_rename": {
+        "type": "checkbox",
+        "Метка": "Переименовать",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "rename": {
+        "show_if": "this.is_rename == 'true'",
+        "type": "text",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 255,
+        "Метка": "Название нового столбца",
+        "style": "margin-left: 10px"
+      },
+      "delete": {
+        "type": "button",
+        "Метка": "Удалить",
+        "function": "DELETE_ROW"
+      }
+    },
+    "breakLine": true,
+    "style": "margin-bottom: 20px"
+  }
+}
