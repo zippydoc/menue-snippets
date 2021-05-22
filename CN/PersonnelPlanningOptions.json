@@ -1,0 +1,151 @@
+{
+  "options": {
+    "type": "fieldset",
+    "标签": "选择选项",
+    "repeat": false,
+    "fields": {
+      "task_label": {
+        "type": "hidden",
+        "val": "personnel_planning"
+      },
+      "options.type": {
+        "type": "hidden",
+        "val": "custom"
+      },
+      "options.custom.table": {
+        "type": "fieldset",
+        "标签": "计划职位",
+        "repeat": true,
+        "fields": {
+          "item": {
+            "type": "text",
+            "标签": "名称",
+            "val": "",
+            "required": true
+          },
+          "position": {
+            "type": "select",
+            "标签": "位置",
+            "options": {
+              "固定工资": {
+                "标签": "固定工资"
+              },
+              "奖金": {
+                "标签": "奖金"
+              },
+              "其他报酬": {
+                "标签": "其他报酬"
+              }
+            },
+            "val": "固定工资",
+            "required": true
+          },
+          "amount": {
+            "type": "number",
+            "标签": "金额",
+            "val": "",
+            "required": true
+          },
+          "initial_date": {
+            "type": "date",
+            "标签": "初始日期",
+            "val": "",
+            "required": true
+          },
+          "periodicy": {
+            "type": "select",
+            "标签": "周期",
+            "required": true,
+            "options": {
+              "一次性的": {
+                "标签": "一次性的"
+              },
+              "每日": {
+                "标签": "每日"
+              },
+              "工作-日": {
+                "标签": "工作-日"
+              },
+              "每周": {
+                "标签": "每周"
+              },
+              "每月": {
+                "标签": "每月"
+              },
+              "季度": {
+                "标签": "季度"
+              },
+              "一年一度": {
+                "标签": "一年一度"
+              }
+            },
+            "val": "一次性的"
+          },
+          "growth": {
+            "type": "number",
+            "标签": "增长",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": "",
+            "required": true
+          },
+          "growth_period": {
+            "type": "select",
+            "标签": "增长时段",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "每周": {
+                "标签": "每周"
+              },
+              "每月": {
+                "标签": "月环比"
+              },
+              "季度": {
+                "标签": "季环比"
+              },
+              "一年一度": {
+                "标签": "年环比"
+              }
+            },
+            "val": "每周"
+          },
+          "growth_pattern": {
+            "type": "select",
+            "标签": "增长模式",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "复利": {
+                "标签": "复利"
+              },
+              "线性": {
+                "标签": "线性"
+              },
+              "跳跃式修复": {
+                "标签": "跳跃式修复"
+              }
+            },
+            "val": "复利"
+          },
+          "final_date": {
+            "type": "date",
+            "标签": "最后日期",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": ""
+          },
+          "delete": {
+            "type": "button",
+            "标签": "删除",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.end_date": {
+        "type": "date",
+        "标签": "表格结束日期",
+        "show_if": "options.type=='process' || options.type=='custom'",
+        "val": "",
+        "required": true,
+        "style": "width: 300px"
+      }
+    }
+  }
+}
