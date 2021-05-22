@@ -14,16 +14,24 @@
       "output.custom_text": {
         "type": "text",
         "Étiquette": "Sortir le nom du tableau",
-        "show_if": "output.compose_table_name=='false' && output.output_as_new_table=='true'",
+        "show_if": "(output.custom_options=='false' && output.output_as_new_table=='true') || (output.custom_options=='false' && output.compose_table_name=='true' && output.output_as_new_table=='true')",
         "minLength": 1,
         "val": "",
         "width": "100%",
         "breakLine": true
       },
+      "output.custom_options": {
+        "type": "checkbox",
+        "Étiquette": "Options de sortie",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "output.compose_table_name": {
         "type": "checkbox",
         "Étiquette": "Saisissez le nom du tableau",
-        "show_if": "output.output_as_new_table=='true'",
+        "show_if": "output.output_as_new_table=='true' && output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -32,7 +40,7 @@
       "compose_table_name_frame": {
         "type": "fieldset",
         "Étiquette": "Saisissez le nom du tableau de sortie",
-        "show_if": "output.output_as_new_table=='true' && output.compose_table_name=='true'",
+        "show_if": "output.output_as_new_table=='true' && output.custom_options=='true' && output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
