@@ -1,0 +1,119 @@
+{
+  "options": {
+    "type": "fieldset",
+    "标签": "选择周期选项",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "hidden",
+        "val": "process"
+      },
+      "options.standard_table": {
+        "type": "checkbox",
+        "标签": "标准周期表格",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.initial_date": {
+        "type": "select",
+        "标签": "初始日期",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.period": {
+        "type": "select",
+        "标签": "周期性（如每月、每季度）",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.final_date": {
+        "type": "select",
+        "标签": "最后日期",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.volume": {
+        "type": "select",
+        "标签": "金额",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS"
+      },
+      "options.growth": {
+        "type": "select",
+        "标签": "增长",
+        "show_if": "options.standard_table=='false'",
+        "table": "input_table",
+        "bind": "COLUMNS"
+      },
+      "options.growth_period": {
+        "type": "select",
+        "标签": "增长时段",
+        "show_if": "options.standard_table=='false'",
+        "options": {
+          "selected_period": {
+            "标签": "等于周期"
+          },
+          "week_on_week": {
+            "标签": "周环比"
+          },
+          "month_on_month": {
+            "标签": "月环比"
+          },
+          "quarter_on_quarter": {
+            "标签": "季环比"
+          },
+          "year_on_year": {
+            "标签": "年环比"
+          },
+          "column": {
+            "标签": "选择列"
+          }
+        },
+        "val": "selected_period"
+      },
+      "options.growth_period_column": {
+        "type": "select",
+        "标签": "增长时段列",
+        "show_if": "options.standard_table=='false' && options.growth_period=='column'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.use_growth_pattern_column": {
+        "type": "checkbox",
+        "标签": "使用增长模式",
+        "show_if": "options.standard_table=='false'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.growth_pattern_column": {
+        "type": "select",
+        "标签": "增长模式",
+        "show_if": "options.standard_table=='false' && options.use_growth_pattern_column=='true'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.end_date": {
+        "type": "date",
+        "标签": "表格结束日期",
+        "val": "",
+        "required": true,
+        "style": "width: 300px"
+      }
+    }
+  }
+}
