@@ -1,219 +1,226 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Выбрать параметры",
+    "Метка": "Выбрать параметры",
     "repeat": false,
     "fields": {
       "options.position": {
         "type": "select",
-        "label": "Выбрать позицию",
+        "Метка": "Выбрать позицию",
+        "show_if": "$input_table.numOfLabel >= 1",
         "required": true,
-        "show_if": "table_type=='header_only'",
         "options": {
-          "add_rows_below_selected_row": {
-            "label": "Добавьте строки ниже"
+          "add_rows_at_table_end": {
+            "Метка": "Add row on bottom"
+          },
+          "add_row_on_top": {
+            "Метка": "Add row on top"
           },
           "add_rows_above_selected_row": {
-            "label": "Добавьте строки выше"
+            "Метка": "Add row above selection"
           },
-          "add_rows_at_table_end": {
-            "label": "Добавить строки в конце таблицы"
-          },
-          "add_single_row_at_table_end": {
-            "label": "Добавить одну строку в конце таблицы"
+          "add_rows_below_selected_row": {
+            "Метка": "Add row below selection"
           },
           "add_row_after_each_group": {
-            "label": "Добавлять строку после каждой группы"
+            "Метка": "Добавлять строку после каждой группы"
           }
         },
-        "val": "add_rows_below_selected_row",
+        "val": "add_rows_at_table_end",
         "breakLine": true
       },
       "options.group_column": {
         "type": "select",
-        "label": "Групповой столбец",
-        "show_if": "table_type=='header_only' && options.position=='add_row_after_each_group'",
+        "Метка": "Групповой столбец",
+        "show_if": "$input_table.numOfLabel < 1 && options.position=='add_row_after_each_group'",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true,
         "breakLine": true
       },
       "options.use_filter": {
-        "type": "checkbox",
-        "label": "Использовать фильтр",
-        "show_if": "table_type=='header_only' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "type": "select",
+        "Метка": "Выбрать тип",
+        "show_if": "false",
+        "required": true,
+        "options": {
+          "false": {
+            "Метка": "Добавить одну строку для каждой строки таблицы"
+          },
+          "true": {
+            "Метка": "Добавить одну строку для каждой указанной строки"
+          }
+        },
         "val": "false",
-        "isOn": "true",
-        "isOff": "false",
         "breakLine": true,
         "style": "margin-top: 10px"
       },
       "filter_box": {
         "type": "fieldset",
-        "label": "Настройки фильтра",
-        "show_if": "table_type=='header_only' && options.use_filter=='true' && (options.position=='add_rows_below_selected_row' || options.position=='add_rows_above_selected_row' || options.position=='add_rows_at_table_end')",
+        "Метка": "Настройки фильтра",
+        "show_if": "options.use_filter=='true' && $input_table.numOfLabel < 1",
         "repeat": false,
         "fields": {
           "options.filter": {
             "type": "fieldset",
-            "label": "Добавить условия фильтрации",
+            "Метка": "Добавить условия фильтрации",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Выбрать оператора логики",
+                "Метка": "Выбрать оператора логики",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
                   "if": {
-                    "label": "ЕСЛИ"
+                    "Метка": "ЕСЛИ"
                   },
                   "if_not": {
-                    "label": "ЕСЛИ НЕ"
+                    "Метка": "ЕСЛИ НЕ"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "Выбрать оператора логики",
+                "Метка": "Выбрать оператора логики",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
                   "and": {
-                    "label": "И"
+                    "Метка": "И"
                   },
                   "or": {
-                    "label": "ИЛИ"
+                    "Метка": "ИЛИ"
                   },
                   "and_not": {
-                    "label": "И НЕ"
+                    "Метка": "И НЕ"
                   },
                   "or_not": {
-                    "label": "ИЛИ НЕ"
+                    "Метка": "ИЛИ НЕ"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": "Выбрать столбец",
+                "Метка": "Выбрать столбец",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Выбрать оператора",
+                "Метка": "Выбрать оператора",
                 "required": true,
                 "options": {
                   "СОДЕРЖИТ": {
-                    "label": "СОДЕРЖИТ"
+                    "Метка": "СОДЕРЖИТ"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "СОДЕРЖАЛОСЬ В"
+                    "Метка": "СОДЕРЖАЛОСЬ В"
                   },
                   "НАЧИНАЕТСЯ С": {
-                    "label": "НАЧИНАЕТСЯ С"
+                    "Метка": "НАЧИНАЕТСЯ С"
                   },
                   "ЗАКАНЧИВАЕТСЯ С": {
-                    "label": "ЗАКАНЧИВАЕТСЯ С"
+                    "Метка": "ЗАКАНЧИВАЕТСЯ С"
                   },
                   "=": {
-                    "label": "Равный"
+                    "Метка": "Равный"
                   },
                   ">": {
-                    "label": "БОЛЬШЕ ЧЕМ"
+                    "Метка": "БОЛЬШЕ ЧЕМ"
                   },
                   ">=": {
-                    "label": "БОЛЬШИЙ ИЛИ РАВНЫЙ"
+                    "Метка": "БОЛЬШИЙ ИЛИ РАВНЫЙ"
                   },
                   "<": {
-                    "label": "МЕНЬШЕ ЧЕМ"
+                    "Метка": "МЕНЬШЕ ЧЕМ"
                   },
                   "<=": {
-                    "label": "МЕНЬШИЙ ИЛИ РАВНЫЙ"
+                    "Метка": "МЕНЬШИЙ ИЛИ РАВНЫЙ"
                   },
                   "EMPTY": {
-                    "label": "ПУСТО"
+                    "Метка": "ПУСТО"
                   },
                   "BLANK": {
-                    "label": "ПУСТО"
+                    "Метка": "ПУСТО"
                   },
                   "НОЛЬ": {
-                    "label": "НОЛЬ"
+                    "Метка": "НОЛЬ"
                   },
                   "Совпадение регулярного выражения": {
-                    "label": "Совпадение регулярного выражения"
+                    "Метка": "Совпадение регулярного выражения"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "В ТАБЛИЦЕ"
+                    "Метка": "В ТАБЛИЦЕ"
                   },
                   "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ": {
-                    "label": "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ"
+                    "Метка": "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ"
                   },
                   "ДАТА": {
-                    "label": "ДАТА"
+                    "Метка": "ДАТА"
                   }
                 },
                 "val": "СОДЕРЖИТ"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Выбрать оператора даты",
+                "Метка": "Выбрать оператора даты",
                 "required": true,
                 "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "ПРЕДЫДУЩИЙ"
+                    "Метка": "ПРЕДЫДУЩИЙ"
                   },
                   "<=": {
-                    "label": "ПРЕДЫДУЩИЙ ИЛИ РАВНЫЙ"
+                    "Метка": "ПРЕДЫДУЩИЙ ИЛИ РАВНЫЙ"
                   },
                   "=": {
-                    "label": "Равный"
+                    "Метка": "Равный"
                   },
                   ">": {
-                    "label": "ПОСЛЕ"
+                    "Метка": "ПОСЛЕ"
                   },
                   ">=": {
-                    "label": "ПОСЛЕ ИЛИ РАВНО"
+                    "Метка": "ПОСЛЕ ИЛИ РАВНО"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Выбрать с учетом регистра",
+                "Метка": "Выбрать с учетом регистра",
                 "required": true,
                 "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "С учетом регистра"
+                    "Метка": "С учетом регистра"
                   },
                   "no": {
-                    "label": "Без учета регистра"
+                    "Метка": "Без учета регистра"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Выбрать дату",
+                "Метка": "Выбрать дату",
                 "show_if": "this.condition=='DATE'",
-                "val": "1/31/2020",
+                "val": "",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Добавить значение",
+                "Метка": "Добавить значение",
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Выбрать таблицу",
+                "Метка": "Выбрать таблицу",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -221,7 +228,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "Выбрать столбец",
+                "Метка": "Выбрать столбец",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -229,14 +236,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "Удалить",
+                "Метка": "Удалить",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.apply_to_record": {
             "type": "checkbox",
-            "label": "Применить к регистру",
+            "Метка": "Применить к регистру",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -245,13 +252,13 @@
           },
           "apply_to_group_box": {
             "type": "fieldset",
-            "label": "Применить к группе",
+            "Метка": "Применить к группе",
             "show_if": "options.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.apply_to_group_columns": {
                 "type": "select",
-                "label": "Выбрать групповые столбцы",
+                "Метка": "Выбрать групповые столбцы",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
@@ -265,149 +272,91 @@
       },
       "options.add_rows": {
         "type": "fieldset",
-        "label": "Параметры новой строки",
+        "Метка": "Параметры новой строки",
         "repeat": true,
         "fields": {
           "new_row_name": {
             "type": "text",
-            "label": "Название новой строки",
+            "Метка": "Название новой строки",
+            "show_if": "$input_table.numOfLabel >= 1",
             "val": ""
           },
           "function_type": {
             "type": "select",
-            "label": "Тип задачи",
-            "show_if": "table_type=='header_only'",
+            "Метка": "Тип задачи",
+            "show_if": "false",
             "required": true,
             "options": {
               "multi_column_functions": {
-                "label": "Несколько столбцов"
+                "Метка": "Несколько столбцов"
               },
               "multi_row_functions": {
-                "label": "Несколько строк"
+                "Метка": "Несколько строк"
               }
             },
             "val": "multi_row_functions"
           },
-          "multi_column_functions__function": {
-            "type": "select",
-            "label": "Выбрать функцию",
-            "show_if": "this.function_type=='multi_column_functions'",
-            "required": true,
-            "options": {
-              "absolute_growth": {
-                "label": "Абсолютный рост"
-              },
-              "relative_growth": {
-                "label": "Относительный рост"
-              },
-              "trailing_average": {
-                "label": "Среднее арифметическое"
-              },
-              "index_growth": {
-                "label": "Рост индекса"
-              },
-              "compound_growth": {
-                "label": "Рост соединений"
-              },
-              "discount_rate": {
-                "label": "Ставка дисконта"
-              },
-              "quota": {
-                "label": "Квота"
-              }
-            },
-            "val": "absolute_growth"
-          },
           "multi_row_functions__function": {
             "type": "select",
-            "label": "Выбрать функцию",
-            "show_if": "this.function_type=='multi_row_functions'",
+            "Метка": "Выберите функции",
+            "show_if": "$input_table.numOfLabel >= 1",
             "required": true,
             "options": {
               "sum": {
-                "label": "Сумма"
+                "Метка": "Сумма"
               },
               "average": {
-                "label": "Средний"
+                "Метка": "Средний"
               },
               "median": {
-                "label": "Медиана"
+                "Метка": "Медиана"
               },
               "standard_deviation": {
-                "label": "Стандартное отклонение"
+                "Метка": "Стандартное отклонение"
               },
               "variance": {
-                "label": "Вариант"
+                "Метка": "Вариант"
               },
               "product": {
-                "label": "Продукт"
+                "Метка": "Продукт"
               },
               "quota": {
-                "label": "Квота"
+                "Метка": "Квота"
+              }
+            },
+            "val": "sum"
+          },
+          "multi_row_functions__function_use_filter": {
+            "type": "select",
+            "Метка": "Выберите функции",
+            "show_if": "$input_table.numOfLabel < 1",
+            "required": true,
+            "options": {
+              "sum": {
+                "Метка": "Сумма"
+              },
+              "average": {
+                "Метка": "Средний"
+              },
+              "median": {
+                "Метка": "Медиана"
+              },
+              "standard_deviation": {
+                "Метка": "Стандартное отклонение"
+              },
+              "variance": {
+                "Метка": "Вариант"
+              },
+              "product": {
+                "Метка": "Продукт"
               }
             },
             "val": "sum"
           },
           "multi_row_functions__sel_labels": {
             "type": "select",
-            "label": "Select Rows(s)",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function!='quota'",
-            "required": true,
-            "table": "input_table",
-            "multiple": true,
-            "bind": "LABELS"
-          },
-          "multi_column_functions__sel_labels": {
-            "type": "select",
-            "label": "Select Rows(s)",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth' || this.multi_column_functions__function=='discount_rate')",
-            "required": true,
-            "table": "input_table",
-            "multiple": true,
-            "bind": "LABELS"
-          },
-          "multi_column_functions__n_value": {
-            "type": "text",
-            "label": "N (целое положительное число)",
-            "show_if": "this.function_type=='multi_column_functions' && (this.multi_column_functions__function=='trailing_average' || this.multi_column_functions__function=='index_growth' || this.multi_column_functions__function=='compound_growth')",
-            "val": "1",
-            "required": true
-          },
-          "multi_column_functions__discount_rate__rate": {
-            "type": "text",
-            "label": "Добавить показатель",
-            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
-            "val": "1",
-            "required": true
-          },
-          "multi_column_functions__discount_rate__starting_column": {
-            "type": "select",
-            "label": "Начальный столбец",
-            "show_if": "this.function_type=='multi_column_functions' && this.multi_column_functions__function=='discount_rate'",
-            "table": "input_table",
-            "bind": "COLUMNS",
-            "required": true
-          },
-          "multi_column_functions__sel_label_a": {
-            "type": "select",
-            "label": "Выбрать метку А",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
-            "required": true,
-            "table": "input_table",
-            "bind": "LABELS"
-          },
-          "multi_column_functions__sel_label_b": {
-            "type": "select",
-            "label": "Выбрать метку B",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
-            "required": true,
-            "table": "input_table",
-            "bind": "LABELS"
-          },
-          "multi_column_functions__quota_sel_labels": {
-            "type": "select",
-            "label": "Select Rows(s)",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_column_functions' && this.multi_column_functions__function=='quota'",
+            "Метка": "Выбрать строку (строки)",
+            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function!='quota'",
             "required": true,
             "table": "input_table",
             "multiple": true,
@@ -415,85 +364,86 @@
           },
           "multi_row_functions__sel_rows": {
             "type": "select",
-            "label": "Select Rows",
-            "show_if": "table_type=='header_only' && this.function_type=='multi_row_functions'",
+            "Метка": "Выбрать строки",
+            "show_if": "false",
             "required": true,
             "options": {
               "row-1": {
-                "label": "Строка-1"
+                "Метка": "Строка-1"
               },
               "row-2": {
-                "label": "Row-2"
+                "Метка": "Ряд-2"
               },
               "row-3": {
-                "label": "Row-3"
+                "Метка": "Ряд-3"
               },
               "row-4": {
-                "label": "Row-4"
+                "Метка": "Ряд-4"
               },
               "row-5": {
-                "label": "Row-5"
+                "Метка": "Ряд-5"
               },
               "row-6": {
-                "label": "Row-6"
+                "Метка": "Ряд-6"
               },
               "row-7": {
-                "label": "Row-7"
+                "Метка": "Ряд-7"
               },
               "row-8": {
-                "label": "Row-8"
+                "Метка": "Ряд-8"
               },
               "row-9": {
-                "label": "Row-9"
+                "Метка": "Ряд-9"
               },
               "row-10": {
-                "label": "Row-10"
+                "Метка": "Ряд-10"
               },
               "row+1": {
-                "label": "Row+1"
+                "Метка": "Ряд+1"
               },
               "row+2": {
-                "label": "Row+2"
+                "Метка": "Ряд+2"
               },
               "row+3": {
-                "label": "Row+3"
+                "Метка": "Ряд+3"
               },
               "row+4": {
-                "label": "Row+4"
+                "Метка": "Ряд+4"
               },
               "row+5": {
-                "label": "Row+5"
+                "Метка": "Ряд+5"
               },
               "row+6": {
-                "label": "Row+6"
+                "Метка": "Ряд+6"
               },
               "row+7": {
-                "label": "Row+7"
+                "Метка": "Ряд+7"
               },
               "row+8": {
-                "label": "Row+8"
+                "Метка": "Ряд+8"
               },
               "row+9": {
-                "label": "Row+9"
+                "Метка": "Строка+9"
               },
               "row+10": {
-                "label": "Row+10"
+                "Метка": "Ряд+10"
               }
             },
+            "multiple": true,
             "val": "row-1"
           },
           "multi_row_functions__sel_label_a": {
             "type": "select",
-            "label": "Выбрать метку А",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
+            "Метка": "Выбрать метку А",
+            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
           },
           "multi_row_functions__sel_label_b": {
             "type": "select",
-            "label": "Выбрать метку B",
-            "show_if": "table_type!='header_only' && this.function_type=='multi_row_functions' && this.multi_row_functions__function=='quota'",
+            "Метка": "Выбрать метку B",
+            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function=='quota'",
             "required": true,
             "table": "input_table",
             "bind": "LABELS",
@@ -501,362 +451,104 @@
           },
           "position": {
             "type": "select",
-            "label": "Позиция",
-            "show_if": "table_type!='header_only'",
+            "Метка": "Позиция",
+            "show_if": "$input_table.numOfLabel >= 1",
             "required": true,
             "options": {
               "bottom": {
-                "label": "BOTTOM"
+                "Метка": "СНИЗУ"
               },
               "top": {
-                "label": "TOP"
+                "Метка": "TOP"
               },
               "above": {
-                "label": "НАД"
+                "Метка": "НАД"
               },
               "below": {
-                "label": "ПОД"
+                "Метка": "ПОД"
               }
             },
             "val": "bottom"
           },
           "positioning_row": {
             "type": "select",
-            "label": "Positioning Row",
-            "show_if": "table_type!='header_only' && (this.position=='above' || this.position=='below')",
+            "Метка": "Позиционирование строки",
+            "show_if": "$input_table.numOfLabel >= 1 && (this.position=='above' || this.position=='below')",
             "required": true,
             "table": "input_table",
             "bind": "LABELS"
           },
-          "multi_column_functions__sel_row_a": {
-            "type": "select",
-            "label": "Выбрать строку А",
-            "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
-            "required": true,
-            "options": {
-              "row-1": {
-                "label": "Строка-1"
-              },
-              "row-2": {
-                "label": "Row-2"
-              },
-              "row-3": {
-                "label": "Row-3"
-              },
-              "row-4": {
-                "label": "Row-4"
-              },
-              "row-5": {
-                "label": "Row-5"
-              },
-              "row-6": {
-                "label": "Row-6"
-              },
-              "row-7": {
-                "label": "Row-7"
-              },
-              "row-8": {
-                "label": "Row-8"
-              },
-              "row-9": {
-                "label": "Row-9"
-              },
-              "row-10": {
-                "label": "Row-10"
-              },
-              "row-11": {
-                "label": "Row-11"
-              },
-              "row-12": {
-                "label": "Row-12"
-              },
-              "row-13": {
-                "label": "Row-13"
-              },
-              "row-14": {
-                "label": "Row-14"
-              },
-              "row-15": {
-                "label": "Row-15"
-              },
-              "row-16": {
-                "label": "Row-16"
-              },
-              "row-17": {
-                "label": "Row-17"
-              },
-              "row-18": {
-                "label": "Row-18"
-              },
-              "row-19": {
-                "label": "Row-19"
-              },
-              "row-20": {
-                "label": "Row-20"
-              },
-              "row+1": {
-                "label": "Row+1"
-              },
-              "row+2": {
-                "label": "Row+2"
-              },
-              "row+3": {
-                "label": "Row+3"
-              },
-              "row+4": {
-                "label": "Row+4"
-              },
-              "row+5": {
-                "label": "Row+5"
-              },
-              "row+6": {
-                "label": "Row+6"
-              },
-              "row+7": {
-                "label": "Row+7"
-              },
-              "row+8": {
-                "label": "Row+8"
-              },
-              "row+9": {
-                "label": "Row+9"
-              },
-              "row+10": {
-                "label": "Row+10"
-              },
-              "row+11": {
-                "label": "Row+11"
-              },
-              "row+12": {
-                "label": "Row+12"
-              },
-              "row+13": {
-                "label": "Row+13"
-              },
-              "row+14": {
-                "label": "Row+14"
-              },
-              "row+15": {
-                "label": "Row+15"
-              },
-              "row+16": {
-                "label": "Row+16"
-              },
-              "row+17": {
-                "label": "Row+17"
-              },
-              "row+18": {
-                "label": "Row+18"
-              },
-              "row+19": {
-                "label": "Row+19"
-              },
-              "row+20": {
-                "label": "Row+20"
-              }
-            },
-            "val": "row-1"
-          },
-          "multi_column_functions__sel_row_b": {
-            "type": "select",
-            "label": "Выбрать строку B",
-            "show_if": "table_type=='header_only' && this.multi_column_functions__function=='quota' && this.function_type=='multi_column_functions'",
-            "required": true,
-            "options": {
-              "row-1": {
-                "label": "Строка-1"
-              },
-              "row-2": {
-                "label": "Row-2"
-              },
-              "row-3": {
-                "label": "Row-3"
-              },
-              "row-4": {
-                "label": "Row-4"
-              },
-              "row-5": {
-                "label": "Row-5"
-              },
-              "row-6": {
-                "label": "Row-6"
-              },
-              "row-7": {
-                "label": "Row-7"
-              },
-              "row-8": {
-                "label": "Row-8"
-              },
-              "row-9": {
-                "label": "Row-9"
-              },
-              "row-10": {
-                "label": "Row-10"
-              },
-              "row-11": {
-                "label": "Row-11"
-              },
-              "row-12": {
-                "label": "Row-12"
-              },
-              "row-13": {
-                "label": "Row-13"
-              },
-              "row-14": {
-                "label": "Row-14"
-              },
-              "row-15": {
-                "label": "Row-15"
-              },
-              "row-16": {
-                "label": "Row-16"
-              },
-              "row-17": {
-                "label": "Row-17"
-              },
-              "row-18": {
-                "label": "Row-18"
-              },
-              "row-19": {
-                "label": "Row-19"
-              },
-              "row-20": {
-                "label": "Row-20"
-              },
-              "row+1": {
-                "label": "Row+1"
-              },
-              "row+2": {
-                "label": "Row+2"
-              },
-              "row+3": {
-                "label": "Row+3"
-              },
-              "row+4": {
-                "label": "Row+4"
-              },
-              "row+5": {
-                "label": "Row+5"
-              },
-              "row+6": {
-                "label": "Row+6"
-              },
-              "row+7": {
-                "label": "Row+7"
-              },
-              "row+8": {
-                "label": "Row+8"
-              },
-              "row+9": {
-                "label": "Row+9"
-              },
-              "row+10": {
-                "label": "Row+10"
-              },
-              "row+11": {
-                "label": "Row+11"
-              },
-              "row+12": {
-                "label": "Row+12"
-              },
-              "row+13": {
-                "label": "Row+13"
-              },
-              "row+14": {
-                "label": "Row+14"
-              },
-              "row+15": {
-                "label": "Row+15"
-              },
-              "row+16": {
-                "label": "Row+16"
-              },
-              "row+17": {
-                "label": "Row+17"
-              },
-              "row+18": {
-                "label": "Row+18"
-              },
-              "row+19": {
-                "label": "Row+19"
-              },
-              "row+20": {
-                "label": "Row+20"
-              }
-            },
-            "val": "row-1"
-          },
           "format__category": {
             "type": "select",
-            "label": "Формат",
+            "Метка": "Формат",
             "required": true,
             "options": {
               "standard": {
-                "label": "Стандартный"
+                "Метка": "Стандартный"
               },
               "number": {
-                "label": "Число"
+                "Метка": "Число"
               },
               "percentage": {
-                "label": "Процент"
+                "Метка": "Процент"
               },
               "text": {
-                "label": "Текст"
+                "Метка": "Текст"
               },
               "date": {
-                "label": "Дата"
+                "Метка": "Дата"
               },
               "currency": {
-                "label": "Валюта"
+                "Метка": "Валюта"
               }
             },
             "val": "standard"
           },
           "format__rounding": {
             "type": "select",
-            "label": "Округление",
+            "Метка": "Округление",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "Округление чисел"
+                "Метка": "Округление чисел"
               },
               "0": {
-                "label": "0 цифр"
+                "Метка": "0 цифр"
               },
               "1": {
-                "label": "1 цифра"
+                "Метка": "1 цифра"
               },
               "2": {
-                "label": "2 цифры"
+                "Метка": "2 цифры"
               },
               "3": {
-                "label": "3 цифры"
+                "Метка": "3 цифры"
               },
               "4": {
-                "label": "4 цифры"
+                "Метка": "4 цифры"
               },
               "5": {
-                "label": "5 цифр"
+                "Метка": "5 цифр"
               },
               "6": {
-                "label": "6 цифр"
+                "Метка": "6 цифр"
               },
               "7": {
-                "label": "7 цифр"
+                "Метка": "7 цифр"
               },
               "8": {
-                "label": "8 цифр"
+                "Метка": "8 цифр"
               },
               "9": {
-                "label": "9 цифр"
+                "Метка": "9 цифр"
               }
             },
             "val": "no_rounding"
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Используйте сепаратор 1000(.)",
+            "Метка": "Use 1000 Separator(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "false",
             "isOn": "true",
@@ -864,46 +556,82 @@
           },
           "format__currency_symbol": {
             "type": "select",
-            "label": "Символ",
+            "Метка": "Символ",
             "show_if": "this.format__category=='currency'",
             "required": true,
             "options": {
               "dollar": {
-                "label": "$"
+                "Метка": "$"
               },
               "euro": {
-                "label": "€"
+                "Метка": "€"
               },
               "pound": {
-                "label": "£"
+                "Метка": "£"
               }
             },
             "val": "dollar"
           },
           "format__date_format": {
             "type": "select",
-            "label": "Тип",
+            "Метка": "Тип",
             "show_if": "this.format__category=='date'",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
-                "label": "3/14/2012"
+                "Метка": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
+                "Метка": "Среда, 14 марта 2012 года"
               },
               "yyyy-mm-dd": {
-                "label": "2012-03-14"
+                "Метка": "2012-03-14"
               }
             },
             "val": "mm/dd/yyyy"
           },
           "delete": {
             "type": "button",
-            "label": "Удалить",
+            "Метка": "Удалить",
             "function": "DELETE_ROW"
           }
         }
+      },
+      "options.add_new_row": {
+        "type": "checkbox",
+        "Метка": "Добавить метку",
+        "show_if": "$input_table.numOfLabel < 1",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.new_row_label": {
+        "type": "text",
+        "Метка": "Label Name",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "val": ""
+      },
+      "options.new_sel_column": {
+        "type": "select",
+        "Метка": "Выбрать столбец",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "required": true,
+        "table": "input_table",
+        "multiple": false,
+        "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.insert_on_top": {
+        "type": "checkbox",
+        "Метка": "Insert on Top",
+        "show_if": "$input_table.numOfLabel < 1",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
       }
     }
   }
