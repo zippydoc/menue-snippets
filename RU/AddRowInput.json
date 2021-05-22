@@ -1,12 +1,12 @@
 {
   "input": {
     "type": "fieldset",
-    "label": "Выбрать входную таблицу",
+    "Метка": "Выбрать входную таблицу",
     "repeat": false,
     "fields": {
       "input_table": {
         "type": "select",
-        "label": "Выбрать таблицу",
+        "Метка": "Выбрать таблицу",
         "bind": "TABLES",
         "empty": "",
         "required": true
@@ -19,36 +19,18 @@
         "type": "hidden",
         "val": "false"
       },
-      "table_type": {
-        "type": "select",
-        "label": "Тип таблицы",
-        "required": true,
-        "options": {
-          "header_only": {
-            "label": "Только заголовок"
-          },
-          "label_only": {
-            "label": "Только метка"
-          },
-          "matrix": {
-            "label": "Матрица"
-          }
-        },
-        "val": "header_only",
-        "breakLine": true
-      },
       "apply_to_all_columns": {
         "type": "checkbox",
-        "label": "Применить ко всем столбцам",
-        "show_if": "table_type=='header_only' || table_type=='matrix'",
+        "Метка": "Применить ко всем столбцам",
+        "show_if": "false",
         "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
       "columns_to_apply": {
         "type": "select",
-        "label": "Столбец для применения",
-        "show_if": "apply_to_all_columns=='false' && (table_type=='header_only' || table_type=='matrix')",
+        "Метка": "Столбец для применения",
+        "show_if": "$input_table.numOfHeader >= 1",
         "table": "input_table",
         "bind": "COLUMNS",
         "multiple": true,
