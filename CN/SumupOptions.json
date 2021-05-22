@@ -1,186 +1,186 @@
 {
   "actions": {
     "type": "fieldset",
-    "label": "添加操作",
+    "标签": "添加操作",
     "repeat": true,
     "fields": {
       "column": {
         "type": "select",
-        "label": "列",
+        "标签": "列",
         "table": "input_table",
 		"assign_selected_value_to":"this.output_column_name",
         "bind": "COLUMNS"
       },
       "action": {
         "type": "select",
-        "label": "操作",
+        "标签": "操作",
         "options": {
           "group_by": {
-            "label": "分组方式："
+            "标签": "分组方式："
           },
           "count": {
-            "label": "计数"
+            "标签": "计数"
           },
           "sum": {
-            "label": "总和"
+            "标签": "总和"
           },
           "first": {
-            "label": "首行"
+            "标签": "首行"
           },
           "last": {
-            "label": "后"
+            "标签": "后"
           },
           "shortest": {
-            "label": "最短"
+            "标签": "最短"
           },
           "longest": {
-            "label": "最长"
+            "标签": "最长"
           },
           "concatenate": {
-            "label": "连接"
+            "标签": "连接"
           },
           "mathematics": {
-            "label": "数学"
+            "标签": "数学"
           }
         }
       },
       "count_action_category": {
         "type": "select",
-        "label": "操作类型",
+        "标签": "操作类型",
         "show_if": "this.action=='count'",
         "options": {
           "all": {
-            "label": "所有"
+            "标签": "所有"
           },
           "distinct": {
-            "label": "独特"
+            "标签": "独特"
           },
           "empty_or_zero": {
-            "label": "空或 0"
+            "标签": "空或 0"
           },
           "non_empty_or_zero": {
-            "label": "非空或 0"
+            "标签": "非空或 0"
           }
         },
         "val": "all"
       },
       "action_type1": {
         "type": "select",
-        "label": "操作子类型",
+        "标签": "操作子类型",
         "show_if": "this.action=='count' && (this.count_action_category=='all' || this.count_action_category=='distinct')",
         "options": {
           "-": {
-            "label": "-"
+            "标签": "-"
           },
           "non_zero": {
-            "label": "非 0"
+            "标签": "非 0"
           },
           "non_empty": {
-            "label": "非空"
+            "标签": "非空"
           },
           "non_null": {
-            "label": "非 Null"
+            "标签": "非 Null"
           },
           "non_blank": {
-            "label": "非空白"
+            "标签": "非空白"
           }
         },
         "val": "-"
       },
       "action_type2": {
         "type": "select",
-        "label": "操作子类型",
+        "标签": "操作子类型",
         "show_if": "this.action=='count' && this.count_action_category=='empty_or_zero'",
         "options": {
           "zero": {
-            "label": "0"
+            "标签": "0"
           },
           "empty": {
-            "label": "空（Null & Blank）"
+            "标签": "空（Null & Blank）"
           },
           "null": {
-            "label": "Null"
+            "标签": "Null"
           },
           "blank": {
-            "label": "空白"
+            "标签": "空白"
           }
         },
         "val": "zero"
       },
       "action_type3": {
         "type": "select",
-        "label": "操作子类型",
+        "标签": "操作子类型",
         "show_if": "this.action=='count' && this.count_action_category=='non_empty_or_zero'",
         "options": {
           "non_zero": {
-            "label": "非 0"
+            "标签": "非 0"
           },
           "non_empty": {
-            "label": "非空"
+            "标签": "非空"
           },
           "non_null": {
-            "label": "非 Null"
+            "标签": "非 Null"
           },
           "non_blank": {
-            "label": "非空白"
+            "标签": "非空白"
           }
         },
         "val": "non_zero"
       },
       "mathematics_action_category": {
         "type": "select",
-        "label": "操作类型",
+        "标签": "操作类型",
         "show_if": "this.action=='mathematics'",
         "options": {
           "min": {
-            "label": "最小"
+            "标签": "最小"
           },
           "max": {
-            "label": "最大"
+            "标签": "最大"
           },
           "average": {
-            "label": "平均"
+            "标签": "平均"
           },
           "median": {
-            "label": "中位数"
+            "标签": "中位数"
           },
           "standard_deviation": {
-            "label": "标准差"
+            "标签": "标准差"
           },
           "variance": {
-            "label": "方差"
+            "标签": "方差"
           }
         },
         "val": "min"
       },
       "action_type4": {
         "type": "select",
-        "label": "操作子类型",
+        "标签": "操作子类型",
         "show_if": "this.action=='mathematics'",
         "options": {
           "include_zero": {
-            "label": "包括 0"
+            "标签": "包括 0"
           },
           "exclude_zero": {
-            "label": "排除 0"
+            "标签": "排除 0"
           }
         },
         "val": "include_zero"
       },
       "concatenate_separator": {
         "type": "text",
-        "label": "分隔符",
+        "标签": "分隔符",
         "show_if": "this.action=='concatenate'",
-        "val": ",
+        "val": ","
       },
-      output_column_name": {
+      "output_column_name": {
         "type": "text",
-        "label": "输出列名",
+        "标签": "输出列名",
         "val": ""
       },
       "delete": {
         "type": "button",
-        "label": "删除",
+        "标签": "删除",
         "function": "DELETE_ROW"
       }
     }
