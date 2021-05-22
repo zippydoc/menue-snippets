@@ -5,7 +5,8 @@
   "apply_to_all_columns": {
     "type": "checkbox",
     "Etiqueta": "Todas las Columnas",
-    "val": "true",
+    "show_if": "false",
+    "val": "false",
     "isOn": "true",
     "isOff": "false",
     "breakLine": true	
@@ -13,7 +14,7 @@
   "apply_columns": {
     "type": "select",
     "Etiqueta": "Seleccionar Columnas a Aplicar",
-    "show_if": "apply_to_all_columns=='false'",
+    "show_if": "$input_table.numOfHeader >= 1",
     "required": true,
     "table": "input_table",
     "multiple": true,
@@ -23,7 +24,8 @@
   "apply_to_all_rows": {
     "type": "checkbox",
     "Etiqueta": "Todas las filas",
-    "val": "true",
+    "show_if": "false",
+    "val": "false",
     "isOn": "true",
     "isOff": "false",
     "breakLine": true
@@ -31,7 +33,7 @@
   "apply_rows": {
     "type": "select",
     "Etiqueta": "Seleccionar Filas A Aplicar",
-    "show_if": "apply_to_all_rows=='false'",
+    "show_if": "$input_table.numOfLabel >= 1",
     "required": true,
     "table": "input_table",
     "multiple": true,
