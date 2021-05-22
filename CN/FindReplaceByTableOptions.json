@@ -1,7 +1,7 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Tabela de Substituição",
+    "标签": "替换表格",
     "repeat": false,
     "fields": {
       "incoming_value_to_replace.type": {
@@ -10,7 +10,7 @@
       },
       "incoming_value_to_replace.value": {
         "type": "text",
-        "label": "Valor de Entrada a Substituir",
+        "标签": "需替换的传入值",
         "required": true,
         "show_if": "incoming_value_to_replace.type=='user_specified_value' || incoming_value_to_replace.type=='begins_with' || incoming_value_to_replace.type=='ends_with'",
         "val": "",
@@ -18,7 +18,7 @@
       },
       "incoming_value_to_replace.regex": {
         "type": "text",
-        "label": "Expressão Regular",
+        "标签": "正则表达式",
         "required": true,
         "show_if": "incoming_value_to_replace.type=='regex'",
         "val": "(.*),(.*),(.*)\\s(\\d{5})(-\\d{4})?",
@@ -26,14 +26,14 @@
       },
       "replace_table.table_id": {
         "type": "select",
-        "label": "Tabela de Substituição",
+        "标签": "替换表格",
         "show_if": "incoming_value_to_replace.type=='replacement_table'",
         "bind": "TABLES",
         "required": true
       },
       "replace_table.find_column": {
         "type": "select",
-        "label": "Procurar na Coluna",
+        "标签": "选择搜索列",
         "show_if": "incoming_value_to_replace.type=='replacement_table'",
         "table": "replace_table.table_id",
         "bind": "COLUMNS",
@@ -41,7 +41,7 @@
       },
       "replace_table.replace_with_column": {
         "type": "select",
-        "label": "Selecionar Substituir por Coluna",
+        "标签": "选择替换列",
         "show_if": "incoming_value_to_replace.type=='replacement_table'",
         "table": "replace_table.table_id",
         "bind": "COLUMNS",
@@ -49,43 +49,43 @@
       },
       "incoming_value_to_replace.partial_match": {
         "type": "select",
-        "label": "Correspondência Parcial",
+        "标签": "部分匹配",
         "show_if": "incoming_value_to_replace.type=='user_specified_value' || incoming_value_to_replace.type=='replacement_table'",
         "options": {
           "full_match": {
-            "label": "Full match"
+            "标签": "完全匹配"
           },
           "full_and_partial_match": {
-            "label": "Full and partial match"
+            "标签": "完全和部分匹配"
           },
           "partial_match_only": {
-            "label": "Partial match only"
+            "标签": "仅部分匹配"
           }
         },
         "val": "full_and_partial_match"
       },
       "replace_with.value_type": {
         "type": "select",
-        "label": "Substituir por",
+        "标签": "替换为",
         "show_if": "incoming_value_to_replace.type!='regex' && incoming_value_to_replace.type!='replacement_table'",
         "options": {
           "user_specified_value": {
-            "label": "Personalizar Valor"
+            "标签": "自定义值"
           },
           "average": {
-            "label": "Média da Coluna"
+            "标签": "列平均值"
           },
           "median": {
-            "label": "Mediana da Coluna"
+            "标签": "列中位数"
           },
           "mode": {
-            "label": "Modo Coluna"
+            "标签": "列模式"
           },
           "sum": {
-            "label": "Soma de Colunas"
+            "标签": "列总和"
           },
           "table": {
-            "label": "Coluna da Tabela"
+            "标签": "表格列"
           }
         },
         "val": "user_specified_value",
@@ -93,26 +93,26 @@
       },
       "replace_with.value": {
         "type": "text",
-        "label": "Substituir por Valor",
+        "标签": "替换为值",
         "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='user_specified_value' && incoming_value_to_replace.type!='replacement_table'",
         "val": ""
       },
       "replace_with.regex_value": {
         "type": "text",
-        "label": "Substituir por Valor",
+        "标签": "替换为值",
         "show_if": "incoming_value_to_replace.type=='regex' && incoming_value_to_replace.type!='replacement_table'",
         "val": "\\4: \\2, \\3"
       },
       "replace_with.table": {
         "type": "select",
-        "label": "Selecionar Tabela",
+        "标签": "选择表格",
         "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table' && incoming_value_to_replace.type!='replacement_table'",
         "bind": "TABLES",
         "required": true
       },
       "replace_with.column": {
         "type": "select",
-        "label": "Selecionar Coluna",
+        "标签": "选择列",
         "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table' && incoming_value_to_replace.type!='replacement_table'",
         "table": "replace_with.table",
         "bind": "COLUMNS",
@@ -121,7 +121,7 @@
       },
       "replacement_table_notice": {
         "type": "text",
-        "label": "",
+        "标签": "",
         "show_if": "incoming_value_to_replace.type=='replacement_table'",
         "val": "Line-break will be ignored in replacement table",
         "disabled": true,
@@ -129,7 +129,7 @@
       },
       "use_replace_table_filter": {
         "type": "checkbox",
-        "label": "Use Filter on \"Replace With\" Table",
+        "标签": "Use Filter on \"Replace With\" Table",
         "show_if": "incoming_value_to_replace.type=='replacement_table' || (incoming_value_to_replace.type!='regex' && replace_with.value_type=='table')",
         "val": "false",
         "isOn": "true",
@@ -139,170 +139,170 @@
       },
       "replace_table_filter_option_box": {
         "type": "fieldset",
-        "label": "\"Replace With\" Table Filter Options",
+        "标签": "\"Replace With\" Table Filter Options",
         "show_if": "use_replace_table_filter=='true' && (incoming_value_to_replace.type=='replacement_table' || (incoming_value_to_replace.type!='regex' && replace_with.value_type=='table'))",
         "repeat": false,
         "fields": {
           "replace_table_filter_option.filter": {
             "type": "fieldset",
-            "label": "Add Filter Conditions on \"Replace With\" Table",
+            "标签": "Add Filter Conditions on \"Replace With\" Table",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "Selecionar Operador Lógico",
+                "标签": "选择逻辑运算符",
                 "required": true,
                 "show_if" :  "$index == 0",
                 "options": {
                   "if": {
-                    "label": "IF"
+                    "标签": "IF"
                   },
                   "if_not": {
-                    "label": "IF NOT"
+                    "标签": "如果不是"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "Selecionar Operador Lógico",
+                "标签": "选择逻辑运算符",
                 "required": true,
                 "show_if" :  "$index > 0",
                 "options": {
                   "and": {
-                    "label": "AND"
+                    "标签": "AND"
                   },
                   "or": {
-                    "label": "OR"
+                    "标签": "OR"
                   },
                   "and_not": {
-                    "label": "AND NOT"
+                    "标签": "AND NOT"
                   },
                   "or_not": {
-                    "label": "OR NOT"
+                    "标签": "OR NOT"
                   }
                 },
                 "val": "and"
               },
               "column": {
                 "type": "select",
-                "label": "Selecionar Coluna",
+                "标签": "选择列",
                 "table": "replace_with.table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Selecionar Operador",
+                "标签": "选择运算符",
                 "required": true,
                 "options": {
-                  "CONTÉM": {
-                    "label": "CONTÉM"
+                  "包含": {
+                    "标签": "包含"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "CONTIDO EM"
+                    "标签": "包含于"
                   },
-                  "INICIA COM": {
-                    "label": "INICIA COM"
+                  "开始于": {
+                    "标签": "开始于"
                   },
-                  "TERMINA COM": {
-                    "label": "TERMINA COM"
+                  "结尾是": {
+                    "标签": "结尾是"
                   },
                   "=": {
-                    "label": "IGUAL"
+                    "标签": "相等"
                   },
                   ">": {
-                    "label": "MAIOR QUE"
+                    "标签": "大于"
                   },
                   ">=": {
-                    "label": "MAIOR OU IGUAL"
+                    "标签": "大于或等于"
                   },
                   "<": {
-                    "label": "MENOR QUE"
+                    "标签": "小于"
                   },
                   "<=": {
-                    "label": "MENOR OU IGUAL"
+                    "标签": "小于或等于"
                   },
                   "EMPTY": {
-                    "label": "ESTÁ VAZIO"
+                    "标签": "为空"
                   },
                   "BLANK": {
-                    "label": "ESTÁ EM BRANCO"
+                    "标签": "为空白"
                   },
-                  "IS NULL": {
-                    "label": "IS NULL"
+                  "为 NULL": {
+                    "标签": "为 NULL"
                   },
-                  "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR": {
-                    "label": "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR"
+                  "正则表达式匹配": {
+                    "标签": "正则表达式匹配"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "NA TABELA"
+                    "标签": "于表格"
                   },
-                  "NA TABELA DE EXPRESSÕES REGULARES": {
-                    "label": "NA TABELA DE EXPRESSÕES REGULARES"
+                  "于正则表格": {
+                    "标签": "于正则表格"
                   },
-                  "DATA": {
-                    "label": "DATA"
+                  "日期": {
+                    "标签": "日期"
                   }
                 },
-                "val": "CONTÉM"
+                "val": "包含"
               },
               "date_condition": {
                 "type": "select",
-                "label": "Selecionar Operador de Data",
+                "标签": "选择日期运算符",
                 "required": true,
                 "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "ANTERIOR"
+                    "标签": "PRIOR"
                   },
                   "<=": {
-                    "label": "ANTERIOR OU IGUAL"
+                    "标签": "先于或等于"
                   },
                   "=": {
-                    "label": "IGUAL"
+                    "标签": "相等"
                   },
                   ">": {
-                    "label": "DEPOIS"
+                    "标签": "之后"
                   },
                   ">=": {
-                    "label": "DEPOIS OU IGUAL"
+                    "标签": "之后或等于"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "Selecionar Sensibilidade a Maiúsculas e Minúsculasl",
+                "标签": "选择区分大小写",
                 "required": true,
                 "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "Sensível a Maiúsculas e Minúsculas"
+                    "标签": "区分大小写"
                   },
                   "no": {
-                    "label": "Insensível a Maiúsculas e Minúsculas"
+                    "标签": "不区分大小写"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "Selecionar Data",
+                "标签": "选择日期",
                 "show_if": "this.condition=='DATE'",
-                "val": "1/31/2020",
+                "val": "",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "Introduzir Valor",
+                "标签": "输入值",
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "Selecionar Tabela",
+                "标签": "选择表格",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -310,7 +310,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "Selecionar Coluna",
+                "标签": "选择列",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -318,14 +318,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "Apagar",
+                "标签": "删除",
                 "function": "DELETE_ROW"
               }
             }
           },
           "replace_table_filter_option.apply_to_record": {
             "type": "checkbox",
-            "label": "Apply to Record on \"Replace With\" Table",
+            "标签": "Apply to Record on \"Replace With\" Table",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -334,13 +334,13 @@
           },
           "replace_table_filter_option_apply_to_group_box": {
             "type": "fieldset",
-            "label": "Apply to Group on \"Replace With\" Table",
+            "标签": "Apply to Group on \"Replace With\" Table",
             "show_if": "replace_table_filter_option.apply_to_record=='false' && (incoming_value_to_replace.type!='replacement_table' && incoming_value_to_replace.type!='regex' && replace_with.value_type=='table')",
             "repeat": false,
             "fields": {
               "replace_table_filter_option.apply_to_group_columns": {
                 "type": "select",
-                "label": "Selecionar Colunas de Grupo",
+                "标签": "选择组列",
                 "required": true,
                 "width": "100%",
                 "table": "replace_with.table",
@@ -352,13 +352,13 @@
           },
           "replacement_table_filter_option_apply_to_group_box": {
             "type": "fieldset",
-            "label": "Apply to Group on \"Replace With\" Table",
+            "标签": "Apply to Group on \"Replace With\" Table",
             "show_if": "replace_table_filter_option.apply_to_record=='false' && incoming_value_to_replace.type=='replacement_table'",
             "repeat": false,
             "fields": {
               "replacement_table_filter_option.apply_to_group_columns": {
                 "type": "select",
-                "label": "Selecionar Colunas de Grupo",
+                "标签": "选择组列",
                 "required": true,
                 "width": "100%",
                 "table": "replace_table.table_id",
