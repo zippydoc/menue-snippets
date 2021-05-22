@@ -1,0 +1,91 @@
+{
+  "output_autorun_frame": {
+    "type": "fieldset",
+    "Etiqueta": "Table Key",
+    "show_if": "output.auto_run=='true'",
+    "repeat": false,
+    "fields": {
+		"options.task_filter": {
+        "type": "select",
+        "Etiqueta": "Key-Lock pair filter",
+        "options": {
+          "specific_tables": {
+            "Etiqueta": "Specify Task(s)"
+          },
+          "current_flow_tables": {
+            "Etiqueta": "Current Flow Tasks"
+          },
+          "flow_tables": {
+            "Etiqueta": "Specify Flow(s)"
+          },
+          "all_tables": {
+            "Etiqueta": "All Tasks"
+          }
+		 }
+		},
+      "output.autorun.tasks": {
+        "type": "text",
+        "Etiqueta": "Autorun the following Tasks",
+        "val": "",
+        "placeholder": "';' separated list",
+        "required": true,
+        "style": "width: 100%"
+      },
+      "output.autorun.define_type": {
+        "type": "select",
+        "Etiqueta": "Define type",
+        "required": true,
+        "options": {
+          "manually": {
+            "Etiqueta": "Define manually"
+          },
+          "table_content": {
+            "Etiqueta": "Define by table content"
+          }
+        },
+        "val": "manually"
+      },
+      "output.autorun.names": {
+        "type": "fieldset",
+        "Etiqueta": "Define Key Pins",
+        "show_if": "output.autorun.define_type=='manually'",
+        "repeat": true,
+        "fields": {
+          "name": {
+            "type": "text",
+            "Etiqueta": "Key Pin",
+            "val": "",
+            "required": true
+          },
+          "value": {
+            "type": "text",
+            "Etiqueta": "Key Pin Value",
+            "val": "",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "Etiqueta": "Borrar",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "output.autorun.name_column": {
+        "type": "select",
+        "Etiqueta": "Select Key Pin Column",
+        "show_if": "output.autorun.define_type=='table_content'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "output.autorun.value_column": {
+        "type": "select",
+        "Etiqueta": "Select Key Pin Value Column",
+        "show_if": "output.autorun.define_type=='table_content'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      }
+    }
+  }
+}
