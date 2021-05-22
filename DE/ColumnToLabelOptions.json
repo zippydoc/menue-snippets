@@ -1,0 +1,129 @@
+{
+  "options": {
+    "type": "fieldset",
+    "Beschriftung": "Optionen auswählen",
+    "repeat": false,
+    "fields": {
+      "transpose_type": {
+        "type": "hidden",
+        "val": "column_name_to_label"
+      },
+      "mirror_matrix.convert_header_to_label": {
+        "type": "checkbox",
+        "Beschriftung": "Kopfzeile in Etikett umwandeln",
+        "show_if": "transpose_type=='mirror_matrix'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "column_name_to_label.columns_to_label": {
+        "type": "select",
+        "Beschriftung": "Spalten zum Konvertieren in Etiketten auswählen",
+        "show_if": "transpose_type=='column_name_to_label'",
+        "table": "input_table",
+        "multiple": true,
+        "bind": "COLUMNS",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "column_name_to_label.label_column_name": {
+        "type": "text",
+        "Beschriftung": "Spalte Name der Etikettenspalte",
+        "show_if": "transpose_type=='column_name_to_label'",
+        "required": true,
+        "val": "Beschrifte",
+        "width": "100%",
+        "breakLine": true
+      },
+      "column_name_to_label.value_column_name": {
+        "type": "text",
+        "Beschriftung": "Spalte Name der Wertespalte",
+        "show_if": "transpose_type=='column_name_to_label'",
+        "required": true,
+        "val": "Wert",
+        "width": "100%",
+        "breakLine": true
+      },
+      "crosstab.group_data_by_these_values": {
+        "type": "select",
+        "Beschriftung": "Daten nach diesen Werten gruppieren",
+        "show_if": "transpose_type=='crosstab'",
+        "table": "input_table",
+        "multiple": true,
+        "bind": "COLUMNS",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "crosstab.change_column_headers": {
+        "type": "select",
+        "Beschriftung": "Spaltenüberschrift ändern",
+        "show_if": "transpose_type=='crosstab'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "crosstab.values_for_new_columns": {
+        "type": "select",
+        "Beschriftung": "Werte für neue Spalten",
+        "show_if": "transpose_type=='crosstab'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "crosstab.method_for_aggregating_values": {
+        "type": "select",
+        "Beschriftung": "Methode zum Aggregieren von Werten",
+        "show_if": "transpose_type=='crosstab'",
+        "options": {
+          "Verketten": {
+            "Beschriftung": "Verketten"
+          },
+          "Erste": {
+            "Beschriftung": "Erste"
+          },
+          "Zuletzt": {
+            "Beschriftung": "Zuletzt"
+          },
+          "Summe": {
+            "Beschriftung": "Summe"
+          },
+          "Durchschnitt": {
+            "Beschriftung": "Durchschnitt"
+          },
+          "Zählen Sie": {
+            "Beschriftung": "Zählen Sie"
+          },
+          "Benutzerdefiniert": {
+            "Beschriftung": "Benutzerdefiniert"
+          }
+        },
+        "val": "Verketten",
+        "required": true
+      },
+      "crosstab.user_defined_str": {
+        "type": "text",
+        "Beschriftung": "Benutzerdefinierter Wert",
+        "show_if": "transpose_type=='crosstab' && crosstab.method_for_aggregating_values=='User Defined'",
+        "val": "x",
+        "trim": "false",
+        "breakLine": true
+      },
+      "crosstab.separator": {
+        "type": "text",
+        "Beschriftung": "Separator",
+        "show_if": "transpose_type=='crosstab' && method_for_aggregating_values=='Concatenate'",
+        "val": ",",
+        "trim": "false",
+        "required": true,
+        "breakLine": true
+      }
+    }
+  }
+}
