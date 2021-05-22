@@ -1,29 +1,45 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "选择选项",
+    "标签": "选择选项",
     "repeat": false,
     "fields": {
       "options.task_type": {
         "type": "select",
-        "label": "任务类型",
+        "标签": "任务类型",
         "required": true,
         "options": {
           "write_series": {
-            "label": "Write e-mail series"
+            "标签": "写电子邮件系列"
           },
           "write_email": {
-            "label": "Write e-mail"
+            "标签": "写电子邮件"
           },
           "read": {
-            "label": "Read e-mails"
+            "标签": "阅读电子邮件"
           }
         },
         "val": "write_email"
       },
+      "input_table": {
+        "type": "select",
+        "标签": "选择表格",
+        "show_if": "options.task_type=='write_series'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true
+      },
+      "info1": {
+        "type": "text",
+        "标签": "",
+        "show_if": "options.task_type=='write_series'",
+        "val": "Table-Type: TO | CC | BCC | SUBJECT | BODY",
+        "disabled": true,
+        "style": "width: 100%"
+      },
       "options.to": {
         "type": "text",
-        "label": "To",
+        "标签": "收件人",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -32,57 +48,56 @@
       },
       "options.cc": {
         "type": "text",
-        "label": "CC",
+        "标签": "抄送",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "ccuser1@domain.com; ccuser2@domain.com",
         "width": "100%"
       },
       "options.bcc": {
         "type": "text",
-        "label": "BCC",
+        "标签": "密函",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "bccuser1@domain.com; bccuser1@domain.com",
         "width": "100%"
       },
       "options.subject": {
         "type": "text",
-        "label": "Subject",
+        "标签": "主题",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
-        "placeholder": "Subject",
+        "placeholder": "主题",
         "width": "100%"
       },
       "options.body": {
-        "type": "text",
-        "label": "Body",
+        "type": "textarea",
+        "标签": "正文",
         "show_if": "options.task_type=='write_email'",
-        "required": true,
         "val": "",
         "placeholder": "文本",
+        "md_no_resize": true,
+        "rows": 3,
         "width": "100%"
       }
     }
   },
   "smtp_config_frame": {
     "type": "fieldset",
-    "label": "SMTP Connection",
+    "标签": "SMTP连接",
     "show_if": "options.task_type=='write_series' || options.task_type=='write_email'",
     "repeat": false,
     "fields": {
       "options.smtp.type": {
         "type": "select",
-        "label": "Select SMTP Server",
+        "标签": "选择SMTP服务器",
         "options": {
           "gmail": {
-            "label": "Gmail"
+            "标签": "Gmail"
           },
           "custom": {
-            "label": "Custom (coming soon)"
+            "标签": "自定义（即将推出）"
           }
         },
         "val": "gmail",
@@ -91,7 +106,7 @@
       },
       "gmail_warning": {
         "type": "text",
-        "label": "",
+        "标签": "",
         "show_if": "options.smtp.type=='gmail'",
         "val": "Turn 'Allow less secure apps' ON in https://myaccount.google.com/lesssecureapps",
         "width": "100%",
@@ -99,38 +114,38 @@
       },
       "options.gmail.user": {
         "type": "text",
-        "label": "Gmail User",
+        "标签": "Gmail用户",
         "show_if": "options.smtp.type=='gmail'",
         "required": true,
         "placeholder": "sender@gmail.com"
       },
       "options.gmail.password": {
         "type": "password",
-        "label": "Gmail Password",
+        "标签": "Gmail密码",
         "show_if": "options.smtp.type=='gmail'",
         "required": true
       },
       "options.custom.host": {
         "type": "text",
-        "label": "SMTP Host",
+        "标签": "SMTP主机",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.port": {
         "type": "text",
-        "label": "SMTP Port",
+        "标签": "SMTP端口",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.user": {
         "type": "text",
-        "label": "SMTP User",
+        "标签": "SMTP用户",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.password": {
         "type": "password",
-        "label": "SMTP Password",
+        "标签": "SMTP密码",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       }
