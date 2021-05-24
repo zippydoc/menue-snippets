@@ -1,7 +1,7 @@
 {
   "output.select_output_columns": {
     "type": "checkbox",
-    "Etiqueta": "Seleccionar columnas de salida",
+    "label": "Seleccionar columnas de salida",
     "show_if": "output.custom_options=='true'",
     "val": "false",
     "isOn": "true",
@@ -10,42 +10,42 @@
   },
   "output_columns": {
     "type": "fieldset",
-    "Etiqueta": "Seleccionar columnas de salida",
+    "label": "Seleccionar columnas de salida",
     "show_if": "output.custom_options=='true' && output.select_output_columns=='true'",
     "repeat": true,
     "fields": {
       "table_id": {
         "type": "select",
-        "Etiqueta": "Seleccionar Tabla",
+        "label": "Seleccionar Tabla",
         "bind": "TABLES",
         "required": true
       },
       "field_name": {
         "type": "select",
-        "Etiqueta": "Seleccionar Columna",
+        "label": "Seleccionar Columna",
         "table": "this.table_id",
         "bind": "COLUMNS",
         "required": true
       },
       "order": {
         "type": "select",
-        "Etiqueta": "Orden",
+        "label": "Orden",
         "options": {
           "-": {
-            "Etiqueta": "-"
+            "label": "-"
           },
           "asc": {
-            "Etiqueta": "Ascendente"
+            "label": "Ascendente"
           },
           "desc": {
-            "Etiqueta": "Descendente"
+            "label": "Descendente"
           }
         },
         "val": "-"
       },
       "is_rename": {
         "type": "checkbox",
-        "Etiqueta": "Renombrar",
+        "label": "Renombrar",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -56,80 +56,80 @@
         "required": true,
         "minLength": 1,
         "maxLength": 255,
-        "Etiqueta": "Nuevo Nombre de Columna",
+        "label": "Nuevo Nombre de Columna",
         "style": "margin-left: 10px"
       },
       "format__category": {
         "type": "select",
-        "Etiqueta": "Formato",
+        "label": "Formato",
         "required": true,
         "options": {
           "standard": {
-            "Etiqueta": "Estándar"
+            "label": "Estándar"
           },
           "number": {
-            "Etiqueta": "Número"
+            "label": "Número"
           },
           "percentage": {
-            "Etiqueta": "Porcentaje"
+            "label": "Porcentaje"
           },
           "text": {
-            "Etiqueta": "Texto"
+            "label": "Texto"
           },
           "date": {
-            "Etiqueta": "Fecha"
+            "label": "Fecha"
           },
           "currency": {
-            "Etiqueta": "Moneda"
+            "label": "Moneda"
           }
         },
         "val": "standard"
       },
       "format__rounding": {
         "type": "select",
-        "Etiqueta": "Redondeo",
+        "label": "Redondeo",
         "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "required": true,
         "options": {
           "no_rounding": {
-            "Etiqueta": "Redondeo de números"
+            "label": "Redondeo de números"
           },
           "0": {
-            "Etiqueta": "0 dígitos"
+            "label": "0 dígitos"
           },
           "1": {
-            "Etiqueta": "1 dígitos"
+            "label": "1 dígitos"
           },
           "2": {
-            "Etiqueta": "2 dígitos"
+            "label": "2 dígitos"
           },
           "3": {
-            "Etiqueta": "3 dígitos"
+            "label": "3 dígitos"
           },
           "4": {
-            "Etiqueta": "4 dígitos"
+            "label": "4 dígitos"
           },
           "5": {
-            "Etiqueta": "5 dígitos"
+            "label": "5 dígitos"
           },
           "6": {
-            "Etiqueta": "6 dígitos"
+            "label": "6 dígitos"
           },
           "7": {
-            "Etiqueta": "7 dígitos"
+            "label": "7 dígitos"
           },
           "8": {
-            "Etiqueta": "8 dígitos"
+            "label": "8 dígitos"
           },
           "9": {
-            "Etiqueta": "9 dígitos"
+            "label": "9 dígitos"
           }
         },
         "val": "2"
       },
       "format__use_1000_separator": {
         "type": "checkbox",
-        "Etiqueta": "Use 1000 Separator(.)",
+        "label": "Use 1000 Separator(.)",
         "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "val": "true",
         "isOn": "true",
@@ -137,36 +137,36 @@
       },
       "format__currency_symbol": {
         "type": "select",
-        "Etiqueta": "Símbolo",
+        "label": "Símbolo",
         "show_if": "this.format__category=='currency'",
         "required": true,
         "options": {
           "dollar": {
-            "Etiqueta": "$"
+            "label": "$"
           },
           "euro": {
-            "Etiqueta": "€"
+            "label": "€"
           },
           "pound": {
-            "Etiqueta": "£"
+            "label": "£"
           }
         },
         "val": "dollar"
       },
       "format__date_format": {
         "type": "select",
-        "Etiqueta": "Tipo",
+        "label": "Tipo",
         "show_if": "this.format__category=='date'",
         "required": true,
         "options": {
           "mm/dd/yyyy": {
-            "Etiqueta": "3/14/2012"
+            "label": "3/14/2012"
           },
           "D, M dd, Y": {
-            "Etiqueta": "Miércoles, 14 de marzo de 2012"
+            "label": "Miércoles, 14 de marzo de 2012"
           },
           "yyyy-mm-dd": {
-            "Etiqueta": "40982"
+            "label": "40982"
           }
         },
         "val": "mm/dd/yyyy",
@@ -174,7 +174,7 @@
       },
       "delete": {
         "type": "button",
-        "Etiqueta": "Borrar",
+        "label": "Borrar",
         "function": "DELETE_ROW"
       }
     },
