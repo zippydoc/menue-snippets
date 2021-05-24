@@ -1,0 +1,144 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Sélectionner les options",
+    "repeat": false,
+    "fields": {
+      "options.table_permission.set_or_delete": {
+        "type": "select",
+        "label": "Type d'action",
+        "show_if": "input.table_or_flow=='set_table_permissions'",
+        "required": true,
+        "options": {
+          "set_permissions": {
+            "label": "Définir les permissions"
+          },
+          "delete_permissions": {
+            "label": "Supprimer toutes les permissions"
+          }
+        },
+        "val": "set_permissions",
+        "breakLine": true
+      },
+      "options.table_permission.emails": {
+        "type": "text",
+        "label": "Utilisateurs autorisés ( ; liste séparée)",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
+        "required": true,
+        "width": "100%"
+      },
+      "options.table_permission.permissions": {
+        "type": "fieldset",
+        "label": "Définir les permissions",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
+        "repeat": true,
+        "fields": {
+          "rows_or_columns": {
+            "type": "select",
+            "label": "Type pour le tableau",
+            "required": true,
+            "options": {
+              "select_rows": {
+                "label": "Sélectionner ligne(s)"
+              },
+              "select_columns": {
+                "label": "Sélectionner Colonne(s)"
+              }
+            },
+            "val": "select_columns"
+          },
+          "rows": {
+            "type": "select",
+            "label": "Sélectionner ligne(s)",
+            "show_if": "this.rows_or_columns=='select_rows'",
+            "table": "input.table_id",
+            "bind": "LABELS",
+            "multiple": true,
+            "required": true
+          },
+          "columns": {
+            "type": "select",
+            "label": "Sélectionner une ou plusieurs colonnes",
+            "show_if": "this.rows_or_columns=='select_columns'",
+            "table": "input.table_id",
+            "bind": "COLUMNS",
+            "multiple": true,
+            "required": true
+          },
+          "permission_type": {
+            "type": "select",
+            "label": "Type d'autorisation",
+            "required": true,
+            "options": {
+              "READ": {
+                "label": "Lire"
+              },
+              "WRITE": {
+                "label": "Ecrire"
+              },
+              "PASS-ON": {
+                "label": "Pass-On"
+              }
+            },
+            "val": "READ"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Supprimer",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.flow_permission.set_or_delete": {
+        "type": "select",
+        "label": "Type d'action",
+        "show_if": "input.table_or_flow=='set_flow_permissions'",
+        "required": true,
+        "options": {
+          "set_permissions": {
+            "label": "Définir les permissions"
+          }
+        },
+        "val": "set_permissions",
+        "breakLine": true
+      },
+      "options.flow_permission.emails": {
+        "type": "text",
+        "label": "Utilisateurs autorisés ( ; liste séparée)",
+        "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
+        "required": true,
+        "width": "100%"
+      },
+      "options.flow_permission.permissions": {
+        "type": "fieldset",
+        "label": "Définir les permissions",
+        "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
+        "repeat": true,
+        "fields": {
+          "permission_type": {
+            "type": "select",
+            "label": "Type d'autorisation",
+            "required": true,
+            "options": {
+              "READ": {
+                "label": "Lire"
+              },
+              "WRITE": {
+                "label": "Ecrire"
+              },
+              "PASS-ON": {
+                "label": "Pass-On"
+              }
+            },
+            "val": "READ"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Supprimer",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
