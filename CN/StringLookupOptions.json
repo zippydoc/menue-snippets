@@ -1,28 +1,28 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "オプションの選択",
+    "label": "选择选项",
     "repeat": false,
     "fields": {
       "options.task_type": {
         "type": "select",
-        "label": "タスクタイプ",
+        "label": "任务类型",
         "required": true,
         "options": {
           "generate_lookup_table": {
-            "label": "ルックアップテーブルの生成"
+            "label": "生成查找表格"
           },
           "apply_lookup_table": {
-            "label": "ルックアップテーブルの適用"
+            "label": "应用查找表格"
           },
           "apply_regex_table": {
-            "label": "Regexテーブルの適用"
+            "label": "应用正则表格"
           },
           "apply_lookup_table_to_cells": {
-            "label": "セルにルックアップテーブルを適用"
+            "label": "在单元格上应用查找表格"
           },
           "apply_regex_table_to_cells": {
-            "label": "セルにRegexテーブルを適用"
+            "label": "在单元格上应用正则表格"
           }
         },
         "val": "generate_lookup_table"
@@ -33,20 +33,20 @@
       },
       "duplicate_option_box": {
         "type": "fieldset",
-        "label": "パターンオプションの重複",
+        "label": "重复模式选项",
         "show_if": "options.task_type=='label_duplicates' || (options.task_type=='generate_lookup_table' && options.pattern_type=='duplicate_pattern')",
         "repeat": false,
         "fields": {
           "options.minimum_number_of_matching_characters": {
             "type": "text",
-            "label": "一致する文字の最小数",
+            "label": "最小匹配字符数",
             "val": "3",
             "required": true,
             "style": "min-width: 240px"
           },
           "options.minimum_number_of_duplicates": {
             "type": "text",
-            "label": "重複の最小数",
+            "label": "最小重复次数",
             "val": "2",
             "required": true,
             "style": "min-width: 240px",
@@ -56,23 +56,23 @@
       },
       "number_range_option_box": {
         "type": "fieldset",
-        "label": "オプションの数範囲",
+        "label": "数字范围选项",
         "show_if": "options.task_type=='generate_lookup_table' && options.pattern_type=='number_range'",
         "repeat": false,
         "fields": {
           "options.number_range.range_type": {
             "type": "select",
-            "label": "範囲タイプ",
+            "label": "范围类型",
             "required": true,
             "options": {
               "equal_interval": {
-                "label": "N 等間隔"
+                "label": "N 等间隔"
               },
               "equal_range": {
-                "label": "等しい範囲"
+                "label": "相等范围"
               },
               "custom_range": {
-                "label": "カスタム範囲"
+                "label": "自定义范围"
               }
             },
             "val": "equal_interval"
@@ -86,32 +86,32 @@
           },
           "options.number_range.range_value": {
             "type": "text",
-            "label": "範囲",
+            "label": "范围",
             "show_if": "options.number_range.range_type=='equal_range'",
             "val": "10",
             "required": true
           },
           "options.number_range.custom_ranges": {
             "type": "fieldset",
-            "label": "カスタム範囲パターンの追加",
+            "label": "添加自定义范围模式",
             "show_if": "options.number_range.range_type=='custom_range'",
             "repeat": true,
             "fields": {
               "pattern": {
                 "type": "text",
-                "label": "パターン",
+                "label": "模式",
                 "val": "0<=x<10",
                 "required": true
               },
               "label": {
                 "type": "text",
-                "label": "ラベル",
+                "label": "标签",
                 "val": "positive10",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "削除",
+                "label": "删除",
                 "function": "DELETE_ROW"
               }
             }
@@ -120,7 +120,7 @@
       },
       "options.is_custom_lookup_table": {
         "type": "checkbox",
-        "label": "カスタムルックアップテーブル",
+        "label": "自定义查询表",
         "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
         "val": "true",
         "isOn": "true",
@@ -135,7 +135,7 @@
         "fields": {
           "options.lookup_table_id": {
             "type": "select",
-            "label": "ルックアップテーブル",
+            "label": "查找表格",
             "show_if": "options.is_custom_lookup_table=='false'",
             "bind": "TABLES",
             "empty": "",
@@ -144,32 +144,32 @@
           },
           "options.custom_lookup_table": {
             "type": "fieldset",
-            "label": "カスタムルックアップテーブル",
+            "label": "自定义查询表",
             "show_if": "options.is_custom_lookup_table=='true'",
             "repeat": true,
             "fields": {
               "lookup": {
                 "type": "text",
-                "label": "ルックアップ",
+                "label": "查找",
                 "val": "",
                 "required": true
               },
               "label": {
                 "type": "text",
-                "label": "ラベル",
+                "label": "标签",
                 "val": "",
                 "required": true
               },
               "delete": {
                 "type": "button",
-                "label": "削除",
+                "label": "删除",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.partial_match": {
             "type": "checkbox",
-            "label": "部分一致",
+            "label": "部分匹配",
             "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
             "val": "false",
             "isOn": "true",
@@ -179,7 +179,7 @@
           },
           "options.case_sensitive": {
             "type": "checkbox",
-            "label": "ケース・センシティブ",
+            "label": "区分大小写",
             "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
             "val": "false",
             "isOn": "true",
@@ -188,7 +188,7 @@
           },
           "options.use_delimiter": {
             "type": "checkbox",
-            "label": "カスタム区切り文字",
+            "label": "自定义分隔符",
             "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
             "val": "false",
             "isOn": "true",
@@ -197,7 +197,7 @@
           },
           "options.delimiter": {
             "type": "text",
-            "label": "区切り文字の入力",
+            "label": "输入分隔符",
             "show_if": "options.use_delimiter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
             "val": ";",
             "required": true,
@@ -207,7 +207,7 @@
       },
       "options.input_table.use_filter": {
         "type": "checkbox",
-        "label": "入力テーブルにフィルターを使用",
+        "label": "筛选输入表格",
         "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
         "val": "false",
         "isOn": "true",
@@ -217,18 +217,18 @@
       },
       "input_table_filter_box": {
         "type": "fieldset",
-        "label": "テーブルフィルターオプションの入力",
+        "label": "输入表格筛选选项",
         "show_if": "options.input_table.use_filter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
         "repeat": false,
         "fields": {
           "options.input_table.filter": {
             "type": "fieldset",
-            "label": "入力テーブルのフィルター条件を追加",
+            "label": "为输入表格添加筛选条件",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "論理オペレータの選択",
+                "label": "选择逻辑运算符",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
@@ -236,14 +236,14 @@
                     "label": "IF"
                   },
                   "if_not": {
-                    "label": "IF NOT"
+                    "label": "如果不是"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "論理オペレータの選択",
+                "label": "选择逻辑运算符",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
@@ -264,123 +264,123 @@
               },
               "column": {
                 "type": "select",
-                "label": "列の選択",
+                "label": "选择列",
                 "table": "input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "オペレータの選択",
+                "label": "选择运算符",
                 "required": true,
                 "options": {
-                  "含む": {
-                    "label": "含む"
+                  "包含": {
+                    "label": "包含"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "次の中に含む"
+                    "label": "包含于"
                   },
-                  "次で開始": {
-                    "label": "次で開始"
+                  "开始于": {
+                    "label": "开始于"
                   },
-                  "次で終了": {
-                    "label": "次で終了"
+                  "结尾是": {
+                    "label": "结尾是"
                   },
                   "=": {
-                    "label": "等しい"
+                    "label": "相等"
                   },
                   ">": {
-                    "label": "超"
+                    "label": "大于"
                   },
                   ">=": {
-                    "label": "以上"
+                    "label": "大于或等于"
                   },
                   "<": {
-                    "label": "より小さい"
+                    "label": "小于"
                   },
                   "<=": {
-                    "label": "より小さいまたは等しい"
+                    "label": "小于或等于"
                   },
                   "EMPTY": {
-                    "label": "空です"
+                    "label": "为空"
                   },
                   "BLANK": {
-                    "label": "空白です"
+                    "label": "为空白"
                   },
-                  "無効です": {
-                    "label": "無効です"
+                  "为 NULL": {
+                    "label": "为 NULL"
                   },
-                  "REGEXの一致": {
-                    "label": "REGEXの一致"
+                  "正则表达式匹配": {
+                    "label": "正则表达式匹配"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "テーブル内"
+                    "label": "于表格"
                   },
-                  "REGEXテーブル内": {
-                    "label": "REGEXテーブル内"
+                  "于正则表格": {
+                    "label": "于正则表格"
                   },
-                  "日付": {
-                    "label": "日付"
+                  "日期": {
+                    "label": "日期"
                   }
                 },
-                "val": "含む"
+                "val": "包含"
               },
               "date_condition": {
                 "type": "select",
-                "label": "日付オペレータの選択",
+                "label": "选择日期运算符",
                 "required": true,
                 "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "前"
+                    "label": "PRIOR"
                   },
                   "<=": {
-                    "label": "前または等しい"
+                    "label": "先于或等于"
                   },
                   "=": {
-                    "label": "等しい"
+                    "label": "相等"
                   },
                   ">": {
-                    "label": "以降"
+                    "label": "之后"
                   },
                   ">=": {
-                    "label": "以降または等しい"
+                    "label": "之后或等于"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "ケース・センシティブの選択",
+                "label": "选择区分大小写",
                 "required": true,
                 "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "ケース・センシティブ"
+                    "label": "区分大小写"
                   },
                   "no": {
-                    "label": "ケース・インセンシティブ"
+                    "label": "不区分大小写"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "日付の選択",
+                "label": "选择日期",
                 "show_if": "this.condition=='DATE'",
                 "val": "",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "値の入力",
+                "label": "输入值",
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "テーブルの選択",
+                "label": "选择表格",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -388,7 +388,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "列の選択",
+                "label": "选择列",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -396,14 +396,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "削除",
+                "label": "删除",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.input_table.apply_to_record": {
             "type": "checkbox",
-            "label": "入力テーブルフィルターのレコードに適用",
+            "label": "为输入表格筛选应用至记录",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -412,13 +412,13 @@
           },
           "input_table_apply_to_group_box": {
             "type": "fieldset",
-            "label": "入力テーブルのグループに適用",
+            "label": "输入表格应用至组",
             "show_if": "options.input_table.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.input_table.apply_to_group_columns": {
                 "type": "select",
-                "label": "グループ列の選択",
+                "label": "选择组列",
                 "required": true,
                 "width": "100%",
                 "table": "input_table",
@@ -432,7 +432,7 @@
       },
       "options.lookup_table.use_filter": {
         "type": "checkbox",
-        "label": "ルックアップテーブルにフィルターを使用",
+        "label": "筛选查找表格",
         "show_if": "options.is_custom_lookup_table=='false' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
         "val": "false",
         "isOn": "true",
@@ -442,18 +442,18 @@
       },
       "lookup_table_filter_box": {
         "type": "fieldset",
-        "label": "ルックアップテーブルフィルターオプション",
+        "label": "查找表格筛选选项",
         "show_if": "options.lookup_table.use_filter=='true' && options.is_custom_lookup_table=='false' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
         "repeat": false,
         "fields": {
           "options.lookup_table.filter": {
             "type": "fieldset",
-            "label": "ルックアップテーブルのフィルター条件を追加",
+            "label": "为查找表格添加筛选条件",
             "repeat": true,
             "fields": {
               "initial_op": {
                 "type": "select",
-                "label": "論理オペレータの選択",
+                "label": "选择逻辑运算符",
                 "required": true,
                 "show_if": "$index == 0",
                 "options": {
@@ -461,14 +461,14 @@
                     "label": "IF"
                   },
                   "if_not": {
-                    "label": "IF NOT"
+                    "label": "如果不是"
                   }
                 },
                 "val": "if"
               },
               "op": {
                 "type": "select",
-                "label": "論理オペレータの選択",
+                "label": "选择逻辑运算符",
                 "required": true,
                 "show_if": "$index > 0",
                 "options": {
@@ -489,123 +489,123 @@
               },
               "column": {
                 "type": "select",
-                "label": "列の選択",
+                "label": "选择列",
                 "table": "options.lookup_table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "オペレータの選択",
+                "label": "选择运算符",
                 "required": true,
                 "options": {
-                  "含む": {
-                    "label": "含む"
+                  "包含": {
+                    "label": "包含"
                   },
                   "CONTAINED IN STRING": {
-                    "label": "次の中に含む"
+                    "label": "包含于"
                   },
-                  "次で開始": {
-                    "label": "次で開始"
+                  "开始于": {
+                    "label": "开始于"
                   },
-                  "次で終了": {
-                    "label": "次で終了"
+                  "结尾是": {
+                    "label": "结尾是"
                   },
                   "=": {
-                    "label": "等しい"
+                    "label": "相等"
                   },
                   ">": {
-                    "label": "超"
+                    "label": "大于"
                   },
                   ">=": {
-                    "label": "以上"
+                    "label": "大于或等于"
                   },
                   "<": {
-                    "label": "より小さい"
+                    "label": "小于"
                   },
                   "<=": {
-                    "label": "より小さいまたは等しい"
+                    "label": "小于或等于"
                   },
                   "EMPTY": {
-                    "label": "空です"
+                    "label": "为空"
                   },
                   "BLANK": {
-                    "label": "空白です"
+                    "label": "为空白"
                   },
-                  "無効です": {
-                    "label": "無効です"
+                  "为 NULL": {
+                    "label": "为 NULL"
                   },
-                  "REGEXの一致": {
-                    "label": "REGEXの一致"
+                  "正则表达式匹配": {
+                    "label": "正则表达式匹配"
                   },
                   "CONTAINED IN TABLE": {
-                    "label": "テーブル内"
+                    "label": "于表格"
                   },
-                  "REGEXテーブル内": {
-                    "label": "REGEXテーブル内"
+                  "于正则表格": {
+                    "label": "于正则表格"
                   },
-                  "日付": {
-                    "label": "日付"
+                  "日期": {
+                    "label": "日期"
                   }
                 },
-                "val": "含む"
+                "val": "包含"
               },
               "date_condition": {
                 "type": "select",
-                "label": "日付オペレータの選択",
+                "label": "选择日期运算符",
                 "required": true,
                 "show_if": "this.condition == 'DATE'",
                 "options": {
                   "<": {
-                    "label": "前"
+                    "label": "PRIOR"
                   },
                   "<=": {
-                    "label": "前または等しい"
+                    "label": "先于或等于"
                   },
                   "=": {
-                    "label": "等しい"
+                    "label": "相等"
                   },
                   ">": {
-                    "label": "以降"
+                    "label": "之后"
                   },
                   ">=": {
-                    "label": "以降または等しい"
+                    "label": "之后或等于"
                   }
                 },
                 "val": "="
               },
               "case_sensitive": {
                 "type": "select",
-                "label": "ケース・センシティブの選択",
+                "label": "选择区分大小写",
                 "required": true,
                 "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "options": {
                   "yes": {
-                    "label": "ケース・センシティブ"
+                    "label": "区分大小写"
                   },
                   "no": {
-                    "label": "ケース・インセンシティブ"
+                    "label": "不区分大小写"
                   }
                 },
                 "val": "yes"
               },
               "date_value": {
                 "type": "date",
-                "label": "日付の選択",
+                "label": "选择日期",
                 "show_if": "this.condition=='DATE'",
                 "val": "",
                 "required": true
               },
               "value": {
                 "type": "text",
-                "label": "値の入力",
+                "label": "输入值",
                 "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
               "compare_table": {
                 "type": "select",
-                "label": "テーブルの選択",
+                "label": "选择表格",
                 "bind": "TABLES",
                 "empty": "",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -613,7 +613,7 @@
               },
               "compare_column": {
                 "type": "select",
-                "label": "列の選択",
+                "label": "选择列",
                 "table": "this.compare_table",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
@@ -621,14 +621,14 @@
               },
               "delete": {
                 "type": "button",
-                "label": "削除",
+                "label": "删除",
                 "function": "DELETE_ROW"
               }
             }
           },
           "options.lookup_table.apply_to_record": {
             "type": "checkbox",
-            "label": "ルックアップテーブルフィルターのレコードに適用",
+            "label": "为查找表格筛选应用至记录",
             "val": "true",
             "isOn": "true",
             "isOff": "false",
@@ -637,13 +637,13 @@
           },
           "lookup_table_apply_to_group_box": {
             "type": "fieldset",
-            "label": "ルックアップテーブルのグループに適用",
+            "label": "查找表格应用至组",
             "show_if": "options.lookup_table.apply_to_record=='false'",
             "repeat": false,
             "fields": {
               "options.lookup_table.apply_to_group_columns": {
                 "type": "select",
-                "label": "グループ列の選択",
+                "label": "选择组列",
                 "required": true,
                 "width": "100%",
                 "table": "options.lookup_table",
@@ -657,7 +657,7 @@
       },
       "options.input_table.apply_to_group_for_concatenation.enabled": {
         "type": "checkbox",
-        "label": "行の連結をグループに適用",
+        "label": "行连接应用至组",
         "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table'",
         "val": "false",
         "isOn": "true",
@@ -667,7 +667,7 @@
       },
       "options.input_table.apply_to_group_for_concatenation.allow_group_lists": {
         "type": "checkbox",
-        "label": "グループリストの許可",
+        "label": "允许组列表",
         "show_if": "options.input_table.apply_to_group_for_concatenation.enabled=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
         "val": "false",
         "isOn": "true",
@@ -677,7 +677,7 @@
       },
       "options.input_table.apply_to_group_for_concatenation.group_column": {
         "type": "select",
-        "label": "行の連結のためのグループ列を選択",
+        "label": "为行连接选择组列",
         "show_if": "options.input_table.apply_to_group_for_concatenation.enabled=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
         "required": true,
         "width": "100%",
