@@ -1,12 +1,12 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "オプション",
+    "label": "选项",
     "repeat": false,
     "fields": {
       "rename_columns": {
         "type": "checkbox",
-        "label": "列の名前を変更",
+        "label": "重命名列",
         "show_if": "false",
         "val": "false",
         "isOn": "true",
@@ -14,13 +14,13 @@
       },
       "columns": {
         "type": "fieldset",
-        "label": "列の選択",
+        "label": "选择列",
         "show_if": "$input_table.numOfHeader >= 1",
         "repeat": true,
         "fields": {
           "field_name": {
             "type": "select",
-            "label": "列の選択",
+            "label": "选择列",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
@@ -31,12 +31,12 @@
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "次へ名前を変更"
+            "label": "重命名为"
           },
           "delete": {
             "show_if": "this.field_name != ''",
             "type": "button",
-            "label": "削除",
+            "label": "删除",
             "function": "DELETE_ROW"
           }
         },
@@ -44,7 +44,7 @@
       },
       "rename_rows": {
         "type": "checkbox",
-        "label": "ラベルの名前を変更",
+        "label": "重命名标签",
         "show_if": "false",
         "val": "false",
         "isOn": "true",
@@ -53,13 +53,13 @@
       },
       "rows": {
         "type": "fieldset",
-        "label": "ラベルの選択",
+        "label": "选择标签",
         "show_if": "$input_table.numOfLabel >= 1",
         "repeat": true,
         "fields": {
           "label_name": {
             "type": "select",
-            "label": "ラベルの選択",
+            "label": "选择标签",
             "table": "input_table",
             "bind": "LABELS",
             "required": true
@@ -70,12 +70,12 @@
             "required": true,
             "minLength": 1,
             "maxLength": 255,
-            "label": "次へ名前を変更"
+            "label": "重命名为"
           },
           "delete": {
             "show_if": "this.label_name != ''",
             "type": "button",
-            "label": "削除",
+            "label": "删除",
             "function": "DELETE_ROW"
           }
         },
