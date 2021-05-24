@@ -1,23 +1,23 @@
 {
   "options": {
     "type": "fieldset",
-    "Beschriftung": "Optionen",
+    "label": "Optionen",
     "repeat": false,
     "fields": {
       "compare_set": {
         "type": "fieldset",
-        "Beschriftung": "Muster auswählen",
+        "label": "Muster auswählen",
         "repeat": true,
         "fields": {
           "pattern": {
             "type": "select",
-            "Beschriftung": "Tabellenmustertyp",
+            "label": "Tabellenmustertyp",
             "options": {
               "all_col": {
-                "Beschriftung": "Alle Spaltenidentität"
+                "label": "Alle Spaltenidentität"
               },
               "two_col": {
-                "Beschriftung": "Zweispaltige Identität"
+                "label": "Zweispaltige Identität"
               }
             },
             "val": "all_col",
@@ -25,22 +25,22 @@
           },
           "compare_type": {
             "type": "select",
-            "Beschriftung": "Zellenmustertyp",
+            "label": "Zellenmustertyp",
             "options": {
               "equal": {
-                "Beschriftung": "Gleich"
+                "label": "Gleich"
               },
               "contain": {
-                "Beschriftung": "Enthält"
+                "label": "Enthält"
               },
               "start_with": {
-                "Beschriftung": "Beginnt mit"
+                "label": "Beginnt mit"
               },
               "end_with": {
-                "Beschriftung": "Endet mit"
+                "label": "Endet mit"
               },
               "reg_exp": {
-                "Beschriftung": "Regulärer Ausdruck"
+                "label": "Regulärer Ausdruck"
               }
             },
             "val": "equal",
@@ -48,21 +48,21 @@
           },
           "case_sensitive": {
             "type": "select",
-            "Beschriftung": "Groß-/Kleinschreibungsunterscheidung",
+            "label": "Groß-/Kleinschreibungsunterscheidung",
             "required": true,
             "options": {
               "yes": {
-                "Beschriftung": "Gehäuse empfindlich"
+                "label": "Gehäuse empfindlich"
               },
               "no": {
-                "Beschriftung": "Groß-/Kleinschreibung nicht beachten"
+                "label": "Groß-/Kleinschreibung nicht beachten"
               }
             },
             "val": "no"
           },
           "expression": {
             "type": "text",
-            "Beschriftung": "Ausdruck",
+            "label": "Ausdruck",
             "show_if": "this.compare_type != 'equal'",
             "required": true,
             "val": ""
@@ -70,7 +70,7 @@
           "delete": {
             "show_if": "this.field_name != ''",
             "type": "button",
-            "Beschriftung": "Lösche",
+            "label": "Lösche",
             "function": "DELETE_ROW"
           }
         },
@@ -78,13 +78,13 @@
       },
       "target": {
         "type": "select",
-        "Beschriftung": "Ziel",
+        "label": "Ziel",
         "options": {
           "to_table": {
-            "Beschriftung": "Auf Tabelle anwenden"
+            "label": "Auf Tabelle anwenden"
           },
           "to_rows": {
-            "Beschriftung": "Zeile für Zeile"
+            "label": "Zeile für Zeile"
           }
         },
         "val": "to_table",
@@ -93,16 +93,16 @@
       "match_type": {
         "type": "select",
         "show_if": "target != 'to_table'",
-        "Beschriftung": "Übereinstimmungs-Typ",
+        "label": "Übereinstimmungs-Typ",
         "options": {
           "match": {
-            "Beschriftung": "Nur Übereinstimmungen"
+            "label": "Nur Übereinstimmungen"
           },
           "nonmatch": {
-            "Beschriftung": "Nur Nichtübereinstimmungen"
+            "label": "Nur Nichtübereinstimmungen"
           },
           "all": {
-            "Beschriftung": "Alle"
+            "label": "Alle"
           }
         },
         "val": "match",
@@ -111,7 +111,7 @@
       },
       "create_sql": {
         "type": "checkbox",
-        "Beschriftung": "SQL-Details anzeigen",
+        "label": "SQL-Details anzeigen",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
