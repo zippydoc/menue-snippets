@@ -1,7 +1,7 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "周期オプションの選択",
+    "label": "选择周期选项",
     "repeat": false,
     "fields": {
       "options.type": {
@@ -10,13 +10,13 @@
       },
       "input": {
         "type": "fieldset",
-        "label": "入力テーブルの選択",
+        "label": "选择输入表格",
         "show_if": "options.type=='process'",
         "repeat": false,
         "fields": {
           "input_table": {
             "type": "select",
-            "label": "テーブルの選択",
+            "label": "选择表格",
             "bind": "TABLES",
             "empty": "",
             "required": true
@@ -34,68 +34,68 @@
       },
       "amount_formatting_frame": {
         "type": "fieldset",
-        "label": "金額欄のフォーマット",
+        "label": "金额栏的格式",
         "show_if": "options.type=='generate'",
         "repeat": false,
         "fields": {
           "options.amount.format__category": {
             "type": "select",
-            "label": "フォーマット",
+            "label": "格式",
             "required": true,
             "options": {
               "standard": {
-                "label": "標準"
+                "label": "标准"
               },
               "number": {
-                "label": "数"
+                "label": "数字"
               },
               "percentage": {
-                "label": "割合"
+                "label": "百分比"
               },
               "currency": {
-                "label": "通貨"
+                "label": "货币"
               }
             },
             "val": "currency"
           },
           "options.amount.format__rounding": {
             "type": "select",
-            "label": "四捨五入",
+            "label": "取整",
             "show_if": "options.amount.format__category=='number' || options.amount.format__category=='percentage' || options.amount.format__category=='currency'",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "四捨五入無し"
+                "label": "不取整"
               },
               "0": {
-                "label": "0桁"
+                "label": "0 位数"
               },
               "1": {
-                "label": "1桁"
+                "label": "1 位数"
               },
               "2": {
-                "label": "2桁"
+                "label": "2 位数"
               },
               "3": {
-                "label": "3桁"
+                "label": "3 位数"
               },
               "4": {
-                "label": "4桁"
+                "label": "4 位数"
               },
               "5": {
-                "label": "5桁"
+                "label": "5 位数"
               },
               "6": {
-                "label": "6桁"
+                "label": "6 位数"
               },
               "7": {
-                "label": "7桁"
+                "label": "7 位数"
               },
               "8": {
-                "label": "8桁"
+                "label": "8 位数"
               },
               "9": {
-                "label": "9桁"
+                "label": "9 位数"
               }
             },
             "val": "2"
@@ -110,7 +110,7 @@
           },
           "options.amount.format__currency_symbol": {
             "type": "select",
-            "label": "シンボル",
+            "label": "符号",
             "show_if": "options.amount.format__category=='currency'",
             "required": true,
             "options": {
@@ -130,7 +130,7 @@
       },
       "options.standard_table": {
         "type": "checkbox",
-        "label": "標準周期表",
+        "label": "标准周期表格",
         "show_if": "options.type=='process'",
         "val": "true",
         "isOn": "true",
@@ -140,7 +140,7 @@
       },
       "options.initial_date": {
         "type": "select",
-        "label": "初日",
+        "label": "初始日期",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -148,7 +148,7 @@
       },
       "options.period": {
         "type": "select",
-        "label": "ピリオディシー（例：月次、四半期）",
+        "label": "周期性（如每月、每季度）",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -156,7 +156,7 @@
       },
       "options.final_date": {
         "type": "select",
-        "label": "最終日",
+        "label": "最后日期",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -164,47 +164,47 @@
       },
       "options.volume": {
         "type": "select",
-        "label": "量",
+        "label": "金额",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth": {
         "type": "select",
-        "label": "成長",
+        "label": "增长",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "table": "input_table",
         "bind": "COLUMNS"
       },
       "options.growth_period": {
         "type": "select",
-        "label": "成長期",
+        "label": "增长时段",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "options": {
           "selected_period": {
-            "label": "周期に等しい"
+            "label": "等于周期"
           },
           "week_on_week": {
-            "label": "週ごと"
+            "label": "周环比"
           },
           "month_on_month": {
-            "label": "月次"
+            "label": "月环比"
           },
           "quarter_on_quarter": {
-            "label": "四半期毎"
+            "label": "季环比"
           },
           "year_on_year": {
-            "label": "年次"
+            "label": "年环比"
           },
           "column": {
-            "label": "列の選択"
+            "label": "选择列"
           }
         },
         "val": "selected_period"
       },
       "options.growth_period_column": {
         "type": "select",
-        "label": "成長期の列",
+        "label": "增长时段列",
         "show_if": "options.type=='process' && options.standard_table=='false' && options.growth_period=='column'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -213,7 +213,7 @@
       },
       "options.use_growth_pattern_column": {
         "type": "checkbox",
-        "label": "成長パターンの使用",
+        "label": "使用增长模式",
         "show_if": "options.type=='process' && options.standard_table=='false'",
         "val": "false",
         "isOn": "true",
@@ -221,7 +221,7 @@
       },
       "options.growth_pattern_column": {
         "type": "select",
-        "label": "成長パターン",
+        "label": "增长模式",
         "show_if": "options.type=='process' && options.standard_table=='false' && options.use_growth_pattern_column=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -230,94 +230,94 @@
       },
       "options.custom.table": {
         "type": "fieldset",
-        "label": "企画ポジション",
+        "label": "计划职位",
         "show_if": "options.type=='custom'",
         "repeat": true,
         "fields": {
           "item": {
             "type": "text",
-            "label": "Item",
+            "label": "项目",
             "val": "",
             "required": true
           },
           "position": {
             "type": "text",
-            "label": "ポジション",
+            "label": "位置",
             "val": "",
             "required": true,
             "breakLine": true
           },
           "amount": {
             "type": "number",
-            "label": "量",
+            "label": "金额",
             "val": "",
             "required": true
           },
           "amount_format__category": {
             "type": "select",
-            "label": "金額のフォーマット",
+            "label": "金额格式",
             "show_if" : "$index == 0",
             "required": true,
             "options": {
               "standard": {
-                "label": "標準"
+                "label": "标准"
               },
               "number": {
-                "label": "数"
+                "label": "数字"
               },
               "percentage": {
-                "label": "割合"
+                "label": "百分比"
               },
               "text": {
-                "label": "テキスト"
+                "label": "文本"
               },
               "date": {
-                "label": "日付"
+                "label": "日期"
               },
               "currency": {
-                "label": "通貨"
+                "label": "货币"
               }
             },
             "val": "number"
           },
           "amount_format__rounding": {
             "type": "select",
-            "label": "四捨五入",
+            "label": "取整",
             "show_if": "$index == 0 && (this.amount_format__category=='number' || this.amount_format__category=='percentage' || this.amount_format__category=='currency')",
             "required": true,
             "options": {
               "no_rounding": {
-                "label": "四捨五入無し"
+                "label": "不取整"
               },
               "0": {
-                "label": "0桁"
+                "label": "0 位数"
               },
               "1": {
-                "label": "1桁"
+                "label": "1 位数"
               },
               "2": {
-                "label": "2桁"
+                "label": "2 位数"
               },
               "3": {
-                "label": "3桁"
+                "label": "3 位数"
               },
               "4": {
-                "label": "4桁"
+                "label": "4 位数"
               },
               "5": {
-                "label": "5桁"
+                "label": "5 位数"
               },
               "6": {
-                "label": "6桁"
+                "label": "6 位数"
               },
               "7": {
-                "label": "7桁"
+                "label": "7 位数"
               },
               "8": {
-                "label": "8桁"
+                "label": "8 位数"
               },
               "9": {
-                "label": "9桁"
+                "label": "9 位数"
               }
             },
             "val": "2"
@@ -332,7 +332,7 @@
           },
           "amount_format__currency_symbol": {
             "type": "select",
-            "label": "シンボル",
+            "label": "符号",
             "show_if": "$index == 0 && (this.amount_format__category=='currency')",
             "required": true,
             "options": {
@@ -350,7 +350,7 @@
           },
           "amount_format__date_format": {
             "type": "select",
-            "label": "タイプ",
+            "label": "类型",
             "show_if": "$index == 0 && (this.amount_format__category=='date')",
             "required": true,
             "options": {
@@ -358,7 +358,7 @@
                 "label": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "水曜日、3月14日、2012"
+                "label": "2012年3月14日，星期三"
               },
               "yyyy-mm-dd": {
                 "label": "2012-03-14"
@@ -369,13 +369,13 @@
           },
           "initial_date": {
             "type": "date",
-            "label": "初日",
+            "label": "初始日期",
             "val": "",
             "required": true
           },
           "initial_date_format__date_format": {
             "type": "select",
-            "label": "初期日付のフォーマット",
+            "label": "初始日期格式",
             "show_if": "$index == 0",
             "required": true,
             "options": {
@@ -383,7 +383,7 @@
                 "label": "3/14/2012"
               },
               "D, M dd, Y": {
-                "label": "水曜日、3月14日、2012"
+                "label": "2012年3月14日，星期三"
               },
               "yyyy-mm-dd": {
                 "label": "2012-03-14"
@@ -397,90 +397,90 @@
             "label": "周期",
             "required": true,
             "options": {
-              "One-Off": {
-                "label": "One-Off"
+              "一次性的": {
+                "label": "一次性的"
               },
-              "デイリー": {
-                "label": "デイリー"
+              "每日": {
+                "label": "每日"
               },
-              "Work-Daily": {
-                "label": "Work-Daily"
+              "工作-日": {
+                "label": "工作-日"
               },
-              "ウィークリー": {
-                "label": "ウィークリー"
+              "每周": {
+                "label": "每周"
               },
-              "月次": {
-                "label": "月次"
+              "每月": {
+                "label": "每月"
               },
-              "四半期": {
-                "label": "四半期"
+              "季度": {
+                "label": "季度"
               },
-              "Yearly": {
-                "label": "Yearly"
+              "一年一度": {
+                "label": "一年一度"
               }
             },
-            "val": "One-Off"
+            "val": "一次性的"
           },
           "growth": {
             "type": "number",
-            "label": "成長",
+            "label": "增长",
             "show_if": "this.periodicy!='One-Off'",
             "val": "",
             "required": true
           },
           "growth_period": {
             "type": "select",
-            "label": "成長期",
+            "label": "增长时段",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "ウィークリー": {
-                "label": "ウィークリー"
+              "每周": {
+                "label": "每周"
               },
-              "月次": {
-                "label": "月次"
+              "每月": {
+                "label": "月环比"
               },
-              "四半期": {
-                "label": "四半期毎"
+              "季度": {
+                "label": "季环比"
               },
-              "Yearly": {
-                "label": "年次"
+              "一年一度": {
+                "label": "年环比"
               }
             },
-            "val": "ウィークリー"
+            "val": "每周"
           },
           "growth_pattern": {
             "type": "select",
-            "label": "成長パターン",
+            "label": "增长模式",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "複利計算": {
-                "label": "複利計算"
+              "复利": {
+                "label": "复利"
               },
-              "線形": {
-                "label": "線形"
+              "线性": {
+                "label": "线性"
               },
-              "Jump-Fix": {
-                "label": "Jump-Fix"
+              "跳跃式修复": {
+                "label": "跳跃式修复"
               }
             },
-            "val": "複利計算"
+            "val": "复利"
           },
           "final_date": {
             "type": "date",
-            "label": "最終日",
+            "label": "最后日期",
             "show_if": "this.periodicy!='One-Off'",
             "val": ""
           },
           "delete": {
             "type": "button",
-            "label": "削除",
+            "label": "删除",
             "function": "DELETE_ROW"
           }
         }
       },
       "options.end_date": {
         "type": "date",
-        "label": "テーブルの終了日",
+        "label": "表格结束日期",
         "show_if": "options.type=='process' || options.type=='custom'",
         "val": "",
         "required": true,
