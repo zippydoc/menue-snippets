@@ -1,7 +1,7 @@
 {
   "options": {
     "type": "fieldset",
-    "Beschriftung": "Optionen auswählen",
+    "label": "Optionen auswählen",
     "repeat": false,
     "fields": {
       "options.to": {
@@ -10,19 +10,19 @@
       },
       "options.webservice": {
         "type": "select",
-        "Beschriftung": "Webservice auswählen",
+        "label": "Webservice auswählen",
         "options": {
           "github": {
-            "Beschriftung": "Github"
+            "label": "Github"
           },
           "dropbox": {
-            "Beschriftung": "Dropbox"
+            "label": "Dropbox"
           },
           "ms_one_drive": {
-            "Beschriftung": "Microsoft OneDrive"
+            "label": "Microsoft OneDrive"
           },
           "google_drive": {
-            "Beschriftung": "Google Drive"
+            "label": "Google Drive"
           }
         },
         "val": "github",
@@ -31,16 +31,16 @@
       },
       "options.export_format": {
         "type": "select",
-        "Beschriftung": "Format exportieren",
+        "label": "Format exportieren",
         "options": {
           "csv_file": {
-            "Beschriftung": "Csv-Datei(en)"
+            "label": "Csv-Datei(en)"
           },
           "word_by_word": {
-            "Beschriftung": "Wort für Wort"
+            "label": "Wort für Wort"
           },
           "line_by_line": {
-            "Beschriftung": "Zeile für Zeile"
+            "label": "Zeile für Zeile"
           }
         },
         "val": "csv_file",
@@ -49,28 +49,28 @@
       },
       "options.if_duplicated": {
         "type": "select",
-        "Beschriftung": "Wenn vorhanden",
+        "label": "Wenn vorhanden",
         "show_if": "options.webservice=='github'",
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "Beschriftung": "Erstellen oder Verwerfen (falls bereits vorhanden)"
+            "label": "Erstellen oder Verwerfen (falls bereits vorhanden)"
           },
           "error_if_exist": {
-            "Beschriftung": "Neu erstellen (wirft Fehler, wenn vorhanden)"
+            "label": "Neu erstellen (wirft Fehler, wenn vorhanden)"
           },
           "error_if_not_exist": {
-            "Beschriftung": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
+            "label": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
           },
           "append": {
-            "Beschriftung": "Anhängen"
+            "label": "Anhängen"
           }
         },
         "breakLine": true
       },
       "options.export_series": {
         "type": "checkbox",
-        "Beschriftung": "Serie exportieren",
+        "label": "Serie exportieren",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -78,7 +78,7 @@
       },
       "options.file_name_column": {
         "type": "select",
-        "Beschriftung": "Dateinamen-Spalte auswählen",
+        "label": "Dateinamen-Spalte auswählen",
         "show_if": "options.export_series=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -87,7 +87,7 @@
       },
       "options.set_file_path_column": {
         "type": "checkbox",
-        "Beschriftung": "In angegebenen Pfad exportieren",
+        "label": "In angegebenen Pfad exportieren",
         "show_if": "options.export_series=='true'",
         "val": "false",
         "isOn": "true",
@@ -96,7 +96,7 @@
       },
       "options.file_path_column": {
         "type": "select",
-        "Beschriftung": "Dateipfadspalte auswählen",
+        "label": "Dateipfadspalte auswählen",
         "show_if": "options.export_series=='true' && options.set_file_path_column=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -107,12 +107,12 @@
   },
   "export_link_token_frame": {
     "type": "fieldset",
-    "Beschriftung": "Link exportieren",
+    "label": "Link exportieren",
     "repeat": false,
     "fields": {
       "options.github_url": {
         "type": "text",
-        "Beschriftung": "Link eingeben z. B. https://github.com/zippydoc/test",
+        "label": "Link eingeben z. B. https://github.com/zippydoc/test",
         "show_if": "options.webservice=='github'",
         "val": "",
         "required": true,
@@ -121,7 +121,7 @@
       },
       "options.github_token": {
         "type": "text",
-        "Beschriftung": "Geben Sie das persönliche Github-Zugriffstoken an, das Schreibrechte hat:",
+        "label": "Geben Sie das persönliche Github-Zugriffstoken an, das Schreibrechte hat:",
         "show_if": "options.webservice=='github'",
         "required": true,
         "width": "100%",
@@ -129,7 +129,7 @@
       },
       "options.github_create_pr": {
         "type": "checkbox",
-        "Beschriftung": "Pull-Anfrage erstellen",
+        "label": "Pull-Anfrage erstellen",
         "show_if": "options.webservice=='github'",
         "val": "false",
         "isOn": "true",
@@ -138,7 +138,7 @@
       },
       "options.ms_one_drive_token": {
         "type": "text",
-        "Beschriftung": "Microsoft Graph API Zugriffstoken. Sie können es hier erhalten https://ms-oauth.herokuapp.com/",
+        "label": "Microsoft Graph API Zugriffstoken. Sie können es hier erhalten https://ms-oauth.herokuapp.com/",
         "show_if": "options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
@@ -146,7 +146,7 @@
       },
       "options.google_authorization_code": {
         "type": "text",
-        "Beschriftung": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
+        "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
         "show_if": "options.webservice=='google_drive'",
         "required": true,
         "width": "100%",
@@ -154,7 +154,7 @@
       },
       "options.dropbox_authorization_code": {
         "type": "text",
-        "Beschriftung": "Dropbox-Autorisierungscode. Sie können ihn hier erhalten https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "label": "Dropbox-Autorisierungscode. Sie können ihn hier erhalten https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
         "show_if": "options.webservice=='dropbox'",
         "required": true,
         "width": "100%",
