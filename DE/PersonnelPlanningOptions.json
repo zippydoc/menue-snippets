@@ -1,0 +1,151 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Optionen auswählen",
+    "repeat": false,
+    "fields": {
+      "task_label": {
+        "type": "hidden",
+        "val": "personnel_planning"
+      },
+      "options.type": {
+        "type": "hidden",
+        "val": "custom"
+      },
+      "options.custom.table": {
+        "type": "fieldset",
+        "label": "Planungsposition",
+        "repeat": true,
+        "fields": {
+          "item": {
+            "type": "text",
+            "label": "Name",
+            "val": "",
+            "required": true
+          },
+          "position": {
+            "type": "select",
+            "label": "Position",
+            "options": {
+              "Festgehalt": {
+                "label": "Festgehalt"
+              },
+              "Bonus": {
+                "label": "Bonus"
+              },
+              "sonstige Vergütung": {
+                "label": "sonstige Vergütung"
+              }
+            },
+            "val": "Festgehalt",
+            "required": true
+          },
+          "amount": {
+            "type": "number",
+            "label": "Betrag",
+            "val": "",
+            "required": true
+          },
+          "initial_date": {
+            "type": "date",
+            "label": "Anfangsdatum",
+            "val": "",
+            "required": true
+          },
+          "periodicy": {
+            "type": "select",
+            "label": "Periodizität",
+            "required": true,
+            "options": {
+              "Einmalig": {
+                "label": "Einmalig"
+              },
+              "Täglich": {
+                "label": "Täglich"
+              },
+              "Werktäglich": {
+                "label": "Werktäglich"
+              },
+              "Wöchentlich": {
+                "label": "Wöchentlich"
+              },
+              "Monatlich": {
+                "label": "Monatlich"
+              },
+              "vierteljährlich": {
+                "label": "vierteljährlich"
+              },
+              "Jährlich": {
+                "label": "Jährlich"
+              }
+            },
+            "val": "Einmalig"
+          },
+          "growth": {
+            "type": "number",
+            "label": "Wachstum",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": "",
+            "required": true
+          },
+          "growth_period": {
+            "type": "select",
+            "label": "Wachstumsperiode",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "Wöchentlich": {
+                "label": "Wöchentlich"
+              },
+              "Monatlich": {
+                "label": "Monat für Monat"
+              },
+              "vierteljährlich": {
+                "label": "Quartal für Quartal"
+              },
+              "Jährlich": {
+                "label": "Jahr auf Jahr"
+              }
+            },
+            "val": "Wöchentlich"
+          },
+          "growth_pattern": {
+            "type": "select",
+            "label": "Wachstumsmuster",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "Aufsummierung": {
+                "label": "Aufsummierung"
+              },
+              "Linear": {
+                "label": "Linear"
+              },
+              "Jump-Fix": {
+                "label": "Jump-Fix"
+              }
+            },
+            "val": "Aufsummierung"
+          },
+          "final_date": {
+            "type": "date",
+            "label": "Endgültiges Datum",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": ""
+          },
+          "delete": {
+            "type": "button",
+            "label": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.end_date": {
+        "type": "date",
+        "label": "Enddatum der Tabelle",
+        "show_if": "options.type=='process' || options.type=='custom'",
+        "val": "",
+        "required": true,
+        "style": "width: 300px"
+      }
+    }
+  }
+}
