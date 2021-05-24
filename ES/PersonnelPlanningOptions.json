@@ -1,0 +1,151 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Seleccionar Opciones",
+    "repeat": false,
+    "fields": {
+      "task_label": {
+        "type": "hidden",
+        "val": "personnel_planning"
+      },
+      "options.type": {
+        "type": "hidden",
+        "val": "custom"
+      },
+      "options.custom.table": {
+        "type": "fieldset",
+        "label": "Posición de planificación",
+        "repeat": true,
+        "fields": {
+          "item": {
+            "type": "text",
+            "label": "Nombre",
+            "val": "",
+            "required": true
+          },
+          "position": {
+            "type": "select",
+            "label": "Posición",
+            "options": {
+              "salario fijo": {
+                "label": "salario fijo"
+              },
+              "bonificación": {
+                "label": "bonificación"
+              },
+              "otras remuneraciones": {
+                "label": "otras remuneraciones"
+              }
+            },
+            "val": "salario fijo",
+            "required": true
+          },
+          "amount": {
+            "type": "number",
+            "label": "Cantidad",
+            "val": "",
+            "required": true
+          },
+          "initial_date": {
+            "type": "date",
+            "label": "Fecha Inicial",
+            "val": "",
+            "required": true
+          },
+          "periodicy": {
+            "type": "select",
+            "label": "Periodicidad",
+            "required": true,
+            "options": {
+              "One-Off": {
+                "label": "One-Off"
+              },
+              "Diario": {
+                "label": "Diario"
+              },
+              "Trabajo-Diario": {
+                "label": "Trabajo-Diario"
+              },
+              "semanal": {
+                "label": "semanal"
+              },
+              "Mensual": {
+                "label": "Mensual"
+              },
+              "Trimestral": {
+                "label": "Trimestral"
+              },
+              "Anual": {
+                "label": "Anual"
+              }
+            },
+            "val": "One-Off"
+          },
+          "growth": {
+            "type": "number",
+            "label": "Crecimiento",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": "",
+            "required": true
+          },
+          "growth_period": {
+            "type": "select",
+            "label": "Período de Crecimiento",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "semanal": {
+                "label": "semanal"
+              },
+              "Mensual": {
+                "label": "Mes a Mes"
+              },
+              "Trimestral": {
+                "label": "Trimestre a Trimestre"
+              },
+              "Anual": {
+                "label": "Año a Año"
+              }
+            },
+            "val": "semanal"
+          },
+          "growth_pattern": {
+            "type": "select",
+            "label": "Patrón de Crecimiento",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "Compuesto": {
+                "label": "Compuesto"
+              },
+              "Lineal": {
+                "label": "Lineal"
+              },
+              "Jump-Fix": {
+                "label": "Jump-Fix"
+              }
+            },
+            "val": "Compuesto"
+          },
+          "final_date": {
+            "type": "date",
+            "label": "Fecha Final",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": ""
+          },
+          "delete": {
+            "type": "button",
+            "label": "Borrar",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.end_date": {
+        "type": "date",
+        "label": "Fecha de Finalización de la Tabla",
+        "show_if": "options.type=='process' || options.type=='custom'",
+        "val": "",
+        "required": true,
+        "style": "width: 300px"
+      }
+    }
+  }
+}
