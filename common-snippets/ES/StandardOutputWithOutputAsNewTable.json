@@ -1,19 +1,19 @@
 {
   "output": {
     "type": "fieldset",
-    "Etiqueta": "Definir Tabla de Salida",
+    "label": "Definir Tabla de Salida",
     "repeat": false,
     "fields": {
       "output.output_as_new_table": {
         "type": "checkbox",
-        "Etiqueta": "Salida como nueva tabla",
+        "label": "Salida como nueva tabla",
         "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
       "output.custom_text": {
         "type": "text",
-        "Etiqueta": "Imprimir Nombre de Tabla",
+        "label": "Imprimir Nombre de Tabla",
         "show_if": "(output.custom_options=='false' && output.output_as_new_table=='true') || (output.custom_options=='false' && output.compose_table_name=='true' && output.output_as_new_table=='true')",
         "minLength": 1,
         "val": "",
@@ -22,7 +22,7 @@
       },
       "output.custom_options": {
         "type": "checkbox",
-        "Etiqueta": "Imprimir Opciones",
+        "label": "Imprimir Opciones",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -30,7 +30,7 @@
       },
       "output.compose_table_name": {
         "type": "checkbox",
-        "Etiqueta": "Componer Nombre de la Tabla",
+        "label": "Componer Nombre de la Tabla",
         "show_if": "output.output_as_new_table=='true' && output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
@@ -39,42 +39,42 @@
       },
       "compose_table_name_frame": {
         "type": "fieldset",
-        "Etiqueta": "Componer Nombre de la Tabla de Salida",
+        "label": "Componer Nombre de la Tabla de Salida",
         "show_if": "output.output_as_new_table=='true' && output.custom_options=='true' && output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
             "type": "select",
-            "Etiqueta": "Prefijo",
+            "label": "Prefijo",
             "show_if": "output.compose_table_name=='true'",
             "val": "empty",
             "options": {
               "empty": {
-                "Etiqueta": "-"
+                "label": "-"
               },
               "script_name": {
-                "Etiqueta": "Nombre de la Tarea"
+                "label": "Nombre de la Tarea"
               },
               "date_string_type1": {
-                "Etiqueta": "Fecha: dd_mm_aaaa"
+                "label": "Fecha: dd_mm_aaaa"
               },
               "date_string_type2": {
-                "Etiqueta": "Fecha: aaaa_mm_dd"
+                "label": "Fecha: aaaa_mm_dd"
               },
               "time_string": {
-                "Etiqueta": "Tempo: h_min_seg"
+                "label": "Tempo: h_min_seg"
               },
               "datetime_string": {
-                "Etiqueta": "Fecha_Hora"
+                "label": "Fecha_Hora"
               },
               "custom": {
-                "Etiqueta": "Personalizado"
+                "label": "Personalizado"
               }
             }
           },
           "output.prefix_text": {
             "type": "text",
-            "Etiqueta": "Texto del Prefijo",
+            "label": "Texto del Prefijo",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -82,31 +82,31 @@
           },
           "output.core_delimiter": {
             "type": "text",
-            "Etiqueta": "Delimitador",
+            "label": "Delimitador",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
             "val": "_",
             "width": "50px"
           },
           "output.core_rule": {
             "type": "select",
-            "Etiqueta": "Nombre de la Tabla",
+            "label": "Nombre de la Tabla",
             "show_if": "output.compose_table_name=='true'",
             "val": "input_table_name",
             "options": {
               "input_table_name": {
-                "Etiqueta": "Ingresar Nombre de la Tabla"
+                "label": "Ingresar Nombre de la Tabla"
               },
               "script_name": {
-                "Etiqueta": "Nombre de la Tarea"
+                "label": "Nombre de la Tarea"
               },
               "custom": {
-                "Etiqueta": "Personalizado"
+                "label": "Personalizado"
               }
             }
           },
           "output.core_text": {
             "type": "text",
-            "Etiqueta": "Nombre de la Tabla Principal",
+            "label": "Nombre de la Tabla Principal",
             "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
             "required": true,
             "minLength": 1,
@@ -115,43 +115,43 @@
           },
           "output.suffix_delimiter": {
             "type": "text",
-            "Etiqueta": "Delimitador",
+            "label": "Delimitador",
             "show_if": "output.compose_table_name=='true'",
             "val": "_",
             "width": "50px"
           },
           "output.suffix_rule": {
             "type": "select",
-            "Etiqueta": "Sufijo",
+            "label": "Sufijo",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "empty": {
-                "Etiqueta": "-"
+                "label": "-"
               },
               "script_name": {
-                "Etiqueta": "Nombre de la Tarea"
+                "label": "Nombre de la Tarea"
               },
               "date_string_type1": {
-                "Etiqueta": "Fecha: dd_mm_aaaa"
+                "label": "Fecha: dd_mm_aaaa"
               },
               "date_string_type2": {
-                "Etiqueta": "Fecha: aaaa_mm_dd"
+                "label": "Fecha: aaaa_mm_dd"
               },
               "time_string": {
-                "Etiqueta": "Tempo: h_min_seg"
+                "label": "Tempo: h_min_seg"
               },
               "datetime_string": {
-                "Etiqueta": "Fecha_Hora"
+                "label": "Fecha_Hora"
               },
               "custom": {
-                "Etiqueta": "Personalizado"
+                "label": "Personalizado"
               }
             }
           },
           "output.suffix_text": {
             "type": "text",
-            "Etiqueta": "Texto del Sufijo",
+            "label": "Texto del Sufijo",
             "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -160,130 +160,130 @@
           },
           "output.timezone": {
             "type": "select",
-            "Etiqueta": "Zona Horaria",
+            "label": "Zona Horaria",
             "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
             "val": "Europa/Berlín",
             "required": true,
             "options": {
               "America/Adak": {
-                "Etiqueta": "Adak, Gambier"
+                "label": "Adak, Gambier"
               },
               "Australia/Adelaide": {
-                "Etiqueta": "Adelaida, Broken Hill, Darwin"
+                "label": "Adelaida, Broken Hill, Darwin"
               },
               "America/Anchorage": {
-                "Etiqueta": "Anchorage, Juneau, Sitka"
+                "label": "Anchorage, Juneau, Sitka"
               },
               "Pacific/Apia": {
-                "Etiqueta": "Apia, Asau, Mulifanua, Afega, Leulumoega"
+                "label": "Apia, Asau, Mulifanua, Afega, Leulumoega"
               },
               "Pacific/Enderbury": {
-                "Etiqueta": "Apia, Fiji, Tongatapu"
+                "label": "Apia, Fiji, Tongatapu"
               },
               "Antarctica/McMurdo": {
-                "Etiqueta": "Auckland, Casey, Davis"
+                "label": "Auckland, Casey, Davis"
               },
               "Pacific/Auckland": {
-                "Etiqueta": "Auckland, Wellington, Christchurch"
+                "label": "Auckland, Wellington, Christchurch"
               },
               "Asia/Bangkok": {
-                "Etiqueta": "Bangkok, Yakarta, Novosibirsk"
+                "label": "Bangkok, Yakarta, Novosibirsk"
               },
               "Europa/Berlín": {
-                "Etiqueta": "Berlín, París, Ámsterdam"
+                "label": "Berlín, París, Ámsterdam"
               },
               "Australia/Perth": {
-                "Etiqueta": "Brunei, Singapur, Perth"
+                "label": "Brunei, Singapur, Perth"
               },
               "Atlantic/Cape_Verde": {
-                "Etiqueta": "Cabo Verde, Praia, Mindelo, Santa María"
+                "label": "Cabo Verde, Praia, Mindelo, Santa María"
               },
               "America/Belize": {
-                "Etiqueta": "Costa Rica, El Salvador, Denver"
+                "label": "Costa Rica, El Salvador, Denver"
               },
               "Antarctica/Vostok": {
-                "Etiqueta": "Dhaka, Bishkek, Omsk"
+                "label": "Dhaka, Bishkek, Omsk"
               },
               "Europe/Astrakhan": {
-                "Etiqueta": "Dubai, Bakú, Tbilisi"
+                "label": "Dubai, Bakú, Tbilisi"
               },
               "Australia/Eucla": {
-                "Etiqueta": "Eucla"
+                "label": "Eucla"
               },
               "Pacific/Honolulu": {
-                "Etiqueta": "Honolulu, Rarotonga, Tahití"
+                "label": "Honolulu, Rarotonga, Tahití"
               },
               "Asia/Kabul": {
-                "Etiqueta": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
+                "label": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
               },
               "Asia/Aqtau": {
-                "Etiqueta": "Karachi, Tashkent, Maldivas"
+                "label": "Karachi, Tashkent, Maldivas"
               },
               "Asia/Kathmandu": {
-                "Etiqueta": "Kathmandu,Pokhara, Pātan, Biratnagar"
+                "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
               },
               "Pacific/Kiritimati": {
-                "Etiqueta": "Kiritimati"
+                "label": "Kiritimati"
               },
               "Asia/Colombo": {
-                "Etiqueta": "Calcuta, Colombo, Jaffna, Negombo"
+                "label": "Calcuta, Colombo, Jaffna, Negombo"
               },
               "Europe/Guernsey": {
-                "Etiqueta": "Londres, Dublín, Lisboa"
+                "label": "Londres, Dublín, Lisboa"
               },
               "Australia/Lord_Howe": {
-                "Etiqueta": "Lord Howe"
+                "label": "Lord Howe"
               },
               "America/Creston": {
-                "Etiqueta": "Los Ángeles, Vancouver, Hermosillo"
+                "label": "Los Ángeles, Vancouver, Hermosillo"
               },
               "Pacific/Marquesas": {
-                "Etiqueta": "Marquesas, Taiohae"
+                "label": "Marquesas, Taiohae"
               },
               "America/Cayman": {
-                "Etiqueta": "Ciudad de México, Panamá, Chicago"
+                "label": "Ciudad de México, Panamá, Chicago"
               },
               "Pacific/Niue": {
-                "Etiqueta": "Midway, Niue, Pago Pago"
+                "label": "Midway, Niue, Pago Pago"
               },
               "Europe/Mariehamn": {
-                "Etiqueta": "Moscú, Estambul, Qatar"
+                "label": "Moscú, Estambul, Qatar"
               },
               "Asia/Kolkata": {
-                "Etiqueta": "Bombay, Delhi, Bengaluru, Calcuta, Chennai"
+                "label": "Bombay, Delhi, Bengaluru, Calcuta, Chennai"
               },
               "America/Miquelon": {
-                "Etiqueta": "Noronha, Nuuk, Miquelon"
+                "label": "Noronha, Nuuk, Miquelon"
               },
               "America/Danmarkshavn": {
-                "Etiqueta": "Reikiavik, Dakar, Casablanca"
+                "label": "Reikiavik, Dakar, Casablanca"
               },
               "Pacific/Bougainville": {
-                "Etiqueta": "Sakhalin, Norfolk, Bougainville"
+                "label": "Sakhalin, Norfolk, Bougainville"
               },
               "America/Araguaina": {
-                "Etiqueta": "Sao Paulo, Buenos Aires, Montevideo"
+                "label": "Sao Paulo, Buenos Aires, Montevideo"
               },
               "America/St_Johns": {
-                "Etiqueta": "St. Johns, Mount Pearl, Corner Brook"
+                "label": "St. Johns, Mount Pearl, Corner Brook"
               },
               "Asia/Tehran": {
-                "Etiqueta": "Teherán, Mashhad, Isfahan, Karaj, Tabriz"
+                "label": "Teherán, Mashhad, Isfahan, Karaj, Tabriz"
               },
               "Asia/Tokyo": {
-                "Etiqueta": "Tokio, Seúl, Jayapura"
+                "label": "Tokio, Seúl, Jayapura"
               },
               "America/New_York": {
-                "Etiqueta": "Toronto, Santiago, Nueva York"
+                "label": "Toronto, Santiago, Nueva York"
               },
               "Australia/Sydney": {
-                "Etiqueta": "Vladivostok, Sydney, Brisbane"
+                "label": "Vladivostok, Sydney, Brisbane"
               },
               "Asia/Yangon": {
-                "Etiqueta": "Yangon, Cocos, Mandalay, Nay Pyi Taw, Mawlamyine"
+                "label": "Yangon, Cocos, Mandalay, Nay Pyi Taw, Mawlamyine"
               },
               "Indian/Cocos": {
-                "Etiqueta": "Yangon, Cocos, West Island"
+                "label": "Yangon, Cocos, West Island"
               }
             },
             "breakLine": true
