@@ -1,0 +1,90 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Seleccionar Opciones",
+    "repeat": false,
+    "fields": {
+      "options.from": {
+        "type": "hidden",
+        "val": "database"
+      },
+      "postgresql_db_credential_box": {
+        "type": "fieldset",
+        "label": "Credenciales de Conexión para la Base de Datos",
+        "repeat": false,
+        "fields": {
+          "options.dbms": {
+            "type": "select",
+            "label": "Seleccionar DBMS",
+            "options": {
+              "postgresql": {
+                "label": "PostgreSQL"
+              },
+              "mysql": {
+                "label": "MySQL (Próximamente…)"
+              },
+              "sql_server": {
+                "label": "Servidor MS SQL(Próximamente…)"
+              },
+              "oracle": {
+                "label": "Oracle (Próximamente...)"
+              }
+            },
+            "val": "postgresql",
+            "required": true,
+            "breakLine": true
+          },
+          "options.postgresql_credential.user": {
+            "type": "text",
+            "label": "Usuario",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.postgresql_credential.password": {
+            "type": "text",
+            "label": "Contraseña",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.postgresql_credential.host": {
+            "type": "text",
+            "label": "Host",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.postgresql_credential.database": {
+            "type": "text",
+            "label": "Base de Datos",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          }
+        }
+      },
+      "options.schema_name_to_import": {
+        "type": "text",
+        "label": "Nombre del esquema que incluye la tabla a importar",
+        "show_if": "options.dbms=='postgresql'",
+        "required": true,
+        "val": "public",
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.table_name_to_import": {
+        "type": "text",
+        "label": "Nombre de la tabla a importar",
+        "show_if": "options.dbms=='postgresql'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}
