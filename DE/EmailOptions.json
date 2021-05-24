@@ -1,29 +1,29 @@
 {
   "options": {
     "type": "fieldset",
-    "Beschriftung": "Optionen auswählen",
+    "label": "Optionen auswählen",
     "repeat": false,
     "fields": {
       "options.task_type": {
         "type": "select",
-        "Beschriftung": "Aufgaben-Typ",
+        "label": "Aufgaben-Typ",
         "required": true,
         "options": {
           "write_series": {
-            "Beschriftung": "E-Mail-Serie schreiben"
+            "label": "E-Mail-Serie schreiben"
           },
           "write_email": {
-            "Beschriftung": "E-Mail schreiben"
+            "label": "E-Mail schreiben"
           },
           "read": {
-            "Beschriftung": "E-Mails lesen"
+            "label": "E-Mails lesen"
           }
         },
         "val": "write_email"
       },
       "input_table": {
         "type": "select",
-        "Beschriftung": "Tabelle auswählen",
+        "label": "Tabelle auswählen",
         "show_if": "options.task_type=='write_series'",
         "bind": "TABLES",
         "empty": "",
@@ -31,7 +31,7 @@
       },
       "info1": {
         "type": "text",
-        "Beschriftung": "",
+        "label": "",
         "show_if": "options.task_type=='write_series'",
         "val": "Table-Type: TO | CC | BCC | SUBJECT | BODY",
         "disabled": true,
@@ -39,7 +39,7 @@
       },
       "options.to": {
         "type": "text",
-        "Beschriftung": "An",
+        "label": "An",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -48,7 +48,7 @@
       },
       "options.cc": {
         "type": "text",
-        "Beschriftung": "CC",
+        "label": "CC",
         "show_if": "options.task_type=='write_email'",
         "val": "",
         "placeholder": "ccuser1@domain.com; ccuser2@domain.com",
@@ -56,7 +56,7 @@
       },
       "options.bcc": {
         "type": "text",
-        "Beschriftung": "BCC",
+        "label": "BCC",
         "show_if": "options.task_type=='write_email'",
         "val": "",
         "placeholder": "bccuser1@domain.com; bccuser1@domain.com",
@@ -64,7 +64,7 @@
       },
       "options.subject": {
         "type": "text",
-        "Beschriftung": "Betreff",
+        "label": "Betreff",
         "show_if": "options.task_type=='write_email'",
         "required": true,
         "val": "",
@@ -73,7 +73,7 @@
       },
       "options.body": {
         "type": "textarea",
-        "Beschriftung": "Body",
+        "label": "Body",
         "show_if": "options.task_type=='write_email'",
         "val": "",
         "placeholder": "Text",
@@ -85,19 +85,19 @@
   },
   "smtp_config_frame": {
     "type": "fieldset",
-    "Beschriftung": "SMTP-Verbindung",
+    "label": "SMTP-Verbindung",
     "show_if": "options.task_type=='write_series' || options.task_type=='write_email'",
     "repeat": false,
     "fields": {
       "options.smtp.type": {
         "type": "select",
-        "Beschriftung": "SMTP-Server auswählen",
+        "label": "SMTP-Server auswählen",
         "options": {
           "gmail": {
-            "Beschriftung": "Gmail"
+            "label": "Gmail"
           },
           "custom": {
-            "Beschriftung": "Benutzerdefiniert (kommt bald)"
+            "label": "Benutzerdefiniert (kommt bald)"
           }
         },
         "val": "gmail",
@@ -106,7 +106,7 @@
       },
       "gmail_warning": {
         "type": "text",
-        "Beschriftung": "",
+        "label": "",
         "show_if": "options.smtp.type=='gmail'",
         "val": "Turn 'Allow less secure apps' ON in https://myaccount.google.com/lesssecureapps",
         "width": "100%",
@@ -114,38 +114,38 @@
       },
       "options.gmail.user": {
         "type": "text",
-        "Beschriftung": "Gmail-Benutzer",
+        "label": "Gmail-Benutzer",
         "show_if": "options.smtp.type=='gmail'",
         "required": true,
         "placeholder": "sender@gmail.com"
       },
       "options.gmail.password": {
         "type": "password",
-        "Beschriftung": "Gmail-Kennwort",
+        "label": "Gmail-Kennwort",
         "show_if": "options.smtp.type=='gmail'",
         "required": true
       },
       "options.custom.host": {
         "type": "text",
-        "Beschriftung": "SMTP-Host",
+        "label": "SMTP-Host",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.port": {
         "type": "text",
-        "Beschriftung": "SMTP-Anschluss",
+        "label": "SMTP-Anschluss",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.user": {
         "type": "text",
-        "Beschriftung": "SMTP-Benutzer",
+        "label": "SMTP-Benutzer",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       },
       "options.custom.password": {
         "type": "password",
-        "Beschriftung": "SMTP-Kennwort",
+        "label": "SMTP-Kennwort",
         "show_if": "options.smtp.type=='custom'",
         "required": true
       }
