@@ -1,0 +1,638 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Выбрать параметры",
+    "repeat": false,
+    "fields": {
+      "options.position": {
+        "type": "select",
+        "label": "Выбрать позицию",
+        "show_if": "$input_table.numOfLabel >= 1",
+        "required": true,
+        "options": {
+          "add_rows_at_table_end": {
+            "label": "Add row on bottom"
+          },
+          "add_row_on_top": {
+            "label": "Add row on top"
+          },
+          "add_rows_above_selected_row": {
+            "label": "Add row above selection"
+          },
+          "add_rows_below_selected_row": {
+            "label": "Add row below selection"
+          },
+          "add_row_after_each_group": {
+            "label": "Добавлять строку после каждой группы"
+          }
+        },
+        "val": "add_rows_at_table_end",
+        "breakLine": true
+      },
+      "options.group_column": {
+        "type": "select",
+        "label": "Групповой столбец",
+        "show_if": "$input_table.numOfLabel < 1 && options.position=='add_row_after_each_group'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.use_filter": {
+        "type": "select",
+        "label": "Выбрать тип",
+        "show_if": "false",
+        "required": true,
+        "options": {
+          "false": {
+            "label": "Добавить одну строку для каждой строки таблицы"
+          },
+          "true": {
+            "label": "Добавить одну строку для каждой указанной строки"
+          }
+        },
+        "val": "false",
+        "breakLine": true,
+        "style": "margin-top: 10px"
+      },
+      "filter_box": {
+        "type": "fieldset",
+        "label": "Настройки фильтра",
+        "show_if": "options.use_filter=='true' && $input_table.numOfLabel < 1",
+        "repeat": false,
+        "fields": {
+          "options.filter": {
+            "type": "fieldset",
+            "label": "Добавить условия фильтрации",
+            "repeat": true,
+            "fields": {
+              "initial_op": {
+                "type": "select",
+                "label": "Выбрать оператора логики",
+                "required": true,
+                "show_if": "$index == 0",
+                "options": {
+                  "if": {
+                    "label": "ЕСЛИ"
+                  },
+                  "if_not": {
+                    "label": "ЕСЛИ НЕ"
+                  }
+                },
+                "val": "if"
+              },
+              "op": {
+                "type": "select",
+                "label": "Выбрать оператора логики",
+                "required": true,
+                "show_if": "$index > 0",
+                "options": {
+                  "and": {
+                    "label": "И"
+                  },
+                  "or": {
+                    "label": "ИЛИ"
+                  },
+                  "and_not": {
+                    "label": "И НЕ"
+                  },
+                  "or_not": {
+                    "label": "ИЛИ НЕ"
+                  }
+                },
+                "val": "and"
+              },
+              "column": {
+                "type": "select",
+                "label": "Выбрать столбец",
+                "table": "input_table",
+                "bind": "COLUMNS",
+                "required": true
+              },
+              "condition": {
+                "type": "select",
+                "label": "Выбрать оператора",
+                "required": true,
+                "options": {
+                  "СОДЕРЖИТ": {
+                    "label": "СОДЕРЖИТ"
+                  },
+                  "CONTAINED IN STRING": {
+                    "label": "СОДЕРЖАЛОСЬ В"
+                  },
+                  "НАЧИНАЕТСЯ С": {
+                    "label": "НАЧИНАЕТСЯ С"
+                  },
+                  "ЗАКАНЧИВАЕТСЯ С": {
+                    "label": "ЗАКАНЧИВАЕТСЯ С"
+                  },
+                  "=": {
+                    "label": "Равный"
+                  },
+                  ">": {
+                    "label": "БОЛЬШЕ ЧЕМ"
+                  },
+                  ">=": {
+                    "label": "БОЛЬШИЙ ИЛИ РАВНЫЙ"
+                  },
+                  "<": {
+                    "label": "МЕНЬШЕ ЧЕМ"
+                  },
+                  "<=": {
+                    "label": "МЕНЬШИЙ ИЛИ РАВНЫЙ"
+                  },
+                  "EMPTY": {
+                    "label": "ПУСТО"
+                  },
+                  "BLANK": {
+                    "label": "ПУСТО"
+                  },
+                  "НОЛЬ": {
+                    "label": "НОЛЬ"
+                  },
+                  "Совпадение регулярного выражения": {
+                    "label": "Совпадение регулярного выражения"
+                  },
+                  "CONTAINED IN TABLE": {
+                    "label": "В ТАБЛИЦЕ"
+                  },
+                  "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ": {
+                    "label": "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ"
+                  },
+                  "ДАТА": {
+                    "label": "ДАТА"
+                  }
+                },
+                "val": "СОДЕРЖИТ"
+              },
+              "date_condition": {
+                "type": "select",
+                "label": "Выбрать оператора даты",
+                "required": true,
+                "show_if": "this.condition == 'DATE'",
+                "options": {
+                  "<": {
+                    "label": "ПРЕДЫДУЩИЙ"
+                  },
+                  "<=": {
+                    "label": "ПРЕДЫДУЩИЙ ИЛИ РАВНЫЙ"
+                  },
+                  "=": {
+                    "label": "Равный"
+                  },
+                  ">": {
+                    "label": "ПОСЛЕ"
+                  },
+                  ">=": {
+                    "label": "ПОСЛЕ ИЛИ РАВНО"
+                  }
+                },
+                "val": "="
+              },
+              "case_sensitive": {
+                "type": "select",
+                "label": "Выбрать с учетом регистра",
+                "required": true,
+                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "options": {
+                  "yes": {
+                    "label": "С учетом регистра"
+                  },
+                  "no": {
+                    "label": "Без учета регистра"
+                  }
+                },
+                "val": "yes"
+              },
+              "date_value": {
+                "type": "date",
+                "label": "Выбрать дату",
+                "show_if": "this.condition=='DATE'",
+                "val": "",
+                "required": true
+              },
+              "value": {
+                "type": "text",
+                "label": "Добавить значение",
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "val": "",
+                "required": true
+              },
+              "compare_table": {
+                "type": "select",
+                "label": "Выбрать таблицу",
+                "bind": "TABLES",
+                "empty": "",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "required": true
+              },
+              "compare_column": {
+                "type": "select",
+                "label": "Выбрать столбец",
+                "table": "this.compare_table",
+                "bind": "COLUMNS",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "required": true
+              },
+              "delete": {
+                "type": "button",
+                "label": "Удалить",
+                "function": "DELETE_ROW"
+              }
+            }
+          },
+          "options.apply_to_record": {
+            "type": "checkbox",
+            "label": "Применить к регистру",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "style": "margin-top: 10px",
+            "breakLine": true
+          },
+          "apply_to_group_box": {
+            "type": "fieldset",
+            "label": "Применить к группе",
+            "show_if": "options.apply_to_record=='false'",
+            "repeat": false,
+            "fields": {
+              "options.apply_to_group_columns": {
+                "type": "select",
+                "label": "Выбрать групповые столбцы",
+                "required": true,
+                "width": "100%",
+                "table": "input_table",
+                "multiple": true,
+                "bind": "COLUMNS",
+                "breakLine": true
+              }
+            }
+          }
+        }
+      },
+      "options.add_rows": {
+        "type": "fieldset",
+        "label": "Параметры новой строки",
+        "repeat": true,
+        "fields": {
+          "new_row_name": {
+            "type": "text",
+            "label": "Название новой строки",
+            "show_if": "$input_table.numOfLabel >= 1",
+            "val": ""
+          },
+          "function_type": {
+            "type": "select",
+            "label": "Тип задачи",
+            "show_if": "false",
+            "required": true,
+            "options": {
+              "multi_column_functions": {
+                "label": "Несколько столбцов"
+              },
+              "multi_row_functions": {
+                "label": "Несколько строк"
+              }
+            },
+            "val": "multi_row_functions"
+          },
+          "multi_row_functions__function": {
+            "type": "select",
+            "label": "Выберите функции",
+            "show_if": "$input_table.numOfLabel >= 1",
+            "required": true,
+            "options": {
+              "sum": {
+                "label": "Сумма"
+              },
+              "average": {
+                "label": "Средний"
+              },
+              "median": {
+                "label": "Медиана"
+              },
+              "standard_deviation": {
+                "label": "Стандартное отклонение"
+              },
+              "variance": {
+                "label": "Вариант"
+              },
+              "product": {
+                "label": "Продукт"
+              },
+              "quota": {
+                "label": "Квота"
+              }
+            },
+            "val": "sum"
+          },
+          "multi_row_functions__function_use_filter": {
+            "type": "select",
+            "label": "Выберите функции",
+            "show_if": "$input_table.numOfLabel < 1",
+            "required": true,
+            "options": {
+              "sum": {
+                "label": "Сумма"
+              },
+              "average": {
+                "label": "Средний"
+              },
+              "median": {
+                "label": "Медиана"
+              },
+              "standard_deviation": {
+                "label": "Стандартное отклонение"
+              },
+              "variance": {
+                "label": "Вариант"
+              },
+              "product": {
+                "label": "Продукт"
+              }
+            },
+            "val": "sum"
+          },
+          "multi_row_functions__sel_labels": {
+            "type": "select",
+            "label": "Выбрать строку (строки)",
+            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function!='quota'",
+            "required": true,
+            "table": "input_table",
+            "multiple": true,
+            "bind": "LABELS"
+          },
+          "multi_row_functions__sel_rows": {
+            "type": "select",
+            "label": "Выбрать строки",
+            "show_if": "false",
+            "required": true,
+            "options": {
+              "row-1": {
+                "label": "Строка-1"
+              },
+              "row-2": {
+                "label": "Ряд-2"
+              },
+              "row-3": {
+                "label": "Ряд-3"
+              },
+              "row-4": {
+                "label": "Ряд-4"
+              },
+              "row-5": {
+                "label": "Ряд-5"
+              },
+              "row-6": {
+                "label": "Ряд-6"
+              },
+              "row-7": {
+                "label": "Ряд-7"
+              },
+              "row-8": {
+                "label": "Ряд-8"
+              },
+              "row-9": {
+                "label": "Ряд-9"
+              },
+              "row-10": {
+                "label": "Ряд-10"
+              },
+              "row+1": {
+                "label": "Ряд+1"
+              },
+              "row+2": {
+                "label": "Ряд+2"
+              },
+              "row+3": {
+                "label": "Ряд+3"
+              },
+              "row+4": {
+                "label": "Ряд+4"
+              },
+              "row+5": {
+                "label": "Ряд+5"
+              },
+              "row+6": {
+                "label": "Ряд+6"
+              },
+              "row+7": {
+                "label": "Ряд+7"
+              },
+              "row+8": {
+                "label": "Ряд+8"
+              },
+              "row+9": {
+                "label": "Строка+9"
+              },
+              "row+10": {
+                "label": "Ряд+10"
+              }
+            },
+            "multiple": true,
+            "val": "row-1"
+          },
+          "multi_row_functions__sel_label_a": {
+            "type": "select",
+            "label": "Выбрать метку А",
+            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function=='quota'",
+            "required": true,
+            "table": "input_table",
+            "bind": "LABELS"
+          },
+          "multi_row_functions__sel_label_b": {
+            "type": "select",
+            "label": "Выбрать метку B",
+            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function=='quota'",
+            "required": true,
+            "table": "input_table",
+            "bind": "LABELS",
+            "breakLine": true
+          },
+          "position": {
+            "type": "select",
+            "label": "Позиция",
+            "show_if": "$input_table.numOfLabel >= 1",
+            "required": true,
+            "options": {
+              "bottom": {
+                "label": "СНИЗУ"
+              },
+              "top": {
+                "label": "TOP"
+              },
+              "above": {
+                "label": "НАД"
+              },
+              "below": {
+                "label": "ПОД"
+              }
+            },
+            "val": "bottom"
+          },
+          "positioning_row": {
+            "type": "select",
+            "label": "Позиционирование строки",
+            "show_if": "$input_table.numOfLabel >= 1 && (this.position=='above' || this.position=='below')",
+            "required": true,
+            "table": "input_table",
+            "bind": "LABELS"
+          },
+          "format__category": {
+            "type": "select",
+            "label": "Формат",
+            "required": true,
+            "options": {
+              "standard": {
+                "label": "Стандартный"
+              },
+              "number": {
+                "label": "Число"
+              },
+              "percentage": {
+                "label": "Процент"
+              },
+              "text": {
+                "label": "Текст"
+              },
+              "date": {
+                "label": "Дата"
+              },
+              "currency": {
+                "label": "Валюта"
+              }
+            },
+            "val": "standard"
+          },
+          "format__rounding": {
+            "type": "select",
+            "label": "Округление",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "required": true,
+            "options": {
+              "no_rounding": {
+                "label": "Округление чисел"
+              },
+              "0": {
+                "label": "0 цифр"
+              },
+              "1": {
+                "label": "1 цифра"
+              },
+              "2": {
+                "label": "2 цифры"
+              },
+              "3": {
+                "label": "3 цифры"
+              },
+              "4": {
+                "label": "4 цифры"
+              },
+              "5": {
+                "label": "5 цифр"
+              },
+              "6": {
+                "label": "6 цифр"
+              },
+              "7": {
+                "label": "7 цифр"
+              },
+              "8": {
+                "label": "8 цифр"
+              },
+              "9": {
+                "label": "9 цифр"
+              }
+            },
+            "val": "no_rounding"
+          },
+          "format__use_1000_separator": {
+            "type": "checkbox",
+            "label": "Use 1000 Separator(.)",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "format__currency_symbol": {
+            "type": "select",
+            "label": "Символ",
+            "show_if": "this.format__category=='currency'",
+            "required": true,
+            "options": {
+              "dollar": {
+                "label": "$"
+              },
+              "euro": {
+                "label": "€"
+              },
+              "pound": {
+                "label": "£"
+              }
+            },
+            "val": "dollar"
+          },
+          "format__date_format": {
+            "type": "select",
+            "label": "Тип",
+            "show_if": "this.format__category=='date'",
+            "required": true,
+            "options": {
+              "mm/dd/yyyy": {
+                "label": "3/14/2012"
+              },
+              "D, M dd, Y": {
+                "label": "Среда, 14 марта 2012 года"
+              },
+              "yyyy-mm-dd": {
+                "label": "2012-03-14"
+              }
+            },
+            "val": "mm/dd/yyyy"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Удалить",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.add_new_row": {
+        "type": "checkbox",
+        "label": "Добавить метку",
+        "show_if": "$input_table.numOfLabel < 1",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.new_row_label": {
+        "type": "text",
+        "label": "Label Name",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "val": ""
+      },
+      "options.new_sel_column": {
+        "type": "select",
+        "label": "Выбрать столбец",
+        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "required": true,
+        "table": "input_table",
+        "multiple": false,
+        "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.insert_on_top": {
+        "type": "checkbox",
+        "label": "Insert on Top",
+        "show_if": "$input_table.numOfLabel < 1",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      }
+    }
+  }
+}
