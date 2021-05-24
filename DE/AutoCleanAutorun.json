@@ -1,31 +1,31 @@
 {
   "output_autorun_frame": {
     "type": "fieldset",
-    "Beschriftung": "Table Key",
+    "label": "Table Key",
     "show_if": "output.auto_run=='true'",
     "repeat": false,
     "fields": {
 		"options.task_filter": {
         "type": "select",
-        "Beschriftung": "Key-Lock pair filter",
+        "label": "Key-Lock pair filter",
         "options": {
           "specific_tables": {
-            "Beschriftung": "Specify Task(s)"
+            "label": "Specify Task(s)"
           },
           "current_flow_tables": {
-            "Beschriftung": "Current Flow Tasks"
+            "label": "Current Flow Tasks"
           },
           "flow_tables": {
-            "Beschriftung": "Specify Flow(s)"
+            "label": "Specify Flow(s)"
           },
           "all_tables": {
-            "Beschriftung": "All Tasks"
+            "label": "All Tasks"
           }
 		 }
 		},
       "output.autorun.tasks": {
         "type": "text",
-        "Beschriftung": "Autorun the following Tasks",
+        "label": "Autorun the following Tasks",
         "val": "",
         "placeholder": "';' separated list",
         "required": true,
@@ -33,46 +33,52 @@
       },
       "output.autorun.define_type": {
         "type": "select",
-        "Beschriftung": "Define type",
+        "label": "Define type",
         "required": true,
         "options": {
           "manually": {
-            "Beschriftung": "Define manually"
+            "label": "Define manually"
           },
+          "table_header": {
+            "label": "Define by table header"
+          },
+          "tree_structure": {
+            "label": "Define by tree structure"
+          },		  
           "table_content": {
-            "Beschriftung": "Define by table content"
+            "label": "Define by table content"
           }
         },
         "val": "manually"
       },
       "output.autorun.names": {
         "type": "fieldset",
-        "Beschriftung": "Define Key Pins",
+        "label": "Define Key Pins",
         "show_if": "output.autorun.define_type=='manually'",
         "repeat": true,
         "fields": {
           "name": {
             "type": "text",
-            "Beschriftung": "Key Pin",
+            "label": "Key Pin",
             "val": "",
             "required": true
           },
           "value": {
             "type": "text",
-            "Beschriftung": "Key Pin Value",
+            "label": "Key Pin Value",
             "val": "",
             "required": true
           },
           "delete": {
             "type": "button",
-            "Beschriftung": "Lösche",
+            "label": "Lösche",
             "function": "DELETE_ROW"
           }
         }
       },
       "output.autorun.name_column": {
         "type": "select",
-        "Beschriftung": "Select Key Pin Column",
+        "label": "Select Key Pin Column",
         "show_if": "output.autorun.define_type=='table_content'",
         "table": "input_table",
         "bind": "COLUMNS",
@@ -80,7 +86,7 @@
       },
       "output.autorun.value_column": {
         "type": "select",
-        "Beschriftung": "Select Key Pin Value Column",
+        "label": "Select Key Pin Value Column",
         "show_if": "output.autorun.define_type=='table_content'",
         "table": "input_table",
         "bind": "COLUMNS",
