@@ -1,120 +1,129 @@
 {
   "options.auto_run": {
     "type": "checkbox",
-    "Beschriftung": "Autorun Task",
+    "label": "Autorun Task",
     "val": "false",
     "isOn": "true",
     "isOff": "false"
   },
   "trigger_vector_frame": {
     "type": "fieldset",
-    "Beschriftung": "Task Lock",
+    "label": "Task Lock",
     "show_if": "options.auto_run=='true'",
     "repeat": false,
 	"fields": {
 		"options.table_filter": {
         "type": "select",
-        "Beschriftung": "Key-Lock pair filter",
+        "label": "Key-Lock pair filter",
         "options": {
           "specific_tables": {
-            "Beschriftung": "Specify Table(s)"
+            "label": "Specify Table(s)"
           },
           "current_flow_tables": {
-            "Beschriftung": "Current Flow Tables"
+            "label": "Current Flow Tables"
           },
           "flow_tables": {
-            "Beschriftung": "Specify Flow(s)"
+            "label": "Specify Flow(s)"
+          },
+          "tagged_tables": {
+            "label": "Specify Tag(s)"
           },
           "all_tables": {
-            "Beschriftung": "All Tables"
+            "label": "All Tables"
           }
 		 }
 		},
       "options.autorun_tables": {
         "type": "select",
-        "Beschriftung": "Autorun on table change",
+        "label": "Autorun on table change",
         "bind": "TABLES",
         "multiple": true,
         "required": false
       },
       "trigger_key": {
         "type": "select",
-        "Beschriftung": "Trigger Key",
+        "label": "Trigger Key",
         "options": {
           "greater": {
-            "Beschriftung": "GRÖSSER ALS"
+            "label": "GRÖSSER ALS"
           },
           "greater_or_equal": {
-            "Beschriftung": "GRÖSSER ODER GLEICH"
+            "label": "GRÖSSER ODER GLEICH"
           },
           "equal": {
-            "Beschriftung": "EQUAL"
+            "label": "EQUAL"
           },
           "smaller_or_equal": {
-            "Beschriftung": "KLEINER ODER GLEICH"
+            "label": "KLEINER ODER GLEICH"
           },
           "smaller": {
-            "Beschriftung": "KLEINER ALS"
+            "label": "KLEINER ALS"
           }
         },
         "val": "larger_or_equal"
       },
       "key_number": {
         "type": "text",
-        "Beschriftung": "Key",
+        "label": "Key",
         "val": "1",
         "required": true,
         "breakLine": true
       },  	  
       "trigger_method": {
         "type": "select",
-        "Beschriftung": "Trigger Method",
+        "label": "Trigger Method",
         "options": {
           "no_lock": {
-            "Beschriftung": "Run without Task Lock"
+            "label": "Run without Task Lock"
           },
           "scalar_product_compound": {
-            "Beschriftung": "Compound AxB"
+            "label": "Compound AxB"
           },
           "scalar_product_all_pins": {
-            "Beschriftung": "Pin by Pin AxB - each matching"
+            "label": "Pin by Pin AxB - each matching"
           },
           "scalar_product_min_one_pin": {
-            "Beschriftung": "Pin by Pin AxB - one or more matches"
+            "label": "Pin by Pin AxB - one or more matches"
           },
           "scalar_product_one_pin": {
-            "Beschriftung": "Pin by Pin AxB - one match"
+            "label": "Pin by Pin AxB - one match"
           },
           "concatenate": {
-            "Beschriftung": "Match concatenation"
+            "label": "Match concatenation"
           },		  
           "matching_array": {
-            "Beschriftung": "Match all elements (unordered)"
-          }
+            "label": "Match all elements (unordered)"
+          },
+          "maximum_graph_match": {
+            "label": "Run by comparing graphs with maximum match"
+          },
+          "graph_identity": {
+            "label": "Run identical graphs"
+          }		  
         },
         "val": "scalar_product_compound",
         "breakLine": true
       },
       "options.names": {
         "type": "fieldset",
-        "Beschriftung": "Task Lock Definition",
+        "label": "Task Lock Definition",
         "repeat": true,
         "fields": {
           "name": {
             "type": "text",
-            "Beschriftung": "Key Pin",
+            "label": "Key Pin",
             "val": "",
             "required": true
           },
           "value": {
             "type": "text",
-            "Beschriftung": "Multiplier",
+            "label": "Multiplier",
             "val": "",
             "required": true
           },
           "delete": {
             "type": "button",
-            "Beschriftung": "Lösche",
+            "label": "Lösche",
             "function": "DELETE_ROW"
           }
         }
