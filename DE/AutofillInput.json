@@ -1,75 +1,75 @@
 {
   "input": {
     "type": "fieldset",
-    "Beschriftung": "Eingangstabelle auswählen",
+    "label": "Eingangstabelle auswählen",
     "repeat": false,
     "fields": {
       "tables": {
         "type": "fieldset",
-        "Beschriftung": "Tabellen auswählen",
+        "label": "Tabellen auswählen",
         "repeat": true,
         "fields": {
           "table_id": {
             "type": "select",
-            "Beschriftung": "Nachschlagetabelle",
+            "label": "Nachschlagetabelle",
             "bind": "TABLES",
             "required": true
           },
           "lookup_header_column": {
             "type": "select",
-            "Beschriftung": "Kopfspalte",
+            "label": "Kopfspalte",
             "table": "this.table_id",
             "bind": "COLUMNS",
             "required": true
           },
           "lookup_value_column": {
             "type": "select",
-            "Beschriftung": "Wert-Spalte",
+            "label": "Wert-Spalte",
             "table": "this.table_id",
             "bind": "COLUMNS",
             "required": true
           },
           "lookup_mapping_column": {
             "type": "select",
-            "Beschriftung": "Mapping-Spalte",
+            "label": "Mapping-Spalte",
             "table": "this.table_id",
             "bind": "COLUMNS"
           },
           "delete": {
             "type": "button",
-            "Beschriftung": "Lösche",
+            "label": "Lösche",
             "function": "DELETE_ROW"
           }
         }
       },
       "options.treatment": {
         "type": "select",
-        "Beschriftung": "Behandlung von Mehrfachvorkommen",
+        "label": "Behandlung von Mehrfachvorkommen",
         "required": true,
         "options": {
           "sum": {
-            "Beschriftung": "Summe"
+            "label": "Summe"
           },
           "min": {
-            "Beschriftung": "Min"
+            "label": "Min"
           },
           "max": {
-            "Beschriftung": "Max"
+            "label": "Max"
           },
           "shortest": {
-            "Beschriftung": "Kürzeste"
+            "label": "Kürzeste"
           },
           "longest": {
-            "Beschriftung": "Längste"
+            "label": "Längste"
           },
           "first": {
-            "Beschriftung": "Erste"
+            "label": "Erste"
           },
           "last": {
-            "Beschriftung": "Zuletzt"
+            "label": "Zuletzt"
           },
           "concatenate": {
-            "Beschriftung": "Verketten"
+            "label": "Verketten"
           }
         },
         "val": "sum",
@@ -77,7 +77,7 @@
       },
       "options.treatment_delimiter": {
         "type": "text",
-        "Beschriftung": "Begrenzer",
+        "label": "Begrenzer",
         "show_if": "options.treatment=='concatenate'",
         "required": true,
         "minLength": 1,
