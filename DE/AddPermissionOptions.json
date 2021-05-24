@@ -1,20 +1,20 @@
 {
   "options": {
     "type": "fieldset",
-    "Beschriftung": "Optionen auswählen",
+    "label": "Optionen auswählen",
     "repeat": false,
     "fields": {
       "options.table_permission.set_or_delete": {
         "type": "select",
-        "Beschriftung": "Typ der Aktion",
+        "label": "Typ der Aktion",
         "show_if": "input.table_or_flow=='set_table_permissions'",
         "required": true,
         "options": {
           "set_permissions": {
-            "Beschriftung": "Berechtigungen setzen"
+            "label": "Berechtigungen setzen"
           },
           "delete_permissions": {
-            "Beschriftung": "Alle Berechtigungen löschen"
+            "label": "Alle Berechtigungen löschen"
           }
         },
         "val": "set_permissions",
@@ -22,34 +22,34 @@
       },
       "options.table_permission.emails": {
         "type": "text",
-        "Beschriftung": "Erlaubte Benutzer (; getrennte Liste)",
+        "label": "Erlaubte Benutzer (; getrennte Liste)",
         "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
         "required": true,
         "width": "100%"
       },
       "options.table_permission.permissions": {
         "type": "fieldset",
-        "Beschriftung": "Berechtigungen setzen",
+        "label": "Berechtigungen setzen",
         "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
         "repeat": true,
         "fields": {
           "rows_or_columns": {
             "type": "select",
-            "Beschriftung": "Typ für Tabelle",
+            "label": "Typ für Tabelle",
             "required": true,
             "options": {
               "select_rows": {
-                "Beschriftung": "Zeile(n) auswählen"
+                "label": "Zeile(n) auswählen"
               },
               "select_columns": {
-                "Beschriftung": "Spalte(n) auswählen"
+                "label": "Spalte(n) auswählen"
               }
             },
             "val": "select_columns"
           },
           "rows": {
             "type": "select",
-            "Beschriftung": "Zeile(n) auswählen",
+            "label": "Zeile(n) auswählen",
             "show_if": "this.rows_or_columns=='select_rows'",
             "table": "input.table_id",
             "bind": "LABELS",
@@ -58,7 +58,7 @@
           },
           "columns": {
             "type": "select",
-            "Beschriftung": "Spalte(n) auswählen",
+            "label": "Spalte(n) auswählen",
             "show_if": "this.rows_or_columns=='select_columns'",
             "table": "input.table_id",
             "bind": "COLUMNS",
@@ -67,36 +67,36 @@
           },
           "permission_type": {
             "type": "select",
-            "Beschriftung": "Berechtigungstyp",
+            "label": "Berechtigungstyp",
             "required": true,
             "options": {
               "READ": {
-                "Beschriftung": "Lesen"
+                "label": "Lesen"
               },
               "WRITE": {
-                "Beschriftung": "Schreiben"
+                "label": "Schreiben"
               },
               "PASS-ON": {
-                "Beschriftung": "Weitergeben"
+                "label": "Weitergeben"
               }
             },
             "val": "READ"
           },
           "delete": {
             "type": "button",
-            "Beschriftung": "Lösche",
+            "label": "Lösche",
             "function": "DELETE_ROW"
           }
         }
       },
       "options.flow_permission.set_or_delete": {
         "type": "select",
-        "Beschriftung": "Typ der Aktion",
+        "label": "Typ der Aktion",
         "show_if": "input.table_or_flow=='set_flow_permissions'",
         "required": true,
         "options": {
           "set_permissions": {
-            "Beschriftung": "Berechtigungen setzen"
+            "label": "Berechtigungen setzen"
           }
         },
         "val": "set_permissions",
@@ -104,37 +104,37 @@
       },
       "options.flow_permission.emails": {
         "type": "text",
-        "Beschriftung": "Erlaubte Benutzer (; getrennte Liste)",
+        "label": "Erlaubte Benutzer (; getrennte Liste)",
         "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
         "required": true,
         "width": "100%"
       },
       "options.flow_permission.permissions": {
         "type": "fieldset",
-        "Beschriftung": "Berechtigungen setzen",
+        "label": "Berechtigungen setzen",
         "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
         "repeat": true,
         "fields": {
           "permission_type": {
             "type": "select",
-            "Beschriftung": "Berechtigungstyp",
+            "label": "Berechtigungstyp",
             "required": true,
             "options": {
               "READ": {
-                "Beschriftung": "Lesen"
+                "label": "Lesen"
               },
               "WRITE": {
-                "Beschriftung": "Schreiben"
+                "label": "Schreiben"
               },
               "PASS-ON": {
-                "Beschriftung": "Weitergeben"
+                "label": "Weitergeben"
               }
             },
             "val": "READ"
           },
           "delete": {
             "type": "button",
-            "Beschriftung": "Lösche",
+            "label": "Lösche",
             "function": "DELETE_ROW"
           }
         }
