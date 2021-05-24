@@ -1,0 +1,144 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Выбрать параметры",
+    "repeat": false,
+    "fields": {
+      "options.table_permission.set_or_delete": {
+        "type": "select",
+        "label": "Тип действия",
+        "show_if": "input.table_or_flow=='set_table_permissions'",
+        "required": true,
+        "options": {
+          "set_permissions": {
+            "label": "Установить разрешения"
+          },
+          "delete_permissions": {
+            "label": "Удалить все разрешения"
+          }
+        },
+        "val": "set_permissions",
+        "breakLine": true
+      },
+      "options.table_permission.emails": {
+        "type": "text",
+        "label": "Разрешенные пользователи (; разделенный список)",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
+        "required": true,
+        "width": "100%"
+      },
+      "options.table_permission.permissions": {
+        "type": "fieldset",
+        "label": "Установить разрешения",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
+        "repeat": true,
+        "fields": {
+          "rows_or_columns": {
+            "type": "select",
+            "label": "Тип для таблицы",
+            "required": true,
+            "options": {
+              "select_rows": {
+                "label": "Выбрать строку (строки)"
+              },
+              "select_columns": {
+                "label": "Выбрать столбец(цы)"
+              }
+            },
+            "val": "select_columns"
+          },
+          "rows": {
+            "type": "select",
+            "label": "Выбрать строку (строки)",
+            "show_if": "this.rows_or_columns=='select_rows'",
+            "table": "input.table_id",
+            "bind": "LABELS",
+            "multiple": true,
+            "required": true
+          },
+          "columns": {
+            "type": "select",
+            "label": "Выбрать столбец(ы)",
+            "show_if": "this.rows_or_columns=='select_columns'",
+            "table": "input.table_id",
+            "bind": "COLUMNS",
+            "multiple": true,
+            "required": true
+          },
+          "permission_type": {
+            "type": "select",
+            "label": "Тип разрешения",
+            "required": true,
+            "options": {
+              "READ": {
+                "label": "Читать"
+              },
+              "WRITE": {
+                "label": "Записать"
+              },
+              "PASS-ON": {
+                "label": "Передать"
+              }
+            },
+            "val": "READ"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Удалить",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.flow_permission.set_or_delete": {
+        "type": "select",
+        "label": "Тип действия",
+        "show_if": "input.table_or_flow=='set_flow_permissions'",
+        "required": true,
+        "options": {
+          "set_permissions": {
+            "label": "Установить разрешения"
+          }
+        },
+        "val": "set_permissions",
+        "breakLine": true
+      },
+      "options.flow_permission.emails": {
+        "type": "text",
+        "label": "Разрешенные пользователи (; разделенный список)",
+        "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
+        "required": true,
+        "width": "100%"
+      },
+      "options.flow_permission.permissions": {
+        "type": "fieldset",
+        "label": "Установить разрешения",
+        "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
+        "repeat": true,
+        "fields": {
+          "permission_type": {
+            "type": "select",
+            "label": "Тип разрешения",
+            "required": true,
+            "options": {
+              "READ": {
+                "label": "Читать"
+              },
+              "WRITE": {
+                "label": "Записать"
+              },
+              "PASS-ON": {
+                "label": "Передать"
+              }
+            },
+            "val": "READ"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Удалить",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
