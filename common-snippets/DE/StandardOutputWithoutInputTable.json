@@ -1,12 +1,12 @@
 {
   "output": {
     "type": "fieldset",
-    "Beschriftung": "Ausgabetabelle definieren",
+    "label": "Ausgabetabelle definieren",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
-        "Beschriftung": "Name der Ausgabetabelle",
+        "label": "Name der Ausgabetabelle",
         "show_if": "output.custom_options=='false' || (output.custom_options=='true' && output.compose_table_name=='false')",
         "minLength": 1,
         "val": "",
@@ -15,7 +15,7 @@
       },
       "output.custom_options": {
         "type": "checkbox",
-        "Beschriftung": "Ausgabe-Optionen",
+        "label": "Ausgabe-Optionen",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -23,7 +23,7 @@
       },
       "output.compose_table_name": {
         "type": "checkbox",
-        "Beschriftung": "Tabellenname zusammenstellen",
+        "label": "Tabellenname zusammenstellen",
         "show_if": "output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
@@ -32,42 +32,42 @@
       },
       "compose_table_name_frame": {
         "type": "fieldset",
-        "Beschriftung": "Name der Ausgabetabelle zusammenstellen",
+        "label": "Name der Ausgabetabelle zusammenstellen",
         "show_if": "output.custom_options=='true' && output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
             "type": "select",
-            "Beschriftung": "Präfix",
+            "label": "Präfix",
             "show_if": "output.compose_table_name=='true'",
             "val": "empty",
             "options": {
               "empty": {
-                "Beschriftung": "-"
+                "label": "-"
               },
               "script_name": {
-                "Beschriftung": "Aufgabe Name"
+                "label": "Aufgabe Name"
               },
               "date_string_type1": {
-                "Beschriftung": "Datum: tt_mm_jjjj"
+                "label": "Datum: tt_mm_jjjj"
               },
               "date_string_type2": {
-                "Beschriftung": "Datum: jjjj_mm_tt"
+                "label": "Datum: jjjj_mm_tt"
               },
               "time_string": {
-                "Beschriftung": "Zeit: h_min_sec"
+                "label": "Zeit: h_min_sec"
               },
               "datetime_string": {
-                "Beschriftung": "Datum_Zeit"
+                "label": "Datum_Zeit"
               },
               "custom": {
-                "Beschriftung": "Benutzerdefiniert"
+                "label": "Benutzerdefiniert"
               }
             }
           },
           "output.prefix_text": {
             "type": "text",
-            "Beschriftung": "Präfix Text",
+            "label": "Präfix Text",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -75,28 +75,28 @@
           },
           "output.core_delimiter": {
             "type": "text",
-            "Beschriftung": "Begrenzer",
+            "label": "Begrenzer",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
             "val": "_",
             "width": "50px"
           },
           "output.core_rule": {
             "type": "select",
-            "Beschriftung": "Tabelle Name",
+            "label": "Tabelle Name",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "script_name": {
-                "Beschriftung": "Aufgabe Name"
+                "label": "Aufgabe Name"
               },
               "custom": {
-                "Beschriftung": "Benutzerdefiniert"
+                "label": "Benutzerdefiniert"
               }
             }
           },
           "output.core_text": {
             "type": "text",
-            "Beschriftung": "Name der Ausgabetabelle",
+            "label": "Name der Ausgabetabelle",
             "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
             "required": true,
             "minLength": 1,
@@ -105,43 +105,43 @@
           },
           "output.suffix_delimiter": {
             "type": "text",
-            "Beschriftung": "Begrenzer",
+            "label": "Begrenzer",
             "show_if": "output.compose_table_name=='true'",
             "val": "_",
             "width": "50px"
           },
           "output.suffix_rule": {
             "type": "select",
-            "Beschriftung": "Suffix",
+            "label": "Suffix",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "empty": {
-                "Beschriftung": "-"
+                "label": "-"
               },
               "script_name": {
-                "Beschriftung": "Aufgabe Name"
+                "label": "Aufgabe Name"
               },
               "date_string_type1": {
-                "Beschriftung": "Datum: tt_mm_jjjj"
+                "label": "Datum: tt_mm_jjjj"
               },
               "date_string_type2": {
-                "Beschriftung": "Datum: jjjj_mm_tt"
+                "label": "Datum: jjjj_mm_tt"
               },
               "time_string": {
-                "Beschriftung": "Zeit: h_min_sec"
+                "label": "Zeit: h_min_sec"
               },
               "datetime_string": {
-                "Beschriftung": "Datum_Zeit"
+                "label": "Datum_Zeit"
               },
               "custom": {
-                "Beschriftung": "Benutzerdefiniert"
+                "label": "Benutzerdefiniert"
               }
             }
           },
           "output.suffix_text": {
             "type": "text",
-            "Beschriftung": "Suffix Text",
+            "label": "Suffix Text",
             "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -150,130 +150,130 @@
           },
           "output.timezone": {
             "type": "select",
-            "Beschriftung": "Zeitzone",
+            "label": "Zeitzone",
             "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
             "val": "Europa/Berlin",
             "required": true,
             "options": {
               "America/Adak": {
-                "Beschriftung": "Adak, Gambier"
+                "label": "Adak, Gambier"
               },
               "Australia/Adelaide": {
-                "Beschriftung": "Adelaide, Broken Hill, Darwin"
+                "label": "Adelaide, Broken Hill, Darwin"
               },
               "America/Anchorage": {
-                "Beschriftung": "Anchorage, Juneau, Sitka"
+                "label": "Anchorage, Juneau, Sitka"
               },
               "Pacific/Apia": {
-                "Beschriftung": "Apia, Asau, Mulifanua, Afega, Leulumoega"
+                "label": "Apia, Asau, Mulifanua, Afega, Leulumoega"
               },
               "Pacific/Enderbury": {
-                "Beschriftung": "Apia, Fiji, Tongatapu"
+                "label": "Apia, Fiji, Tongatapu"
               },
               "Antarctica/McMurdo": {
-                "Beschriftung": "Auckland, Casey, Davis"
+                "label": "Auckland, Casey, Davis"
               },
               "Pacific/Auckland": {
-                "Beschriftung": "Auckland, Wellington, Christchurch"
+                "label": "Auckland, Wellington, Christchurch"
               },
               "Asia/Bangkok": {
-                "Beschriftung": "Bangkok, Jakarta, Nowosibirsk"
+                "label": "Bangkok, Jakarta, Nowosibirsk"
               },
               "Europa/Berlin": {
-                "Beschriftung": "Berlin, Paris, Amsterdam"
+                "label": "Berlin, Paris, Amsterdam"
               },
               "Australia/Perth": {
-                "Beschriftung": "Brunei, Singapur, Perth"
+                "label": "Brunei, Singapur, Perth"
               },
               "Atlantic/Cape_Verde": {
-                "Beschriftung": "Cape Verde,Praia, Mindelo, Santa Maria"
+                "label": "Cape Verde,Praia, Mindelo, Santa Maria"
               },
               "America/Belize": {
-                "Beschriftung": "Costa Rica, El Salvador, Denver"
+                "label": "Costa Rica, El Salvador, Denver"
               },
               "Antarctica/Vostok": {
-                "Beschriftung": "Dhaka, Bishkek, Omsk"
+                "label": "Dhaka, Bishkek, Omsk"
               },
               "Europe/Astrakhan": {
-                "Beschriftung": "Dubai, Baku, Tiflis"
+                "label": "Dubai, Baku, Tiflis"
               },
               "Australia/Eucla": {
-                "Beschriftung": "Eucla"
+                "label": "Eucla"
               },
               "Pacific/Honolulu": {
-                "Beschriftung": "Honolulu, Rarotonga, Tahiti"
+                "label": "Honolulu, Rarotonga, Tahiti"
               },
               "Asia/Kabul": {
-                "Beschriftung": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
+                "label": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
               },
               "Asia/Aqtau": {
-                "Beschriftung": "Karatschi, Taschkent, Malediven"
+                "label": "Karatschi, Taschkent, Malediven"
               },
               "Asia/Kathmandu": {
-                "Beschriftung": "Kathmandu, Pokhara, Pātan, Biratnagar"
+                "label": "Kathmandu, Pokhara, Pātan, Biratnagar"
               },
               "Pacific/Kiritimati": {
-                "Beschriftung": "Kiritimati"
+                "label": "Kiritimati"
               },
               "Asia/Colombo": {
-                "Beschriftung": "Kolkata, Colombo, Jaffna, Negombo"
+                "label": "Kolkata, Colombo, Jaffna, Negombo"
               },
               "Europe/Guernsey": {
-                "Beschriftung": "London, Dublin, Lissabon"
+                "label": "London, Dublin, Lissabon"
               },
               "Australia/Lord_Howe": {
-                "Beschriftung": "Lord Howe"
+                "label": "Lord Howe"
               },
               "America/Creston": {
-                "Beschriftung": "Los Angeles, Vancouver, Hermosillo"
+                "label": "Los Angeles, Vancouver, Hermosillo"
               },
               "Pacific/Marquesas": {
-                "Beschriftung": "Marquesas, Taiohae"
+                "label": "Marquesas, Taiohae"
               },
               "America/Cayman": {
-                "Beschriftung": "Mexico City, Panama, Chicago"
+                "label": "Mexico City, Panama, Chicago"
               },
               "Pacific/Niue": {
-                "Beschriftung": "Midway, Niue, Pago Pago"
+                "label": "Midway, Niue, Pago Pago"
               },
               "Europe/Mariehamn": {
-                "Beschriftung": "Moskau, Istanbul, Katar"
+                "label": "Moskau, Istanbul, Katar"
               },
               "Asia/Kolkata": {
-                "Beschriftung": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
+                "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
               },
               "America/Miquelon": {
-                "Beschriftung": "Noronha, Nuuk, Miquelon"
+                "label": "Noronha, Nuuk, Miquelon"
               },
               "America/Danmarkshavn": {
-                "Beschriftung": "Reykjavik, Dakar, Casablanca"
+                "label": "Reykjavik, Dakar, Casablanca"
               },
               "Pacific/Bougainville": {
-                "Beschriftung": "Sakhalin, Norfolk, Bougainville"
+                "label": "Sakhalin, Norfolk, Bougainville"
               },
               "America/Araguaina": {
-                "Beschriftung": "Sao Paulo, Buenos Aires, Montevideo"
+                "label": "Sao Paulo, Buenos Aires, Montevideo"
               },
               "America/St_Johns": {
-                "Beschriftung": "St. Johns, Mount Pearl, Corner Brook"
+                "label": "St. Johns, Mount Pearl, Corner Brook"
               },
               "Asia/Tehran": {
-                "Beschriftung": "Teheran, Mashhad, Isfahan, Karaj, Tabriz"
+                "label": "Teheran, Mashhad, Isfahan, Karaj, Tabriz"
               },
               "Asia/Tokyo": {
-                "Beschriftung": "Tokio, Seoul, Jayapura"
+                "label": "Tokio, Seoul, Jayapura"
               },
               "America/New_York": {
-                "Beschriftung": "Toronto, Santiago, New York"
+                "label": "Toronto, Santiago, New York"
               },
               "Australia/Sydney": {
-                "Beschriftung": "Wladiwostok, Sydney, Brisbane"
+                "label": "Wladiwostok, Sydney, Brisbane"
               },
               "Asia/Yangon": {
-                "Beschriftung": "Yangon, Cocos, Mandalay, Nay Pyi Taw, Mawlamyine"
+                "label": "Yangon, Cocos, Mandalay, Nay Pyi Taw, Mawlamyine"
               },
               "Indian/Cocos": {
-                "Beschriftung": "Yangon, Cocos, Westinsel"
+                "label": "Yangon, Cocos, Westinsel"
               }
             },
             "breakLine": true
