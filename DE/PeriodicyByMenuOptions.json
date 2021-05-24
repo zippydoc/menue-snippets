@@ -1,0 +1,135 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Optionen auswählen",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "hidden",
+        "val": "custom"
+      },
+      "options.custom.table": {
+        "type": "fieldset",
+        "label": "Planungsposition",
+        "show_if": "options.type=='custom'",
+        "repeat": true,
+        "fields": {
+          "item": {
+            "type": "text",
+            "label": "Posten",
+            "val": "",
+            "required": true
+          },
+          "position": {
+            "type": "text",
+            "label": "Position",
+            "val": "",
+            "required": true,
+            "breakLine": true
+          },
+          "amount": {
+            "type": "number",
+            "label": "Betrag",
+            "val": "",
+            "required": true
+          },
+          "initial_date": {
+            "type": "date",
+            "label": "Anfangsdatum",
+            "val": "",
+            "required": true
+          },
+          "periodicy": {
+            "type": "select",
+            "label": "Periodizität",
+            "required": true,
+            "options": {
+              "Einmalig": {
+                "label": "Einmalig"
+              },
+              "Täglich": {
+                "label": "Täglich"
+              },
+              "Wöchentlich": {
+                "label": "Wöchentlich"
+              },
+              "Monatlich": {
+                "label": "Monatlich"
+              },
+              "vierteljährlich": {
+                "label": "vierteljährlich"
+              },
+              "Jährlich": {
+                "label": "Jährlich"
+              }
+            },
+            "val": "Einmalig"
+          },
+          "growth": {
+            "type": "number",
+            "label": "Growth in %",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": "",
+            "required": true
+          },
+          "growth_period": {
+            "type": "select",
+            "label": "Wachstumsperiode",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "Wöchentlich": {
+                "label": "Wöchentlich"
+              },
+              "Monatlich": {
+                "label": "Monat für Monat"
+              },
+              "vierteljährlich": {
+                "label": "Quartal für Quartal"
+              },
+              "Jährlich": {
+                "label": "Jahr auf Jahr"
+              }
+            },
+            "val": "Wöchentlich"
+          },
+          "growth_pattern": {
+            "type": "select",
+            "label": "Wachstumsmuster",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "Aufsummierung": {
+                "label": "Aufsummierung"
+              },
+              "Linear": {
+                "label": "Linear"
+              },
+              "Jump-Fix": {
+                "label": "Jump-Fix"
+              }
+            },
+            "val": "Aufsummierung"
+          },
+          "final_date": {
+            "type": "date",
+            "label": "Endgültiges Datum",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": ""
+          },
+          "delete": {
+            "type": "button",
+            "label": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.end_date": {
+        "type": "date",
+        "label": "Enddatum der Tabelle",
+        "show_if": "options.type=='process' || options.type=='custom'",
+        "val": "",
+        "required": true,
+        "style": "width: 300px"
+      }
+    }
+  }
+}
