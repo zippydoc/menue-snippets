@@ -1,0 +1,151 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "オプションの選択",
+    "repeat": false,
+    "fields": {
+      "task_label": {
+        "type": "hidden",
+        "val": "personnel_planning"
+      },
+      "options.type": {
+        "type": "hidden",
+        "val": "custom"
+      },
+      "options.custom.table": {
+        "type": "fieldset",
+        "label": "企画ポジション",
+        "repeat": true,
+        "fields": {
+          "item": {
+            "type": "text",
+            "label": "Name",
+            "val": "",
+            "required": true
+          },
+          "position": {
+            "type": "select",
+            "label": "ポジション",
+            "options": {
+              "固定給": {
+                "label": "固定給"
+              },
+              "ボーナス": {
+                "label": "ボーナス"
+              },
+              "その他の報酬": {
+                "label": "その他の報酬"
+              }
+            },
+            "val": "固定給",
+            "required": true
+          },
+          "amount": {
+            "type": "number",
+            "label": "量",
+            "val": "",
+            "required": true
+          },
+          "initial_date": {
+            "type": "date",
+            "label": "初日",
+            "val": "",
+            "required": true
+          },
+          "periodicy": {
+            "type": "select",
+            "label": "周期",
+            "required": true,
+            "options": {
+              "One-Off": {
+                "label": "One-Off"
+              },
+              "デイリー": {
+                "label": "デイリー"
+              },
+              "Work-Daily": {
+                "label": "Work-Daily"
+              },
+              "ウィークリー": {
+                "label": "ウィークリー"
+              },
+              "月次": {
+                "label": "月次"
+              },
+              "四半期": {
+                "label": "四半期"
+              },
+              "Yearly": {
+                "label": "Yearly"
+              }
+            },
+            "val": "One-Off"
+          },
+          "growth": {
+            "type": "number",
+            "label": "成長",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": "",
+            "required": true
+          },
+          "growth_period": {
+            "type": "select",
+            "label": "成長期",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "ウィークリー": {
+                "label": "ウィークリー"
+              },
+              "月次": {
+                "label": "月次"
+              },
+              "四半期": {
+                "label": "四半期毎"
+              },
+              "Yearly": {
+                "label": "年次"
+              }
+            },
+            "val": "ウィークリー"
+          },
+          "growth_pattern": {
+            "type": "select",
+            "label": "成長パターン",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "複利計算": {
+                "label": "複利計算"
+              },
+              "線形": {
+                "label": "線形"
+              },
+              "Jump-Fix": {
+                "label": "Jump-Fix"
+              }
+            },
+            "val": "複利計算"
+          },
+          "final_date": {
+            "type": "date",
+            "label": "最終日",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": ""
+          },
+          "delete": {
+            "type": "button",
+            "label": "削除",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.end_date": {
+        "type": "date",
+        "label": "テーブルの終了日",
+        "show_if": "options.type=='process' || options.type=='custom'",
+        "val": "",
+        "required": true,
+        "style": "width: 300px"
+      }
+    }
+  }
+}
