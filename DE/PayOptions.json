@@ -1,0 +1,49 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Optionen",
+    "repeat": false,
+    "fields": {
+      "options.provider": {
+        "type": "select",
+        "label": "Zahlungsanbieter",
+        "options": {
+          "stripe": {
+            "label": "Stripe"
+          },
+          "paypal": {
+            "label": "Paypal"
+          },
+          "payoneer": {
+            "label": "Payoneer"
+          }
+        },
+        "val": "stripe",
+        "required": true
+      },
+      "options.type": {
+        "type": "select",
+        "label": "Zahlungsart",
+        "options": {
+          "charge": {
+            "label": "Charge"
+          },
+          "transfer": {
+            "label": "Überweisung"
+          }
+        },
+        "val": "charge",
+        "required": true
+      },
+      "options.stripe.secret_key": {
+        "type": "text",
+        "label": "Stripe-Geheimschlüssel",
+        "show_if": "options.provider=='stripe'",
+        "required": true,
+        "val": "",
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}
