@@ -1,0 +1,90 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "オプションの選択",
+    "repeat": false,
+    "fields": {
+      "options.from": {
+        "type": "hidden",
+        "val": "database"
+      },
+      "postgresql_db_credential_box": {
+        "type": "fieldset",
+        "label": "データベース接続証明書",
+        "repeat": false,
+        "fields": {
+          "options.dbms": {
+            "type": "select",
+            "label": "DBMSの選択",
+            "options": {
+              "postgresql": {
+                "label": "PostgreSQL"
+              },
+              "mysql": {
+                "label": "MySQL (近日公開...)"
+              },
+              "sql_server": {
+                "label": "MS SQL Server (近日公開...)"
+              },
+              "oracle": {
+                "label": "Oracle (近日公開...)"
+              }
+            },
+            "val": "postgresql",
+            "required": true,
+            "breakLine": true
+          },
+          "options.postgresql_credential.user": {
+            "type": "text",
+            "label": "ユーザー",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.postgresql_credential.password": {
+            "type": "text",
+            "label": "パスワード",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.postgresql_credential.host": {
+            "type": "text",
+            "label": "ホスト",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.postgresql_credential.database": {
+            "type": "text",
+            "label": "データベース",
+            "show_if": "options.dbms=='postgresql'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          }
+        }
+      },
+      "options.schema_name_to_import": {
+        "type": "text",
+        "label": "インポートするテーブルを含むスキーマ名",
+        "show_if": "options.dbms=='postgresql'",
+        "required": true,
+        "val": "public",
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.table_name_to_import": {
+        "type": "text",
+        "label": "インポートするテーブル名",
+        "show_if": "options.dbms=='postgresql'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}
