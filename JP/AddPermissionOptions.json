@@ -1,0 +1,144 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "オプションの選択",
+    "repeat": false,
+    "fields": {
+      "options.table_permission.set_or_delete": {
+        "type": "select",
+        "label": "アクションの種類",
+        "show_if": "input.table_or_flow=='set_table_permissions'",
+        "required": true,
+        "options": {
+          "set_permissions": {
+            "label": "Set permissions"
+          },
+          "delete_permissions": {
+            "label": "パーミッションの削除"
+          }
+        },
+        "val": "set_permissions",
+        "breakLine": true
+      },
+      "options.table_permission.emails": {
+        "type": "text",
+        "label": "許可されたユーザー（;区切りリスト）",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
+        "required": true,
+        "width": "100%"
+      },
+      "options.table_permission.permissions": {
+        "type": "fieldset",
+        "label": "許可の設定",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
+        "repeat": true,
+        "fields": {
+          "rows_or_columns": {
+            "type": "select",
+            "label": "テーブルのタイプ",
+            "required": true,
+            "options": {
+              "select_rows": {
+                "label": "Select Row(s)"
+              },
+              "select_columns": {
+                "label": "列(複数可)の選択"
+              }
+            },
+            "val": "select_columns"
+          },
+          "rows": {
+            "type": "select",
+            "label": "Select Row(s)",
+            "show_if": "this.rows_or_columns=='select_rows'",
+            "table": "input.table_id",
+            "bind": "LABELS",
+            "multiple": true,
+            "required": true
+          },
+          "columns": {
+            "type": "select",
+            "label": "Select Columns(s)",
+            "show_if": "this.rows_or_columns=='select_columns'",
+            "table": "input.table_id",
+            "bind": "COLUMNS",
+            "multiple": true,
+            "required": true
+          },
+          "permission_type": {
+            "type": "select",
+            "label": "パーミッションの種類",
+            "required": true,
+            "options": {
+              "READ": {
+                "label": "読み取り"
+              },
+              "WRITE": {
+                "label": "書き込み"
+              },
+              "PASS-ON": {
+                "label": "Pass-On"
+              }
+            },
+            "val": "READ"
+          },
+          "delete": {
+            "type": "button",
+            "label": "削除",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.flow_permission.set_or_delete": {
+        "type": "select",
+        "label": "アクションの種類",
+        "show_if": "input.table_or_flow=='set_flow_permissions'",
+        "required": true,
+        "options": {
+          "set_permissions": {
+            "label": "Set permissions"
+          }
+        },
+        "val": "set_permissions",
+        "breakLine": true
+      },
+      "options.flow_permission.emails": {
+        "type": "text",
+        "label": "許可されたユーザー（;区切りリスト）",
+        "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
+        "required": true,
+        "width": "100%"
+      },
+      "options.flow_permission.permissions": {
+        "type": "fieldset",
+        "label": "許可の設定",
+        "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
+        "repeat": true,
+        "fields": {
+          "permission_type": {
+            "type": "select",
+            "label": "パーミッションの種類",
+            "required": true,
+            "options": {
+              "READ": {
+                "label": "読み取り"
+              },
+              "WRITE": {
+                "label": "書き込み"
+              },
+              "PASS-ON": {
+                "label": "Pass-On"
+              }
+            },
+            "val": "READ"
+          },
+          "delete": {
+            "type": "button",
+            "label": "削除",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
