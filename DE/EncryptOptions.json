@@ -1,59 +1,59 @@
 {
   "options": {
     "type": "fieldset",
-    "Beschriftung": "Optionen auswählen",
+    "label": "Optionen auswählen",
     "repeat": false,
     "fields": {
       "task_type": {
         "type": "select",
-        "Beschriftung": "Aufgaben-Typ",
+        "label": "Aufgaben-Typ",
         "required": true,
         "options": {
           "encrypt": {
-            "Beschriftung": "Verschlüsseln (sicher)"
+            "label": "Verschlüsseln (sicher)"
           },
           "decrypt": {
-            "Beschriftung": "Entschlüsseln (sicher)"
+            "label": "Entschlüsseln (sicher)"
           },
           "encrypt_simple": {
-            "Beschriftung": "Verschlüsseln (einfach)"
+            "label": "Verschlüsseln (einfach)"
           },
           "decrypt_simple": {
-            "Beschriftung": "Entschlüsseln (einfach)"
+            "label": "Entschlüsseln (einfach)"
           },
           "mask": {
-            "Beschriftung": "Maske"
+            "label": "Maske"
           }
         },
         "val": "encrypt"
       },
       "mask_type": {
         "type": "select",
-        "Beschriftung": "Masken-Typ",
+        "label": "Masken-Typ",
         "show_if": "task_type == 'mask'",
         "required": true,
         "options": {
           "trailing": {
-            "Beschriftung": "Nachlaufende N-Zeichen"
+            "label": "Nachlaufende N-Zeichen"
           },
           "leading": {
-            "Beschriftung": "Führende N-Zeichen"
+            "label": "Führende N-Zeichen"
           },
           "numbers": {
-            "Beschriftung": "Zahlen"
+            "label": "Zahlen"
           },
           "alphabets": {
-            "Beschriftung": "Zeichen"
+            "label": "Zeichen"
           },
           "regex": {
-            "Beschriftung": "Regulärer Ausdruck"
+            "label": "Regulärer Ausdruck"
           }
         },
         "val": "trailing"
       },
       "password": {
         "type": "password",
-        "Beschriftung": "Kennwort",
+        "label": "Kennwort",
         "show_if": "task_type != 'mask'",
         "required": true,
         "minLength": 1,
@@ -62,14 +62,14 @@
       },
       "varn": {
         "type": "number",
-        "Beschriftung": "N",
+        "label": "N",
         "show_if": "task_type == 'mask' && (mask_type == 'trailing' || mask_type == 'leading')",
         "required": true,
         "val": "1"
       },
       "regexp": {
         "type": "text",
-        "Beschriftung": "Ausdruck",
+        "label": "Ausdruck",
         "show_if": "task_type == 'mask' && (mask_type == 'regex')",
         "required": true,
         "val": "",
@@ -77,7 +77,7 @@
       },
       "replace": {
         "type": "text",
-        "Beschriftung": "Maskenzeichenfolge",
+        "label": "Maskenzeichenfolge",
         "show_if": "task_type == 'mask' && (mask_type == 'regex')",
         "required": true,
         "val": "*"
