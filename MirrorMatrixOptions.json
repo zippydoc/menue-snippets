@@ -2,17 +2,35 @@
   "options": {
     "type": "fieldset",
     "label": "Select Options",
-    "show_if": "$input_table.numOfHeader >= 1",
+    "show_if": "$input_table.numOfHeader >= 1 || $input_table.numOfLabel >= 1",
     "repeat": false,
     "fields": {
       "transpose_type": {
         "type": "hidden",
         "val": "mirror_matrix"
       },
+      "mirror_matrix.exchange_label_header": {
+        "type": "checkbox",
+        "label": "Convert header to label, label to header",
+        "show_if": "$input_table.numOfHeader >= 1 && $input_table.numOfLabel >= 1",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "mirror_matrix.convert_header_to_label": {
         "type": "checkbox",
         "label": "Convert header to label",
-        "show_if": "transpose_type=='mirror_matrix'",
+        "show_if": "$input_table.numOfHeader >= 1 && $input_table.numOfLabel < 1",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "mirror_matrix.convert_label_to_header": {
+        "type": "checkbox",
+        "label": "Convert label to header",
+        "show_if": "$input_table.numOfHeader < 1 && $input_table.numOfLabel >= 1",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
