@@ -38,7 +38,7 @@
       },
       "ordered": {
         "type": "select",
-        "label": "Orderd / Unordered",
+        "label": "Ordered / Unordered",
         "required": true,
         "options": {
           "ordered": {
@@ -51,16 +51,35 @@
         "val": "unordered",
         "breakLine": true
       },
+      "item_order": {
+        "type": "select",
+        "label": "Order",
+        "required": true,
+        "options": {
+          "no": {
+            "label": "-"
+          },
+          "ascending": {
+            "label": "Ascending"
+          },
+          "descending": {
+            "label": "Descending"
+          }
+        },
+        "val": "no",
+        "breakLine": true,
+        "show_if": "ordered == 'unordered'"
+      },
       "output_type": {
         "type": "select",
         "label": "Output Type",
         "required": true,
         "options": {
           "item_group_list": {
-            "label": "Item Group List"
+            "label": "List of found groups"
           },
           "item_group_column": {
-            "label": "Item Group Column"
+            "label": "Allocate found groups"
           }
         },
         "val": "item_group_list"
