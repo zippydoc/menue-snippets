@@ -8,79 +8,183 @@
         "type": "hidden",
         "val": "crosstab"
       },
-      "mirror_matrix.convert_header_to_label": {
+      "crosstab.group_data_by_these_values": {
+        "type": "fieldset",
+        "label": "Rows",
+        "repeat": true,
+        "fields": {
+          "row": {
+            "type": "select",
+            "label": "Row",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "crosstab_change_column_headers": {
+        "type": "fieldset",
+        "label": "Columns",
+        "repeat": true,
+        "fields": {
+          "column": {
+            "type": "select",
+            "label": "Column",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "crosstab.values_for_new_columns": {
+        "type": "select",
+        "label": "Values",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "crosstab.values_set_format": {
         "type": "checkbox",
-        "label": "Convert header to label",
-        "show_if": "transpose_type=='mirror_matrix'",
-        "val": "true",
+        "label": "Reformat Values",
+        "val": "false",
         "isOn": "true",
         "isOff": "false",
         "breakLine": true
       },
-      "column_name_to_label.columns_to_label": {
-        "type": "select",
-        "label": "Select Columns to Convert into Labels",
-        "show_if": "transpose_type=='column_name_to_label'",
-        "table": "input_table",
-        "multiple": true,
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "column_name_to_label.label_column_name": {
-        "type": "text",
-        "label": "Column Name of Label Column",
-        "show_if": "transpose_type=='column_name_to_label'",
-        "required": true,
-        "val": "Label",
-        "width": "100%",
-        "breakLine": true
-      },
-      "column_name_to_label.value_column_name": {
-        "type": "text",
-        "label": "Column Name of Value Column",
-        "show_if": "transpose_type=='column_name_to_label'",
-        "required": true,
-        "val": "Value",
-        "width": "100%",
-        "breakLine": true
-      },
-      "crosstab.group_data_by_these_values": {
-        "type": "select",
-        "label": "Group data by these values",
-        "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
-        "multiple": true,
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "crosstab.change_column_headers": {
-        "type": "select",
-        "label": "Change Column Header",
-        "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "crosstab.values_for_new_columns": {
-        "type": "select",
-        "label": "Values For New Columns",
-        "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
+      "crosstab_values_format_frame": {
+        "type": "fieldset",
+        "label": "Values Formatting",
+        "show_if": "crosstab.values_set_format=='true'",
+        "repeat": false,
+        "fields": {
+          "crosstab.values.format__category": {
+            "type": "select",
+            "label": "Format",
+            "required": true,
+            "options": {
+              "standard": {
+                "label": "Standard"
+              },
+              "number": {
+                "label": "Number"
+              },
+              "percentage": {
+                "label": "Percentage"
+              },
+              "text": {
+                "label": "Text"
+              },
+              "date": {
+                "label": "Date"
+              },
+              "currency": {
+                "label": "Currency"
+              }
+            },
+            "val": "standard"
+          },
+          "crosstab.values.format__rounding": {
+            "type": "select",
+            "label": "Rounding",
+            "show_if": "crosstab.values.format__category=='number' || crosstab.values.format__category=='percentage' || crosstab.values.format__category=='currency'",
+            "required": true,
+            "options": {
+              "no_rounding": {
+                "label": "No rounding"
+              },
+              "0": {
+                "label": "0 digits"
+              },
+              "1": {
+                "label": "1 digits"
+              },
+              "2": {
+                "label": "2 digits"
+              },
+              "3": {
+                "label": "3 digits"
+              },
+              "4": {
+                "label": "4 digits"
+              },
+              "5": {
+                "label": "5 digits"
+              },
+              "6": {
+                "label": "6 digits"
+              },
+              "7": {
+                "label": "7 digits"
+              },
+              "8": {
+                "label": "8 digits"
+              },
+              "9": {
+                "label": "9 digits"
+              }
+            },
+            "val": "2"
+          },
+          "crosstab.values.format__use_1000_separator": {
+            "type": "checkbox",
+            "label": "Use 1000 Separator(,)",
+            "show_if": "crosstab.values.format__category=='number' || crosstab.values.format__category=='percentage' || crosstab.values.format__category=='currency'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "crosstab.values.format__currency_symbol": {
+            "type": "select",
+            "label": "Symbol",
+            "show_if": "crosstab.values.format__category=='currency'",
+            "required": true,
+            "options": {
+              "dollar": {
+                "label": "$"
+              },
+              "euro": {
+                "label": "€"
+              },
+              "pound": {
+                "label": "£"
+              }
+            },
+            "val": "dollar"
+          },
+          "crosstab.values.format__date_format": {
+            "type": "select",
+            "label": "Type",
+            "show_if": "crosstab.values.format__category=='date'",
+            "required": true,
+            "options": {
+              "mm/dd/yyyy": {
+                "label": "3/14/2012"
+              },
+              "D, M dd, Y": {
+                "label": "Wednesday, March 14, 2012"
+              },
+              "yyyy-mm-dd": {
+                "label": "2012-03-14"
+              }
+            },
+            "val": "mm/dd/yyyy",
+            "breakLine": true
+          }
+        }
       },
       "crosstab.method_for_aggregating_values": {
         "type": "select",
         "label": "Method for Aggregating Values",
-        "show_if": "transpose_type=='crosstab'",
         "options": {
           "Concatenate": {
             "label": "Concatenate"
@@ -110,7 +214,7 @@
       "crosstab.user_defined_str": {
         "type": "text",
         "label": "User Defined Value",
-        "show_if": "transpose_type=='crosstab' && crosstab.method_for_aggregating_values=='User Defined'",
+        "show_if": "crosstab.method_for_aggregating_values=='User Defined'",
         "val": "x",
         "trim": "false",
         "breakLine": true
@@ -118,7 +222,7 @@
       "crosstab.separator": {
         "type": "text",
         "label": "Separator",
-        "show_if": "transpose_type=='crosstab' && method_for_aggregating_values=='Concatenate'",
+        "show_if": "method_for_aggregating_values=='Concatenate'",
         "val": ",",
         "trim": "false",
         "required": true,
