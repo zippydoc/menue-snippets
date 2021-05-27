@@ -217,18 +217,11 @@
           "item": {
             "type": "text",
             "label": "Item",
-            "val": "",
-            "required": true
+            "val": ""
           },
           "amount": {
             "type": "number",
             "label": "Amount",
-            "val": "",
-            "required": true
-          },
-          "initial_date": {
-            "type": "date",
-            "label": "Initial Date",
             "val": "",
             "required": true
           },
@@ -256,7 +249,8 @@
                 "label": "Yearly"
               }
             },
-            "val": "One-Off"
+            "val": "Yearly",
+            "breakLine": true
           },
           "growth": {
             "type": "number",
@@ -271,7 +265,7 @@
             "show_if": "this.periodicy!='One-Off'",
             "options": {
               "Weekly": {
-                "label": "Weekly"
+                "label": "Week on Week"
               },
               "Monthly": {
                 "label": "Month on Month"
@@ -283,7 +277,7 @@
                 "label": "Year on Year"
               }
             },
-            "val": "Weekly"
+            "val": "Yearly"
           },
           "growth_pattern": {
             "type": "select",
@@ -300,7 +294,14 @@
                 "label": "Jump-Fix"
               }
             },
-            "val": "Compounding"
+            "val": "Jump-Fix",
+            "breakLine": true
+          },
+          "initial_date": {
+            "type": "date",
+            "label": "Initial Date",
+            "val": "",
+            "required": true
           },
           "final_date": {
             "type": "date",
@@ -315,20 +316,71 @@
           }
         }
       },
+      "options.output_type": {
+        "type": "select",
+        "label": "Output Type",
+        "required": true,
+        "options": {
+          "planning_table": {
+            "label": "Planning Table"
+          },
+          "periodicy_table": {
+            "label": "Periodicy Table"
+          },
+          "summary_table": {
+            "label": "Summary Table"
+          }
+        },
+        "val": "summary_table"
+      },
+      "options.summary_table__group_by": {
+        "type": "select",
+        "label": "Group By",
+        "show_if": "options.output_type=='summary_table'",
+        "multiple": true,
+        "options": {
+          "Year": {
+            "label": "Year"
+          },
+          "Quarter": {
+            "label": "Quarter"
+          },
+          "Month": {
+            "label": "Month"
+          },
+          "Week": {
+            "label": "Week"
+          },
+          "Day": {
+            "label": "Day"
+          },
+          "Position": {
+            "label": "Position"
+          },
+          "Sub Position": {
+            "label": "Sub Position"
+          },
+          "Item": {
+            "label": "Item"
+          }
+        },
+        "val": ["Year", "Quarter", "Month", "Position"],
+        "required": true,
+        "breakLine": true
+      },
+      "options.set_plan_config": {
+        "type": "checkbox",
+        "label": "Planning Configuration",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
       "planning_configuration_frame": {
         "type": "fieldset",
         "label": "Planning Configuration",
+        "show_if": "options.set_plan_config=='true'",
         "repeat": false,
         "fields": {
-          "options.end_date": {
-            "type": "date",
-            "label": "End Date of Table",
-            "show_if": "options.type=='process' || options.type=='custom'",
-            "val": "",
-            "required": true,
-            "style": "width: 300px",
-            "breakLine": true
-          },
           "options.add_categories": {
             "type": "checkbox",
             "label": "Add Categories",
@@ -488,7 +540,16 @@
                 "val": "mm/dd/yyyy",
                 "breakLine": true
               }
-            }
+            },
+            "breakLine": true
+          },
+          "options.end_date": {
+            "type": "date",
+            "label": "End Date of Table",
+            "show_if": "options.type=='process' || options.type=='custom'",
+            "val": "",
+            "style": "width: 300px",
+            "breakLine": true
           }
         }
       }
