@@ -1,0 +1,229 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Specify Options",
+    "repeat": false,
+    "fields": {
+      "incoming_value_to_replace.type": {
+        "type": "select",
+        "label": "Incoming Value",
+        "options": {
+          "user_specified_value": {
+            "label": "Equals"
+          },
+          "begins_with": {
+            "label": "Begins with"
+          },
+          "ends_with": {
+            "label": "Ends with"
+          },
+          "empty": {
+            "label": "Empty"
+          },
+          "regex": {
+            "label": "Regular Expression"
+          }
+        },
+        "val": "user_specified_value",
+        "style": "min-width: 190px"
+      },
+      "incoming_value_to_replace.value": {
+        "type": "text",
+        "label": "Incoming Value To Replace",
+        "required": true,
+        "show_if": "incoming_value_to_replace.type=='user_specified_value' || incoming_value_to_replace.type=='begins_with' || incoming_value_to_replace.type=='ends_with'",
+        "val": "",
+        "style": "min-width: 170px"
+      },
+      "incoming_value_to_replace.regex": {
+        "type": "text",
+        "label": "Regular Expression",
+        "required": true,
+        "show_if": "incoming_value_to_replace.type=='regex'",
+        "val": "(.*),(.*),(.*)\\s(\\d{5})(-\\d{4})?",
+        "style": "min-width: 200px"
+      },
+      "replace_table.table_id": {
+        "type": "select",
+        "label": "Replacement Table",
+        "show_if": "incoming_value_to_replace.type=='replacement_table'",
+        "bind": "TABLES",
+        "required": true
+      },
+      "replace_table.find_column": {
+        "type": "select",
+        "label": "Select Find Column",
+        "show_if": "incoming_value_to_replace.type=='replacement_table'",
+        "table": "replace_table.table_id",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "replace_table.replace_with_column": {
+        "type": "select",
+        "label": "Select Replace with Column",
+        "show_if": "incoming_value_to_replace.type=='replacement_table'",
+        "table": "replace_table.table_id",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "incoming_value_to_replace.partial_match": {
+        "type": "select",
+        "label": "Partial Match",
+        "show_if": "incoming_value_to_replace.type=='user_specified_value' || incoming_value_to_replace.type=='replacement_table'",
+        "options": {
+          "full_match": {
+            "label": "Full match"
+          },
+          "full_and_partial_match": {
+            "label": "Full and partial match"
+          },
+          "partial_match_only": {
+            "label": "Partial match only"
+          }
+        },
+        "val": "full_and_partial_match"
+      },
+      "replace_with.value_type": {
+        "type": "select",
+        "label": "Replace With",
+        "show_if": "incoming_value_to_replace.type!='regex' && incoming_value_to_replace.type!='replacement_table'",
+        "options": {
+          "user_specified_value": {
+            "label": "Custom Value"
+          },
+          "average": {
+            "label": "Column Average"
+          },
+          "median": {
+            "label": "Column Median"
+          },
+          "mode": {
+            "label": "Column Mode"
+          },
+          "sum": {
+            "label": "Column Sum"
+          },
+          "table": {
+            "label": "Table Column"
+          }
+        },
+        "val": "user_specified_value",
+        "style": "min-width: 190px"
+      },
+      "replace_with.value": {
+        "type": "text",
+        "label": "Replace With Value",
+        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='user_specified_value' && incoming_value_to_replace.type!='replacement_table'",
+        "val": ""
+      },
+      "replace_with.regex_value": {
+        "type": "text",
+        "label": "Replace With Value",
+        "show_if": "incoming_value_to_replace.type=='regex' && incoming_value_to_replace.type!='replacement_table'",
+        "val": "\\4: \\2, \\3"
+      },
+      "replace_with.table": {
+        "type": "select",
+        "label": "Select Table",
+        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table' && incoming_value_to_replace.type!='replacement_table'",
+        "bind": "TABLES",
+        "required": true
+      },
+      "replace_with.column": {
+        "type": "select",
+        "label": "Select Column",
+        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table' && incoming_value_to_replace.type!='replacement_table'",
+        "table": "replace_with.table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "replacement_table_notice": {
+        "type": "text",
+        "label": "",
+        "show_if": "incoming_value_to_replace.type=='replacement_table'",
+        "val": "Line-break will be ignored in replacement table",
+        "disabled": true,
+        "width": "100%"
+      },
+      "apply_framing_condition": {
+        "type": "checkbox",
+        "label": "Apply framing conditions",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "apply_framing_condition_box": {
+        "type": "fieldset",
+        "label": "Framing conditions",
+        "show_if": "apply_framing_condition=='true'",
+        "repeat": false,
+        "fields": {
+          "framing_condition.pattern": {
+            "type": "select",
+            "label": "Framing conditions",
+            "required": true,
+            "options": {
+              "f_x": {
+                "label": "f(x)"
+              },
+              "f_x_bracket": {
+                "label": "f(){x}"
+              },
+              "name_x": {
+                "label": "name : x"
+              },
+              "x_all_brackets": {
+                "label": "{x}  /  [x] /  (x)"
+              },
+              "tag_x": {
+                "label": "<tag>x</tag>"
+              }
+            },
+            "val": "name_x"
+          },
+          "framing_condition.name_x_name": {
+            "type": "text",
+            "label": "Name",
+            "show_if": "framing_condition.pattern=='name_x'",
+            "val": "",
+            "required": true
+          },
+          "framing_condition.tag_x_tag": {
+            "type": "text",
+            "label": "Tag",
+            "show_if": "framing_condition.pattern=='tag_x'",
+            "val": "",
+            "required": true,
+            "breakLine": true
+          },
+          "framing_condition.allow_whitespace": {
+            "type": "checkbox",
+            "label": "Allow whitespace",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "framing_condition.parantheses": {
+            "type": "select",
+            "label": "Parantheses",
+            "required": true,
+            "options": {
+              "optional": {
+                "label": "Optional parantheses"
+              },
+              "including": {
+                "label": "Including parantheses"
+              },
+              "no": {
+                "label": "No parantheses"
+              }
+            },
+            "val": "optional"
+          }
+        }
+      }
+    }
+  }
+}
