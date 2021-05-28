@@ -9,23 +9,37 @@
         "label": "New Position",
         "val": "",
         "placeholder": "Text",
-        "required": true
+        "required": true,
+        "breakLine": true
       },
       "input_table": {
         "type": "select",
         "label": "Select Table",
         "bind": "TABLES",
         "empty": "",
-        "required": true,
-        "breakLine": true
+        "required": true
       },
-      "multiple_selection": {
+      "rows": {
         "type": "select",
-        "label": "Multiple Selection",
+        "label": "Row Selection",
         "required": true,
         "table": "this.input_table",
         "multiple": true,
-        "bind": "LABELS",
+        "bind": "LABELS"
+      },
+      "multiplier": {
+        "type": "select",
+        "label": "Multiplier",
+        "required": true,
+        "options": {
+          "positive": {
+            "label": "Keep sign"
+          },
+          "negative": {
+            "label": "Switch sign"
+          }
+        },
+        "val": "positive",
         "breakLine": true
       },
       "format__category": {
@@ -140,6 +154,11 @@
         },
         "val": "mm/dd/yyyy",
         "breakLine": true
+      },
+      "delete": {
+        "type": "button",
+        "label": "Delete",
+        "function": "DELETE_ROW"
       }
     }
   }
