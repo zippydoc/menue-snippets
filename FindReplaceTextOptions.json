@@ -193,10 +193,10 @@
           }
         }
       },
-      "use_replace_table_filter": {
+      "options.use_replace_table_filter": {
         "type": "checkbox",
         "label": "Use Filter on \"Replace With\" Table",
-        "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table'",
+        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -206,10 +206,10 @@
       "replace_table_filter_option_box": {
         "type": "fieldset",
         "label": "\"Replace With\" Table Filter Options",
-        "show_if": "use_replace_table_filter=='true' && (incoming_value_to_replace.type!='regex' && replace_with.value_type=='table')",
+        "show_if": "options.use_replace_table_filter=='true' && (options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table')",
         "repeat": false,
         "fields": {
-          "replace_table_filter_option.filter": {
+          "options.replace_table_filter_option.filter": {
             "type": "fieldset",
             "label": "Add Filter Conditions on \"Replace With\" Table",
             "repeat": true,
@@ -389,7 +389,7 @@
               }
             }
           },
-          "replace_table_filter_option.apply_to_record": {
+          "options.replace_table_filter_option.apply_to_record": {
             "type": "checkbox",
             "label": "Apply to Record on \"Replace With\" Table",
             "val": "true",
@@ -401,10 +401,10 @@
           "replace_table_filter_option_apply_to_group_box": {
             "type": "fieldset",
             "label": "Apply to Group on \"Replace With\" Table",
-            "show_if": "replace_table_filter_option.apply_to_record=='false' && (incoming_value_to_replace.type!='replacement_table' && incoming_value_to_replace.type!='regex' && replace_with.value_type=='table')",
+            "show_if": "options.replace_table_filter_option.apply_to_record=='false' && (options.incoming_value_to_replace.type!='replacement_table' && options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table')",
             "repeat": false,
             "fields": {
-              "replace_table_filter_option.apply_to_group_columns": {
+              "options.replace_table_filter_option.apply_to_group_columns": {
                 "type": "select",
                 "label": "Select Group Columns",
                 "required": true,
@@ -419,10 +419,10 @@
           "replacement_table_filter_option_apply_to_group_box": {
             "type": "fieldset",
             "label": "Apply to Group on \"Replace With\" Table",
-            "show_if": "replace_table_filter_option.apply_to_record=='false' && incoming_value_to_replace.type=='replacement_table'",
+            "show_if": "options.replace_table_filter_option.apply_to_record=='false' && options.incoming_value_to_replace.type=='replacement_table'",
             "repeat": false,
             "fields": {
-              "replacement_table_filter_option.apply_to_group_columns": {
+              "options.replacement_table_filter_option.apply_to_group_columns": {
                 "type": "select",
                 "label": "Select Group Columns",
                 "required": true,
