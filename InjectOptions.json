@@ -1,0 +1,438 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Specify Options",
+    "repeat": false,
+    "fields": {
+      "options.task_code": {
+        "type": "hidden",
+        "val": "find_replace_text"
+      },
+      "options.incoming_value_to_replace.type": {
+        "type": "select",
+        "label": "Incoming Value",
+        "options": {
+          "user_specified_value": {
+            "label": "Equals"
+          },
+          "begins_with": {
+            "label": "Begins with"
+          },
+          "ends_with": {
+            "label": "Ends with"
+          },
+          "empty": {
+            "label": "Empty"
+          },
+          "regex": {
+            "label": "Regular Expression"
+          }
+        },
+        "val": "user_specified_value",
+        "style": "min-width: 190px"
+      },
+      "options.incoming_value_to_replace.value": {
+        "type": "text",
+        "label": "Incoming Value To Replace",
+        "required": true,
+        "show_if": "options.incoming_value_to_replace.type=='user_specified_value' || options.incoming_value_to_replace.type=='begins_with' || options.incoming_value_to_replace.type=='ends_with'",
+        "val": "",
+        "style": "min-width: 170px"
+      },
+      "options.incoming_value_to_replace.regex": {
+        "type": "text",
+        "label": "Regular Expression",
+        "required": true,
+        "show_if": "options.incoming_value_to_replace.type=='regex'",
+        "val": "(.*),(.*),(.*)\\s(\\d{5})(-\\d{4})?",
+        "style": "min-width: 200px"
+      },
+      "options.incoming_value_to_replace.partial_match": {
+        "type": "select",
+        "label": "Partial Match",
+        "show_if": "options.incoming_value_to_replace.type=='user_specified_value'",
+        "options": {
+          "full_match": {
+            "label": "Full match"
+          },
+          "full_and_partial_match": {
+            "label": "Full and partial match"
+          },
+          "partial_match_only": {
+            "label": "Partial match only"
+          }
+        },
+        "val": "full_and_partial_match"
+      },
+      "options.replace_with.value_type": {
+        "type": "select",
+        "label": "Replace With",
+        "show_if": "options.incoming_value_to_replace.type!='regex'",
+        "options": {
+          "user_specified_value": {
+            "label": "Custom Value"
+          },
+          "table": {
+            "label": "Table Column"
+          }
+        },
+        "val": "user_specified_value",
+        "style": "min-width: 190px"
+      },
+      "options.replace_with.value": {
+        "type": "text",
+        "label": "Replace With Value",
+        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='user_specified_value'",
+        "val": ""
+      },
+      "options.replace_with.regex_value": {
+        "type": "text",
+        "label": "Replace With Value",
+        "show_if": "options.incoming_value_to_replace.type=='regex'",
+        "val": "\\4: \\2, \\3"
+      },
+      "options.replace_with.table": {
+        "type": "select",
+        "label": "Select Table",
+        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table'",
+        "bind": "TABLES",
+        "required": true
+      },
+      "options.replace_with.column": {
+        "type": "select",
+        "label": "Select Column",
+        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table'",
+        "table": "options.replace_with.table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.apply_framing_condition": {
+        "type": "checkbox",
+        "label": "Apply framing conditions",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "apply_framing_condition_box": {
+        "type": "fieldset",
+        "label": "Framing conditions",
+        "show_if": "options.apply_framing_condition=='true'",
+        "repeat": false,
+        "fields": {
+          "options.framing_condition.pattern": {
+            "type": "select",
+            "label": "Framing conditions",
+            "required": true,
+            "options": {
+              "f_x": {
+                "label": "f(x)"
+              },
+              "f_x_bracket": {
+                "label": "f(){x}"
+              },
+              "name_x": {
+                "label": "name : x"
+              },
+              "x_all_brackets": {
+                "label": "{x}  /  [x] /  (x)"
+              },
+              "tag_x": {
+                "label": "[Tag begin symbol] x [Tag end symbol]"
+              }
+            },
+            "val": "name_x"
+          },
+          "options.framing_condition.name_x_name": {
+            "type": "text",
+            "label": "Name",
+            "show_if": "options.framing_condition.pattern=='name_x'",
+            "val": "",
+            "required": true
+          },
+          "options.framing_condition.tag_x_tag": {
+            "type": "text",
+            "label": "Tag",
+            "show_if": "options.framing_condition.pattern=='tag_x'",
+            "val": "",
+            "required": true,
+            "breakLine": true
+          },
+          "options.framing_condition.allow_whitespace": {
+            "type": "checkbox",
+            "label": "Allow whitespace",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.framing_condition.parantheses": {
+            "type": "select",
+            "label": "Parantheses",
+            "required": true,
+            "options": {
+              "optional": {
+                "label": "Optional parantheses"
+              },
+              "including": {
+                "label": "Including parantheses"
+              },
+              "no": {
+                "label": "No parantheses"
+              }
+            },
+            "val": "optional"
+          },
+          "options.framing_condition.sel_parantheses": {
+            "type": "select",
+            "label": "Select Parantheses",
+            "show_if": "options.framing_condition.parantheses=='optional' || options.framing_condition.parantheses=='including'",
+            "required": true,
+            "options": {
+              "p1": {
+                "label": "'"
+              },
+              "p2": {
+                "label": "\""
+              },
+              "p3": {
+                "label": "`"
+              },
+              "p4": {
+                "label": "´"
+              }
+            },
+            "multiple": true,
+            "val": ["p1", "p2", "p3", "p4"]
+          }
+        }
+      },
+      "options.use_replace_table_filter": {
+        "type": "checkbox",
+        "label": "Use Filter on \"Replace With\" Table",
+        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "replace_table_filter_option_box": {
+        "type": "fieldset",
+        "label": "\"Replace With\" Table Filter Options",
+        "show_if": "options.use_replace_table_filter=='true' && (options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table')",
+        "repeat": false,
+        "fields": {
+          "options.replace_table_filter_option.filter": {
+            "type": "fieldset",
+            "label": "Add Filter Conditions on \"Replace With\" Table",
+            "repeat": true,
+            "fields": {
+              "initial_op": {
+                "type": "select",
+                "label": "Select Logic Operator",
+                "required": true,
+                "show_if" :  "$index == 0",
+                "options": {
+                  "if": {
+                    "label": "IF"
+                  },
+                  "if_not": {
+                    "label": "IF NOT"
+                  }
+                },
+                "val": "if"
+              },
+              "op": {
+                "type": "select",
+                "label": "Select Logic Operator",
+                "required": true,
+                "show_if" :  "$index > 0",
+                "options": {
+                  "and": {
+                    "label": "AND"
+                  },
+                  "or": {
+                    "label": "OR"
+                  },
+                  "and_not": {
+                    "label": "AND NOT"
+                  },
+                  "or_not": {
+                    "label": "OR NOT"
+                  }
+                },
+                "val": "and"
+              },
+              "column": {
+                "type": "select",
+                "label": "Select Column",
+                "table": "replace_with.table",
+                "bind": "COLUMNS",
+                "required": true
+              },
+              "condition": {
+                "type": "select",
+                "label": "Select Operator",
+                "required": true,
+                "options": {
+                  "CONTAINS": {
+                    "label": "CONTAINS"
+                  },
+                  "CONTAINED IN STRING": {
+                    "label": "CONTAINED IN"
+                  },
+                  "STARTS WITH": {
+                    "label": "STARTS WITH"
+                  },
+                  "ENDS WITH": {
+                    "label": "ENDS WITH"
+                  },
+                  "=": {
+                    "label": "EQUAL"
+                  },
+                  ">": {
+                    "label": "GREATER THAN"
+                  },
+                  ">=": {
+                    "label": "GREATER OR EQUAL"
+                  },
+                  "<": {
+                    "label": "SMALLER THAN"
+                  },
+                  "<=": {
+                    "label": "SMALLER OR EQUAL"
+                  },
+                  "EMPTY": {
+                    "label": "IS EMPTY"
+                  },
+                  "BLANK": {
+                    "label": "IS BLANK"
+                  },
+                  "IS NULL": {
+                    "label": "IS NULL"
+                  },
+                  "REGEX MATCH": {
+                    "label": "REGEX MATCH"
+                  },
+                  "CONTAINED IN TABLE": {
+                    "label": "IN TABLE"
+                  },
+                  "IN REGEX TABLE": {
+                    "label": "IN REGEX TABLE"
+                  },
+                  "DATE": {
+                    "label": "DATE"
+                  }
+                },
+                "val": "CONTAINS"
+              },
+              "date_condition": {
+                "type": "select",
+                "label": "Select Date Operator",
+                "required": true,
+                "show_if": "this.condition == 'DATE'",
+                "options": {
+                  "<": {
+                    "label": "PRIOR"
+                  },
+                  "<=": {
+                    "label": "PRIOR OR EQUAL"
+                  },
+                  "=": {
+                    "label": "EQUAL"
+                  },
+                  ">": {
+                    "label": "AFTER"
+                  },
+                  ">=": {
+                    "label": "AFTER OR EQUAL"
+                  }
+                },
+                "val": "="
+              },
+              "case_sensitive": {
+                "type": "select",
+                "label": "Select Case Sensitive",
+                "required": true,
+                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "options": {
+                  "yes": {
+                    "label": "Case Sensitive"
+                  },
+                  "no": {
+                    "label": "Case Insensitive"
+                  }
+                },
+                "val": "yes"
+              },
+              "date_value": {
+                "type": "date",
+                "label": "Select Date",
+                "show_if": "this.condition=='DATE'",
+                "val": "",
+                "required": true
+              },
+              "value": {
+                "type": "text",
+                "label": "Input Value",
+                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "val": "",
+                "required": true
+              },
+              "compare_table": {
+                "type": "select",
+                "label": "Select Table",
+                "bind": "TABLES",
+                "empty": "",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "required": true
+              },
+              "compare_column": {
+                "type": "select",
+                "label": "Select Column",
+                "table": "this.compare_table",
+                "bind": "COLUMNS",
+                "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "required": true
+              },
+              "delete": {
+                "type": "button",
+                "label": "Delete",
+                "function": "DELETE_ROW"
+              }
+            }
+          },
+          "options.replace_table_filter_option.apply_to_record": {
+            "type": "checkbox",
+            "label": "Apply to Record on \"Replace With\" Table",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "style": "margin-top: 10px",
+            "breakLine": true
+          },
+          "replace_table_filter_option_apply_to_group_box": {
+            "type": "fieldset",
+            "label": "Apply to Group on \"Replace With\" Table",
+            "show_if": "options.replace_table_filter_option.apply_to_record=='false' && (options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table')",
+            "repeat": false,
+            "fields": {
+              "options.replace_table_filter_option.apply_to_group_columns": {
+                "type": "select",
+                "label": "Select Group Columns",
+                "required": true,
+                "width": "100%",
+                "table": "replace_with.table",
+                "multiple": true,
+                "bind": "COLUMNS",
+                "breakLine": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
