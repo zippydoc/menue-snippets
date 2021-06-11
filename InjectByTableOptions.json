@@ -1,7 +1,7 @@
 {
   "options": {
     "type": "fieldset",
-    "label": "Specify Options",
+    "label": "Replacement Table",
     "repeat": false,
     "fields": {
       "options.task_code": {
@@ -9,27 +9,8 @@
         "val": "find_replace_text"
       },
       "options.incoming_value_to_replace.type": {
-        "type": "select",
-        "label": "Incoming Value",
-        "options": {
-          "user_specified_value": {
-            "label": "Equals"
-          },
-          "begins_with": {
-            "label": "Begins with"
-          },
-          "ends_with": {
-            "label": "Ends with"
-          },
-          "empty": {
-            "label": "Empty"
-          },
-          "regex": {
-            "label": "Regular Expression"
-          }
-        },
-        "val": "user_specified_value",
-        "style": "min-width: 190px"
+        "type": "hidden",
+        "val": "replacement_table"
       },
       "options.incoming_value_to_replace.value": {
         "type": "text",
@@ -47,10 +28,33 @@
         "val": "(.*),(.*),(.*)\\s(\\d{5})(-\\d{4})?",
         "style": "min-width: 200px"
       },
+      "options.replace_table.table_id": {
+        "type": "select",
+        "label": "Replacement Table",
+        "show_if": "options.incoming_value_to_replace.type=='replacement_table'",
+        "bind": "TABLES",
+        "required": true
+      },
+      "options.replace_table.find_column": {
+        "type": "select",
+        "label": "Select Find Column",
+        "show_if": "options.incoming_value_to_replace.type=='replacement_table'",
+        "table": "options.replace_table.table_id",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.replace_table.replace_with_column": {
+        "type": "select",
+        "label": "Select Replace with Column",
+        "show_if": "options.incoming_value_to_replace.type=='replacement_table'",
+        "table": "options.replace_table.table_id",
+        "bind": "COLUMNS",
+        "required": true
+      },
       "options.incoming_value_to_replace.partial_match": {
         "type": "select",
         "label": "Partial Match",
-        "show_if": "options.incoming_value_to_replace.type=='user_specified_value'",
+        "show_if": "options.incoming_value_to_replace.type=='user_specified_value' || options.incoming_value_to_replace.type=='replacement_table'",
         "options": {
           "full_match": {
             "label": "Full match"
@@ -67,10 +71,22 @@
       "options.replace_with.value_type": {
         "type": "select",
         "label": "Replace With",
-        "show_if": "options.incoming_value_to_replace.type!='regex'",
+        "show_if": "options.incoming_value_to_replace.type!='regex' && options.incoming_value_to_replace.type!='replacement_table'",
         "options": {
           "user_specified_value": {
             "label": "Custom Value"
+          },
+          "average": {
+            "label": "Column Average"
+          },
+          "median": {
+            "label": "Column Median"
+          },
+          "mode": {
+            "label": "Column Mode"
+          },
+          "sum": {
+            "label": "Column Sum"
           },
           "table": {
             "label": "Table Column"
@@ -82,30 +98,38 @@
       "options.replace_with.value": {
         "type": "text",
         "label": "Replace With Value",
-        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='user_specified_value'",
+        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='user_specified_value' && options.incoming_value_to_replace.type!='replacement_table'",
         "val": ""
       },
       "options.replace_with.regex_value": {
         "type": "text",
         "label": "Replace With Value",
-        "show_if": "options.incoming_value_to_replace.type=='regex'",
+        "show_if": "options.incoming_value_to_replace.type=='regex' && options.incoming_value_to_replace.type!='replacement_table'",
         "val": "\\4: \\2, \\3"
       },
       "options.replace_with.table": {
         "type": "select",
         "label": "Select Table",
-        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table'",
+        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table' && options.incoming_value_to_replace.type!='replacement_table'",
         "bind": "TABLES",
         "required": true
       },
       "options.replace_with.column": {
         "type": "select",
         "label": "Select Column",
-        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table'",
-        "table": "options.replace_with.table",
+        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table' && options.incoming_value_to_replace.type!='replacement_table'",
+        "table": "replace_with.table",
         "bind": "COLUMNS",
         "required": true,
         "breakLine": true
+      },
+      "options.replacement_table_notice": {
+        "type": "text",
+        "label": "",
+        "show_if": "options.incoming_value_to_replace.type=='replacement_table'",
+        "val": "Line-break will be ignored in replacement table",
+        "disabled": true,
+        "width": "100%"
       },
       "options.apply_framing_condition": {
         "type": "checkbox",
@@ -217,7 +241,7 @@
       "options.use_replace_table_filter": {
         "type": "checkbox",
         "label": "Use Filter on \"Replace With\" Table",
-        "show_if": "options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table'",
+        "show_if": "options.incoming_value_to_replace.type=='replacement_table' || (options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table')",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -227,7 +251,7 @@
       "replace_table_filter_option_box": {
         "type": "fieldset",
         "label": "\"Replace With\" Table Filter Options",
-        "show_if": "options.use_replace_table_filter=='true' && (options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table')",
+        "show_if": "options.use_replace_table_filter=='true' && (options.incoming_value_to_replace.type=='replacement_table' || (options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table'))",
         "repeat": false,
         "fields": {
           "options.replace_table_filter_option.filter": {
@@ -422,7 +446,7 @@
           "replace_table_filter_option_apply_to_group_box": {
             "type": "fieldset",
             "label": "Apply to Group on \"Replace With\" Table",
-            "show_if": "options.replace_table_filter_option.apply_to_record=='false' && (options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table')",
+            "show_if": "options.replace_table_filter_option.apply_to_record=='false' && (options.incoming_value_to_replace.type!='replacement_table' && options.incoming_value_to_replace.type!='regex' && options.replace_with.value_type=='table')",
             "repeat": false,
             "fields": {
               "options.replace_table_filter_option.apply_to_group_columns": {
@@ -431,6 +455,24 @@
                 "required": true,
                 "width": "100%",
                 "table": "options.replace_with.table",
+                "multiple": true,
+                "bind": "COLUMNS",
+                "breakLine": true
+              }
+            }
+          },
+          "replacement_table_filter_option_apply_to_group_box": {
+            "type": "fieldset",
+            "label": "Apply to Group on \"Replace With\" Table",
+            "show_if": "options.replace_table_filter_option.apply_to_record=='false' && options.incoming_value_to_replace.type=='replacement_table'",
+            "repeat": false,
+            "fields": {
+              "options.replacement_table_filter_option.apply_to_group_columns": {
+                "type": "select",
+                "label": "Select Group Columns",
+                "required": true,
+                "width": "100%",
+                "table": "options.replace_table.table_id",
                 "multiple": true,
                 "bind": "COLUMNS",
                 "breakLine": true
