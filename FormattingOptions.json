@@ -162,12 +162,21 @@
         "show_if": "$input_table.numOfLabel >= 1",
         "repeat": true,
         "fields": {
+          "all_labels": {
+            "type": "checkbox",
+            "label": "All Labels",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
           "label_name": {
             "type": "select",
             "label": "Select Label",
             "table": "input_table",
             "bind": "LABELS",
-            "required": true
+            "required": true,
+            "show_if": "this.all_labels=='false'",
+            "multiple": true
           },
           "format__category": {
             "type": "select",
