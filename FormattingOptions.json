@@ -18,12 +18,21 @@
         "show_if": "$input_table.numOfHeader >= 1",
         "repeat": true,
         "fields": {
-          "field_name": {
+          "all_columns": {
+            "type": "checkbox",
+            "label": "All Columns",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "field_names": {
             "type": "select",
             "label": "Select Column",
             "table": "input_table",
             "bind": "COLUMNS",
-            "required": true
+            "required": true,
+            "show_if": "this.all_columns=='false'",
+            "multiple": true
           },
           "format__category": {
             "type": "select",
@@ -169,7 +178,7 @@
             "isOn": "true",
             "isOff": "false"
           },
-          "label_name": {
+          "label_names": {
             "type": "select",
             "label": "Select Label",
             "table": "input_table",
