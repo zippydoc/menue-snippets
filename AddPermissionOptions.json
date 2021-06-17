@@ -10,27 +10,48 @@
         "show_if": "input.table_or_flow=='set_table_permissions'",
         "required": true,
         "options": {
-          "set_permissions": {
-            "label": "Set permissions"
+          "set_permissions_by_user_list": {
+            "label": "Set permissions by user list"
+          },
+          "set_permissions_by_user_table": {
+            "label": "Set permissions by user table"
           },
           "delete_permissions": {
             "label": "Delete all permissions"
           }
         },
-        "val": "set_permissions",
+        "val": "set_permissions_by_user_list",
         "breakLine": true
       },
       "options.table_permission.emails": {
         "type": "text",
         "label": "Permitted Users (; separated list)",
-        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_list'",
         "required": true,
         "width": "100%"
+      },
+      "options.table_permission.users_table": {
+        "type": "select",
+        "label": "Select Users Table",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_table'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true
+      },
+      "options.table_permission.user_columns": {
+        "type": "select",
+        "label": "Select Users Column(s)",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_table'",
+        "required": true,
+        "table": "options.table_permission.users_table",
+        "multiple": true,
+        "bind": "COLUMNS",
+        "breakLine": true
       },
       "options.table_permission.permissions": {
         "type": "fieldset",
         "label": "Set Permissions",
-        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
+        "show_if": "input.table_or_flow=='set_table_permissions' && (options.table_permission.set_or_delete=='set_permissions_by_user_list' || options.table_permission.set_or_delete=='set_permissions_by_user_table')",
         "repeat": true,
         "fields": {
           "rows_or_columns": {
