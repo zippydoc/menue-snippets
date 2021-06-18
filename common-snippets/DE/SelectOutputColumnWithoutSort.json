@@ -1,7 +1,7 @@
 {
   "output.select_output_columns": {
     "type": "checkbox",
-    "label": "Ausgabespalten auswählen",
+    "label": "Ausgabe-Spalten Auswählen",
     "show_if": "output.custom_options=='true'",
     "val": "false",
     "isOn": "true",
@@ -10,20 +10,20 @@
   },
   "output_columns": {
     "type": "fieldset",
-    "label": "Ausgabespalten auswählen",
+    "label": "Ausgabe-Spalten Auswählen",
     "show_if": "output.custom_options=='true' && output.select_output_columns=='true'",
     "repeat": true,
     "fields": {
       "field_name": {
         "type": "select",
-        "label": "Select Column",
+        "label": "Spalte auswählen",
         "table": "input_table",
         "bind": "COLUMNS",
         "required": true
       },
       "is_rename": {
         "type": "checkbox",
-        "label": "Rename",
+        "label": "Umbenennen",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -34,7 +34,7 @@
         "required": true,
         "minLength": 1,
         "maxLength": 255,
-        "label": "New Column Name",
+        "label": "Neuer Spaltenname",
         "style": "margin-left: 10px"
       },
       "format__category": {
@@ -46,16 +46,16 @@
             "label": "Standard"
           },
           "number": {
-            "label": "Number"
+            "label": "Nummer"
           },
           "percentage": {
-            "label": "Percentage"
+            "label": "Prozentsatz"
           },
           "text": {
             "label": "Text"
           },
           "date": {
-            "label": "Date"
+            "label": "Datum"
           },
           "currency": {
             "label": "Währung"
@@ -65,12 +65,12 @@
       },
       "format__rounding": {
         "type": "select",
-        "label": "Rounding",
+        "label": "Abrunden",
         "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
         "required": true,
         "options": {
           "no_rounding": {
-            "label": "No rounding"
+            "label": "Keine Rundung"
           },
           "0": {
             "label": "0 Ziffern"
@@ -133,7 +133,7 @@
       },
       "format__date_format": {
         "type": "select",
-        "label": "Type",
+        "label": "Typ",
         "show_if": "this.format__category=='date'",
         "required": true,
         "options": {
@@ -141,7 +141,7 @@
             "label": "3/14/2012"
           },
           "D, M dd, Y": {
-            "label": "Wednesday, March 14, 2012"
+            "label": "Mittwoch, 14. März 2012"
           },
           "yyyy-mm-dd": {
             "label": "2012-03-14"
@@ -152,7 +152,7 @@
       },
       "delete": {
         "type": "button",
-        "label": "Delete",
+        "label": "Lösche",
         "function": "DELETE_ROW"
       }
     },
