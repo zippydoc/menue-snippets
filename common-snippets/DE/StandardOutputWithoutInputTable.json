@@ -1,12 +1,12 @@
 {
   "output": {
     "type": "fieldset",
-    "label": "Define Output Table",
+    "label": "Ausgabetabelle definieren",
     "repeat": false,
     "fields": {
       "output.custom_text": {
         "type": "text",
-        "label": "Output Table Name",
+        "label": "Name der Ausgabetabelle",
         "show_if": "output.custom_options=='false' || (output.custom_options=='true' && output.compose_table_name=='false')",
         "minLength": 1,
         "val": "",
@@ -15,7 +15,7 @@
       },
       "output.custom_options": {
         "type": "checkbox",
-        "label": "Output Options",
+        "label": "Ausgabe-Optionen",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -23,7 +23,7 @@
       },
       "output.compose_table_name": {
         "type": "checkbox",
-        "label": "Compose Table Name",
+        "label": "Tabellenname zusammenstellen",
         "show_if": "output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
@@ -32,13 +32,13 @@
       },
       "compose_table_name_frame": {
         "type": "fieldset",
-        "label": "Compose Output Table Name",
+        "label": "Name der Ausgabetabelle zusammenstellen",
         "show_if": "output.custom_options=='true' && output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
           "output.prefix_rule": {
             "type": "select",
-            "label": "Prefix",
+            "label": "Präfix",
             "show_if": "output.compose_table_name=='true'",
             "val": "empty",
             "options": {
@@ -46,28 +46,28 @@
                 "label": "-"
               },
               "script_name": {
-                "label": "Task Name"
+                "label": "Aufgabe Name"
               },
               "date_string_type1": {
-                "label": "Date: dd_mm_yyyy"
+                "label": "Datum: tt_mm_jjjj"
               },
               "date_string_type2": {
-                "label": "Date: yyyy_mm_dd"
+                "label": "Datum: jjjj_mm_tt"
               },
               "time_string": {
                 "label": "Zeit: h_min_sec"
               },
               "datetime_string": {
-                "label": "Date_Time"
+                "label": "Datum_Zeit"
               },
               "custom": {
-                "label": "Custom"
+                "label": "Benutzerdefiniert"
               }
             }
           },
           "output.prefix_text": {
             "type": "text",
-            "label": "Prefix Text",
+            "label": "Präfix Text",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
@@ -75,28 +75,28 @@
           },
           "output.core_delimiter": {
             "type": "text",
-            "label": "Delimiter",
+            "label": "Begrenzer",
             "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
             "val": "_",
             "width": "50px"
           },
           "output.core_rule": {
             "type": "select",
-            "label": "Table Name",
+            "label": "Tabelle Name",
             "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "script_name": {
-                "label": "Task Name"
+                "label": "Aufgabe Name"
               },
               "custom": {
-                "label": "Custom"
+                "label": "Benutzerdefiniert"
               }
             }
           },
           "output.core_text": {
             "type": "text",
-            "label": "Output Table Name",
+            "label": "Name der Ausgabetabelle",
             "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
             "required": true,
             "minLength": 1,
@@ -105,7 +105,7 @@
           },
           "output.suffix_delimiter": {
             "type": "text",
-            "label": "Delimiter",
+            "label": "Begrenzer",
             "show_if": "output.compose_table_name=='true'",
             "val": "_",
             "width": "50px"
@@ -120,22 +120,22 @@
                 "label": "-"
               },
               "script_name": {
-                "label": "Task Name"
+                "label": "Aufgabe Name"
               },
               "date_string_type1": {
-                "label": "Date: dd_mm_yyyy"
+                "label": "Datum: tt_mm_jjjj"
               },
               "date_string_type2": {
-                "label": "Date: yyyy_mm_dd"
+                "label": "Datum: jjjj_mm_tt"
               },
               "time_string": {
                 "label": "Zeit: h_min_sec"
               },
               "datetime_string": {
-                "label": "Date_Time"
+                "label": "Datum_Zeit"
               },
               "custom": {
-                "label": "Custom"
+                "label": "Benutzerdefiniert"
               }
             }
           },
@@ -150,7 +150,7 @@
           },
           "output.timezone": {
             "type": "select",
-            "label": "Timezone",
+            "label": "Zeitzone",
             "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
             "val": "Europe/Berlin",
             "required": true,
@@ -177,13 +177,13 @@
                 "label": "Auckland, Wellington, Christchurch"
               },
               "Asia/Bangkok": {
-                "label": "Bangkok, Jakarta, Novosibirsk"
+                "label": "Bangkok, Jakarta, Nowosibirsk"
               },
               "Europe/Berlin": {
                 "label": "Berlin, Paris, Amsterdam"
               },
               "Australia/Perth": {
-                "label": "Brunei, Singapore, Perth"
+                "label": "Brunei, Singapur, Perth"
               },
               "Atlantic/Cape_Verde": {
                 "label": "Cape Verde,Praia, Mindelo, Santa Maria"
@@ -195,7 +195,7 @@
                 "label": "Dhaka, Bishkek, Omsk"
               },
               "Europe/Astrakhan": {
-                "label": "Dubai, Baku, Tbilisi"
+                "label": "Dubai, Baku, Tiflis"
               },
               "Australia/Eucla": {
                 "label": "Eucla"
@@ -207,7 +207,7 @@
                 "label": "Kabul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
               },
               "Asia/Aqtau": {
-                "label": "Karachi, Tashkent, Maldives"
+                "label": "Karatschi, Taschkent, Malediven"
               },
               "Asia/Kathmandu": {
                 "label": "Kathmandu, Pokhara, Pātan, Biratnagar"
@@ -219,7 +219,7 @@
                 "label": "Kolkata, Colombo, Jaffna, Negombo"
               },
               "Europe/Guernsey": {
-                "label": "London, Dublin, Lisbon"
+                "label": "London, Dublin, Lissabon"
               },
               "Australia/Lord_Howe": {
                 "label": "Lord Howe"
@@ -237,7 +237,7 @@
                 "label": "Midway, Niue, Pago Pago"
               },
               "Europe/Mariehamn": {
-                "label": "Moscow, Istanbul, Qatar"
+                "label": "Moskau, Istanbul, Katar"
               },
               "Asia/Kolkata": {
                 "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
@@ -258,22 +258,22 @@
                 "label": "St. Johns, Mount Pearl, Corner Brook"
               },
               "Asia/Tehran": {
-                "label": "Tehran, Mashhad, Isfahan, Karaj, Tabriz"
+                "label": "Teheran, Mashhad, Isfahan, Karaj, Tabriz"
               },
               "Asia/Tokyo": {
-                "label": "Tokyo, Seoul, Jayapura"
+                "label": "Tokio, Seoul, Jayapura"
               },
               "America/New_York": {
                 "label": "Toronto, Santiago, New York"
               },
               "Australia/Sydney": {
-                "label": "Vladivostok, Sydney, Brisbane"
+                "label": "Wladiwostok, Sydney, Brisbane"
               },
               "Asia/Yangon": {
                 "label": "Yangon, Cocos, Mandalay, Nay Pyi Taw, Mawlamyine"
               },
               "Indian/Cocos": {
-                "label": "Yangon, Cocos, West Island"
+                "label": "Yangon, Cocos, Westinsel"
               }
             },
             "breakLine": true
