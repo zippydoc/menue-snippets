@@ -44,6 +44,7 @@
         "type": "select",
         "label": "Select Table",
         "bind": "TABLES",
+        "show_if": "this.value_type=='table_values'",
         "empty": "",
         "required": true
       },
@@ -52,7 +53,8 @@
         "label": "Select Column",
         "required": true,
         "table": "this.input_table",
-        "bind": "COLUMNS"
+        "bind": "COLUMNS",
+        "show_if": "this.value_type=='table_values'"
       },
       "use_filter": {
         "type": "checkbox",
@@ -60,6 +62,7 @@
         "val": "false",
         "isOn": "true",
         "isOff": "false",
+        "show_if": "this.value_type=='table_values'",
         "breakLine": true
       },
       "filter_box": {
@@ -112,7 +115,7 @@
               "column": {
                 "type": "select",
                 "label": "Select Column",
-                "table": "input_table",
+                "table": "this.input_table",
                 "bind": "COLUMNS",
                 "required": true
               },
