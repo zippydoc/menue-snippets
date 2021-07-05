@@ -16,11 +16,51 @@
         "required": true,
         "val": "1"
       },
+      "value_type": {
+        "type": "select",
+        "label": "Replace with",
+        "required": true,
+        "options": {
+          "single_value": {
+            "label": "Single Value"
+          },
+          "value_series": {
+            "label": "Value Series"
+          },
+          "table_values": {
+            "label": "Table Values"
+          }
+        },
+        "val": "single_value"
+      },
       "attr_value": {
         "type": "text",
         "label": "Field Value",
         "required": true,
-        "val": ""
+        "val": "",
+        "show_if": "this.value_type!='table_values'"
+      },
+      "input_table": {
+        "type": "select",
+        "label": "Select Table",
+        "bind": "TABLES",
+        "show_if": "this.value_type=='table_values'",
+        "empty": "",
+        "required": true
+      },
+      "column": {
+        "type": "select",
+        "label": "Select Column",
+        "required": true,
+        "table": "this.input_table",
+        "bind": "COLUMNS",
+        "show_if": "this.value_type=='table_values'"
+      },
+      "waiting_period": {
+        "type": "number",
+        "label": "Waiting time (sec)",
+        "val": "0",
+        "show_if": "this.value_type!='single_value'"
       },
       "delete": {
         "type": "button",
