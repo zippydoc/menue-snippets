@@ -11,7 +11,7 @@
         "val": ""
       },
       "attr_instance": {
-        "type": "text",
+        "type": "number",
         "label": "Field Instance",
         "required": true,
         "val": "1"
@@ -21,17 +21,14 @@
         "label": "Replace with",
         "required": true,
         "options": {
-          "single_value": {
-            "label": "Single Value"
-          },
-          "value_series": {
-            "label": "Value Series"
+          "manual_input": {
+            "label": "Manual Input"
           },
           "table_values": {
             "label": "Table Values"
           }
         },
-        "val": "single_value"
+        "val": "manual_input"
       },
       "attr_value": {
         "type": "text",
@@ -56,11 +53,18 @@
         "bind": "COLUMNS",
         "show_if": "this.value_type=='table_values'"
       },
+      "use_waiting_time": {
+        "type": "checkbox",
+        "label": "Add waiting time",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
       "waiting_period": {
         "type": "number",
         "label": "Waiting time (sec)",
         "val": "0",
-        "show_if": "this.value_type!='single_value'"
+        "show_if": "this.use_waiting_time!='false'"
       },
       "delete": {
         "type": "button",
