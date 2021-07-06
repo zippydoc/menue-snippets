@@ -11,16 +11,60 @@
         "val": ""
       },
       "attr_instance": {
-        "type": "text",
+        "type": "number",
         "label": "Field Instance",
         "required": true,
         "val": "1"
+      },
+      "value_type": {
+        "type": "select",
+        "label": "Replace with",
+        "required": true,
+        "options": {
+          "manual_input": {
+            "label": "Manual Input"
+          },
+          "table_values": {
+            "label": "Table Values"
+          }
+        },
+        "val": "manual_input"
       },
       "attr_value": {
         "type": "text",
         "label": "Field Value",
         "required": true,
-        "val": ""
+        "val": "",
+        "show_if": "this.value_type!='table_values'"
+      },
+      "input_table": {
+        "type": "select",
+        "label": "Select Table",
+        "bind": "TABLES",
+        "show_if": "this.value_type=='table_values'",
+        "empty": "",
+        "required": true
+      },
+      "column": {
+        "type": "select",
+        "label": "Select Column",
+        "required": true,
+        "table": "this.input_table",
+        "bind": "COLUMNS",
+        "show_if": "this.value_type=='table_values'"
+      },
+      "use_waiting_time": {
+        "type": "checkbox",
+        "label": "Add waiting time",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "waiting_period": {
+        "type": "number",
+        "label": "Waiting time (sec)",
+        "val": "0",
+        "show_if": "this.use_waiting_time!='false'"
       },
       "delete": {
         "type": "button",
