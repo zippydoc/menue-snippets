@@ -1,36 +1,76 @@
 {
   "options_box": {
     "type": "fieldset",
-    "label": "Flexmonster Report Options",
+    "label": "Flexmonster Report Option",
     "repeat": false,
     "fields": {
-      "options.row_col": {
-        "type": "select",
-        "label": "Row column",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true
-      },
-      "options.column_col": {
-        "type": "select",
-        "label": "Column column",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true
-      },
-      "measures_option_box": {
+      "options.row_cols": {
         "type": "fieldset",
-        "label": "Measures Options",
-        "repeat": false,
+        "label": "Row column(s)",
+        "repeat": true,
         "fields": {
-          "options.measures.column": {
+          "row_col": {
+            "type": "select",
+            "label": "Row column",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "is_date": {
+            "type": "checkbox",
+            "label": "Is Date",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.column_cols": {
+        "type": "fieldset",
+        "label": "Column column(s)",
+        "repeat": true,
+        "fields": {
+          "row_col": {
+            "type": "select",
+            "label": "Column column",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "is_date": {
+            "type": "checkbox",
+            "label": "Is Date",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.measures": {
+        "type": "fieldset",
+        "label": "Measures",
+        "repeat": true,
+        "fields": {
+          "measure_col": {
             "type": "select",
             "label": "Measure Column",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
-          "options.measures.aggregation": {
+          "aggregation": {
             "type": "select",
             "label": "Aggregation Function",
             "options": {
@@ -71,6 +111,11 @@
             "val": "sum",
             "required": true,
             "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
           }
         }
       }
