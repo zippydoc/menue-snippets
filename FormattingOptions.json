@@ -4,6 +4,128 @@
     "label": "Options",
     "repeat": false,
     "fields": {
+      "all_columns": {
+        "type": "checkbox",
+        "label": "All Columns",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "show_if": "$input_table.numOfHeader >= 1"
+      },
+      "all_column.format__category": {
+        "type": "select",
+        "label": "Format",
+        "required": true,
+        "options": {
+          "standard": {
+            "label": "Standard"
+          },
+          "number": {
+            "label": "Number"
+          },
+          "percentage": {
+            "label": "Percentage"
+          },
+          "text": {
+            "label": "Text"
+          },
+          "date": {
+            "label": "Date"
+          },
+          "currency": {
+            "label": "Currency"
+          }
+        },
+        "val": "standard",
+        "show_if": "all_columns=='true'"
+      },
+      "all_column.format__rounding": {
+        "type": "select",
+        "label": "Rounding",
+        "show_if": "all_columns=='true' && (all_column.format__category=='number' || all_column.format__category=='percentage' || all_column.format__category=='currency')",
+        "required": true,
+        "options": {
+          "no_rounding": {
+            "label": "No rounding"
+          },
+          "0": {
+            "label": "0 digits"
+          },
+          "1": {
+            "label": "1 digits"
+          },
+          "2": {
+            "label": "2 digits"
+          },
+          "3": {
+            "label": "3 digits"
+          },
+          "4": {
+            "label": "4 digits"
+          },
+          "5": {
+            "label": "5 digits"
+          },
+          "6": {
+            "label": "6 digits"
+          },
+          "7": {
+            "label": "7 digits"
+          },
+          "8": {
+            "label": "8 digits"
+          },
+          "9": {
+            "label": "9 digits"
+          }
+        },
+        "val": "2"
+      },
+      "all_column.format__use_1000_separator": {
+        "type": "checkbox",
+        "label": "Use 1000 Separator(.)",
+        "show_if": "all_columns=='true' && (all_column.format__category=='number' || all_column.format__category=='percentage' || all_column.format__category=='currency')",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "all_column.format__currency_symbol": {
+        "type": "select",
+        "label": "Symbol",
+        "show_if": "all_columns=='true' && all_column.format__category=='currency'",
+        "required": true,
+        "options": {
+          "dollar": {
+            "label": "$"
+          },
+          "euro": {
+            "label": "€"
+          },
+          "pound": {
+            "label": "£"
+          }
+        },
+        "val": "dollar"
+      },
+      "all_column.format__date_format": {
+        "type": "select",
+        "label": "Type",
+        "show_if": "all_columns=='true' && all_column.format__category=='date'",
+        "required": true,
+        "options": {
+          "mm/dd/yyyy": {
+            "label": "3/14/2012"
+          },
+          "D, M dd, Y": {
+            "label": "Wednesday, March 14, 2012"
+          },
+          "yyyy-mm-dd": {
+            "label": "2012-03-14"
+          }
+        },
+        "val": "mm/dd/yyyy",
+        "breakLine": true
+      },
       "reformat_columns": {
         "type": "checkbox",
         "label": "Formatting Columns",
@@ -15,23 +137,15 @@
       "columns": {
         "type": "fieldset",
         "label": "Select Columns",
-        "show_if": "$input_table.numOfHeader >= 1",
+        "show_if": "all_columns!='true' && $input_table.numOfHeader >= 1",
         "repeat": true,
         "fields": {
-          "all_columns": {
-            "type": "checkbox",
-            "label": "All Columns",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
-          },
           "field_names": {
             "type": "select",
             "label": "Select Column",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true,
-            "show_if": "this.all_columns=='false'",
             "multiple": true
           },
           "format__category": {
@@ -156,6 +270,128 @@
         },
         "breakLine": true
       },
+      "all_labels": {
+        "type": "checkbox",
+        "label": "All Labels",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "show_if": "$input_table.numOfLabel >= 1"
+      },
+      "all_label.format__category": {
+        "type": "select",
+        "label": "Format",
+        "required": true,
+        "options": {
+          "standard": {
+            "label": "Standard"
+          },
+          "number": {
+            "label": "Number"
+          },
+          "percentage": {
+            "label": "Percentage"
+          },
+          "text": {
+            "label": "Text"
+          },
+          "date": {
+            "label": "Date"
+          },
+          "currency": {
+            "label": "Currency"
+          }
+        },
+        "val": "standard",
+        "show_if": "all_labels=='true'"
+      },
+      "all_label.format__rounding": {
+        "type": "select",
+        "label": "Rounding",
+        "show_if": "all_labels=='true' && (all_label.format__category=='number' || all_label.format__category=='percentage' || all_label.format__category=='currency')",
+        "required": true,
+        "options": {
+          "no_rounding": {
+            "label": "No rounding"
+          },
+          "0": {
+            "label": "0 digits"
+          },
+          "1": {
+            "label": "1 digits"
+          },
+          "2": {
+            "label": "2 digits"
+          },
+          "3": {
+            "label": "3 digits"
+          },
+          "4": {
+            "label": "4 digits"
+          },
+          "5": {
+            "label": "5 digits"
+          },
+          "6": {
+            "label": "6 digits"
+          },
+          "7": {
+            "label": "7 digits"
+          },
+          "8": {
+            "label": "8 digits"
+          },
+          "9": {
+            "label": "9 digits"
+          }
+        },
+        "val": "2"
+      },
+      "all_label.format__use_1000_separator": {
+        "type": "checkbox",
+        "label": "Use 1000 Separator(.)",
+        "show_if": "all_labels=='true' && (all_label.format__category=='number' || all_label.format__category=='percentage' || all_label.format__category=='currency')",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "all_label.format__currency_symbol": {
+        "type": "select",
+        "label": "Symbol",
+        "show_if": "all_labels=='true' && all_label.format__category=='currency'",
+        "required": true,
+        "options": {
+          "dollar": {
+            "label": "$"
+          },
+          "euro": {
+            "label": "€"
+          },
+          "pound": {
+            "label": "£"
+          }
+        },
+        "val": "dollar"
+      },
+      "all_label.format__date_format": {
+        "type": "select",
+        "label": "Type",
+        "show_if": "all_labels=='true' && all_label.format__category=='date'",
+        "required": true,
+        "options": {
+          "mm/dd/yyyy": {
+            "label": "3/14/2012"
+          },
+          "D, M dd, Y": {
+            "label": "Wednesday, March 14, 2012"
+          },
+          "yyyy-mm-dd": {
+            "label": "2012-03-14"
+          }
+        },
+        "val": "mm/dd/yyyy",
+        "breakLine": true
+      },
       "reformat_rows": {
         "type": "checkbox",
         "label": "Formatting Labels",
@@ -168,23 +404,15 @@
       "rows": {
         "type": "fieldset",
         "label": "Select Labels",
-        "show_if": "$input_table.numOfLabel >= 1",
+        "show_if": "all_labels!='true' && $input_table.numOfLabel >= 1",
         "repeat": true,
         "fields": {
-          "all_labels": {
-            "type": "checkbox",
-            "label": "All Labels",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
-          },
           "label_names": {
             "type": "select",
             "label": "Select Label",
             "table": "input_table",
             "bind": "LABELS",
             "required": true,
-            "show_if": "this.all_labels=='false'",
             "multiple": true
           },
           "format__category": {
