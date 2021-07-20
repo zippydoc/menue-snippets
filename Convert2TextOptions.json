@@ -4,24 +4,28 @@
     "label": "Convert Options",
     "repeat": false,
     "fields": {
-      "options.convert_direction": {
-        "type": "hidden",
-        "val": "to_word_by_word"
-      },
       "options.text_col": {
         "type": "select",
         "label": "Text column",
         "table": "input_table",
         "bind": "COLUMNS",
-        "required": true
+        "required": true,
+        "breakLine": true
+      },
+      "options.apply_section_by_section": {
+        "type": "checkbox",
+        "label": "Apply Section by Section",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
       },
       "options.section_cols": {
         "type": "select",
         "label": "Section column(s)",
+        "show_if": "options.apply_section_by_section=='true'",
         "table": "input_table",
         "bind": "COLUMNS",
-        "multiple": true,
-        "required": true
+        "multiple": true
       }
     }
   }
