@@ -58,9 +58,18 @@
           }
         }
       },
+      "options.use_default_number_format": {
+        "type": "checkbox",
+        "label": "Use Default Number Formatting",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px"
+      },
       "default_number_format_frame": {
         "type": "fieldset",
         "label": "Default Number Formatting",
+        "show_if": "options.use_default_number_format=='false'",
         "repeat": false,
         "fields": {
           "options.default_format.textAlign": {
@@ -84,7 +93,7 @@
             "type": "select",
             "label": "Thousands Separator",
             "options": {
-              " ": {
+              "(Space)": {
                 "label": "(Space)"
               },
               ",": {
@@ -94,7 +103,7 @@
                 "label": "."
               }
             },
-            "val": " ",
+            "val": "(Space)",
             "required": true
           },
           "options.default_format.decimalSeparator": {
@@ -155,7 +164,7 @@
           "options.default_format.currencySymbol": {
             "type": "text",
             "label": "Currency Symbol",
-            "val": ""
+            "val": "$"
           },
           "options.default_format.negativeNumberFormat": {
             "type": "select",
@@ -203,7 +212,8 @@
         "label": "Conditional Formatting for all values",
         "val": "true",
         "isOn": "true",
-        "isOff": "false"
+        "isOff": "false",
+        "style": "margin-top: 10px"
       },
       "default_conditional_format_frame": {
         "type": "fieldset",
@@ -247,14 +257,14 @@
             "type": "text",
             "label": "Value",
             "show_if": "options.default_conditional_format.op=='<' || options.default_conditional_format.op=='<=' || options.default_conditional_format.op=='>' || options.default_conditional_format.op=='>=' || options.default_conditional_format.op=='==' || options.default_conditional_format.op=='!=' || options.default_conditional_format.op=='between'",
-            "val": "",
+            "val": "0",
             "breakLine": true
           },
           "options.default_conditional_format.value2": {
             "type": "text",
             "label": "Value",
             "show_if": "options.default_conditional_format.op=='between'",
-            "val": "",
+            "val": "100",
             "breakLine": true
           },
           "options.default_conditional_format.fontFamily": {
@@ -384,14 +394,14 @@
                 "label": "Custom"
               }
             },
-            "val": "F44336",
+            "val": "FFFFFF",
             "required": true
           },
           "options.default_conditional_format.custom_background_color": {
             "type": "text",
             "label": "Custom Background Color",
             "show_if": "options.default_conditional_format.backgroundColor=='custom'",
-            "placeholder": "3F51B5",
+            "placeholder": "FFFFFF",
             "val": "",
             "breakLine": true
           }
@@ -448,7 +458,8 @@
               }
             },
             "val": "sum",
-            "required": true
+            "required": true,
+            "breakLine": true
           },
           "use_default_format": {
             "type": "checkbox",
@@ -481,7 +492,7 @@
             "label": "Thousands Separator",
             "show_if": "this.use_default_format=='false'",
             "options": {
-              " ": {
+              "(Space)": {
                 "label": "(Space)"
               },
               ",": {
@@ -491,7 +502,7 @@
                 "label": "."
               }
             },
-            "val": " ",
+            "val": "(Space)",
             "required": true
           },
           "custom_format_decimalSeparator": {
@@ -555,7 +566,7 @@
             "type": "text",
             "label": "Currency Symbol",
             "show_if": "this.use_default_format=='false'",
-            "val": ""
+            "val": "$"
           },
           "custom_format_negativeNumberFormat": {
             "type": "select",
@@ -597,7 +608,8 @@
               }
             },
             "val": "false",
-            "required": true
+            "required": true,
+            "breakLine": true
           },
           "use_conditional_format": {
             "type": "checkbox",
@@ -644,14 +656,14 @@
             "type": "text",
             "label": "Value",
             "show_if": "this.use_conditional_format=='true' && (this.op=='<' || this.op=='<=' || this.op=='>' || this.op=='>=' || this.op=='==' || this.op=='!=' || this.op=='between')",
-            "val": "",
+            "val": "0",
             "breakLine": true
           },
           "value2": {
             "type": "text",
             "label": "Value",
             "show_if": "this.use_conditional_format=='true' && this.op=='between'",
-            "val": "",
+            "val": "100",
             "breakLine": true
           },
           "fontFamily": {
@@ -785,14 +797,14 @@
                 "label": "Custom"
               }
             },
-            "val": "F44336",
+            "val": "FFFFFF",
             "required": true
           },
           "custom_background_color": {
             "type": "text",
             "label": "Custom Background Color",
             "show_if": "this.use_conditional_format=='true' && this.backgroundColor=='custom'",
-            "placeholder": "3F51B5",
+            "placeholder": "FFFFFF",
             "val": "",
             "breakLine": true
           },
