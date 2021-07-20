@@ -209,7 +209,7 @@
           }
         }
       },
-      "options.use_default_conditional_format": {
+      "options.use_conditional_format": {
         "type": "checkbox",
         "label": "Conditional Formatting for all values",
         "val": "false",
@@ -217,13 +217,13 @@
         "isOff": "false",
         "style": "margin-top: 10px"
       },
-      "default_conditional_format_frame": {
+      "conditional_format_frame": {
         "type": "fieldset",
         "label": "Conditional Formatting for all values",
-        "show_if": "options.use_default_conditional_format=='true'",
+        "show_if": "options.use_conditional_format=='true'",
         "repeat": false,
         "fields": {
-          "options.default_conditional_format.op": {
+          "options.conditional_format.op": {
             "type": "select",
             "label": "Operator",
             "options": {
@@ -247,29 +247,26 @@
               },
               "between": {
                 "label": "Between"
-              },
-              "empty": {
-                "label": "Empty"
               }
             },
             "val": ">",
             "required": true
           },
-          "options.default_conditional_format.value": {
+          "options.conditional_format.value": {
             "type": "text",
             "label": "Value",
-            "show_if": "options.default_conditional_format.op=='<' || options.default_conditional_format.op=='<=' || options.default_conditional_format.op=='>' || options.default_conditional_format.op=='>=' || options.default_conditional_format.op=='==' || options.default_conditional_format.op=='!=' || options.default_conditional_format.op=='between'",
+            "show_if": "options.conditional_format.op=='<' || options.conditional_format.op=='<=' || options.conditional_format.op=='>' || options.conditional_format.op=='>=' || options.conditional_format.op=='==' || options.conditional_format.op=='!=' || options.conditional_format.op=='between'",
             "val": "0",
             "breakLine": true
           },
-          "options.default_conditional_format.value2": {
+          "options.conditional_format.value2": {
             "type": "text",
             "label": "Value",
-            "show_if": "options.default_conditional_format.op=='between'",
+            "show_if": "options.conditional_format.op=='between'",
             "val": "100",
             "breakLine": true
           },
-          "options.default_conditional_format.fontFamily": {
+          "options.conditional_format.fontFamily": {
             "type": "select",
             "label": "Font Family",
             "options": {
@@ -307,7 +304,7 @@
             "val": "Arial",
             "required": true
           },
-          "options.default_conditional_format.fontSize": {
+          "options.conditional_format.fontSize": {
             "type": "select",
             "label": "Font Size",
             "options": {
@@ -333,7 +330,7 @@
             "val": "12px",
             "required": true
           },
-          "options.default_conditional_format.color": {
+          "options.conditional_format.color": {
             "type": "select",
             "label": "Color",
             "options": {
@@ -362,15 +359,15 @@
             "val": "F44336",
             "required": true
           },
-          "options.default_conditional_format.custom_color": {
+          "options.conditional_format.custom_color": {
             "type": "text",
             "label": "Custom Color",
-            "show_if": "options.default_conditional_format.color=='custom'",
+            "show_if": "options.conditional_format.color=='custom'",
             "placeholder": "3F51B5",
             "val": "",
             "breakLine": true
           },
-          "options.default_conditional_format.backgroundColor": {
+          "options.conditional_format.backgroundColor": {
             "type": "select",
             "label": "Background Color",
             "options": {
@@ -399,10 +396,10 @@
             "val": "FFFFFF",
             "required": true
           },
-          "options.default_conditional_format.custom_background_color": {
+          "options.conditional_format.custom_background_color": {
             "type": "text",
             "label": "Custom Background Color",
-            "show_if": "options.default_conditional_format.backgroundColor=='custom'",
+            "show_if": "options.conditional_format.backgroundColor=='custom'",
             "placeholder": "FFFFFF",
             "val": "",
             "breakLine": true
@@ -646,9 +643,6 @@
               },
               "between": {
                 "label": "Between"
-              },
-              "empty": {
-                "label": "Empty"
               }
             },
             "val": ">",
