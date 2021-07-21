@@ -1,0 +1,76 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Specify Input Tables",
+    "repeat": false,
+    "fields": {
+      "options.select_type": {
+        "type": "select",
+        "label": "Select Type",
+        "required": true,
+        "options": {
+          "table_selection": {
+            "label": "Table Selection"
+          },
+          "select_by_pattern": {
+            "label": "Select by Pattern"
+          }
+        },
+        "val": "table_selection"
+      },
+      "options.input_tables": {
+        "type": "select",
+        "label": "Select Tables",
+        "bind": "TABLES",
+        "empty": "",
+        "multiple": true,
+        "show_if": "options.select_type=='table_selection'",
+        "required": true
+      },
+      "options.filter_params": {
+        "type": "fieldset",
+        "label": "Match tables",
+        "show_if": "options.select_type=='select_by_pattern'",
+        "repeat": true,
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "label": "Enter Keyword",
+            "required": true,
+            "val": ""
+          },
+          "filter_target": {
+            "type": "select",
+            "label": "Filter on",
+            "required": true,
+            "options": {
+              "table_name": {
+                "label": "Table Name"
+              },
+              "table_tag": {
+                "label": "Table Tag"
+              }
+            },
+            "val": "table_name"
+          },
+          "filter_type": {
+            "type": "select",
+            "label": "Filter type",
+            "required": true,
+            "options": {
+              "equal": {
+                "label": "Equal"
+              }
+            },
+            "val": "equal"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
