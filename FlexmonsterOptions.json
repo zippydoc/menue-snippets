@@ -4,6 +4,10 @@
     "label": "Flexmonster Report Option",
     "repeat": false,
     "fields": {
+      "options.type": {
+        "type": "hidden",
+        "val": "grid"
+      },
       "options.column_cols": {
         "type": "fieldset",
         "label": "Column column(s)",
@@ -165,7 +169,7 @@
           "options.default_format.currencySymbol": {
             "type": "text",
             "label": "Currency Symbol",
-            "val": "$"
+            "val": ""
           },
           "options.default_format.negativeNumberFormat": {
             "type": "select",
@@ -195,6 +199,7 @@
           "options.default_format.isPercent": {
             "type": "select",
             "label": "Format as Percent",
+            "show_if": "false",
             "options": {
               "false": {
                 "label": "False"
@@ -208,7 +213,7 @@
           }
         }
       },
-      "options.use_default_conditional_format": {
+      "options.use_conditional_format": {
         "type": "checkbox",
         "label": "Conditional Formatting for all values",
         "val": "false",
@@ -216,13 +221,13 @@
         "isOff": "false",
         "style": "margin-top: 10px"
       },
-      "default_conditional_format_frame": {
+      "conditional_format_frame": {
         "type": "fieldset",
         "label": "Conditional Formatting for all values",
-        "show_if": "options.use_default_conditional_format=='true'",
+        "show_if": "options.use_conditional_format=='true'",
         "repeat": false,
         "fields": {
-          "options.default_conditional_format.op": {
+          "options.conditional_format.op": {
             "type": "select",
             "label": "Operator",
             "options": {
@@ -246,29 +251,25 @@
               },
               "between": {
                 "label": "Between"
-              },
-              "empty": {
-                "label": "Empty"
               }
             },
             "val": ">",
             "required": true
           },
-          "options.default_conditional_format.value": {
+          "options.conditional_format.value": {
             "type": "text",
             "label": "Value",
-            "show_if": "options.default_conditional_format.op=='<' || options.default_conditional_format.op=='<=' || options.default_conditional_format.op=='>' || options.default_conditional_format.op=='>=' || options.default_conditional_format.op=='==' || options.default_conditional_format.op=='!=' || options.default_conditional_format.op=='between'",
-            "val": "0",
-            "breakLine": true
+            "show_if": "options.conditional_format.op=='<' || options.conditional_format.op=='<=' || options.conditional_format.op=='>' || options.conditional_format.op=='>=' || options.conditional_format.op=='==' || options.conditional_format.op=='!=' || options.conditional_format.op=='between'",
+            "val": "0"
           },
-          "options.default_conditional_format.value2": {
+          "options.conditional_format.value2": {
             "type": "text",
             "label": "Value",
-            "show_if": "options.default_conditional_format.op=='between'",
+            "show_if": "options.conditional_format.op=='between'",
             "val": "100",
             "breakLine": true
           },
-          "options.default_conditional_format.fontFamily": {
+          "options.conditional_format.fontFamily": {
             "type": "select",
             "label": "Font Family",
             "options": {
@@ -306,7 +307,7 @@
             "val": "Arial",
             "required": true
           },
-          "options.default_conditional_format.fontSize": {
+          "options.conditional_format.fontSize": {
             "type": "select",
             "label": "Font Size",
             "options": {
@@ -332,7 +333,7 @@
             "val": "12px",
             "required": true
           },
-          "options.default_conditional_format.color": {
+          "options.conditional_format.color": {
             "type": "select",
             "label": "Color",
             "options": {
@@ -361,15 +362,15 @@
             "val": "F44336",
             "required": true
           },
-          "options.default_conditional_format.custom_color": {
+          "options.conditional_format.custom_color": {
             "type": "text",
             "label": "Custom Color",
-            "show_if": "options.default_conditional_format.color=='custom'",
+            "show_if": "options.conditional_format.color=='custom'",
             "placeholder": "3F51B5",
             "val": "",
             "breakLine": true
           },
-          "options.default_conditional_format.backgroundColor": {
+          "options.conditional_format.backgroundColor": {
             "type": "select",
             "label": "Background Color",
             "options": {
@@ -398,10 +399,10 @@
             "val": "FFFFFF",
             "required": true
           },
-          "options.default_conditional_format.custom_background_color": {
+          "options.conditional_format.custom_background_color": {
             "type": "text",
             "label": "Custom Background Color",
-            "show_if": "options.default_conditional_format.backgroundColor=='custom'",
+            "show_if": "options.conditional_format.backgroundColor=='custom'",
             "placeholder": "FFFFFF",
             "val": "",
             "breakLine": true
@@ -462,10 +463,10 @@
             "required": true,
             "breakLine": true
           },
-          "use_default_format": {
+          "custom_format": {
             "type": "checkbox",
-            "label": "Use Default Formatting for this Measure",
-            "val": "true",
+            "label": "Custom Number Formatting for this Measure Value",
+            "val": "false",
             "isOn": "true",
             "isOff": "false",
             "breakLine": true
@@ -473,7 +474,7 @@
           "custom_format_textAlign": {
             "type": "select",
             "label": "Text Align",
-            "show_if": "this.use_default_format=='false'",
+            "show_if": "this.custom_format=='true'",
             "options": {
               "right": {
                 "label": "Right"
@@ -491,7 +492,7 @@
           "custom_format_thousandsSeparator": {
             "type": "select",
             "label": "Thousands Separator",
-            "show_if": "this.use_default_format=='false'",
+            "show_if": "this.custom_format=='true'",
             "options": {
               "(Space)": {
                 "label": "(Space)"
@@ -509,7 +510,7 @@
           "custom_format_decimalSeparator": {
             "type": "select",
             "label": "Decimal Separator",
-            "show_if": "this.use_default_format=='false'",
+            "show_if": "this.custom_format=='true'",
             "options": {
               ",": {
                 "label": ","
@@ -524,7 +525,7 @@
           "custom_format_decimalPlaces": {
             "type": "select",
             "label": "Decimal Places",
-            "show_if": "this.use_default_format=='false'",
+            "show_if": "this.custom_format=='true'",
             "options": {
               "-1": {
                 "label": "None"
@@ -566,13 +567,13 @@
           "custom_format_currencySymbol": {
             "type": "text",
             "label": "Currency Symbol",
-            "show_if": "this.use_default_format=='false'",
-            "val": "$"
+            "show_if": "this.custom_format=='true'",
+            "val": ""
           },
           "custom_format_negativeNumberFormat": {
             "type": "select",
             "label": "Negative Number Format",
-            "show_if": "this.use_default_format=='false'",
+            "show_if": "this.custom_format=='true'",
             "options": {
               "-1": {
                 "label": "-1"
@@ -593,13 +594,13 @@
           "custom_format_nullValue": {
             "type": "text",
             "label": "Null Value",
-            "show_if": "this.use_default_format=='false'",
+            "show_if": "this.custom_format=='true'",
             "val": ""
           },
           "custom_format_isPercent": {
             "type": "select",
             "label": "Format as Percent",
-            "show_if": "this.use_default_format=='false'",
+            "show_if": "false",
             "options": {
               "false": {
                 "label": "False"
@@ -614,7 +615,7 @@
           },
           "use_conditional_format": {
             "type": "checkbox",
-            "label": "Conditional Formatting for this Measure",
+            "label": "Conditional Formatting for this Measure Value",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -645,9 +646,6 @@
               },
               "between": {
                 "label": "Between"
-              },
-              "empty": {
-                "label": "Empty"
               }
             },
             "val": ">",
@@ -657,8 +655,7 @@
             "type": "text",
             "label": "Value",
             "show_if": "this.use_conditional_format=='true' && (this.op=='<' || this.op=='<=' || this.op=='>' || this.op=='>=' || this.op=='==' || this.op=='!=' || this.op=='between')",
-            "val": "0",
-            "breakLine": true
+            "val": "0"
           },
           "value2": {
             "type": "text",
@@ -760,7 +757,7 @@
                 "label": "Custom"
               }
             },
-            "val": "F44336",
+            "val": "FFEB3B",
             "required": true
           },
           "custom_color": {
