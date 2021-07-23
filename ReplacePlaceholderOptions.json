@@ -1,0 +1,70 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
+      "options.find_col": {
+        "type": "select",
+        "label": "Placeholder Column",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.placeholder_type": {
+        "type": "select",
+        "label": "Placeholder type",
+        "required": true,
+        "options": {
+          "text": {
+            "label": "Text"
+          },
+          "regex": {
+            "label": "Regular Expression"
+          }
+        },
+        "val": "yes"
+      },
+      "options.placeholder_text": {
+        "type": "text",
+        "label": "Placeholder",
+        "show_if": "options.placeholder_type=='text'",
+        "val": "",
+        "placeholder": "FindText",
+        "required": true,
+        "breakLine": true
+      },
+      "options.placeholder_regex": {
+        "type": "text",
+        "label": "Placeholder RegEx",
+        "show_if": "options.placeholder_type=='regex'",
+        "val": "",
+        "placeholder": "\\sFindText\\s",
+        "required": true
+      },
+      "options.case_sensitivity": {
+        "type": "select",
+        "label": "Case Sensitivity",
+        "required": true,
+        "options": {
+          "yes": {
+            "label": "Case Sensitive"
+          },
+          "no": {
+            "label": "Case Insensitive"
+          }
+        },
+        "val": "yes",
+        "breakLine": true
+      },
+      "options.replace_col": {
+        "type": "select",
+        "label": "Replace By Column",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      }
+    }
+  }
+}
