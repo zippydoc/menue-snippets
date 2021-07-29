@@ -1,77 +1,131 @@
 {
-  "options": {
+  "main_options": {
     "type": "fieldset",
-    "label": "Specify Input Tables",
+    "label": "Run All Options",
     "repeat": false,
     "fields": {
-      "options.select_type": {
-        "type": "select",
-        "label": "Select Type",
-        "required": true,
-        "options": {
-          "table_selection": {
-            "label": "Table Selection"
-          },
-          "select_by_pattern": {
-            "label": "Select by Pattern"
-          }
-        },
-        "val": "table_selection"
-      },
-      "options.input_tables": {
-        "type": "select",
-        "label": "Select Tables",
-        "bind": "TABLES",
-        "empty": "",
-        "multiple": true,
-        "show_if": "options.select_type=='table_selection'",
-        "required": true
-      },
-      "options.filter_params": {
+      "options": {
         "type": "fieldset",
-        "label": "Match tables",
-        "show_if": "options.select_type=='select_by_pattern'",
+        "label": "Specify Input Tables",
+        "breakLine": true,
+        "repeat": false,
+        "fields": {
+          "options.select_type": {
+            "type": "select",
+            "label": "Select Type",
+            "required": true,
+            "options": {
+              "table_selection": {
+                "label": "Table Selection"
+              },
+              "select_by_pattern": {
+                "label": "Select by Pattern"
+              }
+            },
+            "val": "table_selection"
+          },
+          "options.input_tables": {
+            "type": "select",
+            "label": "Select Tables",
+            "bind": "TABLES",
+            "empty": "",
+            "multiple": true,
+            "show_if": "options.select_type=='table_selection'",
+            "required": true
+          },
+          "options.filter_params": {
+            "type": "fieldset",
+            "label": "Match tables",
+            "show_if": "options.select_type=='select_by_pattern'",
+            "repeat": true,
+            "fields": {
+              "keyword": {
+                "type": "text",
+                "label": "Enter Keyword",
+                "required": true,
+                "val": ""
+              },
+              "filter_target": {
+                "type": "select",
+                "label": "Filter on",
+                "required": true,
+                "options": {
+                  "table_name": {
+                    "label": "Table Name"
+                  },
+                  "table_tag": {
+                    "label": "Table Tag"
+                  }
+                },
+                "val": "table_name"
+              },
+              "filter_type": {
+                "type": "select",
+                "label": "Filter type",
+                "required": true,
+                "options": {
+                  "equal": {
+                    "label": "Equal"
+                  },
+                  "contain": {
+                    "label": "Contains"
+                  },
+                  "start_with": {
+                    "label": "Starts With"
+                  },
+                  "end_with": {
+                    "label": "Ends With"
+                  }
+                },
+                "val": "equal"
+              },
+              "delete": {
+                "type": "button",
+                "label": "Delete",
+                "function": "DELETE_ROW"
+              }
+            }
+          },
+          "options.use_waiting_time": {
+            "type": "checkbox",
+            "label": "Add waiting time",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.waiting_period": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "show_if": "options.use_waiting_time!='false'"
+          }
+        }
+      },
+      "task_chain": {
+        "type": "checkbox",
+        "label": "Task Chain",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "schedule_options": {
+        "type": "fieldset",
+        "label": "Tasks to schedule",
+        "show_if": "task_chain == 'true'",
         "repeat": true,
         "fields": {
-          "keyword": {
+          "input_task": {
             "type": "text",
-            "label": "Enter Keyword",
+            "label": "Enter Task name",
             "required": true,
             "val": ""
           },
-          "filter_target": {
-            "type": "select",
-            "label": "Filter on",
-            "required": true,
-            "options": {
-              "table_name": {
-                "label": "Table Name"
-              },
-              "table_tag": {
-                "label": "Table Tag"
-              }
-            },
-            "val": "table_name"
-          },
-          "filter_type": {
-            "type": "select",
-            "label": "Filter type",
-            "required": true,
-            "options": {
-              "equal": {
-                "label": "Equal"
-              },
-              "contain": {
-                "label": "Contains"
-              },
-              "start_with": {
-                "label": "Starts With"
-              },
-              "end_with": {
-                "label": "Ends With"
-              }
-            },
-            "val": "equal"
+          "waiting_time": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "required": true
           },
           "delete": {
             "type": "button",
