@@ -20,7 +20,7 @@
             "label": "Delete all permissions"
           }
         },
-        "val": "set_permissions_by_user_table",
+        "val": "set_permissions_by_user_list",
         "breakLine": true
       },
       "options.table_permission.emails": {
@@ -30,7 +30,7 @@
         "required": true,
         "width": "100%"
       },
-      "users_table": {
+      "options.table_permission.users_table": {
         "type": "select",
         "label": "Select Users Table",
         "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_table'",
@@ -38,12 +38,12 @@
         "empty": "",
         "required": true
       },
-      "user_columns": {
+      "options.table_permission.user_column": {
         "type": "select",
-        "label": "Select Users Column(s)",
+        "label": "Select Users Column",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_table'",
         "required": true,
-        "table": "users_table",
-        "multiple": false,
+        "table": "options.table_permission.users_table",
         "bind": "COLUMNS",
         "breakLine": true
       },
@@ -55,13 +55,14 @@
         "isOn": "true",
         "isOff": "false"
       },
-      "user_rows": {
+      "options.user_rows": {
         "type": "select",
         "label": "User rows",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_table' && options.all_rows=='false'",
         "multiple": true,
         "unique_values_only": true,
-        "table": "users_table",
-        "column_list": "user_columns",
+        "table": "options.table_permission.users_table",
+        "column_list": "options.table_permission.user_column",
         "bind": "RECORDS",
         "required": true
       },
