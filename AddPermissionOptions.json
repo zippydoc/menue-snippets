@@ -30,7 +30,7 @@
         "required": true,
         "width": "100%"
       },
-      "options.table_permission.users_table": {
+      "users_table": {
         "type": "select",
         "label": "Select Users Table",
         "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_table'",
@@ -38,12 +38,11 @@
         "empty": "",
         "required": true
       },
-      "options.table_permission.user_columns": {
+      "user_columns": {
         "type": "select",
         "label": "Select Users Column(s)",
-        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_table'",
         "required": true,
-        "table": "options.table_permission.users_table",
+        "table": "users_table",
         "multiple": true,
         "bind": "COLUMNS",
         "breakLine": true
@@ -56,13 +55,13 @@
         "isOn": "true",
         "isOff": "false"
       },
-      "options.user_rows": {
+      "user_rows": {
         "type": "select",
         "label": "User rows",
         "multiple": true,
         "unique_values_only": true,
-        "table": "options.table_permission.users_table",
-        "column_list": "options.table_permission.user_columns",
+        "table": "users_table",
+        "column_list": "user_columns",
         "bind": "RECORDS",
         "required": true
       },
