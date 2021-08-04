@@ -6,7 +6,7 @@
     "fields": {
       "options.script_name": {
         "type": "hidden",
-        "val": "PdfRePro"
+        "val": "PdfReProByTable"
       },
       "options.type": {
         "type": "select",
@@ -122,58 +122,14 @@
         "required": true,
         "breakLine": true
       },
-      "options.placeholder_values": {
-        "type": "fieldset",
-        "label": "Add PDF Placeholder Values",
+      "options.input_table": {
+        "type": "select",
+        "label": "Select Table",
         "show_if": "options.type=='create'",
-        "repeat": true,
-        "fields": {
-          "type": {
-            "type": "select",
-            "label": "Type",
-            "options": {
-              "item": {
-                "label": "Item"
-              },
-              "list": {
-                "label": "List"
-              }
-            },
-            "val": "item",
-            "required": true
-          },
-          "list_name": {
-            "type": "text",
-            "label": "List Name",
-            "show_if": "this.type=='list'",
-            "val": "",
-            "required": true
-          },
-          "list_item": {
-            "type": "number",
-            "label": "List Item",
-            "show_if": "this.type=='list'",
-            "val": "1",
-            "required": true
-          },
-          "field_name": {
-            "type": "text",
-            "label": "Field Name",
-            "val": "",
-            "required": true
-          },
-          "field_value": {
-            "type": "text",
-            "label": "Field Value",
-            "val": "",
-            "required": true
-          },
-          "delete": {
-            "type": "button",
-            "label": "Delete",
-            "function": "DELETE_ROW"
-          }
-        }
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
       },
       "options.webservice": {
         "type": "select",
