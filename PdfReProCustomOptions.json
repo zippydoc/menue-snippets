@@ -6,12 +6,15 @@
     "fields": {
       "options.custom_pdfrepro_account": {
         "type": "hidden",
-        "val": "false"
+        "val": "true"
       },
       "options.type": {
         "type": "select",
         "label": "Task Type",
         "options": {
+          "get_placeholders_of_all_templates": {
+            "label": "Get Placeholders of all Templates"
+          },
           "get_placeholders_of_template": {
             "label": "Get Placeholders of a Template"
           },
@@ -19,25 +22,7 @@
             "label": "Create PDF and export to cloud"
           }
         },
-        "val": "get_placeholders_of_template",
-        "required": true,
-        "breakLine": true
-      },
-      "options.template_id": {
-        "type": "select",
-        "label": "Document Type",
-        "options": {
-          "6b8f2d130aba93bf8f8e2e978231a4b08ccc5ed6": {
-            "label": "Shareholder Resolution"
-          },
-          "210c38c40bc80f588852fb05ff408dff1abb0e95": {
-            "label": "Beispiel Auftragsbestätigung"
-          },
-          "e873f2e225ec837f172b90a148f2f28875af8e29": {
-            "label": "Vehicle Display"
-          }
-        },
-        "val": "6b8f2d130aba93bf8f8e2e978231a4b08ccc5ed6",
+        "val": "get_placeholders_of_all_templates",
         "required": true,
         "breakLine": true
       },
@@ -48,6 +33,35 @@
         "bind": "TABLES",
         "empty": "",
         "required": true,
+        "breakLine": true
+      },
+      "pdfrepro_credential_box": {
+        "type": "fieldset",
+        "label": "Your own PDFrePRO account API Key",
+        "repeat": false,
+        "fields": {
+          "options.pdfrepro_credentials.api_key": {
+            "type": "text",
+            "label": "API Key",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.pdfrepro_credentials.shared_key": {
+            "type": "text",
+            "label": "Shared Key",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          }
+        }
+      },
+      "options.template_id": {
+        "type": "text",
+        "label": "Template ID",
+        "show_if": "options.type=='get_placeholders_of_template'",
+        "required": true,
+        "width": "100%",
         "breakLine": true
       },
       "options.webservice": {
