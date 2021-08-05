@@ -6,15 +6,12 @@
     "fields": {
       "options.script_name": {
         "type": "hidden",
-        "val": "PdfReProCustom"
+        "val": "PdfReProByTable"
       },
       "options.type": {
         "type": "select",
         "label": "Task Type",
         "options": {
-          "get_placeholders_of_all_templates": {
-            "label": "Get Placeholders of all Templates"
-          },
           "get_placeholders_of_template": {
             "label": "Get Placeholders of a Template"
           },
@@ -22,7 +19,109 @@
             "label": "Create PDF and export to cloud"
           }
         },
-        "val": "get_placeholders_of_all_templates",
+        "val": "get_placeholders_of_template",
+        "required": true,
+        "breakLine": true
+      },
+      "options.template_id": {
+        "type": "select",
+        "label": "Document Type",
+        "options": {
+          "bd7c7b52449752d78436f5aaa893abd36e96b7a9": {
+            "label": "Cover Letter"
+          },
+          "b7b0e4380196a9c60a5d236578bddb16306a51bd": {
+            "label": "Invoice"
+          },
+          "17b533f4f9c5d2960ba67455a81ef22918106d1e": {
+            "label": "Appointment or Removal"
+          },
+          "6b8f2d130aba93bf8f8e2e978231a4b08ccc5ed6": {
+            "label": "Shareholder Resolution"
+          },
+          "210c38c40bc80f588852fb05ff408dff1abb0e95": {
+            "label": "Beispiel Auftragsbestätigung"
+          },
+          "e873f2e225ec837f172b90a148f2f28875af8e29": {
+            "label": "Vehicle Display"
+          },
+          "6a24c8591864a27b99697800fdceb8ebff46228b": {
+            "label": "Copy from Cover Letter"
+          }
+        },
+        "val": "bd7c7b52449752d78436f5aaa893abd36e96b7a9",
+        "required": true
+      },
+      "options.lang": {
+        "type": "select",
+        "label": "Document Language",
+        "show_if": "options.type=='create'",
+        "options": {
+          "standard": {
+            "label": "Standard Language"
+          },
+          "einsprachig": {
+            "label": "einsprachig"
+          },
+          "lt": {
+            "label": "lt"
+          },
+          "it": {
+            "label": "it"
+          },
+          "hu": {
+            "label": "hu"
+          },
+          "hr": {
+            "label": "hr"
+          },
+          "gl": {
+            "label": "gl"
+          },
+          "ga": {
+            "label": "ga"
+          },
+          "fr": {
+            "label": "fr"
+          },
+          "fi": {
+            "label": "fi"
+          },
+          "bg": {
+            "label": "bg"
+          },
+          "ca": {
+            "label": "ca"
+          },
+          "cs": {
+            "label": "cs"
+          },
+          "cy": {
+            "label": "cy"
+          },
+          "da": {
+            "label": "da"
+          },
+          "de": {
+            "label": "de"
+          },
+          "el": {
+            "label": "el"
+          },
+          "en": {
+            "label": "en"
+          },
+          "es": {
+            "label": "es"
+          },
+          "ey": {
+            "label": "et"
+          },
+          "eu": {
+            "label": "eu"
+          }
+        },
+        "val": "en",
         "required": true,
         "breakLine": true
       },
@@ -33,35 +132,6 @@
         "bind": "TABLES",
         "empty": "",
         "required": true,
-        "breakLine": true
-      },
-      "pdfrepro_credential_box": {
-        "type": "fieldset",
-        "label": "Your own PDFrePRO account API Key",
-        "repeat": false,
-        "fields": {
-          "options.pdfrepro_credentials.api_key": {
-            "type": "text",
-            "label": "API Key",
-            "required": true,
-            "width": "100%",
-            "breakLine": true
-          },
-          "options.pdfrepro_credentials.shared_key": {
-            "type": "text",
-            "label": "Shared Key",
-            "required": true,
-            "width": "100%",
-            "breakLine": true
-          }
-        }
-      },
-      "options.template_id": {
-        "type": "text",
-        "label": "Template ID",
-        "show_if": "options.type=='get_placeholders_of_template'",
-        "required": true,
-        "width": "100%",
         "breakLine": true
       },
       "options.webservice": {
@@ -82,7 +152,7 @@
             "label": "Google Drive"
           }
         },
-        "val": "github",
+        "val": "ms_one_drive",
         "required": true,
         "breakLine": true
       },

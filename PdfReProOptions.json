@@ -4,9 +4,9 @@
     "label": "Options",
     "repeat": false,
     "fields": {
-      "options.custom_pdfrepro_account": {
+      "options.script_name": {
         "type": "hidden",
-        "val": "false"
+        "val": "PdfRePro"
       },
       "options.type": {
         "type": "select",
@@ -27,6 +27,15 @@
         "type": "select",
         "label": "Document Type",
         "options": {
+          "bd7c7b52449752d78436f5aaa893abd36e96b7a9": {
+            "label": "Cover Letter"
+          },
+          "b7b0e4380196a9c60a5d236578bddb16306a51bd": {
+            "label": "Invoice"
+          },
+          "17b533f4f9c5d2960ba67455a81ef22918106d1e": {
+            "label": "Appointment or Removal"
+          },
           "6b8f2d130aba93bf8f8e2e978231a4b08ccc5ed6": {
             "label": "Shareholder Resolution"
           },
@@ -37,18 +46,147 @@
             "label": "Vehicle Display"
           }
         },
-        "val": "6b8f2d130aba93bf8f8e2e978231a4b08ccc5ed6",
+        "val": "bd7c7b52449752d78436f5aaa893abd36e96b7a9",
+        "required": true
+      },
+      "options.lang": {
+        "type": "select",
+        "label": "Document Language",
+        "show_if": "options.type=='create'",
+        "options": {
+          "standard": {
+            "label": "Standard Language"
+          },
+          "einsprachig": {
+            "label": "einsprachig"
+          },
+          "lt": {
+            "label": "lt"
+          },
+          "it": {
+            "label": "it"
+          },
+          "hu": {
+            "label": "hu"
+          },
+          "hr": {
+            "label": "hr"
+          },
+          "gl": {
+            "label": "gl"
+          },
+          "ga": {
+            "label": "ga"
+          },
+          "fr": {
+            "label": "fr"
+          },
+          "fi": {
+            "label": "fi"
+          },
+          "bg": {
+            "label": "bg"
+          },
+          "ca": {
+            "label": "ca"
+          },
+          "cs": {
+            "label": "cs"
+          },
+          "cy": {
+            "label": "cy"
+          },
+          "da": {
+            "label": "da"
+          },
+          "de": {
+            "label": "de"
+          },
+          "el": {
+            "label": "el"
+          },
+          "en": {
+            "label": "en"
+          },
+          "es": {
+            "label": "es"
+          },
+          "ey": {
+            "label": "et"
+          },
+          "eu": {
+            "label": "eu"
+          }
+        },
+        "val": "en",
         "required": true,
         "breakLine": true
       },
-      "options.input_table": {
-        "type": "select",
-        "label": "Select Table",
+      "options.placeholder_values": {
+        "type": "fieldset",
+        "label": "Add PDF Placeholder Values",
         "show_if": "options.type=='create'",
-        "bind": "TABLES",
-        "empty": "",
-        "required": true,
-        "breakLine": true
+        "repeat": true,
+        "fields": {
+          "type": {
+            "type": "select",
+            "label": "Type",
+            "options": {
+              "item": {
+                "label": "Item"
+              },
+              "list": {
+                "label": "List"
+              }
+            },
+            "val": "item",
+            "required": true
+          },
+          "list_name": {
+            "type": "text",
+            "label": "List Name",
+            "show_if": "this.type=='list'",
+            "val": "",
+            "required": true
+          },
+          "list_idx": {
+            "type": "number",
+            "label": "List Item(positive integer)",
+            "show_if": "this.type=='list'",
+            "val": "",
+            "required": true
+          },
+          "field_name": {
+            "type": "text",
+            "label": "Field Name",
+            "val": "",
+            "required": true
+          },
+          "is_image": {
+            "type": "checkbox",
+            "label": "Jpeg Image",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "field_value": {
+            "type": "text",
+            "label": "Field Value",
+            "show_if": "this.is_image=='false'",
+            "val": ""
+          },
+          "image_data": {
+            "type": "text",
+            "label": "Base64 encoded Image data",
+            "show_if": "this.is_image=='true'",
+            "val": ""
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
       },
       "options.webservice": {
         "type": "select",
@@ -68,7 +206,7 @@
             "label": "Google Drive"
           }
         },
-        "val": "github",
+        "val": "ms_one_drive",
         "required": true,
         "breakLine": true
       },
