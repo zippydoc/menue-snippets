@@ -2,11 +2,16 @@
   "options_box": {
     "type": "fieldset",
     "label": "Flexmonster Report Option",
+    "show_if": "options.configure_manual=='true'",
     "repeat": false,
     "fields": {
       "options.type": {
         "type": "hidden",
         "val": "grid"
+      },
+      "options.add_column_cols": {
+        "type": "hidden",
+        "val": "true"
       },
       "options.column_cols": {
         "type": "fieldset",
@@ -62,10 +67,10 @@
           }
         }
       },
-      "options.use_default_number_format": {
+      "options.custom_number_format": {
         "type": "checkbox",
-        "label": "Use Default Number Formatting",
-        "val": "true",
+        "label": "Custom Value Formatting for all Values",
+        "val": "false",
         "isOn": "true",
         "isOff": "false",
         "style": "margin-top: 10px",
@@ -73,8 +78,8 @@
       },
       "default_number_format_frame": {
         "type": "fieldset",
-        "label": "Default Number Formatting",
-        "show_if": "options.use_default_number_format=='false'",
+        "label": "Custom Value Formatting",
+        "show_if": "options.custom_number_format=='true'",
         "repeat": false,
         "fields": {
           "options.default_format.textAlign": {
@@ -411,12 +416,12 @@
       },
       "options.measure_cols": {
         "type": "fieldset",
-        "label": "Measures",
+        "label": "Values",
         "repeat": true,
         "fields": {
           "measure_col": {
             "type": "select",
-            "label": "Measure Column",
+            "label": "Value Column",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
@@ -465,7 +470,7 @@
           },
           "custom_format": {
             "type": "checkbox",
-            "label": "Custom Number Formatting for this Measure Value",
+            "label": "Custom Value Formatting for this Value",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -615,7 +620,7 @@
           },
           "use_conditional_format": {
             "type": "checkbox",
-            "label": "Conditional Formatting for this Measure Value",
+            "label": "Conditional Formatting for this Value",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
