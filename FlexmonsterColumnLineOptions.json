@@ -7,11 +7,11 @@
     "fields": {
       "options.type": {
         "type": "hidden",
-        "val": "scatter_chart"
+        "val": "column_line_chart"
       },
       "options.chart_type": {
         "type": "hidden",
-        "val": "scatter"
+        "val": "column_line"
       },
       "options.add_column_cols": {
         "type": "checkbox",
@@ -81,16 +81,65 @@
         "label": "Values",
         "repeat": true,
         "fields": {
-          "measure_col": {
+          "column_chart_measure_col": {
             "type": "select",
-            "label": "Value Column",
+            "label": "Value Column of Column Chart",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
-          "aggregation": {
+          "column_chart_aggregation": {
             "type": "select",
-            "label": "Aggregation Function",
+            "label": "Aggregation of Column Chart",
+            "options": {
+              "sum": {
+                "label": "Sum"
+              },
+              "count": {
+                "label": "Count"
+              },
+              "distinctcount": {
+                "label": "Distinct Count"
+              },
+              "average": {
+                "label": "Average"
+              },
+              "median": {
+                "label": "Median"
+              },
+              "product": {
+                "label": "Product"
+              },
+              "min": {
+                "label": "Min"
+              },
+              "max": {
+                "label": "Max"
+              },
+              "stdevp": {
+                "label": "Population Standard Deviation"
+              },
+              "stdevs": {
+                "label": "Sample Standard Deviation"
+              },
+              "percent": {
+                "label": "Percent"
+              }
+            },
+            "val": "sum",
+            "required": true,
+            "breakLine": true
+          },
+          "line_chart_measure_col": {
+            "type": "select",
+            "label": "Value Column of Line Chart",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "line_chart_aggregation": {
+            "type": "select",
+            "label": "Aggregation of Line Chart",
             "options": {
               "sum": {
                 "label": "Sum"
