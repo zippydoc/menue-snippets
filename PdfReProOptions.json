@@ -139,7 +139,7 @@
             "type": "text",
             "label": "Sender Department",
             "placeholder": "Purchase department",
-            "val": "Purchase department",
+            "val": "",
             "width": "100%"
           },
           "options.pdf_placeholder.positions": {
@@ -202,6 +202,68 @@
                 "show_if" : "$index == 1",
                 "val": "",
                 "placeholder": ""
+              },
+              "delete": {
+                "type": "button",
+                "label": "Delete",
+                "function": "DELETE_ROW"
+              }
+            }
+          }
+        }
+      },
+      "appointment_or_removal_placeholder_frame": {
+        "type": "fieldset",
+        "label": "Configure 'Appointment or Removal' PDF",
+        "show_if": "options.type=='create' && options.template_id=='17b533f4f9c5d2960ba67455a81ef22918106d1e'",
+        "repeat": false,
+        "fields": {
+          "options.pdf_placeholder.effective_date": {
+            "type": "text",
+            "label": "Effective Date",
+            "placeholder": "31.12.2020",
+            "val": "",
+            "width": "100%"
+          },
+          "options.pdf_placeholder.resolution_date": {
+            "type": "text",
+            "label": "Resolution Date",
+            "placeholder": "31.12.2020",
+            "val": "",
+            "width": "100%"
+          },
+          "options.pdf_placeholder.shareholder_list": {
+            "type": "fieldset",
+            "label": "Shareholder List",
+            "repeat": true,
+            "fields": {
+              "signatory_name": {
+                "type": "text",
+                "label": "Signatory Name ",
+                "show_if" : "$index == 0",
+                "val": "",
+                "placeholder": "Peter Foster"
+              },
+              "signatory_representing": {
+                "type": "text",
+                "label": "Signatory Representing",
+                "show_if" : "$index == 0",
+                "val": "",
+                "placeholder": "Managing Director Of  Party__4"
+              },
+              "signatory_title": {
+                "type": "text",
+                "label": "Signatory Title",
+                "show_if" : "$index == 0",
+                "val": "",
+                "placeholder": "Managing Director"
+              },
+              "signature_place": {
+                "type": "text",
+                "label": "Signature Place",
+                "show_if" : "$index == 0",
+                "val": "",
+                "placeholder": "Frankfurt am Main"
               },
               "delete": {
                 "type": "button",
