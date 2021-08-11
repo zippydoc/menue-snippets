@@ -46,7 +46,7 @@
             "label": "Vehicle Display"
           }
         },
-        "val": "bd7c7b52449752d78436f5aaa893abd36e96b7a9",
+        "val": "b7b0e4380196a9c60a5d236578bddb16306a51bd",
         "required": true
       },
       "options.lang": {
@@ -122,69 +122,93 @@
         "required": true,
         "breakLine": true
       },
-      "options.placeholder_values": {
+      "invoice_placeholder_frame": {
         "type": "fieldset",
-        "label": "Add PDF Placeholder Values",
-        "show_if": "options.type=='create'",
-        "repeat": true,
+        "label": "Configure 'Invoice' PDF",
+        "show_if": "options.type=='create' && options.template_id=='b7b0e4380196a9c60a5d236578bddb16306a51bd'",
+        "repeat": false,
         "fields": {
-          "type": {
-            "type": "select",
-            "label": "Type",
-            "options": {
-              "item": {
-                "label": "Item"
+          "options.pdf_placeholder.sender_name": {
+            "type": "text",
+            "label": "Sender Name",
+            "placeholder": "My Company ltd.",
+            "val": "",
+            "width": "100%"
+          },
+          "options.pdf_placeholder.sender_department": {
+            "type": "text",
+            "label": "Sender Department",
+            "placeholder": "Purchase department",
+            "val": "Purchase department",
+            "width": "100%"
+          },
+          "options.pdf_placeholder.positions": {
+            "type": "fieldset",
+            "label": "Positions",
+            "repeat": true,
+            "fields": {
+              "article_number": {
+                "type": "text",
+                "label": "Article Number",
+                "show_if" : "$index == 0",
+                "val": "",
+                "placeholder": "KM01"
               },
-              "list": {
-                "label": "List"
+              "article_description": {
+                "type": "text",
+                "label": "Article Description",
+                "show_if" : "$index == 0",
+                "val": "",
+                "placeholder": "Kaffeemaschine super deluxe 100"
+              },
+              "package_type": {
+                "type": "text",
+                "label": "Package Type",
+                "show_if" : "$index == 0",
+                "val": "",
+                "placeholder": "stck."
+              },
+              "per_item_price": {
+                "type": "text",
+                "label": "Per Item Price",
+                "show_if" : "$index == 0",
+                "val": "",
+                "placeholder": ""
+              },
+              "total_price": {
+                "type": "text",
+                "label": "Total Price",
+                "show_if" : "$index == 1",
+                "val": "",
+                "placeholder": ""
+              },
+              "vat_amount": {
+                "type": "text",
+                "label": "Vat Amount",
+                "show_if" : "$index == 1",
+                "val": "",
+                "placeholder": ""
+              },
+              "net_amount": {
+                "type": "text",
+                "label": "Net Amount",
+                "show_if" : "$index == 1",
+                "val": "",
+                "placeholder": ""
+              },
+              "vat_percentage": {
+                "type": "text",
+                "label": "Vat Percentage",
+                "show_if" : "$index == 1",
+                "val": "",
+                "placeholder": ""
+              },
+              "delete": {
+                "type": "button",
+                "label": "Delete",
+                "function": "DELETE_ROW"
               }
-            },
-            "val": "item",
-            "required": true
-          },
-          "list_name": {
-            "type": "text",
-            "label": "List Name",
-            "show_if": "this.type=='list'",
-            "val": "",
-            "required": true
-          },
-          "list_idx": {
-            "type": "number",
-            "label": "List Item(positive integer)",
-            "show_if": "this.type=='list'",
-            "val": "",
-            "required": true
-          },
-          "field_name": {
-            "type": "text",
-            "label": "Field Name",
-            "val": "",
-            "required": true
-          },
-          "is_image": {
-            "type": "checkbox",
-            "label": "Jpeg Image",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false"
-          },
-          "field_value": {
-            "type": "text",
-            "label": "Field Value",
-            "show_if": "this.is_image=='false'",
-            "val": ""
-          },
-          "image_data": {
-            "type": "text",
-            "label": "Base64 encoded Image data",
-            "show_if": "this.is_image=='true'",
-            "val": ""
-          },
-          "delete": {
-            "type": "button",
-            "label": "Delete",
-            "function": "DELETE_ROW"
+            }
           }
         }
       },
