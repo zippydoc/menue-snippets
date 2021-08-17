@@ -77,10 +77,24 @@
         "val": "empty",
         "breakLine": true
       },
-      "date_value": {
+      "start_date_value": {
         "type": "date",
-        "label": "Item",
+        "label": "Start Date",
         "show_if": "this.category=='holidays' || this.category=='illness' || this.category=='working_days' || this.category=='working_hours'",
+        "val": "",
+        "required": true
+      },
+      "end_date_value": {
+        "type": "date",
+        "label": "End Date",
+        "show_if": "this.category=='holidays' || this.category=='illness' || this.category=='working_days'",
+        "val": "",
+        "required": false
+      },
+      "due_date_value": {
+        "type": "date",
+        "label": "Due Date",
+        "show_if": "this.category=='tasks'",
         "val": "",
         "required": true
       },
@@ -635,7 +649,7 @@
       "number_value": {
         "type": "number",
         "label": "Number",
-        "show_if": "this.category=='bonus'",
+        "show_if": "this.category=='bonus' || this.category=='bills' || this.category=='business_bills'",
         "val": "0",
         "breakLine": true,
         "required": true
