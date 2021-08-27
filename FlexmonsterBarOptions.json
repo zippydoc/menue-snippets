@@ -2,6 +2,7 @@
   "options_box": {
     "type": "fieldset",
     "label": "Flexmonster Report Option",
+    "show_if": "options.configure_manual=='true'",
     "repeat": false,
     "fields": {
       "options.type": {
@@ -12,9 +13,18 @@
         "type": "hidden",
         "val": "bar_h"
       },
+      "options.add_column_cols": {
+        "type": "checkbox",
+        "label": "by Category",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "options.column_cols": {
         "type": "fieldset",
         "label": "Category column(s)",
+        "show_if": "options.add_column_cols=='true'",
         "repeat": true,
         "fields": {
           "column_col": {
@@ -68,12 +78,12 @@
       },
       "options.measure_cols": {
         "type": "fieldset",
-        "label": "Measures",
+        "label": "Value column(s)",
         "repeat": true,
         "fields": {
           "measure_col": {
             "type": "select",
-            "label": "Measure Column",
+            "label": "Value Column",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true

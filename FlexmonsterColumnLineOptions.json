@@ -7,11 +7,11 @@
     "fields": {
       "options.type": {
         "type": "hidden",
-        "val": "column_chart"
+        "val": "column_line_chart"
       },
       "options.chart_type": {
         "type": "hidden",
-        "val": "column"
+        "val": "column_line"
       },
       "options.add_column_cols": {
         "type": "checkbox",
@@ -76,21 +76,21 @@
           }
         }
       },
-      "options.measure_cols": {
+      "measure_cols_frame": {
         "type": "fieldset",
         "label": "Value column(s)",
-        "repeat": true,
+        "repeat": false,
         "fields": {
-          "measure_col": {
+          "options.column_chart_measure_col": {
             "type": "select",
-            "label": "Value Column",
+            "label": "Value Column of Column Chart",
             "table": "input_table",
             "bind": "COLUMNS",
             "required": true
           },
-          "aggregation": {
+          "options.column_chart_aggregation": {
             "type": "select",
-            "label": "Aggregation Function",
+            "label": "Aggregation of Column Chart",
             "options": {
               "sum": {
                 "label": "Sum"
@@ -130,10 +130,54 @@
             "required": true,
             "breakLine": true
           },
-          "delete": {
-            "type": "button",
-            "label": "Delete",
-            "function": "DELETE_ROW"
+          "options.line_chart_measure_col": {
+            "type": "select",
+            "label": "Value Column of Line Chart",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "options.line_chart_aggregation": {
+            "type": "select",
+            "label": "Aggregation of Line Chart",
+            "options": {
+              "sum": {
+                "label": "Sum"
+              },
+              "count": {
+                "label": "Count"
+              },
+              "distinctcount": {
+                "label": "Distinct Count"
+              },
+              "average": {
+                "label": "Average"
+              },
+              "median": {
+                "label": "Median"
+              },
+              "product": {
+                "label": "Product"
+              },
+              "min": {
+                "label": "Min"
+              },
+              "max": {
+                "label": "Max"
+              },
+              "stdevp": {
+                "label": "Population Standard Deviation"
+              },
+              "stdevs": {
+                "label": "Sample Standard Deviation"
+              },
+              "percent": {
+                "label": "Percent"
+              }
+            },
+            "val": "sum",
+            "required": true,
+            "breakLine": true
           }
         }
       }
