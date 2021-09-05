@@ -9,18 +9,8 @@
         "val": "PdfReProByTable"
       },
       "options.type": {
-        "type": "select",
-        "label": "Task Type",
-        "options": {
-          "get_placeholders_of_template": {
-            "label": "Get Placeholders of a Template"
-          },
-          "create": {
-            "label": "Create PDF and export to cloud"
-          }
-        },
-        "val": "create",
-        "breakLine": true
+        "type": "hidden",
+        "val": "create"
       },
       "options.template_id": {
         "type": "select",
@@ -111,6 +101,22 @@
         "val": "de",
         "required": true,
         "breakLine": true
+      },
+      "options.browser_popup": {
+        "type": "checkbox",
+        "label": "Open PDF in browser",
+        "show_if": "options.type=='create'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.configure_by_table_help": {
+        "type": "text",
+        "label": "",
+        "val": "Table Structure ( Document | List Name | List Item | Field Name | Field Value )",
+        "disabled": true,
+        "width": "100%"
       },
       "options.input_table": {
         "type": "select",
