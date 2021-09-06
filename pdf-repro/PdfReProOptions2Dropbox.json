@@ -1,0 +1,63 @@
+{
+  "cloud_config_frame": {
+    "type": "fieldset",
+    "label": "Config Cloud Directory to export to",
+    "show_if": "options.type=='create'",
+    "repeat": false,
+    "fields": {
+      "options.webservice": {
+        "type": "hidden",
+        "val": "dropbox"
+      },
+      "options.github_url": {
+        "type": "text",
+        "label": "Enter link e.g. https://github.com/zippydoc/test",
+        "show_if": "options.webservice=='github'",
+        "val": "",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.export_dir": {
+        "type": "text",
+        "label": "Enter dir e.g. /MyZippyDocFiles/SubDir/",
+        "show_if": "options.webservice!='github'",
+        "val": "",
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.github_token": {
+        "type": "text",
+        "label": "Specify the Github personal access token that has write permission:",
+        "show_if": "options.webservice=='github'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.ms_one_drive_token": {
+        "type": "text",
+        "label": "Microsoft Graph API access token. You can get it here https://ms-oauth.herokuapp.com/",
+        "show_if": "options.webservice=='ms_one_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.google_authorization_code": {
+        "type": "text",
+        "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
+        "show_if": "options.webservice=='google_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox_authorization_code": {
+        "type": "text",
+        "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "show_if": "options.webservice=='dropbox'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}
