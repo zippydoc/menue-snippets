@@ -26,7 +26,7 @@
             "label": "Appointment or Removal"
           }
         },
-        "val": "id_bd7c7b52449752d78436f5aaa893abd36e96b7a9",
+        "val": "id_b7b0e4380196a9c60a5d236578bddb16306a51bd",
         "required": true
       },
       "options.lang": {
@@ -102,13 +102,47 @@
         "required": true,
         "breakLine": true
       },
-      "options.browser_popup": {
+      "options.where_to_create": {
+        "type": "select",
+        "label": "Where to create",
+        "options": {
+          "only_open_in_browser": {
+            "label": "Only open PDF in browser"
+          },
+          "only_export_to_cloud": {
+            "label": "Only export to cloud"
+          },
+          "both_export_to_cloud_and_open_in_browser": {
+            "label": "Both export to cloud and open pdf in browser"
+          }
+        },
+        "val": "both_export_to_cloud_and_open_in_browser",
+        "required": true,
+        "breakLine": true
+      },
+      "options.configure_by_table": {
         "type": "checkbox",
-        "label": "Open PDF in browser",
-        "show_if": "options.type=='create'",
+        "label": "Configure by table",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
+        "breakLine": true
+      },
+      "options.configure_by_table_help": {
+        "type": "text",
+        "label": "",
+        "show_if": "options.configure_by_table=='true'",
+        "val": "Table Structure ( Document | List Name | List Item | Field Name | Field Value )",
+        "disabled": true,
+        "width": "100%"
+      },
+      "options.input_table": {
+        "type": "select",
+        "label": "Select Table",
+        "show_if": "options.configure_by_table=='true'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
         "breakLine": true
       }
     }

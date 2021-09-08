@@ -6,22 +6,8 @@
     "repeat": false,
     "fields": {
       "options.webservice": {
-        "type": "select",
-        "label": "Select Webservice",
-        "options": {
-          "ms_one_drive": {
-            "label": "Microsoft One Drive"
-          },
-          "dropbox": {
-            "label": "Dropbox"
-          },
-          "google_drive": {
-            "label": "Google Drive"
-          }
-        },
-        "val": "ms_one_drive",
-        "required": true,
-        "breakLine": true
+        "type": "hidden",
+        "val": "dropbox"
       },
       "options.github_url": {
         "type": "text",
@@ -44,6 +30,14 @@
         "type": "text",
         "label": "Specify the Github personal access token that has write permission:",
         "show_if": "options.webservice=='github'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.ms_one_drive_token": {
+        "type": "text",
+        "label": "Microsoft Graph API access token. You can get it here https://ms-oauth.herokuapp.com/",
+        "show_if": "options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true

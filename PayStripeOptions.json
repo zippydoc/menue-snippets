@@ -1,0 +1,36 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
+      "options.provider": {
+        "type": "hidden",
+        "val": "stripe"
+      },
+      "options.type": {
+        "type": "select",
+        "label": "Payment Type",
+        "options": {
+          "charge": {
+            "label": "Charge"
+          },
+          "transfer": {
+            "label": "Transfer"
+          }
+        },
+        "val": "charge",
+        "required": true
+      },
+      "options.stripe.secret_key": {
+        "type": "text",
+        "label": "Stripe Secret Key",
+        "show_if": "options.provider=='stripe'",
+        "required": true,
+        "val": "",
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}
