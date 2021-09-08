@@ -102,6 +102,30 @@
         "required": true,
         "breakLine": true
       },
+      "options.where_to_create": {
+        "type": "select",
+        "label": "Where to create",
+        "options": {
+          "only_open_in_browser": {
+            "label": "Only open PDF in browser"
+          },
+          "only_export_to_cloud": {
+            "label": "Only export to cloud"
+          },
+          "both_export_to_cloud_and_open_in_browser": {
+            "label": "Both export to cloud and open pdf in browser"
+          }
+        },
+        "val": "both_export_to_cloud_and_open_in_browser",
+        "required": true
+      },
+      "options.configure_by_table_help": {
+        "type": "text",
+        "label": "",
+        "val": "Table Structure ( Document | List Name | List Item | Field Name | Field Value )",
+        "disabled": true,
+        "width": "100%"
+      },
       "options.input_table": {
         "type": "select",
         "label": "Select Table",
@@ -116,14 +140,11 @@
         "label": "Select Webservice",
         "show_if": "options.type=='create'",
         "options": {
-          "github": {
-            "label": "Github"
+          "ms_one_drive": {
+            "label": "Microsoft OneDrive"
           },
           "dropbox": {
             "label": "Dropbox"
-          },
-          "ms_one_drive": {
-            "label": "Microsoft OneDrive"
           },
           "google_drive": {
             "label": "Google Drive"
@@ -160,14 +181,6 @@
             "type": "text",
             "label": "Specify the Github personal access token that has write permission:",
             "show_if": "options.webservice=='github'",
-            "required": true,
-            "width": "100%",
-            "breakLine": true
-          },
-          "options.ms_one_drive_token": {
-            "type": "text",
-            "label": "Microsoft Graph API access token. You can get it here https://ms-oauth.herokuapp.com/",
-            "show_if": "options.webservice=='ms_one_drive'",
             "required": true,
             "width": "100%",
             "breakLine": true

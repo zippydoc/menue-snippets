@@ -1,0 +1,40 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Options",
+    "show_if": "options.configure_manual=='true'",
+    "repeat": false,
+    "fields": {
+      "options.chart_type": {
+        "type": "hidden",
+        "val": "tidy_tree"
+      },
+      "options.group_cols": {
+        "type": "fieldset",
+        "label": "Select Group Column(s) in Order",
+        "repeat": true,
+        "fields": {
+          "group_col": {
+            "type": "select",
+            "label": "Group column",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.value_col": {
+        "type": "select",
+        "label": "Select Value Column",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "required": true
+      }
+    }
+  }
+}
