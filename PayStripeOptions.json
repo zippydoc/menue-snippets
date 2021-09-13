@@ -22,6 +22,24 @@
         "val": "charge",
         "required": true
       },
+      "options.charge_type": {
+        "type": "select",
+        "label": "Charge Type",
+        "show_if": "options.provider=='stripe' && options.type=='charge'",
+        "options": {
+          "charge_without_invoice": {
+            "label": "Immediate charge without sending invoice"
+          },
+          "send_invoice": {
+            "label": "Only send invoice"
+          },
+          "send_invoice_immediate_charge": {
+            "label": "Send invoice and Immediate charge"
+          }
+        },
+        "val": "send_invoice_immediate_charge",
+        "required": true
+      },
       "options.stripe.secret_key": {
         "type": "text",
         "label": "Stripe Secret Key",
