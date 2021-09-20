@@ -1,0 +1,123 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
+      "options.script_name": {
+        "type": "hidden",
+        "val": "PdfRePro"
+      },
+      "options.type": {
+        "type": "hidden",
+        "val": "create"
+      },
+      "options.template_id": {
+        "type": "select",
+        "label": "Document Type",
+        "options": {
+          "id_bd7c7b52449752d78436f5aaa893abd36e96b7a9": {
+            "label": "Cover Letter"
+          },
+          "id_b7b0e4380196a9c60a5d236578bddb16306a51bd": {
+            "label": "Invoice"
+          },
+          "id_17b533f4f9c5d2960ba67455a81ef22918106d1e": {
+            "label": "Appointment or Removal"
+          }
+        },
+        "val": "id_b7b0e4380196a9c60a5d236578bddb16306a51bd",
+        "required": true
+      },
+      "options.lang": {
+        "type": "select",
+        "label": "Document Language",
+        "show_if": "options.type=='create'",
+        "options": {
+          "standard": {
+            "label": "Standard Language"
+          },
+          "lt": {
+            "label": "Lithuanian"
+          },
+          "it": {
+            "label": "Italian"
+          },
+          "hu": {
+            "label": "Hungarian"
+          },
+          "fr": {
+            "label": "French"
+          },
+          "fi": {
+            "label": "Finnish"
+          },
+          "bg": {
+            "label": "Bulgarian"
+          },
+          "ca": {
+            "label": "Canadian"
+          },
+          "cs": {
+            "label": "Czech"
+          },
+          "de": {
+            "label": "German"
+          },
+          "en": {
+            "label": "English"
+          },
+          "es": {
+            "label": "Spanish"
+          }
+        },
+        "val": "en",
+        "required": true,
+        "breakLine": true
+      },
+      "options.where_to_create": {
+        "type": "select",
+        "label": "Where to create",
+        "options": {
+          "only_open_in_browser": {
+            "label": "Only open PDF in browser"
+          },
+          "only_export_to_cloud": {
+            "label": "Only export to cloud"
+          },
+          "both_export_to_cloud_and_open_in_browser": {
+            "label": "Both export to cloud and open pdf in browser"
+          }
+        },
+        "val": "both_export_to_cloud_and_open_in_browser",
+        "required": true,
+        "breakLine": true
+      },
+      "options.configure_by_table": {
+        "type": "checkbox",
+        "label": "Configure by table",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.configure_by_table_help": {
+        "type": "text",
+        "label": "",
+        "show_if": "options.configure_by_table=='true'",
+        "val": "Table Structure ( Document | List Name | List Item | Field Name | Field Value )",
+        "disabled": true,
+        "width": "100%"
+      },
+      "options.input_table": {
+        "type": "select",
+        "label": "Select Table",
+        "show_if": "options.configure_by_table=='true'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      }
+    }
+  }
+}
