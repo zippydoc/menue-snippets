@@ -450,6 +450,7 @@
           "options.configure.invoice_summary.configure_by_table": {
             "type": "checkbox",
             "label": "Configure by table",
+            "show_if": "options.configure.invoice_summary.auto_calc=='false'",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -458,7 +459,7 @@
           "options.configure.invoice_summary.configure_by_table_help": {
             "type": "text",
             "label": "",
-            "show_if": "options.configure.invoice_summary.configure_by_table=='true'",
+            "show_if": "options.configure.invoice_summary.auto_calc=='false' && options.configure.invoice_summary.configure_by_table=='true'",
             "val": "Table Structure ( Field Name | Field Value )",
             "disabled": true,
             "width": "100%"
@@ -466,7 +467,7 @@
           "options.configure.invoice_summary.input_table": {
             "type": "select",
             "label": "Select Table",
-            "show_if": "options.configure.invoice_summary.configure_by_table=='true'",
+            "show_if": "options.configure.invoice_summary.auto_calc=='false' && options.configure.invoice_summary.configure_by_table=='true'",
             "bind": "TABLES",
             "empty": "",
             "required": true,
@@ -475,21 +476,21 @@
           "options.data.total_amount": {
             "type": "text",
             "label": "Total Amount",
-            "show_if": "options.configure.invoice_summary.configure_by_table=='false'",
+            "show_if": "options.configure.invoice_summary.auto_calc=='false' && options.configure.invoice_summary.configure_by_table=='false'",
             "placeholder": "102.04",
             "val": ""
           },
           "options.data.vat_amount": {
             "type": "text",
             "label": "Vat Amount",
-            "show_if": "options.configure.invoice_summary.configure_by_table=='false'",
+            "show_if": "options.configure.invoice_summary.auto_calc=='false' && options.configure.invoice_summary.configure_by_table=='false'",
             "placeholder": "2.04",
             "val": ""
           },
           "options.data.net_amount": {
             "type": "text",
             "label": "Net Amount",
-            "show_if": "options.configure.invoice_summary.configure_by_table=='false'",
+            "show_if": "options.configure.invoice_summary.auto_calc=='false' && options.configure.invoice_summary.configure_by_table=='false'",
             "placeholder": "100",
             "val": "",
             "breakLine": true
@@ -609,18 +610,21 @@
               "total_price": {
                 "type": "text",
                 "label": "Total Price",
+                "show_if": "options.configure.positions_list.auto_calc=='false'",
                 "val": "",
                 "placeholder": "799.99"
               },
               "vat_amount": {
                 "type": "text",
                 "label": "Vat Amount",
+                "show_if": "options.configure.positions_list.auto_calc=='false'",
                 "val": "",
                 "placeholder": "99.99"
               },
               "net_amount": {
                 "type": "text",
                 "label": "Net Amount",
+                "show_if": "options.configure.positions_list.auto_calc=='false'",
                 "val": "",
                 "placeholder": "700"
               },
