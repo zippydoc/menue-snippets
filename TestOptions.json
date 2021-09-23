@@ -4,12 +4,49 @@
     "label": "Select Options",
     "repeat": false,
     "fields": {
-      "token": {
-        "type": "text",
-        "label": "MS Graph OAuth2 Access Token",
-        "val": "",
-        "width": "100%",
-        "required": true
+      "options.input_table": {
+        "type": "select",
+        "label": "Select Table",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      },
+      "options.field_name_col": {
+        "type": "select",
+        "label": "Field Name Column",
+        "required": true,
+        "table": "options.customer_detail.input_table",
+        "bind": "COLUMNS"
+      },
+      "options.field_name_selected_rows": {
+        "type": "select",
+        "label": "Select Row(s)",
+        "multiple": true,
+        "unique_values_only": true,
+        "table": "options.input_table",
+        "column_list": "options.field_name_col",
+        "bind": "RECORDS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.field_value_col": {
+        "type": "select",
+        "label": "Field Value Column",
+        "required": true,
+        "table": "options.input_table",
+        "bind": "COLUMNS"
+      },
+      "options.field_value_selected_rows": {
+        "type": "select",
+        "label": "Select Row(s)",
+        "multiple": true,
+        "unique_values_only": true,
+        "table": "options.input_table",
+        "column_list": "options.field_value_col",
+        "bind": "RECORDS",
+        "required": true,
+        "breakLine": true
       }
     }
   }
