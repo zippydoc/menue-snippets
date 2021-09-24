@@ -509,6 +509,15 @@
             "disabled": true,
             "width": "100%"
           },
+          "options.invoice_head.input_table": {
+            "type": "select",
+            "label": "Select Table",
+            "show_if": "options.invoice_head.configure_by_table=='true'",
+            "bind": "TABLES",
+            "empty": "",
+            "required": true,
+            "breakLine": true
+          },
           "options.invoice_head.field_name_col": {
             "type": "select",
             "label": "Field Name Column",
@@ -554,15 +563,6 @@
             "table": "options.invoice_head.input_table",
             "column_list": "options.invoice_head.field_value_col",
             "bind": "RECORDS",
-            "required": true,
-            "breakLine": true
-          },
-          "options.invoice_head.input_table": {
-            "type": "select",
-            "label": "Select Table",
-            "show_if": "options.invoice_head.configure_by_table=='true'",
-            "bind": "TABLES",
-            "empty": "",
             "required": true,
             "breakLine": true
           },
@@ -843,7 +843,7 @@
           "options.positions_list.configure_by_table_help2": {
             "type": "text",
             "label": "",
-            "show_if": "options.positions_list.configure_by_table=='true'",
+            "show_if": "options.positions_list.configure_by_table=='true' && options.positions_list.table_style=='row_by_row_field_name'",
             "val": "Table Structure ( List Item | Field Name | Field Value )",
             "disabled": true,
             "width": "100%"
