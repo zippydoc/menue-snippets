@@ -126,10 +126,36 @@
             "isOff": "false",
             "breakLine": true
           },
+          "options.sender_detail.table_style": {
+            "type": "select",
+            "label": "Table Style",
+            "show_if": "options.sender_detail.configure_by_table=='true'",
+            "options": {
+              "field_name_as_header": {
+                "label": "Field Name as Header"
+              },
+              "row_by_row_field_name": {
+                "label": "Row by Row Field Name"
+              }
+            },
+            "val": "field_name_as_header",
+            "required": true,
+            "breakLine": true
+          },
           "options.sender_detail.configure_by_table_help": {
+            "type": "textarea",
+            "label": "",
+            "show_if": "options.sender_detail.configure_by_table=='true' && options.sender_detail.table_style=='field_name_as_header'",
+            "val": "Table Structure (Sender Name|Sender Department|Sender Street|Sender Zip Code|Sender City|Sender Registry Number|Sender Registry Court|Sender Representatives|Sender Representative Type|Sender Bank|Sender Bank IBAN|Sender Bank BIC|Sender Bank Account No)",
+            "md_no_resize": true,
+            "rows": 3,
+            "disabled": true,
+            "width": "100%"
+          },
+          "options.sender_detail.configure_by_table_help2": {
             "type": "text",
             "label": "",
-            "show_if": "options.sender_detail.configure_by_table=='true'",
+            "show_if": "options.sender_detail.configure_by_table=='true' && options.sender_detail.table_style=='row_by_row_field_name'",
             "val": "Table Structure ( Field Name | Field Value )",
             "disabled": true,
             "width": "100%"
@@ -252,10 +278,34 @@
             "isOff": "false",
             "breakLine": true
           },
+          "options.customer_detail.table_style": {
+            "type": "select",
+            "label": "Table Style",
+            "show_if": "options.customer_detail.configure_by_table=='true'",
+            "options": {
+              "field_name_as_header": {
+                "label": "Field Name as Header"
+              },
+              "row_by_row_field_name": {
+                "label": "Row by Row Field Name"
+              }
+            },
+            "val": "field_name_as_header",
+            "required": true,
+            "breakLine": true
+          },
           "options.customer_detail.configure_by_table_help": {
             "type": "text",
             "label": "",
-            "show_if": "options.customer_detail.configure_by_table=='true'",
+            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.table_style=='field_name_as_header'",
+            "val": "Table Structure (Customer Number|Customer Name|Customer Department|Customer Street|Customer Zip Code|Customer City)",
+            "disabled": true,
+            "width": "100%"
+          },
+          "options.customer_detail.configure_by_table_help2": {
+            "type": "text",
+            "label": "",
+            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.table_style=='row_by_row_field_name'",
             "val": "Table Structure ( Field Name | Field Value )",
             "disabled": true,
             "width": "100%"
@@ -272,7 +322,7 @@
           "options.customer_detail.field_name_col": {
             "type": "select",
             "label": "Field Name Column",
-            "show_if": "options.customer_detail.configure_by_table=='true'",
+            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.table_style=='row_by_row_field_name'",
             "required": true,
             "table": "options.customer_detail.input_table",
             "bind": "COLUMNS"
@@ -280,7 +330,7 @@
           "options.customer_detail.all_rows": {
             "type": "checkbox",
             "label": "All Rows",
-            "show_if": "options.customer_detail.configure_by_table=='true'",
+            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.table_style=='row_by_row_field_name'",
             "val": "true",
             "isOn": "true",
             "isOff": "false"
@@ -288,7 +338,7 @@
           "options.customer_detail.field_name_selected_rows": {
             "type": "select",
             "label": "Select Row(s)",
-            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.all_rows=='false'",
+            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.all_rows=='false' && options.customer_detail.table_style=='row_by_row_field_name'",
             "multiple": true,
             "unique_values_only": true,
             "table": "options.customer_detail.input_table",
@@ -300,7 +350,7 @@
           "options.customer_detail.field_value_col": {
             "type": "select",
             "label": "Field Value Column",
-            "show_if": "options.customer_detail.configure_by_table=='true'",
+            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.table_style=='row_by_row_field_name'",
             "required": true,
             "table": "options.customer_detail.input_table",
             "bind": "COLUMNS"
@@ -308,7 +358,7 @@
           "options.customer_detail.field_value_selected_rows": {
             "type": "select",
             "label": "Select Row(s)",
-            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.all_rows=='false'",
+            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.all_rows=='false' && options.customer_detail.table_style=='row_by_row_field_name'",
             "multiple": true,
             "unique_values_only": true,
             "table": "options.customer_detail.input_table",
