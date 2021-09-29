@@ -1,0 +1,97 @@
+{
+  "options_frame": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
+      "options.category": {
+        "type": "select",
+        "label": "Data Category",
+        "required": true,
+        "options": {
+          "health": {
+            "label": "Health"
+          },
+          "demographics": {
+            "label": "Demographics"
+          },
+          "economic": {
+            "label": "Economic"
+          }
+        },
+        "val": "Health"
+      },
+      "options.health__stat_var": {
+        "type": "select",
+        "label": "Statistics Data",
+        "show_if": "options.category=='health'",
+        "required": true,
+        "options": {
+          "CumulativeCount_Vaccine_COVID_19_Administered": {
+            "label": "CumulativeCount_Vaccine_COVID_19_Administered"
+          },
+          "Count_MedicareEnrollee": {
+            "label": "Count_MedicareEnrollee"
+          }
+        },
+        "val": "CumulativeCount_Vaccine_COVID_19_Administered"
+      },
+      "options.demographics__stat_var": {
+        "type": "select",
+        "label": "Statistics Data",
+        "show_if": "options.category=='demographics'",
+        "required": true,
+        "options": {
+          "Count_Person": {
+            "label": "Count_Person"
+          },
+          "Count_Student": {
+            "label": "Count_Student"
+          }
+        },
+        "val": "Count_Person"
+      },
+      "options.economic__stat_var": {
+        "type": "select",
+        "label": "Statistics Data",
+        "show_if": "options.category=='economic'",
+        "required": true,
+        "options": {
+          "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
+            "label": "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction"
+          },
+          "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
+            "label": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita"
+          },
+          "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
+            "label": "Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+          }
+        },
+        "val": "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction",
+        "breakLine": true
+      },
+      "options.country": {
+        "type": "select",
+        "label": "Country",
+        "required": true,
+        "options": {
+          "country/DEU": {
+            "label": "DEU"
+          },
+          "country/USA": {
+            "label": "USA"
+          }
+        },
+        "val": "country/DEU"
+      },
+      "options.output_as_chart": {
+        "type": "checkbox",
+        "label": "Output a Graph",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  }
+}
