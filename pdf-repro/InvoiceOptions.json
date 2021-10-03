@@ -4,11 +4,11 @@
     "label": "Options",
     "repeat": false,
     "fields": {
-      "options.template_id": {
+      "template_id": {
         "type": "hidden",
         "val": "b7b0e4380196a9c60a5d236578bddb16306a51bd"
       },
-      "options.lang": {
+      "lang": {
         "type": "select",
         "label": "Document Language",
         "options": {
@@ -53,7 +53,7 @@
         "required": true,
         "breakLine": true
       },
-      "options.where_to_create": {
+      "where_to_create": {
         "type": "select",
         "label": "Where to create",
         "options": {
@@ -71,7 +71,7 @@
         "required": true,
         "breakLine": true
       },
-      "options.configure_by_table": {
+      "configure_by_table": {
         "type": "checkbox",
         "label": "Configure by table",
         "val": "false",
@@ -79,18 +79,18 @@
         "isOff": "false",
         "breakLine": true
       },
-      "options.configure_by_table_help": {
+      "configure_by_table_help": {
         "type": "text",
         "label": "",
-        "show_if": "options.configure_by_table=='true'",
+        "show_if": "configure_by_table=='true'",
         "val": "Table Structure ( Document | List Name | List Item | Field Name | Field Value )",
         "disabled": true,
         "width": "100%"
       },
-      "options.input_table": {
+      "input_table": {
         "type": "select",
         "label": "Select Table",
-        "show_if": "options.configure_by_table=='true'",
+        "show_if": "configure_by_table=='true'",
         "bind": "TABLES",
         "empty": "",
         "required": true,
@@ -106,10 +106,10 @@
       "sender_detail_frame": {
         "type": "fieldset",
         "label": "Sender Details",
-        "show_if": "options.configure_by_table=='false'",
+        "show_if": "configure_by_table=='false'",
         "repeat": false,
         "fields": {
-          "options.sender_detail.configure_by_table": {
+          "sender_detail.configure_by_table": {
             "type": "checkbox",
             "label": "Configure by table",
             "val": "false",
@@ -117,10 +117,10 @@
             "isOff": "false",
             "breakLine": true
           },
-          "options.sender_detail.table_style": {
+          "sender_detail.table_style": {
             "type": "select",
             "label": "Table Style",
-            "show_if": "options.sender_detail.configure_by_table=='true'",
+            "show_if": "sender_detail.configure_by_table=='true'",
             "options": {
               "field_name_as_header": {
                 "label": "Field Name as Header"
@@ -133,149 +133,149 @@
             "required": true,
             "breakLine": true
           },
-          "options.sender_detail.configure_by_table_help": {
+          "sender_detail.configure_by_table_help": {
             "type": "textarea",
             "label": "",
-            "show_if": "options.sender_detail.configure_by_table=='true' && options.sender_detail.table_style=='field_name_as_header'",
+            "show_if": "sender_detail.configure_by_table=='true' && sender_detail.table_style=='field_name_as_header'",
             "val": "Table Structure ( Sender Name | Sender Department | Sender Street | Sender Zip Code | Sender City | Sender Registry Number | Sender Registry Court | Sender Representatives | Sender Representative Type | Sender Bank | Sender Bank IBAN | Sender Bank BIC | Sender Bank Account No | Sender VAT No )",
             "md_no_resize": true,
             "rows": 4,
             "disabled": true,
             "width": "100%"
           },
-          "options.sender_detail.configure_by_table_help2": {
+          "sender_detail.configure_by_table_help2": {
             "type": "text",
             "label": "",
-            "show_if": "options.sender_detail.configure_by_table=='true' && options.sender_detail.table_style=='row_by_row_field_name'",
+            "show_if": "sender_detail.configure_by_table=='true' && sender_detail.table_style=='row_by_row_field_name'",
             "val": "Table Structure ( Field Name | Field Value )",
             "disabled": true,
             "width": "100%"
           },
-          "options.sender_detail.input_table": {
+          "sender_detail.input_table": {
             "type": "select",
             "label": "Select Table",
-            "show_if": "options.sender_detail.configure_by_table=='true'",
+            "show_if": "sender_detail.configure_by_table=='true'",
             "bind": "TABLES",
             "empty": "",
             "required": true
           },
-          "options.sender_detail.selected_col": {
+          "sender_detail.selected_col": {
             "type": "select",
             "label": "Select Column",
-            "show_if": "options.sender_detail.configure_by_table=='true' && options.sender_detail.table_style=='field_name_as_header'",
+            "show_if": "sender_detail.configure_by_table=='true' && sender_detail.table_style=='field_name_as_header'",
             "required": true,
-            "table": "options.sender_detail.input_table",
+            "table": "sender_detail.input_table",
             "bind": "COLUMNS"
           },
-          "options.sender_detail.selected_rows": {
+          "sender_detail.selected_rows": {
             "type": "select",
             "label": "Select Row Number",
-            "show_if": "options.sender_detail.configure_by_table=='true' && options.sender_detail.table_style=='field_name_as_header'",
+            "show_if": "sender_detail.configure_by_table=='true' && sender_detail.table_style=='field_name_as_header'",
             "multiple": false,
             "unique_values_only": true,
-            "table": "options.sender_detail.input_table",
-            "column_list": "options.sender_detail.selected_col",
+            "table": "sender_detail.input_table",
+            "column_list": "sender_detail.selected_col",
             "bind": "RECORDS",
             "required": true,
             "breakLine": true
           },
-          "options.data.sender_name": {
+          "data.sender_name": {
             "type": "text",
             "label": "Sender Name",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "My Company ltd.",
             "val": ""
           },
-          "options.data.sender_department": {
+          "data.sender_department": {
             "type": "text",
             "label": "Sender Department",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "Purchase department",
             "val": ""
           },
-          "options.data.sender_street": {
+          "data.sender_street": {
             "type": "text",
             "label": "Sender Street",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "Main street 21",
             "val": ""
           },
-          "options.data.sender_zip_code": {
+          "data.sender_zip_code": {
             "type": "text",
             "label": "Sender Zip Code",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "80000",
             "val": ""
           },
-          "options.data.sender_city": {
+          "data.sender_city": {
             "type": "text",
             "label": "Sender City",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "München",
             "val": "",
             "breakLine": true
           },
-          "options.data.sender_registry_number": {
+          "data.sender_registry_number": {
             "type": "text",
             "label": "Sender Registry Number",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "HRB 334543",
             "val": ""
           },
-          "options.data.sender_registry_court": {
+          "data.sender_registry_court": {
             "type": "text",
             "label": "Sender Registry Court",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "Frankfurt am Main",
             "val": ""
           },
-          "options.data.sender_representatives": {
+          "data.sender_representatives": {
             "type": "text",
             "label": "Sender Representatives",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "Dr. Joe Johnson",
             "val": ""
           },
-          "options.data.sender_representative_type": {
+          "data.sender_representative_type": {
             "type": "text",
             "label": "Sender Representative Type",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "Geschäftsführer",
             "val": "",
             "breakLine": true
           },
-          "options.data.sender_bank": {
+          "data.sender_bank": {
             "type": "text",
             "label": "Sender Bank",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "Deutsche Bank",
             "val": ""
           },
-          "options.data.sender_bank_iban": {
+          "data.sender_bank_iban": {
             "type": "text",
             "label": "Sender Bank IBAN",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "XXX",
             "val": ""
           },
-          "options.data.sender_bank_bic": {
+          "data.sender_bank_bic": {
             "type": "text",
             "label": "Sender Bank BIC",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "XXX",
             "val": ""
           },
-          "options.data.sender_bank_account_no": {
+          "data.sender_bank_account_no": {
             "type": "text",
             "label": "Sender Bank Account No",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "XXX",
             "val": ""
           },
-          "options.data.sender_vat_no": {
+          "data.sender_vat_no": {
             "type": "text",
             "label": "Sender VAT No",
-            "show_if": "options.sender_detail.configure_by_table=='false'",
+            "show_if": "sender_detail.configure_by_table=='false'",
             "placeholder": "XXX",
             "val": ""
           }
@@ -286,7 +286,7 @@
         "label": "Logo",
         "repeat": false,
         "fields": {
-          "options.data.logo": {
+          "data.logo": {
             "type": "text",
             "label": "Logo(Base64 Encoded Data of JPEG)",
             "placeholder": "data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEA",
@@ -305,10 +305,10 @@
       "customer_detail_frame": {
         "type": "fieldset",
         "label": "Customer Details",
-        "show_if": "options.configure_by_table=='false'",
+        "show_if": "configure_by_table=='false'",
         "repeat": false,
         "fields": {
-          "options.customer_detail.configure_by_table": {
+          "customer_detail.configure_by_table": {
             "type": "checkbox",
             "label": "Configure by table",
             "val": "false",
@@ -316,10 +316,10 @@
             "isOff": "false",
             "breakLine": true
           },
-          "options.customer_detail.table_style": {
+          "customer_detail.table_style": {
             "type": "select",
             "label": "Table Style",
-            "show_if": "options.customer_detail.configure_by_table=='true'",
+            "show_if": "customer_detail.configure_by_table=='true'",
             "options": {
               "field_name_as_header": {
                 "label": "Field Name as Header"
@@ -332,91 +332,91 @@
             "required": true,
             "breakLine": true
           },
-          "options.customer_detail.configure_by_table_help": {
+          "customer_detail.configure_by_table_help": {
             "type": "textarea",
             "label": "",
-            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.table_style=='field_name_as_header'",
+            "show_if": "customer_detail.configure_by_table=='true' && customer_detail.table_style=='field_name_as_header'",
             "val": "Table Structure ( Customer Number | Customer Name | Customer Department | Customer Street | Customer Zip Code | Customer City )",
             "md_no_resize": true,
             "rows": 2,
             "disabled": true,
             "width": "100%"
           },
-          "options.customer_detail.configure_by_table_help2": {
+          "customer_detail.configure_by_table_help2": {
             "type": "text",
             "label": "",
-            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.table_style=='row_by_row_field_name'",
+            "show_if": "customer_detail.configure_by_table=='true' && customer_detail.table_style=='row_by_row_field_name'",
             "val": "Table Structure ( Field Name | Field Value )",
             "disabled": true,
             "width": "100%"
           },
-          "options.customer_detail.input_table": {
+          "customer_detail.input_table": {
             "type": "select",
             "label": "Select Table",
-            "show_if": "options.customer_detail.configure_by_table=='true'",
+            "show_if": "customer_detail.configure_by_table=='true'",
             "bind": "TABLES",
             "empty": "",
             "required": true
           },
-          "options.customer_detail.selected_col": {
+          "customer_detail.selected_col": {
             "type": "select",
             "label": "Select Column",
-            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.table_style=='field_name_as_header'",
+            "show_if": "customer_detail.configure_by_table=='true' && customer_detail.table_style=='field_name_as_header'",
             "required": true,
-            "table": "options.customer_detail.input_table",
+            "table": "customer_detail.input_table",
             "bind": "COLUMNS"
           },
-          "options.customer_detail.selected_rows": {
+          "customer_detail.selected_rows": {
             "type": "select",
             "label": "Select Row Number",
-            "show_if": "options.customer_detail.configure_by_table=='true' && options.customer_detail.table_style=='field_name_as_header'",
+            "show_if": "customer_detail.configure_by_table=='true' && customer_detail.table_style=='field_name_as_header'",
             "multiple": false,
             "unique_values_only": true,
-            "table": "options.customer_detail.input_table",
-            "column_list": "options.customer_detail.selected_col",
+            "table": "customer_detail.input_table",
+            "column_list": "customer_detail.selected_col",
             "bind": "RECORDS",
             "required": true,
             "breakLine": true
           },
-          "options.data.customer_number": {
+          "data.customer_number": {
             "type": "text",
             "label": "Customer Number",
-            "show_if": "options.customer_detail.configure_by_table=='false'",
+            "show_if": "customer_detail.configure_by_table=='false'",
             "placeholder": "54321",
             "val": ""
           },
-          "options.data.customer_name": {
+          "data.customer_name": {
             "type": "text",
             "label": "Customer Name",
-            "show_if": "options.customer_detail.configure_by_table=='false'",
+            "show_if": "customer_detail.configure_by_table=='false'",
             "placeholder": "My company ltd.",
             "val": ""
           },
-          "options.data.customer_department": {
+          "data.customer_department": {
             "type": "text",
             "label": "Customer Department",
-            "show_if": "options.customer_detail.configure_by_table=='false'",
+            "show_if": "customer_detail.configure_by_table=='false'",
             "placeholder": "purchase department",
             "val": ""
           },
-          "options.data.customer_street": {
+          "data.customer_street": {
             "type": "text",
             "label": "Customer Street",
-            "show_if": "options.customer_detail.configure_by_table=='false'",
+            "show_if": "customer_detail.configure_by_table=='false'",
             "placeholder": "Main street 21",
             "val": ""
           },
-          "options.data.customer_zip_code": {
+          "data.customer_zip_code": {
             "type": "text",
             "label": "Customer Zip Code",
-            "show_if": "options.customer_detail.configure_by_table=='false'",
+            "show_if": "customer_detail.configure_by_table=='false'",
             "placeholder": "80000",
             "val": ""
           },
-          "options.data.customer_city": {
+          "data.customer_city": {
             "type": "text",
             "label": "Customer City",
-            "show_if": "options.customer_detail.configure_by_table=='false'",
+            "show_if": "customer_detail.configure_by_table=='false'",
             "placeholder": "München",
             "val": ""
           }
@@ -425,10 +425,10 @@
       "invoice_spec_frame": {
         "type": "fieldset",
         "label": "Invoice Specifications",
-        "show_if": "options.configure_by_table=='false'",
+        "show_if": "configure_by_table=='false'",
         "repeat": false,
         "fields": {
-          "options.invoice_spec.configure_by_table": {
+          "invoice_spec.configure_by_table": {
             "type": "checkbox",
             "label": "Configure by table",
             "val": "false",
@@ -436,10 +436,10 @@
             "isOff": "false",
             "breakLine": true
           },
-          "options.invoice_spec.table_style": {
+          "invoice_spec.table_style": {
             "type": "select",
             "label": "Table Style",
-            "show_if": "options.invoice_spec.configure_by_table=='true'",
+            "show_if": "invoice_spec.configure_by_table=='true'",
             "options": {
               "field_name_as_header": {
                 "label": "Field Name as Header"
@@ -452,48 +452,48 @@
             "required": true,
             "breakLine": true
           },
-          "options.invoice_spec.configure_by_table_help": {
+          "invoice_spec.configure_by_table_help": {
             "type": "textarea",
             "label": "",
-            "show_if": "options.invoice_spec.configure_by_table=='true' && options.invoice_spec.table_style=='field_name_as_header'",
+            "show_if": "invoice_spec.configure_by_table=='true' && invoice_spec.table_style=='field_name_as_header'",
             "val": "Table Structure ( Invoice Date | Invoice Number | Reference | Order Date | Subject | Invoice Text | Payment Text | Footer | Payable Until | Total Amount, Total Vat Amount, Total Net Amount | Article Number, Article Description, Quantity, Package Type, Per Item Price, Total Price, Vat Amount, Net Amount, Vat Percentage, Footer Text)",
             "md_no_resize": true,
             "rows": 4,
             "disabled": true,
             "width": "100%"
           },
-          "options.invoice_spec.configure_by_table_help2": {
+          "invoice_spec.configure_by_table_help2": {
             "type": "text",
             "label": "",
-            "show_if": "options.invoice_spec.configure_by_table=='true' && options.invoice_spec.table_style=='row_by_row_field_name'",
+            "show_if": "invoice_spec.configure_by_table=='true' && invoice_spec.table_style=='row_by_row_field_name'",
             "val": "Table Structure ( Document | List Name | List Item | Field Name | Field Value )",
             "disabled": true,
             "width": "100%"
           },
-          "options.invoice_spec.input_table": {
+          "invoice_spec.input_table": {
             "type": "select",
             "label": "Select Table",
-            "show_if": "options.invoice_spec.configure_by_table=='true'",
+            "show_if": "invoice_spec.configure_by_table=='true'",
             "bind": "TABLES",
             "empty": "",
             "required": true
           },
-          "options.invoice_spec.selected_col": {
+          "invoice_spec.selected_col": {
             "type": "select",
             "label": "Select Column",
-            "show_if": "options.invoice_spec.configure_by_table=='true' && options.invoice_spec.table_style=='field_name_as_header'",
+            "show_if": "invoice_spec.configure_by_table=='true' && invoice_spec.table_style=='field_name_as_header'",
             "required": true,
-            "table": "options.invoice_spec.input_table",
+            "table": "invoice_spec.input_table",
             "bind": "COLUMNS"
           },
-          "options.invoice_spec.selected_rows": {
+          "invoice_spec.selected_rows": {
             "type": "select",
             "label": "Select Row Number(s)",
-            "show_if": "options.invoice_spec.configure_by_table=='true' && options.invoice_spec.table_style=='field_name_as_header'",
+            "show_if": "invoice_spec.configure_by_table=='true' && invoice_spec.table_style=='field_name_as_header'",
             "multiple": true,
             "unique_values_only": true,
-            "table": "options.invoice_spec.input_table",
-            "column_list": "options.invoice_spec.selected_col",
+            "table": "invoice_spec.input_table",
+            "column_list": "invoice_spec.selected_col",
             "bind": "RECORDS",
             "required": true,
             "breakLine": true
@@ -501,42 +501,42 @@
           "invoice_head_frame": {
             "type": "fieldset",
             "label": "Invoice Head",
-            "show_if": "options.invoice_spec.configure_by_table=='false'",
+            "show_if": "invoice_spec.configure_by_table=='false'",
             "repeat": false,
             "fields": {
-              "options.data.invoice_date": {
+              "data.invoice_date": {
                 "type": "text",
                 "label": "Invoice Date",
                 "placeholder": "29.06.2021",
                 "val": ""
               },
-              "options.data.invoice_number": {
+              "data.invoice_number": {
                 "type": "text",
                 "label": "Invoice Number",
                 "placeholder": "4711091",
                 "val": ""
               },
-              "options.data.reference": {
+              "data.reference": {
                 "type": "text",
                 "label": "Reference",
                 "placeholder": "eK2-762-24/vfs",
                 "val": ""
               },
-              "options.data.order_date": {
+              "data.order_date": {
                 "type": "text",
                 "label": "Order Date",
                 "placeholder": "29.06.2021",
                 "val": "",
                 "breakLine": true
               },
-              "options.data.subject": {
+              "data.subject": {
                 "type": "text",
                 "label": "Subject",
                 "placeholder": "rechnung zm auftrag XY",
                 "val": "",
                 "breakLine": true
               },
-              "options.data.invoice_text": {
+              "data.invoice_text": {
                 "type": "text",
                 "label": "Invoice Text",
                 "placeholder": "Rechnung zu ihrem Auftrag",
@@ -544,7 +544,7 @@
                 "width": "100%",
                 "breakLine": true
               },
-              "options.data.payment_text": {
+              "data.payment_text": {
                 "type": "text",
                 "label": "Payment Text",
                 "placeholder": "Diese Rechnung wurde bereits",
@@ -552,14 +552,14 @@
                 "width": "100%",
                 "breakLine": true
               },
-              "options.data.footer": {
+              "data.footer": {
                 "type": "text",
                 "label": "Footer",
                 "placeholder": "vielen dank für ihre Bestellung!",
                 "val": "",
                 "width": "100%"
               },
-              "options.data.payable_until": {
+              "data.payable_until": {
                 "type": "text",
                 "label": "Payable Until",
                 "placeholder": "31.12.2021",
@@ -570,10 +570,10 @@
           "positions_list_frame": {
             "type": "fieldset",
             "label": "Invoice Items",
-            "show_if": "options.invoice_spec.configure_by_table=='false'",
+            "show_if": "invoice_spec.configure_by_table=='false'",
             "repeat": false,
             "fields": {
-              "options.positions_list.auto_calc": {
+              "positions_list.auto_calc": {
                 "type": "checkbox",
                 "label": "Automatic Calculation",
                 "val": "true",
@@ -581,10 +581,10 @@
                 "isOff": "false",
                 "breakLine": true
               },
-              "options.data.positions": {
+              "data.positions": {
                 "type": "fieldset",
                 "label": "Positions List",
-                "show_if": "options.invoice_spec.configure_by_table=='false'",
+                "show_if": "invoice_spec.configure_by_table=='false'",
                 "repeat": true,
                 "fields": {
                   "article_number": {
@@ -620,21 +620,21 @@
                   "total_price": {
                     "type": "text",
                     "label": "Total Price",
-                    "show_if": "options.positions_list.auto_calc=='false'",
+                    "show_if": "positions_list.auto_calc=='false'",
                     "val": "",
                     "placeholder": "799.99"
                   },
                   "vat_amount": {
                     "type": "text",
                     "label": "Vat Amount",
-                    "show_if": "options.positions_list.auto_calc=='false'",
+                    "show_if": "positions_list.auto_calc=='false'",
                     "val": "",
                     "placeholder": "99.99"
                   },
                   "net_amount": {
                     "type": "text",
                     "label": "Net Amount",
-                    "show_if": "options.positions_list.auto_calc=='false'",
+                    "show_if": "positions_list.auto_calc=='false'",
                     "val": "",
                     "placeholder": "700"
                   },
@@ -662,10 +662,10 @@
           "invoice_summary_frame": {
             "type": "fieldset",
             "label": "Invoice Summary",
-            "show_if": "options.invoice_spec.configure_by_table=='false'",
+            "show_if": "invoice_spec.configure_by_table=='false'",
             "repeat": false,
             "fields": {
-              "options.invoice_summary.auto_calc": {
+              "invoice_summary.auto_calc": {
                 "type": "checkbox",
                 "label": "Automatic Calculation",
                 "val": "true",
@@ -673,39 +673,39 @@
                 "isOff": "false",
                 "breakLine": true
               },
-              "options.data.total_amount": {
+              "data.total_amount": {
                 "type": "text",
                 "label": "Total Amount",
-                "show_if": "options.invoice_summary.auto_calc=='false'",
+                "show_if": "invoice_summary.auto_calc=='false'",
                 "placeholder": "102.04",
                 "val": ""
               },
-              "options.data.vat_amount": {
+              "data.vat_amount": {
                 "type": "text",
                 "label": "Vat Amount",
-                "show_if": "options.invoice_summary.auto_calc=='false'",
+                "show_if": "invoice_summary.auto_calc=='false'",
                 "placeholder": "2.04",
                 "val": ""
               },
-              "options.data.net_amount": {
+              "data.net_amount": {
                 "type": "text",
                 "label": "Net Amount",
-                "show_if": "options.invoice_summary.auto_calc=='false'",
+                "show_if": "invoice_summary.auto_calc=='false'",
                 "placeholder": "100",
                 "val": "",
                 "breakLine": true
               },
-              "options.create_invoice_log_table": {
+              "create_invoice_log_table": {
                 "type": "checkbox",
                 "label": "Create Invoice Log Table",
                 "val": "false",
                 "isOn": "true",
                 "isOff": "false"
               },
-              "options.invoice_log_table_name": {
+              "invoice_log_table_name": {
                 "type": "text",
                 "label": "Invoice Log Table Name",
-                "show_if": "options.create_invoice_log_table=='true'",
+                "show_if": "create_invoice_log_table=='true'",
                 "val": "Invoice Log Table",
                 "style": "margin-left: 15px",
                 "breakLine": true
@@ -719,10 +719,10 @@
   "cloud_config_frame": {
     "type": "fieldset",
     "label": "Config Cloud Directory to export to",
-    "show_if": "options.type=='create' && (options.where_to_create=='only_export_to_cloud' || options.where_to_create=='both_export_to_cloud_and_open_in_browser')",
+    "show_if": "type=='create' && (where_to_create=='only_export_to_cloud' || where_to_create=='both_export_to_cloud_and_open_in_browser')",
     "repeat": false,
     "fields": {
-      "options.webservice": {
+      "webservice": {
         "type": "select",
         "label": "Select Webservice",
         "options": {
@@ -740,43 +740,43 @@
         "required": true,
         "breakLine": true
       },
-      "options.github_url": {
+      "github_url": {
         "type": "text",
         "label": "Enter link e.g. https://github.com/zippydoc/test",
-        "show_if": "options.webservice=='github'",
+        "show_if": "webservice=='github'",
         "val": "",
         "required": true,
         "width": "100%",
         "breakLine": true
       },
-      "options.export_dir": {
+      "export_dir": {
         "type": "text",
         "label": "Enter dir e.g. /MyZippyDocFiles/SubDir/",
-        "show_if": "options.webservice!='github'",
+        "show_if": "webservice!='github'",
         "val": "",
         "width": "100%",
         "breakLine": true
       },
-      "options.github_token": {
+      "github_token": {
         "type": "text",
         "label": "Specify the Github personal access token that has write permission:",
-        "show_if": "options.webservice=='github'",
+        "show_if": "webservice=='github'",
         "required": true,
         "width": "100%",
         "breakLine": true
       },
-      "options.google_authorization_code": {
+      "google_authorization_code": {
         "type": "text",
         "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
-        "show_if": "options.webservice=='google_drive'",
+        "show_if": "webservice=='google_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true
       },
-      "options.dropbox_authorization_code": {
+      "dropbox_authorization_code": {
         "type": "text",
         "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
-        "show_if": "options.webservice=='dropbox'",
+        "show_if": "webservice=='dropbox'",
         "required": true,
         "width": "100%",
         "breakLine": true
