@@ -1,0 +1,159 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
+      "options.template_id": {
+        "type": "hidden",
+        "val": "378a9c0c94c1c52a4d0c55e841ad7c02691d3636"
+      },
+      "options.lang": {
+        "type": "select",
+        "label": "Document Language",
+        "options": {
+          "standard": {
+            "label": "Standard Language"
+          },
+          "lt": {
+            "label": "Lithuanian"
+          },
+          "it": {
+            "label": "Italian"
+          },
+          "hu": {
+            "label": "Hungarian"
+          },
+          "fr": {
+            "label": "French"
+          },
+          "fi": {
+            "label": "Finnish"
+          },
+          "bg": {
+            "label": "Bulgarian"
+          },
+          "ca": {
+            "label": "Canadian"
+          },
+          "cs": {
+            "label": "Czech"
+          },
+          "de": {
+            "label": "German"
+          },
+          "en": {
+            "label": "English"
+          },
+          "es": {
+            "label": "Spanish"
+          }
+        },
+        "val": "en",
+        "required": true,
+        "breakLine": true
+      },
+      "options.where_to_create": {
+        "type": "select",
+        "label": "Where to create",
+        "options": {
+          "only_open_in_browser": {
+            "label": "Only open PDF in browser"
+          },
+          "only_export_to_cloud": {
+            "label": "Only export to cloud"
+          },
+          "both_export_to_cloud_and_open_in_browser": {
+            "label": "Both export to cloud and open pdf in browser"
+          }
+        },
+        "val": "only_open_in_browser",
+        "required": true,
+        "breakLine": true
+      },
+      "options.configure_by_table_help": {
+        "type": "text",
+        "label": "",
+        "val": "Table Structure ( Category | Position | Value )",
+        "disabled": true,
+        "width": "100%"
+      },
+      "options.input_table": {
+        "type": "select",
+        "label": "Select Table",
+        "show_if": "options.configure_by_table=='true'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      }
+    }
+  },
+  "cloud_config_frame": {
+    "type": "fieldset",
+    "label": "Config Cloud Directory to export to",
+    "show_if": "options.where_to_create=='only_export_to_cloud' || options.where_to_create=='both_export_to_cloud_and_open_in_browser'",
+    "repeat": false,
+    "fields": {
+      "options.webservice": {
+        "type": "select",
+        "label": "Select Webservice",
+        "options": {
+          "ms_one_drive": {
+            "label": "Microsoft One Drive"
+          },
+          "dropbox": {
+            "label": "Dropbox"
+          },
+          "google_drive": {
+            "label": "Google Drive"
+          }
+        },
+        "val": "ms_one_drive",
+        "required": true,
+        "breakLine": true
+      },
+      "options.github_url": {
+        "type": "text",
+        "label": "Enter link e.g. https://github.com/zippydoc/test",
+        "show_if": "options.webservice=='github'",
+        "val": "",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.export_dir": {
+        "type": "text",
+        "label": "Enter dir e.g. /MyZippyDocFiles/SubDir/",
+        "show_if": "options.webservice!='github'",
+        "val": "",
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.github_token": {
+        "type": "text",
+        "label": "Specify the Github personal access token that has write permission:",
+        "show_if": "options.webservice=='github'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.google_authorization_code": {
+        "type": "text",
+        "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
+        "show_if": "options.webservice=='google_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox_authorization_code": {
+        "type": "text",
+        "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "show_if": "options.webservice=='dropbox'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}
