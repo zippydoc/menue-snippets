@@ -6,7 +6,7 @@
     "fields": {
       "options.select_type": {
         "type": "select",
-        "label": "Countries",
+        "label": "Method",
         "required": true,
         "options": {
           "all": {
@@ -74,7 +74,24 @@
       },
       "options.all_countries": {
         "type": "checkbox",
-        "label": "All Countries",
+        "label": "All countries",
+        "show_if" : "options.select_type=='all'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.all_region_countries": {
+        "type": "checkbox",
+        "label": "All countries in Region",
+        "show_if" : "options.select_type=='region'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.all_income_group_countries": {
+        "type": "checkbox",
+        "label": "All countries in Income Group",
+        "show_if" : "options.select_type=='income_group'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -803,7 +820,7 @@
       "options.countries_in_east_asia_pacific": {
         "type": "select",
         "label": "Countries",
-        "show_if" : "options.select_type=='region' && options.select_region=='east_asia_pacific' && options.all_countries=='false'",
+        "show_if" : "options.select_type=='region' && options.select_region=='east_asia_pacific' && options.all_region_countries=='false'",
         "required": true,
         "options": {
           "ASM": {
@@ -922,7 +939,7 @@
       "options.countries_in_europe_central_asia": {
         "type": "select",
         "label": "Countries",
-        "show_if" : "options.select_type=='region' && options.select_region=='europe_central_asia' && options.all_countries=='false'",
+        "show_if" : "options.select_type=='region' && options.select_region=='europe_central_asia' && options.all_region_countries=='false'",
         "required": true,
         "options": {
           "ALB": {
@@ -1098,7 +1115,7 @@
       "options.countries_in_latin_america_caribbean": {
         "type": "select",
         "label": "Countries",
-        "show_if" : "options.select_type=='region' && options.select_region=='latin_america_caribbean' && options.all_countries=='false'",
+        "show_if" : "options.select_type=='region' && options.select_region=='latin_america_caribbean' && options.all_region_countries=='false'",
         "required": true,
         "options": {
           "ATG": {
@@ -1223,7 +1240,7 @@
       "options.countries_in_middle_east_north_africa": {
         "type": "select",
         "label": "Countries",
-        "show_if" : "options.select_type=='region' && options.select_region=='middle_east_north_africa' && options.all_countries=='false'",
+        "show_if" : "options.select_type=='region' && options.select_region=='middle_east_north_africa' && options.all_region_countries=='false'",
         "required": true,
         "options": {
           "DZA": {
@@ -1294,7 +1311,7 @@
       "options.countries_in_north_america": {
         "type": "select",
         "label": "Countries",
-        "show_if" : "options.select_type=='region' && options.select_region=='north_america' && options.all_countries=='false'",
+        "show_if" : "options.select_type=='region' && options.select_region=='north_america' && options.all_region_countries=='false'",
         "required": true,
         "options": {
           "CAN": {
@@ -1311,7 +1328,7 @@
       "options.countries_in_south_asia": {
         "type": "select",
         "label": "Countries",
-        "show_if" : "options.select_type=='region' && options.select_region=='south_asia' && options.all_countries=='false'",
+        "show_if" : "options.select_type=='region' && options.select_region=='south_asia' && options.all_region_countries=='false'",
         "required": true,
         "options": {
           "AFG": {
@@ -1346,7 +1363,7 @@
       "options.countries_in_sub_saharan_africa": {
         "type": "select",
         "label": "Countries",
-        "show_if" : "options.select_type=='region' && options.select_region=='sub_saharan_africa' && options.all_countries=='false'",
+        "show_if" : "options.select_type=='region' && options.select_region=='sub_saharan_africa' && options.all_region_countries=='false'",
         "required": true,
         "options": {
           "AGO": {
@@ -1489,7 +1506,7 @@
       "options.countries_in_high_income": {
         "type": "select",
         "label": "Countries",
-        "show_if" : "options.select_type=='income_group' && options.select_income_group=='high_income' && options.all_countries=='false'",
+        "show_if" : "options.select_type=='income_group' && options.select_income_group=='high_income' && options.all_income_group_countries=='false'",
         "required": true,
         "options": {
           "AND": {
@@ -1725,7 +1742,7 @@
       "options.countries_in_upper_middle_income": {
         "type": "select",
         "label": "Countries",
-        "show_if" : "options.select_type=='income_group' && options.select_income_group=='upper_middle_income' && options.all_countries=='false'",
+        "show_if" : "options.select_type=='income_group' && options.select_income_group=='upper_middle_income' && options.all_income_group_countries=='false'",
         "required": true,
         "options": {
           "ALB": {
@@ -1892,7 +1909,7 @@
       "options.countries_in_lower_middle_income": {
         "type": "select",
         "label": "Countries",
-        "show_if" : "options.select_type=='income_group' && options.select_income_group=='lower_middle_income' && options.all_countries=='false'",
+        "show_if" : "options.select_type=='income_group' && options.select_income_group=='lower_middle_income' && options.all_income_group_countries=='false'",
         "required": true,
         "options": {
           "DZA": {
@@ -2053,7 +2070,7 @@
       "options.countries_in_low_income": {
         "type": "select",
         "label": "Countries",
-        "show_if" : "options.select_type=='income_group' && options.select_income_group=='low_income' && options.all_countries=='false'",
+        "show_if" : "options.select_type=='income_group' && options.select_income_group=='low_income' && options.all_income_group_countries=='false'",
         "required": true,
         "options": {
           "AFG": {
