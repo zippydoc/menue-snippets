@@ -4,45 +4,63 @@
     "label": "Options",
     "repeat": false,
     "fields": {
-      "options.stat_var": {
-        "type": "select",
-        "label": "Statistics Data",
-        "required": true,
-        "options": {
-          "Count_Person": {
-            "label": "Population"
+      "options.stat_vars": {
+        "type": "fieldset",
+        "label": "Statistics data category(s)",
+        "repeat": true,
+        "fields": {
+          "stat_var_name": {
+            "type": "select",
+            "label": "Statistics Data",
+            "required": true,
+            "options": {
+              "Count_Person": {
+                "label": "Population"
+              },
+              "GrowthRate_Count_Person": {
+                "label": "Population Growth Rate"
+              },
+              "Count_Person_PerArea": {
+                "label": "Population Density"
+              },
+              "Count_Person_IsInternetUser_PerCapita": {
+                "label": "Percent of Internet Users"
+              },
+              "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person": {
+                "label": "Percent of Population Living in Areas Below 5 Meters Elevation"
+              },
+              "Count_Person_Rural": {
+                "label": "Rural Population"
+              },
+              "Count_Person_Urban": {
+                "label": "Urban Population"
+              }
+            }
           },
-          "GrowthRate_Count_Person": {
-            "label": "Population Growth Rate"
+          "per_capita": {
+            "type": "checkbox",
+            "label": "Per capita",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
           },
-          "Count_Person_PerArea": {
-            "label": "Population Density"
+          "help_Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person": {
+            "type": "textarea",
+            "label": "",
+            "show_if": "this.stat_var_name=='Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person'",
+            "val": "Percentage of the total population living in areas where the elevation is 5 meters or less. Center for International Earth Science Information Network (CIESIN)/Columbia University. 2013. Urban-Rural Population and Land Area Estimates Version 2. Palisades, NY: NASA Socioeconomic Data and Applications Center (SEDAC). http://sedac.ciesin.columbia.edu/data/set/lecz-urban-rural-population-land-area-estimates-v2.",
+            "md_no_resize": true,
+            "rows": 6,
+            "disabled": true,
+            "width": "100%"
           },
-          "Count_Person_IsInternetUser_PerCapita": {
-            "label": "Percent of Internet Users"
-          },
-          "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person": {
-            "label": "Percent of Population Living in Areas Below 5 Meters Elevation"
-          },
-          "Count_Person_Rural": {
-            "label": "Rural Population"
-          },
-          "Count_Person_Urban": {
-            "label": "Urban Population"
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
           }
-        },
-        "val": "Count_Person",
-        "breakLine": true
-      },
-      "help.Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person": {
-        "type": "textarea",
-        "label": "",
-        "show_if": "options.stat_var=='Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person'",
-        "val": "Percentage of the total population living in areas where the elevation is 5 meters or less. Center for International Earth Science Information Network (CIESIN)/Columbia University. 2013. Urban-Rural Population and Land Area Estimates Version 2. Palisades, NY: NASA Socioeconomic Data and Applications Center (SEDAC). http://sedac.ciesin.columbia.edu/data/set/lecz-urban-rural-population-land-area-estimates-v2.",
-        "md_no_resize": true,
-        "rows": 6,
-        "disabled": true,
-        "width": "100%"
+        }
       },
       "options.output_as_chart": {
         "type": "checkbox",

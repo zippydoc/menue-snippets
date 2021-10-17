@@ -4,68 +4,87 @@
     "label": "Options",
     "repeat": false,
     "fields": {
-      "options.stat_var": {
-        "type": "select",
-        "label": "Statistics Data",
-        "required": true,
-        "options": {
-          "CumulativeCount_Vaccine_COVID_19_Administered": {
-            "label": "Cumulative Count of COVID_19, Vaccine Administered"
+      "options.stat_vars": {
+        "type": "fieldset",
+        "label": "Statistics data category(s)",
+        "repeat": true,
+        "fields": {
+          "stat_var_name": {
+            "type": "select",
+            "label": "Category",
+            "required": true,
+            "options": {
+              "CumulativeCount_Vaccine_COVID_19_Administered": {
+                "label": "Cumulative Count of COVID_19, Vaccine Administered"
+              },
+              "IncrementalCount_Vaccine_COVID_19_Administered": {
+                "label": "Incremental Count of COVID_19, Vaccine Administered"
+              },
+              "CumulativeCount_MedicalTest_ConditionCOVID_19": {
+                "label": "Cumulative Count of COVID_19"
+              },
+              "IncrementalCount_MedicalTest_ConditionCOVID_19": {
+                "label": "Incremental Count of COVID_19"
+              },
+              "CumulativeCount_MedicalTest_COVID_19_PCR": {
+                "label": "Cumulative Count of COVID_19, COVID-19 PCRTest"
+              },
+              "IncrementalCount_MedicalTest_COVID_19_PCR": {
+                "label": "Incremental Count of COVID_19, COVID-19 PCRTest"
+              },
+              "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedCase": {
+                "label": "Cumulative Count of Confirmed Case"
+              },
+              "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedCase": {
+                "label": "Incremental Count of Confirmed Case"
+              },
+              "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
+                "label": "Cumulative Count of Patient Deceased"
+              },
+              "IncrementalCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
+                "label": "Incremental Count of Patient Deceased"
+              },
+              "Count_MedicalConditionIncident_COVID_19_PatientHospitalized": {
+                "label": "Count of Patient Hospitalized"
+              },
+              "Count_MedicalConditionIncident_COVID_19_PatientInICU": {
+                "label": "Count of Patient in ICU"
+              },
+              "dc/n9rqwq8d3lcx3": {
+                "label": "Covid 19 Mobility Trend of Grocery Store & Pharmacy"
+              },
+              "dc/0ny9m7k0lzmn5": {
+                "label": "Covid 19 Mobility Trend of Local Business"
+              },
+              "dc/p49ghylpwz93f": {
+                "label": "Covid 19 Mobility Trend of Park"
+              },
+              "dc/7fmnve6yyc508": {
+                "label": "Covid 19 Mobility Trend of Residence"
+              },
+              "dc/qdbhwwr88yhl7": {
+                "label": "Covid 19 Mobility Trend of Transport Hub"
+              },
+              "dc/tbbjnf9bk96yh": {
+                "label": "Covid 19 Mobility Trend of Workplace"
+              }
+            }
           },
-          "IncrementalCount_Vaccine_COVID_19_Administered": {
-            "label": "Incremental Count of COVID_19, Vaccine Administered"
+          "per_capita": {
+            "type": "checkbox",
+            "label": "Per capita",
+            "show_if": "this.stat_var_name=='CumulativeCount_Vaccine_COVID_19_Administered'||this.stat_var_name=='IncrementalCount_Vaccine_COVID_19_Administered'||this.stat_var_name=='CumulativeCount_MedicalTest_ConditionCOVID_19'||this.stat_var_name=='IncrementalCount_MedicalTest_ConditionCOVID_19'||this.stat_var_name=='CumulativeCount_MedicalTest_COVID_19_PCR'||this.stat_var_name=='IncrementalCount_MedicalTest_COVID_19_PCR'||this.stat_var_name=='CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedCase'||this.stat_var_name=='IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedCase'||this.stat_var_name=='CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased'||this.stat_var_name=='IncrementalCount_MedicalConditionIncident_COVID_19_PatientDeceased'||this.stat_var_name=='Count_MedicalConditionIncident_COVID_19_PatientHospitalized'||this.stat_var_name=='Count_MedicalConditionIncident_COVID_19_PatientInICU'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
           },
-          "CumulativeCount_MedicalTest_ConditionCOVID_19": {
-            "label": "Cumulative Count of COVID_19"
-          },
-          "IncrementalCount_MedicalTest_ConditionCOVID_19": {
-            "label": "Incremental Count of COVID_19"
-          },
-          "CumulativeCount_MedicalTest_COVID_19_PCR": {
-            "label": "Cumulative Count of COVID_19, COVID-19 PCRTest"
-          },
-          "IncrementalCount_MedicalTest_COVID_19_PCR": {
-            "label": "Incremental Count of COVID_19, COVID-19 PCRTest"
-          },
-          "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedCase": {
-            "label": "Cumulative Count of Confirmed Case"
-          },
-          "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedCase": {
-            "label": "Incremental Count of Confirmed Case"
-          },
-          "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
-            "label": "Cumulative Count of Patient Deceased"
-          },
-          "IncrementalCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
-            "label": "Incremental Count of Patient Deceased"
-          },
-          "Count_MedicalConditionIncident_COVID_19_PatientHospitalized": {
-            "label": "Count of Patient Hospitalized"
-          },
-          "Count_MedicalConditionIncident_COVID_19_PatientInICU": {
-            "label": "Count of Patient in ICU"
-          },
-          "dc/n9rqwq8d3lcx3": {
-            "label": "Covid 19 Mobility Trend of Grocery Store & Pharmacy"
-          },
-          "dc/0ny9m7k0lzmn5": {
-            "label": "Covid 19 Mobility Trend of Local Business"
-          },
-          "dc/p49ghylpwz93f": {
-            "label": "Covid 19 Mobility Trend of Park"
-          },
-          "dc/7fmnve6yyc508": {
-            "label": "Covid 19 Mobility Trend of Residence"
-          },
-          "dc/qdbhwwr88yhl7": {
-            "label": "Covid 19 Mobility Trend of Transport Hub"
-          },
-          "dc/tbbjnf9bk96yh": {
-            "label": "Covid 19 Mobility Trend of Workplace"
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
           }
-        },
-        "val": "CumulativeCount_Vaccine_COVID_19_Administered",
-        "breakLine": true
+        }
       },
       "options.output_as_chart": {
         "type": "checkbox",
