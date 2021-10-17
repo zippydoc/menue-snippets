@@ -4,36 +4,53 @@
     "label": "Options",
     "repeat": false,
     "fields": {
-      "options.stat_var": {
-        "type": "select",
-        "label": "Statistics Data",
-        "required": true,
-        "options": {
-          "FertilityRate_Person_Female": {
-            "label": "Fertility Rate"
+      "options.stat_vars": {
+        "type": "fieldset",
+        "label": "Statistics data category(s)",
+        "repeat": true,
+        "fields": {
+          "stat_var_name": {
+            "type": "select",
+            "label": "Statistics Data",
+            "required": true,
+            "options": {
+              "FertilityRate_Person_Female": {
+                "label": "Fertility Rate"
+              },
+              "LifeExpectancy_Person": {
+                "label": "Life Expectancy"
+              },
+              "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person": {
+                "label": "Number of live births occurring during the year, per capita"
+              },
+              "Count_Person_20To79Years_Diabetes_AsFractionOf_Count_Person_20To79Years": {
+                "label": "Percentage of people ages 20-79 who have type 1 or type 2 diabetes"
+              },
+              "Count_Death": {
+                "label": "Count of Mortality Event"
+              },
+              "Count_Person_15OrMoreYears_Smoking_AsFractionOf_Count_Person_15OrMoreYears": {
+                "label": "15 Years or More, Smoking Population as Fraction of Count Person 15 or More Years"
+              },
+              "Count_Person_Upto4Years_Overweight_AsFractionOf_Count_Person_Upto4Years": {
+                "label": "4 Years or Less, Overweight Population as Fraction of Count Person Upto 4 Years"
+              }
+            }
           },
-          "LifeExpectancy_Person": {
-            "label": "Life Expectancy"
+          "per_capita": {
+            "type": "checkbox",
+            "label": "Per capita",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
           },
-          "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person": {
-            "label": "Number of live births occurring during the year, per capita"
-          },
-          "Count_Person_20To79Years_Diabetes_AsFractionOf_Count_Person_20To79Years": {
-            "label": "Percentage of people ages 20-79 who have type 1 or type 2 diabetes"
-          },
-          "Count_Death": {
-            "label": "Count of Mortality Event"
-          },
-          "Count_Person_15OrMoreYears_Smoking_AsFractionOf_Count_Person_15OrMoreYears": {
-            "label": "15 Years or More, Smoking Population as Fraction of Count Person 15 or More Years"
-          },
-          "Count_Person_Upto4Years_Overweight_AsFractionOf_Count_Person_Upto4Years": {
-            "label": "4 Years or Less, Overweight Population as Fraction of Count Person Upto 4 Years"
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
           }
-        },
-        "multiple": true,
-        "val": ["FertilityRate_Person_Female"],
-        "breakLine": true
+        }
       },
       "options.output_as_chart": {
         "type": "checkbox",
