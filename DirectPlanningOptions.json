@@ -4,13 +4,9 @@
     "label": "Select Options",
     "repeat": false,
     "fields": {
-      "options.taskname": {
+      "options.task_symbol": {
         "type": "hidden",
         "val": "direct_planning"
-      },
-      "options.type": {
-        "type": "hidden",
-        "val": "custom"
       },
       "planing_position_frame": {
         "type": "fieldset",
@@ -25,7 +21,7 @@
             "isOff": "false",
             "breakLine": true
           },
-          "options.input_table": {
+          "input_table": {
             "type": "select",
             "label": "Select Table",
             "show_if": "options.direct_planning__configure_by_table=='true'",
@@ -37,6 +33,7 @@
           "options.configure_by_table_help": {
             "type": "textarea",
             "label": "",
+            "show_if": "options.direct_planning__configure_by_table=='true'",
             "val": "Table Structure ( Initial Date | Periodicy | Final Date | Amount | Growth | Growth Period | Growth Pattern )",
             "disabled": true,
             "md_no_resize": true,
@@ -408,6 +405,7 @@
       "options.set_plan_config": {
         "type": "checkbox",
         "label": "Planning Configuration",
+        "show_if": "options.direct_planning__configure_by_table=='false'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -415,7 +413,7 @@
       "planning_configuration_frame": {
         "type": "fieldset",
         "label": "Planning Configuration",
-        "show_if": "options.set_plan_config=='true'",
+        "show_if": "options.direct_planning__configure_by_table=='false' && options.set_plan_config=='true'",
         "repeat": false,
         "fields": {
           "options.add_categories": {
@@ -583,7 +581,6 @@
           "options.end_date": {
             "type": "date",
             "label": "End Date of Table",
-            "show_if": "options.type=='process' || options.type=='custom'",
             "val": "",
             "style": "width: 300px",
             "breakLine": true
