@@ -34,11 +34,20 @@
             "label": "GDP 2020 in USD"
           }
         },
-        "val": "population_2020"
+        "val": "population_2020",
+        "breakLine": true
+      },
+      "options.output_as_chart": {
+        "type": "checkbox",
+        "label": "Output a graph",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
       },
       "options.graph_type": {
         "type": "select",
         "label": "Graph Type",
+        "show_if": "options.output_as_chart=='true'",
         "required": true,
         "options": {
           "zoomable_sunburst": {
@@ -57,6 +66,7 @@
       "options.configure_input_table": {
         "type": "checkbox",
         "label": "Configure input table",
+        "show_if": "options.output_as_chart=='true'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
