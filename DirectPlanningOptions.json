@@ -313,14 +313,17 @@
                 "label": "Growth Pattern",
                 "show_if": "this.periodicy!='One-Off'",
                 "options": {
-                  "Compounding": {
-                    "label": "Compounding"
-                  },
                   "Linear": {
                     "label": "Linear"
                   },
-                  "Jump-Fix": {
-                    "label": "Jump-Fix"
+                  "Compounding": {
+                    "label": "Compounding"
+                  },
+                  "Jump-Fix Linear": {
+                    "label": "Jump-Fix Linear"
+                  },
+                  "Jump-Fix Compounding": {
+                    "label": "Jump-Fix Compounding"
                   }
                 },
                 "val": "Jump-Fix",
@@ -336,7 +339,121 @@
                 "type": "date",
                 "label": "Final Date",
                 "show_if": "this.periodicy!='One-Off'",
-                "val": ""
+                "val": "",
+                "breakLine": true
+              },
+              "payment_days": {
+                "type": "number",
+                "label": "Payment Days",
+                "val": "",
+                "required": true,
+                "breakLine": true
+              },
+              "balance_sheet_category": {
+                "type": "select",
+                "label": "Balance Sheet Category",
+                "options": {
+                  "current_assets": {
+                    "label": "Current Assets"
+                  },
+                  "current_liabilities": {
+                    "label": "Current Liabilities"
+                  },
+                  "property_equipment": {
+                    "label": "Property and Equipment"
+                  },
+                  "longterm_liabilities": {
+                    "label": "Long-term Liabilities"
+                  },
+                  "other_assets": {
+                    "label": "Other Assets"
+                  },
+                  "shareholders_equity": {
+                    "label": "Shareholder's Equity"
+                  }
+                },
+                "val": "current_assets"
+              },
+              "balance_sheet_position__current_assets": {
+                "type": "select",
+                "label": "Balance Sheet Position",
+                "show_if": "this.balance_sheet_category=='current_assets'",
+                "options": {
+                  "Cash": {
+                    "label": "Cash"
+                  },
+                  "Inventory": {
+                    "label": "Inventory"
+                  }
+                },
+                "val": "Cash"
+              },
+              "balance_sheet_position__current_liabilities": {
+                "type": "select",
+                "label": "Balance Sheet Position",
+                "show_if": "this.balance_sheet_category=='current_liabilities'",
+                "options": {
+                  "Accounts Payable": {
+                    "label": "Accounts Payable"
+                  },
+                  "Income Tax": {
+                    "label": "Income Tax"
+                  }
+                },
+                "val": "Accounts Payable"
+              },
+              "balance_sheet_position__property_equipment": {
+                "type": "select",
+                "label": "Balance Sheet Position",
+                "show_if": "this.balance_sheet_category=='property_equipment'",
+                "options": {
+                  "Land": {
+                    "label": "Land"
+                  },
+                  "Buildings": {
+                    "label": "Buildings"
+                  }
+                },
+                "val": "Land"
+              },
+              "balance_sheet_position__longterm_liabilities": {
+                "type": "select",
+                "label": "Balance Sheet Position",
+                "show_if": "this.balance_sheet_category=='longterm_liabilities'",
+                "options": {
+                  "Notes": {
+                    "label": "Notes"
+                  },
+                  "Bonds": {
+                    "label": "Bonds"
+                  }
+                },
+                "val": "Notes"
+              },
+              "balance_sheet_position__other_assets": {
+                "type": "select",
+                "label": "Balance Sheet Position",
+                "show_if": "this.balance_sheet_category=='other_assets'",
+                "options": {
+                  "Other Assets": {
+                    "label": "Other Assets"
+                  }
+                },
+                "val": "Other Assets"
+              },
+              "balance_sheet_position__shareholders_equity": {
+                "type": "select",
+                "label": "Balance Sheet Position",
+                "show_if": "this.balance_sheet_category=='shareholders_equity'",
+                "options": {
+                  "Common Stock": {
+                    "label": "Common Stock"
+                  },
+                  "Retained Earnings": {
+                    "label": "Retained Earnings"
+                  }
+                },
+                "val": "Common Stock"
               },
               "delete": {
                 "type": "button",
@@ -352,14 +469,20 @@
         "label": "Output Type",
         "required": true,
         "options": {
+          "assumption_table": {
+            "label": "Assumption Table"
+          },
+          "details_table": {
+            "label": "Details Table"
+          },
           "planning_table": {
             "label": "Planning Table"
           },
-          "periodicy_table": {
-            "label": "Periodicy Table"
+          "cash_flow_details_table": {
+            "label": "Cash Flow Details Table"
           },
-          "summary_table": {
-            "label": "Summary Table"
+          "cash_flow_planning_table": {
+            "label": "Cash Flow Planning Table"
           },
           "pivot_popup": {
             "label": "Pivot Pop-up"
@@ -367,10 +490,10 @@
         },
         "val": "pivot_popup"
       },
-      "options.summary_table__group_by": {
+      "options.planning_table__group_by": {
         "type": "select",
         "label": "Group By",
-        "show_if": "options.output_type=='summary_table'",
+        "show_if": "options.output_type=='planning_table'",
         "multiple": true,
         "options": {
           "Year": {
@@ -456,7 +579,7 @@
             "isOff": "false",
             "style": "margin-top: 10px"
           },
-          "formatting_frame": {
+          "amount_column_formatting_frame": {
             "type": "fieldset",
             "label": "Amount Column Formatting",
             "show_if": "options.set_amount_column_formatting=='true'",
@@ -560,6 +683,46 @@
                 "type": "select",
                 "label": "Type",
                 "show_if": "options.amount.format__category=='date'",
+                "required": true,
+                "options": {
+                  "mm/dd/yyyy": {
+                    "label": "3/14/2012"
+                  },
+                  "D, M dd, Y": {
+                    "label": "Wednesday, March 14, 2012"
+                  },
+                  "yyyy-mm-dd": {
+                    "label": "2012-03-14"
+                  }
+                },
+                "val": "mm/dd/yyyy",
+                "breakLine": true
+              }
+            },
+            "breakLine": true
+          },
+          "options.set_date_column_formatting": {
+            "type": "checkbox",
+            "label": "Set Date Column Formatting",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "style": "margin-top: 10px"
+          },
+          "date_column_formatting_frame": {
+            "type": "fieldset",
+            "label": "Date Column Formatting",
+            "show_if": "options.set_date_column_formatting=='true'",
+            "repeat": false,
+            "fields": {
+              "options.date.format__category": {
+                "type": "hidden",
+                "val": "date"
+              },
+              "options.date.format__date_format": {
+                "type": "select",
+                "label": "Type",
+                "show_if": "options.date.format__category=='date'",
                 "required": true,
                 "options": {
                   "mm/dd/yyyy": {
