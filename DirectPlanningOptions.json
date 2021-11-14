@@ -1,469 +1,469 @@
 {
-  "options": {
+  "planing_position_frame": {
     "type": "fieldset",
-    "label": "Select Options",
+    "label": "Configure planning position",
     "repeat": false,
     "fields": {
       "options.task_symbol": {
         "type": "hidden",
         "val": "direct_planning"
       },
-      "planing_position_frame": {
+      "options.direct_planning__configure_by_table": {
+        "type": "checkbox",
+        "label": "Configure by table",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "input_table": {
+        "type": "select",
+        "label": "Select Table",
+        "show_if": "options.direct_planning__configure_by_table=='true'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      },
+      "options.configure_by_table_help": {
+        "type": "textarea",
+        "label": "",
+        "show_if": "options.direct_planning__configure_by_table=='true'",
+        "val": "Table Structure ( Initial Date | Periodicy | Final Date | Amount | Growth | Growth Period | Growth Pattern | Payment Days | Balance Sheet Category | Balance Sheet Position )",
+        "disabled": true,
+        "md_no_resize": true,
+        "rows": 4,
+        "width": "100%"
+      },
+      "options.custom.table": {
         "type": "fieldset",
-        "label": "Configure planning position",
-        "repeat": false,
+        "label": "Planning Position",
+        "show_if": "options.direct_planning__configure_by_table=='false'",
+        "repeat": true,
         "fields": {
-          "options.direct_planning__configure_by_table": {
-            "type": "checkbox",
-            "label": "Configure by table",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false",
-            "breakLine": true
-          },
-          "input_table": {
+          "position": {
             "type": "select",
-            "label": "Select Table",
-            "show_if": "options.direct_planning__configure_by_table=='true'",
-            "bind": "TABLES",
-            "empty": "",
-            "required": true,
+            "label": "Position",
+            "options": {
+              "Revenues": {
+                "label": "Revenues"
+              },
+              "Cost of Goods Sold": {
+                "label": "Cost of Goods Sold"
+              },
+              "Marketing Expenses": {
+                "label": "Marketing Expenses"
+              },
+              "Operating Expenses": {
+                "label": "Operating Expenses"
+              },
+              "General and Administration Expenses": {
+                "label": "General and Administration Expenses"
+              },
+              "Personnel Expenses": {
+                "label": "Personnel Expenses"
+              },
+              "Tax": {
+                "label": "Tax"
+              },
+              "Capital Expenditure": {
+                "label": "Capital Expenditure"
+              },
+              "Depreciation": {
+                "label": "Depreciation"
+              },
+              "Amortization": {
+                "label": "Amortization"
+              },
+              "Extraordinary Items": {
+                "label": "Extraordinary Items"
+              },
+              "Depretiation & Amortisation": {
+                "label": "Depretiation & Amortisation"
+              }
+            },
+            "val": "Revenues",
+            "required": true
+          },
+          "revenues__sub_position": {
+            "type": "select",
+            "label": "Sub Position",
+            "show_if": "this.position=='Revenues'",
+            "options": {
+              "Sales": {
+                "label": "Sales"
+              },
+              "Increase(+)/Decrease(-) Inventories": {
+                "label": "Increase(+)/Decrease(-) Inventories"
+              },
+              "Other Revenues": {
+                "label": "Other Revenues"
+              }
+            },
+            "val": "Sales",
+            "required": true
+          },
+          "cost_of_goods_sold__sub_position": {
+            "type": "select",
+            "label": "Sub Position",
+            "show_if": "this.position=='Cost of Goods Sold'",
+            "options": {
+              "Material Costs": {
+                "label": "Material Costs"
+              },
+              "Purchased Services": {
+                "label": "Purchased Services"
+              }
+            },
+            "val": "Material Costs",
+            "required": true
+          },
+          "general_administration_expenses__sub_position": {
+            "type": "select",
+            "label": "Sub Position",
+            "show_if": "this.position=='General and Administration Expenses'",
+            "options": {
+              "Rental Expenses": {
+                "label": "Rental Expenses"
+              },
+              "Cleaning": {
+                "label": "Cleaning"
+              },
+              "Office Items": {
+                "label": "Office Items"
+              },
+              "Consulting": {
+                "label": "Consulting"
+              },
+              "Recruiting": {
+                "label": "Recruiting"
+              }
+            },
+            "val": "Rental Expenses",
+            "required": true
+          },
+          "personnel_expenses__sub_position": {
+            "type": "select",
+            "label": "Sub Position",
+            "show_if": "this.position=='Personnel Expenses'",
+            "options": {
+              "Fix Salary": {
+                "label": "Fix Salary"
+              },
+              "Bonus": {
+                "label": "Bonus"
+              },
+              "Other Compensation": {
+                "label": "Other Compensation"
+              }
+            },
+            "val": "Fix Salary",
+            "required": true
+          },
+          "capital_expenditure__sub_position": {
+            "type": "select",
+            "label": "Sub Position",
+            "show_if": "this.position=='Capital Expenditure'",
+            "options": {
+              "Maintenance Capex": {
+                "label": "Maintenance Capex"
+              },
+              "Expansion Capex": {
+                "label": "Expansion Capex"
+              }
+            },
+            "val": "Maintenance Capex",
+            "required": true
+          },
+          "extraordinary_items__sub_position": {
+            "type": "select",
+            "label": "Sub Position",
+            "show_if": "this.position=='Extraordinary Items'",
+            "options": {
+              "Extraordinary Income": {
+                "label": "Extraordinary Income"
+              },
+              "Extraordinary Expenses": {
+                "label": "Extraordinary Expenses"
+              }
+            },
+            "val": "Extraordinary Income",
+            "required": true
+          },
+          "tax__sub_position": {
+            "type": "select",
+            "label": "Sub Position",
+            "show_if": "this.position=='Tax'",
+            "options": {
+              "Value Added Tax": {
+                "label": "Value Added Tax"
+              },
+              "Corporate Tax": {
+                "label": "Corporate Tax"
+              },
+              "Trade Tax": {
+                "label": "Trade Tax"
+              }
+            },
+            "val": "Value Added Tax",
+            "required": true
+          },
+          "interest__sub_position": {
+            "type": "select",
+            "label": "Sub Position",
+            "show_if": "this.position=='Interest'",
+            "options": {
+              "Interest Income": {
+                "label": "Interest Income"
+              },
+              "Interest Expenses": {
+                "label": "Interest Expenses"
+              }
+            },
+            "val": "Interest Income",
+            "required": true
+          },
+          "depretiation_amortisation__sub_position": {
+            "type": "select",
+            "label": "Sub Position",
+            "show_if": "this.position=='Depretiation & Amortisation'",
+            "options": {
+              "Depretiation": {
+                "label": "Depretiation"
+              },
+              "Amortisation": {
+                "label": "Amortisation"
+              }
+            },
+            "val": "Depretiation",
+            "required": true
+          },
+          "item": {
+            "type": "text",
+            "label": "Item",
+            "val": "",
             "breakLine": true
           },
-          "options.configure_by_table_help": {
-            "type": "textarea",
-            "label": "",
-            "show_if": "options.direct_planning__configure_by_table=='true'",
-            "val": "Table Structure ( Initial Date | Periodicy | Final Date | Amount | Growth | Growth Period | Growth Pattern | Payment Days | Balance Sheet Category | Balance Sheet Position )",
-            "disabled": true,
-            "md_no_resize": true,
-            "rows": 4,
-            "width": "100%"
+          "amount": {
+            "type": "number",
+            "label": "Amount",
+            "val": "",
+            "required": true
           },
-          "options.custom.table": {
-            "type": "fieldset",
-            "label": "Planning Position",
-            "show_if": "options.direct_planning__configure_by_table=='false'",
-            "repeat": true,
-            "fields": {
-              "position": {
-                "type": "select",
-                "label": "Position",
-                "options": {
-                  "Revenues": {
-                    "label": "Revenues"
-                  },
-                  "Cost of Goods Sold": {
-                    "label": "Cost of Goods Sold"
-                  },
-                  "Marketing Expenses": {
-                    "label": "Marketing Expenses"
-                  },
-                  "Operating Expenses": {
-                    "label": "Operating Expenses"
-                  },
-                  "General and Administration Expenses": {
-                    "label": "General and Administration Expenses"
-                  },
-                  "Personnel Expenses": {
-                    "label": "Personnel Expenses"
-                  },
-                  "Tax": {
-                    "label": "Tax"
-                  },
-                  "Capital Expenditure": {
-                    "label": "Capital Expenditure"
-                  },
-                  "Depreciation": {
-                    "label": "Depreciation"
-                  },
-                  "Amortization": {
-                    "label": "Amortization"
-                  },
-                  "Extraordinary Items": {
-                    "label": "Extraordinary Items"
-                  },
-                  "Depretiation & Amortisation": {
-                    "label": "Depretiation & Amortisation"
-                  }
-                },
-                "val": "Revenues",
-                "required": true
+          "periodicy": {
+            "type": "select",
+            "label": "Periodicy",
+            "required": true,
+            "options": {
+              "One-Off": {
+                "label": "One-Off"
               },
-              "revenues__sub_position": {
-                "type": "select",
-                "label": "Sub Position",
-                "show_if": "this.position=='Revenues'",
-                "options": {
-                  "Sales": {
-                    "label": "Sales"
-                  },
-                  "Increase(+)/Decrease(-) Inventories": {
-                    "label": "Increase(+)/Decrease(-) Inventories"
-                  },
-                  "Other Revenues": {
-                    "label": "Other Revenues"
-                  }
-                },
-                "val": "Sales",
-                "required": true
+              "Daily": {
+                "label": "Daily"
               },
-              "cost_of_goods_sold__sub_position": {
-                "type": "select",
-                "label": "Sub Position",
-                "show_if": "this.position=='Cost of Goods Sold'",
-                "options": {
-                  "Material Costs": {
-                    "label": "Material Costs"
-                  },
-                  "Purchased Services": {
-                    "label": "Purchased Services"
-                  }
-                },
-                "val": "Material Costs",
-                "required": true
+              "Weekly": {
+                "label": "Weekly"
               },
-              "general_administration_expenses__sub_position": {
-                "type": "select",
-                "label": "Sub Position",
-                "show_if": "this.position=='General and Administration Expenses'",
-                "options": {
-                  "Rental Expenses": {
-                    "label": "Rental Expenses"
-                  },
-                  "Cleaning": {
-                    "label": "Cleaning"
-                  },
-                  "Office Items": {
-                    "label": "Office Items"
-                  },
-                  "Consulting": {
-                    "label": "Consulting"
-                  },
-                  "Recruiting": {
-                    "label": "Recruiting"
-                  }
-                },
-                "val": "Rental Expenses",
-                "required": true
+              "Monthly": {
+                "label": "Monthly"
               },
-              "personnel_expenses__sub_position": {
-                "type": "select",
-                "label": "Sub Position",
-                "show_if": "this.position=='Personnel Expenses'",
-                "options": {
-                  "Fix Salary": {
-                    "label": "Fix Salary"
-                  },
-                  "Bonus": {
-                    "label": "Bonus"
-                  },
-                  "Other Compensation": {
-                    "label": "Other Compensation"
-                  }
-                },
-                "val": "Fix Salary",
-                "required": true
+              "Quarterly": {
+                "label": "Quarterly"
               },
-              "capital_expenditure__sub_position": {
-                "type": "select",
-                "label": "Sub Position",
-                "show_if": "this.position=='Capital Expenditure'",
-                "options": {
-                  "Maintenance Capex": {
-                    "label": "Maintenance Capex"
-                  },
-                  "Expansion Capex": {
-                    "label": "Expansion Capex"
-                  }
-                },
-                "val": "Maintenance Capex",
-                "required": true
-              },
-              "extraordinary_items__sub_position": {
-                "type": "select",
-                "label": "Sub Position",
-                "show_if": "this.position=='Extraordinary Items'",
-                "options": {
-                  "Extraordinary Income": {
-                    "label": "Extraordinary Income"
-                  },
-                  "Extraordinary Expenses": {
-                    "label": "Extraordinary Expenses"
-                  }
-                },
-                "val": "Extraordinary Income",
-                "required": true
-              },
-              "tax__sub_position": {
-                "type": "select",
-                "label": "Sub Position",
-                "show_if": "this.position=='Tax'",
-                "options": {
-                  "Value Added Tax": {
-                    "label": "Value Added Tax"
-                  },
-                  "Corporate Tax": {
-                    "label": "Corporate Tax"
-                  },
-                  "Trade Tax": {
-                    "label": "Trade Tax"
-                  }
-                },
-                "val": "Value Added Tax",
-                "required": true
-              },
-              "interest__sub_position": {
-                "type": "select",
-                "label": "Sub Position",
-                "show_if": "this.position=='Interest'",
-                "options": {
-                  "Interest Income": {
-                    "label": "Interest Income"
-                  },
-                  "Interest Expenses": {
-                    "label": "Interest Expenses"
-                  }
-                },
-                "val": "Interest Income",
-                "required": true
-              },
-              "depretiation_amortisation__sub_position": {
-                "type": "select",
-                "label": "Sub Position",
-                "show_if": "this.position=='Depretiation & Amortisation'",
-                "options": {
-                  "Depretiation": {
-                    "label": "Depretiation"
-                  },
-                  "Amortisation": {
-                    "label": "Amortisation"
-                  }
-                },
-                "val": "Depretiation",
-                "required": true
-              },
-              "item": {
-                "type": "text",
-                "label": "Item",
-                "val": "",
-                "breakLine": true
-              },
-              "amount": {
-                "type": "number",
-                "label": "Amount",
-                "val": "",
-                "required": true
-              },
-              "periodicy": {
-                "type": "select",
-                "label": "Periodicy",
-                "required": true,
-                "options": {
-                  "One-Off": {
-                    "label": "One-Off"
-                  },
-                  "Daily": {
-                    "label": "Daily"
-                  },
-                  "Weekly": {
-                    "label": "Weekly"
-                  },
-                  "Monthly": {
-                    "label": "Monthly"
-                  },
-                  "Quarterly": {
-                    "label": "Quarterly"
-                  },
-                  "Yearly": {
-                    "label": "Yearly"
-                  }
-                },
-                "val": "Yearly",
-                "breakLine": true
-              },
-              "growth": {
-                "type": "number",
-                "label": "Growth in %",
-                "show_if": "this.periodicy!='One-Off'",
-                "val": "",
-                "required": true
-              },
-              "growth_period": {
-                "type": "select",
-                "label": "Growth Period",
-                "show_if": "this.periodicy!='One-Off'",
-                "options": {
-                  "Weekly": {
-                    "label": "Week on Week"
-                  },
-                  "Monthly": {
-                    "label": "Month on Month"
-                  },
-                  "Quarterly": {
-                    "label": "Quarter on Quarter"
-                  },
-                  "Yearly": {
-                    "label": "Year on Year"
-                  }
-                },
-                "val": "Yearly"
-              },
-              "growth_pattern": {
-                "type": "select",
-                "label": "Growth Pattern",
-                "show_if": "this.periodicy!='One-Off'",
-                "options": {
-                  "Linear": {
-                    "label": "Linear"
-                  },
-                  "Compounding": {
-                    "label": "Compounding"
-                  },
-                  "Jump-Fix Linear": {
-                    "label": "Jump-Fix Linear"
-                  },
-                  "Jump-Fix Compounding": {
-                    "label": "Jump-Fix Compounding"
-                  }
-                },
-                "val": "Jump-Fix Linear",
-                "breakLine": true
-              },
-              "initial_date": {
-                "type": "date",
-                "label": "Initial Date",
-                "val": "",
-                "required": true
-              },
-              "final_date": {
-                "type": "date",
-                "label": "Final Date",
-                "show_if": "this.periodicy!='One-Off'",
-                "val": "",
-                "breakLine": true
-              },
-              "payment_days": {
-                "type": "number",
-                "label": "Payment Days",
-                "val": "0",
-                "breakLine": true
-              },
-              "balance_sheet_category": {
-                "type": "select",
-                "label": "Balance Sheet Category",
-                "options": {
-                  "current_assets": {
-                    "label": "Current Assets"
-                  },
-                  "current_liabilities": {
-                    "label": "Current Liabilities"
-                  },
-                  "property_equipment": {
-                    "label": "Property and Equipment"
-                  },
-                  "longterm_liabilities": {
-                    "label": "Long-term Liabilities"
-                  },
-                  "other_assets": {
-                    "label": "Other Assets"
-                  },
-                  "shareholders_equity": {
-                    "label": "Shareholder's Equity"
-                  }
-                },
-                "val": "current_assets"
-              },
-              "balance_sheet_position__current_assets": {
-                "type": "select",
-                "label": "Balance Sheet Position",
-                "show_if": "this.balance_sheet_category=='current_assets'",
-                "options": {
-                  "Cash": {
-                    "label": "Cash"
-                  },
-                  "Inventory": {
-                    "label": "Inventory"
-                  }
-                },
-                "val": "Cash"
-              },
-              "balance_sheet_position__current_liabilities": {
-                "type": "select",
-                "label": "Balance Sheet Position",
-                "show_if": "this.balance_sheet_category=='current_liabilities'",
-                "options": {
-                  "Accounts Payable": {
-                    "label": "Accounts Payable"
-                  },
-                  "Income Tax": {
-                    "label": "Income Tax"
-                  }
-                },
-                "val": "Accounts Payable"
-              },
-              "balance_sheet_position__property_equipment": {
-                "type": "select",
-                "label": "Balance Sheet Position",
-                "show_if": "this.balance_sheet_category=='property_equipment'",
-                "options": {
-                  "Land": {
-                    "label": "Land"
-                  },
-                  "Buildings": {
-                    "label": "Buildings"
-                  }
-                },
-                "val": "Land"
-              },
-              "balance_sheet_position__longterm_liabilities": {
-                "type": "select",
-                "label": "Balance Sheet Position",
-                "show_if": "this.balance_sheet_category=='longterm_liabilities'",
-                "options": {
-                  "Notes": {
-                    "label": "Notes"
-                  },
-                  "Bonds": {
-                    "label": "Bonds"
-                  }
-                },
-                "val": "Notes"
-              },
-              "balance_sheet_position__other_assets": {
-                "type": "select",
-                "label": "Balance Sheet Position",
-                "show_if": "this.balance_sheet_category=='other_assets'",
-                "options": {
-                  "Other Assets": {
-                    "label": "Other Assets"
-                  }
-                },
-                "val": "Other Assets"
-              },
-              "balance_sheet_position__shareholders_equity": {
-                "type": "select",
-                "label": "Balance Sheet Position",
-                "show_if": "this.balance_sheet_category=='shareholders_equity'",
-                "options": {
-                  "Common Stock": {
-                    "label": "Common Stock"
-                  },
-                  "Retained Earnings": {
-                    "label": "Retained Earnings"
-                  }
-                },
-                "val": "Common Stock"
-              },
-              "delete": {
-                "type": "button",
-                "label": "Delete",
-                "function": "DELETE_ROW"
+              "Yearly": {
+                "label": "Yearly"
               }
-            }
+            },
+            "val": "Yearly",
+            "breakLine": true
+          },
+          "growth": {
+            "type": "number",
+            "label": "Growth in %",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": "",
+            "required": true
+          },
+          "growth_period": {
+            "type": "select",
+            "label": "Growth Period",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "Weekly": {
+                "label": "Week on Week"
+              },
+              "Monthly": {
+                "label": "Month on Month"
+              },
+              "Quarterly": {
+                "label": "Quarter on Quarter"
+              },
+              "Yearly": {
+                "label": "Year on Year"
+              }
+            },
+            "val": "Yearly"
+          },
+          "growth_pattern": {
+            "type": "select",
+            "label": "Growth Pattern",
+            "show_if": "this.periodicy!='One-Off'",
+            "options": {
+              "Linear": {
+                "label": "Linear"
+              },
+              "Compounding": {
+                "label": "Compounding"
+              },
+              "Jump-Fix Linear": {
+                "label": "Jump-Fix Linear"
+              },
+              "Jump-Fix Compounding": {
+                "label": "Jump-Fix Compounding"
+              }
+            },
+            "val": "Jump-Fix Linear",
+            "breakLine": true
+          },
+          "initial_date": {
+            "type": "date",
+            "label": "Initial Date",
+            "val": "",
+            "required": true
+          },
+          "final_date": {
+            "type": "date",
+            "label": "Final Date",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": "",
+            "breakLine": true
+          },
+          "payment_days": {
+            "type": "number",
+            "label": "Payment Days",
+            "val": "0",
+            "breakLine": true
+          },
+          "balance_sheet_category": {
+            "type": "select",
+            "label": "Balance Sheet Category",
+            "options": {
+              "current_assets": {
+                "label": "Current Assets"
+              },
+              "current_liabilities": {
+                "label": "Current Liabilities"
+              },
+              "property_equipment": {
+                "label": "Property and Equipment"
+              },
+              "longterm_liabilities": {
+                "label": "Long-term Liabilities"
+              },
+              "other_assets": {
+                "label": "Other Assets"
+              },
+              "shareholders_equity": {
+                "label": "Shareholder's Equity"
+              }
+            },
+            "val": "current_assets"
+          },
+          "balance_sheet_position__current_assets": {
+            "type": "select",
+            "label": "Balance Sheet Position",
+            "show_if": "this.balance_sheet_category=='current_assets'",
+            "options": {
+              "Cash": {
+                "label": "Cash"
+              },
+              "Inventory": {
+                "label": "Inventory"
+              }
+            },
+            "val": "Cash"
+          },
+          "balance_sheet_position__current_liabilities": {
+            "type": "select",
+            "label": "Balance Sheet Position",
+            "show_if": "this.balance_sheet_category=='current_liabilities'",
+            "options": {
+              "Accounts Payable": {
+                "label": "Accounts Payable"
+              },
+              "Income Tax": {
+                "label": "Income Tax"
+              }
+            },
+            "val": "Accounts Payable"
+          },
+          "balance_sheet_position__property_equipment": {
+            "type": "select",
+            "label": "Balance Sheet Position",
+            "show_if": "this.balance_sheet_category=='property_equipment'",
+            "options": {
+              "Land": {
+                "label": "Land"
+              },
+              "Buildings": {
+                "label": "Buildings"
+              }
+            },
+            "val": "Land"
+          },
+          "balance_sheet_position__longterm_liabilities": {
+            "type": "select",
+            "label": "Balance Sheet Position",
+            "show_if": "this.balance_sheet_category=='longterm_liabilities'",
+            "options": {
+              "Notes": {
+                "label": "Notes"
+              },
+              "Bonds": {
+                "label": "Bonds"
+              }
+            },
+            "val": "Notes"
+          },
+          "balance_sheet_position__other_assets": {
+            "type": "select",
+            "label": "Balance Sheet Position",
+            "show_if": "this.balance_sheet_category=='other_assets'",
+            "options": {
+              "Other Assets": {
+                "label": "Other Assets"
+              }
+            },
+            "val": "Other Assets"
+          },
+          "balance_sheet_position__shareholders_equity": {
+            "type": "select",
+            "label": "Balance Sheet Position",
+            "show_if": "this.balance_sheet_category=='shareholders_equity'",
+            "options": {
+              "Common Stock": {
+                "label": "Common Stock"
+              },
+              "Retained Earnings": {
+                "label": "Retained Earnings"
+              }
+            },
+            "val": "Common Stock"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
           }
         }
-      },
+      }
+    }
+  },
+  "options_frame": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
       "options.output_type": {
         "type": "select",
         "label": "Output Type",
@@ -770,4 +770,4 @@
       }
     }
   }
-}
+},
