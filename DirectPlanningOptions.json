@@ -41,6 +41,13 @@
         "show_if": "options.direct_planning__configure_by_table=='false'",
         "repeat": true,
         "fields": {
+          "help_1": {
+            "type": "text",
+            "label": "",
+            "val": "Specify Planning Position",
+            "disabled": true,
+            "breakLine": true
+          },
           "position": {
             "type": "select",
             "label": "Position",
@@ -277,6 +284,27 @@
             "val": "Yearly",
             "breakLine": true
           },
+          "initial_date": {
+            "type": "date",
+            "label": "(Initial) Date",
+            "val": "",
+            "required": true
+          },
+          "add_payment_info": {
+            "type": "checkbox",
+            "label": "Add Payment Information",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "help_2": {
+            "type": "text",
+            "label": "",
+            "val": "Specify Periodicy",
+            "disabled": true,
+            "breakLine": true
+          },
           "growth": {
             "type": "number",
             "label": "Growth in %",
@@ -325,12 +353,6 @@
             "val": "Jump-Fix Linear",
             "breakLine": true
           },
-          "initial_date": {
-            "type": "date",
-            "label": "Initial Date",
-            "val": "",
-            "required": true
-          },
           "final_date": {
             "type": "date",
             "label": "Final Date",
@@ -338,15 +360,32 @@
             "val": "",
             "breakLine": true
           },
+          "help_3": {
+            "type": "text",
+            "label": "",
+            "val": "Specify Balance Sheet Impact",
+            "disabled": true,
+            "breakLine": true
+          },
           "payment_days": {
             "type": "number",
             "label": "Payment Days",
-            "val": "0",
+            "show_if": "this.add_payment_info=='true'",
+            "val": "0"
+          },
+          "bs_impact_auto_configure": {
+            "type": "checkbox",
+            "label": "Auto configure",
+            "show_if": "this.add_payment_info=='true'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
             "breakLine": true
           },
-          "balance_sheet_category": {
+          "working_capital_category": {
             "type": "select",
-            "label": "Balance Sheet Category",
+            "label": "Working Capital Category",
+            "show_if": "this.add_payment_info=='true'",
             "options": {
               "current_assets": {
                 "label": "Current Assets"
@@ -369,10 +408,10 @@
             },
             "val": "current_assets"
           },
-          "balance_sheet_position__current_assets": {
+          "working_capital_position__current_assets": {
             "type": "select",
-            "label": "Balance Sheet Position",
-            "show_if": "this.balance_sheet_category=='current_assets'",
+            "label": "Working Capital Position",
+            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='current_assets'",
             "options": {
               "Cash": {
                 "label": "Cash"
@@ -383,10 +422,10 @@
             },
             "val": "Cash"
           },
-          "balance_sheet_position__current_liabilities": {
+          "working_capital_position__current_liabilities": {
             "type": "select",
-            "label": "Balance Sheet Position",
-            "show_if": "this.balance_sheet_category=='current_liabilities'",
+            "label": "Working Capital Position",
+            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='current_liabilities'",
             "options": {
               "Accounts Payable": {
                 "label": "Accounts Payable"
@@ -397,10 +436,10 @@
             },
             "val": "Accounts Payable"
           },
-          "balance_sheet_position__property_equipment": {
+          "working_capital_position__property_equipment": {
             "type": "select",
-            "label": "Balance Sheet Position",
-            "show_if": "this.balance_sheet_category=='property_equipment'",
+            "label": "Working Capital Position",
+            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='property_equipment'",
             "options": {
               "Land": {
                 "label": "Land"
@@ -411,10 +450,10 @@
             },
             "val": "Land"
           },
-          "balance_sheet_position__longterm_liabilities": {
+          "working_capital_position__longterm_liabilities": {
             "type": "select",
-            "label": "Balance Sheet Position",
-            "show_if": "this.balance_sheet_category=='longterm_liabilities'",
+            "label": "Working Capital Position",
+            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='longterm_liabilities'",
             "options": {
               "Notes": {
                 "label": "Notes"
@@ -425,10 +464,10 @@
             },
             "val": "Notes"
           },
-          "balance_sheet_position__other_assets": {
+          "working_capital_position__other_assets": {
             "type": "select",
-            "label": "Balance Sheet Position",
-            "show_if": "this.balance_sheet_category=='other_assets'",
+            "label": "Working Capital Position",
+            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='other_assets'",
             "options": {
               "Other Assets": {
                 "label": "Other Assets"
@@ -436,10 +475,10 @@
             },
             "val": "Other Assets"
           },
-          "balance_sheet_position__shareholders_equity": {
+          "working_capital_position__shareholders_equity": {
             "type": "select",
-            "label": "Balance Sheet Position",
-            "show_if": "this.balance_sheet_category=='shareholders_equity'",
+            "label": "Working Capital Position",
+            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='shareholders_equity'",
             "options": {
               "Common Stock": {
                 "label": "Common Stock"
@@ -448,7 +487,37 @@
                 "label": "Retained Earnings"
               }
             },
-            "val": "Common Stock"
+            "val": "Common Stock",
+            "breakLine": true
+          },
+          "bs_allocation": {
+            "type": "select",
+            "label": "Balance Sheet Allocation",
+            "show_if": "this.add_payment_info=='true'",
+            "options": {
+              "Profit Loss Cash": {
+                "label": "Profit and Loss (+/-) & Cash (+/-)"
+              },
+              "Asset Liability Increase": {
+                "label": "Asset & Liability Increase"
+              },
+              "Asset Liability Decrease": {
+                "label": "Asset & Liability Decrease"
+              },
+              "Change in Assets": {
+                "label": "Change in Assets"
+              },
+              "Change in Liabilities": {
+                "label": "Change in Liabilities"
+              },
+              "Profit Loss only": {
+                "label": "Profit and Loss only"
+              },
+              "Balance Sheet only": {
+                "label": "Balance Sheet only"
+              }
+            },
+            "val": "Profit Loss Cash"
           },
           "delete": {
             "type": "button",
