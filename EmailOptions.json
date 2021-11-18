@@ -90,44 +90,28 @@
       }
     }
   },
-  "smtp_config_frame": {
+  "provider_frame": {
     "type": "fieldset",
-    "label": "SMTP Connection",
-    "show_if": "options.task_type=='write_series' || options.task_type=='write_email'",
+    "label": "Provider",
     "repeat": false,
     "fields": {
-      "options.smtp.type": {
+      "options.provider": {
         "type": "select",
-        "label": "Select SMTP Server",
+        "label": "Provider of your e-mail",
         "options": {
+          "outlook": {
+            "label": "MS Outlook"
+          },
+          "gmail": {
+            "label": "Gmail"
+          },
           "custom": {
             "label": "Custom (coming soon)"
           }
         },
-        "val": "custom",
+        "val": "outlook",
         "required": true,
         "breakLine": true
-      },
-      "gmail_warning": {
-        "type": "text",
-        "label": "",
-        "show_if": "options.smtp.type=='gmail'",
-        "val": "Turn 'Allow less secure apps' ON in https://myaccount.google.com/lesssecureapps",
-        "width": "100%",
-        "disabled": true
-      },
-      "options.gmail.user": {
-        "type": "text",
-        "label": "Gmail User",
-        "show_if": "options.smtp.type=='gmail'",
-        "required": true,
-        "placeholder": "sender@gmail.com"
-      },
-      "options.gmail.password": {
-        "type": "password",
-        "label": "Gmail Password",
-        "show_if": "options.smtp.type=='gmail'",
-        "required": true
       },
       "options.custom.host": {
         "type": "text",
