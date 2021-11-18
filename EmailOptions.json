@@ -31,6 +31,7 @@
       "options.all_folders": {
         "type": "checkbox",
         "label": "Import all mail folders",
+        "show_if": "options.task_type=='read_email'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -38,8 +39,9 @@
       "options.read_folders": {
         "type": "select",
         "label": "Mail Folder(s)",
-        "show_if": "options.all_folders=='false'",
+        "show_if": "options.task_type=='read_email' && options.all_folders=='false'",
         "required": true,
+        "multiple": true,
         "options": {
           "Archive": {
             "label": "Archive"
