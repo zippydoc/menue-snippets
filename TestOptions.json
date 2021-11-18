@@ -1,47 +1,52 @@
 {
-  "options": {
+  "options_box": {
     "type": "fieldset",
-    "label": "Repeat frame",
-    "repeat": true,
+    "label": "Select Options",
+    "repeat": false,
     "fields": {
-      "internal_frame1": {
-        "type": "fieldset",
-        "label": "Internal frame 1",
-        "repeat": false,
-        "fields": {
-          "variable1": {
-            "type": "select",
-            "label": "Variable 1",
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Depretiation & Amortisation": {
-                "label": "Depretiation & Amortisation"
-              }
-            },
-            "val": "Revenues",
-            "required": true
-          }
-        }
+      "options.input_table": {
+        "type": "select",
+        "label": "Select Table",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
       },
-      "internal_frame2": {
-        "type": "fieldset",
-        "label": "Internal frame 2",
-        "repeat": false,
-        "fields": {
-          "variable2": {
-            "type": "text",
-            "label": "Variable 2",
-            "val": "",
-            "required": true
-          }
-        }
+      "options.field_name_col": {
+        "type": "select",
+        "label": "Column 1",
+        "required": true,
+        "table": "options.input_table",
+        "bind": "COLUMNS"
       },
-      "delete": {
-        "type": "button",
-        "label": "Delete",
-        "function": "DELETE_ROW"
+      "options.field_name_selected_rows": {
+        "type": "select",
+        "label": "Rows 1",
+        "multiple": true,
+        "unique_values_only": true,
+        "table": "options.input_table",
+        "column_list": "options.field_name_col",
+        "bind": "RECORDS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.field_value_col": {
+        "type": "select",
+        "label": "Column 2",
+        "required": true,
+        "table": "options.input_table",
+        "bind": "COLUMNS"
+      },
+      "options.field_value_selected_rows": {
+        "type": "select",
+        "label": "Rows 2",
+        "multiple": true,
+        "unique_values_only": true,
+        "table": "options.input_table",
+        "column_list": "options.field_value_col",
+        "bind": "RECORDS",
+        "required": true,
+        "breakLine": true
       }
     }
   }
