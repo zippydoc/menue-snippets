@@ -26,7 +26,8 @@
             "label": "Read e-mail"
           }
         },
-        "val": "write_email"
+        "val": "write_email",
+        "breakLine": true
       },
       "options.all_folders": {
         "type": "checkbox",
@@ -38,7 +39,7 @@
       },
       "options.read_folders": {
         "type": "select",
-        "label": "Mail Folder(s)",
+        "label": "Mail Folder(s) to import",
         "show_if": "options.task_type=='read_email' && options.all_folders=='false'",
         "required": true,
         "multiple": true,
@@ -74,7 +75,65 @@
             "label": "Sync Issues"
           }
         },
-        "val": ["Inbox"]
+        "val": ["Inbox"],
+        "breakLine": true
+      },
+      "options.all_columns": {
+        "type": "checkbox",
+        "label": "Import all columns",
+        "show_if": "options.task_type=='read_email'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.import_columns": {
+        "type": "select",
+        "label": "Columns to import",
+        "show_if": "options.task_type=='read_email' && options.all_columns=='false'",
+        "required": true,
+        "multiple": true,
+        "options": {
+          "CreatedAt": {
+            "label": "CreatedAt"
+          },
+          "ReceivedAt": {
+            "label": "ReceivedAt"
+          },
+          "SentAt": {
+            "label": "SentAt"
+          },
+          "Subject": {
+            "label": "Subject"
+          },
+          "BodyPreview": {
+            "label": "BodyPreview"
+          },
+          "From": {
+            "label": "From"
+          },
+          "CC": {
+            "label": "CC"
+          },
+          "BCC": {
+            "label": "BCC"
+          },
+          "HasAttachments": {
+            "label": "HasAttachments"
+          },
+          "IsRead": {
+            "label": "IsRead"
+          },
+          "IsDraft": {
+            "label": "IsDraft"
+          },
+          "WebLink": {
+            "label": "WebLink"
+          },
+          "Body": {
+            "label": "Body"
+          }
+        },
+        "val": ["CreatedAt","Subject","BodyPreview","From","HasAttachments","WebLink","Body"]
       },
       "input_table": {
         "type": "select",
