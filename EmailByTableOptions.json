@@ -1,0 +1,76 @@
+{
+  "options_frame": {
+    "type": "fieldset",
+    "label": "Select Options",
+    "repeat": false,
+    "fields": {
+      "options.task_type": {
+        "type": "hidden",
+        "val": "write_series"
+      },
+      "input_table": {
+        "type": "select",
+        "label": "Select Table",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true
+      },
+      "info2": {
+        "type": "text",
+        "label": "",
+        "val": "Table-Type: TO | CC | BCC | SUBJECT | BODY",
+        "disabled": true,
+        "style": "width: 100%"
+      }
+    }
+  },
+  "provider_frame": {
+    "type": "fieldset",
+    "label": "Provider",
+    "repeat": false,
+    "fields": {
+      "options.provider": {
+        "type": "select",
+        "label": "Provider of your e-mail",
+        "options": {
+          "outlook": {
+            "label": "MS Outlook"
+          },
+          "gmail": {
+            "label": "Gmail"
+          },
+          "custom": {
+            "label": "Custom (coming soon)"
+          }
+        },
+        "val": "outlook",
+        "required": true,
+        "breakLine": true
+      },
+      "options.custom.host": {
+        "type": "text",
+        "label": "SMTP Host",
+        "show_if": "options.provider=='custom'",
+        "required": true
+      },
+      "options.custom.port": {
+        "type": "text",
+        "label": "SMTP Port",
+        "show_if": "options.provider=='custom'",
+        "required": true
+      },
+      "options.custom.user": {
+        "type": "text",
+        "label": "SMTP User",
+        "show_if": "options.provider=='custom'",
+        "required": true
+      },
+      "options.custom.password": {
+        "type": "password",
+        "label": "SMTP Password",
+        "show_if": "options.provider=='custom'",
+        "required": true
+      }
+    }
+  }
+}

@@ -1,38 +1,16 @@
 {
-  "info1": {
-    "type": "text",
-    "label": "",
-    "val": "E-mail task is only available as private cloud solution. Please contact sales.",
-    "disabled": true,
-    "style": "width: 100%"
-  },
-  "options": {
+  "options_frame": {
     "type": "fieldset",
     "label": "Select Options",
     "repeat": false,
     "fields": {
       "options.task_type": {
-        "type": "select",
-        "label": "Task Type",
-        "required": true,
-        "options": {
-          "write_series": {
-            "label": "Write e-mail series"
-          },
-          "write_email": {
-            "label": "Write e-mail"
-          },
-          "read_email": {
-            "label": "Read e-mail"
-          }
-        },
-        "val": "write_email",
-        "breakLine": true
+        "type": "hidden",
+        "val": "read_email"
       },
       "options.all_folders": {
         "type": "checkbox",
         "label": "Import all mail folders",
-        "show_if": "options.task_type=='read_email'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -40,7 +18,7 @@
       "options.read_folders": {
         "type": "select",
         "label": "Mail Folder(s) to import",
-        "show_if": "options.task_type=='read_email' && options.all_folders=='false'",
+        "show_if": "options.all_folders=='false'",
         "required": true,
         "multiple": true,
         "options": {
@@ -81,7 +59,6 @@
       "options.all_columns": {
         "type": "checkbox",
         "label": "Import all columns",
-        "show_if": "options.task_type=='read_email'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -89,7 +66,7 @@
       "options.import_columns": {
         "type": "select",
         "label": "Columns to import",
-        "show_if": "options.task_type=='read_email' && options.all_columns=='false'",
+        "show_if": "options.all_columns=='false'",
         "required": true,
         "multiple": true,
         "options": {
@@ -134,66 +111,6 @@
           }
         },
         "val": ["CreatedAt","Subject","BodyPreview","From","HasAttachments","WebLink"]
-      },
-      "input_table": {
-        "type": "select",
-        "label": "Select Table",
-        "show_if": "options.task_type=='write_series'",
-        "bind": "TABLES",
-        "empty": "",
-        "required": true
-      },
-      "info2": {
-        "type": "text",
-        "label": "",
-        "show_if": "options.task_type=='write_series'",
-        "val": "Table-Type: TO | CC | BCC | SUBJECT | BODY",
-        "disabled": true,
-        "style": "width: 100%"
-      },
-      "options.to": {
-        "type": "text",
-        "label": "To",
-        "show_if": "options.task_type=='write_email'",
-        "required": true,
-        "val": "",
-        "placeholder": "user1@domain.com; user2@domain.com;",
-        "width": "100%"
-      },
-      "options.cc": {
-        "type": "text",
-        "label": "CC",
-        "show_if": "options.task_type=='write_email'",
-        "val": "",
-        "placeholder": "ccuser1@domain.com; ccuser2@domain.com",
-        "width": "100%"
-      },
-      "options.bcc": {
-        "type": "text",
-        "label": "BCC",
-        "show_if": "options.task_type=='write_email'",
-        "val": "",
-        "placeholder": "bccuser1@domain.com; bccuser1@domain.com",
-        "width": "100%"
-      },
-      "options.subject": {
-        "type": "text",
-        "label": "Subject",
-        "show_if": "options.task_type=='write_email'",
-        "required": true,
-        "val": "",
-        "placeholder": "Subject",
-        "width": "100%"
-      },
-      "options.body": {
-        "type": "textarea",
-        "label": "Body",
-        "show_if": "options.task_type=='write_email'",
-        "val": "",
-        "placeholder": "Text",
-        "md_no_resize": true,
-        "rows": 3,
-        "width": "100%"
       }
     }
   },
@@ -223,25 +140,25 @@
       "options.custom.host": {
         "type": "text",
         "label": "SMTP Host",
-        "show_if": "options.smtp.type=='custom'",
+        "show_if": "options.provider=='custom'",
         "required": true
       },
       "options.custom.port": {
         "type": "text",
         "label": "SMTP Port",
-        "show_if": "options.smtp.type=='custom'",
+        "show_if": "options.provider=='custom'",
         "required": true
       },
       "options.custom.user": {
         "type": "text",
         "label": "SMTP User",
-        "show_if": "options.smtp.type=='custom'",
+        "show_if": "options.provider=='custom'",
         "required": true
       },
       "options.custom.password": {
         "type": "password",
         "label": "SMTP Password",
-        "show_if": "options.smtp.type=='custom'",
+        "show_if": "options.provider=='custom'",
         "required": true
       }
     }
