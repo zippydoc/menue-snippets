@@ -1,0 +1,247 @@
+{
+  "input": {
+    "type": "fieldset",
+    "label": "Select Input Table",
+    "show_if": "options.add_table=='true'",
+    "repeat": false,
+    "fields": {
+      "input_table": {
+        "type": "select",
+        "label": "Select Table",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      },
+      "remove_input_table_after_processing": {
+        "type": "hidden",
+        "val": "false"
+      },
+      "is_word": {
+        "type": "hidden",
+        "val": "false"
+      }
+    }
+  },
+  "filter_frame": {
+    "type": "fieldset",
+    "label": "Select Filter Options",
+    "show_if": "options.add_table=='true'",
+    "repeat": false,
+    "fields": {
+      "filter": {
+        "type": "fieldset",
+        "label": "Add Filter Conditions",
+        "repeat": true,
+        "fields": {
+          "initial_op": {
+            "type": "select",
+            "label": "Select Logic Operator",
+            "required": true,
+            "show_if" :  "$index == 0",
+            "options": {
+              "if": {
+                "label": "IF"
+              },
+              "if_not": {
+                "label": "IF NOT"
+              }
+            },
+            "val": "if"
+          },
+          "op": {
+            "type": "select",
+            "label": "Select Logic Operator",
+            "required": true,
+            "show_if" :  "$index > 0",
+            "options": {
+              "and": {
+                "label": "AND"
+              },
+              "or": {
+                "label": "OR"
+              },
+              "and_not": {
+                "label": "AND NOT"
+              },
+              "or_not": {
+                "label": "OR NOT"
+              }
+            },
+            "val": "and"
+          },
+          "column": {
+            "type": "select",
+            "label": "Select Column",
+            "table": "input_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "condition": {
+            "type": "select",
+            "label": "Select Operator",
+            "required": true,
+            "options": {
+              "CONTAINS": {
+                "label": "CONTAINS"
+              },
+              "CONTAINED IN STRING": {
+                "label": "CONTAINED IN"
+              },
+              "STARTS WITH": {
+                "label": "STARTS WITH"
+              },
+              "ENDS WITH": {
+                "label": "ENDS WITH"
+              },
+              "=": {
+                "label": "EQUAL"
+              },
+              ">": {
+                "label": "GREATER THAN"
+              },
+              ">=": {
+                "label": "GREATER OR EQUAL"
+              },
+              "<": {
+                "label": "SMALLER THAN"
+              },
+              "<=": {
+                "label": "SMALLER OR EQUAL"
+              },
+              "EMPTY": {
+                "label": "IS EMPTY"
+              },
+              "BLANK": {
+                "label": "IS BLANK"
+              },
+              "IS NULL": {
+                "label": "IS NULL"
+              },
+              "IS TRUE": {
+                "label": "IS TRUE"
+              },
+              "IS FALSE": {
+                "label": "IS FALSE"
+              },
+              "REGEX MATCH": {
+                "label": "REGEX MATCH"
+              },
+              "CONTAINED IN TABLE": {
+                "label": "IN TABLE"
+              },
+              "IN REGEX TABLE": {
+                "label": "IN REGEX TABLE"
+              },
+              "DATE": {
+                "label": "DATE"
+              }
+            },
+            "val": "CONTAINS"
+          },
+          "date_condition": {
+            "type": "select",
+            "label": "Select Date Operator",
+            "required": true,
+            "show_if": "this.condition == 'DATE'",
+            "options": {
+              "<": {
+                "label": "PRIOR"
+              },
+              "<=": {
+                "label": "PRIOR OR EQUAL"
+              },
+              "=": {
+                "label": "EQUAL"
+              },
+              ">": {
+                "label": "AFTER"
+              },
+              ">=": {
+                "label": "AFTER OR EQUAL"
+              }
+            },
+            "val": "="
+          },
+          "case_sensitive": {
+            "type": "select",
+            "label": "Select Case Sensitive",
+            "required": true,
+            "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+            "options": {
+              "yes": {
+                "label": "Case Sensitive"
+              },
+              "no": {
+                "label": "Case Insensitive"
+              }
+            },
+            "val": "yes"
+          },
+          "date_value": {
+            "type": "date",
+            "label": "Select Date",
+            "show_if": "this.condition=='DATE'",
+            "val": "",
+            "required": true
+          },
+          "value": {
+            "type": "text",
+            "label": "Input Value",
+            "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'IS TRUE' && this.condition != 'IS FALSE' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+            "val": "",
+            "required": true
+          },
+          "compare_table": {
+            "type": "select",
+            "label": "Select Table",
+            "bind": "TABLES",
+            "empty": "",
+            "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+            "required": true
+          },
+          "compare_column": {
+            "type": "select",
+            "label": "Select Column",
+            "table": "this.compare_table",
+            "bind": "COLUMNS",
+            "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "apply_to_record": {
+        "type": "checkbox",
+        "label": "Apply to Record",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "apply_to_group_box": {
+        "type": "fieldset",
+        "label": "Apply to Group",
+        "show_if": "apply_to_record=='false'",
+        "repeat": false,
+        "fields": {
+          "apply_to_group_columns": {
+            "type": "select",
+            "label": "Select Group Columns",
+            "required": true,
+            "width": "100%",
+            "table": "input_table",
+            "multiple": true,
+            "bind": "COLUMNS",
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}
