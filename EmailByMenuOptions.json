@@ -21,7 +21,8 @@
         "label": "CC",
         "val": "false",
         "isOn": "true",
-        "isOff": "false"
+        "isOff": "false",
+        "breakLine": true
       },
       "options.cc": {
         "type": "text",
@@ -29,7 +30,7 @@
         "show_if": "options.add_cc=='true'",
         "val": "",
         "placeholder": "ccuser1@domain.com; ccuser2@domain.com",
-        "style": "min-width: 260px",
+        "width": "100%",
         "breakLine": true
       },
       "options.add_bcc": {
@@ -37,7 +38,8 @@
         "label": "BCC",
         "val": "false",
         "isOn": "true",
-        "isOff": "false"
+        "isOff": "false",
+        "breakLine": true
       },
       "options.bcc": {
         "type": "text",
@@ -45,7 +47,7 @@
         "show_if": "options.add_bcc=='true'",
         "val": "",
         "placeholder": "bccuser1@domain.com; bccuser1@domain.com",
-        "style": "min-width: 260px",
+        "width": "100%",
         "breakLine": true
       },
       "options.subject": {
@@ -67,10 +69,11 @@
       },
       "options.add_table": {
         "type": "checkbox",
-        "label": "Embed Table",
+        "label": "Embed a Table",
         "val": "false",
         "isOn": "true",
-        "isOff": "false"
+        "isOff": "false",
+        "breakLine": true
       },
       "options.embed_mode": {
         "type": "select",
@@ -80,60 +83,30 @@
           "embed": {
             "label": "Embed"
           },
-          "attach": {
-            "label": "Attach as CSV"
+          "attach_csv_comma_separated": {
+            "label": "Attach as csv (',' - separated)"
+          },
+          "attach_csv_semicolon_separated": {
+            "label": "Attach as csv (';' - separated)"
           }
         },
-        "val": "embed"
-      }
-    }
-  },
-  "provider_frame": {
-    "type": "fieldset",
-    "label": "Provider",
-    "repeat": false,
-    "fields": {
-      "options.provider": {
-        "type": "select",
-        "label": "Provider of your e-mail",
-        "options": {
-          "outlook": {
-            "label": "MS Outlook"
-          },
-          "gmail": {
-            "label": "Gmail"
-          },
-          "custom": {
-            "label": "Custom (coming soon)"
-          }
-        },
-        "val": "outlook",
-        "required": true,
+        "val": "embed",
         "breakLine": true
       },
-      "options.custom.host": {
+      "options.embed_table_title": {
         "type": "text",
-        "label": "SMTP Host",
-        "show_if": "options.provider=='custom'",
-        "required": true
+        "label": "Table Title",
+        "show_if": "options.add_table=='true'",
+        "required": true,
+        "val": "",
+        "breakLine": true
       },
-      "options.custom.port": {
+      "info3": {
         "type": "text",
-        "label": "SMTP Port",
-        "show_if": "options.provider=='custom'",
-        "required": true
-      },
-      "options.custom.user": {
-        "type": "text",
-        "label": "SMTP User",
-        "show_if": "options.provider=='custom'",
-        "required": true
-      },
-      "options.custom.password": {
-        "type": "password",
-        "label": "SMTP Password",
-        "show_if": "options.provider=='custom'",
-        "required": true
+        "label": "",
+        "val": "This task only supports users logged in via Microsoft Login",
+        "disabled": true,
+        "style": "width: 100%"
       }
     }
   }

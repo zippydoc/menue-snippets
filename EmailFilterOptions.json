@@ -1,5 +1,5 @@
 {
-  "input": {
+  "embed_table_frame": {
     "type": "fieldset",
     "label": "Embed Table",
     "show_if": "options.add_table=='true'",
@@ -12,13 +12,29 @@
         "empty": "",
         "required": true,
         "breakLine": true
+      },
+      "options.apply_filter": {
+        "type": "checkbox",
+        "label": "Apply Filter",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.do_not_send_email_if_empty_table": {
+        "type": "checkbox",
+        "label": "Don't send e-mail if filter returns empty table",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
       }
     }
   },
   "filter_frame": {
     "type": "fieldset",
     "label": "Filter for Embed Table",
-    "show_if": "options.add_table=='true'",
+    "show_if": "options.add_table=='true' && options.apply_filter=='true'",
     "repeat": false,
     "fields": {
       "options.filter": {
