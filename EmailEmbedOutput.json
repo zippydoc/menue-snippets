@@ -1,46 +1,35 @@
 {
-  "output": {
+  "embed_output_frame": {
     "type": "fieldset",
-    "label": "Define Output Table",
-    "show_if": "options.task_type=='write_series' || options.task_type=='read_email'",
+    "label": "Define Embed(Attach) Table Name",
     "repeat": false,
     "fields": {
-      "output.custom_text": {
+      "embed_output.custom_text": {
         "type": "text",
         "label": "Output Table Name",
-        "show_if": "output.custom_options=='false' || (output.custom_options=='true' && output.compose_table_name=='false')",
+        "show_if": "embed_output.compose_table_name=='false'",
         "minLength": 1,
         "val": "",
         "width": "100%",
         "breakLine": true
       },
-      "output.custom_options": {
-        "type": "checkbox",
-        "label": "Output Options",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      },
-      "output.compose_table_name": {
+      "embed_output.compose_table_name": {
         "type": "checkbox",
         "label": "Compose Table Name",
-        "show_if": "output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
         "breakLine": true
       },
-      "compose_table_name_frame": {
+      "embed_output_compose_table_name_frame": {
         "type": "fieldset",
         "label": "Compose Output Table Name",
-        "show_if": "output.custom_options=='true' && output.compose_table_name=='true'",
+        "show_if": "embed_output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
-          "output.prefix_rule": {
+          "embed_output.prefix_rule": {
             "type": "select",
             "label": "Prefix",
-            "show_if": "output.compose_table_name=='true'",
             "val": "empty",
             "options": {
               "empty": {
@@ -66,25 +55,24 @@
               }
             }
           },
-          "output.prefix_text": {
+          "embed_output.prefix_text": {
             "type": "text",
             "label": "Prefix Text",
-            "show_if": "output.compose_table_name=='true' && output.prefix_rule=='custom'",
+            "show_if": "embed_output.prefix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
             "val": ""
           },
-          "output.core_delimiter": {
+          "embed_output.core_delimiter": {
             "type": "text",
             "label": "Delimiter",
-            "show_if": "output.compose_table_name=='true' && output.prefix_rule!='empty'",
+            "show_if": "embed_output.prefix_rule!='empty'",
             "val": "_",
             "width": "50px"
           },
-          "output.core_rule": {
+          "embed_output.core_rule": {
             "type": "select",
             "label": "Table Name",
-            "show_if": "output.compose_table_name=='true'",
             "val": "input_table_name",
             "options": {
               "input_table_name": {
@@ -98,26 +86,24 @@
               }
             }
           },
-          "output.core_text": {
+          "embed_output.core_text": {
             "type": "text",
             "label": "Main Table Name",
-            "show_if": "output.compose_table_name=='true' && output.core_rule=='custom'",
+            "show_if": "embed_output.core_rule=='custom'",
             "required": true,
             "minLength": 1,
             "maxLength": 31,
             "val": ""
           },
-          "output.suffix_delimiter": {
+          "embed_output.suffix_delimiter": {
             "type": "text",
             "label": "Delimiter",
-            "show_if": "output.compose_table_name=='true'",
             "val": "_",
             "width": "50px"
           },
-          "output.suffix_rule": {
+          "embed_output.suffix_rule": {
             "type": "select",
             "label": "Suffix",
-            "show_if": "output.compose_table_name=='true'",
             "val": "script_name",
             "options": {
               "empty": {
@@ -143,19 +129,19 @@
               }
             }
           },
-          "output.suffix_text": {
+          "embed_output.suffix_text": {
             "type": "text",
             "label": "Suffix Text",
-            "show_if": "output.compose_table_name=='true' && output.suffix_rule=='custom'",
+            "show_if": "embed_output.suffix_rule=='custom'",
             "minLength": 1,
             "maxLength": 31,
             "val": "",
             "breakLine": true
           },
-          "output.timezone": {
+          "embed_output.timezone": {
             "type": "select",
             "label": "Timezone",
-            "show_if": "output.compose_table_name=='true' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
+            "show_if": "embed_output.prefix_rule=='date_string_type1' || embed_output.prefix_rule=='date_string_type2' || embed_output.prefix_rule=='time_string' || embed_output.prefix_rule=='datetime_string' || embed_output.suffix_rule=='date_string_type1' || embed_output.suffix_rule=='date_string_type2' || embed_output.suffix_rule=='time_string' || embed_output.suffix_rule=='datetime_string'",
             "val": "Europe/Berlin",
             "required": true,
             "options": {
