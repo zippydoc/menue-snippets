@@ -1,0 +1,124 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Specify Options",
+    "repeat": false,
+    "fields": {
+      "apply_framing_condition_box": {
+        "type": "fieldset",
+        "label": "Framing conditions",
+        "repeat": false,
+        "fields": {
+          "options.framing_condition.pattern": {
+            "type": "select",
+            "label": "Framing conditions",
+            "required": true,
+            "options": {
+              "name_x": {
+                "label": "name : x"
+              },
+              "curly_brackets": {
+                "label": "{x}"
+              },
+              "square_brackets": {
+                "label": "[x]"
+              },
+              "round_brackets": {
+                "label": "(x)"
+              },
+              "tag_x": {
+                "label": "&lt;tag&gt;x&lt;/tag&gt;"
+              },
+              "f_x": {
+                "label": "f(x)"
+              },
+              "f_x_bracket": {
+                "label": "f(){x}"
+              }
+            },
+            "val": "name_x"
+          },
+          "options.framing_condition.name_x_name": {
+            "type": "text",
+            "label": "Name",
+            "show_if": "options.framing_condition.pattern=='name_x'",
+            "val": "",
+            "required": true
+          },
+          "options.framing_condition.tag_x_tag": {
+            "type": "text",
+            "label": "Tag",
+            "show_if": "options.framing_condition.pattern=='tag_x'",
+            "val": "",
+            "required": true
+          },
+          "options.framing_condition.parantheses": {
+            "type": "select",
+            "label": "Parantheses",
+            "required": true,
+            "options": {
+              "optional": {
+                "label": "Optional parantheses"
+              },
+              "including": {
+                "label": "Including parantheses"
+              },
+              "no": {
+                "label": "No parantheses"
+              }
+            },
+            "val": "optional"
+          },
+          "options.framing_condition.sel_parantheses": {
+            "type": "select",
+            "label": "Select Parantheses",
+            "show_if": "options.framing_condition.parantheses=='optional' || options.framing_condition.parantheses=='including'",
+            "required": true,
+            "options": {
+              "p1": {
+                "label": "'"
+              },
+              "p2": {
+                "label": "\""
+              },
+              "p3": {
+                "label": "`"
+              },
+              "p4": {
+                "label": "´"
+              }
+            },
+            "val": "p1",
+            "breakLine": true
+          },
+          "options.framing_condition.allow_whitespace": {
+            "type": "checkbox",
+            "label": "Allow whitespace",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          }
+        }
+      },
+      "options.apply_section_by_section": {
+        "type": "checkbox",
+        "label": "Section by Section",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px"
+      },
+      "options.section_columns": {
+        "type": "select",
+        "label": "Section column(s)",
+        "show_if": "options.apply_section_by_section=='true'",
+        "table": "input_table",
+        "bind": "COLUMNS",
+        "multiple": true,
+        "required": true,
+        "breakLine": true
+      }
+    }
+  }
+}
