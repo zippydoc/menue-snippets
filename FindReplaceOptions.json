@@ -122,7 +122,7 @@
         "show_if": "incoming_value_to_replace.type=='regex' && incoming_value_to_replace.type!='replacement_table'",
         "val": "\\4: \\2, \\3"
       },
-      "replace_with.table": {
+      "replace_with.table_id": {
         "type": "select",
         "label": "Select Table",
         "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table' && incoming_value_to_replace.type!='replacement_table'",
@@ -133,7 +133,7 @@
         "type": "select",
         "label": "Select Column",
         "show_if": "incoming_value_to_replace.type!='regex' && replace_with.value_type=='table' && incoming_value_to_replace.type!='replacement_table'",
-        "table": "replace_with.table",
+        "table": "replace_with.table_id",
         "bind": "COLUMNS",
         "required": true,
         "breakLine": true
@@ -205,7 +205,7 @@
               "column": {
                 "type": "select",
                 "label": "Select Column",
-                "table": "input_table",
+                "table": "table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
@@ -324,7 +324,7 @@
                 "val": "",
                 "required": true
               },
-              "compare_table": {
+              "compare_table_id": {
                 "type": "select",
                 "label": "Select Table",
                 "bind": "TABLES",
@@ -335,7 +335,7 @@
               "compare_column": {
                 "type": "select",
                 "label": "Select Column",
-                "table": "this.compare_table",
+                "table": "this.compare_table_id",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
@@ -367,7 +367,7 @@
                 "label": "Select Group Columns",
                 "required": true,
                 "width": "100%",
-                "table": "input_table",
+                "table": "table_id",
                 "multiple": true,
                 "bind": "COLUMNS",
                 "breakLine": true
@@ -436,7 +436,7 @@
               "column": {
                 "type": "select",
                 "label": "Select Column",
-                "table": "replace_with.table",
+                "table": "replace_with.table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
@@ -555,7 +555,7 @@
                 "val": "",
                 "required": true
               },
-              "compare_table": {
+              "compare_table_id": {
                 "type": "select",
                 "label": "Select Table",
                 "bind": "TABLES",
@@ -566,7 +566,7 @@
               "compare_column": {
                 "type": "select",
                 "label": "Select Column",
-                "table": "this.compare_table",
+                "table": "this.compare_table_id",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
@@ -598,7 +598,7 @@
                 "label": "Select Group Columns",
                 "required": true,
                 "width": "100%",
-                "table": "replace_with.table",
+                "table": "replace_with.table_id",
                 "multiple": true,
                 "bind": "COLUMNS",
                 "breakLine": true
