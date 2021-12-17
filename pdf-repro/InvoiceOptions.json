@@ -83,11 +83,11 @@
         "type": "text",
         "label": "",
         "show_if": "configure_by_table=='true'",
-        "val": "Table Structure ( Document | List Name | List Item | Field Name | Field Value )",
+        "val": "Table Structure ( Document | List Item | Field Name | Field Value )",
         "disabled": true,
         "width": "100%"
       },
-      "input_table": {
+      "table_id": {
         "type": "select",
         "label": "Select Table",
         "show_if": "configure_by_table=='true'",
@@ -151,7 +151,7 @@
             "disabled": true,
             "width": "100%"
           },
-          "sender_detail.input_table": {
+          "sender_detail.table_id": {
             "type": "select",
             "label": "Select Table",
             "show_if": "sender_detail.configure_by_table=='true'",
@@ -164,7 +164,7 @@
             "label": "Select Column",
             "show_if": "sender_detail.configure_by_table=='true' && sender_detail.table_style=='field_name_as_header'",
             "required": true,
-            "table": "sender_detail.input_table",
+            "table": "sender_detail.table_id",
             "bind": "COLUMNS"
           },
           "sender_detail.selected_rows": {
@@ -173,7 +173,7 @@
             "show_if": "sender_detail.configure_by_table=='true' && sender_detail.table_style=='field_name_as_header'",
             "multiple": false,
             "unique_values_only": true,
-            "table": "sender_detail.input_table",
+            "table": "sender_detail.table_id",
             "column_list": "sender_detail.selected_col",
             "bind": "RECORDS",
             "required": true,
@@ -350,7 +350,7 @@
             "disabled": true,
             "width": "100%"
           },
-          "customer_detail.input_table": {
+          "customer_detail.table_id": {
             "type": "select",
             "label": "Select Table",
             "show_if": "customer_detail.configure_by_table=='true'",
@@ -363,7 +363,7 @@
             "label": "Select Column",
             "show_if": "customer_detail.configure_by_table=='true' && customer_detail.table_style=='field_name_as_header'",
             "required": true,
-            "table": "customer_detail.input_table",
+            "table": "customer_detail.table_id",
             "bind": "COLUMNS"
           },
           "customer_detail.selected_rows": {
@@ -372,7 +372,7 @@
             "show_if": "customer_detail.configure_by_table=='true' && customer_detail.table_style=='field_name_as_header'",
             "multiple": false,
             "unique_values_only": true,
-            "table": "customer_detail.input_table",
+            "table": "customer_detail.table_id",
             "column_list": "customer_detail.selected_col",
             "bind": "RECORDS",
             "required": true,
@@ -456,7 +456,7 @@
             "type": "textarea",
             "label": "",
             "show_if": "invoice_spec.configure_by_table=='true' && invoice_spec.table_style=='field_name_as_header'",
-            "val": "Table Structure ( Invoice Date | Invoice Number | Reference | Order Date | Subject | Invoice Text | Payment Text | Footer | Payable Until | Total Amount, Total Vat Amount, Total Net Amount | Article Number, Article Description, Quantity, Package Type, Per Item Price, Total Price, Vat Amount, Net Amount, Vat Percentage, Footer Text)",
+            "val": "Table Structure ( Invoice Date | Invoice Number | Reference | Order Date | Subject | Invoice Text | Payment Text | Footer | Payable Until | Article Number | Article Description | Quantity | Package Type | Per Item Price | Vat Percentage | Footer Text)",
             "md_no_resize": false,
             "rows": 4,
             "disabled": true,
@@ -466,11 +466,11 @@
             "type": "text",
             "label": "",
             "show_if": "invoice_spec.configure_by_table=='true' && invoice_spec.table_style=='row_by_row_field_name'",
-            "val": "Table Structure ( Document | List Name | List Item | Field Name | Field Value )",
+            "val": "Table Structure ( Document | List Item | Field Name | Field Value )",
             "disabled": true,
             "width": "100%"
           },
-          "invoice_spec.input_table": {
+          "invoice_spec.table_id": {
             "type": "select",
             "label": "Select Table",
             "show_if": "invoice_spec.configure_by_table=='true'",
@@ -483,7 +483,7 @@
             "label": "Select Column",
             "show_if": "invoice_spec.configure_by_table=='true' && invoice_spec.table_style=='field_name_as_header'",
             "required": true,
-            "table": "invoice_spec.input_table",
+            "table": "invoice_spec.table_id",
             "bind": "COLUMNS"
           },
           "invoice_spec.selected_rows": {
@@ -492,7 +492,7 @@
             "show_if": "invoice_spec.configure_by_table=='true' && invoice_spec.table_style=='field_name_as_header'",
             "multiple": true,
             "unique_values_only": true,
-            "table": "invoice_spec.input_table",
+            "table": "invoice_spec.table_id",
             "column_list": "invoice_spec.selected_col",
             "bind": "RECORDS",
             "required": true,
@@ -711,6 +711,80 @@
                 "breakLine": true
               }
             }
+          }
+        }
+      },
+      "price_format_frame": {
+        "type": "fieldset",
+        "label": "Price Format",
+        "show_if": "configure_by_table=='true'",
+        "repeat": false,
+        "fields": {
+          "price_format.category": {
+            "type": "hidden",
+            "val": "currency"
+          },
+          "price_format.decimal_places": {
+            "type": "select",
+            "label": "Decimal Places",
+            "required": true,
+            "options": {
+              "0": {
+                "label": "0 digits"
+              },
+              "1": {
+                "label": "1 digits"
+              },
+              "2": {
+                "label": "2 digits"
+              },
+              "3": {
+                "label": "3 digits"
+              },
+              "4": {
+                "label": "4 digits"
+              },
+              "5": {
+                "label": "5 digits"
+              },
+              "6": {
+                "label": "6 digits"
+              },
+              "7": {
+                "label": "7 digits"
+              },
+              "8": {
+                "label": "8 digits"
+              },
+              "9": {
+                "label": "9 digits"
+              }
+            },
+            "val": "2"
+          },
+          "price_format.use_1000_separator": {
+            "type": "checkbox",
+            "label": "Use 1000 Separator(,)",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "price_format.currency_symbol": {
+            "type": "select",
+            "label": "Symbol",
+            "required": true,
+            "options": {
+              "dollar": {
+                "label": "$"
+              },
+              "euro": {
+                "label": "€"
+              },
+              "pound": {
+                "label": "£"
+              }
+            },
+            "val": "dollar"
           }
         }
       }

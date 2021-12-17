@@ -7,7 +7,7 @@
       "options.position": {
         "type": "select",
         "label": "Select Position",
-        "show_if": "$input_table.numOfLabel >= 1",
+        "show_if": "$table_id.numOfLabel >= 1",
         "required": true,
         "options": {
           "add_rows_at_table_end": {
@@ -32,8 +32,8 @@
       "options.group_column": {
         "type": "select",
         "label": "Group Column",
-        "show_if": "$input_table.numOfLabel < 1 && options.position=='add_row_after_each_group'",
-        "table": "input_table",
+        "show_if": "$table_id.numOfLabel < 1 && options.position=='add_row_after_each_group'",
+        "table": "table_id",
         "bind": "COLUMNS",
         "required": true,
         "breakLine": true
@@ -58,7 +58,7 @@
       "filter_box": {
         "type": "fieldset",
         "label": "Filter Options",
-        "show_if": "options.use_filter=='true' && $input_table.numOfLabel < 1",
+        "show_if": "options.use_filter=='true' && $table_id.numOfLabel < 1",
         "repeat": false,
         "fields": {
           "options.filter": {
@@ -105,7 +105,7 @@
               "column": {
                 "type": "select",
                 "label": "Select Column",
-                "table": "input_table",
+                "table": "table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
@@ -267,7 +267,7 @@
                 "label": "Select Group Columns",
                 "required": true,
                 "width": "100%",
-                "table": "input_table",
+                "table": "table_id",
                 "multiple": true,
                 "bind": "COLUMNS",
                 "breakLine": true
@@ -284,7 +284,7 @@
           "new_row_name": {
             "type": "text",
             "label": "New Row Name",
-            "show_if": "$input_table.numOfLabel >= 1",
+            "show_if": "$table_id.numOfLabel >= 1",
             "val": ""
           },
           "function_type": {
@@ -305,7 +305,7 @@
           "multi_row_functions__function": {
             "type": "select",
             "label": "Select Functions",
-            "show_if": "$input_table.numOfLabel >= 1",
+            "show_if": "$table_id.numOfLabel >= 1",
             "required": true,
             "options": {
               "sum": {
@@ -335,7 +335,7 @@
           "multi_row_functions__function_use_filter": {
             "type": "select",
             "label": "Select Functions",
-            "show_if": "$input_table.numOfLabel < 1",
+            "show_if": "$table_id.numOfLabel < 1",
             "required": true,
             "options": {
               "sum": {
@@ -362,9 +362,9 @@
           "multi_row_functions__sel_labels": {
             "type": "select",
             "label": "Select Rows(s)",
-            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function!='quota'",
+            "show_if": "$table_id.numOfLabel >= 1 && this.multi_row_functions__function!='quota'",
             "required": true,
-            "table": "input_table",
+            "table": "table_id",
             "multiple": true,
             "bind": "LABELS"
           },
@@ -441,24 +441,24 @@
           "multi_row_functions__sel_label_a": {
             "type": "select",
             "label": "Select Label A",
-            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function=='quota'",
+            "show_if": "$table_id.numOfLabel >= 1 && this.multi_row_functions__function=='quota'",
             "required": true,
-            "table": "input_table",
+            "table": "table_id",
             "bind": "LABELS"
           },
           "multi_row_functions__sel_label_b": {
             "type": "select",
             "label": "Select Label B",
-            "show_if": "$input_table.numOfLabel >= 1 && this.multi_row_functions__function=='quota'",
+            "show_if": "$table_id.numOfLabel >= 1 && this.multi_row_functions__function=='quota'",
             "required": true,
-            "table": "input_table",
+            "table": "table_id",
             "bind": "LABELS",
             "breakLine": true
           },
           "position": {
             "type": "select",
             "label": "Position",
-            "show_if": "$input_table.numOfLabel >= 1",
+            "show_if": "$table_id.numOfLabel >= 1",
             "required": true,
             "options": {
               "bottom": {
@@ -479,15 +479,15 @@
           "positioning_row": {
             "type": "select",
             "label": "Positioning Row",
-            "show_if": "$input_table.numOfLabel >= 1 && (this.position=='above' || this.position=='below')",
+            "show_if": "$table_id.numOfLabel >= 1 && (this.position=='above' || this.position=='below')",
             "required": true,
-            "table": "input_table",
+            "table": "table_id",
             "bind": "LABELS"
           },
           "format__category": {
             "type": "select",
             "label": "Display Format",
-            "show_if": "$input_table.numOfLabel >= 1",
+            "show_if": "$table_id.numOfLabel >= 1",
             "required": true,
             "options": {
               "standard": {
@@ -607,7 +607,7 @@
       "options.add_new_row": {
         "type": "checkbox",
         "label": "Add Label",
-        "show_if": "$input_table.numOfLabel < 1",
+        "show_if": "$table_id.numOfLabel < 1",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -617,15 +617,15 @@
       "options.new_row_label": {
         "type": "text",
         "label": "Label Name",
-        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "show_if": "$table_id.numOfLabel < 1 && options.add_new_row == 'true'",
         "val": ""
       },
       "options.new_sel_column": {
         "type": "select",
         "label": "Select Column",
-        "show_if": "$input_table.numOfLabel < 1 && options.add_new_row == 'true'",
+        "show_if": "$table_id.numOfLabel < 1 && options.add_new_row == 'true'",
         "required": true,
-        "table": "input_table",
+        "table": "table_id",
         "multiple": false,
         "bind": "COLUMNS",
         "breakLine": true
@@ -633,7 +633,7 @@
       "options.insert_on_top": {
         "type": "checkbox",
         "label": "Insert on Top",
-        "show_if": "$input_table.numOfLabel < 1",
+        "show_if": "$table_id.numOfLabel < 1",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
