@@ -291,10 +291,16 @@
             "val": "",
             "required": true
           },
-          "add_payment_info": {
+          "payment_days": {
+            "type": "number",
+            "label": "Payment Days",
+            "show_if": "this.no_payment=='false'",
+            "val": "0"
+          },
+          "no_payment": {
             "type": "checkbox",
-            "label": "Add Payment Information",
-            "val": "true",
+            "label": "No Payment",
+            "val": "false",
             "isOn": "true",
             "isOff": "false",
             "breakLine": true
@@ -362,178 +368,6 @@
             "val": "",
             "breakLine": true
           },
-          "help_3": {
-            "type": "text",
-            "label": "",
-            "val": "Specify Balance Sheet Impact",
-            "disabled": true,
-            "width": "100%",
-            "breakLine": true
-          },
-          "payment_days": {
-            "type": "number",
-            "label": "Payment Days",
-            "show_if": "this.add_payment_info=='true'",
-            "val": "0"
-          },
-          "bs_impact_auto_configure": {
-            "type": "checkbox",
-            "label": "Auto configure",
-            "show_if": "this.add_payment_info=='true'",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false",
-            "breakLine": true
-          },
-          "working_capital_category": {
-            "type": "select",
-            "label": "Working Capital Category",
-            "show_if": "this.add_payment_info=='true'",
-            "options": {
-              "current_assets": {
-                "label": "Current Assets"
-              },
-              "current_liabilities": {
-                "label": "Current Liabilities"
-              }
-            },
-            "val": "current_assets"
-          },
-          "working_capital_position__current_assets": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='current_assets'",
-            "options": {
-              "Cash on Hand": {
-                "label": "Cash on Hand"
-              },
-              "Cash and Cash Equivalents": {
-                "label": "Cash and Cash Equivalents"
-              },
-              "Short-term marketable securities": {
-                "label": "Short-term marketable securities"
-              },
-              "Accounts Receivable": {
-                "label": "Accounts Receivable"
-              },
-              "Inventories": {
-                "label": "Inventories"
-              },
-              "Prepayments": {
-                "label": "Prepayments"
-              },
-              "Other Current Assets": {
-                "label": "Other Current Assets"
-              }
-            },
-            "val": "Cash on Hand"
-          },
-          "working_capital_position__current_liabilities": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='current_liabilities'",
-            "options": {
-              "Accounts Payable": {
-                "label": "Accounts Payable"
-              },
-              "Accrued Expenses": {
-                "label": "Accrued Expenses"
-              },
-              "Deferred Revenue": {
-                "label": "Deferred Revenue"
-              },
-              "Current portion of Debt": {
-                "label": "Current portion of Debt"
-              },
-              "Other Current Liablities": {
-                "label": "Other Current Liablities"
-              }
-            },
-            "val": "Accounts Payable"
-          },
-          "working_capital_position__property_equipment": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='property_equipment'",
-            "options": {
-              "Land": {
-                "label": "Land"
-              },
-              "Buildings": {
-                "label": "Buildings"
-              }
-            },
-            "val": "Land"
-          },
-          "working_capital_position__longterm_liabilities": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='longterm_liabilities'",
-            "options": {
-              "Notes": {
-                "label": "Notes"
-              },
-              "Bonds": {
-                "label": "Bonds"
-              }
-            },
-            "val": "Notes"
-          },
-          "working_capital_position__other_assets": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='other_assets'",
-            "options": {
-              "Other Assets": {
-                "label": "Other Assets"
-              }
-            },
-            "val": "Other Assets"
-          },
-          "working_capital_position__shareholders_equity": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='shareholders_equity'",
-            "options": {
-              "Common Stock": {
-                "label": "Common Stock"
-              },
-              "Retained Earnings": {
-                "label": "Retained Earnings"
-              }
-            },
-            "val": "Common Stock",
-            "breakLine": true
-          },
-          "bs_allocation": {
-            "type": "select",
-            "label": "Balance Sheet Allocation",
-            "show_if": "this.add_payment_info=='true'",
-            "options": {
-              "Profit Loss Cash": {
-                "label": "Profit and Loss (+/-) & Cash (+/-)"
-              },
-              "Asset Liability Increase": {
-                "label": "Asset & Liability Increase"
-              },
-              "Asset Liability Decrease": {
-                "label": "Asset & Liability Decrease"
-              },
-              "Change in Assets": {
-                "label": "Change in Assets"
-              },
-              "Change in Liabilities": {
-                "label": "Change in Liabilities"
-              },
-              "Profit Loss only": {
-                "label": "Profit and Loss only"
-              },
-              "Balance Sheet only": {
-                "label": "Balance Sheet only"
-              }
-            },
-            "val": "Profit Loss Cash"
-          },
           "delete": {
             "type": "button",
             "label": "Delete",
@@ -553,37 +387,41 @@
         "label": "Output Type",
         "required": true,
         "options": {
-          "assumption_table": {
-            "label": "Assumption Table"
+          "assumptions": {
+            "label": "Assumptions"
           },
-          "details_table": {
-            "label": "Details Table"
+          "profit_loss": {
+            "label": "Profit & Loss"
           },
-          "planning_table": {
-            "label": "P&L Planning"
+          "cash_flow": {
+            "label": "Cash Flow"
           },
-          "cash_flow_planning": {
-            "label": "Cash Flow Planning"
-          },
-          "balance_sheet_planning": {
-            "label": "Balance Sheet Planning"
-          },
-          "pl_pivot_popup": {
-            "label": "P&L Pivot Pop-up"
-          },
-          "cash_flow_pivot_popup": {
-            "label": "Cash Flow Pivot Pop-up"
-          },
-          "balance_sheet_pdf": {
-            "label": "Balance Sheet PDF"
+          "balance_sheet": {
+            "label": "Balance Sheet"
           }
         },
-        "val": "pl_pivot_popup"
+        "val": "assumptions"
+      },
+      "options.details_list": {
+        "type": "checkbox",
+        "label": "Details List",
+        "show_if": "options.output_type=='assumptions'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.popup_overview": {
+        "type": "checkbox",
+        "label": "Pop-Up Overview",
+        "show_if": "options.output_type=='profit_loss' || options.output_type=='cash_flow' || options.output_type=='balance_sheet'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
       },
       "options.bs_date": {
         "type": "date",
         "label": "Balance Sheet Date",
-        "show_if": "options.output_type=='balance_sheet_planning' || options.output_type=='balance_sheet_pdf'",
+        "show_if": "options.output_type=='balance_sheet'",
         "val": "",
         "style": "width: 200px",
         "required": true
@@ -591,7 +429,7 @@
       "options.planning_table__group_by": {
         "type": "select",
         "label": "Group By",
-        "show_if": "options.output_type=='planning_table' || options.output_type=='cash_flow_planning'",
+        "show_if": "(options.output_type=='profit_loss' || options.output_type=='cash_flow') && options.popup_overview=='false'",
         "multiple": true,
         "options": {
           "Year": {
@@ -637,6 +475,31 @@
         "show_if": "options.direct_planning__configure_by_table=='false' && options.set_plan_config=='true'",
         "repeat": false,
         "fields": {
+          "options.custom_bs_impact_table": {
+            "type": "checkbox",
+            "label": "Custom Balance Sheet Impact Table",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.custom_bs_impact_table_id": {
+            "type": "select",
+            "label": "Select Table",
+            "show_if": "options.custom_bs_impact_table=='true'",
+            "bind": "TABLES",
+            "empty": "",
+            "required": true,
+            "breakLine": true
+          },
+          "options.custom_bs_impact_table_help": {
+            "type": "textarea",
+            "label": "",
+            "show_if": "options.custom_bs_impact_table=='true'",
+            "val": "Table structure like Balance Sheet Impact Table by A24",
+            "disabled": true,
+            "md_no_resize": false,
+            "width": "100%"
+          },
           "options.add_categories": {
             "type": "checkbox",
             "label": "Add Categories",
@@ -858,6 +721,33 @@
                   },
                   "yyyy-mm-dd": {
                     "label": "2012-03-14"
+                  },
+                  "m.dd.yyyy": {
+                    "label": "3.14.2012"
+                  },
+                  "m.dd.yy": {
+                    "label": "3.14.12"
+                  },
+                  "dd.m.yyyy": {
+                    "label": "14.3.2012"
+                  },
+                  "dd.m.yy": {
+                    "label": "14.3.12"
+                  },
+                  "M dd, Y": {
+                    "label": "March 14, 2012"
+                  },
+                  "dd-mm-yyyy": {
+                    "label": "14-03-2012"
+                  },
+                  "mm-dd-yyyy": {
+                    "label": "03-14-2012"
+                  },
+                  "dd-mm-yy": {
+                    "label": "14-03-12"
+                  },
+                  "mm-dd-yy": {
+                    "label": "03-14-12"
                   }
                 },
                 "val": "mm/dd/yyyy",
