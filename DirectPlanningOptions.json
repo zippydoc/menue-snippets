@@ -402,13 +402,23 @@
         },
         "val": "assumptions"
       },
-      "options.details_list": {
-        "type": "checkbox",
-        "label": "Details List",
+      "options.assumptions_type": {
+        "type": "select",
+        "label": "Assumptions Type",
         "show_if": "options.output_type=='assumptions'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
+        "required": true,
+        "options": {
+          "planning_assumptions": {
+            "label": "Planning Assumptions"
+          },
+          "transaction_list_details": {
+            "label": "Transaction List Details"
+          },
+          "balance_sheet_details": {
+            "label": "Balance Sheet Details"
+          }
+        },
+        "val": "planning_assumptions"
       },
       "options.popup_overview": {
         "type": "checkbox",
@@ -421,7 +431,7 @@
       "options.bs_date": {
         "type": "date",
         "label": "Balance Sheet Date",
-        "show_if": "options.output_type=='balance_sheet'",
+        "show_if": "options.output_type=='balance_sheet' && options.popup_overview=='true'",
         "val": "",
         "style": "width: 200px",
         "required": true
