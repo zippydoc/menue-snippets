@@ -216,13 +216,23 @@
             },
             "val": "2"
           },
-          "format__use_1000_separator": {
-            "type": "checkbox",
-            "label": "Use 1000 Separator(.)",
+          "format__1000_separator": {
+            "type": "select",
+            "label": "1000 Separator",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false"
+            "required": true,
+            "options": {
+              "no_1000_separator": {
+                "label": "No 1000 Separator"
+              },
+              "period_1000_separator": {
+                "label": "1000 Separator (.)"
+              },
+              "comma_1000_separator": {
+                "label": "1000 Separator (,)"
+              }
+            },
+            "val": "period_1000_separator"
           },
           "format__currency_symbol": {
             "type": "select",
@@ -296,6 +306,13 @@
           }
         },
         "breakLine": true
+      },
+      "info1": {
+        "type": "textarea",
+        "label": "",
+        "val": "Please note, that Excel will treat “.” and  “,” in accordance with country settings",
+        "disabled": true,
+        "style": "width: 100%"
       },
       "all_labels": {
         "type": "checkbox",

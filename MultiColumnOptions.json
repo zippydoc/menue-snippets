@@ -101,10 +101,27 @@
             "val": "1",
             "required": true
           },
+          "multi_column_functions__static_value__type": {
+            "type": "select",
+            "label": "Static Value Type",
+            "required": true,
+            "options": {
+              "custom": {
+                "label": "Custom"
+              },
+              "input_table_name": {
+                "label": "Input Table Name"
+              },
+              "output_table_name": {
+                "label": "Output Table Name"
+              }
+            },
+            "val": "custom"
+          },
           "static_value": {
             "type": "text",
             "label": "Input Value",
-            "show_if": "this.multi_column_functions__function=='static_value'",
+            "show_if": "this.multi_column_functions__function=='static_value' && this.multi_column_functions__static_value__type=='custom'",
             "val": "",
             "width": "100%"
           },
