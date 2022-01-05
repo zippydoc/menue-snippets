@@ -41,14 +41,6 @@
         "show_if": "options.direct_planning__configure_by_table=='false'",
         "repeat": true,
         "fields": {
-          "help_1": {
-            "type": "text",
-            "label": "",
-            "val": "Specify Planning Position",
-            "disabled": true,
-            "width": "100%",
-            "breakLine": true
-          },
           "position": {
             "type": "select",
             "label": "Position",
@@ -282,7 +274,7 @@
                 "label": "Yearly"
               }
             },
-            "val": "Yearly",
+            "val": "One-Off",
             "breakLine": true
           },
           "initial_date": {
@@ -308,6 +300,7 @@
           "help_2": {
             "type": "text",
             "label": "",
+            "show_if": "this.periodicy!='One-Off'",
             "val": "Specify Periodicy",
             "disabled": true,
             "width": "100%",
@@ -317,14 +310,16 @@
             "type": "number",
             "label": "Growth in %",
             "show_if": "this.periodicy!='One-Off'",
-            "val": "",
-            "required": true
+            "val": ""
           },
           "growth_period": {
             "type": "select",
             "label": "Growth Period",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
+              "selected_period": {
+                "label": "Equal to Periodicy"
+              },
               "Weekly": {
                 "label": "Week on Week"
               },
@@ -338,12 +333,12 @@
                 "label": "Year on Year"
               }
             },
-            "val": "Yearly"
+            "val": "selected_period"
           },
           "growth_pattern": {
             "type": "select",
             "label": "Growth Pattern",
-            "show_if": "this.periodicy!='One-Off'",
+            "show_if": "this.periodicy!='One-Off' && this.growth_period!='selected_period'",
             "options": {
               "Linear": {
                 "label": "Linear"
