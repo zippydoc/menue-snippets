@@ -417,15 +417,33 @@
       "options.popup_overview": {
         "type": "checkbox",
         "label": "Pop-Up Overview",
-        "show_if": "options.output_type=='profit_loss' || options.output_type=='cash_flow' || options.output_type=='balance_sheet'",
+        "show_if": "options.output_type=='profit_loss' || options.output_type=='cash_flow'",
         "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
+      "options.bs_type": {
+        "type": "select",
+        "label": "Balance Sheet Type",
+        "show_if": "options.output_type=='balance_sheet'",
+        "required": true,
+        "options": {
+          "bs_popup": {
+            "label": "Pop-Up Overview"
+          },
+          "bs_development": {
+            "label": "Balance Sheet Development"
+          },
+          "bs_summary_list": {
+            "label": "Balance Sheet Summary List"
+          }
+        },
+        "val": "bs_popup"
+      },
       "options.bs_date": {
         "type": "date",
         "label": "Balance Sheet Date",
-        "show_if": "options.output_type=='balance_sheet' && options.popup_overview=='true'",
+        "show_if": "options.output_type=='balance_sheet' && options.bs_type=='bs_popup'",
         "md-mode": "month",
         "val": "",
         "style": "width: 200px",
