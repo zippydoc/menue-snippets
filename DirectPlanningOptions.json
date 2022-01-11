@@ -32,7 +32,6 @@
         "val": "Table Structure ( Initial Date | Periodicy | Final Date | Amount | Growth | Growth Period | Growth Pattern | Payment Days | Working Capital Category | Working Capital Position )",
         "disabled": true,
         "md_no_resize": false,
-        "rows": 4,
         "width": "100%"
       },
       "options.custom.table": {
@@ -41,14 +40,6 @@
         "show_if": "options.direct_planning__configure_by_table=='false'",
         "repeat": true,
         "fields": {
-          "help_1": {
-            "type": "text",
-            "label": "",
-            "val": "Specify Planning Position",
-            "disabled": true,
-            "width": "100%",
-            "breakLine": true
-          },
           "position": {
             "type": "select",
             "label": "Position",
@@ -282,7 +273,7 @@
                 "label": "Yearly"
               }
             },
-            "val": "Yearly",
+            "val": "One-Off",
             "breakLine": true
           },
           "initial_date": {
@@ -291,10 +282,16 @@
             "val": "",
             "required": true
           },
-          "add_payment_info": {
+          "payment_days": {
+            "type": "number",
+            "label": "Payment Days",
+            "show_if": "this.no_payment=='false'",
+            "val": "0"
+          },
+          "no_payment": {
             "type": "checkbox",
-            "label": "Add Payment Information",
-            "val": "true",
+            "label": "No Payment",
+            "val": "false",
             "isOn": "true",
             "isOff": "false",
             "breakLine": true
@@ -302,6 +299,7 @@
           "help_2": {
             "type": "text",
             "label": "",
+            "show_if": "this.periodicy!='One-Off'",
             "val": "Specify Periodicy",
             "disabled": true,
             "width": "100%",
@@ -311,14 +309,16 @@
             "type": "number",
             "label": "Growth in %",
             "show_if": "this.periodicy!='One-Off'",
-            "val": "",
-            "required": true
+            "val": ""
           },
           "growth_period": {
             "type": "select",
             "label": "Growth Period",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
+              "selected_period": {
+                "label": "Equal to Periodicy"
+              },
               "Weekly": {
                 "label": "Week on Week"
               },
@@ -332,12 +332,12 @@
                 "label": "Year on Year"
               }
             },
-            "val": "Yearly"
+            "val": "selected_period"
           },
           "growth_pattern": {
             "type": "select",
             "label": "Growth Pattern",
-            "show_if": "this.periodicy!='One-Off'",
+            "show_if": "this.periodicy!='One-Off' && this.growth_period!='selected_period'",
             "options": {
               "Linear": {
                 "label": "Linear"
@@ -362,178 +362,6 @@
             "val": "",
             "breakLine": true
           },
-          "help_3": {
-            "type": "text",
-            "label": "",
-            "val": "Specify Balance Sheet Impact",
-            "disabled": true,
-            "width": "100%",
-            "breakLine": true
-          },
-          "payment_days": {
-            "type": "number",
-            "label": "Payment Days",
-            "show_if": "this.add_payment_info=='true'",
-            "val": "0"
-          },
-          "bs_impact_auto_configure": {
-            "type": "checkbox",
-            "label": "Auto configure",
-            "show_if": "this.add_payment_info=='true'",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false",
-            "breakLine": true
-          },
-          "working_capital_category": {
-            "type": "select",
-            "label": "Working Capital Category",
-            "show_if": "this.add_payment_info=='true'",
-            "options": {
-              "current_assets": {
-                "label": "Current Assets"
-              },
-              "current_liabilities": {
-                "label": "Current Liabilities"
-              }
-            },
-            "val": "current_assets"
-          },
-          "working_capital_position__current_assets": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='current_assets'",
-            "options": {
-              "Cash on Hand": {
-                "label": "Cash on Hand"
-              },
-              "Cash and Cash Equivalents": {
-                "label": "Cash and Cash Equivalents"
-              },
-              "Short-term marketable securities": {
-                "label": "Short-term marketable securities"
-              },
-              "Accounts Receivable": {
-                "label": "Accounts Receivable"
-              },
-              "Inventories": {
-                "label": "Inventories"
-              },
-              "Prepayments": {
-                "label": "Prepayments"
-              },
-              "Other Current Assets": {
-                "label": "Other Current Assets"
-              }
-            },
-            "val": "Cash on Hand"
-          },
-          "working_capital_position__current_liabilities": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='current_liabilities'",
-            "options": {
-              "Accounts Payable": {
-                "label": "Accounts Payable"
-              },
-              "Accrued Expenses": {
-                "label": "Accrued Expenses"
-              },
-              "Deferred Revenue": {
-                "label": "Deferred Revenue"
-              },
-              "Current portion of Debt": {
-                "label": "Current portion of Debt"
-              },
-              "Other Current Liablities": {
-                "label": "Other Current Liablities"
-              }
-            },
-            "val": "Accounts Payable"
-          },
-          "working_capital_position__property_equipment": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='property_equipment'",
-            "options": {
-              "Land": {
-                "label": "Land"
-              },
-              "Buildings": {
-                "label": "Buildings"
-              }
-            },
-            "val": "Land"
-          },
-          "working_capital_position__longterm_liabilities": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='longterm_liabilities'",
-            "options": {
-              "Notes": {
-                "label": "Notes"
-              },
-              "Bonds": {
-                "label": "Bonds"
-              }
-            },
-            "val": "Notes"
-          },
-          "working_capital_position__other_assets": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='other_assets'",
-            "options": {
-              "Other Assets": {
-                "label": "Other Assets"
-              }
-            },
-            "val": "Other Assets"
-          },
-          "working_capital_position__shareholders_equity": {
-            "type": "select",
-            "label": "Working Capital Position",
-            "show_if": "this.add_payment_info=='true' && this.working_capital_category=='shareholders_equity'",
-            "options": {
-              "Common Stock": {
-                "label": "Common Stock"
-              },
-              "Retained Earnings": {
-                "label": "Retained Earnings"
-              }
-            },
-            "val": "Common Stock",
-            "breakLine": true
-          },
-          "bs_allocation": {
-            "type": "select",
-            "label": "Balance Sheet Allocation",
-            "show_if": "this.add_payment_info=='true'",
-            "options": {
-              "Profit Loss Cash": {
-                "label": "Profit and Loss (+/-) & Cash (+/-)"
-              },
-              "Asset Liability Increase": {
-                "label": "Asset & Liability Increase"
-              },
-              "Asset Liability Decrease": {
-                "label": "Asset & Liability Decrease"
-              },
-              "Change in Assets": {
-                "label": "Change in Assets"
-              },
-              "Change in Liabilities": {
-                "label": "Change in Liabilities"
-              },
-              "Profit Loss only": {
-                "label": "Profit and Loss only"
-              },
-              "Balance Sheet only": {
-                "label": "Balance Sheet only"
-              }
-            },
-            "val": "Profit Loss Cash"
-          },
           "delete": {
             "type": "button",
             "label": "Delete",
@@ -553,45 +381,207 @@
         "label": "Output Type",
         "required": true,
         "options": {
-          "assumption_table": {
-            "label": "Assumption Table"
+          "assumptions": {
+            "label": "Assumptions"
           },
-          "details_table": {
-            "label": "Details Table"
+          "profit_loss": {
+            "label": "Profit & Loss"
           },
-          "planning_table": {
-            "label": "P&L Planning"
+          "cash_flow": {
+            "label": "Cash Flow"
           },
-          "cash_flow_planning": {
-            "label": "Cash Flow Planning"
-          },
-          "balance_sheet_planning": {
-            "label": "Balance Sheet Planning"
-          },
-          "pl_pivot_popup": {
-            "label": "P&L Pivot Pop-up"
-          },
-          "cash_flow_pivot_popup": {
-            "label": "Cash Flow Pivot Pop-up"
-          },
-          "balance_sheet_pdf": {
-            "label": "Balance Sheet PDF"
+          "balance_sheet": {
+            "label": "Balance Sheet"
           }
         },
-        "val": "pl_pivot_popup"
+        "val": "assumptions"
       },
-      "options.bs_date": {
-        "type": "date",
-        "label": "Balance Sheet Date",
-        "show_if": "options.output_type=='balance_sheet_planning' || options.output_type=='balance_sheet_pdf'",
-        "val": "",
-        "style": "width: 200px",
-        "required": true
+      "options.assumptions_type": {
+        "type": "select",
+        "label": "Assumptions Type",
+        "show_if": "options.output_type=='assumptions'",
+        "required": true,
+        "options": {
+          "planning_assumptions": {
+            "label": "Planning Assumptions"
+          },
+          "transaction_list_details": {
+            "label": "Transaction List Details"
+          },
+          "balance_sheet_details": {
+            "label": "Balance Sheet Details"
+          }
+        },
+        "val": "planning_assumptions"
+      },
+      "options.popup_overview": {
+        "type": "checkbox",
+        "label": "Pop-Up Overview",
+        "show_if": "options.output_type=='profit_loss' || options.output_type=='cash_flow'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.bs_type": {
+        "type": "select",
+        "label": "Balance Sheet Type",
+        "show_if": "options.output_type=='balance_sheet'",
+        "required": true,
+        "options": {
+          "bs_popup": {
+            "label": "Pop-Up Overview"
+          },
+          "bs_summary_list": {
+            "label": "Balance Sheet Summary List"
+          }
+        },
+        "val": "bs_popup"
+      },
+      "options.bs_date_year": {
+        "type": "select",
+        "label": "Balance Sheet Date's Year",
+        "show_if": "options.output_type=='balance_sheet' && options.bs_type=='bs_popup'",
+        "required": true,
+        "options": {
+          "2022": {
+            "label": "2022"
+          },
+          "2023": {
+            "label": "2023"
+          },
+          "2024": {
+            "label": "2024"
+          },
+          "2025": {
+            "label": "2025"
+          },
+          "2026": {
+            "label": "2026"
+          },
+          "2027": {
+            "label": "2027"
+          },
+          "2028": {
+            "label": "2028"
+          },
+          "2029": {
+            "label": "2029"
+          },
+          "2030": {
+            "label": "2030"
+          },
+          "2031": {
+            "label": "2031"
+          },
+          "2032": {
+            "label": "2032"
+          },
+          "2033": {
+            "label": "2033"
+          },
+          "2034": {
+            "label": "2034"
+          },
+          "2035": {
+            "label": "2035"
+          },
+          "2036": {
+            "label": "2036"
+          },
+          "2037": {
+            "label": "2037"
+          },
+          "2038": {
+            "label": "2038"
+          },
+          "2039": {
+            "label": "2039"
+          },
+          "2040": {
+            "label": "2040"
+          },
+          "2041": {
+            "label": "2041"
+          },
+          "2042": {
+            "label": "2042"
+          },
+          "2043": {
+            "label": "2043"
+          },
+          "2044": {
+            "label": "2044"
+          },
+          "2045": {
+            "label": "2045"
+          },
+          "2046": {
+            "label": "2046"
+          },
+          "2047": {
+            "label": "2047"
+          },
+          "2048": {
+            "label": "2048"
+          },
+          "2049": {
+            "label": "2049"
+          },
+          "2050": {
+            "label": "2050"
+          }
+        },
+        "val": "2022"
+      },
+      "options.bs_date_month": {
+        "type": "select",
+        "label": "Balance Sheet Date's Month",
+        "show_if": "options.output_type=='balance_sheet' && options.bs_type=='bs_popup'",
+        "required": true,
+        "options": {
+          "01": {
+            "label": "01"
+          },
+          "02": {
+            "label": "02"
+          },
+          "03": {
+            "label": "03"
+          },
+          "04": {
+            "label": "04"
+          },
+          "05": {
+            "label": "05"
+          },
+          "06": {
+            "label": "06"
+          },
+          "07": {
+            "label": "07"
+          },
+          "08": {
+            "label": "08"
+          },
+          "09": {
+            "label": "09"
+          },
+          "10": {
+            "label": "10"
+          },
+          "11": {
+            "label": "11"
+          },
+          "12": {
+            "label": "12"
+          }
+        },
+        "val": "01"
       },
       "options.planning_table__group_by": {
         "type": "select",
         "label": "Group By",
-        "show_if": "options.output_type=='planning_table' || options.output_type=='cash_flow_planning'",
+        "show_if": "(options.output_type=='profit_loss' || options.output_type=='cash_flow') && options.popup_overview=='false'",
         "multiple": true,
         "options": {
           "Year": {
@@ -637,6 +627,31 @@
         "show_if": "options.direct_planning__configure_by_table=='false' && options.set_plan_config=='true'",
         "repeat": false,
         "fields": {
+          "options.custom_bs_impact_table": {
+            "type": "checkbox",
+            "label": "Custom Balance Sheet Impact Table",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.custom_bs_impact_table_id": {
+            "type": "select",
+            "label": "Select Table",
+            "show_if": "options.custom_bs_impact_table=='true'",
+            "bind": "TABLES",
+            "empty": "",
+            "required": true,
+            "breakLine": true
+          },
+          "options.custom_bs_impact_table_help": {
+            "type": "textarea",
+            "label": "",
+            "show_if": "options.custom_bs_impact_table=='true'",
+            "val": "Table structure like Balance Sheet Impact Table by A24",
+            "disabled": true,
+            "md_no_resize": false,
+            "width": "100%"
+          },
           "options.add_categories": {
             "type": "checkbox",
             "label": "Add Categories",
@@ -773,6 +788,63 @@
                   },
                   "pound": {
                     "label": "£"
+                  },
+                  "yen": {
+                    "label": "¥ (Yen, currency of Japan)"
+                  },
+                  "colon": {
+                    "label": "₡ (Colón, currency of Costa Rica)"
+                  },
+                  "naira": {
+                    "label": "₦ (Naira, currency of Nigeria)"
+                  },
+                  "rupee": {
+                    "label": "₨ (Rupee, currency of India)"
+                  },
+                  "rupie": {
+                    "label": "₹ (Rupee, currency of India)"
+                  },
+                  "won": {
+                    "label": "₩ (Won, currency in South Korea and North Korea)"
+                  },
+                  "hebrew": {
+                    "label": "₪ (Currency of Israel)"
+                  },
+                  "dong": {
+                    "label": "₫ (Currency of Vietnam)"
+                  },
+                  "kip": {
+                    "label": "₭ (Kip, currency of Laos)"
+                  },
+                  "mongolia": {
+                    "label": "₮ (Currency of Mongolia)"
+                  },
+                  "peso": {
+                    "label": "₱ (Peso, currency of the Philippines)"
+                  },
+                  "guarani": {
+                    "label": "₲ (Guaraní, currency of Paraguay)"
+                  },
+                  "hryvnia": {
+                    "label": "₴ (Hryvnia, currency of Ukraine)"
+                  },
+                  "tenge": {
+                    "label": "₸ (Tenge, currency of Kazakhstan)"
+                  },
+                  "lira": {
+                    "label": "₺ (Lira, currency of Turkey)"
+                  },
+                  "manat": {
+                    "label": "₼ (Manat, currency of Azerbaijan)"
+                  },
+                  "rubles": {
+                    "label": "₽ (Rubles, currency of Russia)"
+                  },
+                  "lari": {
+                    "label": "₾ (Lari, currency of Georgia)"
+                  },
+                  "bitcoin": {
+                    "label": "₿ (Bitcoin, crypto currency)"
                   }
                 },
                 "val": "dollar"
@@ -858,6 +930,33 @@
                   },
                   "yyyy-mm-dd": {
                     "label": "2012-03-14"
+                  },
+                  "m.dd.yyyy": {
+                    "label": "3.14.2012"
+                  },
+                  "m.dd.yy": {
+                    "label": "3.14.12"
+                  },
+                  "dd.m.yyyy": {
+                    "label": "14.3.2012"
+                  },
+                  "dd.m.yy": {
+                    "label": "14.3.12"
+                  },
+                  "M dd, Y": {
+                    "label": "March 14, 2012"
+                  },
+                  "dd-mm-yyyy": {
+                    "label": "14-03-2012"
+                  },
+                  "mm-dd-yyyy": {
+                    "label": "03-14-2012"
+                  },
+                  "dd-mm-yy": {
+                    "label": "14-03-12"
+                  },
+                  "mm-dd-yy": {
+                    "label": "03-14-12"
                   }
                 },
                 "val": "mm/dd/yyyy",
