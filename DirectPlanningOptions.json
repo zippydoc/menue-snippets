@@ -92,6 +92,9 @@
               "Tax": {
                 "label": "Tax"
               },
+              "Extraordinary Items": {
+                "label": "Extraordinary Items"
+              },
               "Capital Expenditure": {
                 "label": "Capital Expenditure"
               },
@@ -100,9 +103,6 @@
               },
               "Amortization": {
                 "label": "Amortization"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
               },
               "Depretiation & Amortisation": {
                 "label": "Depretiation & Amortisation"
@@ -267,14 +267,41 @@
           "item": {
             "type": "text",
             "label": "Item",
-            "val": "",
-            "breakLine": true
+            "val": ""
           },
           "amount": {
             "type": "number",
             "label": "Amount",
             "val": "",
+            "required": true ,
+            "breakLine": true
+          },
+          "payment_days": {
+            "type": "number",
+            "label": "Payment Days",
+            "show_if": "this.no_payment=='false'",
+            "val": "0"
+          },
+          "no_payment": {
+            "type": "checkbox",
+            "label": "No Payment",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "initial_date": {
+            "type": "date",
+            "label": "(Initial) Date",
+            "val": "",
             "required": true
+          },
+          "final_date": {
+            "type": "date",
+            "label": "Final Date",
+            "show_if": "this.periodicy!='One-Off'",
+            "val": "",
+            "breakLine": true
           },
           "periodicy": {
             "type": "select",
@@ -301,26 +328,6 @@
               }
             },
             "val": "One-Off",
-            "breakLine": true
-          },
-          "initial_date": {
-            "type": "date",
-            "label": "(Initial) Date",
-            "val": "",
-            "required": true
-          },
-          "payment_days": {
-            "type": "number",
-            "label": "Payment Days",
-            "show_if": "this.no_payment=='false'",
-            "val": "0"
-          },
-          "no_payment": {
-            "type": "checkbox",
-            "label": "No Payment",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false",
             "breakLine": true
           },
           "help_2": {
@@ -380,13 +387,6 @@
               }
             },
             "val": "Jump-Fix Linear",
-            "breakLine": true
-          },
-          "final_date": {
-            "type": "date",
-            "label": "Final Date",
-            "show_if": "this.periodicy!='One-Off'",
-            "val": "",
             "breakLine": true
           },
           "delete": {
