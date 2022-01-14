@@ -984,6 +984,368 @@
             "md_no_resize": false,
             "width": "100%"
           },
+		  
+		    "balance_sheet_impact_frame": {
+    "type": "fieldset",
+    "label": "Configure balance sheet impact",
+    "repeat": false,
+    "fields": {
+      "options.task_symbol": {
+        "type": "hidden",
+        "val": "balance_sheet_impact"
+      },
+      "options.balance_sheet_impact__configure_by_table": {
+        "type": "checkbox",
+        "label": "Configure by table",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "table_id": {
+        "type": "select",
+        "label": "Select Table",
+        "show_if": "options.balance_sheet_impact__configure_by_table=='true'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      },
+      "options.configure_by_table_help": {
+        "type": "textarea",
+        "label": "",
+        "show_if": "options.balance_sheet_impact__configure_by_table=='true'",
+        "val": "Table structure like Balance Sheet Impact Table by A24",
+        "disabled": true,
+        "md_no_resize": false,
+        "width": "100%"
+      },
+      "options.custom.balance_sheet_impact_table": {
+        "type": "fieldset",
+        "label": "Balance Sheet Impact Planning",
+        "show_if": "options.balance_sheet_impact__configure_by_table=='false'",
+        "repeat": true,
+        "fields": {
+          "position": {
+            "type": "select",
+            "label": "Position",
+            "options": {
+              "Revenues": {
+                "label": "Revenues"
+              },
+              "Cost of Goods Sold": {
+                "label": "Cost of Goods Sold"
+              },
+              "Sales Expenses": {
+                "label": "Sales Expenses"
+              },
+              "Marketing Expenses": {
+                "label": "Marketing Expenses"
+              },
+              "Operating Expenses": {
+                "label": "Operating Expenses"
+              },
+              "General and Administration Expenses": {
+                "label": "General and Administration Expenses"
+              },
+              "Personnel Expenses": {
+                "label": "Personnel Expenses"
+              },
+              "Tax": {
+                "label": "Tax"
+              },
+              "Interest": {
+                "label": "Interest"
+              },
+              "Extraordinary Items": {
+                "label": "Extraordinary Items"
+              },
+              "Capital Expenditure": {
+                "label": "Capital Expenditure"
+              },
+              "Depreciation": {
+                "label": "Depreciation"
+              },
+              "Amortization": {
+                "label": "Amortization"
+              },
+              "Depretiation & Amortisation": {
+                "label": "Depretiation & Amortisation"
+              }
+            },
+            "val": "Revenues",
+            "required": true
+          },
+          "sub_position": {
+            "type": "select",
+            "label": "Sub Position",
+            "options": {
+              "_All_": {
+                "label": "*"
+              },
+              "Maintenance Capex": {
+                "label": "Maintenance Capex"
+              },
+              "Expansion Capex": {
+                "label": "Expansion Capex"
+              },
+              "Buildings": {
+                "label": "Buildings"
+              },
+              "Land": {
+                "label": "Land"
+              },
+              "Equipment": {
+                "label": "Equipment"
+              },
+              "Vehicles": {
+                "label": "Vehicles"
+              },
+              "Interest Income": {
+                "label": "Interest Income"
+              },
+              "Interest Expense": {
+                "label": "Interest Expense"
+              }
+            },
+            "val": "Equipment",
+            "required": true
+          },
+          "impact_date": {
+            "type": "select",
+            "label": "Impact Date",
+            "required": true,
+            "options": {
+              "On Date": {
+                "label": "On Date"
+              },
+              "On Payment Date": {
+                "label": "On Payment Date"
+              }
+            },
+            "val": "On-Date"
+          },
+          "balance_sheet_category": {
+            "type": "select",
+            "label": "Balance Sheet Category",
+            "required": true,
+            "options": {
+              "Property and Equipment": {
+                "label": "Property and Equipment"
+              },
+              "Current Assets": {
+                "label": "Current Assets"
+              },
+              "Other Assets": {
+                "label": "Other Assets"
+              },
+              "Shareholders Equity": {
+                "label": "Shareholder's Equity"
+              },
+              "Long-term Liablities": {
+                "label": "Long-term Liabilities"
+              },
+              "Current Liablities": {
+                "label": "Current Liabilities"
+              }
+            },
+            "val": "Current Assets"
+          },		  
+          "balance_sheet_position": {
+            "type": "select",
+            "label": "Balance Sheet Position",
+            "required": true,
+            "options": {
+              "Property": {
+                "label": "Property"
+              },
+              "Land": {
+                "label": "Land"
+              },
+              "Buildings": {
+                "label": "Buildings"
+              },
+              "Equipment": {
+                "label": "Equipment"
+              },
+              "Vehicles": {
+                "label": "Vehicles"
+              },
+              "Cash": {
+                "label": "Cash"
+              },
+              "Bank": {
+                "label": "Bank"
+              },
+              "Cash and Equivalents": {
+                "label": "Cash & Equivalents"
+              },
+              "Accounts Receivable": {
+                "label": "Vehicles"
+              },
+              "Accruals": {
+                "label": "Accruals"
+              },		  
+              "Equity": {
+                "label": "Equity"
+              },
+              "Paid In Equity": {
+                "label": "Paid In Equity"
+              },
+              "Economic Equity": {
+                "label": "Economic Equity"
+              },
+              "Shareholder Loan": {
+                "label": "Shareholder Loan"
+              },
+              "Bank Loan": {
+                "label": "Bank Loan"
+              },
+              "Trade Liabilities": {
+                "label": "Trade Liabilities"
+              },
+              "Accounts Payable": {
+                "label": "Accounts Payable"
+              },
+              "Tax Liabilities": {
+                "label": "Tax Liabilities"
+              },
+              "Other Current Liablities": {
+                "label": "Other Current Liabilities"
+              }
+            },
+            "val": "Accounts Payable"
+          },
+          "change_sign": {
+            "type": "select",
+            "label": "Change Sign",
+            "required": true,
+            "options": {
+              "True": {
+                "label": "True"
+              },
+              "False": {
+                "label": "False"
+              }
+            },
+            "val": "False"
+          },
+          "balance_sheet_counter_category": {
+            "type": "select",
+            "label": "Balance Sheet Category",
+            "required": true,
+            "options": {
+              "Property and Equipment": {
+                "label": "Property and Equipment"
+              },
+              "Current Assets": {
+                "label": "Current Assets"
+              },
+              "Other Assets": {
+                "label": "Other Assets"
+              },
+              "Shareholders Equity": {
+                "label": "Shareholder's Equity"
+              },
+              "Longterm Liablities": {
+                "label": "Long-term Liabilities"
+              },
+              "Current Liablities": {
+                "label": "Current Liabilities"
+              }
+            },
+            "val": "Current Assets"
+          },		  
+          "balance_sheet_counter_position": {
+            "type": "select",
+            "label": "Balance Sheet Position",
+            "required": true,
+            "options": {
+              "Property": {
+                "label": "Property"
+              },
+              "Land": {
+                "label": "Land"
+              },
+              "Buildings": {
+                "label": "Buildings"
+              },
+              "Equipment": {
+                "label": "Equipment"
+              },
+              "Vehicles": {
+                "label": "Vehicles"
+              },
+              "Cash": {
+                "label": "Cash"
+              },
+              "Bank": {
+                "label": "Bank"
+              },
+              "Cash and Equivalents": {
+                "label": "Cash & Equivalents"
+              },
+              "Vehicles": {
+                "label": "Vehicles"
+              },
+              "Accruals": {
+                "label": "Accruals"
+              },		  
+              "Equity": {
+                "label": "Equity"
+              },
+              "Paid In Equity": {
+                "label": "Paid In Equity"
+              },
+              "Economic Equity": {
+                "label": "Economic Equity"
+              },
+              "Shareholder Loan": {
+                "label": "Shareholder Loan"
+              },
+              "Bank Loan": {
+                "label": "Bank Loan"
+              },
+              "Trade Liabilities": {
+                "label": "Trade Liabilities"
+              },
+              "Accounts Payable": {
+                "label": "Accounts Payable"
+              },
+              "Tax Liabilities": {
+                "label": "Tax Liabilities"
+              },
+              "Other Current Liablities": {
+                "label": "Other Current Liabilities"
+              }
+            },
+            "val": "Accounts Payable"
+          },
+          "counter_position_change_sign": {
+            "type": "select",
+            "label": "Change sign of count. pos.",
+            "required": true,
+            "options": {
+              "True": {
+                "label": "True"
+              },
+              "False": {
+                "label": "False"
+              }
+            },
+            "val": "False"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  },
+		  
+		  
           "options.add_categories": {
             "type": "checkbox",
             "label": "Add Categories",
