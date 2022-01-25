@@ -17,16 +17,31 @@
         "isOff": "false",
         "breakLine": true
       },
-      "column_name_to_label.columns_to_label": {
-        "type": "select",
-        "label": "Select Columns to Convert into Labels",
+      "column_name_to_label__columns_to_label_frame": {
+        "type": "fieldset",
+        "label": "Select columns to convert into Labels",
         "show_if": "transpose_type=='column_name_to_label'",
-        "table": "table_id",
-        "multiple": true,
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
+        "repeat": false,
+        "fields": {
+          "column_name_to_label.reverse_col_selection": {
+            "type": "checkbox",
+            "label": "All but selected",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "column_name_to_label.columns_to_label": {
+            "type": "select",
+            "label": "Select columns",
+            "table": "table_id",
+            "multiple": true,
+            "bind": "COLUMNS",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          }
+        }
       },
       "column_name_to_label.label_column_name": {
         "type": "text",
