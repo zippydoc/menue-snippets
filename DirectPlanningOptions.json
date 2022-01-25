@@ -829,10 +829,69 @@
       },
       "bs_placeholder_frame": {
         "type": "fieldset",
-        "label": "Configure 'Balance Sheet' PDF",
+        "label": "Configure 'Balance Sheet' PDF Info",
         "show_if": "options.output_type=='pdf_planning_package' && options.bs_type=='bs_popup'",
         "repeat": false,
         "fields": {
+          "options.pdf_lang": {
+            "type": "select",
+            "label": "Document Language",
+            "options": {
+              "standard": {
+                "label": "Standard Language"
+              },
+              "lt": {
+                "label": "Lithuanian"
+              },
+              "it": {
+                "label": "Italian"
+              },
+              "hu": {
+                "label": "Hungarian"
+              },
+              "fr": {
+                "label": "French"
+              },
+              "fi": {
+                "label": "Finnish"
+              },
+              "bg": {
+                "label": "Bulgarian"
+              },
+              "ca": {
+                "label": "Canadian"
+              },
+              "cs": {
+                "label": "Czech"
+              },
+              "de": {
+                "label": "German"
+              },
+              "en": {
+                "label": "English"
+              },
+              "es": {
+                "label": "Spanish"
+              }
+            },
+            "val": "en",
+            "required": true
+          },
+          "options.gaap_style": {
+            "type": "select",
+            "label": "GAAP Style",
+            "options": {
+              "us_gaap_style": {
+                "label": "US-GAAP style"
+              },
+              "german_gaap_style": {
+                "label": "German-GAAP style"
+              }
+            },
+            "val": "us_gaap_style",
+            "required": true,
+            "breakLine": true
+          },
           "options.bs_data.company_name": {
             "type": "text",
             "label": "Company Name",
@@ -841,7 +900,7 @@
           },
           "options.bs_data__date_format": {
             "type": "select",
-            "label": "Balance Sheet Date Format",
+            "label": "Date Format",
             "required": true,
             "options": {
               "mm/dd/yyyy": {
@@ -924,6 +983,93 @@
             "val": "For conversion you may use e.g. https://onlinejpgtools.com/convert-jpg-to-base64",
             "disabled": true,
             "width": "100%"
+          },
+          "options.bs_data__custom_labels": {
+            "type": "checkbox",
+            "label": "Customize Balance Sheet Labels",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          }
+        }
+      },
+      "bs_placeholder_frame": {
+        "type": "fieldset",
+        "label": "Configure 'Balance Sheet' PDF Info",
+        "show_if": "options.output_type=='pdf_planning_package' && options.bs_type=='bs_popup' && (options.pdf_lang=='standard' || options.pdf_lang=='en') && options.bs_data__custom_labels=='true'",
+        "repeat": false,
+        "fields": {
+          "options.bs_data__labels.assets_header_name": {
+            "type": "text",
+            "label": "Assets Header Name",
+            "placeholder": "Assets Header Name",
+            "val": "Assets"
+          },
+          "options.bs_data__labels.liabilities_header_name": {
+            "type": "text",
+            "label": "Liabilities Header Name",
+            "placeholder": "Liabilities Header Name",
+            "val": "Liabilities"
+          },
+          "options.bs_data__labels.total_assets_name": {
+            "type": "text",
+            "label": "Total Assets Name",
+            "placeholder": "Total Assets Name",
+            "val": "Total Assets"
+          },
+          "options.bs_data__labels.total_liablities_name": {
+            "type": "text",
+            "label": "Total Liablities Name",
+            "placeholder": "Total Liablities Name",
+            "val": "Total Liabilities"
+          },
+          "options.bs_data__labels.current_assets_name": {
+            "type": "text",
+            "label": "Current Assets Name",
+            "placeholder": "Current Assets Name",
+            "val": "Current Assets"
+          },
+          "options.bs_data__labels.current_liabilities_name": {
+            "type": "text",
+            "label": "Current Liabilities Name",
+            "placeholder": "Current Liabilities Name",
+            "val": "Current Liabilities"
+          },
+          "options.bs_data__labels.property_equipment_name": {
+            "type": "text",
+            "label": "Property Equipment Name",
+            "placeholder": "Property Equipment Name",
+            "val": "Property & Equipment"
+          },
+          "options.bs_data__labels.longterm_liabilities_name": {
+            "type": "text",
+            "label": "Longterm Liabilities Name",
+            "placeholder": "Longterm Liabilities Name",
+            "val": "Long-term Liabilities"
+          },
+          "options.bs_data__labels.other_assets_name": {
+            "type": "text",
+            "label": "Other Assets Name",
+            "placeholder": "Other Assets Name",
+            "val": "Other Assets"
+          },
+          "options.bs_data__labels.other_liablities_name": {
+            "type": "text",
+            "label": "Other Liablities Name",
+            "placeholder": "Other Liablities Name",
+            "val": "Other Liabilities"
+          },
+          "options.bs_data__labels.shareholders_equity_name": {
+            "type": "text",
+            "label": "Shareholders Equity Name",
+            "placeholder": "Shareholders Equity Name",
+            "val": "Shareholders Equity"
+          },
+          "options.bs_data__labels.all_figures_in": {
+            "type": "text",
+            "label": "All Figures in",
+            "placeholder": "All Figures in",
+            "val": "All figures in"
           }
         }
       },
