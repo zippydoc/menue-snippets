@@ -643,6 +643,9 @@
           },
           "cash_flow": {
             "label": "Cash Flow"
+          },
+          "balance_sheet": {
+            "label": "Balance Sheet"
           }
         },
         "val": "profit_loss"
@@ -659,14 +662,17 @@
           "transaction_list_details": {
             "label": "Transaction List Details"
           },
-          "balance_sheet_details": {
-            "label": "Balance Sheet Details"
-          },
           "profit_loss": {
             "label": "Profit & Loss"
           },
           "cash_flow": {
             "label": "Cash Flow"
+          },
+          "balance_sheet_details": {
+            "label": "Balance Sheet Details"
+          },
+          "bs_summary_list": {
+            "label": "Balance Sheet Summary List"
           }
         },
         "val": "planning_assumptions"
@@ -680,16 +686,29 @@
           "bs_popup": {
             "label": "Pop-Up Overview"
           },
-          "bs_summary_list": {
-            "label": "Balance Sheet Summary List"
-          }
+
         },
         "val": "bs_popup"
+      },
+      "options.package_type": {
+        "type": "select",
+        "label": "Package Type",
+        "options": {
+          "version1": {
+            "label": "Version 1"
+          },
+          "version2": {
+            "label": "Version 2"
+          }
+        },
+        "val": "version1",
+        "required": true,
+        "breakLine": true
       },
       "options.bs_date_year": {
         "type": "select",
         "label": "Balance Sheet Date's Year",
-        "show_if": "options.output_type=='pdf_planning_package' && options.bs_type=='bs_popup'",
+        "show_if": "options.output_type=='pdf_planning_package'",
         "required": true,
         "options": {
           "2022": {
@@ -785,7 +804,7 @@
       "options.bs_date_month": {
         "type": "select",
         "label": "Balance Sheet Date's Month",
-        "show_if": "options.output_type=='pdf_planning_package' && options.bs_type=='bs_popup'",
+        "show_if": "options.output_type=='pdf_planning_package'",
         "required": true,
         "options": {
           "January": {
@@ -830,7 +849,7 @@
       "bs_placeholder_frame": {
         "type": "fieldset",
         "label": "Configure 'Balance Sheet' PDF Info",
-        "show_if": "options.output_type=='pdf_planning_package' && options.bs_type=='bs_popup'",
+        "show_if": "options.output_type=='pdf_planning_package'",
         "repeat": false,
         "fields": {
           "options.lang": {
@@ -876,21 +895,6 @@
             },
             "val": "en",
             "required": true
-          },
-          "options.gaap_style": {
-            "type": "select",
-            "label": "GAAP Style",
-            "options": {
-              "us_gaap_style": {
-                "label": "US-GAAP style"
-              },
-              "german_gaap_style": {
-                "label": "German-GAAP style"
-              }
-            },
-            "val": "us_gaap_style",
-            "required": true,
-            "breakLine": true
           },
           "options.bs_data.company_name": {
             "type": "text",
@@ -997,7 +1001,7 @@
       "bs_labels_placeholder_frame": {
         "type": "fieldset",
         "label": "Customize 'Balance Sheet' PDF Labels",
-        "show_if": "options.output_type=='pdf_planning_package' && options.bs_type=='bs_popup' && (options.lang=='standard' || options.lang=='en') && options.bs_data__custom_labels=='true'",
+        "show_if": "options.output_type=='pdf_planning_package' && (options.lang=='standard' || options.lang=='en') && options.bs_data__custom_labels=='true'",
         "repeat": false,
         "fields": {
           "options.bs_data.assets_header_name": {
