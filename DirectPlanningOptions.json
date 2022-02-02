@@ -4060,6 +4060,42 @@
         },
         "breakLine": true
       },
+      "options.add_calculated_rows": {
+        "type": "checkbox",
+        "label": "Add Calculated Rows",
+        "show_if": "options.output_type=='pdf_planning_package'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "add_calculated_rows_frame": {
+        "type": "fieldset",
+        "label": "Add Calculated Rows",
+        "show_if": "options.output_type=='pdf_planning_package' && options.add_calculated_rows=='true'",
+        "repeat": false,
+        "fields": {
+          "options.calculated_rows.calculation": {
+            "type": "select",
+            "label": "Calculation",
+            "options": {
+              "addition": {
+                "label": "Addition"
+              },
+              "quota": {
+                "label": "Quota"
+              }
+            },
+            "val": "addition",
+            "required": true
+          },
+          "options.calculated_rows.new_position": {
+            "type": "text",
+            "label": "New Position",
+            "placeholder": "",
+            "val": ""
+          }
+        }
+      },
       "options.add_categories": {
         "type": "checkbox",
         "label": "Add Categories",
