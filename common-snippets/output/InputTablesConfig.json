@@ -6,13 +6,130 @@
     "isOn": "true",
     "isOff": "false"
   },
-  "input_table_config_frame": {
+  "output.input_table_condition": {
     "type": "fieldset",
     "label": "Autoconfigure Input Table",
     "show_if": "output.input_table_config=='true'",
-    "repeat": false,
+    "repeat": true,
     "fields": {
-
+      "initial_op": {
+        "type": "select",
+        "label": "Logic Operator",
+        "required": true,
+        "show_if" :  "$index == 0",
+        "options": {
+          "if": {
+            "label": "IF"
+          },
+          "if_not": {
+            "label": "IF NOT"
+          }
+        },
+        "val": "if"
+      },
+      "op": {
+        "type": "select",
+        "label": "Logic Operator",
+        "required": true,
+        "show_if" :  "$index > 0",
+        "options": {
+          "and": {
+            "label": "AND"
+          },
+          "or": {
+            "label": "OR"
+          },
+          "and_not": {
+            "label": "AND NOT"
+          },
+          "or_not": {
+            "label": "OR NOT"
+          }
+        },
+        "val": "and"
+      },
+      "type": {
+        "type": "select",
+        "label": "Type",
+        "required": true,
+        "options": {
+          "Table Name": {
+            "label": "Table Name"
+          },
+          "Tags": {
+            "label": "Tags"
+          }
+        },
+        "val": "Table Name"
+      },
+      "rows": {
+        "type": "select",
+        "label": "Condition",
+        "show_if": "this.type == 'Tags'",
+        "required": true,
+        "options": {
+          "All Tags": {
+            "label": "All Tags"
+          },
+          "Some Tags": {
+            "label": "Some Tags"
+          }
+        },
+        "val": "Some Tags"
+      },
+      "condition": {
+        "type": "select",
+        "label": "Operator",
+        "required": true,
+        "options": {
+          "CONTAINS": {
+            "label": "CONTAINS"
+          },
+          "CONTAINED IN STRING": {
+            "label": "CONTAINED IN"
+          },
+          "STARTS WITH": {
+            "label": "STARTS WITH"
+          },
+          "ENDS WITH": {
+            "label": "ENDS WITH"
+          },
+          "=": {
+            "label": "EQUAL"
+          },
+          "REGEX MATCH": {
+            "label": "REGEX MATCH"
+          }
+        },
+        "val": "CONTAINS"
+      },
+      "value": {
+        "type": "text",
+        "label": "Input Value",
+        "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+        "val": "",
+        "required": true
+      },
+      "case_sensitive": {
+        "type": "select",
+        "label": "Case Sensitive",
+        "required": true,
+        "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+        "options": {
+          "yes": {
+            "label": "Case Sensitive"
+          },
+          "no": {
+            "label": "Case Insensitive"
+          }
+        },
+        "val": "yes"
+      },
+      "delete": {
+        "type": "button",
+        "label": "Delete",
+        "function": "DELETE_ROW"
+      }
     }
   }
 }
