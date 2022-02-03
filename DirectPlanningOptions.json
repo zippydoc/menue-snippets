@@ -932,7 +932,7 @@
                 "label": "03-14-12"
               }
             },
-            "val": "mm/dd/yyyy",
+            "val": "M dd, Y",
             "breakLine": true
           },
           "options.bs_data.assumptions_notes_name": {
@@ -3874,7 +3874,80 @@
             "type": "text",
             "label": "Balance Sheet Date",
             "placeholder": "Balance Sheet Date",
-            "val": "December 31, 2020"
+            "val": "December 31, 2020",
+            "breakLine": true
+          },
+          "options.bs_data.assumptions_position_name": {
+            "type": "text",
+            "label": "Assumptions Position Name",
+            "placeholder": "Assumptions Position Name",
+            "val": "Position"
+          },
+          "options.bs_data.assumptions_sub_position_name": {
+            "type": "text",
+            "label": "Assumptions Sub Position Name",
+            "placeholder": "Assumptions Sub Position Name",
+            "val": "Sub Position"
+          },
+          "options.bs_data.assumptions_item_name": {
+            "type": "text",
+            "label": "Assumptions Item Name",
+            "placeholder": "Assumptions Item Name",
+            "val": "Item"
+          },
+          "options.bs_data.assumptions_amount_name": {
+            "type": "text",
+            "label": "Assumptions Amount Name",
+            "placeholder": "Assumptions Amount Name",
+            "val": "Amount"
+          },
+          "options.bs_data.assumptions_payment_days_name": {
+            "type": "text",
+            "label": "Assumptions Payment Days Name",
+            "placeholder": "Assumptions Payment Days Name",
+            "val": "Payment Days"
+          },
+          "options.bs_data.assumptions_initial_date_name": {
+            "type": "text",
+            "label": "Assumptions Initial Date Name",
+            "placeholder": "Assumptions Initial Date Name",
+            "val": "(Initial) Date"
+          },
+          "options.bs_data.assumptions_final_date_name": {
+            "type": "text",
+            "label": "Assumptions Final Date Name",
+            "placeholder": "Assumptions Final Date Name",
+            "val": "Final Date"
+          },
+          "options.bs_data.assumptions_repetition_name": {
+            "type": "text",
+            "label": "Assumptions Repetition Name",
+            "placeholder": "Assumptions Repetition Name",
+            "val": "Repetition"
+          },
+          "options.bs_data.assumptions_growth_name": {
+            "type": "text",
+            "label": "Assumptions Growth Name",
+            "placeholder": "Assumptions Growth Name",
+            "val": "Growth..."
+          },
+          "options.bs_data.assumptions_applied_on_period_name": {
+            "type": "text",
+            "label": "Assumptions Applied on Period Name",
+            "placeholder": "Assumptions Applied on Period Name",
+            "val": "...applied on period"
+          },
+          "options.bs_data.assumptions_growth_curve_name": {
+            "type": "text",
+            "label": "Assumptions Growth Curve Name",
+            "placeholder": "Assumptions Growth Curve Name",
+            "val": "Growth Curve"
+          },
+          "options.bs_data.assumptions_notes_name": {
+            "type": "text",
+            "label": "Assumptions Notes Name",
+            "placeholder": "Assumptions Notes Name",
+            "val": "Notes"
           }
         },
         "breakLine": true
@@ -3887,12 +3960,138 @@
         "isOn": "true",
         "isOff": "false"
       },
-      "pdf_row_formatting_frame": {
+      "options.row_formatting": {
         "type": "fieldset",
         "label": "Row Formatting in PDF Package",
         "show_if": "options.output_type=='pdf_planning_package' && options.pdf_row_formatting=='true'",
+        "repeat": true,
+        "fields": {
+          "position_sub_position": {
+            "type": "select",
+            "label": "Position/Subposition",
+            "multiple": true,
+            "options": {
+              "Revenues; *": {
+                "label": "Revenues; *"
+              },
+              "Cost of Goods Sold; *": {
+                "label": "Cost of Goods Sold; *"
+              },
+              "Sales Expenses; *": {
+                "label": "Sales Expenses; *"
+              },
+              "Marketing Expenses; *": {
+                "label": "Marketing Expenses; *"
+              },
+              "Operating Expenses; *": {
+                "label": "Operating Expenses; *"
+              },
+              "General and Administration Expenses; *": {
+                "label": "General and Administration Expenses; *"
+              },
+              "Personnel Expenses; *": {
+                "label": "Personnel Expenses; *"
+              },
+              "Tax; *": {
+                "label": "Tax; *"
+              },
+              "Interest; *": {
+                "label": "Interest; *"
+              },
+              "Extraordinary Items; *": {
+                "label": "Extraordinary Items; *"
+              },
+              "Capital Expenditure; Land": {
+                "label": "Capital Expenditure; Land"
+              },
+              "Capital Expenditure; Building": {
+                "label": "Capital Expenditure; Building"
+              },
+              "Depreciation; *": {
+                "label": "Depreciation; *"
+              },
+              "Amortization; *": {
+                "label": "Amortization; *"
+              },
+              "Depretiation & Amortisation; *": {
+                "label": "Depretiation & Amortisation; *"
+              }
+            },
+            "val": "",
+            "required": true
+          },
+          "formatted": {
+            "type": "select",
+            "label": "Formatted",
+            "options": {
+              "default": {
+                "label": "Default"
+              },
+              "formatted": {
+                "label": "Formatted"
+              }
+            },
+            "val": "default",
+            "required": true
+          },
+          "line": {
+            "type": "select",
+            "label": "Line",
+            "multiple": true,
+            "options": {
+              "line above": {
+                "label": "line above"
+              },
+              "line below": {
+                "label": "line below"
+              },
+              "double line above": {
+                "label": "double line above"
+              },
+              "double line below": {
+                "label": "double line below"
+              }
+            },
+            "val": ["line above","line below","double line above"],
+            "required": true
+          }
+        },
+        "breakLine": true
+      },
+      "options.add_calculated_rows": {
+        "type": "checkbox",
+        "label": "Add Calculated Rows",
+        "show_if": "options.output_type=='pdf_planning_package'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "add_calculated_rows_frame": {
+        "type": "fieldset",
+        "label": "Add Calculated Rows",
+        "show_if": "options.output_type=='pdf_planning_package' && options.add_calculated_rows=='true'",
         "repeat": false,
         "fields": {
+          "options.calculated_rows.calculation": {
+            "type": "select",
+            "label": "Calculation",
+            "options": {
+              "addition": {
+                "label": "Addition"
+              },
+              "quota": {
+                "label": "Quota"
+              }
+            },
+            "val": "addition",
+            "required": true
+          },
+          "options.calculated_rows.new_position": {
+            "type": "text",
+            "label": "New Position",
+            "placeholder": "",
+            "val": ""
+          }
         },
         "breakLine": true
       },
