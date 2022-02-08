@@ -1004,13 +1004,12 @@
   "planning_configuration_frame": {
     "type": "fieldset",
     "label": "Planning Configuration",
-    "show_if": "options.direct_planning__configure_by_table=='false' && options.set_plan_config=='true'",
+    "show_if": "(options.output_type=='pdf_planning_package' && options.direct_planning__configure_by_table=='false' && options.set_plan_config=='true') || (options.output_type=='table_output' && options.table_output_type!='bs_summary_list' && options.direct_planning__configure_by_table=='false' && options.set_plan_config=='true')",
     "repeat": false,
     "fields": {
       "options.is_sort_position_pl_items": {
         "type": "checkbox",
         "label": "Sort Position of P&L Items",
-        "show_if": "options.output_type=='pdf_planning_package'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -1018,7 +1017,7 @@
       "options.sort_position_pl_items": {
         "type": "fieldset",
         "label": "Sort Position of P&L Items",
-        "show_if": "options.output_type=='pdf_planning_package' && options.is_sort_position_pl_items=='true'",
+        "show_if": "options.is_sort_position_pl_items=='true'",
         "repeat": true,
         "fields": {
           "position": {
