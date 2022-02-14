@@ -1044,6 +1044,30 @@
               },
               "Amortization": {
                 "label": "Amortization"
+              },
+              "Gross Profit": {
+                "label": "Gross Profit"
+              },
+              "EBT": {
+                "label": "EBT"
+              },
+              "EBIT": {
+                "label": "EBIT"
+              },
+              "EBITDA": {
+                "label": "EBITDA"
+              },
+              "Gross Profit Margin": {
+                "label": "Gross Profit Margin"
+              },
+              "EBT Margin": {
+                "label": "EBT Margin"
+              },
+              "EBIT Margin": {
+                "label": "EBIT Margin"
+              },
+              "EBITDA Margin": {
+                "label": "EBITDA Margin"
               }
             },
             "val": "Revenues",
@@ -1054,6 +1078,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Revenues'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Sales": {
                 "label": "Sales"
               },
@@ -1084,6 +1111,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Cost of Goods Sold'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Material Costs": {
                 "label": "Material Costs"
               },
@@ -1105,6 +1135,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Sales Expenses'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Material Costs": {
                 "label": "Material Costs"
               },
@@ -1135,6 +1168,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Marketing Expenses'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Material Costs": {
                 "label": "Material Costs"
               },
@@ -1165,6 +1201,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Operating Expenses'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Material Costs": {
                 "label": "Material Costs"
               },
@@ -1201,6 +1240,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='General and Administration Expenses'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Rental Expenses": {
                 "label": "Rental Expenses"
               },
@@ -1231,6 +1273,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Personnel Expenses'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Fix Salary": {
                 "label": "Fix Salary"
               },
@@ -1264,6 +1309,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Tax'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Value Added Tax": {
                 "label": "Value Added Tax"
               },
@@ -1285,6 +1333,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Interest'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Interest Income": {
                 "label": "Interest Income"
               },
@@ -1300,6 +1351,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Extraordinary Items'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Extraordinary Income": {
                 "label": "Extraordinary Income"
               },
@@ -1315,6 +1369,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Capital Expenditure'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Maintenance Capex": {
                 "label": "Maintenance Capex"
               },
@@ -1345,6 +1402,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Depreciation'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Equipment": {
                 "label": "Equipment"
               },
@@ -1378,6 +1438,9 @@
             "label": "Sub Position",
             "show_if": "this.position=='Amortization'",
             "options": {
+              "All": {
+                "label": "all Subpositions"
+              },
               "Acquisitions": {
                 "label": "Acquisitions"
               },
@@ -4453,1591 +4516,43 @@
         "show_if": "options.output_type=='pdf_planning_package'",
         "val": "false",
         "isOn": "true",
-        "isOff": "false"
+        "isOff": "false",
+        "breakLine": true
       },
-      "options.calculated_rows__base.item_1_frame": {
-        "type": "fieldset",
-        "label": "Add Calculated Rows : 1st item",
+      "options.calculated_rows__positions": {
+        "type": "select",
+        "label": "Calculated Position(s)",
         "show_if": "options.output_type=='pdf_planning_package' && options.add_calculated_rows=='true'",
-        "repeat": false,
-        "fields": {
-          "options.calculated_rows__base.item_1.calculation": {
-            "type": "select",
-            "label": "Calculation",
-            "options": {
-              "addition": {
-                "label": "Addition"
-              },
-              "quota": {
-                "label": "Quota"
-              }
-            },
-            "val": "addition",
-            "required": true
+        "multiple": true,
+        "options": {
+          "Gross Profit": {
+            "label": "Gross Profit"
           },
-          "options.calculated_rows__base.item_1.new_position": {
-            "type": "text",
-            "label": "New Position",
-            "placeholder": "",
-            "val": "Gross Profit",
-            "required": true
+          "EBT": {
+            "label": "EBT"
           },
-          "options.calculated_rows__base.item_1.addition_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_1.calculation=='addition'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold"],
-            "required": true
+          "EBIT": {
+            "label": "EBIT"
           },
-          "options.calculated_rows__base.item_1.quota_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_1.calculation=='quota'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "",
-            "required": true
+          "EBITDA": {
+            "label": "EBITDA"
           },
-          "options.calculated_rows__base.item_1.denominator_position": {
-            "type": "select",
-            "label": "Denominator Position",
-            "show_if": "options.calculated_rows__base.item_1.calculation=='quota'",
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "",
-            "required": true
+          "Gross Profit Margin": {
+            "label": "Gross Profit Margin"
           },
-          "options.calculated_rows__base.item_1.format": {
-            "type": "select",
-            "label": "Format",
-            "multiple": true,
-            "options": {
-              "Formatted": {
-                "label": "Formatted"
-              },
-              "line above": {
-                "label": "Line above"
-              },
-              "line below": {
-                "label": "Line below"
-              },
-              "double line above": {
-                "label": "Double line above"
-              },
-              "double line below": {
-                "label": "Double line below"
-              }
-            },
-            "val": ""
+          "EBT Margin": {
+            "label": "EBT Margin"
+          },
+          "EBIT Margin": {
+            "label": "EBIT Margin"
+          },
+          "EBITDA Margin": {
+            "label": "EBITDA Margin"
           }
-        }
-      },
-      "options.calculated_rows__base.item_2_frame": {
-        "type": "fieldset",
-        "label": "Add Calculated Rows : 2nd item",
-        "show_if": "options.output_type=='pdf_planning_package' && options.add_calculated_rows=='true'",
-        "repeat": false,
-        "fields": {
-          "options.calculated_rows__base.item_2.calculation": {
-            "type": "select",
-            "label": "Calculation",
-            "options": {
-              "addition": {
-                "label": "Addition"
-              },
-              "quota": {
-                "label": "Quota"
-              }
-            },
-            "val": "addition",
-            "required": true
-          },
-          "options.calculated_rows__base.item_2.new_position": {
-            "type": "text",
-            "label": "New Position",
-            "placeholder": "",
-            "val": "EBT",
-            "required": true
-          },
-          "options.calculated_rows__base.item_2.addition_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_2.calculation=='addition'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold","Sales Expenses","Marketing Expenses","Operating Expenses","General and Administration Expenses","Personnel Expenses","Extraordinary Items","Capital Expenditure"],
-            "required": true
-          },
-          "options.calculated_rows__base.item_2.quota_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_2.calculation=='quota'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "",
-            "required": true
-          },
-          "options.calculated_rows__base.item_2.denominator_position": {
-            "type": "select",
-            "label": "Denominator Position",
-            "show_if": "options.calculated_rows__base.item_2.calculation=='quota'",
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "",
-            "required": true
-          },
-          "options.calculated_rows__base.item_2.format": {
-            "type": "select",
-            "label": "Format",
-            "multiple": true,
-            "options": {
-              "Formatted": {
-                "label": "Formatted"
-              },
-              "line above": {
-                "label": "Line above"
-              },
-              "line below": {
-                "label": "Line below"
-              },
-              "double line above": {
-                "label": "Double line above"
-              },
-              "double line below": {
-                "label": "Double line below"
-              }
-            },
-            "val": ""
-          }
-        }
-      },
-      "options.calculated_rows__base.item_3_frame": {
-        "type": "fieldset",
-        "label": "Add Calculated Rows : 3rd item",
-        "show_if": "options.output_type=='pdf_planning_package' && options.add_calculated_rows=='true'",
-        "repeat": false,
-        "fields": {
-          "options.calculated_rows__base.item_3.calculation": {
-            "type": "select",
-            "label": "Calculation",
-            "options": {
-              "addition": {
-                "label": "Addition"
-              },
-              "quota": {
-                "label": "Quota"
-              }
-            },
-            "val": "addition",
-            "required": true
-          },
-          "options.calculated_rows__base.item_3.new_position": {
-            "type": "text",
-            "label": "New Position",
-            "placeholder": "",
-            "val": "EBIT",
-            "required": true
-          },
-          "options.calculated_rows__base.item_3.addition_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_3.calculation=='addition'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold","Interest"],
-            "required": true
-          },
-          "options.calculated_rows__base.item_3.quota_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_3.calculation=='quota'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "",
-            "required": true
-          },
-          "options.calculated_rows__base.item_3.denominator_position": {
-            "type": "select",
-            "label": "Denominator Position",
-            "show_if": "options.calculated_rows__base.item_3.calculation=='quota'",
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "",
-            "required": true
-          },
-          "options.calculated_rows__base.item_3.format": {
-            "type": "select",
-            "label": "Format",
-            "multiple": true,
-            "options": {
-              "Formatted": {
-                "label": "Formatted"
-              },
-              "line above": {
-                "label": "Line above"
-              },
-              "line below": {
-                "label": "Line below"
-              },
-              "double line above": {
-                "label": "Double line above"
-              },
-              "double line below": {
-                "label": "Double line below"
-              }
-            },
-            "val": ""
-          }
-        }
-      },
-      "options.calculated_rows__base.item_4_frame": {
-        "type": "fieldset",
-        "label": "Add Calculated Rows : 4th item",
-        "show_if": "options.output_type=='pdf_planning_package' && options.add_calculated_rows=='true'",
-        "repeat": false,
-        "fields": {
-          "options.calculated_rows__base.item_4.calculation": {
-            "type": "select",
-            "label": "Calculation",
-            "options": {
-              "addition": {
-                "label": "Addition"
-              },
-              "quota": {
-                "label": "Quota"
-              }
-            },
-            "val": "addition",
-            "required": true
-          },
-          "options.calculated_rows__base.item_4.new_position": {
-            "type": "text",
-            "label": "New Position",
-            "placeholder": "",
-            "val": "EBITDA",
-            "required": true
-          },
-          "options.calculated_rows__base.item_4.addition_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_4.calculation=='addition'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold","Interest","Depreciation","Amortization"],
-            "required": true
-          },
-          "options.calculated_rows__base.item_4.quota_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_4.calculation=='quota'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "",
-            "required": true
-          },
-          "options.calculated_rows__base.item_4.denominator_position": {
-            "type": "select",
-            "label": "Denominator Position",
-            "show_if": "options.calculated_rows__base.item_4.calculation=='quota'",
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "",
-            "required": true
-          },
-          "options.calculated_rows__base.item_4.format": {
-            "type": "select",
-            "label": "Format",
-            "multiple": true,
-            "options": {
-              "Formatted": {
-                "label": "Formatted"
-              },
-              "line above": {
-                "label": "Line above"
-              },
-              "line below": {
-                "label": "Line below"
-              },
-              "double line above": {
-                "label": "Double line above"
-              },
-              "double line below": {
-                "label": "Double line below"
-              }
-            },
-            "val": ""
-          }
-        }
-      },
-      "options.calculated_rows__base.item_5_frame": {
-        "type": "fieldset",
-        "label": "Add Calculated Rows : 5th item",
-        "show_if": "options.output_type=='pdf_planning_package' && options.add_calculated_rows=='true'",
-        "repeat": false,
-        "fields": {
-          "options.calculated_rows__base.item_5.calculation": {
-            "type": "select",
-            "label": "Calculation",
-            "options": {
-              "addition": {
-                "label": "Addition"
-              },
-              "quota": {
-                "label": "Quota"
-              }
-            },
-            "val": "quota",
-            "required": true
-          },
-          "options.calculated_rows__base.item_5.new_position": {
-            "type": "text",
-            "label": "New Position",
-            "placeholder": "",
-            "val": "Gross Profit Margin",
-            "required": true
-          },
-          "options.calculated_rows__base.item_5.addition_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_5.calculation=='addition'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold","Interest","Depreciation","Amortization"],
-            "required": true
-          },
-          "options.calculated_rows__base.item_5.quota_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_5.calculation=='quota'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold"],
-            "required": true
-          },
-          "options.calculated_rows__base.item_5.denominator_position": {
-            "type": "select",
-            "label": "Denominator Position",
-            "show_if": "options.calculated_rows__base.item_5.calculation=='quota'",
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "Revenues",
-            "required": true
-          },
-          "options.calculated_rows__base.item_5.format": {
-            "type": "select",
-            "label": "Format",
-            "multiple": true,
-            "options": {
-              "Formatted": {
-                "label": "Formatted"
-              },
-              "line above": {
-                "label": "Line above"
-              },
-              "line below": {
-                "label": "Line below"
-              },
-              "double line above": {
-                "label": "Double line above"
-              },
-              "double line below": {
-                "label": "Double line below"
-              }
-            },
-            "val": ""
-          }
-        }
-      },
-      "options.calculated_rows__base.item_6_frame": {
-        "type": "fieldset",
-        "label": "Add Calculated Rows : 6th item",
-        "show_if": "options.output_type=='pdf_planning_package' && options.add_calculated_rows=='true'",
-        "repeat": false,
-        "fields": {
-          "options.calculated_rows__base.item_6.calculation": {
-            "type": "select",
-            "label": "Calculation",
-            "options": {
-              "addition": {
-                "label": "Addition"
-              },
-              "quota": {
-                "label": "Quota"
-              }
-            },
-            "val": "quota",
-            "required": true
-          },
-          "options.calculated_rows__base.item_6.new_position": {
-            "type": "text",
-            "label": "New Position",
-            "placeholder": "",
-            "val": "EBT Margin",
-            "required": true
-          },
-          "options.calculated_rows__base.item_6.addition_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_6.calculation=='addition'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold","Interest","Depreciation","Amortization"],
-            "required": true
-          },
-          "options.calculated_rows__base.item_6.quota_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_6.calculation=='quota'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold","Sales Expenses","Marketing Expenses","Operating Expenses","General and Administration Expenses","Personnel Expenses","Extraordinary Items","Capital Expenditure"],
-            "required": true
-          },
-          "options.calculated_rows__base.item_6.denominator_position": {
-            "type": "select",
-            "label": "Denominator Position",
-            "show_if": "options.calculated_rows__base.item_5.calculation=='quota'",
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "Revenues",
-            "required": true
-          },
-          "options.calculated_rows__base.item_6.format": {
-            "type": "select",
-            "label": "Format",
-            "multiple": true,
-            "options": {
-              "Formatted": {
-                "label": "Formatted"
-              },
-              "line above": {
-                "label": "Line above"
-              },
-              "line below": {
-                "label": "Line below"
-              },
-              "double line above": {
-                "label": "Double line above"
-              },
-              "double line below": {
-                "label": "Double line below"
-              }
-            },
-            "val": ""
-          }
-        }
-      },
-      "options.calculated_rows__base.item_7_frame": {
-        "type": "fieldset",
-        "label": "Add Calculated Rows : 7th item",
-        "show_if": "options.output_type=='pdf_planning_package' && options.add_calculated_rows=='true'",
-        "repeat": false,
-        "fields": {
-          "options.calculated_rows__base.item_7.calculation": {
-            "type": "select",
-            "label": "Calculation",
-            "options": {
-              "addition": {
-                "label": "Addition"
-              },
-              "quota": {
-                "label": "Quota"
-              }
-            },
-            "val": "quota",
-            "required": true
-          },
-          "options.calculated_rows__base.item_7.new_position": {
-            "type": "text",
-            "label": "New Position",
-            "placeholder": "",
-            "val": "EBIT Margin",
-            "required": true
-          },
-          "options.calculated_rows__base.item_7.addition_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_7.calculation=='addition'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold","Interest","Depreciation","Amortization"],
-            "required": true
-          },
-          "options.calculated_rows__base.item_7.quota_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_7.calculation=='quota'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold","Interest"],
-            "required": true
-          },
-          "options.calculated_rows__base.item_7.denominator_position": {
-            "type": "select",
-            "label": "Denominator Position",
-            "show_if": "options.calculated_rows__base.item_7.calculation=='quota'",
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "Revenues",
-            "required": true
-          },
-          "options.calculated_rows__base.item_7.format": {
-            "type": "select",
-            "label": "Format",
-            "multiple": true,
-            "options": {
-              "Formatted": {
-                "label": "Formatted"
-              },
-              "line above": {
-                "label": "Line above"
-              },
-              "line below": {
-                "label": "Line below"
-              },
-              "double line above": {
-                "label": "Double line above"
-              },
-              "double line below": {
-                "label": "Double line below"
-              }
-            },
-            "val": ""
-          }
-        }
-      },
-      "options.calculated_rows__base.item_8_frame": {
-        "type": "fieldset",
-        "label": "Add Calculated Rows : 8th item",
-        "show_if": "options.output_type=='pdf_planning_package' && options.add_calculated_rows=='true'",
-        "repeat": false,
-        "fields": {
-          "options.calculated_rows__base.item_8.calculation": {
-            "type": "select",
-            "label": "Calculation",
-            "options": {
-              "addition": {
-                "label": "Addition"
-              },
-              "quota": {
-                "label": "Quota"
-              }
-            },
-            "val": "quota",
-            "required": true
-          },
-          "options.calculated_rows__base.item_8.new_position": {
-            "type": "text",
-            "label": "New Position",
-            "placeholder": "",
-            "val": "EBITDA Margin",
-            "required": true
-          },
-          "options.calculated_rows__base.item_8.addition_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_8.calculation=='addition'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold","Interest","Depreciation","Amortization"],
-            "required": true
-          },
-          "options.calculated_rows__base.item_8.quota_positions": {
-            "type": "select",
-            "label": "Select Position(s)",
-            "show_if": "options.calculated_rows__base.item_8.calculation=='quota'",
-            "multiple": true,
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": ["Revenues","Cost of Goods Sold","Interest","Depreciation","Amortization"],
-            "required": true
-          },
-          "options.calculated_rows__base.item_8.denominator_position": {
-            "type": "select",
-            "label": "Denominator Position",
-            "show_if": "options.calculated_rows__base.item_8.calculation=='quota'",
-            "options": {
-              "Revenues": {
-                "label": "Revenues"
-              },
-              "Cost of Goods Sold": {
-                "label": "Cost of Goods Sold"
-              },
-              "Sales Expenses": {
-                "label": "Sales Expenses"
-              },
-              "Marketing Expenses": {
-                "label": "Marketing Expenses"
-              },
-              "Operating Expenses": {
-                "label": "Operating Expenses"
-              },
-              "General and Administration Expenses": {
-                "label": "General and Administration Expenses"
-              },
-              "Personnel Expenses": {
-                "label": "Personnel Expenses"
-              },
-              "Tax": {
-                "label": "Tax"
-              },
-              "Interest": {
-                "label": "Interest"
-              },
-              "Extraordinary Items": {
-                "label": "Extraordinary Items"
-              },
-              "Capital Expenditure": {
-                "label": "Capital Expenditure"
-              },
-              "Depreciation": {
-                "label": "Depreciation"
-              },
-              "Amortization": {
-                "label": "Amortization"
-              }
-            },
-            "val": "Revenues",
-            "required": true
-          },
-          "options.calculated_rows__base.item_8.format": {
-            "type": "select",
-            "label": "Format",
-            "multiple": true,
-            "options": {
-              "Formatted": {
-                "label": "Formatted"
-              },
-              "line above": {
-                "label": "Line above"
-              },
-              "line below": {
-                "label": "Line below"
-              },
-              "double line above": {
-                "label": "Double line above"
-              },
-              "double line below": {
-                "label": "Double line below"
-              }
-            },
-            "val": ""
-          }
-        }
+        },
+        "val": ["Gross Profit","EBT","EBIT","EBITDA","Gross Profit Margin","EBT Margin","EBIT Margin","EBITDA Margin"],
+        "required": true,
+        "breakLine": true
       },
       "options.calculated_rows__extra": {
         "type": "fieldset",
