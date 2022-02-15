@@ -1,15 +1,25 @@
 {
-  "output.select_output_columns": {
-    "type": "checkbox",
+  "output.select_output_columns_type": {
+    "type": "select",
     "label": "Select Output Columns",
-    "val": "false",
-    "isOn": "true",
-    "isOff": "false"
+    "required": true,
+    "options": {
+      "all": {
+        "label": "All"
+      },
+      "standard": {
+        "label": "Standard Column Selection"
+      },
+      "advanced": {
+        "label": "Advanced Column Selection"
+      }
+    },
+    "val": "standard"
   },
   "output_columns_frame": {
     "type": "fieldset",
     "label": "Select Output Columns",
-    "show_if": "output.select_output_columns=='true'",
+    "show_if": "output.select_output_columns_type=='standard'",
     "repeat": false,
     "fields": {
       "output.output_columns": {
@@ -30,27 +40,13 @@
         "isOn": "true",
         "isOff": "false",
         "breakLine": true
-      },
-      "output.columns_selection_type": {
-        "type": "select",
-        "label": "Selection Type",
-        "required": true,
-        "options": {
-          "standard": {
-            "label": "Standard Column Selection"
-          },
-          "advanced": {
-            "label": "Advanced Column Selection"
-          }
-        },
-        "val": "standard"
       }
     }
   },
   "output.detail_output_columns": {
     "type": "fieldset",
     "label": "Select Output Columns",
-    "show_if": "output.select_output_columns=='true' && output.columns_selection_type=='advanced'",
+    "show_if": "output.select_output_columns_type=='advanced'",
     "repeat": true,
     "fields": {
       "field_name": {
