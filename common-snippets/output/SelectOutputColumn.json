@@ -1,21 +1,31 @@
 {
-  "output.select_output_columns": {
-    "type": "checkbox",
+  "output.select_output_columns_type": {
+    "type": "select",
     "label": "Select Output Columns",
-    "val": "false",
-    "isOn": "true",
-    "isOff": "false"
+    "required": true,
+    "options": {
+      "all": {
+        "label": "All"
+      },
+      "standard": {
+        "label": "Standard Column Selection"
+      },
+      "advanced": {
+        "label": "Advanced Column Selection"
+      }
+    },
+    "val": "all",
+    "breakLine": true
   },
   "output_columns_frame": {
     "type": "fieldset",
     "label": "Select Output Columns",
-    "show_if": "output.select_output_columns=='true'",
+    "show_if": "output.select_output_columns_type=='standard'",
     "repeat": false,
     "fields": {
       "output.output_columns": {
         "type": "select",
         "label": "Output Column(s)",
-        "show_if": "output.more_columns_selection=='false'",
         "table": "table_id",
         "bind": "COLUMNS",
         "multiple": true,
@@ -25,24 +35,6 @@
       "output.all_but_selected": {
         "type": "checkbox",
         "label": "All but selected",
-        "show_if": "output.more_columns_selection=='false'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      },
-      "output.reverse_order": {
-        "type": "checkbox",
-        "label": "Reverse order",
-        "show_if": "output.more_columns_selection=='false'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      },
-      "output.more_columns_selection": {
-        "type": "checkbox",
-        "label": "More Column Options",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -53,7 +45,7 @@
   "output.detail_output_columns": {
     "type": "fieldset",
     "label": "Select Output Columns",
-    "show_if": "output.select_output_columns=='true' && output.more_columns_selection=='true'",
+    "show_if": "output.select_output_columns_type=='advanced'",
     "repeat": true,
     "fields": {
       "field_name": {
@@ -78,22 +70,6 @@
           }
         },
         "val": "-"
-      },
-      "is_rename": {
-        "type": "checkbox",
-        "label": "Rename",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "rename": {
-        "show_if": "this.is_rename == 'true'",
-        "type": "text",
-        "required": true,
-        "minLength": 1,
-        "maxLength": 255,
-        "label": "New Column Name",
-        "style": "margin-left: 10px"
       },
       "format__category": {
         "type": "select",
@@ -289,8 +265,23 @@
             "label": "03-14-12"
           }
         },
-        "val": "mm/dd/yyyy",
-        "breakLine": true
+        "val": "mm/dd/yyyy"
+      },
+      "is_rename": {
+        "type": "checkbox",
+        "label": "Rename",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "rename": {
+        "show_if": "this.is_rename == 'true'",
+        "type": "text",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 255,
+        "label": "New Column Name",
+        "style": "margin-left: 10px"
       },
       "delete": {
         "type": "button",
