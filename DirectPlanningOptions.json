@@ -2723,8 +2723,29 @@
               "Long-term Liablities; *": {
                 "label": "Long-term Liabilities; *"
               },
-              "Current Liablities; *": {
-                "label": "Current Liabilities; *"
+              "Gross Profit": {
+                "label": "Gross Profit"
+              },
+              "EBT": {
+                "label": "EBT"
+              },
+              "EBIT": {
+                "label": "EBIT"
+              },
+              "EBITDA": {
+                "label": "EBITDA"
+              },
+              "Gross Profit Margin": {
+                "label": "Gross Profit Margin"
+              },
+              "EBT Margin": {
+                "label": "EBT Margin"
+              },
+              "EBIT Margin": {
+                "label": "EBIT Margin"
+              },
+              "EBITDA Margin": {
+                "label": "EBITDA Margin"
               }
             },
             "val": "",
@@ -2831,6 +2852,12 @@
               },
               "quota": {
                 "label": "Quota"
+              },
+              "multiply": {
+                "label": "Multiply"
+              },
+              "fix_multiply": {
+                "label": "Fix multiply"
               }
             },
             "val": "addition",
@@ -2846,7 +2873,7 @@
           "addition_positions": {
             "type": "select",
             "label": "Select Position(s)",
-            "show_if": "this.calculation=='addition'",
+            "show_if": "this.calculation=='addition' || this.calculation=='multiply' || this.calculation=='fix_multiply'",
             "multiple": true,
             "options": {
               "Revenues": {
@@ -2988,6 +3015,61 @@
             },
             "val": "",
             "required": true
+          },
+          "multiply_position": {
+            "type": "select",
+            "label": "Multiply Position",
+            "show_if": "this.calculation=='multiply'",
+            "options": {
+              "Revenues": {
+                "label": "Revenues"
+              },
+              "Cost of Goods Sold": {
+                "label": "Cost of Goods Sold"
+              },
+              "Sales Expenses": {
+                "label": "Sales Expenses"
+              },
+              "Marketing Expenses": {
+                "label": "Marketing Expenses"
+              },
+              "Operating Expenses": {
+                "label": "Operating Expenses"
+              },
+              "General and Administration Expenses": {
+                "label": "General and Administration Expenses"
+              },
+              "Personnel Expenses": {
+                "label": "Personnel Expenses"
+              },
+              "Tax": {
+                "label": "Tax"
+              },
+              "Interest": {
+                "label": "Interest"
+              },
+              "Extraordinary Items": {
+                "label": "Extraordinary Items"
+              },
+              "Capital Expenditure": {
+                "label": "Capital Expenditure"
+              },
+              "Depreciation": {
+                "label": "Depreciation"
+              },
+              "Amortization": {
+                "label": "Amortization"
+              }
+            },
+            "val": "",
+            "required": true
+          },
+          "fix_multiply": {
+            "type": "number",
+            "label": "Fix multiply",
+            "show_if": "this.calculation=='fix_multiply'",
+            "val": "1",
+            "breakLine": true
           },
           "format": {
             "type": "select",
