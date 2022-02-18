@@ -66,22 +66,6 @@
         },
         "val": "planning_assumptions"
       },
-      "options.package_type": {
-        "type": "select",
-        "label": "Package Type",
-        "show_if": "options.output_type=='pdf_planning_package'",
-        "options": {
-          "version1": {
-            "label": "Version 1"
-          },
-          "version2": {
-            "label": "Version 2"
-          }
-        },
-        "val": "version1",
-        "required": true,
-        "breakLine": true
-      },
       "options.bs_date_year": {
         "type": "select",
         "label": "Balance Sheet Date's Year",
@@ -222,136 +206,6 @@
           }
         },
         "val": "December"
-      },
-      "bs_placeholder_frame": {
-        "type": "fieldset",
-        "label": "Configure 'Balance Sheet' PDF Info",
-        "show_if": "options.output_type=='pdf_planning_package'",
-        "repeat": false,
-        "fields": {
-          "options.lang": {
-            "type": "select",
-            "label": "Document Language",
-            "options": {
-              "standard": {
-                "label": "Standard Language"
-              },
-              "lt": {
-                "label": "Lithuanian"
-              },
-              "it": {
-                "label": "Italian"
-              },
-              "hu": {
-                "label": "Hungarian"
-              },
-              "fr": {
-                "label": "French"
-              },
-              "fi": {
-                "label": "Finnish"
-              },
-              "bg": {
-                "label": "Bulgarian"
-              },
-              "ca": {
-                "label": "Canadian"
-              },
-              "cs": {
-                "label": "Czech"
-              },
-              "de": {
-                "label": "German"
-              },
-              "en": {
-                "label": "English"
-              },
-              "es": {
-                "label": "Spanish"
-              }
-            },
-            "val": "en",
-            "required": true
-          },
-          "options.bs_data.company_name": {
-            "type": "text",
-            "label": "Company Name",
-            "placeholder": "My Company ltd.",
-            "val": ""
-          },
-          "options.bs_data__date_format": {
-            "type": "select",
-            "label": "Date Format",
-            "required": true,
-            "options": {
-              "mm/dd/yyyy": {
-                "label": "3/14/2012"
-              },
-              "D, M dd, Y": {
-                "label": "Wednesday, March 14, 2012"
-              },
-              "yyyy-mm-dd": {
-                "label": "2012-03-14"
-              },
-              "m.dd.yyyy": {
-                "label": "3.14.2012"
-              },
-              "m.dd.yy": {
-                "label": "3.14.12"
-              },
-              "dd.m.yyyy": {
-                "label": "14.3.2012"
-              },
-              "dd.m.yy": {
-                "label": "14.3.12"
-              },
-              "M dd, Y": {
-                "label": "March 14, 2012"
-              },
-              "dd-mm-yyyy": {
-                "label": "14-03-2012"
-              },
-              "mm-dd-yyyy": {
-                "label": "03-14-2012"
-              },
-              "dd-mm-yy": {
-                "label": "14-03-12"
-              },
-              "mm-dd-yy": {
-                "label": "03-14-12"
-              }
-            },
-            "val": "M dd, Y",
-            "breakLine": true
-          },
-          "options.bs_data.assumptions_notes_name": {
-            "type": "text",
-            "label": "Notes",
-            "placeholder": "These are a view notes-1",
-            "val": "",
-            "width": "100%"
-          },
-          "options.bs_data.currency": {
-            "type": "text",
-            "label": "Currency",
-            "placeholder": "€ million",
-            "val": ""
-          },
-          "options.bs_data.logo": {
-            "type": "text",
-            "label": "Logo(Base64 Encoded Data of JPEG)",
-            "placeholder": "data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEA",
-            "val": "",
-            "width": "100%"
-          },
-          "options.bs_data__help_text_logo": {
-            "type": "text",
-            "label": "",
-            "val": "For conversion you may use e.g. https://onlinejpgtools.com/convert-jpg-to-base64",
-            "disabled": true,
-            "width": "100%"
-          }
-        }
       },
       "options.planning_table__group_by": {
         "type": "select",
@@ -2070,77 +1924,26 @@
         "isOn": "true",
         "isOff": "false"
       },
-      "bs_labels_placeholder_frame": {
+      "bs_labels_placeholder__settings_and_title_page__frame": {
         "type": "fieldset",
-        "label": "Customise 'Balance Sheet' PDF Labels",
-        "show_if": "options.output_type=='pdf_planning_package' && (options.lang=='standard' || options.lang=='en') && options.bs_data__custom_labels=='true'",
+        "label": "Customise 'Balance Sheet' PDF Labels (Settings and Title Page)",
+        "show_if": "options.output_type=='pdf_planning_package' && options.bs_data__custom_labels=='true'",
         "repeat": false,
         "fields": {
-          "options.bs_data.assets_header_name": {
-            "type": "text",
-            "label": "Assets Header Name",
-            "placeholder": "Assets Header Name",
-            "val": "Assets"
-          },
-          "options.bs_data.liabilities_header_name": {
-            "type": "text",
-            "label": "Liabilities Header Name",
-            "placeholder": "Liabilities Header Name",
-            "val": "Liabilities"
-          },
-          "options.bs_data.total_assets_name": {
-            "type": "text",
-            "label": "Total Assets Name",
-            "placeholder": "Total Assets Name",
-            "val": "Total Assets"
-          },
-          "options.bs_data.total_liablities_name": {
-            "type": "text",
-            "label": "Total Liabilities Name",
-            "placeholder": "Total Liabilities Name",
-            "val": "Total Liabilities"
-          },
-          "options.bs_data.current_assets_name": {
-            "type": "text",
-            "label": "Current Assets Name",
-            "placeholder": "Current Assets Name",
-            "val": "Current Assets"
-          },
-          "options.bs_data.current_liabilities_name": {
-            "type": "text",
-            "label": "Current Liabilities Name",
-            "placeholder": "Current Liabilities Name",
-            "val": "Current Liabilities"
-          },
-          "options.bs_data.property_equipment_name": {
-            "type": "text",
-            "label": "Property Equipment Name",
-            "placeholder": "Property Equipment Name",
-            "val": "Property & Equipment"
-          },
-          "options.bs_data.longterm_liabilities_name": {
-            "type": "text",
-            "label": "Longterm Liabilities Name",
-            "placeholder": "Longterm Liabilities Name",
-            "val": "Long-term Liabilities"
-          },
-          "options.bs_data.other_assets_name": {
-            "type": "text",
-            "label": "Other Assets Name",
-            "placeholder": "Other Assets Name",
-            "val": "Other Assets"
-          },
-          "options.bs_data.other_liablities_name": {
-            "type": "text",
-            "label": "Other Liablities Name",
-            "placeholder": "Other Liablities Name",
-            "val": "Other Liabilities"
-          },
-          "options.bs_data.shareholders_equity_name": {
-            "type": "text",
-            "label": "Shareholders Equity Name",
-            "placeholder": "Shareholders Equity Name",
-            "val": "Shareholders Equity"
+          "options.package_type": {
+            "type": "select",
+            "label": "Package Type",
+            "options": {
+              "version1": {
+                "label": "Version 1"
+              },
+              "version2": {
+                "label": "Version 2"
+              }
+            },
+            "val": "version1",
+            "required": true,
+            "breakLine": true
           },
           "options.bs_data.all_figures_in": {
             "type": "text",
@@ -2166,12 +1969,6 @@
             "placeholder": "Confidential Note",
             "val": "Strictly Confidential"
           },
-          "options.bs_data.growth_curve_name": {
-            "type": "text",
-            "label": "Growth Curve Name",
-            "placeholder": "Growth Curve Name",
-            "val": "Growth Curve"
-          },
           "options.bs_data.position_name": {
             "type": "text",
             "label": "Position Name",
@@ -2190,6 +1987,18 @@
             "placeholder": "Item Name",
             "val": "Item",
             "breakLine": true
+          },
+          "options.bs_data.growth_curve_name": {
+            "type": "text",
+            "label": "Growth Curve Name",
+            "placeholder": "Growth Curve Name",
+            "val": "Growth Curve"
+          },
+          "options.bs_data.growth_name": {
+            "type": "text",
+            "label": "Growth Name",
+            "placeholder": "Growth Name",
+            "val": "Growth (%)"
           },
           "options.bs_data.year_1_name": {
             "type": "text",
@@ -2320,12 +2129,6 @@
             "val": "Dec",
             "breakLine": true
           },
-          "options.bs_data.growth_name": {
-            "type": "text",
-            "label": "Growth Name",
-            "placeholder": "Growth Name",
-            "val": "Growth (%)"
-          },
           "options.bs_data.full_year_name": {
             "type": "text",
             "label": "Full Year Name",
@@ -2350,214 +2153,16 @@
             "placeholder": "Title Planning Package",
             "val": "Planning Package v1"
           },
-          "options.bs_data.title_balance_sheet": {
-            "type": "text",
-            "label": "Title Balance Sheet",
-            "placeholder": "Title Balance Sheet",
-            "val": "Balance Sheet"
-          },
-          "options.bs_data.title_profit_and_loss_yearly": {
-            "type": "text",
-            "label": "Yearly Profit & Loss Title",
-            "placeholder": "Yearly Profit & Loss Title",
-            "val": "Yearly Profit & Loss Development"
-          },
-          "options.bs_data.title_profit_and_loss_quarterly": {
-            "type": "text",
-            "label": "Quarterly Profit & Loss Title",
-            "placeholder": "Quarterly Profit & Loss Title",
-            "val": "Quarterly Profit & Loss Development"
-          },
-          "options.bs_data.title_profit_and_loss_monthly": {
-            "type": "text",
-            "label": "Monthly Profit & Loss Title",
-            "placeholder": "Monthly Profit & Loss Title",
-            "val": "Monthly Profit & Loss Development"
-          },
-          "options.bs_data.title_cash_flow_yearly": {
-            "type": "text",
-            "label": "Yearly Cashflow Title",
-            "placeholder": "Yearly Cashflow Title",
-            "val": "Yearly Cashflow Development"
-          },
-          "options.bs_data.title_cash_flow_quarterly": {
-            "type": "text",
-            "label": "Quarterly Cashflow Title",
-            "placeholder": "Quarterly Cashflow Title",
-            "val": "Quarterly Cashflow Development"
-          },
-          "options.bs_data.title_cash_flow_monthly": {
-            "type": "text",
-            "label": "Monthly Cashflow Title",
-            "placeholder": "Monthly Cashflow Title",
-            "val": "Monthly Cashflow Development"
-          },
-          "options.bs_data.title_balance_sheet_development_yearly": {
-            "type": "text",
-            "label": "Yearly Balance Sheet Title",
-            "placeholder": "Yearly Balance Sheet Title",
-            "val": "Yearly Balance Sheet Development"
-          },
-          "options.bs_data.title_balance_sheet_development_quarterly": {
-            "type": "text",
-            "label": "Quarterly Balance Sheet Title",
-            "placeholder": "Quarterly Balance Sheet Title",
-            "val": "Quarterly Balance Sheet Development"
-          },
-          "options.bs_data.title_balance_sheet_development_monthly": {
-            "type": "text",
-            "label": "Monthly Balance Sheet Title",
-            "placeholder": "Monthly Balance Sheet Title",
-            "val": "Monthly Balance Sheet Development"
-          },
-          "options.bs_data.title_planning_assumptions": {
-            "type": "text",
-            "label": "Planning Assumptions",
-            "placeholder": "Planning Assumptions",
-            "val": "Planning Assumptions"
-          },
           "options.bs_data.sub_title_planning_package": {
             "type": "text",
             "label": "Subtitle Planning Package",
             "placeholder": "Subtitle Planning Package",
             "val": "Unit 1"
           },
-          "options.bs_data.sub_title_balance_sheet": {
-            "type": "text",
-            "label": "Subtitle Balance Sheet",
-            "placeholder": "Subtitle Balance Sheet",
-            "val": "Unit 1"
-          },
-          "options.bs_data.sub_title_profit_and_loss_yearly": {
-            "type": "text",
-            "label": "Subtitle Profit & Loss Yearly",
-            "placeholder": "Subtitle Profit & Loss Yearly",
-            "val": "Unit 1"
-          },
-          "options.bs_data.sub_title_profit_and_loss_quarterly": {
-            "type": "text",
-            "label": "Subtitle Profit & Loss Quarterly",
-            "placeholder": "Subtitle Profit & Loss Quarterly",
-            "val": "Unit 1"
-          },
-          "options.bs_data.sub_title_profit_and_loss_monthly": {
-            "type": "text",
-            "label": "Subtitle Profit & Loss Monthly",
-            "placeholder": "Subtitle Profit & Loss Monthly",
-            "val": "Unit 1"
-          },
-          "options.bs_data.sub_title_cash_flow_yearly": {
-            "type": "text",
-            "label": "Subtitle Cashflow Yearly",
-            "placeholder": "Subtitle Cashflow Yearly",
-            "val": "Unit 1"
-          },
-          "options.bs_data.sub_title_cash_flow_quarterly": {
-            "type": "text",
-            "label": "Subtitle Cashflow Quarterly",
-            "placeholder": "Subtitle Cashflow Quarterly",
-            "val": "Unit 1"
-          },
-          "options.bs_data.sub_title_cash_flow_monthly": {
-            "type": "text",
-            "label": "Subtitle Cashflow Monthly",
-            "placeholder": "Subtitle Cashflow Monthly",
-            "val": "Unit 1"
-          },
-          "options.bs_data.sub_title_balance_sheet_development_yearly": {
-            "type": "text",
-            "label": "Subtitle Balance Sheet Yearly",
-            "placeholder": "Subtitle Balance Sheet Yearly",
-            "val": "Unit 1"
-          },
-          "options.bs_data.sub_title_balance_sheet_development_quarterly": {
-            "type": "text",
-            "label": "Subtitle Balance Sheet Quarterly",
-            "placeholder": "Subtitle Balance Sheet Quarterly",
-            "val": "Unit 1"
-          },
-          "options.bs_data.sub_title_balance_sheet_development_monthly": {
-            "type": "text",
-            "label": "Subtitle Balance Sheet Monthly",
-            "placeholder": "Subtitle Balance Sheet Monthly",
-            "val": "Unit 1"
-          },
-          "options.bs_data.sub_title_planning_assumptions": {
-            "type": "text",
-            "label": "Subtitle Planning Assumptions",
-            "placeholder": "Subtitle Planning Assumptions",
-            "val": "Unit 1"
-          },
           "options.bs_data.notes_planning_package": {
             "type": "text",
             "label": "Notes Planning Package",
             "placeholder": "Notes Planning Package",
-            "val": "These are a view notes"
-          },
-          "options.bs_data.notes_balance_sheet": {
-            "type": "text",
-            "label": "Notes Balance Sheet",
-            "placeholder": "Notes Balance Sheet",
-            "val": "These are a view notes"
-          },
-          "options.bs_data.notes_profit_and_loss_yearly": {
-            "type": "text",
-            "label": "Notes Profit & Loss Yearly",
-            "placeholder": "Notes Profit & Loss Yearly",
-            "val": "These are a view notes"
-          },
-          "options.bs_data.notes_profit_and_loss_quarterly": {
-            "type": "text",
-            "label": "Notes Profit & Loss Quarterly",
-            "placeholder": "Notes Profit & Loss Quarterly",
-            "val": "These are a view notes"
-          },
-          "options.bs_data.notes_profit_and_loss_monthly": {
-            "type": "text",
-            "label": "Notes Profit & Loss Monthly",
-            "placeholder": "Notes Profit & Loss Monthly",
-            "val": "These are a view notes"
-          },
-          "options.bs_data.notes_cash_flow_yearly": {
-            "type": "text",
-            "label": "Notes Cashflow Yearly",
-            "placeholder": "Notes Cashflow Yearly",
-            "val": "These are a view notes"
-          },
-          "options.bs_data.notes_cash_flow_quarterly": {
-            "type": "text",
-            "label": "Notes Cashflow Quarterly",
-            "placeholder": "Notes Cashflow Quarterly",
-            "val": "These are a view notes"
-          },
-          "options.bs_data.notes_cash_flow_monthly": {
-            "type": "text",
-            "label": "Notes Cashflow Monthly",
-            "placeholder": "Notes Cashflow Monthly",
-            "val": "These are a view notes"
-          },
-          "options.bs_data.notes_balance_sheet_development_yearly": {
-            "type": "text",
-            "label": "Notes Balance Sheet Development Yearly",
-            "placeholder": "Notes Balance Sheet Development Yearly",
-            "val": "These are a view notes"
-          },
-          "options.bs_data.notes_balance_sheet_development_quarterly": {
-            "type": "text",
-            "label": "Notes Balance Sheet Development Quarterly",
-            "placeholder": "Notes Balance Sheet Development Quarterly",
-            "val": "These are a view notes"
-          },
-          "options.bs_data.notes_balance_sheet_development_monthly": {
-            "type": "text",
-            "label": "Notes Balance Sheet Development Monthly",
-            "placeholder": "Notes Balance Sheet Development Monthly",
-            "val": "These are a view notes"
-          },
-          "options.bs_data.notes_planning_assumptions": {
-            "type": "text",
-            "label": "Notes Planning Assumptions",
-            "placeholder": "Notes Planning Assumptions",
             "val": "These are a view notes"
           },
           "options.bs_data.planning_version": {
@@ -2571,6 +2176,398 @@
             "label": "Planning Date",
             "placeholder": "Planning Date",
             "val": "December 31, 2020"
+          }
+        },
+        "breakLine": true
+      },
+      "bs_labels_placeholder__balance_sheet__frame": {
+        "type": "fieldset",
+        "label": "Customise 'Balance Sheet' PDF Labels (Balance Sheet)",
+        "show_if": "options.output_type=='pdf_planning_package' && options.bs_data__custom_labels=='true'",
+        "repeat": false,
+        "fields": {
+          "options.bs_data.company_name": {
+            "type": "text",
+            "label": "Company Name",
+            "placeholder": "My Company ltd.",
+            "val": ""
+          },
+          "options.bs_data__date_format": {
+            "type": "select",
+            "label": "Date Format",
+            "required": true,
+            "options": {
+              "mm/dd/yyyy": {
+                "label": "3/14/2012"
+              },
+              "D, M dd, Y": {
+                "label": "Wednesday, March 14, 2012"
+              },
+              "yyyy-mm-dd": {
+                "label": "2012-03-14"
+              },
+              "m.dd.yyyy": {
+                "label": "3.14.2012"
+              },
+              "m.dd.yy": {
+                "label": "3.14.12"
+              },
+              "dd.m.yyyy": {
+                "label": "14.3.2012"
+              },
+              "dd.m.yy": {
+                "label": "14.3.12"
+              },
+              "M dd, Y": {
+                "label": "March 14, 2012"
+              },
+              "dd-mm-yyyy": {
+                "label": "14-03-2012"
+              },
+              "mm-dd-yyyy": {
+                "label": "03-14-2012"
+              },
+              "dd-mm-yy": {
+                "label": "14-03-12"
+              },
+              "mm-dd-yy": {
+                "label": "03-14-12"
+              }
+            },
+            "val": "M dd, Y",
+            "breakLine": true
+          },
+          "options.bs_data.currency": {
+            "type": "text",
+            "label": "Currency",
+            "placeholder": "€ million",
+            "val": ""
+          },
+          "options.bs_data.logo": {
+            "type": "text",
+            "label": "Logo(Base64 Encoded Data of JPEG)",
+            "placeholder": "data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEA",
+            "val": "",
+            "width": "100%"
+          },
+          "options.bs_data__help_text_logo": {
+            "type": "text",
+            "label": "",
+            "val": "For conversion you may use e.g. https://onlinejpgtools.com/convert-jpg-to-base64",
+            "disabled": true,
+            "width": "100%"
+          },
+          "options.bs_data.title_balance_sheet": {
+            "type": "text",
+            "label": "Title Balance Sheet",
+            "placeholder": "Title Balance Sheet",
+            "val": "Balance Sheet"
+          },
+          "options.bs_data.sub_title_balance_sheet": {
+            "type": "text",
+            "label": "Subtitle Balance Sheet",
+            "placeholder": "Subtitle Balance Sheet",
+            "val": "Unit 1"
+          },
+          "options.bs_data.notes_balance_sheet": {
+            "type": "text",
+            "label": "Notes Balance Sheet",
+            "placeholder": "Notes Balance Sheet",
+            "val": "These are a view notes"
+          },
+          "options.bs_data.assets_header_name": {
+            "type": "text",
+            "label": "Assets Header Name",
+            "placeholder": "Assets Header Name",
+            "val": "Assets"
+          },
+          "options.bs_data.liabilities_header_name": {
+            "type": "text",
+            "label": "Liabilities Header Name",
+            "placeholder": "Liabilities Header Name",
+            "val": "Liabilities"
+          },
+          "options.bs_data.total_assets_name": {
+            "type": "text",
+            "label": "Total Assets Name",
+            "placeholder": "Total Assets Name",
+            "val": "Total Assets"
+          },
+          "options.bs_data.total_liablities_name": {
+            "type": "text",
+            "label": "Total Liabilities Name",
+            "placeholder": "Total Liabilities Name",
+            "val": "Total Liabilities"
+          },
+          "options.bs_data.current_assets_name": {
+            "type": "text",
+            "label": "Current Assets Name",
+            "placeholder": "Current Assets Name",
+            "val": "Current Assets"
+          },
+          "options.bs_data.current_liabilities_name": {
+            "type": "text",
+            "label": "Current Liabilities Name",
+            "placeholder": "Current Liabilities Name",
+            "val": "Current Liabilities"
+          },
+          "options.bs_data.property_equipment_name": {
+            "type": "text",
+            "label": "Property Equipment Name",
+            "placeholder": "Property Equipment Name",
+            "val": "Property & Equipment"
+          },
+          "options.bs_data.longterm_liabilities_name": {
+            "type": "text",
+            "label": "Longterm Liabilities Name",
+            "placeholder": "Longterm Liabilities Name",
+            "val": "Long-term Liabilities"
+          },
+          "options.bs_data.other_assets_name": {
+            "type": "text",
+            "label": "Other Assets Name",
+            "placeholder": "Other Assets Name",
+            "val": "Other Assets"
+          },
+          "options.bs_data.other_liablities_name": {
+            "type": "text",
+            "label": "Other Liablities Name",
+            "placeholder": "Other Liablities Name",
+            "val": "Other Liabilities"
+          },
+          "options.bs_data.shareholders_equity_name": {
+            "type": "text",
+            "label": "Shareholders Equity Name",
+            "placeholder": "Shareholders Equity Name",
+            "val": "Shareholders Equity"
+          }
+        },
+        "breakLine": true
+      },
+      "bs_labels_placeholder__profit_and_loss__frame": {
+        "type": "fieldset",
+        "label": "Customise 'Balance Sheet' PDF Labels (Profit & Loss)",
+        "show_if": "options.output_type=='pdf_planning_package' && options.bs_data__custom_labels=='true'",
+        "repeat": false,
+        "fields": {
+          "options.bs_data.title_profit_and_loss_yearly": {
+            "type": "text",
+            "label": "Yearly Profit & Loss Title",
+            "placeholder": "Yearly Profit & Loss Title",
+            "val": "Yearly Profit & Loss Development"
+          },
+          "options.bs_data.sub_title_profit_and_loss_yearly": {
+            "type": "text",
+            "label": "Subtitle Profit & Loss Yearly",
+            "placeholder": "Subtitle Profit & Loss Yearly",
+            "val": "Unit 1"
+          },
+          "options.bs_data.notes_profit_and_loss_yearly": {
+            "type": "text",
+            "label": "Notes Profit & Loss Yearly",
+            "placeholder": "Notes Profit & Loss Yearly",
+            "val": "These are a view notes"
+          },
+          "options.bs_data.title_profit_and_loss_quarterly": {
+            "type": "text",
+            "label": "Quarterly Profit & Loss Title",
+            "placeholder": "Quarterly Profit & Loss Title",
+            "val": "Quarterly Profit & Loss Development"
+          },
+          "options.bs_data.sub_title_profit_and_loss_quarterly": {
+            "type": "text",
+            "label": "Subtitle Profit & Loss Quarterly",
+            "placeholder": "Subtitle Profit & Loss Quarterly",
+            "val": "Unit 1"
+          },
+          "options.bs_data.notes_profit_and_loss_quarterly": {
+            "type": "text",
+            "label": "Notes Profit & Loss Quarterly",
+            "placeholder": "Notes Profit & Loss Quarterly",
+            "val": "These are a view notes"
+          },
+          "options.bs_data.title_profit_and_loss_monthly": {
+            "type": "text",
+            "label": "Monthly Profit & Loss Title",
+            "placeholder": "Monthly Profit & Loss Title",
+            "val": "Monthly Profit & Loss Development"
+          },
+          "options.bs_data.sub_title_profit_and_loss_monthly": {
+            "type": "text",
+            "label": "Subtitle Profit & Loss Monthly",
+            "placeholder": "Subtitle Profit & Loss Monthly",
+            "val": "Unit 1"
+          },
+          "options.bs_data.notes_profit_and_loss_monthly": {
+            "type": "text",
+            "label": "Notes Profit & Loss Monthly",
+            "placeholder": "Notes Profit & Loss Monthly",
+            "val": "These are a view notes"
+          }
+        },
+        "breakLine": true
+      },
+      "bs_labels_placeholder__cash_flow__frame": {
+        "type": "fieldset",
+        "label": "Customise 'Balance Sheet' PDF Labels (Cash Flow)",
+        "show_if": "options.output_type=='pdf_planning_package' && options.bs_data__custom_labels=='true'",
+        "repeat": false,
+        "fields": {
+          "options.bs_data.title_cash_flow_yearly": {
+            "type": "text",
+            "label": "Yearly Cashflow Title",
+            "placeholder": "Yearly Cashflow Title",
+            "val": "Yearly Cashflow Development"
+          },
+          "options.bs_data.sub_title_cash_flow_yearly": {
+            "type": "text",
+            "label": "Subtitle Cashflow Yearly",
+            "placeholder": "Subtitle Cashflow Yearly",
+            "val": "Unit 1"
+          },
+          "options.bs_data.notes_cash_flow_yearly": {
+            "type": "text",
+            "label": "Notes Cashflow Yearly",
+            "placeholder": "Notes Cashflow Yearly",
+            "val": "These are a view notes"
+          },
+          "options.bs_data.title_cash_flow_quarterly": {
+            "type": "text",
+            "label": "Quarterly Cashflow Title",
+            "placeholder": "Quarterly Cashflow Title",
+            "val": "Quarterly Cashflow Development"
+          },
+          "options.bs_data.sub_title_cash_flow_quarterly": {
+            "type": "text",
+            "label": "Subtitle Cashflow Quarterly",
+            "placeholder": "Subtitle Cashflow Quarterly",
+            "val": "Unit 1"
+          },
+          "options.bs_data.notes_cash_flow_quarterly": {
+            "type": "text",
+            "label": "Notes Cashflow Quarterly",
+            "placeholder": "Notes Cashflow Quarterly",
+            "val": "These are a view notes"
+          },
+          "options.bs_data.title_cash_flow_monthly": {
+            "type": "text",
+            "label": "Monthly Cashflow Title",
+            "placeholder": "Monthly Cashflow Title",
+            "val": "Monthly Cashflow Development"
+          },
+          "options.bs_data.sub_title_cash_flow_monthly": {
+            "type": "text",
+            "label": "Subtitle Cashflow Monthly",
+            "placeholder": "Subtitle Cashflow Monthly",
+            "val": "Unit 1"
+          },
+          "options.bs_data.notes_cash_flow_monthly": {
+            "type": "text",
+            "label": "Notes Cashflow Monthly",
+            "placeholder": "Notes Cashflow Monthly",
+            "val": "These are a view notes"
+          }
+        },
+        "breakLine": true
+      },
+      "bs_labels_placeholder__bs_development__frame": {
+        "type": "fieldset",
+        "label": "Customise 'Balance Sheet' PDF Labels (Balance Sheet Development)",
+        "show_if": "options.output_type=='pdf_planning_package' && options.bs_data__custom_labels=='true'",
+        "repeat": false,
+        "fields": {
+          "options.bs_data.title_balance_sheet_development_yearly": {
+            "type": "text",
+            "label": "Yearly Balance Sheet Title",
+            "placeholder": "Yearly Balance Sheet Title",
+            "val": "Yearly Balance Sheet Development"
+          },
+          "options.bs_data.sub_title_balance_sheet_development_yearly": {
+            "type": "text",
+            "label": "Subtitle Balance Sheet Yearly",
+            "placeholder": "Subtitle Balance Sheet Yearly",
+            "val": "Unit 1"
+          },
+          "options.bs_data.notes_balance_sheet_development_yearly": {
+            "type": "text",
+            "label": "Notes Balance Sheet Development Yearly",
+            "placeholder": "Notes Balance Sheet Development Yearly",
+            "val": "These are a view notes"
+          },
+          "options.bs_data.title_balance_sheet_development_quarterly": {
+            "type": "text",
+            "label": "Quarterly Balance Sheet Title",
+            "placeholder": "Quarterly Balance Sheet Title",
+            "val": "Quarterly Balance Sheet Development"
+          },
+          "options.bs_data.sub_title_balance_sheet_development_quarterly": {
+            "type": "text",
+            "label": "Subtitle Balance Sheet Quarterly",
+            "placeholder": "Subtitle Balance Sheet Quarterly",
+            "val": "Unit 1"
+          },
+          "options.bs_data.notes_balance_sheet_development_quarterly": {
+            "type": "text",
+            "label": "Notes Balance Sheet Development Quarterly",
+            "placeholder": "Notes Balance Sheet Development Quarterly",
+            "val": "These are a view notes"
+          },
+          "options.bs_data.title_balance_sheet_development_monthly": {
+            "type": "text",
+            "label": "Monthly Balance Sheet Title",
+            "placeholder": "Monthly Balance Sheet Title",
+            "val": "Monthly Balance Sheet Development"
+          },
+          "options.bs_data.sub_title_balance_sheet_development_monthly": {
+            "type": "text",
+            "label": "Subtitle Balance Sheet Monthly",
+            "placeholder": "Subtitle Balance Sheet Monthly",
+            "val": "Unit 1"
+          },
+          "options.bs_data.notes_balance_sheet_development_monthly": {
+            "type": "text",
+            "label": "Notes Balance Sheet Development Monthly",
+            "placeholder": "Notes Balance Sheet Development Monthly",
+            "val": "These are a view notes"
+          }
+        },
+        "breakLine": true
+      },
+      "bs_labels_placeholder__assumptions_overview__frame": {
+        "type": "fieldset",
+        "label": "Customise 'Balance Sheet' PDF Labels (Assumptions Overview)",
+        "show_if": "options.output_type=='pdf_planning_package' && options.bs_data__custom_labels=='true'",
+        "repeat": false,
+        "fields": {
+          "options.bs_data.title_planning_assumptions": {
+            "type": "text",
+            "label": "Planning Assumptions",
+            "placeholder": "Planning Assumptions",
+            "val": "Planning Assumptions"
+          },
+          "options.bs_data.sub_title_planning_assumptions": {
+            "type": "text",
+            "label": "Subtitle Planning Assumptions",
+            "placeholder": "Subtitle Planning Assumptions",
+            "val": "Unit 1"
+          },
+          "options.bs_data.notes_planning_assumptions": {
+            "type": "text",
+            "label": "Notes Planning Assumptions",
+            "placeholder": "Notes Planning Assumptions",
+            "val": "These are a view notes"
+          },
+          "options.bs_data.title_planning_package": {
+            "type": "text",
+            "label": "Title Planning Package",
+            "placeholder": "Title Planning Package",
+            "val": "Planning Package v1"
+          },
+          "options.bs_data.sub_title_planning_package": {
+            "type": "text",
+            "label": "Subtitle Planning Package",
+            "placeholder": "Subtitle Planning Package",
+            "val": "Unit 1"
           },
           "options.bs_data.assumptions_position_name": {
             "type": "text",
