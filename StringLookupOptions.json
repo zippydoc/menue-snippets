@@ -129,7 +129,7 @@
       },
       "lookup_table_frame": {
         "type": "fieldset",
-        "label": "",
+        "label": "Select Lookup Table",
         "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
         "repeat": false,
         "fields": {
@@ -189,7 +189,6 @@
           "options.use_delimiter": {
             "type": "checkbox",
             "label": "Custom Delimiter",
-            "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells'",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -198,12 +197,20 @@
           "options.delimiter": {
             "type": "text",
             "label": "Input Delimiter",
-            "show_if": "options.use_delimiter=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_lookup_table_to_cells')",
+            "show_if": "options.use_delimiter=='true'",
             "val": ";",
             "required": true,
             "breakLine": true
           }
         }
+      },
+      "help_1": {
+        "type": "textarea",
+        "label": "",
+        "show_if": "options.task_type=='apply_regex_table' || options.task_type=='apply_regex_table_to_cells'",
+        "val": "To compile a regular expression you may e.g. use  regex101.com",
+        "disabled": true,
+        "style": "width: 100%"
       },
       "options.input_table.use_filter": {
         "type": "checkbox",
@@ -739,7 +746,7 @@
         "show_if": "options.input_table.apply_to_group_for_concatenation.enabled=='true' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
         "required": true,
         "width": "100%",
-        "table": "input_table",
+        "table": "table_id",
         "bind": "COLUMNS",
         "breakLine": true
       }
