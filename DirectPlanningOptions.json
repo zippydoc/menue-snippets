@@ -21,6 +21,21 @@
         },
         "val": "pdf_planning_package"
       },
+      "options.where_to_create": {
+        "type": "select",
+        "label": "Where to create",
+        "show_if": "options.output_type=='pdf_planning_package'",
+        "options": {
+          "only_open_in_browser": {
+            "label": "Pop-Up PDF"
+          },
+          "only_export_to_cloud": {
+            "label": "Export to OneDrive"
+          }
+        },
+        "val": "only_open_in_browser",
+        "required": true
+      },
       "options.interactive_drill_down_type": {
         "type": "select",
         "label": "Drill-Down Type",
@@ -62,6 +77,9 @@
           },
           "bs_summary_list": {
             "label": "Balance Sheet Summary List"
+          },
+          "all_detail_tables": {
+            "label": "All Detail Tables"
           }
         },
         "val": "planning_assumptions"
@@ -99,6 +117,21 @@
         },
         "val": ["Year", "Quarter", "Month", "Position"],
         "required": true,
+        "breakLine": true
+      }
+    }
+  },
+  "export_link_frame": {
+    "type": "fieldset",
+    "label": "Export path in MS One Drive",
+    "show_if": "options.output_type=='pdf_planning_package' && options.where_to_create=='only_export_to_cloud'",
+    "repeat": false,
+    "fields": {
+      "options.export_dir": {
+        "type": "text",
+        "label": "Enter dir e.g. /MyZippyDocFiles/SubDir/",
+        "val": "/",
+        "width": "100%",
         "breakLine": true
       }
     }
