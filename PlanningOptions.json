@@ -142,26 +142,36 @@
     "repeat": false,
     "fields": {
       "options.configure_by_table": {
-        "type": "checkbox",
-        "label": "Configure planning position by table",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
+        "type": "select",
+        "label": "Configure planning position by",
+        "required": true,
+        "options": {
+          "by_assumption_menu": {
+            "label": "Configure planning by assumption menu"
+          },
+          "by_assumption_table": {
+            "label": "Configure planning by assumption table"
+          },
+          "by_transaction_tables": {
+            "label": "Configure planning by transaction tables"
+          }
+        },
+        "val": "by_assumption_menu",
         "breakLine": true
       },
-      "table_id": {
+      "options.assumption_table_id": {
         "type": "select",
         "label": "Select Table",
-        "show_if": "options.configure_by_table=='true'",
+        "show_if": "options.configure_by_table=='by_assumption_table'",
         "bind": "TABLES",
         "empty": "",
         "required": true,
         "breakLine": true
       },
-      "options.configure_by_table_help": {
+      "options.configure_by_table_help1": {
         "type": "textarea",
         "label": "",
-        "show_if": "options.configure_by_table=='true' && (options.output_type=='profit_loss' || options.output_type=='cash_flow')",
+        "show_if": "options.configure_by_table=='by_assumption_table' && options.output_type=='table_output' && (options.table_output_type=='profit_loss' || options.table_output_type=='cash_flow')",
         "val": "Table Structure ( Initial Date | Repetition | Final Date | Amount | Growth | Growth Period | Growth Curve | Payment Days )",
         "disabled": true,
         "md_no_resize": false,
@@ -170,7 +180,7 @@
       "options.configure_by_table_help2": {
         "type": "textarea",
         "label": "",
-        "show_if": "options.configure_by_table=='true' && options.output_type=='table_output' && (options.table_output_type=='planning_assumptions' || options.table_output_type=='transaction_list_details')",
+        "show_if": "options.configure_by_table=='by_assumption_table' && options.output_type=='table_output' && (options.table_output_type=='planning_assumptions' || options.table_output_type=='transaction_list_details')",
         "val": "Table Structure ( Initial Date | Repetition | Final Date | Amount | Growth | Growth Period | Growth Curve | Payment Days )",
         "disabled": true,
         "md_no_resize": false,
@@ -179,7 +189,7 @@
       "options.configure_by_table_help3": {
         "type": "textarea",
         "label": "",
-        "show_if": "options.configure_by_table=='true' && options.output_type=='table_output' && options.table_output_type=='balance_sheet_details'",
+        "show_if": "options.configure_by_table=='by_assumption_table' && options.output_type=='table_output' && (options.table_output_type=='balance_sheet_details' || options.table_output_type=='all_detail_tables')",
         "val": "Table Structure ( Position | Sub Position | Item | Initial Date | Repetition | Final Date | Amount | Growth | Growth Period | Growth Curve | Payment Days )",
         "disabled": true,
         "md_no_resize": false,
@@ -188,16 +198,34 @@
       "options.configure_by_table_help4": {
         "type": "textarea",
         "label": "",
-        "show_if": "(options.configure_by_table=='true' && options.output_type=='pdf_planning_package') || (options.configure_by_table=='true' && options.output_type=='table_output' && options.table_output_type=='bs_summary_list')",
+        "show_if": "(options.configure_by_table=='by_assumption_table' && options.output_type=='pdf_planning_package') || (options.configure_by_table=='by_assumption_table' && options.output_type=='table_output' && options.table_output_type=='bs_summary_list')",
         "val": "Table Structure ( Position | Sub Position | Item | Initial Date | Repetition | Final Date | Amount | Growth | Growth Period | Growth Curve | Payment Days )",
         "disabled": true,
         "md_no_resize": false,
         "width": "100%"
       },
+      "options.transaction_list_details_table_id": {
+        "type": "select",
+        "label": "Select Table",
+        "show_if": "options.configure_by_table=='by_transaction_tables'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      },
+      "options.balance_sheet_details_table_id": {
+        "type": "select",
+        "label": "Select Table",
+        "show_if": "options.configure_by_table=='by_transaction_tables'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      },
       "options.custom.table": {
         "type": "fieldset",
         "label": "Planning",
-        "show_if": "options.configure_by_table=='false'",
+        "show_if": "options.configure_by_table=='by_assumption_menu'",
         "repeat": true,
         "fields": {
           "position": {
@@ -718,7 +746,6 @@
       "options.set_plan_config": {
         "type": "checkbox",
         "label": "Planning Configuration",
-        "show_if": "options.configure_by_table=='false'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -728,7 +755,7 @@
   "planning_configuration_frame": {
     "type": "fieldset",
     "label": "Planning Configuration",
-    "show_if": "(options.output_type=='pdf_planning_package' && options.configure_by_table=='false' && options.set_plan_config=='true') || (options.output_type=='table_output' && options.table_output_type!='bs_summary_list' && options.configure_by_table=='false' && options.set_plan_config=='true')",
+    "show_if": "options.set_plan_config=='true'",
     "repeat": false,
     "fields": {
       "options.is_sort_position_pl_items": {
@@ -2986,7 +3013,7 @@
   "formatting_frame": {
     "type": "fieldset",
     "label": "Set Formatting",
-    "show_if": "options.configure_by_table=='false' && options.set_plan_config=='true'",
+    "show_if": "options.set_plan_config=='true'",
     "repeat": false,
     "fields": {
       "options.set_amount_column_formatting": {
