@@ -167,6 +167,68 @@
               }
             }
           },
+          "options.manual_select": {
+            "type": "checkbox",
+            "label": "Select manually",
+            "show_if": "options.pattern_type=='duplicate_pattern' && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table')",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.apply_lookup_table__lookup_table_pattern_label_columns": {
+            "type": "fieldset",
+            "label": "Add Filter Conditions",
+            "show_if": "options.pattern_type=='duplicate_pattern' && options.task_type=='apply_lookup_table' && options.manual_select=='true'",
+            "repeat": true,
+            "fields": {
+              "pattern_column": {
+                "type": "select",
+                "label": "Pattern Column",
+                "table": "options.lookup_table_id",
+                "bind": "COLUMNS",
+                "required": true
+              },
+              "label_column": {
+                "type": "select",
+                "label": "Label Column",
+                "table": "options.lookup_table_id",
+                "bind": "COLUMNS",
+                "required": true
+              }
+            }
+          },
+          "options.apply_regex_table__lookup_table_pattern_column": {
+            "type": "select",
+            "label": "Pattern Column",
+            "show_if": "options.pattern_type=='duplicate_pattern' && options.task_type=='apply_regex_table' && options.manual_select=='true'",
+            "table": "options.lookup_table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "options.apply_regex_table__lookup_table_label_columns": {
+            "type": "select",
+            "label": "Label Column",
+            "show_if": "options.pattern_type=='duplicate_pattern' && options.task_type=='apply_regex_table' && options.manual_select=='true'",
+            "table": "options.lookup_table_id",
+            "bind": "COLUMNS",
+            "multiple": true,
+            "required": true
+          },
+          "options.apply_regex_table__match_column_name": {
+            "type": "text",
+            "label": "Match Column Name",
+            "show_if": "options.pattern_type=='duplicate_pattern' && options.task_type=='apply_regex_table' && options.manual_select=='true'",
+            "val": "Match",
+            "required": true
+          },
+          "options.apply_regex_table__full_match_column_name": {
+            "type": "text",
+            "label": "Full Match Column Name",
+            "show_if": "options.pattern_type=='duplicate_pattern' && options.task_type=='apply_regex_table' && options.manual_select=='true'",
+            "val": "Full-Match",
+            "required": true
+          },
           "options.partial_match": {
             "type": "checkbox",
             "label": "Partial Match",
