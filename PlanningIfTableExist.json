@@ -1,0 +1,80 @@
+{
+  "output.if_table_exist.type": {
+    "type": "select",
+    "label": "If existing",
+    "show_if": "options.output_type=='table_output'",
+    "val": "drop_if_exist",
+    "options": {
+      "drop_if_exist": {
+        "label": "Create or Drop (if already existing)"
+      },
+      "error_if_exist": {
+        "label": "Create New (throw error if existing)"
+      },
+      "error_if_not_exist": {
+        "label": "Drop (throw error if not-existing)"
+      },
+      "append_all": {
+        "label": "Append All"
+      },
+      "append_not_existing": {
+        "label": "Append not existing"
+      },
+      "append_changes": {
+        "label": "Append changes"
+      }
+    }
+  },
+  "output.if_table_exist.append_not_existing_cols": {
+    "type": "select",
+    "label": "Select Column(s)",
+    "show_if": "output.if_table_exist.type=='append_not_existing'",
+    "table": "table_id",
+    "bind": "COLUMNS",
+    "multiple": true,
+    "required": true,
+    "breakLine": true
+  },
+  "output.if_table_exist.append_changes__add_timestamp": {
+    "type": "checkbox",
+    "label": "Add Timestamp",
+    "show_if": "output.if_table_exist.type=='append_changes'",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "output.if_table_exist.append_changes__timestamp_colname": {
+    "type": "text",
+    "label": "Timestamp column name",
+    "show_if": "output.if_table_exist.type=='append_changes' && output.if_table_exist.append_changes__add_timestamp=='true'",
+    "val": "Timestamp",
+    "required": true,
+    "style": "margin-left: 15px",
+    "breakLine": true
+  },
+  "output.if_table_exist.append_changes__add_row": {
+    "type": "checkbox",
+    "label": "Add Row",
+    "show_if": "output.if_table_exist.type=='append_changes'",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "output.if_table_exist.append_changes__row_colname": {
+    "type": "text",
+    "label": "Row column name",
+    "show_if": "output.if_table_exist.type=='append_changes' && output.if_table_exist.append_changes__add_row=='true'",
+    "val": "Row",
+    "required": true,
+    "style": "margin-left: 15px",
+    "breakLine": true
+  },
+  "append_not_existing_info": {
+    "type": "textarea",
+    "label": "",
+    "show_if": "output.if_table_exist.type=='append_not_existing'",
+    "val": "Appends rows only if the value of the selected column is new in the existing table. It is assumed that the selected column is found in the output and existing table",
+    "disabled": true,
+    "style": "width: 100%"
+  }
+}

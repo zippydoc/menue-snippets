@@ -21,6 +21,21 @@
         },
         "val": "pdf_planning_package"
       },
+      "options.where_to_create": {
+        "type": "select",
+        "label": "Where to create",
+        "show_if": "options.output_type=='pdf_planning_package'",
+        "options": {
+          "only_open_in_browser": {
+            "label": "Pop-Up PDF"
+          },
+          "only_export_to_cloud": {
+            "label": "Export to OneDrive"
+          }
+        },
+        "val": "only_open_in_browser",
+        "required": true
+      },
       "options.interactive_drill_down_type": {
         "type": "select",
         "label": "Drill-Down Type",
@@ -62,6 +77,9 @@
           },
           "bs_summary_list": {
             "label": "Balance Sheet Summary List"
+          },
+          "all_detail_tables": {
+            "label": "All Detail Tables"
           }
         },
         "val": "planning_assumptions"
@@ -103,60 +121,77 @@
       }
     }
   },
+  "export_link_frame": {
+    "type": "fieldset",
+    "label": "Export path in MS One Drive",
+    "show_if": "options.output_type=='pdf_planning_package' && options.where_to_create=='only_export_to_cloud'",
+    "repeat": false,
+    "fields": {
+      "options.export_dir": {
+        "type": "text",
+        "label": "Enter dir e.g. /MyZippyDocFiles/SubDir/",
+        "val": "/",
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  },
   "planing_position_frame": {
     "type": "fieldset",
     "label": "Configure planning position",
     "repeat": false,
     "fields": {
-      "options.direct_planning__configure_by_table": {
-        "type": "checkbox",
-        "label": "Configure planning position by table",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
+      "options.configure_by_table": {
+        "type": "select",
+        "label": "Configure planning position by",
+        "required": true,
+        "options": {
+          "by_assumption_menu": {
+            "label": "Configure planning by assumption menu"
+          },
+          "by_assumption_table": {
+            "label": "Configure planning by assumption table"
+          },
+          "by_transaction_table": {
+            "label": "Configure planning by transaction table"
+          }
+        },
+        "val": "by_assumption_menu",
         "breakLine": true
       },
-      "table_id": {
+      "options.assumption_table_id": {
         "type": "select",
-        "label": "Select Table",
-        "show_if": "options.direct_planning__configure_by_table=='true'",
+        "label": "Assumption Table",
+        "show_if": "options.configure_by_table=='by_assumption_table'",
         "bind": "TABLES",
         "empty": "",
         "required": true,
         "breakLine": true
       },
-      "options.configure_by_table_help": {
+      "options.configure_by_assumption_table_help": {
         "type": "textarea",
         "label": "",
-        "show_if": "options.direct_planning__configure_by_table=='true' && (options.output_type=='profit_loss' || options.output_type=='cash_flow')",
-        "val": "Table Structure ( Initial Date | Repetition | Final Date | Amount | Growth | Growth Period | Growth Curve | Payment Days )",
+        "show_if": "options.configure_by_table=='by_assumption_table'",
+        "val": "Table Structure ( Position* | Sub Position | Item | Initial Date* | Repetition* | Final Date* | Amount* | Growth* | Growth Period* | Growth Curve* | Payment Days* )",
         "disabled": true,
         "md_no_resize": false,
         "width": "100%"
       },
-      "options.configure_by_table_help2": {
-        "type": "textarea",
-        "label": "",
-        "show_if": "options.direct_planning__configure_by_table=='true' && options.output_type=='table_output' && (options.table_output_type=='planning_assumptions' || options.table_output_type=='transaction_list_details')",
-        "val": "Table Structure ( Initial Date | Repetition | Final Date | Amount | Growth | Growth Period | Growth Curve | Payment Days )",
-        "disabled": true,
-        "md_no_resize": false,
-        "width": "100%"
+      "options.transaction_list_details_table_id": {
+        "type": "select",
+        "label": "Transaction List Details Table",
+        "show_if": "options.configure_by_table=='by_transaction_table'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "style": "min-width: 200px",
+        "breakLine": true
       },
-      "options.configure_by_table_help3": {
+      "options.configure_by_transaction_list_details_table_help": {
         "type": "textarea",
         "label": "",
-        "show_if": "options.direct_planning__configure_by_table=='true' && options.output_type=='table_output' && options.table_output_type=='balance_sheet_details'",
-        "val": "Table Structure ( Position | Sub Position | Item | Initial Date | Repetition | Final Date | Amount | Growth | Growth Period | Growth Curve | Payment Days )",
-        "disabled": true,
-        "md_no_resize": false,
-        "width": "100%"
-      },
-      "options.configure_by_table_help4": {
-        "type": "textarea",
-        "label": "",
-        "show_if": "(options.direct_planning__configure_by_table=='true' && options.output_type=='pdf_planning_package') || (options.direct_planning__configure_by_table=='true' && options.output_type=='table_output' && options.table_output_type=='bs_summary_list')",
-        "val": "Table Structure ( Position | Sub Position | Item | Initial Date | Repetition | Final Date | Amount | Growth | Growth Period | Growth Curve | Payment Days )",
+        "show_if": "options.configure_by_table=='by_transaction_table'",
+        "val": "Table Structure ( Position* | Sub Position | Item | Amount* | Date* | Payment Date* )",
         "disabled": true,
         "md_no_resize": false,
         "width": "100%"
@@ -164,7 +199,7 @@
       "options.custom.table": {
         "type": "fieldset",
         "label": "Planning",
-        "show_if": "options.direct_planning__configure_by_table=='false'",
+        "show_if": "options.configure_by_table=='by_assumption_menu'",
         "repeat": true,
         "fields": {
           "position": {
@@ -685,7 +720,6 @@
       "options.set_plan_config": {
         "type": "checkbox",
         "label": "Planning Configuration",
-        "show_if": "options.direct_planning__configure_by_table=='false'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -695,7 +729,7 @@
   "planning_configuration_frame": {
     "type": "fieldset",
     "label": "Planning Configuration",
-    "show_if": "(options.output_type=='pdf_planning_package' && options.direct_planning__configure_by_table=='false' && options.set_plan_config=='true') || (options.output_type=='table_output' && options.table_output_type!='bs_summary_list' && options.direct_planning__configure_by_table=='false' && options.set_plan_config=='true')",
+    "show_if": "options.set_plan_config=='true'",
     "repeat": false,
     "fields": {
       "options.is_sort_position_pl_items": {
@@ -1447,7 +1481,7 @@
       "options.balance_sheet_impact__configure": {
         "type": "checkbox",
         "label": "Customize Balance Sheet Impact",
-        "show_if": "(options.output_type=='table_output' && options.table_output_type=='balance_sheet_details') || (options.output_type=='table_output' && options.table_output_type=='bs_summary_list') || options.output_type=='pdf_planning_package'",
+        "show_if": "(options.output_type=='table_output' && options.table_output_type=='balance_sheet_details') || (options.output_type=='table_output' && options.table_output_type=='bs_summary_list') || (options.output_type=='table_output' && options.table_output_type=='all_detail_tables') || (options.output_type=='interactive_drill_down' && options.interactive_drill_down_type=='balance_sheet') || options.output_type=='pdf_planning_package'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -1455,7 +1489,7 @@
       "balance_sheet_impact_frame": {
         "type": "fieldset",
         "label": "Configure Balance Sheet Impact",
-        "show_if": "(options.output_type=='table_output' && options.table_output_type=='balance_sheet_details' && options.balance_sheet_impact__configure=='true') || (options.output_type=='table_output' && options.table_output_type=='bs_summary_list' && options.balance_sheet_impact__configure=='true') || (options.output_type=='pdf_planning_package' && options.balance_sheet_impact__configure=='true')",
+        "show_if": "(options.output_type=='table_output' && options.table_output_type=='balance_sheet_details' && options.balance_sheet_impact__configure=='true') || (options.output_type=='table_output' && options.table_output_type=='bs_summary_list' && options.balance_sheet_impact__configure=='true') || (options.output_type=='table_output' && options.table_output_type=='all_detail_tables' && options.balance_sheet_impact__configure=='true') || (options.output_type=='interactive_drill_down' && options.interactive_drill_down_type=='balance_sheet' && options.balance_sheet_impact__configure=='true') || (options.output_type=='pdf_planning_package' && options.balance_sheet_impact__configure=='true')",
         "repeat": false,
         "fields": {
           "options.balance_sheet_impact__configure_by_table": {
@@ -2908,6 +2942,7 @@
       "options.add_categories": {
         "type": "checkbox",
         "label": "Add Categories",
+        "show_if": "options.configure_by_table=='by_assumption_menu'",
         "val": "false",
         "isOn": "true",
         "isOff": "false"
@@ -2915,7 +2950,7 @@
       "options.categories": {
         "type": "fieldset",
         "label": "Add Categories",
-        "show_if": "options.add_categories=='true'",
+        "show_if": "options.configure_by_table=='by_assumption_menu' && options.add_categories=='true'",
         "repeat": true,
         "fields": {
           "category": {
@@ -2950,10 +2985,10 @@
       }
     }
   },
-  "foramtting_frame": {
+  "formatting_frame": {
     "type": "fieldset",
     "label": "Set Formatting",
-    "show_if": "options.direct_planning__configure_by_table=='false' && options.set_plan_config=='true'",
+    "show_if": "options.set_plan_config=='true'",
     "repeat": false,
     "fields": {
       "options.set_amount_column_formatting": {
