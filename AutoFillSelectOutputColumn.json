@@ -1,29 +1,57 @@
 {
-  "output.select_output_columns": {
-    "type": "checkbox",
+  "output.select_output_columns_type": {
+    "type": "select",
     "label": "Select Output Columns",
-    "show_if": "output.custom_options=='true'",
-    "val": "false",
-    "isOn": "true",
-    "isOff": "false",
-    "style": "margin-top: 10px"
+    "required": true,
+    "options": {
+      "all": {
+        "label": "All"
+      },
+      "standard": {
+        "label": "Standard Column Selection"
+      },
+      "advanced": {
+        "label": "Advanced Column Selection"
+      }
+    },
+    "val": "all",
+    "breakLine": true
   },
-  "output_columns": {
+  "output_columns_frame": {
     "type": "fieldset",
     "label": "Select Output Columns",
-    "show_if": "output.custom_options=='true' && output.select_output_columns=='true'",
+    "show_if": "output.select_output_columns_type=='standard'",
+    "repeat": false,
+    "fields": {
+      "output.output_columns": {
+        "type": "select",
+        "label": "Output Column(s)",
+        "table": "target_table.table_id",
+        "bind": "COLUMNS",
+        "multiple": true,
+        "required": true,
+        "breakLine": true
+      },
+      "output.all_but_selected": {
+        "type": "checkbox",
+        "label": "All but selected",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  },
+  "output.detail_output_columns": {
+    "type": "fieldset",
+    "label": "Select Output Columns",
+    "show_if": "output.select_output_columns_type=='advanced'",
     "repeat": true,
     "fields": {
-      "table_id": {
-        "type": "select",
-        "label": "Select Table",
-        "bind": "TABLES",
-        "required": true
-      },
       "field_name": {
         "type": "select",
         "label": "Select Column",
-        "table": "this.table_id",
+        "table": "target_table.table_id",
         "bind": "COLUMNS",
         "required": true
       },
@@ -42,22 +70,6 @@
           }
         },
         "val": "-"
-      },
-      "is_rename": {
-        "type": "checkbox",
-        "label": "Rename",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false"
-      },
-      "rename": {
-        "show_if": "this.is_rename == 'true'",
-        "type": "text",
-        "required": true,
-        "minLength": 1,
-        "maxLength": 255,
-        "label": "New Column Name",
-        "style": "margin-left: 10px"
       },
       "format__category": {
         "type": "select",
@@ -253,8 +265,23 @@
             "label": "03-14-12"
           }
         },
-        "val": "mm/dd/yyyy",
-        "breakLine": true
+        "val": "mm/dd/yyyy"
+      },
+      "is_rename": {
+        "type": "checkbox",
+        "label": "Rename",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "rename": {
+        "show_if": "this.is_rename == 'true'",
+        "type": "text",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 255,
+        "label": "New Column Name",
+        "style": "margin-left: 10px"
       },
       "delete": {
         "type": "button",
@@ -262,7 +289,6 @@
         "function": "DELETE_ROW"
       }
     },
-    "breakLine": true,
-    "style": "margin-bottom: 20px"
+    "breakLine": true
   }
 }
