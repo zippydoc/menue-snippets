@@ -29,6 +29,18 @@
               "tag_x": {
                 "label": "&lt;tag&gt;x&lt;/tag&gt;"
               },
+              "tag1_x_tag2": {
+                "label": "tag1 x tag2"
+              },
+              "name_1_name_2_x": {
+                "label": "name-1 : { name-2 : x }"
+              },
+              "x_bracket": {
+                "label": "x : { } , x : ( ) , x : [ ]"
+              },
+              "name_bracket_x": {
+                "label": "name : { x } , name : ( x ) , name : [ x ]"
+              },
               "f_x": {
                 "label": "f(x)"
               },
@@ -50,6 +62,73 @@
             "label": "Tag",
             "show_if": "options.framing_condition.pattern=='tag_x'",
             "val": "",
+            "required": true
+          },
+          "options.framing_condition.tag1_x_tag2__tag1": {
+            "type": "text",
+            "label": "Tag1",
+            "show_if": "options.framing_condition.pattern=='tag1_x_tag2'",
+            "val": "",
+            "required": true
+          },
+          "options.framing_condition.tag1_x_tag2__tag2": {
+            "type": "text",
+            "label": "Tag2",
+            "show_if": "options.framing_condition.pattern=='tag1_x_tag2'",
+            "val": "",
+            "required": true
+          },
+          "options.framing_condition.name_1_name_2_x__name1": {
+            "type": "text",
+            "label": "Name1",
+            "show_if": "options.framing_condition.pattern=='name_1_name_2_x'",
+            "val": "",
+            "required": true
+          },
+          "options.framing_condition.name_1_name_2_x__name2": {
+            "type": "text",
+            "label": "Name2",
+            "show_if": "options.framing_condition.pattern=='name_1_name_2_x'",
+            "val": "",
+            "required": true
+          },
+          "options.framing_condition.name_bracket_x__name": {
+            "type": "text",
+            "label": "Name",
+            "show_if": "options.framing_condition.pattern=='name_bracket_x'",
+            "val": "",
+            "required": true
+          },
+          "options.framing_condition.customize_colon": {
+            "type": "checkbox",
+            "label": "Customize :",
+            "show_if": "options.framing_condition.pattern=='name_x' || options.framing_condition.pattern=='x_bracket' || options.framing_condition.pattern=='name_1_name_2_x'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.framing_condition.custom_colon": {
+            "type": "text",
+            "label": "Input symbol",
+            "show_if": "(options.framing_condition.pattern=='name_x' || options.framing_condition.pattern=='x_bracket' || options.framing_condition.pattern=='name_1_name_2_x') and options.framing_condition.customize_colon=='true'",
+            "val": ":",
+            "required": true
+          },
+          "options.framing_condition.customize_f": {
+            "type": "checkbox",
+            "label": "Customize f",
+            "show_if": "options.framing_condition.pattern=='f_x' || options.framing_condition.pattern=='f_x_bracket'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.framing_condition.custom_f": {
+            "type": "text",
+            "label": "Input f",
+            "show_if": "(options.framing_condition.pattern=='f_x' || options.framing_condition.pattern=='f_x_bracket') and options.framing_condition.customize_f=='true'",
+            "val": ":",
             "required": true
           },
           "options.framing_condition.parantheses": {
