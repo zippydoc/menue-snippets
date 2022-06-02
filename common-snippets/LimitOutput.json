@@ -1,15 +1,42 @@
 {
+  "options.data_volume_limitation": {
+    "type": "checkbox",
+    "label": "Data volume limitation",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false",
+    "breakLine": true
+  },
+  "options.cut_off_run": {
+    "type": "checkbox",
+    "label": "Cut off Input table and Run",
+    "show_if": "options.data_volume_limitation=='true'",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false"
+  },
+  "options.input_table_rows_limit": {
+    "type": "text",
+    "label": "Input table limit(max: 800)",
+    "show_if": "options.data_volume_limitation=='true' && options.cut_off_run=='true'",
+    "minLength": 1,
+    "maxLength": 3,
+    "val": "500",
+    "maxVal": 800,
+    "breakLine": true
+  },
   "options.limit_table_rows": {
     "type": "checkbox",
     "label": "Limit output table rows",
-    "val": "true",
+    "show_if": "options.data_volume_limitation=='true'",
+    "val": "false",
     "isOn": "true",
     "isOff": "false"
   },
   "options.table_rows_limit": {
     "type": "text",
     "label": "Output table rows limit",
-    "show_if": "options.limit_table_rows=='true'",
+    "show_if": "options.data_volume_limitation=='true' && options.limit_table_rows=='true'",
     "minLength": 1,
     "maxLength": 9,
     "val": "100000000",
