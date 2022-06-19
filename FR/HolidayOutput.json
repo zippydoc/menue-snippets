@@ -31,14 +31,14 @@
       },
       "output_columns": {
         "type": "fieldset",
-        "label": "Select OutputColumns",
+        "label": "Sélectionnez OutputColumns",
         "show_if": "options.is_generate_holiday_table=='add_column' && output.custom_options=='true' && output.select_output_columns=='true'",
         "repeat": true,
         "fields": {
           "field_name": {
             "type": "select",
             "label": "Sélectionner une colonne",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true
           },
@@ -76,7 +76,7 @@
           },
           "format__category": {
             "type": "select",
-            "label": "Format",
+            "label": "Format d'affichage",
             "required": true,
             "options": {
               "standard": {
@@ -102,7 +102,7 @@
           },
           "format__rounding": {
             "type": "select",
-            "label": "Arrondi",
+            "label": "Places décimales pour l'affichage",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
@@ -144,7 +144,7 @@
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Use 1000 Separator(.)",
+            "label": "Utilisez le séparateur 1000(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -164,6 +164,63 @@
               },
               "pound": {
                 "label": "£"
+              },
+              "yen": {
+                "label": "¥ (Yen, currency of Japan)"
+              },
+              "colon": {
+                "label": "₡ (Colón, currency of Costa Rica)"
+              },
+              "naira": {
+                "label": "₦ (Naira, currency of Nigeria)"
+              },
+              "rupee": {
+                "label": "₨ (Rupee, currency of India)"
+              },
+              "rupie": {
+                "label": "₹ (Rupee, currency of India)"
+              },
+              "won": {
+                "label": "₩ (Won, currency in South Korea and North Korea)"
+              },
+              "hebrew": {
+                "label": "₪ (Currency of Israel)"
+              },
+              "dong": {
+                "label": "₫ (Currency of Vietnam)"
+              },
+              "kip": {
+                "label": "₭ (Kip, currency of Laos)"
+              },
+              "mongolia": {
+                "label": "₮ (Currency of Mongolia)"
+              },
+              "peso": {
+                "label": "₱ (Peso, currency of the Philippines)"
+              },
+              "guarani": {
+                "label": "₲ (Guaraní, currency of Paraguay)"
+              },
+              "hryvnia": {
+                "label": "₴ (Hryvnia, currency of Ukraine)"
+              },
+              "tenge": {
+                "label": "₸ (Tenge, currency of Kazakhstan)"
+              },
+              "lira": {
+                "label": "₺ (Lira, currency of Turkey)"
+              },
+              "manat": {
+                "label": "₼ (Manat, currency of Azerbaijan)"
+              },
+              "rubles": {
+                "label": "₽ (Rubles, currency of Russia)"
+              },
+              "lari": {
+                "label": "₾ (Lari, currency of Georgia)"
+              },
+              "bitcoin": {
+                "label": "₿ (Bitcoin, crypto currency)"
               }
             },
             "val": "dollar"
@@ -182,6 +239,33 @@
               },
               "yyyy-mm-dd": {
                 "label": "2012-03-14"
+              },
+              "m.dd.yyyy": {
+                "label": "3.14.2012"
+              },
+              "m.dd.yy": {
+                "label": "3.14.12"
+              },
+              "dd.m.yyyy": {
+                "label": "14.3.2012"
+              },
+              "dd.m.yy": {
+                "label": "14.3.12"
+              },
+              "M dd, Y": {
+                "label": "14 mars 2012"
+              },
+              "dd-mm-yyyy": {
+                "label": "14-03-2012"
+              },
+              "mm-dd-yyyy": {
+                "label": "03-14-2012"
+              },
+              "dd-mm-yy": {
+                "label": "14-03-12"
+              },
+              "mm-dd-yy": {
+                "label": "03-14-12"
               }
             },
             "val": "mm/dd/yyyy",
@@ -351,7 +435,7 @@
                 "label": "Adak, Gambier"
               },
               "Australia/Adelaide": {
-                "label": "Adelaide, Broken_Hill, Darwin"
+                "label": "Adelaïde, Broken_Hill, Darwin"
               },
               "America/Anchorage": {
                 "label": "Anchorage, Juneau, Sitka"
@@ -402,7 +486,7 @@
                 "label": "Karachi, Tashkent, Maldives"
               },
               "Asia/Kathmandu": {
-                "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
+                "label": "Katmandou, Pokhara, Pātan, Biratnagar"
               },
               "Pacific/Kiritimati": {
                 "label": "Kiritimati"
@@ -411,7 +495,7 @@
                 "label": "Kolkata, Colombo,Jaffna, Negombo"
               },
               "Europe/Guernsey": {
-                "label": "London. Dublin, Lisbon"
+                "label": "Londres. Dublin, Lisbonne"
               },
               "Australia/Lord_Howe": {
                 "label": "Lord_Howe"
@@ -420,7 +504,7 @@
                 "label": "Los_Angeles, Vancouver, Hermosillo"
               },
               "Pacific/Marquesas": {
-                "label": "Marquesas,Taiohae"
+                "label": "Marquises,Taiohae"
               },
               "America/Cayman": {
                 "label": "Mexico_City, Panama, Chicago"
@@ -465,7 +549,7 @@
                 "label": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
               },
               "Indian/Cocos": {
-                "label": "Yangon, Cocos,West Island"
+                "label": "Yangon, Cocos, île de l'Ouest"
               }
             },
             "breakLine": true

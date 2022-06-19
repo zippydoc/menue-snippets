@@ -1,0 +1,68 @@
+{
+  "options_frame": {
+    "type": "fieldset",
+    "label": "Opções",
+    "repeat": false,
+    "fields": {
+      "options.all_countries": {
+        "type": "hidden",
+        "val": "false"
+      },
+      "options.stat_vars": {
+        "type": "fieldset",
+        "label": "Statistics data category(s)",
+        "repeat": true,
+        "fields": {
+          "stat_var_name": {
+            "type": "select",
+            "label": "Dados Criminais",
+            "required": true,
+            "options": {
+              "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person": {
+                "label": "Conde de Homicídio e Homicídio Não Negligente Per Capita"
+              },
+              "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female": {
+                "label": "Contagem de Homicídio Feminino e Homicídio Não Negligente por Capita Feminina"
+              },
+              "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Male_AsFractionOf_Count_Person_Male": {
+                "label": "Contagem de homicídio e homicídio não negligente por cada macho capitão"
+              }
+            }
+          },
+          "per_capita": {
+            "type": "checkbox",
+            "label": "Per capita",
+            "show_if": "false",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "help_Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person": {
+            "type": "textarea",
+            "label": "",
+            "show_if": "this.stat_var_name=='Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person'",
+            "val": "Intentional homicides are unlawful homicides purposely inflicted as a result of domestic disputes, interpersonal violence, violent conflicts over land resources, intergang violence over turf or control, and predatory violence and killing by armed groups. Intentional homicide does not include all intentional killing; the difference is usually in the organization of the killing. Individuals or small groups usually commit homicide, whereas killing in armed conflict is usually committed by fairly cohesive groups of up to several hundred members and is thus usually excluded.",
+            "md_no_resize": false,
+            "rows": 9,
+            "disabled": true,
+            "width": "100%"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Apagar",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.output_as_chart": {
+        "type": "checkbox",
+        "label": "Produzir um gráfico",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  }
+}

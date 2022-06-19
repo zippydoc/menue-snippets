@@ -1,0 +1,186 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Opción de informe Flexmonster",
+    "show_if": "options.configure_manual=='true'",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "hidden",
+        "val": "column_line_chart"
+      },
+      "options.chart_type": {
+        "type": "hidden",
+        "val": "column_line"
+      },
+      "options.add_column_cols": {
+        "type": "checkbox",
+        "label": "por categoría",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.column_cols": {
+        "type": "fieldset",
+        "label": "Category column(s)",
+        "show_if": "options.add_column_cols=='true'",
+        "repeat": true,
+        "fields": {
+          "column_col": {
+            "type": "select",
+            "label": "Columna de categoría",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "is_date": {
+            "type": "checkbox",
+            "label": "Es la fecha",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Borrar",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.row_cols": {
+        "type": "fieldset",
+        "label": "Series column(s)",
+        "repeat": true,
+        "fields": {
+          "row_col": {
+            "type": "select",
+            "label": "Columna de la serie",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "is_date": {
+            "type": "checkbox",
+            "label": "Es la fecha",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Borrar",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "measure_cols_frame": {
+        "type": "fieldset",
+        "label": "Value column(s)",
+        "repeat": false,
+        "fields": {
+          "options.column_chart_measure_col": {
+            "type": "select",
+            "label": "Columna de valores del gráfico de columnas",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "options.column_chart_aggregation": {
+            "type": "select",
+            "label": "Agregación del gráfico de columnas",
+            "options": {
+              "sum": {
+                "label": "Suma"
+              },
+              "count": {
+                "label": "Cuenta"
+              },
+              "distinctcount": {
+                "label": "Recuento de distinciones"
+              },
+              "average": {
+                "label": "Promedio"
+              },
+              "median": {
+                "label": "Mediana"
+              },
+              "product": {
+                "label": "Producto"
+              },
+              "min": {
+                "label": "Mín"
+              },
+              "max": {
+                "label": "Máx"
+              },
+              "stdevp": {
+                "label": "Desviación estándar de la población"
+              },
+              "stdevs": {
+                "label": "Desviación estándar de la muestra"
+              },
+              "percent": {
+                "label": "Porcentaje"
+              }
+            },
+            "val": "sum",
+            "required": true,
+            "breakLine": true
+          },
+          "options.line_chart_measure_col": {
+            "type": "select",
+            "label": "Columna de valores del gráfico de líneas",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "options.line_chart_aggregation": {
+            "type": "select",
+            "label": "Agregación del gráfico de líneas",
+            "options": {
+              "sum": {
+                "label": "Suma"
+              },
+              "count": {
+                "label": "Cuenta"
+              },
+              "distinctcount": {
+                "label": "Recuento de distinciones"
+              },
+              "average": {
+                "label": "Promedio"
+              },
+              "median": {
+                "label": "Mediana"
+              },
+              "product": {
+                "label": "Producto"
+              },
+              "min": {
+                "label": "Mín"
+              },
+              "max": {
+                "label": "Máx"
+              },
+              "stdevp": {
+                "label": "Desviación estándar de la población"
+              },
+              "stdevs": {
+                "label": "Desviación estándar de la muestra"
+              },
+              "percent": {
+                "label": "Porcentaje"
+              }
+            },
+            "val": "sum",
+            "required": true,
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}

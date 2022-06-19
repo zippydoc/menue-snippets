@@ -7,7 +7,7 @@
       "options.column": {
         "type": "select",
         "label": "Coluna a aplicar",
-        "table": "input_table",
+        "table": "table_id",
         "bind": "COLUMNS",
         "required": true
       },
@@ -65,7 +65,7 @@
       },
       "options.numeric_formula": {
         "type": "text",
-        "label": "Fórmula de entrada, por exemplo [Coluna1] + 2 * ([Linha-1:Coluna3] - [Coluna1])",
+        "label": "Input Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
         "show_if": "options.column_value_type=='numeric_formula'",
         "val": "",
         "width": "100%"
@@ -76,6 +76,48 @@
         "show_if": "options.column_value_type=='text_formula'",
         "val": "",
         "width": "100%"
+      },
+      "options.rounding": {
+        "type": "select",
+        "label": "Arredondamento",
+        "show_if": "options.column_value_type=='numeric_formula' || options.column_value_type=='inc_dec_percent' || options.column_value_type=='inc_dec_abs'",
+        "required": true,
+        "options": {
+          "no_rounding": {
+            "label": "Arredondamento de números"
+          },
+          "0": {
+            "label": "0 dígitos"
+          },
+          "1": {
+            "label": "1 dígito"
+          },
+          "2": {
+            "label": "2 dígitos"
+          },
+          "3": {
+            "label": "3 dígitos"
+          },
+          "4": {
+            "label": "4 dígitos"
+          },
+          "5": {
+            "label": "5 dígitos"
+          },
+          "6": {
+            "label": "6 dígitos"
+          },
+          "7": {
+            "label": "7 dígitos"
+          },
+          "8": {
+            "label": "8 dígitos"
+          },
+          "9": {
+            "label": "9 dígitos"
+          }
+        },
+        "val": "0"
       },
       "options.use_multi_row": {
         "type": "checkbox",
@@ -160,7 +202,7 @@
               "column": {
                 "type": "select",
                 "label": "Selecionar Coluna",
-                "table": "input_table",
+                "table": "table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
@@ -169,16 +211,16 @@
                 "label": "Selecionar Operador",
                 "required": true,
                 "options": {
-                  "CONTÉM": {
+                  "CONTAINS": {
                     "label": "CONTÉM"
                   },
                   "CONTAINED IN STRING": {
                     "label": "CONTIDO EM"
                   },
-                  "INICIA COM": {
+                  "STARTS WITH": {
                     "label": "INICIA COM"
                   },
-                  "TERMINA COM": {
+                  "ENDS WITH": {
                     "label": "TERMINA COM"
                   },
                   "=": {
@@ -205,20 +247,26 @@
                   "IS NULL": {
                     "label": "IS NULL"
                   },
-                  "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR": {
+                  "IS TRUE": {
+                    "label": "É VERDADEIRA"
+                  },
+                  "IS FALSE": {
+                    "label": "É FALSO"
+                  },
+                  "REGEX MATCH": {
                     "label": "CORRESPONDÊNCIA COM EXPRESSÃO REGULAR"
                   },
                   "CONTAINED IN TABLE": {
                     "label": "NA TABELA"
                   },
-                  "NA TABELA DE EXPRESSÕES REGULARES": {
+                  "IN REGEX TABLE": {
                     "label": "NA TABELA DE EXPRESSÕES REGULARES"
                   },
-                  "DATA": {
+                  "DATE": {
                     "label": "DATA"
                   }
                 },
-                "val": "CONTÉM"
+                "val": "CONTAINS"
               },
               "date_condition": {
                 "type": "select",
@@ -244,6 +292,43 @@
                 },
                 "val": "="
               },
+              "compare_with": {
+                "type": "select",
+                "label": "Compare with",
+                "required": true,
+                "show_if": "this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<='",
+                "options": {
+                  "custom_value": {
+                    "label": "Custom value"
+                  },
+                  "column_value": {
+                    "label": "Column value"
+                  }
+                },
+                "val": "custom_value"
+              },
+              "self_compare_column": {
+                "type": "select",
+                "label": "Select Compare Column",
+                "table": "table_id",
+                "bind": "COLUMNS",
+                "show_if": "this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+                "required": true
+              },
+              "date_value": {
+                "type": "date",
+                "label": "Selecionar Data",
+                "show_if": "this.condition=='DATE'",
+                "val": "",
+                "required": true
+              },
+              "value": {
+                "type": "text",
+                "label": "Introduzir Valor",
+                "show_if": "this.compare_with=='custom_value' && this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'IS TRUE' && this.condition != 'IS FALSE' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "val": "",
+                "required": true
+              },
               "case_sensitive": {
                 "type": "select",
                 "label": "Selecionar Sensibilidade a Maiúsculas e Minúsculasl",
@@ -259,21 +344,7 @@
                 },
                 "val": "yes"
               },
-              "date_value": {
-                "type": "date",
-                "label": "Selecionar Data",
-                "show_if": "this.condition=='DATE'",
-                "val": "",
-                "required": true
-              },
-              "value": {
-                "type": "text",
-                "label": "Introduzir Valor",
-                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
-                "val": "",
-                "required": true
-              },
-              "compare_table": {
+              "compare_table_id": {
                 "type": "select",
                 "label": "Selecionar Tabela",
                 "bind": "TABLES",
@@ -284,7 +355,7 @@
               "compare_column": {
                 "type": "select",
                 "label": "Selecionar Coluna",
-                "table": "this.compare_table",
+                "table": "this.compare_table_id",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
@@ -316,7 +387,7 @@
                 "label": "Selecionar Colunas de Grupo",
                 "required": true,
                 "width": "100%",
-                "table": "input_table",
+                "table": "table_id",
                 "multiple": true,
                 "bind": "COLUMNS",
                 "breakLine": true

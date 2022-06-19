@@ -1,0 +1,210 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "选择输出列",
+    "repeat": false,
+    "fields": {
+      "options.select_all_columns": {
+        "type": "checkbox",
+        "label": "Select All",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.output_columns": {
+        "type": "fieldset",
+        "label": "添加输出列",
+        "show_if": "options.select_all_columns=='false'",
+        "repeat": true,
+        "fields": {
+          "field_name": {
+            "type": "select",
+            "label": "选择列",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "order": {
+            "type": "select",
+            "label": "顺序",
+            "options": {
+              "-": {
+                "label": "-"
+              },
+              "asc": {
+                "label": "ASC"
+              },
+              "desc": {
+                "label": "DESC"
+              }
+            },
+            "val": "-"
+          },
+          "is_rename": {
+            "type": "checkbox",
+            "label": "重命名",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "rename": {
+            "show_if": "this.is_rename == 'true'",
+            "type": "text",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 255,
+            "label": "新列名",
+            "style": "margin-left: 10px"
+          },
+          "format__category": {
+            "type": "select",
+            "label": "显示格式",
+            "required": true,
+            "options": {
+              "standard": {
+                "label": "标准"
+              },
+              "number": {
+                "label": "数字"
+              },
+              "percentage": {
+                "label": "百分比"
+              },
+              "text": {
+                "label": "文本"
+              },
+              "date": {
+                "label": "日期"
+              },
+              "currency": {
+                "label": "货币"
+              }
+            },
+            "val": "standard"
+          },
+          "format__rounding": {
+            "type": "select",
+            "label": "显示的小数位数",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "required": true,
+            "options": {
+              "no_rounding": {
+                "label": "不取整"
+              },
+              "0": {
+                "label": "0 位数"
+              },
+              "1": {
+                "label": "1 位数"
+              },
+              "2": {
+                "label": "2 位数"
+              },
+              "3": {
+                "label": "3 位数"
+              },
+              "4": {
+                "label": "4 位数"
+              },
+              "5": {
+                "label": "5 位数"
+              },
+              "6": {
+                "label": "6 位数"
+              },
+              "7": {
+                "label": "7 位数"
+              },
+              "8": {
+                "label": "8 位数"
+              },
+              "9": {
+                "label": "9 位数"
+              }
+            },
+            "val": "2"
+          },
+          "format__use_1000_separator": {
+            "type": "checkbox",
+            "label": "Use 1000 Separator(.)",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "format__currency_symbol": {
+            "type": "select",
+            "label": "符号",
+            "show_if": "this.format__category=='currency'",
+            "required": true,
+            "options": {
+              "dollar": {
+                "label": "$"
+              },
+              "euro": {
+                "label": "€"
+              },
+              "pound": {
+                "label": "£"
+              }
+            },
+            "val": "dollar"
+          },
+          "format__date_format": {
+            "type": "select",
+            "label": "类型",
+            "show_if": "this.format__category=='date'",
+            "required": true,
+            "options": {
+              "mm/dd/yyyy": {
+                "label": "3/14/2012"
+              },
+              "D, M dd, Y": {
+                "label": "2012年3月14日，星期三"
+              },
+              "yyyy-mm-dd": {
+                "label": "2012-03-14"
+              },
+              "m.dd.yyyy": {
+                "label": "3.14.2012"
+              },
+              "m.dd.yy": {
+                "label": "3.14.12"
+              },
+              "dd.m.yyyy": {
+                "label": "14.3.2012"
+              },
+              "dd.m.yy": {
+                "label": "14.3.12"
+              },
+              "M dd, Y": {
+                "label": "March 14, 2012"
+              },
+              "dd-mm-yyyy": {
+                "label": "14-03-2012"
+              },
+              "mm-dd-yyyy": {
+                "label": "03-14-2012"
+              },
+              "dd-mm-yy": {
+                "label": "14-03-12"
+              },
+              "mm-dd-yy": {
+                "label": "03-14-12"
+              }
+            },
+            "val": "mm/dd/yyyy",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "删除",
+            "function": "DELETE_ROW"
+          }
+        },
+        "breakLine": true,
+        "style": "margin-bottom: 20px"
+      }
+    }
+  }
+}

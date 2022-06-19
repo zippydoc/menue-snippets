@@ -302,16 +302,16 @@
                 "label": "Выбрать оператора",
                 "required": true,
                 "options": {
-                  "СОДЕРЖИТ": {
+                  "CONTAINS": {
                     "label": "СОДЕРЖИТ"
                   },
                   "CONTAINED IN STRING": {
                     "label": "СОДЕРЖАЛОСЬ В"
                   },
-                  "НАЧИНАЕТСЯ С": {
+                  "STARTS WITH": {
                     "label": "НАЧИНАЕТСЯ С"
                   },
-                  "ЗАКАНЧИВАЕТСЯ С": {
+                  "ENDS WITH": {
                     "label": "ЗАКАНЧИВАЕТСЯ С"
                   },
                   "=": {
@@ -335,23 +335,29 @@
                   "BLANK": {
                     "label": "ПУСТО"
                   },
-                  "НОЛЬ": {
+                  "IS NULL": {
                     "label": "НОЛЬ"
                   },
-                  "Совпадение регулярного выражения": {
+                  "IS TRUE": {
+                    "label": "IS TRUE"
+                  },
+                  "IS FALSE": {
+                    "label": "IS FALSE"
+                  },
+                  "REGEX MATCH": {
                     "label": "Совпадение регулярного выражения"
                   },
                   "CONTAINED IN TABLE": {
                     "label": "В ТАБЛИЦЕ"
                   },
-                  "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ": {
+                  "IN REGEX TABLE": {
                     "label": "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ"
                   },
-                  "ДАТА": {
+                  "DATE": {
                     "label": "ДАТА"
                   }
                 },
-                "val": "СОДЕРЖИТ"
+                "val": "CONTAINS"
               },
               "date_condition": {
                 "type": "select",
@@ -377,6 +383,43 @@
                 },
                 "val": "="
               },
+              "compare_with": {
+                "type": "select",
+                "label": "Compare with",
+                "required": true,
+                "show_if": "this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<='",
+                "options": {
+                  "custom_value": {
+                    "label": "Custom value"
+                  },
+                  "column_value": {
+                    "label": "Column value"
+                  }
+                },
+                "val": "custom_value"
+              },
+              "self_compare_column": {
+                "type": "select",
+                "label": "Select Compare Column",
+                "table": "table_id",
+                "bind": "COLUMNS",
+                "show_if": "this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+                "required": true
+              },
+              "date_value": {
+                "type": "date",
+                "label": "Выбрать дату",
+                "show_if": "this.condition=='DATE'",
+                "val": "",
+                "required": true
+              },
+              "value": {
+                "type": "text",
+                "label": "Добавить значение",
+                "show_if": "this.compare_with=='custom_value' && this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'IS TRUE' && this.condition != 'IS FALSE' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "val": "",
+                "required": true
+              },
               "case_sensitive": {
                 "type": "select",
                 "label": "Выбрать с учетом регистра",
@@ -391,20 +434,6 @@
                   }
                 },
                 "val": "yes"
-              },
-              "date_value": {
-                "type": "date",
-                "label": "Выбрать дату",
-                "show_if": "this.condition=='DATE'",
-                "val": "",
-                "required": true
-              },
-              "value": {
-                "type": "text",
-                "label": "Добавить значение",
-                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
-                "val": "",
-                "required": true
               },
               "compare_table": {
                 "type": "select",
@@ -527,16 +556,16 @@
                 "label": "Выбрать оператора",
                 "required": true,
                 "options": {
-                  "СОДЕРЖИТ": {
+                  "CONTAINS": {
                     "label": "СОДЕРЖИТ"
                   },
                   "CONTAINED IN STRING": {
                     "label": "СОДЕРЖАЛОСЬ В"
                   },
-                  "НАЧИНАЕТСЯ С": {
+                  "STARTS WITH": {
                     "label": "НАЧИНАЕТСЯ С"
                   },
-                  "ЗАКАНЧИВАЕТСЯ С": {
+                  "ENDS WITH": {
                     "label": "ЗАКАНЧИВАЕТСЯ С"
                   },
                   "=": {
@@ -560,23 +589,29 @@
                   "BLANK": {
                     "label": "ПУСТО"
                   },
-                  "НОЛЬ": {
+                  "IS NULL": {
                     "label": "НОЛЬ"
                   },
-                  "Совпадение регулярного выражения": {
+                  "IS TRUE": {
+                    "label": "IS TRUE"
+                  },
+                  "IS FALSE": {
+                    "label": "IS FALSE"
+                  },
+                  "REGEX MATCH": {
                     "label": "Совпадение регулярного выражения"
                   },
                   "CONTAINED IN TABLE": {
                     "label": "В ТАБЛИЦЕ"
                   },
-                  "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ": {
+                  "IN REGEX TABLE": {
                     "label": "В ТАБЛИЦЕ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ"
                   },
-                  "ДАТА": {
+                  "DATE": {
                     "label": "ДАТА"
                   }
                 },
-                "val": "СОДЕРЖИТ"
+                "val": "CONTAINS"
               },
               "date_condition": {
                 "type": "select",
@@ -602,6 +637,43 @@
                 },
                 "val": "="
               },
+              "compare_with": {
+                "type": "select",
+                "label": "Compare with",
+                "required": true,
+                "show_if": "this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<='",
+                "options": {
+                  "custom_value": {
+                    "label": "Custom value"
+                  },
+                  "column_value": {
+                    "label": "Column value"
+                  }
+                },
+                "val": "custom_value"
+              },
+              "self_compare_column": {
+                "type": "select",
+                "label": "Select Compare Column",
+                "table": "table_id",
+                "bind": "COLUMNS",
+                "show_if": "this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+                "required": true
+              },
+              "date_value": {
+                "type": "date",
+                "label": "Выбрать дату",
+                "show_if": "this.condition=='DATE'",
+                "val": "",
+                "required": true
+              },
+              "value": {
+                "type": "text",
+                "label": "Добавить значение",
+                "show_if": "this.compare_with=='custom_value' && this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'IS TRUE' && this.condition != 'IS FALSE' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "val": "",
+                "required": true
+              },
               "case_sensitive": {
                 "type": "select",
                 "label": "Выбрать с учетом регистра",
@@ -616,20 +688,6 @@
                   }
                 },
                 "val": "yes"
-              },
-              "date_value": {
-                "type": "date",
-                "label": "Выбрать дату",
-                "show_if": "this.condition=='DATE'",
-                "val": "",
-                "required": true
-              },
-              "value": {
-                "type": "text",
-                "label": "Добавить значение",
-                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
-                "val": "",
-                "required": true
               },
               "compare_table": {
                 "type": "select",

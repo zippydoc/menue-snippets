@@ -40,7 +40,7 @@
             "label": "Линия за линией"
           },
           "word_by_word": {
-            "label": "Слово за словом"
+            "label": "Текст"
           },
           "file_list": {
             "label": "Список файлов"
@@ -70,8 +70,13 @@
         "breakLine": true
       },
       "options.column_setting": {
-        "type": "hidden",
-        "val": "true"
+        "type": "checkbox",
+        "label": "Настройки колонок",
+        "show_if": "options.output_format!='file_list'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
       },
       "column_setting_frame": {
         "type": "fieldset",
@@ -99,7 +104,7 @@
           },
           "options.add_word_nonword_column": {
             "type": "checkbox",
-            "label": "Добавить колонку 'Слово и не-слово'",
+            "label": "Добавить колонку Слово и не-слово"",
             "show_if": "options.output_format=='word_by_word'",
             "val": "false",
             "isOn": "true",
@@ -110,7 +115,7 @@
             "type": "checkbox",
             "label": "Добавить столбец раздела",
             "show_if": "options.output_format=='word_by_word'",
-            "val": "true",
+            "val": "false",
             "isOn": "true",
             "isOff": "false",
             "breakLine": true
@@ -162,11 +167,14 @@
                   "inner_bracket": {
                     "label": "Внутренняя скобка"
                   },
+                  "brackets_only": {
+                    "label": "Brackets Only"
+                  },
                   "show_all": {
                     "label": "Показать все"
                   }
                 },
-                "val": "nesting_structure",
+                "val": "show_all",
                 "required": true,
                 "breakLine": true
               }
@@ -178,6 +186,7 @@
             "val": "true",
             "isOn": "true",
             "isOff": "false",
+            "style": "margin-top: 10px",
             "breakLine": true
           },
           "options.add_filepath_column": {
@@ -186,7 +195,6 @@
             "val": "false",
             "isOn": "true",
             "isOff": "false",
-            "style": "margin-top: 10px",
             "breakLine": true
           }
         }
@@ -251,15 +259,6 @@
         "type": "checkbox",
         "label": "Добавить столбец изменения даты",
         "show_if": "options.output_format=='file_list'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      },
-      "options.use_filename_as_output_table_name": {
-        "type": "checkbox",
-        "label": "Использовать имя файла в качестве имени таблицы",
-        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -389,14 +388,6 @@
         "type": "text",
         "label": "Персональный токен доступа к Github",
         "show_if": "options.webservice=='github' && options.is_github_private=='true'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "options.one_drive.access_token": {
-        "type": "text",
-        "label": "Единый токен доступа к диску",
-        "show_if": "options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true

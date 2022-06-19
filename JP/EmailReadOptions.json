@@ -1,0 +1,124 @@
+{
+  "options_frame": {
+    "type": "fieldset",
+    "label": "オプションの選択",
+    "repeat": false,
+    "fields": {
+      "options.task_type": {
+        "type": "hidden",
+        "val": "read_email"
+      },
+      "options.all_folders": {
+        "type": "checkbox",
+        "label": "Import all mail folders",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.read_folders": {
+        "type": "select",
+        "label": "Mail Folder(s) to import",
+        "show_if": "options.all_folders=='false'",
+        "required": true,
+        "multiple": true,
+        "options": {
+          "Archive": {
+            "label": "Archive"
+          },
+          "Conversation History": {
+            "label": "会話の歴史"
+          },
+          "Deleted Items": {
+            "label": "削除された項目"
+          },
+          "Drafts": {
+            "label": "草稿"
+          },
+          "Inbox": {
+            "label": "Inbox"
+          },
+          "Junk Email": {
+            "label": "Junk Email"
+          },
+          "Outbox": {
+            "label": "Outbox"
+          },
+          "RSS Feeds": {
+            "label": "RSS Feeds"
+          },
+          "Sent Items": {
+            "label": "Sent Items"
+          },
+          "Sync Issues": {
+            "label": "Sync Issues"
+          }
+        },
+        "val": ["Inbox"],
+        "breakLine": true
+      },
+      "options.all_columns": {
+        "type": "checkbox",
+        "label": "Import all columns",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.import_columns": {
+        "type": "select",
+        "label": "インポートする列",
+        "show_if": "options.all_columns=='false'",
+        "required": true,
+        "multiple": true,
+        "options": {
+          "CreatedAt": {
+            "label": "CreatedAt（作成日時"
+          },
+          "ReceivedAt": {
+            "label": "ReceivedAt"
+          },
+          "SentAt": {
+            "label": "SentAt"
+          },
+          "Subject": {
+            "label": "Subject (件名)"
+          },
+          "BodyPreview": {
+            "label": "BodyPreview（ボディプレビュー"
+          },
+          "From": {
+            "label": "から"
+          },
+          "CC": {
+            "label": "CC"
+          },
+          "BCC": {
+            "label": "BCC"
+          },
+          "HasAttachments": {
+            "label": "HasAttachments"
+          },
+          "IsRead": {
+            "label": "IsRead"
+          },
+          "IsDraft": {
+            "label": "IsDraft"
+          },
+          "WebLink": {
+            "label": "WebLink"
+          },
+          "Body": {
+            "label": "本文"
+          }
+        },
+        "val": ["CreatedAt","Subject","BodyPreview","From","HasAttachments","WebLink"]
+      },
+      "info3": {
+        "type": "text",
+        "label": "",
+        "val": "This task only supports users logged in via Microsoft Login",
+        "disabled": true,
+        "style": "width: 100%"
+      }
+    }
+  }
+}

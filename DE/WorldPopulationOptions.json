@@ -1,0 +1,76 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Optionen",
+    "repeat": false,
+    "fields": {
+      "options.chart_type": {
+        "type": "hidden",
+        "val": "zoomable_sunburst"
+      },
+      "options.group_by": {
+        "type": "select",
+        "label": "Gruppe von",
+        "required": true,
+        "options": {
+          "Region": {
+            "label": "Region"
+          },
+          "Income Group": {
+            "label": "Einkommensgruppe"
+          }
+        },
+        "val": "Region"
+      },
+      "options.measure": {
+        "type": "select",
+        "label": "Messen",
+        "required": true,
+        "options": {
+          "population_2020": {
+            "label": "Bevölkerung 2020"
+          },
+          "gdp_2020_in_usd": {
+            "label": "BIP 2020 in USD"
+          }
+        },
+        "val": "population_2020",
+        "breakLine": true
+      },
+      "options.output_as_chart": {
+        "type": "checkbox",
+        "label": "Ein Diagramm ausgeben",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.graph_type": {
+        "type": "select",
+        "label": "Diagrammtyp",
+        "show_if": "options.output_as_chart=='true'",
+        "required": true,
+        "options": {
+          "zoomable_sunburst": {
+            "label": "Sunburst"
+          },
+          "tidy_tree": {
+            "label": "Baum"
+          },
+          "treemap": {
+            "label": "Baumkarte"
+          }
+        },
+        "val": "zoomable_sunburst",
+        "breakLine": true
+      },
+      "options.configure_input_table": {
+        "type": "checkbox",
+        "label": "Eingabetabelle konfigurieren",
+        "show_if": "options.output_as_chart=='true'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      }
+    }
+  }
+}

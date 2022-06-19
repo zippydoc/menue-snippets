@@ -1,0 +1,136 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Opções Camaleão",
+    "repeat": false,
+    "fields": {
+      "params": {
+        "type": "fieldset",
+        "label": "Modificar Parâmetros",
+        "breakLine": true,
+        "repeat": true,
+        "fields": {
+          "attr_name": {
+            "type": "text",
+            "label": "Nome do campo",
+            "required": true,
+            "val": ""
+          },
+          "use_field_label": {
+            "type": "checkbox",
+            "label": "Usar etiqueta de campo",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "attr_instance": {
+            "type": "number",
+            "label": "Instância de campo",
+            "required": true,
+            "val": "1"
+          },
+          "value_type": {
+            "type": "select",
+            "label": "Substituir por",
+            "required": true,
+            "options": {
+              "single_value": {
+                "label": "Single Field Value"
+              },
+              "value_series": {
+                "label": "Lista de valores de campo"
+              },
+              "table_values": {
+                "label": "Valores da tabela"
+              }
+            },
+            "val": "single_value"
+          },
+          "attr_value": {
+            "type": "text",
+            "label": "Valor de campo",
+            "required": true,
+            "val": "",
+            "show_if": "this.value_type=='single_value'"
+          },
+          "attr_values": {
+            "type": "text",
+            "label": "Field Values ( ; - separated )",
+            "required": true,
+            "val": "",
+            "show_if": "this.value_type=='value_series'"
+          },
+          "table_id": {
+            "type": "select",
+            "label": "Selecionar Tabela",
+            "bind": "TABLES",
+            "show_if": "this.value_type=='table_values'",
+            "empty": "",
+            "required": true
+          },
+          "column": {
+            "type": "select",
+            "label": "Selecionar Coluna",
+            "required": true,
+            "table": "this.table_id",
+            "bind": "COLUMNS",
+            "show_if": "this.value_type=='table_values'"
+          },
+          "use_waiting_time": {
+            "type": "checkbox",
+            "label": "Acrescentar tempo de espera",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "show_if": "this.value_type!='single_value'"
+          },
+          "waiting_period": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "show_if": "this.value_type!='single_value' && this.use_waiting_time!='false'"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Apagar",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "task_chain": {
+        "type": "checkbox",
+        "label": "Cadeia de Tarefas",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "schedule_options": {
+        "type": "fieldset",
+        "label": "Tarefas a programar",
+        "show_if": "task_chain == 'true'",
+        "repeat": true,
+        "fields": {
+          "input_task": {
+            "type": "select",
+            "label": "Seleccionar Tarefa",
+            "bind": "TASKS",
+            "empty": "",
+            "required": true
+          },
+          "waiting_time": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Apagar",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}

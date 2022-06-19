@@ -1,0 +1,47 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Opciones",
+    "repeat": false,
+    "fields": {
+      "options.chart_type": {
+        "type": "select",
+        "label": "Tipo de árbol",
+        "required": true,
+        "options": {
+          "collapsible_tree": {
+            "label": "Árbol plegable"
+          },
+          "tidy_tree": {
+            "label": "Árbol ordenado"
+          },
+          "radial_dendrogram": {
+            "label": "Dendrograma radial"
+          }
+        },
+        "val": "collapsible_tree",
+        "breakLine": true
+      },
+      "options.group_cols": {
+        "type": "fieldset",
+        "label": "Select Group Column(s) in Order",
+        "show_if": "options.configure_manual=='true'",
+        "repeat": true,
+        "fields": {
+          "group_col": {
+            "type": "select",
+            "label": "Columna de grupo",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Borrar",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}

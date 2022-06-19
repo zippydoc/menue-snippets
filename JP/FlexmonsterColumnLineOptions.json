@@ -1,0 +1,186 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Flexmonsterレポートオプション",
+    "show_if": "options.configure_manual=='true'",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "hidden",
+        "val": "column_line_chart"
+      },
+      "options.chart_type": {
+        "type": "hidden",
+        "val": "column_line"
+      },
+      "options.add_column_cols": {
+        "type": "checkbox",
+        "label": "カテゴリー別",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.column_cols": {
+        "type": "fieldset",
+        "label": "Category column(s)",
+        "show_if": "options.add_column_cols=='true'",
+        "repeat": true,
+        "fields": {
+          "column_col": {
+            "type": "select",
+            "label": "カテゴリー欄",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "is_date": {
+            "type": "checkbox",
+            "label": "Is Date",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "削除",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.row_cols": {
+        "type": "fieldset",
+        "label": "Series column(s)",
+        "repeat": true,
+        "fields": {
+          "row_col": {
+            "type": "select",
+            "label": "Series column",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "is_date": {
+            "type": "checkbox",
+            "label": "Is Date",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "削除",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "measure_cols_frame": {
+        "type": "fieldset",
+        "label": "Value column(s)",
+        "repeat": false,
+        "fields": {
+          "options.column_chart_measure_col": {
+            "type": "select",
+            "label": "Value Column of Column Chart",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "options.column_chart_aggregation": {
+            "type": "select",
+            "label": "カラムチャートの集計",
+            "options": {
+              "sum": {
+                "label": "合計"
+              },
+              "count": {
+                "label": "計算"
+              },
+              "distinctcount": {
+                "label": "ディスティンクティブカウント"
+              },
+              "average": {
+                "label": "平均"
+              },
+              "median": {
+                "label": "中央値"
+              },
+              "product": {
+                "label": "製品"
+              },
+              "min": {
+                "label": "最小"
+              },
+              "max": {
+                "label": "最大"
+              },
+              "stdevp": {
+                "label": "Population Standard Deviation"
+              },
+              "stdevs": {
+                "label": "Sample Standard Deviation"
+              },
+              "percent": {
+                "label": "Percent"
+              }
+            },
+            "val": "sum",
+            "required": true,
+            "breakLine": true
+          },
+          "options.line_chart_measure_col": {
+            "type": "select",
+            "label": "Value Column of Line Chart",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "options.line_chart_aggregation": {
+            "type": "select",
+            "label": "ラインチャートの集計",
+            "options": {
+              "sum": {
+                "label": "合計"
+              },
+              "count": {
+                "label": "計算"
+              },
+              "distinctcount": {
+                "label": "ディスティンクティブカウント"
+              },
+              "average": {
+                "label": "平均"
+              },
+              "median": {
+                "label": "中央値"
+              },
+              "product": {
+                "label": "製品"
+              },
+              "min": {
+                "label": "最小"
+              },
+              "max": {
+                "label": "最大"
+              },
+              "stdevp": {
+                "label": "Population Standard Deviation"
+              },
+              "stdevs": {
+                "label": "Sample Standard Deviation"
+              },
+              "percent": {
+                "label": "Percent"
+              }
+            },
+            "val": "sum",
+            "required": true,
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}

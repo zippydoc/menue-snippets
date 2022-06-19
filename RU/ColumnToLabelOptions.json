@@ -17,23 +17,37 @@
         "isOff": "false",
         "breakLine": true
       },
-      "column_name_to_label.columns_to_label": {
-        "type": "select",
-        "label": "Выбрать столбцы для конвертации в метки",
+      "column_name_to_label__columns_to_label_frame": {
+        "type": "fieldset",
+        "label": "Select columns to convert into Labels",
         "show_if": "transpose_type=='column_name_to_label'",
-        "table": "input_table",
-        "multiple": true,
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
+        "repeat": false,
+        "fields": {
+          "column_name_to_label.reverse_col_selection": {
+            "type": "checkbox",
+            "label": "All but selected",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "column_name_to_label.columns_to_label": {
+            "type": "select",
+            "label": "Select columns",
+            "table": "table_id",
+            "multiple": true,
+            "bind": "COLUMNS",
+            "width": "100%",
+            "breakLine": true
+          }
+        }
       },
       "column_name_to_label.label_column_name": {
         "type": "text",
         "label": "Название столбца для столбца метки",
         "show_if": "transpose_type=='column_name_to_label'",
         "required": true,
-        "val": "Метка",
+        "val": "Label",
         "width": "100%",
         "breakLine": true
       },
@@ -42,15 +56,23 @@
         "label": "Название столбца для столбца значения",
         "show_if": "transpose_type=='column_name_to_label'",
         "required": true,
-        "val": "Значение",
+        "val": "Value",
         "width": "100%",
         "breakLine": true
+      },
+      "column_name_to_label.is_one_label": {
+        "type": "checkbox",
+        "label": "One label column",
+        "show_if": "transpose_type=='column_name_to_label'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
       },
       "crosstab.group_data_by_these_values": {
         "type": "select",
         "label": "Группировать данные по этим значениям",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "multiple": true,
         "bind": "COLUMNS",
         "required": true,
@@ -61,7 +83,7 @@
         "type": "select",
         "label": "Изменить заголовок столбца",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "bind": "COLUMNS",
         "required": true,
         "width": "100%",
@@ -71,7 +93,7 @@
         "type": "select",
         "label": "Значения для новых столбцов",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "bind": "COLUMNS",
         "required": true,
         "width": "100%",
@@ -82,29 +104,29 @@
         "label": "Метод добавления значений",
         "show_if": "transpose_type=='crosstab'",
         "options": {
-          "Обхединить": {
+          "Concatenate": {
             "label": "Обхединить"
           },
-          "Первый": {
+          "First": {
             "label": "Первый"
           },
-          "Последний": {
+          "Last": {
             "label": "Последний"
           },
-          "Сумма": {
+          "Sum": {
             "label": "Сумма"
           },
-          "Средний": {
+          "Average": {
             "label": "Средний"
           },
-          "Посчитать": {
+          "Count": {
             "label": "Посчитать"
           },
-          "Определяемые пользователем": {
+          "User Defined": {
             "label": "Определяемые пользователем"
           }
         },
-        "val": "Обхединить",
+        "val": "Concatenate",
         "required": true
       },
       "crosstab.user_defined_str": {

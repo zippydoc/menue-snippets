@@ -1,0 +1,153 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Run All Options (Executar todas as opções)",
+    "repeat": false,
+    "fields": {
+      "input_table_options": {
+        "type": "fieldset",
+        "label": "Especificar tabelas de entrada",
+        "breakLine": true,
+        "repeat": false,
+        "fields": {
+          "options.select_type": {
+            "type": "select",
+            "label": "Selecionar Tipo",
+            "required": true,
+            "options": {
+              "table_selection": {
+                "label": "Selecção da tabela"
+              },
+              "select_by_pattern": {
+                "label": "Seleccionar por Padrão"
+              }
+            },
+            "val": "table_selection"
+          },
+          "options.table_ids": {
+            "type": "select",
+            "label": "Selecionar Tabelas",
+            "bind": "TABLES",
+            "empty": "",
+            "multiple": true,
+            "show_if": "options.select_type=='table_selection'",
+            "required": true
+          },
+          "options.filter_params": {
+            "type": "fieldset",
+            "label": "Mesas de jogo",
+            "show_if": "options.select_type=='select_by_pattern'",
+            "breakLine": true,
+            "repeat": true,
+            "fields": {
+              "keyword": {
+                "type": "text",
+                "label": "Introduza a palavra-chave",
+                "required": true,
+                "val": ""
+              },
+              "filter_target": {
+                "type": "select",
+                "label": "Filtrar em",
+                "required": true,
+                "options": {
+                  "table_name": {
+                    "label": "Nome da Tabela"
+                  },
+                  "table_tag": {
+                    "label": "Etiqueta de mesa"
+                  }
+                },
+                "val": "table_name"
+              },
+              "filter_type": {
+                "type": "select",
+                "label": "Tipo de filtro",
+                "required": true,
+                "options": {
+                  "equal": {
+                    "label": "Igual"
+                  },
+                  "contain": {
+                    "label": "Contém"
+                  },
+                  "start_with": {
+                    "label": "Inicia com"
+                  },
+                  "end_with": {
+                    "label": "Termina Com"
+                  },
+                  "regex": {
+                    "label": "Expressão Regular"
+                  }
+                },
+                "val": "equal"
+              },
+              "delete": {
+                "type": "button",
+                "label": "Apagar",
+                "function": "DELETE_ROW"
+              }
+            }
+          },
+          "options.use_waiting_time": {
+            "type": "checkbox",
+            "label": "Acrescentar tempo de espera",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.waiting_period": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "show_if": "options.use_waiting_time!='false'"
+          }
+        }
+      },
+      "task_chain": {
+        "type": "checkbox",
+        "label": "Cadeia de Tarefas",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "schedule_options": {
+        "type": "fieldset",
+        "label": "Tarefas a programar",
+        "show_if": "task_chain == 'true'",
+        "repeat": true,
+        "fields": {
+          "input_task": {
+            "type": "select",
+            "label": "Seleccionar Tarefa",
+            "bind": "TASKS",
+            "empty": "",
+            "required": true
+          },
+          "waiting_time": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Apagar",
+            "function": "DELETE_ROW"
+          }
+        },
+        "breakLine": true
+      },
+      "unify_output_tables": {
+        "type": "checkbox",
+        "label": "Unify output tables",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  }
+}

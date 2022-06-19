@@ -17,23 +17,37 @@
         "isOff": "false",
         "breakLine": true
       },
-      "column_name_to_label.columns_to_label": {
-        "type": "select",
-        "label": "Sélectionner les colonnes à convertir en libellés",
+      "column_name_to_label__columns_to_label_frame": {
+        "type": "fieldset",
+        "label": "Select columns to convert into Labels",
         "show_if": "transpose_type=='column_name_to_label'",
-        "table": "input_table",
-        "multiple": true,
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
+        "repeat": false,
+        "fields": {
+          "column_name_to_label.reverse_col_selection": {
+            "type": "checkbox",
+            "label": "All but selected",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "column_name_to_label.columns_to_label": {
+            "type": "select",
+            "label": "Select columns",
+            "table": "table_id",
+            "multiple": true,
+            "bind": "COLUMNS",
+            "width": "100%",
+            "breakLine": true
+          }
+        }
       },
       "column_name_to_label.label_column_name": {
         "type": "text",
         "label": "Nom de la colonne d'étiquettes",
         "show_if": "transpose_type=='column_name_to_label'",
         "required": true,
-        "val": "Étiqueter",
+        "val": "Label",
         "width": "100%",
         "breakLine": true
       },
@@ -42,15 +56,23 @@
         "label": "Nom de la colonne de valeurs",
         "show_if": "transpose_type=='column_name_to_label'",
         "required": true,
-        "val": "Valeur",
+        "val": "Value",
         "width": "100%",
         "breakLine": true
+      },
+      "column_name_to_label.is_one_label": {
+        "type": "checkbox",
+        "label": "Une colonne d'étiquettes",
+        "show_if": "transpose_type=='column_name_to_label'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
       },
       "crosstab.group_data_by_these_values": {
         "type": "select",
         "label": "Regrouper les données selon ces valeurs",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "multiple": true,
         "bind": "COLUMNS",
         "required": true,
@@ -61,7 +83,7 @@
         "type": "select",
         "label": "Changer l'en-tête de colonne",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "bind": "COLUMNS",
         "required": true,
         "width": "100%",
@@ -71,7 +93,7 @@
         "type": "select",
         "label": "Valeurs pour les nouvelles colonnes",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "bind": "COLUMNS",
         "required": true,
         "width": "100%",
@@ -82,29 +104,29 @@
         "label": "Méthode d'agrégation des valeurs",
         "show_if": "transpose_type=='crosstab'",
         "options": {
-          "Concaténer": {
+          "Concatenate": {
             "label": "Concaténer"
           },
-          "Premier": {
+          "First": {
             "label": "Premier"
           },
-          "Dernier": {
+          "Last": {
             "label": "Dernier"
           },
-          "Somme": {
+          "Sum": {
             "label": "Somme"
           },
-          "Moyenne": {
+          "Average": {
             "label": "Moyenne"
           },
-          "Compter": {
+          "Count": {
             "label": "Compter"
           },
-          "Utilisateur désigné": {
+          "User Defined": {
             "label": "Utilisateur désigné"
           }
         },
-        "val": "Concaténer",
+        "val": "Concatenate",
         "required": true
       },
       "crosstab.user_defined_str": {

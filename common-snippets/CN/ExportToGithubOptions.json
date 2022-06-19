@@ -1,0 +1,156 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "选择选项",
+    "repeat": false,
+    "fields": {
+      "options.to": {
+        "type": "hidden",
+        "val": "file"
+      },
+      "options.webservice": {
+        "type": "hidden",
+        "val": "github"
+      },
+      "options.export_format": {
+        "type": "select",
+        "label": "导出格式",
+        "options": {
+          "csv_file": {
+            "label": "CSV 文件"
+          },
+          "word_by_word": {
+            "label": "逐字"
+          },
+          "line_by_line": {
+            "label": "逐行"
+          }
+        },
+        "val": "csv_file",
+        "required": true,
+        "breakLine": true
+      },
+      "options.if_duplicated": {
+        "type": "select",
+        "label": "如果现有",
+        "show_if": "options.webservice=='github'",
+        "val": "drop_if_exist",
+        "options": {
+          "drop_if_exist": {
+            "label": "创建或删除（如存在）"
+          },
+          "error_if_exist": {
+            "label": "新建（如存在则抛出错误）"
+          },
+          "error_if_not_exist": {
+            "label": "删除（如不存在则抛出错误）"
+          },
+          "append": {
+            "label": "追加"
+          }
+        },
+        "breakLine": true
+      },
+      "options.export_series": {
+        "type": "checkbox",
+        "label": "导出系列",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.file_name_column": {
+        "type": "select",
+        "label": "选择文件名列",
+        "show_if": "options.export_series=='true'",
+        "table": "table_id",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.set_file_path_column": {
+        "type": "checkbox",
+        "label": "导出到指定路径",
+        "show_if": "options.export_series=='true'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.file_path_column": {
+        "type": "select",
+        "label": "选择文件路径栏",
+        "show_if": "options.export_series=='true' && options.set_file_path_column=='true'",
+        "table": "table_id",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      }
+    }
+  },
+  "export_link_token_frame": {
+    "type": "fieldset",
+    "label": "导出链接",
+    "repeat": false,
+    "fields": {
+      "options.github_url": {
+        "type": "text",
+        "label": "输入链接，如：https://github.com/zippydoc/test",
+        "show_if": "options.webservice=='github'",
+        "val": "",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.export_dir": {
+        "type": "text",
+        "label": "输入目录，例如：/MyZippyDocFiles/SubDir/",
+        "show_if": "options.webservice!='github'",
+        "val": "/",
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.github_token": {
+        "type": "text",
+        "label": "指定具有写入权限的Github个人访问令牌：",
+        "show_if": "options.webservice=='github'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.github_create_pr": {
+        "type": "checkbox",
+        "label": "创建拉取请求",
+        "show_if": "options.webservice=='github'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.ms_one_drive_token": {
+        "type": "text",
+        "label": "Microsoft Graph API访问令牌。你可以在这里得到它 https://ms-oauth.herokuapp.com/",
+        "show_if": "options.webservice=='ms_one_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.google_authorization_code": {
+        "type": "text",
+        "label": "谷歌OAuth授权代码与范围https://www.googleapis.com/auth/drive。你可以在这里得到它https://developers.google.com/oauthplayground/",
+        "show_if": "options.webservice=='google_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox_authorization_code": {
+        "type": "text",
+        "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "show_if": "options.webservice=='dropbox'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}

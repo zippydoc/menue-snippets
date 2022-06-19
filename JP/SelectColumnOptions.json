@@ -1,0 +1,210 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "出力列の選択",
+    "repeat": false,
+    "fields": {
+      "options.select_all_columns": {
+        "type": "checkbox",
+        "label": "Select All",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.output_columns": {
+        "type": "fieldset",
+        "label": "出力カラムの追加",
+        "show_if": "options.select_all_columns=='false'",
+        "repeat": true,
+        "fields": {
+          "field_name": {
+            "type": "select",
+            "label": "列の選択",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "order": {
+            "type": "select",
+            "label": "注文",
+            "options": {
+              "-": {
+                "label": "-"
+              },
+              "asc": {
+                "label": "昇順"
+              },
+              "desc": {
+                "label": "降順"
+              }
+            },
+            "val": "-"
+          },
+          "is_rename": {
+            "type": "checkbox",
+            "label": "名前の変更",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "rename": {
+            "show_if": "this.is_rename == 'true'",
+            "type": "text",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 255,
+            "label": "新しい列名",
+            "style": "margin-left: 10px"
+          },
+          "format__category": {
+            "type": "select",
+            "label": "表示形式",
+            "required": true,
+            "options": {
+              "standard": {
+                "label": "標準"
+              },
+              "number": {
+                "label": "数"
+              },
+              "percentage": {
+                "label": "割合"
+              },
+              "text": {
+                "label": "テキスト"
+              },
+              "date": {
+                "label": "日付"
+              },
+              "currency": {
+                "label": "通貨"
+              }
+            },
+            "val": "standard"
+          },
+          "format__rounding": {
+            "type": "select",
+            "label": "表示用小数点以下の桁数",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "required": true,
+            "options": {
+              "no_rounding": {
+                "label": "四捨五入無し"
+              },
+              "0": {
+                "label": "0桁"
+              },
+              "1": {
+                "label": "1桁"
+              },
+              "2": {
+                "label": "2桁"
+              },
+              "3": {
+                "label": "3桁"
+              },
+              "4": {
+                "label": "4桁"
+              },
+              "5": {
+                "label": "5桁"
+              },
+              "6": {
+                "label": "6桁"
+              },
+              "7": {
+                "label": "7桁"
+              },
+              "8": {
+                "label": "8桁"
+              },
+              "9": {
+                "label": "9桁"
+              }
+            },
+            "val": "2"
+          },
+          "format__use_1000_separator": {
+            "type": "checkbox",
+            "label": "Use 1000 Separator(.)",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "format__currency_symbol": {
+            "type": "select",
+            "label": "シンボル",
+            "show_if": "this.format__category=='currency'",
+            "required": true,
+            "options": {
+              "dollar": {
+                "label": "$"
+              },
+              "euro": {
+                "label": "€"
+              },
+              "pound": {
+                "label": "£"
+              }
+            },
+            "val": "dollar"
+          },
+          "format__date_format": {
+            "type": "select",
+            "label": "タイプ",
+            "show_if": "this.format__category=='date'",
+            "required": true,
+            "options": {
+              "mm/dd/yyyy": {
+                "label": "3/14/2012"
+              },
+              "D, M dd, Y": {
+                "label": "水曜日、3月14日、2012"
+              },
+              "yyyy-mm-dd": {
+                "label": "2012-03-14"
+              },
+              "m.dd.yyyy": {
+                "label": "3.14.2012"
+              },
+              "m.dd.yy": {
+                "label": "3.14.12"
+              },
+              "dd.m.yyyy": {
+                "label": "14.3.2012"
+              },
+              "dd.m.yy": {
+                "label": "14.3.12"
+              },
+              "M dd, Y": {
+                "label": "March 14, 2012"
+              },
+              "dd-mm-yyyy": {
+                "label": "14-03-2012"
+              },
+              "mm-dd-yyyy": {
+                "label": "03-14-2012"
+              },
+              "dd-mm-yy": {
+                "label": "14-03-12"
+              },
+              "mm-dd-yy": {
+                "label": "03-14-12"
+              }
+            },
+            "val": "mm/dd/yyyy",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "削除",
+            "function": "DELETE_ROW"
+          }
+        },
+        "breakLine": true,
+        "style": "margin-bottom: 20px"
+      }
+    }
+  }
+}

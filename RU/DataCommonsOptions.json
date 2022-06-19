@@ -1,0 +1,231 @@
+{
+  "options_frame": {
+    "type": "fieldset",
+    "label": "Опции",
+    "repeat": false,
+    "fields": {
+      "options.category": {
+        "type": "select",
+        "label": "Категория данных",
+        "required": true,
+        "options": {
+          "health": {
+            "label": "Health"
+          },
+          "demographics": {
+            "label": "Демография"
+          },
+          "economic": {
+            "label": "Экономический"
+          }
+        },
+        "val": "health"
+      },
+      "options.health__stat_var": {
+        "type": "select",
+        "label": "Statistics Data",
+        "show_if": "options.category=='health'",
+        "required": true,
+        "options": {
+          "CumulativeCount_Vaccine_COVID_19_Administered": {
+            "label": "Кумулятивный подсчет COVID_19, Вакцина введена"
+          },
+          "IncrementalCount_Vaccine_COVID_19_Administered": {
+            "label": "Incremental Count of COVID_19, Vaccine Administered"
+          },
+          "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person": {
+            "label": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person"
+          }
+        },
+        "val": "CumulativeCount_Vaccine_COVID_19_Administered"
+      },
+      "options.demographics__stat_var": {
+        "type": "select",
+        "label": "Statistics Data",
+        "show_if": "options.category=='demographics'",
+        "required": true,
+        "options": {
+          "Count_Person": {
+            "label": "Population"
+          },
+          "GrowthRate_Count_Person": {
+            "label": "Population Growth Rate"
+          },
+          "Count_Person_PerArea": {
+            "label": "Population Density"
+          }
+        },
+        "val": "Count_Person"
+      },
+      "options.economic__stat_var": {
+        "type": "select",
+        "label": "Statistics Data",
+        "show_if": "options.category=='economic'",
+        "required": true,
+        "options": {
+          "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
+            "label": "Amount of Gross Domestic Production (Nominal)"
+          },
+          "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
+            "label": "Amount of Gross Domestic Production Per Capita (Nominal)"
+          },
+          "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
+            "label": "Growth Rate Amount of Gross Domestic Production"
+          },
+          "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
+            "label": "Amount of Gross National Income (Purchasing Power Parity)"
+          },
+          "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
+            "label": "Amount of Gross National Income as Fraction of Per Capita (Purchasing Power Parity)"
+          },
+          "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person": {
+            "label": "Mobile Subscriptions Per Capita"
+          }
+        },
+        "val": "Amount_EconomicActivity_GrossDomesticProduction_Nominal",
+        "breakLine": true
+      },
+      "options.country": {
+        "type": "select",
+        "label": "Страна",
+        "required": true,
+        "options": {
+          "ALB": {
+            "label": "Албания"
+          },
+          "AUT": {
+            "label": "Австрия"
+          },
+          "BEL": {
+            "label": "Бельгия"
+          },
+          "BLR": {
+            "label": "Беларусь"
+          },
+          "BGR": {
+            "label": "Болгария"
+          },
+          "CAN": {
+            "label": "Канада"
+          },
+          "CHN": {
+            "label": "Китай"
+          },
+          "HRV": {
+            "label": "Хорватия"
+          },
+          "DNK": {
+            "label": "Дания"
+          },
+          "EST": {
+            "label": "Эстония"
+          },
+          "FIN": {
+            "label": "Финляндия"
+          },
+          "FRA": {
+            "label": "Франция"
+          },
+          "DEU": {
+            "label": "Германия"
+          },
+          "GRC": {
+            "label": "Greece"
+          },
+          "HUN": {
+            "label": "Hungary"
+          },
+          "ISL": {
+            "label": "Iceland"
+          },
+          "IRL": {
+            "label": "Ireland"
+          },
+          "ITA": {
+            "label": "Italy"
+          },
+          "JPN": {
+            "label": "Japan"
+          },
+          "LVA": {
+            "label": "Latvia"
+          },
+          "LTU": {
+            "label": "Lithuania"
+          },
+          "LUX": {
+            "label": "Luxembourg"
+          },
+          "MLT": {
+            "label": "Malta"
+          },
+          "MNE": {
+            "label": "Montenegro"
+          },
+          "MDA": {
+            "label": "Moldova"
+          },
+          "NLD": {
+            "label": "Netherlands"
+          },
+          "MKD": {
+            "label": "North Macedonia"
+          },
+          "NOR": {
+            "label": "Norway"
+          },
+          "POL": {
+            "label": "Poland"
+          },
+          "PRT": {
+            "label": "Portugal"
+          },
+          "ROU": {
+            "label": "Romania"
+          },
+          "RUS": {
+            "label": "Russia"
+          },
+          "SRB": {
+            "label": "Serbia"
+          },
+          "SVK": {
+            "label": "Slovakia"
+          },
+          "SVN": {
+            "label": "Slovenia"
+          },
+          "ESP": {
+            "label": "Spain"
+          },
+          "SWE": {
+            "label": "Sweden"
+          },
+          "CHE": {
+            "label": "Switzerland"
+          },
+          "UKR": {
+            "label": "Ukraine"
+          },
+          "GBR": {
+            "label": "United Kingdom"
+          },
+          "USA": {
+            "label": "United States"
+          }
+        },
+        "val": ["DEU"],
+        "multiple": true,
+        "breakLine": true
+      },
+      "options.output_as_chart": {
+        "type": "checkbox",
+        "label": "Output a Graph",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  }
+}

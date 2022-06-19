@@ -1,0 +1,153 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Run All Options",
+    "repeat": false,
+    "fields": {
+      "input_table_options": {
+        "type": "fieldset",
+        "label": "Specify Input Tables",
+        "breakLine": true,
+        "repeat": false,
+        "fields": {
+          "options.select_type": {
+            "type": "select",
+            "label": "選択タイプ",
+            "required": true,
+            "options": {
+              "table_selection": {
+                "label": "Table Selection"
+              },
+              "select_by_pattern": {
+                "label": "Select by Pattern"
+              }
+            },
+            "val": "table_selection"
+          },
+          "options.table_ids": {
+            "type": "select",
+            "label": "テーブルの選択",
+            "bind": "TABLES",
+            "empty": "",
+            "multiple": true,
+            "show_if": "options.select_type=='table_selection'",
+            "required": true
+          },
+          "options.filter_params": {
+            "type": "fieldset",
+            "label": "Match tables",
+            "show_if": "options.select_type=='select_by_pattern'",
+            "breakLine": true,
+            "repeat": true,
+            "fields": {
+              "keyword": {
+                "type": "text",
+                "label": "キーワードを入力",
+                "required": true,
+                "val": ""
+              },
+              "filter_target": {
+                "type": "select",
+                "label": "フィルターオン",
+                "required": true,
+                "options": {
+                  "table_name": {
+                    "label": "列名"
+                  },
+                  "table_tag": {
+                    "label": "Table Tag"
+                  }
+                },
+                "val": "table_name"
+              },
+              "filter_type": {
+                "type": "select",
+                "label": "フィルタータイプ",
+                "required": true,
+                "options": {
+                  "equal": {
+                    "label": "等しい"
+                  },
+                  "contain": {
+                    "label": "含む"
+                  },
+                  "start_with": {
+                    "label": "次で開始"
+                  },
+                  "end_with": {
+                    "label": "次で終了"
+                  },
+                  "regex": {
+                    "label": "正規表現"
+                  }
+                },
+                "val": "equal"
+              },
+              "delete": {
+                "type": "button",
+                "label": "削除",
+                "function": "DELETE_ROW"
+              }
+            }
+          },
+          "options.use_waiting_time": {
+            "type": "checkbox",
+            "label": "待ち時間を追加",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.waiting_period": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "show_if": "options.use_waiting_time!='false'"
+          }
+        }
+      },
+      "task_chain": {
+        "type": "checkbox",
+        "label": "Task Chain",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "schedule_options": {
+        "type": "fieldset",
+        "label": "Tasks to schedule",
+        "show_if": "task_chain == 'true'",
+        "repeat": true,
+        "fields": {
+          "input_task": {
+            "type": "select",
+            "label": "Select Task",
+            "bind": "TASKS",
+            "empty": "",
+            "required": true
+          },
+          "waiting_time": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "削除",
+            "function": "DELETE_ROW"
+          }
+        },
+        "breakLine": true
+      },
+      "unify_output_tables": {
+        "type": "checkbox",
+        "label": "Unify output tables",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  }
+}

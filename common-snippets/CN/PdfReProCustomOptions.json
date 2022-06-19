@@ -1,0 +1,163 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "选项",
+    "repeat": false,
+    "fields": {
+      "options.script_name": {
+        "type": "hidden",
+        "val": "PdfReProCustom"
+      },
+      "options.type": {
+        "type": "select",
+        "label": "任务类型",
+        "options": {
+          "get_placeholders_of_all_templates": {
+            "label": "Get Placeholders of all Templates"
+          },
+          "get_placeholders_of_template": {
+            "label": "获取模板的占位符"
+          },
+          "create": {
+            "label": "创建PDF并导出到云端"
+          }
+        },
+        "val": "get_placeholders_of_all_templates",
+        "required": true,
+        "breakLine": true
+      },
+      "options.where_to_create": {
+        "type": "select",
+        "label": "Where to create",
+        "options": {
+          "only_open_in_browser": {
+            "label": "Only open PDF in browser"
+          },
+          "only_export_to_cloud": {
+            "label": "Only export to cloud"
+          },
+          "both_export_to_cloud_and_open_in_browser": {
+            "label": "既能导出到云端，又能在浏览器中打开pdf"
+          }
+        },
+        "val": "only_open_in_browser",
+        "required": true,
+        "breakLine": true
+      },
+      "options.configure_by_table_help": {
+        "type": "text",
+        "label": "",
+        "show_if": "options.type=='create'",
+        "val": "Table Structure ( Template ID | Placeholder | Replace-Text )",
+        "disabled": true,
+        "width": "100%"
+      },
+      "options.table_id": {
+        "type": "select",
+        "label": "选择表格",
+        "show_if": "options.type=='create'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      },
+      "pdfrepro_credential_box": {
+        "type": "fieldset",
+        "label": "Your own PDFrePRO account API Key",
+        "repeat": false,
+        "fields": {
+          "options.pdfrepro_credentials.api_key": {
+            "type": "text",
+            "label": "API密钥",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.pdfrepro_credentials.shared_key": {
+            "type": "text",
+            "label": "Shared Key",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          }
+        }
+      },
+      "options.template_id": {
+        "type": "text",
+        "label": "Template ID",
+        "show_if": "options.type=='get_placeholders_of_template'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.webservice": {
+        "type": "select",
+        "label": "选择 Web 服务",
+        "show_if": "options.type=='create'",
+        "options": {
+          "ms_one_drive": {
+            "label": "Microsoft OneDrive"
+          },
+          "dropbox": {
+            "label": "Dropbox"
+          },
+          "google_drive": {
+            "label": "Google 云端硬盘"
+          }
+        },
+        "val": "ms_one_drive",
+        "required": true,
+        "breakLine": true
+      },
+      "export_link_token_frame": {
+        "type": "fieldset",
+        "label": "导出链接",
+        "show_if": "options.type=='create'",
+        "repeat": false,
+        "fields": {
+          "options.github_url": {
+            "type": "text",
+            "label": "输入链接，如：https://github.com/zippydoc/test",
+            "show_if": "options.webservice=='github'",
+            "val": "",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.export_dir": {
+            "type": "text",
+            "label": "输入目录，例如：/MyZippyDocFiles/SubDir/",
+            "show_if": "options.webservice!='github'",
+            "val": "",
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.github_token": {
+            "type": "text",
+            "label": "指定具有写入权限的Github个人访问令牌：",
+            "show_if": "options.webservice=='github'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.google_authorization_code": {
+            "type": "text",
+            "label": "谷歌OAuth授权代码与范围https://www.googleapis.com/auth/drive。你可以在这里得到它https://developers.google.com/oauthplayground/",
+            "show_if": "options.webservice=='google_drive'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.dropbox_authorization_code": {
+            "type": "text",
+            "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+            "show_if": "options.webservice=='dropbox'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}

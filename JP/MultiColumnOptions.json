@@ -1,5 +1,5 @@
 {
-  "options_box": {
+  "options": {
     "type": "fieldset",
     "label": "オプション",
     "repeat": false,
@@ -73,7 +73,7 @@
             "type": "select",
             "label": "列(複数可)の選択",
             "show_if": "this.multi_column_functions__function=='sum' || this.multi_column_functions__function=='average' || this.multi_column_functions__function=='median' || this.multi_column_functions__function=='max' || this.multi_column_functions__function=='min' || this.multi_column_functions__function=='standard_deviation' || this.multi_column_functions__function=='product'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "multiple": true,
             "required": true
@@ -82,7 +82,7 @@
             "type": "select",
             "label": "A列を選択",
             "show_if": "this.multi_column_functions__function=='quota' || this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='compound_growth'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true
           },
@@ -90,7 +90,7 @@
             "type": "select",
             "label": "B列を選択",
             "show_if": "this.multi_column_functions__function=='quota' || this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='compound_growth'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true
           },
@@ -101,23 +101,41 @@
             "val": "1",
             "required": true
           },
+          "multi_column_functions__static_value__type": {
+            "type": "select",
+            "label": "Static Value Type",
+            "show_if": "this.multi_column_functions__function=='static_value'",
+            "required": true,
+            "options": {
+              "custom": {
+                "label": "カスタム"
+              },
+              "input_table_name": {
+                "label": "テーブル名の入力"
+              },
+              "output_table_name": {
+                "label": "出力テーブル名"
+              }
+            },
+            "val": "custom"
+          },
           "static_value": {
             "type": "text",
             "label": "値の入力",
-            "show_if": "this.multi_column_functions__function=='static_value'",
+            "show_if": "this.multi_column_functions__function=='static_value' && this.multi_column_functions__static_value__type=='custom'",
             "val": "",
             "width": "100%"
           },
           "numeric_formula": {
             "type": "text",
-            "label": "入力式、例：[Column1] + 2 * ([Row-1:Column3] - [Column1])",
+            "label": "Input Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
             "show_if": "this.multi_column_functions__function=='numeric_formula'",
             "val": "",
             "width": "100%"
           },
           "text_formula": {
             "type": "text",
-            "label": "入力式、例：[firstName] + ' + [lastName] + ' + [Row-1:Column3]",
+            "label": "Input Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
             "show_if": "this.multi_column_functions__function=='text_formula'",
             "val": "",
             "width": "100%"
@@ -148,7 +166,7 @@
           },
           "format__category": {
             "type": "select",
-            "label": "フォーマット",
+            "label": "表示形式",
             "required": true,
             "options": {
               "standard": {
@@ -174,7 +192,7 @@
           },
           "format__rounding": {
             "type": "select",
-            "label": "四捨五入",
+            "label": "表示用小数点以下の桁数",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
@@ -236,6 +254,63 @@
               },
               "pound": {
                 "label": "£"
+              },
+              "yen": {
+                "label": "¥ (Yen, currency of Japan)"
+              },
+              "colon": {
+                "label": "₡ (Colón, currency of Costa Rica)"
+              },
+              "naira": {
+                "label": "₦ (Naira, currency of Nigeria)"
+              },
+              "rupee": {
+                "label": "₨ (Rupee, currency of India)"
+              },
+              "rupie": {
+                "label": "₹ (Rupee, currency of India)"
+              },
+              "won": {
+                "label": "₩ (Won, currency in South Korea and North Korea)"
+              },
+              "hebrew": {
+                "label": "₪ (Currency of Israel)"
+              },
+              "dong": {
+                "label": "₫ (Currency of Vietnam)"
+              },
+              "kip": {
+                "label": "₭ (Kip, currency of Laos)"
+              },
+              "mongolia": {
+                "label": "₮ (Currency of Mongolia)"
+              },
+              "peso": {
+                "label": "₱ (Peso, currency of the Philippines)"
+              },
+              "guarani": {
+                "label": "₲ (Guaraní, currency of Paraguay)"
+              },
+              "hryvnia": {
+                "label": "₴ (Hryvnia, currency of Ukraine)"
+              },
+              "tenge": {
+                "label": "₸ (Tenge, currency of Kazakhstan)"
+              },
+              "lira": {
+                "label": "₺ (Lira, currency of Turkey)"
+              },
+              "manat": {
+                "label": "₼ (Manat, currency of Azerbaijan)"
+              },
+              "rubles": {
+                "label": "₽ (Rubles, currency of Russia)"
+              },
+              "lari": {
+                "label": "₾ (Lari, currency of Georgia)"
+              },
+              "bitcoin": {
+                "label": "₿ (Bitcoin, crypto currency)"
               }
             },
             "val": "dollar"
@@ -254,6 +329,33 @@
               },
               "yyyy-mm-dd": {
                 "label": "2012-03-14"
+              },
+              "m.dd.yyyy": {
+                "label": "3.14.2012"
+              },
+              "m.dd.yy": {
+                "label": "3.14.12"
+              },
+              "dd.m.yyyy": {
+                "label": "14.3.2012"
+              },
+              "dd.m.yy": {
+                "label": "14.3.12"
+              },
+              "M dd, Y": {
+                "label": "March 14, 2012"
+              },
+              "dd-mm-yyyy": {
+                "label": "14-03-2012"
+              },
+              "mm-dd-yyyy": {
+                "label": "03-14-2012"
+              },
+              "dd-mm-yy": {
+                "label": "14-03-12"
+              },
+              "mm-dd-yy": {
+                "label": "03-14-12"
               }
             },
             "val": "mm/dd/yyyy",
@@ -299,7 +401,7 @@
             "type": "select",
             "label": "列",
             "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true
           },
@@ -374,7 +476,7 @@
             "type": "select",
             "label": "列(複数可)のグループ",
             "show_if": "this.apply_to_group__enabled == 'true' && this.multi_column_functions__function!='static_value'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "multiple": true,
             "required": true
@@ -445,7 +547,7 @@
               "column": {
                 "type": "select",
                 "label": "列の選択",
-                "table": "input_table",
+                "table": "table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
@@ -454,16 +556,16 @@
                 "label": "オペレータの選択",
                 "required": true,
                 "options": {
-                  "含む": {
+                  "CONTAINS": {
                     "label": "含む"
                   },
                   "CONTAINED IN STRING": {
                     "label": "次の中に含む"
                   },
-                  "次で開始": {
+                  "STARTS WITH": {
                     "label": "次で開始"
                   },
-                  "次で終了": {
+                  "ENDS WITH": {
                     "label": "次で終了"
                   },
                   "=": {
@@ -487,23 +589,29 @@
                   "BLANK": {
                     "label": "空白です"
                   },
-                  "無効です": {
+                  "IS NULL": {
                     "label": "無効です"
                   },
-                  "REGEXの一致": {
+                  "IS TRUE": {
+                    "label": "IS TRUE"
+                  },
+                  "IS FALSE": {
+                    "label": "IS FALSE"
+                  },
+                  "REGEX MATCH": {
                     "label": "REGEXの一致"
                   },
                   "CONTAINED IN TABLE": {
                     "label": "テーブル内"
                   },
-                  "REGEXテーブル内": {
+                  "IN REGEX TABLE": {
                     "label": "REGEXテーブル内"
                   },
-                  "日付": {
+                  "DATE": {
                     "label": "日付"
                   }
                 },
-                "val": "含む"
+                "val": "CONTAINS"
               },
               "date_condition": {
                 "type": "select",
@@ -529,6 +637,43 @@
                 },
                 "val": "="
               },
+              "compare_with": {
+                "type": "select",
+                "label": "Compare with",
+                "required": true,
+                "show_if": "this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<='",
+                "options": {
+                  "custom_value": {
+                    "label": "Custom value"
+                  },
+                  "column_value": {
+                    "label": "Column value"
+                  }
+                },
+                "val": "custom_value"
+              },
+              "self_compare_column": {
+                "type": "select",
+                "label": "Select Compare Column",
+                "table": "table_id",
+                "bind": "COLUMNS",
+                "show_if": "this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+                "required": true
+              },
+              "date_value": {
+                "type": "date",
+                "label": "日付の選択",
+                "show_if": "this.condition=='DATE'",
+                "val": "",
+                "required": true
+              },
+              "value": {
+                "type": "text",
+                "label": "値の入力",
+                "show_if": "this.compare_with=='custom_value' && this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'IS TRUE' && this.condition != 'IS FALSE' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "val": "",
+                "required": true
+              },
               "case_sensitive": {
                 "type": "select",
                 "label": "ケース・センシティブの選択",
@@ -543,20 +688,6 @@
                   }
                 },
                 "val": "yes"
-              },
-              "date_value": {
-                "type": "date",
-                "label": "日付の選択",
-                "show_if": "this.condition=='DATE'",
-                "val": "",
-                "required": true
-              },
-              "value": {
-                "type": "text",
-                "label": "値の入力",
-                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
-                "val": "",
-                "required": true
               },
               "compare_table": {
                 "type": "select",
@@ -601,7 +732,7 @@
                 "label": "グループ列の選択",
                 "required": true,
                 "width": "100%",
-                "table": "input_table",
+                "table": "table_id",
                 "multiple": true,
                 "bind": "COLUMNS",
                 "breakLine": true

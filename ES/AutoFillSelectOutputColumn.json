@@ -1,0 +1,294 @@
+{
+  "output.select_output_columns_type": {
+    "type": "select",
+    "label": "Seleccionar columnas de salida",
+    "required": true,
+    "options": {
+      "all": {
+        "label": "Todo"
+      },
+      "standard": {
+        "label": "Standard Column Selection"
+      },
+      "advanced": {
+        "label": "Advanced Column Selection"
+      }
+    },
+    "val": "all",
+    "breakLine": true
+  },
+  "output_columns_frame": {
+    "type": "fieldset",
+    "label": "Seleccionar columnas de salida",
+    "show_if": "output.select_output_columns_type=='standard'",
+    "repeat": false,
+    "fields": {
+      "output.output_columns": {
+        "type": "select",
+        "label": "Output Column(s)",
+        "table": "target_table.table_id",
+        "bind": "COLUMNS",
+        "multiple": true,
+        "required": true,
+        "breakLine": true
+      },
+      "output.all_but_selected": {
+        "type": "checkbox",
+        "label": "All but selected",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  },
+  "output.detail_output_columns": {
+    "type": "fieldset",
+    "label": "Seleccionar columnas de salida",
+    "show_if": "output.select_output_columns_type=='advanced'",
+    "repeat": true,
+    "fields": {
+      "field_name": {
+        "type": "select",
+        "label": "Seleccionar Columna",
+        "table": "target_table.table_id",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "order": {
+        "type": "select",
+        "label": "Orden",
+        "options": {
+          "-": {
+            "label": "-"
+          },
+          "asc": {
+            "label": "Ascendente"
+          },
+          "desc": {
+            "label": "Descendente"
+          }
+        },
+        "val": "-"
+      },
+      "format__category": {
+        "type": "select",
+        "label": "Formato de visualización",
+        "required": true,
+        "options": {
+          "standard": {
+            "label": "Estándar"
+          },
+          "number": {
+            "label": "Número"
+          },
+          "percentage": {
+            "label": "Porcentaje"
+          },
+          "text": {
+            "label": "Texto"
+          },
+          "date": {
+            "label": "Fecha"
+          },
+          "currency": {
+            "label": "Moneda"
+          }
+        },
+        "val": "standard"
+      },
+      "format__rounding": {
+        "type": "select",
+        "label": "Lugares decimales para la visualización",
+        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+        "required": true,
+        "options": {
+          "no_rounding": {
+            "label": "Redondeo de números"
+          },
+          "0": {
+            "label": "0 dígitos"
+          },
+          "1": {
+            "label": "1 dígitos"
+          },
+          "2": {
+            "label": "2 dígitos"
+          },
+          "3": {
+            "label": "3 dígitos"
+          },
+          "4": {
+            "label": "4 dígitos"
+          },
+          "5": {
+            "label": "5 dígitos"
+          },
+          "6": {
+            "label": "6 dígitos"
+          },
+          "7": {
+            "label": "7 dígitos"
+          },
+          "8": {
+            "label": "8 dígitos"
+          },
+          "9": {
+            "label": "9 dígitos"
+          }
+        },
+        "val": "2"
+      },
+      "format__use_1000_separator": {
+        "type": "checkbox",
+        "label": "Utilizar el separador 1000(.)",
+        "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "format__currency_symbol": {
+        "type": "select",
+        "label": "Símbolo",
+        "show_if": "this.format__category=='currency'",
+        "required": true,
+        "options": {
+          "dollar": {
+            "label": "$"
+          },
+          "euro": {
+            "label": "€"
+          },
+          "pound": {
+            "label": "£"
+          },
+          "yen": {
+            "label": "¥ (Yen, currency of Japan)"
+          },
+          "colon": {
+            "label": "₡ (Colón, currency of Costa Rica)"
+          },
+          "naira": {
+            "label": "₦ (Naira, currency of Nigeria)"
+          },
+          "rupee": {
+            "label": "₨ (Rupee, currency of India)"
+          },
+          "rupie": {
+            "label": "₹ (Rupee, currency of India)"
+          },
+          "won": {
+            "label": "₩ (Won, currency in South Korea and North Korea)"
+          },
+          "hebrew": {
+            "label": "₪ (Currency of Israel)"
+          },
+          "dong": {
+            "label": "₫ (Currency of Vietnam)"
+          },
+          "kip": {
+            "label": "₭ (Kip, currency of Laos)"
+          },
+          "mongolia": {
+            "label": "₮ (Currency of Mongolia)"
+          },
+          "peso": {
+            "label": "₱ (Peso, currency of the Philippines)"
+          },
+          "guarani": {
+            "label": "₲ (Guaraní, currency of Paraguay)"
+          },
+          "hryvnia": {
+            "label": "₴ (Hryvnia, currency of Ukraine)"
+          },
+          "tenge": {
+            "label": "₸ (Tenge, currency of Kazakhstan)"
+          },
+          "lira": {
+            "label": "₺ (Lira, currency of Turkey)"
+          },
+          "manat": {
+            "label": "₼ (Manat, currency of Azerbaijan)"
+          },
+          "rubles": {
+            "label": "₽ (Rubles, currency of Russia)"
+          },
+          "lari": {
+            "label": "₾ (Lari, currency of Georgia)"
+          },
+          "bitcoin": {
+            "label": "₿ (Bitcoin, crypto currency)"
+          }
+        },
+        "val": "dollar"
+      },
+      "format__date_format": {
+        "type": "select",
+        "label": "Tipo",
+        "show_if": "this.format__category=='date'",
+        "required": true,
+        "options": {
+          "mm/dd/yyyy": {
+            "label": "3/14/2012"
+          },
+          "D, M dd, Y": {
+            "label": "Miércoles, 14 de marzo de 2012"
+          },
+          "yyyy-mm-dd": {
+            "label": "40982"
+          },
+          "m.dd.yyyy": {
+            "label": "3.14.2012"
+          },
+          "m.dd.yy": {
+            "label": "3.14.12"
+          },
+          "dd.m.yyyy": {
+            "label": "14.3.2012"
+          },
+          "dd.m.yy": {
+            "label": "14.3.12"
+          },
+          "M dd, Y": {
+            "label": "14 de marzo de 2012"
+          },
+          "dd-mm-yyyy": {
+            "label": "14-03-2012"
+          },
+          "mm-dd-yyyy": {
+            "label": "03-14-2012"
+          },
+          "dd-mm-yy": {
+            "label": "14-03-12"
+          },
+          "mm-dd-yy": {
+            "label": "03-14-12"
+          }
+        },
+        "val": "mm/dd/yyyy"
+      },
+      "is_rename": {
+        "type": "checkbox",
+        "label": "Renombrar",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "rename": {
+        "show_if": "this.is_rename == 'true'",
+        "type": "text",
+        "required": true,
+        "minLength": 1,
+        "maxLength": 255,
+        "label": "Nuevo Nombre de Columna",
+        "style": "margin-left: 10px"
+      },
+      "delete": {
+        "type": "button",
+        "label": "Borrar",
+        "function": "DELETE_ROW"
+      }
+    },
+    "breakLine": true
+  }
+}
