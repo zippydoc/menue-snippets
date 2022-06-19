@@ -34,34 +34,30 @@
             "required": true,
             "breakLine": true
           },
-          "options.postgresql_credential.user": {
-            "type": "text",
-            "label": "Benutzer",
-            "show_if": "options.dbms=='postgresql'",
-            "required": true,
-            "width": "100%",
-            "breakLine": true
-          },
-          "options.postgresql_credential.password": {
-            "type": "text",
-            "label": "Kennwort",
-            "show_if": "options.dbms=='postgresql'",
-            "required": true,
-            "width": "100%",
-            "breakLine": true
-          },
-          "options.postgresql_credential.host": {
+          "options.host": {
             "type": "text",
             "label": "Host",
-            "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
             "breakLine": true
           },
-          "options.postgresql_credential.database": {
+          "options.user": {
+            "type": "text",
+            "label": "Benutzer",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.password": {
+            "type": "password",
+            "label": "Kennwort",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.database": {
             "type": "text",
             "label": "Datenbank",
-            "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
             "breakLine": true
@@ -71,7 +67,7 @@
       "options.schema_name_to_export": {
         "type": "text",
         "label": "Name des Schemas, in das exportiert werden soll",
-        "show_if": "options.dbms=='postgresql'",
+        "show_if": "options.dbms=='postgresql' || options.dbms=='sql_server' || options.dbms=='oracle'",
         "required": true,
         "val": "public",
         "width": "100%",
@@ -83,18 +79,23 @@
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "Erstellen oder überschreiben (falls vorhanden)"
+            "label": "Erstellen oder Verwerfen (falls bereits vorhanden)"
           },
           "error_if_exist": {
-            "label": "Neu erstellen (Fehler, falls vorhanden)"
+            "label": "Neu erstellen (wirft Fehler, wenn vorhanden)"
           },
           "error_if_not_exist": {
-            "label": "Überschreiben (Fehler, wenn keine Tabelle vorhanden)"
+            "label": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
           },
           "append": {
-            "label": "Tabelle Ergänzen"
+            "label": "Anhängen"
           }
-        }
+        },
+        "breakLine": true
+      },
+      "output.output_as_new_table": {
+        "type": "hidden",
+        "val": "true"
       }
     }
   }

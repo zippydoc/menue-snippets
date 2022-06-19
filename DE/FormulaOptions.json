@@ -7,7 +7,7 @@
       "options.column": {
         "type": "select",
         "label": "Spalte zum Anwenden",
-        "table": "input_table",
+        "table": "table_id",
         "bind": "COLUMNS",
         "required": true
       },
@@ -29,7 +29,7 @@
             "label": "Zunahme / Abnahme (%)"
           },
           "inc_dec_abs": {
-            "label": "Zunahme / Abnahme (absolut)"
+            "label": "Erhöhung / Verminderung (absolut)"
           }
         },
         "val": "static_value"
@@ -51,31 +51,73 @@
       },
       "options.inc_or_dec_val": {
         "type": "text",
-        "label": "Eingabewert",
+        "label": "Eingangswert",
         "show_if": "options.column_value_type=='inc_dec_percent' || options.column_value_type=='inc_dec_abs'",
         "val": "1",
         "breakLine": true
       },
       "options.static_value": {
         "type": "text",
-        "label": "Eingabewert",
+        "label": "Eingangswert",
         "show_if": "options.column_value_type=='static_value'",
         "val": "",
         "width": "100%"
       },
       "options.numeric_formula": {
         "type": "text",
-        "label": "Eingabeformel, z. B. [Spalte1] + 2 * ([Zeile-1:Spalte3] - [Spalte1])",
+        "label": "Input Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
         "show_if": "options.column_value_type=='numeric_formula'",
         "val": "",
         "width": "100%"
       },
       "options.text_formula": {
         "type": "text",
-        "label": "Eingabeformel, z. B. [Vorname] + ' ' + [Nachname] + ' ' + [Zeile-1:Spalte3]",
+        "label": "Input Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
         "show_if": "options.column_value_type=='text_formula'",
         "val": "",
         "width": "100%"
+      },
+      "options.rounding": {
+        "type": "select",
+        "label": "Abrunden",
+        "show_if": "options.column_value_type=='numeric_formula' || options.column_value_type=='inc_dec_percent' || options.column_value_type=='inc_dec_abs'",
+        "required": true,
+        "options": {
+          "no_rounding": {
+            "label": "Keine Rundung"
+          },
+          "0": {
+            "label": "0 Ziffern"
+          },
+          "1": {
+            "label": "1 Ziffern"
+          },
+          "2": {
+            "label": "2 Ziffern"
+          },
+          "3": {
+            "label": "3 Ziffern"
+          },
+          "4": {
+            "label": "4 Ziffern"
+          },
+          "5": {
+            "label": "5 Ziffern"
+          },
+          "6": {
+            "label": "6 Ziffern"
+          },
+          "7": {
+            "label": "7 Ziffern"
+          },
+          "8": {
+            "label": "8 Ziffern"
+          },
+          "9": {
+            "label": "9 Ziffern"
+          }
+        },
+        "val": "0"
       },
       "options.use_multi_row": {
         "type": "checkbox",
@@ -160,25 +202,25 @@
               "column": {
                 "type": "select",
                 "label": "Spalte auswählen",
-                "table": "input_table",
+                "table": "table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Bedingung auswählen",
+                "label": "Bediener auswählen",
                 "required": true,
                 "options": {
-                  "ENTHÄLT": {
+                  "CONTAINS": {
                     "label": "ENTHÄLT"
                   },
                   "CONTAINED IN STRING": {
                     "label": "ENTHALTEN IN"
                   },
-                  "STARTET MIT": {
+                  "STARTS WITH": {
                     "label": "STARTET MIT"
                   },
-                  "ENDET MIT": {
+                  "ENDS WITH": {
                     "label": "ENDET MIT"
                   },
                   "=": {
@@ -205,20 +247,26 @@
                   "IS NULL": {
                     "label": "IS NULL"
                   },
-                  "REGEX-MATCH": {
+                  "IS TRUE": {
+                    "label": "IST WAHR"
+                  },
+                  "IS FALSE": {
+                    "label": "IST FALSCH"
+                  },
+                  "REGEX MATCH": {
                     "label": "REGEX-MATCH"
                   },
                   "CONTAINED IN TABLE": {
                     "label": "IN TABELLE"
                   },
-                  "IN REGEX-TABELLE": {
+                  "IN REGEX TABLE": {
                     "label": "IN REGEX-TABELLE"
                   },
-                  "DATUM": {
+                  "DATE": {
                     "label": "DATUM"
                   }
                 },
-                "val": "ENTHÄLT"
+                "val": "CONTAINS"
               },
               "date_condition": {
                 "type": "select",
@@ -244,20 +292,28 @@
                 },
                 "val": "="
               },
-              "case_sensitive": {
+              "compare_with": {
                 "type": "select",
-                "label": "Wählen Sie Case Sensitive",
+                "label": "Compare with",
                 "required": true,
-                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<='",
                 "options": {
-                  "yes": {
-                    "label": "Groß-/Kleinschreibungsunterscheidung"
+                  "custom_value": {
+                    "label": "Custom value"
                   },
-                  "no": {
-                    "label": "Groß-/Kleinschreibung nicht beachten"
+                  "column_value": {
+                    "label": "Column value"
                   }
                 },
-                "val": "yes"
+                "val": "custom_value"
+              },
+              "self_compare_column": {
+                "type": "select",
+                "label": "Select Compare Column",
+                "table": "table_id",
+                "bind": "COLUMNS",
+                "show_if": "this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+                "required": true
               },
               "date_value": {
                 "type": "date",
@@ -268,12 +324,27 @@
               },
               "value": {
                 "type": "text",
-                "label": "Eingabewert",
-                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "label": "Eingangswert",
+                "show_if": "this.compare_with=='custom_value' && this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'IS TRUE' && this.condition != 'IS FALSE' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
               },
-              "compare_table": {
+              "case_sensitive": {
+                "type": "select",
+                "label": "Wählen Sie Case Sensitive",
+                "required": true,
+                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "options": {
+                  "yes": {
+                    "label": "Gehäuse empfindlich"
+                  },
+                  "no": {
+                    "label": "Groß-/Kleinschreibung nicht beachten"
+                  }
+                },
+                "val": "yes"
+              },
+              "compare_table_id": {
                 "type": "select",
                 "label": "Tabelle auswählen",
                 "bind": "TABLES",
@@ -284,7 +355,7 @@
               "compare_column": {
                 "type": "select",
                 "label": "Spalte auswählen",
-                "table": "this.compare_table",
+                "table": "this.compare_table_id",
                 "bind": "COLUMNS",
                 "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
                 "required": true
@@ -316,7 +387,7 @@
                 "label": "Gruppenspalten auswählen",
                 "required": true,
                 "width": "100%",
-                "table": "input_table",
+                "table": "table_id",
                 "multiple": true,
                 "bind": "COLUMNS",
                 "breakLine": true

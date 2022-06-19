@@ -2,126 +2,38 @@
   "options": {
     "type": "fieldset",
     "label": "Optionen auswählen",
+    "show_if": "$table_id.numOfHeader >= 1 || $table_id.numOfLabel >= 1",
     "repeat": false,
     "fields": {
       "transpose_type": {
         "type": "hidden",
         "val": "mirror_matrix"
       },
-      "mirror_matrix.convert_header_to_label": {
+      "mirror_matrix.exchange_label_header": {
         "type": "checkbox",
-        "label": "Spaltenüberschrift in Zeilenüberschrift umwandeln",
-        "show_if": "transpose_type=='mirror_matrix'",
+        "label": "Kopfzeile in Etikett umwandeln, Etikett in Kopfzeile",
+        "show_if": "$table_id.numOfHeader >= 1 && $table_id.numOfLabel >= 1",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
         "breakLine": true
       },
-      "column_name_to_label.columns_to_label": {
-        "type": "select",
-        "label": "Spalten zum Konvertieren in Labels auswählen",
-        "show_if": "transpose_type=='column_name_to_label'",
-        "table": "input_table",
-        "multiple": true,
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
+      "mirror_matrix.convert_header_to_label": {
+        "type": "checkbox",
+        "label": "Kopfzeile in Etikett umwandeln",
+        "show_if": "$table_id.numOfHeader >= 1 && $table_id.numOfLabel < 1",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
         "breakLine": true
       },
-      "column_name_to_label.label_column_name": {
-        "type": "text",
-        "label": "Spalten-Name der Label-Spalte",
-        "show_if": "transpose_type=='column_name_to_label'",
-        "required": true,
-        "val": "Label",
-        "width": "100%",
-        "breakLine": true
-      },
-      "column_name_to_label.value_column_name": {
-        "type": "text",
-        "label": "Spalten-Name der Wertespalte",
-        "show_if": "transpose_type=='column_name_to_label'",
-        "required": true,
-        "val": "Wert",
-        "width": "100%",
-        "breakLine": true
-      },
-      "crosstab.group_data_by_these_values": {
-        "type": "select",
-        "label": "Daten nach diesen Werten gruppieren",
-        "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
-        "multiple": true,
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "crosstab.change_column_headers": {
-        "type": "select",
-        "label": "Spaltenüberschrift ändern",
-        "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "crosstab.values_for_new_columns": {
-        "type": "select",
-        "label": "Werte für neue Spalten",
-        "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "crosstab.method_for_aggregating_values": {
-        "type": "select",
-        "label": "Methode zum Aggregieren von Werten",
-        "show_if": "transpose_type=='crosstab'",
-        "options": {
-          "Verketten": {
-            "label": "Verketten"
-          },
-          "Erste": {
-            "label": "Erste"
-          },
-          "Letzte": {
-            "label": "Letzte"
-          },
-          "Summe": {
-            "label": "Summe"
-          },
-          "Durchschnitt": {
-            "label": "Durchschnitt"
-          },
-          "Zählen": {
-            "label": "Zählen"
-          },
-          "Benutzerdefiniert": {
-            "label": "Benutzerdefiniert"
-          }
-        },
-        "val": "Verketten",
-        "required": true
-      },
-      "crosstab.user_defined_str": {
-        "type": "text",
-        "label": "Benutzerdefinierter Wert",
-        "show_if": "transpose_type=='crosstab' && crosstab.method_for_aggregating_values=='User Defined'",
-        "val": "x",
-        "trim": "false",
-        "breakLine": true
-      },
-      "crosstab.separator": {
-        "type": "text",
-        "label": "Separator",
-        "show_if": "transpose_type=='crosstab' && method_for_aggregating_values=='Concatenate'",
-        "val": ",",
-        "trim": "false",
-        "required": true,
+      "mirror_matrix.convert_label_to_header": {
+        "type": "checkbox",
+        "label": "Etikett in Kopfzeile umwandeln",
+        "show_if": "$table_id.numOfHeader < 1 && $table_id.numOfLabel >= 1",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
         "breakLine": true
       }
     }

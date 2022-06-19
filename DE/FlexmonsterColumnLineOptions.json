@@ -1,0 +1,186 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Flexmonster Bericht Option",
+    "show_if": "options.configure_manual=='true'",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "hidden",
+        "val": "column_line_chart"
+      },
+      "options.chart_type": {
+        "type": "hidden",
+        "val": "column_line"
+      },
+      "options.add_column_cols": {
+        "type": "checkbox",
+        "label": "nach Kategorie",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.column_cols": {
+        "type": "fieldset",
+        "label": "Category column(s)",
+        "show_if": "options.add_column_cols=='true'",
+        "repeat": true,
+        "fields": {
+          "column_col": {
+            "type": "select",
+            "label": "Kategorie Spalte",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "is_date": {
+            "type": "checkbox",
+            "label": "Ist Datum",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.row_cols": {
+        "type": "fieldset",
+        "label": "Series column(s)",
+        "repeat": true,
+        "fields": {
+          "row_col": {
+            "type": "select",
+            "label": "Spalte Serien",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "is_date": {
+            "type": "checkbox",
+            "label": "Ist Datum",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "measure_cols_frame": {
+        "type": "fieldset",
+        "label": "Value column(s)",
+        "repeat": false,
+        "fields": {
+          "options.column_chart_measure_col": {
+            "type": "select",
+            "label": "Wertespalte des Säulendiagramms",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "options.column_chart_aggregation": {
+            "type": "select",
+            "label": "Aggregation von Säulendiagrammen",
+            "options": {
+              "sum": {
+                "label": "Summe"
+              },
+              "count": {
+                "label": "Zählen Sie"
+              },
+              "distinctcount": {
+                "label": "Eindeutige Anzahl"
+              },
+              "average": {
+                "label": "Durchschnitt"
+              },
+              "median": {
+                "label": "Median"
+              },
+              "product": {
+                "label": "Produkt"
+              },
+              "min": {
+                "label": "Min"
+              },
+              "max": {
+                "label": "Max"
+              },
+              "stdevp": {
+                "label": "Standardabweichung der Bevölkerung"
+              },
+              "stdevs": {
+                "label": "Standardabweichung der Stichprobe"
+              },
+              "percent": {
+                "label": "Prozent"
+              }
+            },
+            "val": "sum",
+            "required": true,
+            "breakLine": true
+          },
+          "options.line_chart_measure_col": {
+            "type": "select",
+            "label": "Wertespalte des Liniendiagramms",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "options.line_chart_aggregation": {
+            "type": "select",
+            "label": "Aggregation von Liniendiagrammen",
+            "options": {
+              "sum": {
+                "label": "Summe"
+              },
+              "count": {
+                "label": "Zählen Sie"
+              },
+              "distinctcount": {
+                "label": "Eindeutige Anzahl"
+              },
+              "average": {
+                "label": "Durchschnitt"
+              },
+              "median": {
+                "label": "Median"
+              },
+              "product": {
+                "label": "Produkt"
+              },
+              "min": {
+                "label": "Min"
+              },
+              "max": {
+                "label": "Max"
+              },
+              "stdevp": {
+                "label": "Standardabweichung der Bevölkerung"
+              },
+              "stdevs": {
+                "label": "Standardabweichung der Stichprobe"
+              },
+              "percent": {
+                "label": "Prozent"
+              }
+            },
+            "val": "sum",
+            "required": true,
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}

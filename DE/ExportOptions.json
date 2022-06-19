@@ -155,19 +155,28 @@
         "isOff": "false",
         "breakLine": true
       },
-      "options.github_token": {
-        "type": "text",
-        "label": "Geben Sie das persönliche Github-Zugriffstoken an, das Schreibrechte hat:",
-        "show_if": "options.to=='file' && options.webservice=='github'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
       "options.github_url": {
         "type": "text",
         "label": "Link eingeben z. B. https://github.com/zippydoc/test",
         "show_if": "options.to=='file' && options.webservice=='github'",
         "val": "https://github.com/zippydoc/public-tables",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.export_dir": {
+        "type": "text",
+        "label": "Verzeichnis eingeben z.B. /MyZippyDocFiles/SubDir/",
+        "show_if": "options.to=='file' && options.webservice!='github'",
+        "val": "/",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.github_token": {
+        "type": "text",
+        "label": "Geben Sie das persönliche Github-Zugriffstoken an, das Schreibrechte hat:",
+        "show_if": "options.to=='file' && options.webservice=='github'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -190,7 +199,7 @@
       },
       "options.dropbox_authorization_code": {
         "type": "text",
-        "label": "Dropbox-Autorisierungscode. Sie können ihn hier erhalten https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
         "show_if": "options.to=='file' && options.webservice=='dropbox'",
         "required": true,
         "width": "100%",
@@ -203,22 +212,22 @@
         "val": "drop_if_exist",
         "options": {
           "drop_if_exist": {
-            "label": "Erstellen oder überschreiben (falls vorhanden)"
+            "label": "Erstellen oder Verwerfen (falls bereits vorhanden)"
           },
           "error_if_exist": {
-            "label": "Neu erstellen (Fehler, falls vorhanden)"
+            "label": "Neu erstellen (wirft Fehler, wenn vorhanden)"
           },
           "error_if_not_exist": {
-            "label": "Überschreiben (Fehler, wenn keine Tabelle vorhanden)"
+            "label": "Ablegen (Fehler werfen, wenn nicht vorhanden)"
           },
           "append": {
-            "label": "Tabelle Ergänzen"
+            "label": "Anhängen"
           }
         }
       },
       "options.export_task_name": {
         "type": "text",
-        "label": "Eingangs Task-Name",
+        "label": "Eingabe Task-Name",
         "show_if": "options.to=='mytask'",
         "required": true,
         "val": "Flow6_Task1_AddColumns",

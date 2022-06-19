@@ -626,7 +626,7 @@
           },
           "options.date_period_end": {
             "type": "select",
-            "label": "Eingabe letztes Jahr",
+            "label": "Eingabe Ende Jahr",
             "options": {
               "1900": {
                 "label": "1900"
@@ -1247,11 +1247,11 @@
             "label": "Land",
             "required": true,
             "options": {
-              "Deutschland": {
+              "Germany": {
                 "label": "Deutschland"
               }
             },
-            "val": "Deutschland",
+            "val": "Germany",
             "width": "100%"
           }
         }
@@ -1271,7 +1271,7 @@
           },
           "options.generate_states": {
             "type": "select",
-            "label": "Länder",
+            "label": "Zustand(e)",
             "show_if": "options.is_all_states=='false'",
             "required": true,
             "multiple": true,
@@ -1336,7 +1336,7 @@
         "show_if": "options.is_generate_holiday_table=='add_column'",
         "repeat": false,
         "fields": {
-          "input_table": {
+          "table_id": {
             "type": "select",
             "label": "Tabelle auswählen",
             "bind": "TABLES",
@@ -1354,7 +1354,7 @@
           "options.date_column": {
             "type": "select",
             "label": "Datumsspalte auswählen",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true,
             "breakLine": true
@@ -1379,7 +1379,7 @@
             "type": "select",
             "label": "Länderspalte auswählen",
             "show_if": "options.is_manual_country=='false'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true,
             "width": "100%",
@@ -1391,11 +1391,11 @@
             "required": true,
             "show_if" :  "options.is_manual_country=='true'",
             "options": {
-              "Deutschland": {
+              "Germany": {
                 "label": "Deutschland"
               }
             },
-            "val": "Deutschland",
+            "val": "Germany",
             "width": "100%",
             "breakLine": true
           }
@@ -1409,7 +1409,7 @@
         "fields": {
           "options.is_manual_state": {
             "type": "checkbox",
-            "label": "Land manuell festlegen",
+            "label": "Zustand manuell festlegen",
             "val": "false",
             "isOn": "true",
             "isOff": "false",
@@ -1419,7 +1419,7 @@
             "type": "select",
             "label": "Spalte Zustand auswählen",
             "show_if": "options.is_manual_state=='false'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true,
             "width": "100%",
@@ -1729,7 +1729,7 @@
         "type": "select",
         "label": "Zeitzone",
         "show_if": "options.is_generate_holiday_table=='add_column' && output.core_rule!='auto' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
-        "val": "Europa/Berlin",
+        "val": "Europe/Berlin",
         "required": true,
         "options": {
           "America/Adak": {
@@ -1756,14 +1756,14 @@
           "Asia/Bangkok": {
             "label": "Bangkok, Jakarta, Nowosibirsk"
           },
-          "Europa/Berlin": {
+          "Europe/Berlin": {
             "label": "Berlin, Paris, Amsterdam"
           },
           "Australia/Perth": {
             "label": "Brunei, Singapur, Perth"
           },
           "Atlantic/Cape_Verde": {
-            "label": "Cape_Verde,Praia, Mindelo, Santa Maria"
+            "label": "Kap_Verde,Praia, Mindelo, Santa Maria"
           },
           "America/Belize": {
             "label": "Costa_Rica, El_Salvador, Denver"
@@ -1787,16 +1787,16 @@
             "label": "Karatschi, Taschkent, Malediven"
           },
           "Asia/Kathmandu": {
-            "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
+            "label": "Kathmandu, Pokhara, Pātan, Biratnagar"
           },
           "Pacific/Kiritimati": {
             "label": "Kiritimati"
           },
           "Asia/Colombo": {
-            "label": "Kolkata, Colombo,Jaffna, Negombo"
+            "label": "Kalkutta, Colombo, Jaffna, Negombo"
           },
           "Europe/Guernsey": {
-            "label": "London. Dublin, Lisbon"
+            "label": "London. Dublin, Lissabon"
           },
           "Australia/Lord_Howe": {
             "label": "Lord_Howe"
@@ -1805,10 +1805,10 @@
             "label": "Los_Angeles, Vancouver, Hermosillo"
           },
           "Pacific/Marquesas": {
-            "label": "Marquesas,Taiohae"
+            "label": "Marquesas, Taiohae"
           },
           "America/Cayman": {
-            "label": "Mexico_City, Panama, Chicago"
+            "label": "Mexiko_Stadt, Panama, Chicago"
           },
           "Pacific/Niue": {
             "label": "Midway, Niue, Pago_Pago"
@@ -1829,10 +1829,10 @@
             "label": "Sakhalin, Norfolk, Bougainville"
           },
           "America/Araguaina": {
-            "label": "Sao_Paulo, Buenos_Aires, Montevideo"
+            "label": "Sao Paulo, Buenos Aires, Montevideo"
           },
           "America/St_Johns": {
-            "label": "St_Johns,Mount Pearl, Corner Brook"
+            "label": "St_Johns, Mount Pearl, Corner Brook"
           },
           "Asia/Tehran": {
             "label": "Teheran, Mashhad, Isfahan, Karaj, Tabriz"
@@ -1847,10 +1847,10 @@
             "label": "Wladiwostok, Sydney, Brisbane"
           },
           "Asia/Yangon": {
-            "label": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
+            "label": "Yangon, Cocos, Mandalay, Nay Pyi Taw, Mawlamyine"
           },
           "Indian/Cocos": {
-            "label": "Yangon, Cocos,West Island"
+            "label": "Yangon, Cocos, Westinsel"
           }
         },
         "breakLine": true
@@ -1859,7 +1859,7 @@
         "type": "select",
         "label": "Zeitzone",
         "show_if": "options.is_generate_holiday_table=='generate_table' && output.core_rule!='auto' && (output.prefix_rule=='date_string_type1' || output.prefix_rule=='date_string_type2' || output.prefix_rule=='time_string' || output.prefix_rule=='datetime_string' || output.core_rule=='date_string_type1' || output.core_rule=='date_string_type2' || output.core_rule=='time_string' || output.core_rule=='datetime_string' || output.suffix_rule=='date_string_type1' || output.suffix_rule=='date_string_type2' || output.suffix_rule=='time_string' || output.suffix_rule=='datetime_string')",
-        "val": "Europa/Berlin",
+        "val": "Europe/Berlin",
         "required": true,
         "options": {
           "America/Adak": {
@@ -1886,14 +1886,14 @@
           "Asia/Bangkok": {
             "label": "Bangkok, Jakarta, Nowosibirsk"
           },
-          "Europa/Berlin": {
+          "Europe/Berlin": {
             "label": "Berlin, Paris, Amsterdam"
           },
           "Australia/Perth": {
             "label": "Brunei, Singapur, Perth"
           },
           "Atlantic/Cape_Verde": {
-            "label": "Cape_Verde,Praia, Mindelo, Santa Maria"
+            "label": "Kap_Verde,Praia, Mindelo, Santa Maria"
           },
           "America/Belize": {
             "label": "Costa_Rica, El_Salvador, Denver"
@@ -1917,16 +1917,16 @@
             "label": "Karatschi, Taschkent, Malediven"
           },
           "Asia/Kathmandu": {
-            "label": "Kathmandu,Pokhara, Pātan, Biratnagar"
+            "label": "Kathmandu, Pokhara, Pātan, Biratnagar"
           },
           "Pacific/Kiritimati": {
             "label": "Kiritimati"
           },
           "Asia/Colombo": {
-            "label": "Kolkata, Colombo,Jaffna, Negombo"
+            "label": "Kalkutta, Colombo, Jaffna, Negombo"
           },
           "Europe/Guernsey": {
-            "label": "London. Dublin, Lisbon"
+            "label": "London. Dublin, Lissabon"
           },
           "Australia/Lord_Howe": {
             "label": "Lord_Howe"
@@ -1935,10 +1935,10 @@
             "label": "Los_Angeles, Vancouver, Hermosillo"
           },
           "Pacific/Marquesas": {
-            "label": "Marquesas,Taiohae"
+            "label": "Marquesas, Taiohae"
           },
           "America/Cayman": {
-            "label": "Mexico_City, Panama, Chicago"
+            "label": "Mexiko_Stadt, Panama, Chicago"
           },
           "Pacific/Niue": {
             "label": "Midway, Niue, Pago_Pago"
@@ -1959,10 +1959,10 @@
             "label": "Sakhalin, Norfolk, Bougainville"
           },
           "America/Araguaina": {
-            "label": "Sao_Paulo, Buenos_Aires, Montevideo"
+            "label": "Sao Paulo, Buenos Aires, Montevideo"
           },
           "America/St_Johns": {
-            "label": "St_Johns,Mount Pearl, Corner Brook"
+            "label": "St_Johns, Mount Pearl, Corner Brook"
           },
           "Asia/Tehran": {
             "label": "Teheran, Mashhad, Isfahan, Karaj, Tabriz"
@@ -1977,10 +1977,10 @@
             "label": "Wladiwostok, Sydney, Brisbane"
           },
           "Asia/Yangon": {
-            "label": "Yangon, Cocos,Mandalay, Nay Pyi Taw, Mawlamyine"
+            "label": "Yangon, Cocos, Mandalay, Nay Pyi Taw, Mawlamyine"
           },
           "Indian/Cocos": {
-            "label": "Yangon, Cocos,West Island"
+            "label": "Yangon, Cocos, Westinsel"
           }
         },
         "breakLine": true
@@ -2002,13 +2002,13 @@
           "field_name": {
             "type": "select",
             "label": "Spalte auswählen",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true
           },
           "order": {
             "type": "select",
-            "label": "Reihenfolge",
+            "label": "Bestellung",
             "options": {
               "-": {
                 "label": "-"

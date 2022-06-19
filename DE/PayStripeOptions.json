@@ -1,0 +1,54 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Optionen",
+    "repeat": false,
+    "fields": {
+      "options.provider": {
+        "type": "hidden",
+        "val": "stripe"
+      },
+      "options.type": {
+        "type": "select",
+        "label": "Zahlungsart",
+        "options": {
+          "charge": {
+            "label": "Charge"
+          },
+          "transfer": {
+            "label": "Überweisung"
+          }
+        },
+        "val": "charge",
+        "required": true
+      },
+      "options.charge_type": {
+        "type": "select",
+        "label": "Ladungsart",
+        "show_if": "options.provider=='stripe' && options.type=='charge'",
+        "options": {
+          "charge_without_invoice": {
+            "label": "Sofortige Abrechnung ohne Rechnungsstellung"
+          },
+          "send_invoice": {
+            "label": "Nur Rechnung senden"
+          },
+          "send_invoice_immediate_charge": {
+            "label": "Rechnung senden und sofortige Abrechnung"
+          }
+        },
+        "val": "send_invoice_immediate_charge",
+        "required": true
+      },
+      "options.stripe.secret_key": {
+        "type": "password",
+        "label": "Stripe-Geheimschlüssel",
+        "show_if": "options.provider=='stripe'",
+        "required": true,
+        "val": "",
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}

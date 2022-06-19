@@ -1,0 +1,40 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Optionen",
+    "show_if": "options.configure_manual=='true'",
+    "repeat": false,
+    "fields": {
+      "options.chart_type": {
+        "type": "hidden",
+        "val": "treemap"
+      },
+      "options.group_cols": {
+        "type": "fieldset",
+        "label": "Select Group Column(s) in Order",
+        "repeat": true,
+        "fields": {
+          "group_col": {
+            "type": "select",
+            "label": "Gruppenspalte",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.value_col": {
+        "type": "select",
+        "label": "Wertespalte auswählen",
+        "table": "table_id",
+        "bind": "COLUMNS",
+        "required": true
+      }
+    }
+  }
+}
