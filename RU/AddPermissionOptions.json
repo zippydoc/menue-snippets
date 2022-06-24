@@ -1,36 +1,75 @@
 {
-  "options": {
+  "options_box": {
     "type": "fieldset",
     "label": "Выбрать параметры",
     "repeat": false,
     "fields": {
       "options.table_permission.set_or_delete": {
         "type": "select",
-        "label": "Тип действия",
+        "label": "Тип",
         "show_if": "input.table_or_flow=='set_table_permissions'",
         "required": true,
         "options": {
-          "set_permissions": {
-            "label": "Установить разрешения"
+          "set_permissions_by_user_list": {
+            "label": "Set permissions by user list"
+          },
+          "set_permissions_by_user_table": {
+            "label": "Set permissions by user table"
           },
           "delete_permissions": {
             "label": "Удалить все разрешения"
           }
         },
-        "val": "set_permissions",
+        "val": "set_permissions_by_user_list",
         "breakLine": true
       },
       "options.table_permission.emails": {
         "type": "text",
         "label": "Разрешенные пользователи (; разделенный список)",
-        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_list'",
         "required": true,
         "width": "100%"
+      },
+      "users_table_id": {
+        "type": "select",
+        "label": "Select Users Table",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_table'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true
+      },
+      "user_column": {
+        "type": "select",
+        "label": "Select Users Column",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_table'",
+        "required": true,
+        "table": "users_table_id",
+        "bind": "COLUMNS",
+        "breakLine": true
+      },
+      "options.table_permission.all_rows": {
+        "type": "checkbox",
+        "label": "Предоставить права пользователям всех строк",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_table'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "user_rows": {
+        "type": "select",
+        "label": "User rows",
+        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions_by_user_table' && options.table_permission.all_rows=='false'",
+        "multiple": true,
+        "unique_values_only": true,
+        "table": "users_table_id",
+        "column_list": "user_column",
+        "bind": "RECORDS",
+        "required": true
       },
       "options.table_permission.permissions": {
         "type": "fieldset",
         "label": "Установить разрешения",
-        "show_if": "input.table_or_flow=='set_table_permissions' && options.table_permission.set_or_delete=='set_permissions'",
+        "show_if": "input.table_or_flow=='set_table_permissions' && (options.table_permission.set_or_delete=='set_permissions_by_user_list' || options.table_permission.set_or_delete=='set_permissions_by_user_table')",
         "repeat": true,
         "fields": {
           "rows_or_columns": {
@@ -39,7 +78,7 @@
             "required": true,
             "options": {
               "select_rows": {
-                "label": "Выбрать строки"
+                "label": "Выбрать строку (строки)"
               },
               "select_columns": {
                 "label": "Выбрать столбец(цы)"
@@ -49,7 +88,7 @@
           },
           "rows": {
             "type": "select",
-            "label": "Выбрать строки",
+            "label": "Выбрать строку (строки)",
             "show_if": "this.rows_or_columns=='select_rows'",
             "table": "input.table_id",
             "bind": "LABELS",
@@ -76,7 +115,7 @@
               "WRITE": {
                 "label": "Записать"
               },
-              "PASS-ON": {
+              "PASS_ON": {
                 "label": "Передать"
               }
             },
@@ -109,35 +148,23 @@
         "required": true,
         "width": "100%"
       },
-      "options.flow_permission.permissions": {
-        "type": "fieldset",
-        "label": "Установить разрешения",
+      "options.flow_permission.permission_type": {
+        "type": "select",
+        "label": "Тип разрешения",
         "show_if": "input.table_or_flow=='set_flow_permissions' && options.flow_permission.set_or_delete=='set_permissions'",
-        "repeat": true,
-        "fields": {
-          "permission_type": {
-            "type": "select",
-            "label": "Тип разрешения",
-            "required": true,
-            "options": {
-              "READ": {
-                "label": "Читать"
-              },
-              "WRITE": {
-                "label": "Записать"
-              },
-              "PASS-ON": {
-                "label": "Передать"
-              }
-            },
-            "val": "READ"
+        "required": true,
+        "options": {
+          "READ": {
+            "label": "Читать"
           },
-          "delete": {
-            "type": "button",
-            "label": "Удалить",
-            "function": "DELETE_ROW"
+          "WRITE": {
+            "label": "Записать"
+          },
+          "PASS_ON": {
+            "label": "Передать"
           }
-        }
+        },
+        "val": "READ"
       }
     }
   }

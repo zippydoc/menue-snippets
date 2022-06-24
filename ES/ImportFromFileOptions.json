@@ -40,7 +40,7 @@
             "label": "Línea por Línea"
           },
           "word_by_word": {
-            "label": "Palabra por Palabra"
+            "label": "Texto"
           }
         },
         "val": "csv_table",
@@ -112,7 +112,7 @@
             "type": "checkbox",
             "label": "Agregar Columna Sección",
             "show_if": "options.output_format=='word_by_word'",
-            "val": "true",
+            "val": "false",
             "isOn": "true",
             "isOff": "false",
             "breakLine": true
@@ -164,11 +164,14 @@
                   "inner_bracket": {
                     "label": "Corchete interior"
                   },
+                  "brackets_only": {
+                    "label": "Brackets Only"
+                  },
                   "show_all": {
                     "label": "Mostrar Todo"
                   }
                 },
-                "val": "nesting_structure",
+                "val": "show_all",
                 "required": true,
                 "breakLine": true
               }
@@ -180,6 +183,7 @@
             "val": "false",
             "isOn": "true",
             "isOff": "false",
+            "style": "margin-top: 10px",
             "breakLine": true
           },
           "options.add_filepath_column": {
@@ -256,16 +260,6 @@
         "val": "false",
         "isOn": "true",
         "isOff": "false",
-        "breakLine": true
-      },
-      "options.use_filename_as_output_table_name": {
-        "type": "checkbox",
-        "label": "Usar nombre de archivo como nombre de la tabla",
-        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
-        "val": "true",
-        "isOn": "true",
-        "isOff": "false",
-        "style": "margin-top: 10px",
         "breakLine": true
       }
     }
@@ -392,14 +386,6 @@
         "type": "text",
         "label": "Token de acceso personal a Github",
         "show_if": "options.webservice=='github' && options.is_github_private=='true'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "options.one_drive.access_token": {
-        "type": "text",
-        "label": "Token de acceso a One Drive",
-        "show_if": "options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true

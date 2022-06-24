@@ -4,14 +4,13 @@
     "label": "Optionen auswählen",
     "repeat": false,
     "fields": {
-      "options.type": {
+      "options.task_symbol": {
         "type": "hidden",
-        "val": "custom"
+        "val": "periodicy_by_menu"
       },
       "options.custom.table": {
         "type": "fieldset",
         "label": "Planungsposition",
-        "show_if": "options.type=='custom'",
         "repeat": true,
         "fields": {
           "item": {
@@ -44,30 +43,30 @@
             "label": "Periodizität",
             "required": true,
             "options": {
-              "Einmalig": {
+              "One-Off": {
                 "label": "Einmalig"
               },
-              "Täglich": {
+              "Daily": {
                 "label": "Täglich"
               },
-              "Wöchentlich": {
+              "Weekly": {
                 "label": "Wöchentlich"
               },
-              "Monatlich": {
+              "Monthly": {
                 "label": "Monatlich"
               },
-              "vierteljährlich": {
+              "Quarterly": {
                 "label": "vierteljährlich"
               },
-              "Jährlich": {
+              "Yearly": {
                 "label": "Jährlich"
               }
             },
-            "val": "Einmalig"
+            "val": "One-Off"
           },
           "growth": {
             "type": "number",
-            "label": "Growth in %",
+            "label": "Wachstum in %",
             "show_if": "this.periodicy!='One-Off'",
             "val": "",
             "required": true
@@ -77,37 +76,40 @@
             "label": "Wachstumsperiode",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "Wöchentlich": {
+              "Weekly": {
                 "label": "Wöchentlich"
               },
-              "Monatlich": {
+              "Monthly": {
                 "label": "Monat für Monat"
               },
-              "vierteljährlich": {
+              "Quarterly": {
                 "label": "Quartal für Quartal"
               },
-              "Jährlich": {
+              "Yearly": {
                 "label": "Jahr auf Jahr"
               }
             },
-            "val": "Wöchentlich"
+            "val": "Weekly"
           },
           "growth_pattern": {
             "type": "select",
             "label": "Wachstumsmuster",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "Aufsummierung": {
-                "label": "Aufsummierung"
-              },
               "Linear": {
                 "label": "Linear"
               },
-              "Jump-Fix": {
-                "label": "Jump-Fix"
+              "Compounding": {
+                "label": "Aufsummierung"
+              },
+              "Jump-Fix Linear": {
+                "label": "Jump-Fix Linear"
+              },
+              "Jump-Fix Compounding": {
+                "label": "Jump-Fix Compounding"
               }
             },
-            "val": "Aufsummierung"
+            "val": "Compounding"
           },
           "final_date": {
             "type": "date",
@@ -125,7 +127,6 @@
       "options.end_date": {
         "type": "date",
         "label": "Enddatum der Tabelle",
-        "show_if": "options.type=='process' || options.type=='custom'",
         "val": "",
         "required": true,
         "style": "width: 300px"

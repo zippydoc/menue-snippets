@@ -1,0 +1,30 @@
+{
+  "cloud_config_frame": {
+    "type": "fieldset",
+    "label": "Config Cloud Directory to export to",
+    "show_if": "options.type=='create' && (options.where_to_create=='only_export_to_cloud' || options.where_to_create=='both_export_to_cloud_and_open_in_browser')",
+    "repeat": false,
+    "fields": {
+      "options.webservice": {
+        "type": "hidden",
+        "val": "google_drive"
+      },
+      "options.export_dir": {
+        "type": "text",
+        "label": "Enter dir e.g. /MyZippyDocFiles/SubDir/",
+        "show_if": "options.webservice!='github'",
+        "val": "",
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.google_authorization_code": {
+        "type": "text",
+        "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. You can get it here https://developers.google.com/oauthplayground/",
+        "show_if": "options.webservice=='google_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}

@@ -4,6 +4,195 @@
     "label": "オプション",
     "repeat": false,
     "fields": {
+      "all_columns": {
+        "type": "checkbox",
+        "label": "全ての列",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "show_if": "$table_id.numOfHeader >= 1"
+      },
+      "all_column.format__category": {
+        "type": "select",
+        "label": "表示形式",
+        "required": true,
+        "options": {
+          "standard": {
+            "label": "標準"
+          },
+          "number": {
+            "label": "数"
+          },
+          "percentage": {
+            "label": "割合"
+          },
+          "text": {
+            "label": "テキスト"
+          },
+          "date": {
+            "label": "日付"
+          },
+          "currency": {
+            "label": "通貨"
+          }
+        },
+        "val": "standard",
+        "show_if": "all_columns=='true'"
+      },
+      "all_column.format__rounding": {
+        "type": "select",
+        "label": "表示用小数点以下の桁数",
+        "show_if": "all_columns=='true' && (all_column.format__category=='number' || all_column.format__category=='percentage' || all_column.format__category=='currency')",
+        "required": true,
+        "options": {
+          "no_rounding": {
+            "label": "四捨五入無し"
+          },
+          "0": {
+            "label": "0桁"
+          },
+          "1": {
+            "label": "1桁"
+          },
+          "2": {
+            "label": "2桁"
+          },
+          "3": {
+            "label": "3桁"
+          },
+          "4": {
+            "label": "4桁"
+          },
+          "5": {
+            "label": "5桁"
+          },
+          "6": {
+            "label": "6桁"
+          },
+          "7": {
+            "label": "7桁"
+          },
+          "8": {
+            "label": "8桁"
+          },
+          "9": {
+            "label": "9桁"
+          }
+        },
+        "val": "2"
+      },
+      "all_column.format__1000_separator": {
+        "type": "select",
+        "label": "1000セパレーター",
+        "show_if": "all_columns=='true' && (all_column.format__category=='number' || all_column.format__category=='percentage' || all_column.format__category=='currency')",
+        "required": true,
+        "options": {
+          "no_1000_separator": {
+            "label": "No 1000 Separator"
+          },
+          "period_1000_separator": {
+            "label": "1000セパレータ（。）"
+          },
+          "comma_1000_separator": {
+            "label": "1000セパレータ（,）"
+          }
+        },
+        "val": "period_1000_separator"
+      },
+      "all_column.format__currency_symbol": {
+        "type": "select",
+        "label": "シンボル",
+        "show_if": "all_columns=='true' && all_column.format__category=='currency'",
+        "required": true,
+        "options": {
+          "dollar": {
+            "label": "$"
+          },
+          "euro": {
+            "label": "€"
+          },
+          "pound": {
+            "label": "£"
+          },
+          "yen": {
+            "label": "¥ (Yen, currency of Japan)"
+          },
+          "colon": {
+            "label": "₡ (Colón, currency of Costa Rica)"
+          },
+          "naira": {
+            "label": "₦ (Naira, currency of Nigeria)"
+          },
+          "rupee": {
+            "label": "₨ (Rupee, currency of India)"
+          },
+          "rupie": {
+            "label": "₹ (Rupee, currency of India)"
+          },
+          "won": {
+            "label": "₩ (Won, currency in South Korea and North Korea)"
+          },
+          "hebrew": {
+            "label": "₪ (Currency of Israel)"
+          },
+          "dong": {
+            "label": "₫ (Currency of Vietnam)"
+          },
+          "kip": {
+            "label": "₭ (Kip, currency of Laos)"
+          },
+          "mongolia": {
+            "label": "₮ (Currency of Mongolia)"
+          },
+          "peso": {
+            "label": "₱ (Peso, currency of the Philippines)"
+          },
+          "guarani": {
+            "label": "₲ (Guaraní, currency of Paraguay)"
+          },
+          "hryvnia": {
+            "label": "₴ (Hryvnia, currency of Ukraine)"
+          },
+          "tenge": {
+            "label": "₸ (Tenge, currency of Kazakhstan)"
+          },
+          "lira": {
+            "label": "₺ (Lira, currency of Turkey)"
+          },
+          "manat": {
+            "label": "₼ (Manat, currency of Azerbaijan)"
+          },
+          "rubles": {
+            "label": "₽ (Rubles, currency of Russia)"
+          },
+          "lari": {
+            "label": "₾ (Lari, currency of Georgia)"
+          },
+          "bitcoin": {
+            "label": "₿ (Bitcoin, crypto currency)"
+          }
+        },
+        "val": "dollar"
+      },
+      "all_column.format__date_format": {
+        "type": "select",
+        "label": "タイプ",
+        "show_if": "all_columns=='true' && all_column.format__category=='date'",
+        "required": true,
+        "options": {
+          "mm/dd/yyyy": {
+            "label": "3/14/2012"
+          },
+          "D, M dd, Y": {
+            "label": "水曜日、3月14日、2012"
+          },
+          "yyyy-mm-dd": {
+            "label": "2012-03-14"
+          }
+        },
+        "val": "mm/dd/yyyy",
+        "breakLine": true
+      },
       "reformat_columns": {
         "type": "checkbox",
         "label": "列の書式設定",
@@ -15,19 +204,20 @@
       "columns": {
         "type": "fieldset",
         "label": "列の選択",
-        "show_if": "$input_table.numOfHeader >= 1",
+        "show_if": "all_columns!='true' && $table_id.numOfHeader >= 1",
         "repeat": true,
         "fields": {
-          "field_name": {
+          "field_names": {
             "type": "select",
             "label": "列の選択",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
-            "required": true
+            "required": true,
+            "multiple": true
           },
           "format__category": {
             "type": "select",
-            "label": "フォーマット",
+            "label": "表示形式",
             "required": true,
             "options": {
               "standard": {
@@ -53,7 +243,7 @@
           },
           "format__rounding": {
             "type": "select",
-            "label": "四捨五入",
+            "label": "表示用小数点以下の桁数",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
@@ -93,13 +283,23 @@
             },
             "val": "2"
           },
-          "format__use_1000_separator": {
-            "type": "checkbox",
-            "label": "Use 1000 Separator(.)",
+          "format__1000_separator": {
+            "type": "select",
+            "label": "1000セパレーター",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false"
+            "required": true,
+            "options": {
+              "no_1000_separator": {
+                "label": "No 1000 Separator"
+              },
+              "period_1000_separator": {
+                "label": "1000セパレータ（。）"
+              },
+              "comma_1000_separator": {
+                "label": "1000セパレータ（,）"
+              }
+            },
+            "val": "period_1000_separator"
           },
           "format__currency_symbol": {
             "type": "select",
@@ -115,6 +315,63 @@
               },
               "pound": {
                 "label": "£"
+              },
+              "yen": {
+                "label": "¥ (Yen, currency of Japan)"
+              },
+              "colon": {
+                "label": "₡ (Colón, currency of Costa Rica)"
+              },
+              "naira": {
+                "label": "₦ (Naira, currency of Nigeria)"
+              },
+              "rupee": {
+                "label": "₨ (Rupee, currency of India)"
+              },
+              "rupie": {
+                "label": "₹ (Rupee, currency of India)"
+              },
+              "won": {
+                "label": "₩ (Won, currency in South Korea and North Korea)"
+              },
+              "hebrew": {
+                "label": "₪ (Currency of Israel)"
+              },
+              "dong": {
+                "label": "₫ (Currency of Vietnam)"
+              },
+              "kip": {
+                "label": "₭ (Kip, currency of Laos)"
+              },
+              "mongolia": {
+                "label": "₮ (Currency of Mongolia)"
+              },
+              "peso": {
+                "label": "₱ (Peso, currency of the Philippines)"
+              },
+              "guarani": {
+                "label": "₲ (Guaraní, currency of Paraguay)"
+              },
+              "hryvnia": {
+                "label": "₴ (Hryvnia, currency of Ukraine)"
+              },
+              "tenge": {
+                "label": "₸ (Tenge, currency of Kazakhstan)"
+              },
+              "lira": {
+                "label": "₺ (Lira, currency of Turkey)"
+              },
+              "manat": {
+                "label": "₼ (Manat, currency of Azerbaijan)"
+              },
+              "rubles": {
+                "label": "₽ (Rubles, currency of Russia)"
+              },
+              "lari": {
+                "label": "₾ (Lari, currency of Georgia)"
+              },
+              "bitcoin": {
+                "label": "₿ (Bitcoin, crypto currency)"
               }
             },
             "val": "dollar"
@@ -133,6 +390,33 @@
               },
               "yyyy-mm-dd": {
                 "label": "2012-03-14"
+              },
+              "m.dd.yyyy": {
+                "label": "3.14.2012"
+              },
+              "m.dd.yy": {
+                "label": "3.14.12"
+              },
+              "dd.m.yyyy": {
+                "label": "14.3.2012"
+              },
+              "dd.m.yy": {
+                "label": "14.3.12"
+              },
+              "M dd, Y": {
+                "label": "March 14, 2012"
+              },
+              "dd-mm-yyyy": {
+                "label": "14-03-2012"
+              },
+              "mm-dd-yyyy": {
+                "label": "03-14-2012"
+              },
+              "dd-mm-yy": {
+                "label": "14-03-12"
+              },
+              "mm-dd-yy": {
+                "label": "03-14-12"
               }
             },
             "val": "mm/dd/yyyy",
@@ -147,6 +431,202 @@
         },
         "breakLine": true
       },
+      "info1": {
+        "type": "textarea",
+        "label": "",
+        "val": "Please note, that Excel will treat “.” and  “,” in accordance with country settings",
+        "disabled": true,
+        "style": "width: 100%"
+      },
+      "all_labels": {
+        "type": "checkbox",
+        "label": "全ラベル",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "show_if": "$table_id.numOfLabel >= 1"
+      },
+      "all_label.format__category": {
+        "type": "select",
+        "label": "表示形式",
+        "required": true,
+        "options": {
+          "standard": {
+            "label": "標準"
+          },
+          "number": {
+            "label": "数"
+          },
+          "percentage": {
+            "label": "割合"
+          },
+          "text": {
+            "label": "テキスト"
+          },
+          "date": {
+            "label": "日付"
+          },
+          "currency": {
+            "label": "通貨"
+          }
+        },
+        "val": "standard",
+        "show_if": "all_labels=='true'"
+      },
+      "all_label.format__rounding": {
+        "type": "select",
+        "label": "表示用小数点以下の桁数",
+        "show_if": "all_labels=='true' && (all_label.format__category=='number' || all_label.format__category=='percentage' || all_label.format__category=='currency')",
+        "required": true,
+        "options": {
+          "no_rounding": {
+            "label": "四捨五入無し"
+          },
+          "0": {
+            "label": "0桁"
+          },
+          "1": {
+            "label": "1桁"
+          },
+          "2": {
+            "label": "2桁"
+          },
+          "3": {
+            "label": "3桁"
+          },
+          "4": {
+            "label": "4桁"
+          },
+          "5": {
+            "label": "5桁"
+          },
+          "6": {
+            "label": "6桁"
+          },
+          "7": {
+            "label": "7桁"
+          },
+          "8": {
+            "label": "8桁"
+          },
+          "9": {
+            "label": "9桁"
+          }
+        },
+        "val": "2"
+      },
+      "all_label.format__1000_separator": {
+        "type": "select",
+        "label": "1000セパレーター",
+        "show_if": "all_labels=='true' && (all_label.format__category=='number' || all_label.format__category=='percentage' || all_label.format__category=='currency')",
+        "required": true,
+        "options": {
+          "no_1000_separator": {
+            "label": "No 1000 Separator"
+          },
+          "period_1000_separator": {
+            "label": "1000セパレータ（。）"
+          },
+          "comma_1000_separator": {
+            "label": "1000セパレータ（,）"
+          }
+        },
+        "val": "period_1000_separator"
+      },
+      "all_label.format__currency_symbol": {
+        "type": "select",
+        "label": "シンボル",
+        "show_if": "all_labels=='true' && all_label.format__category=='currency'",
+        "required": true,
+        "options": {
+          "dollar": {
+            "label": "$"
+          },
+          "euro": {
+            "label": "€"
+          },
+          "pound": {
+            "label": "£"
+          },
+          "yen": {
+            "label": "¥ (Yen, currency of Japan)"
+          },
+          "colon": {
+            "label": "₡ (Colón, currency of Costa Rica)"
+          },
+          "naira": {
+            "label": "₦ (Naira, currency of Nigeria)"
+          },
+          "rupee": {
+            "label": "₨ (Rupee, currency of India)"
+          },
+          "rupie": {
+            "label": "₹ (Rupee, currency of India)"
+          },
+          "won": {
+            "label": "₩ (Won, currency in South Korea and North Korea)"
+          },
+          "hebrew": {
+            "label": "₪ (Currency of Israel)"
+          },
+          "dong": {
+            "label": "₫ (Currency of Vietnam)"
+          },
+          "kip": {
+            "label": "₭ (Kip, currency of Laos)"
+          },
+          "mongolia": {
+            "label": "₮ (Currency of Mongolia)"
+          },
+          "peso": {
+            "label": "₱ (Peso, currency of the Philippines)"
+          },
+          "guarani": {
+            "label": "₲ (Guaraní, currency of Paraguay)"
+          },
+          "hryvnia": {
+            "label": "₴ (Hryvnia, currency of Ukraine)"
+          },
+          "tenge": {
+            "label": "₸ (Tenge, currency of Kazakhstan)"
+          },
+          "lira": {
+            "label": "₺ (Lira, currency of Turkey)"
+          },
+          "manat": {
+            "label": "₼ (Manat, currency of Azerbaijan)"
+          },
+          "rubles": {
+            "label": "₽ (Rubles, currency of Russia)"
+          },
+          "lari": {
+            "label": "₾ (Lari, currency of Georgia)"
+          },
+          "bitcoin": {
+            "label": "₿ (Bitcoin, crypto currency)"
+          }
+        },
+        "val": "dollar"
+      },
+      "all_label.format__date_format": {
+        "type": "select",
+        "label": "タイプ",
+        "show_if": "all_labels=='true' && all_label.format__category=='date'",
+        "required": true,
+        "options": {
+          "mm/dd/yyyy": {
+            "label": "3/14/2012"
+          },
+          "D, M dd, Y": {
+            "label": "水曜日、3月14日、2012"
+          },
+          "yyyy-mm-dd": {
+            "label": "2012-03-14"
+          }
+        },
+        "val": "mm/dd/yyyy",
+        "breakLine": true
+      },
       "reformat_rows": {
         "type": "checkbox",
         "label": "ラベルのフォーマット",
@@ -159,19 +639,20 @@
       "rows": {
         "type": "fieldset",
         "label": "ラベルの選択",
-        "show_if": "$input_table.numOfLabel >= 1",
+        "show_if": "all_labels!='true' && $table_id.numOfLabel >= 1",
         "repeat": true,
         "fields": {
-          "label_name": {
+          "label_names": {
             "type": "select",
             "label": "ラベルの選択",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "LABELS",
-            "required": true
+            "required": true,
+            "multiple": true
           },
           "format__category": {
             "type": "select",
-            "label": "フォーマット",
+            "label": "表示形式",
             "required": true,
             "options": {
               "standard": {
@@ -197,7 +678,7 @@
           },
           "format__rounding": {
             "type": "select",
-            "label": "四捨五入",
+            "label": "表示用小数点以下の桁数",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
@@ -237,13 +718,23 @@
             },
             "val": "2"
           },
-          "format__use_1000_separator": {
-            "type": "checkbox",
-            "label": "Use 1000 Separator(.)",
+          "format__1000_separator": {
+            "type": "select",
+            "label": "1000セパレーター",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
-            "val": "true",
-            "isOn": "true",
-            "isOff": "false"
+            "required": true,
+            "options": {
+              "no_1000_separator": {
+                "label": "No 1000 Separator"
+              },
+              "period_1000_separator": {
+                "label": "1000セパレータ（。）"
+              },
+              "comma_1000_separator": {
+                "label": "1000セパレータ（,）"
+              }
+            },
+            "val": "period_1000_separator"
           },
           "format__currency_symbol": {
             "type": "select",
@@ -259,6 +750,63 @@
               },
               "pound": {
                 "label": "£"
+              },
+              "yen": {
+                "label": "¥ (Yen, currency of Japan)"
+              },
+              "colon": {
+                "label": "₡ (Colón, currency of Costa Rica)"
+              },
+              "naira": {
+                "label": "₦ (Naira, currency of Nigeria)"
+              },
+              "rupee": {
+                "label": "₨ (Rupee, currency of India)"
+              },
+              "rupie": {
+                "label": "₹ (Rupee, currency of India)"
+              },
+              "won": {
+                "label": "₩ (Won, currency in South Korea and North Korea)"
+              },
+              "hebrew": {
+                "label": "₪ (Currency of Israel)"
+              },
+              "dong": {
+                "label": "₫ (Currency of Vietnam)"
+              },
+              "kip": {
+                "label": "₭ (Kip, currency of Laos)"
+              },
+              "mongolia": {
+                "label": "₮ (Currency of Mongolia)"
+              },
+              "peso": {
+                "label": "₱ (Peso, currency of the Philippines)"
+              },
+              "guarani": {
+                "label": "₲ (Guaraní, currency of Paraguay)"
+              },
+              "hryvnia": {
+                "label": "₴ (Hryvnia, currency of Ukraine)"
+              },
+              "tenge": {
+                "label": "₸ (Tenge, currency of Kazakhstan)"
+              },
+              "lira": {
+                "label": "₺ (Lira, currency of Turkey)"
+              },
+              "manat": {
+                "label": "₼ (Manat, currency of Azerbaijan)"
+              },
+              "rubles": {
+                "label": "₽ (Rubles, currency of Russia)"
+              },
+              "lari": {
+                "label": "₾ (Lari, currency of Georgia)"
+              },
+              "bitcoin": {
+                "label": "₿ (Bitcoin, crypto currency)"
               }
             },
             "val": "dollar"

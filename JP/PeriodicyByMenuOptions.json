@@ -4,14 +4,13 @@
     "label": "オプションの選択",
     "repeat": false,
     "fields": {
-      "options.type": {
+      "options.task_symbol": {
         "type": "hidden",
-        "val": "custom"
+        "val": "periodicy_by_menu"
       },
       "options.custom.table": {
         "type": "fieldset",
         "label": "企画ポジション",
-        "show_if": "options.type=='custom'",
         "repeat": true,
         "fields": {
           "item": {
@@ -47,16 +46,16 @@
               "One-Off": {
                 "label": "One-Off"
               },
-              "デイリー": {
+              "Daily": {
                 "label": "デイリー"
               },
-              "ウィークリー": {
+              "Weekly": {
                 "label": "ウィークリー"
               },
-              "月次": {
+              "Monthly": {
                 "label": "月次"
               },
-              "四半期": {
+              "Quarterly": {
                 "label": "四半期"
               },
               "Yearly": {
@@ -77,37 +76,40 @@
             "label": "成長期",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "ウィークリー": {
+              "Weekly": {
                 "label": "ウィークリー"
               },
-              "月次": {
+              "Monthly": {
                 "label": "月次"
               },
-              "四半期": {
+              "Quarterly": {
                 "label": "四半期毎"
               },
               "Yearly": {
                 "label": "年次"
               }
             },
-            "val": "ウィークリー"
+            "val": "Weekly"
           },
           "growth_pattern": {
             "type": "select",
             "label": "成長パターン",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "複利計算": {
-                "label": "複利計算"
-              },
-              "線形": {
+              "Linear": {
                 "label": "線形"
               },
-              "Jump-Fix": {
-                "label": "Jump-Fix"
+              "Compounding": {
+                "label": "複利計算"
+              },
+              "Jump-Fix Linear": {
+                "label": "Jump-Fix Linear"
+              },
+              "Jump-Fix Compounding": {
+                "label": "Jump-Fix Compounding"
               }
             },
-            "val": "複利計算"
+            "val": "Compounding"
           },
           "final_date": {
             "type": "date",
@@ -125,7 +127,6 @@
       "options.end_date": {
         "type": "date",
         "label": "テーブルの終了日",
-        "show_if": "options.type=='process' || options.type=='custom'",
         "val": "",
         "required": true,
         "style": "width: 300px"

@@ -1,0 +1,70 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
+      "options.find_col": {
+        "type": "select",
+        "label": "Colonne de remplacement",
+        "table": "table_id",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.placeholder_type": {
+        "type": "select",
+        "label": "Type de placeholder",
+        "required": true,
+        "options": {
+          "text": {
+            "label": "Texte"
+          },
+          "regex": {
+            "label": "Expression régulière"
+          }
+        },
+        "val": "text"
+      },
+      "options.placeholder_text": {
+        "type": "text",
+        "label": "Placeholder",
+        "show_if": "options.placeholder_type=='text'",
+        "val": "",
+        "placeholder": "FindText",
+        "required": true,
+        "breakLine": true
+      },
+      "options.placeholder_regex": {
+        "type": "text",
+        "label": "Placeholder RegEx",
+        "show_if": "options.placeholder_type=='regex'",
+        "val": "",
+        "placeholder": "\\sFindText\\s",
+        "required": true
+      },
+      "options.case_sensitivity": {
+        "type": "select",
+        "label": "Sensibilité à la casse",
+        "required": true,
+        "options": {
+          "yes": {
+            "label": "Respecter la casse"
+          },
+          "no": {
+            "label": "Ignorer la casse"
+          }
+        },
+        "val": "yes",
+        "breakLine": true
+      },
+      "options.replace_col": {
+        "type": "select",
+        "label": "Remplacer par une colonne",
+        "table": "table_id",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      }
+    }
+  }
+}

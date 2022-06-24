@@ -1,0 +1,54 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
+      "options.provider": {
+        "type": "hidden",
+        "val": "stripe"
+      },
+      "options.type": {
+        "type": "select",
+        "label": "Type de paiement",
+        "options": {
+          "charge": {
+            "label": "Charge"
+          },
+          "transfer": {
+            "label": "Transfert"
+          }
+        },
+        "val": "charge",
+        "required": true
+      },
+      "options.charge_type": {
+        "type": "select",
+        "label": "Type de charge",
+        "show_if": "options.provider=='stripe' && options.type=='charge'",
+        "options": {
+          "charge_without_invoice": {
+            "label": "Facturation immédiate sans envoi de facture"
+          },
+          "send_invoice": {
+            "label": "N'envoyer que la facture"
+          },
+          "send_invoice_immediate_charge": {
+            "label": "Envoyer la facture et la charge immédiate"
+          }
+        },
+        "val": "send_invoice_immediate_charge",
+        "required": true
+      },
+      "options.stripe.secret_key": {
+        "type": "password",
+        "label": "Clé secrète Stripe",
+        "show_if": "options.provider=='stripe'",
+        "required": true,
+        "val": "",
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}

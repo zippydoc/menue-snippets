@@ -1,0 +1,153 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Run All Options",
+    "repeat": false,
+    "fields": {
+      "input_table_options": {
+        "type": "fieldset",
+        "label": "Specify Input Tables",
+        "breakLine": true,
+        "repeat": false,
+        "fields": {
+          "options.select_type": {
+            "type": "select",
+            "label": "选择类型",
+            "required": true,
+            "options": {
+              "table_selection": {
+                "label": "Table Selection"
+              },
+              "select_by_pattern": {
+                "label": "Select by Pattern"
+              }
+            },
+            "val": "table_selection"
+          },
+          "options.table_ids": {
+            "type": "select",
+            "label": "选择表格",
+            "bind": "TABLES",
+            "empty": "",
+            "multiple": true,
+            "show_if": "options.select_type=='table_selection'",
+            "required": true
+          },
+          "options.filter_params": {
+            "type": "fieldset",
+            "label": "Match tables",
+            "show_if": "options.select_type=='select_by_pattern'",
+            "breakLine": true,
+            "repeat": true,
+            "fields": {
+              "keyword": {
+                "type": "text",
+                "label": "输入关键词",
+                "required": true,
+                "val": ""
+              },
+              "filter_target": {
+                "type": "select",
+                "label": "过滤器开启",
+                "required": true,
+                "options": {
+                  "table_name": {
+                    "label": "表格名称"
+                  },
+                  "table_tag": {
+                    "label": "Table Tag"
+                  }
+                },
+                "val": "table_name"
+              },
+              "filter_type": {
+                "type": "select",
+                "label": "过滤器类型",
+                "required": true,
+                "options": {
+                  "equal": {
+                    "label": "相等"
+                  },
+                  "contain": {
+                    "label": "包含"
+                  },
+                  "start_with": {
+                    "label": "开始于"
+                  },
+                  "end_with": {
+                    "label": "结尾是"
+                  },
+                  "regex": {
+                    "label": "正则表达式"
+                  }
+                },
+                "val": "equal"
+              },
+              "delete": {
+                "type": "button",
+                "label": "删除",
+                "function": "DELETE_ROW"
+              }
+            }
+          },
+          "options.use_waiting_time": {
+            "type": "checkbox",
+            "label": "增加等待时间",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "options.waiting_period": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "show_if": "options.use_waiting_time!='false'"
+          }
+        }
+      },
+      "task_chain": {
+        "type": "checkbox",
+        "label": "Task Chain",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "schedule_options": {
+        "type": "fieldset",
+        "label": "Tasks to schedule",
+        "show_if": "task_chain == 'true'",
+        "repeat": true,
+        "fields": {
+          "input_task": {
+            "type": "select",
+            "label": "Select Task",
+            "bind": "TASKS",
+            "empty": "",
+            "required": true
+          },
+          "waiting_time": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "删除",
+            "function": "DELETE_ROW"
+          }
+        },
+        "breakLine": true
+      },
+      "unify_output_tables": {
+        "type": "checkbox",
+        "label": "Unify output tables",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  }
+}

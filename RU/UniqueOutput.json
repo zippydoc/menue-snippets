@@ -12,27 +12,37 @@
       }
     },
     "multiple": true,
-    "val": ["unique"]
+    "val": ["unique"],
+    "breakLine": true
+  },
+  "output.unify_output_table": {
+    "type": "checkbox",
+    "label": "Unify output tables",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false",
+    "breakLine": true
   },
   "output.standard_ending": {
     "type": "checkbox",
     "label": "Стандартная обработка",
+    "show_if": "output.unify_output_table == 'false'",
     "val": "true",
     "isOn": "true",
     "isOff": "false",
     "breakLine": true
   },
   "output.unique_ending": {
-    "show_if": "output.standard_ending == 'false'",
     "type": "text",
     "label": "Уникальный выход",
+    "show_if": "output.unify_output_table == 'false' && output.standard_ending == 'false'",
     "val": "_u",
     "style": "width: 160px; margin-left: 10px"
   },
   "output.duplicates_ending": {
-    "show_if": "output.standard_ending == 'false'",
     "type": "text",
     "label": "Дублирование вывода завершения",
+    "show_if": "output.unify_output_table == 'false' && output.standard_ending == 'false'",
     "val": "_d",
     "style": "width: 160px; margin-left: 10px",
     "breakLine": true

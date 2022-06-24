@@ -1,0 +1,544 @@
+{
+  "embed_output_frame": {
+    "type": "fieldset",
+    "label": "Define Embed(Attach) Table Name",
+    "show_if": "options.add_table=='true'",
+    "repeat": false,
+    "fields": {
+      "embed_output.custom_text": {
+        "type": "text",
+        "label": "Sortir le nom du tableau",
+        "show_if": "embed_output.compose_table_name=='false'",
+        "minLength": 1,
+        "val": "",
+        "width": "100%",
+        "breakLine": true
+      },
+      "embed_output.custom_options": {
+        "type": "checkbox",
+        "label": "Options de sortie",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "embed_output.compose_table_name": {
+        "type": "checkbox",
+        "label": "Saisissez le nom du tableau",
+        "show_if": "embed_output.custom_options=='true'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "embed_output_compose_table_name_frame": {
+        "type": "fieldset",
+        "label": "Saisissez le nom du tableau de sortie",
+        "show_if": "embed_output.custom_options=='true' && embed_output.compose_table_name=='true'",
+        "repeat": false,
+        "fields": {
+          "embed_output.prefix_rule": {
+            "type": "select",
+            "label": "Préfixe",
+            "val": "empty",
+            "options": {
+              "empty": {
+                "label": "-"
+              },
+              "script_name": {
+                "label": "Nom de la tâche"
+              },
+              "date_string_type1": {
+                "label": "Date : jj_mm_aaaa"
+              },
+              "date_string_type2": {
+                "label": "Date : aaaa_mm_jj"
+              },
+              "time_string": {
+                "label": "Heure : h_min_sec"
+              },
+              "datetime_string": {
+                "label": "Date_heure"
+              },
+              "custom": {
+                "label": "Personnaliser"
+              }
+            }
+          },
+          "embed_output.prefix_text": {
+            "type": "text",
+            "label": "Texte du préfixe",
+            "show_if": "embed_output.prefix_rule=='custom'",
+            "minLength": 1,
+            "maxLength": 31,
+            "val": ""
+          },
+          "embed_output.core_delimiter": {
+            "type": "text",
+            "label": "Délimiteur",
+            "show_if": "embed_output.prefix_rule!='empty'",
+            "val": "_",
+            "width": "50px"
+          },
+          "embed_output.core_rule": {
+            "type": "select",
+            "label": "Nom du tableau",
+            "val": "input_table_name",
+            "options": {
+              "input_table_name": {
+                "label": "Nom du tableau d'entrée"
+              },
+              "script_name": {
+                "label": "Nom de la tâche"
+              },
+              "custom": {
+                "label": "Personnaliser"
+              }
+            }
+          },
+          "embed_output.core_text": {
+            "type": "text",
+            "label": "Nom du tableau principal",
+            "show_if": "embed_output.core_rule=='custom'",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 31,
+            "val": ""
+          },
+          "embed_output.suffix_delimiter": {
+            "type": "text",
+            "label": "Délimiteur",
+            "val": "_",
+            "width": "50px"
+          },
+          "embed_output.suffix_rule": {
+            "type": "select",
+            "label": "Suffixe",
+            "val": "script_name",
+            "options": {
+              "empty": {
+                "label": "-"
+              },
+              "script_name": {
+                "label": "Nom de la tâche"
+              },
+              "date_string_type1": {
+                "label": "Date : jj_mm_aaaa"
+              },
+              "date_string_type2": {
+                "label": "Date : aaaa_mm_jj"
+              },
+              "time_string": {
+                "label": "Heure : h_min_sec"
+              },
+              "datetime_string": {
+                "label": "Date_heure"
+              },
+              "custom": {
+                "label": "Personnaliser"
+              }
+            }
+          },
+          "embed_output.suffix_text": {
+            "type": "text",
+            "label": "Texte du suffixe",
+            "show_if": "embed_output.suffix_rule=='custom'",
+            "minLength": 1,
+            "maxLength": 31,
+            "val": "",
+            "breakLine": true
+          },
+          "embed_output.timezone": {
+            "type": "select",
+            "label": "Fuseau horaire",
+            "show_if": "embed_output.prefix_rule=='date_string_type1' || embed_output.prefix_rule=='date_string_type2' || embed_output.prefix_rule=='time_string' || embed_output.prefix_rule=='datetime_string' || embed_output.suffix_rule=='date_string_type1' || embed_output.suffix_rule=='date_string_type2' || embed_output.suffix_rule=='time_string' || embed_output.suffix_rule=='datetime_string'",
+            "val": "Europe/Berlin",
+            "required": true,
+            "options": {
+              "America/Adak": {
+                "label": "Adak, Gambier"
+              },
+              "Australia/Adelaide": {
+                "label": "Adelaïde, Broken Hill, Darwin"
+              },
+              "America/Anchorage": {
+                "label": "Anchorage, Juneau, Sitka"
+              },
+              "Pacific/Apia": {
+                "label": "Apia, Asau, Mulifanua, Afega, Leulumoega"
+              },
+              "Pacific/Enderbury": {
+                "label": "Apia, Fidji, Tongatapu"
+              },
+              "Antarctica/McMurdo": {
+                "label": "Auckland, Casey, Davis"
+              },
+              "Pacific/Auckland": {
+                "label": "Auckland, Wellington, Christchurch"
+              },
+              "Asia/Bangkok": {
+                "label": "Bangkok, Jakarta, Novossibirsk"
+              },
+              "Europe/Berlin": {
+                "label": "Berlin, Paris, Amsterdam"
+              },
+              "Australia/Perth": {
+                "label": "Brunei, Singapour, Perth"
+              },
+              "Atlantic/Cape_Verde": {
+                "label": "Cap-Vert,Praia, Mindelo, Santa Maria"
+              },
+              "America/Belize": {
+                "label": "Costa Rica, El Salvador, Denver"
+              },
+              "Antarctica/Vostok": {
+                "label": "Dhaka, Bishkek, Omsk"
+              },
+              "Europe/Astrakhan": {
+                "label": "Dubaï, Bakou, Tbilissi"
+              },
+              "Australia/Eucla": {
+                "label": "Eucla"
+              },
+              "Pacific/Honolulu": {
+                "label": "Honolulu, Rarotonga, Tahiti"
+              },
+              "Asia/Kabul": {
+                "label": "Kaboul, Kandahār, Mazār-e Sharīf, Herāt, Jalālābād"
+              },
+              "Asia/Aqtau": {
+                "label": "Karachi, Tashkent, Maldives"
+              },
+              "Asia/Kathmandu": {
+                "label": "Katmandou, Pokhara, Pātan, Biratnagar"
+              },
+              "Pacific/Kiritimati": {
+                "label": "Kiritimati"
+              },
+              "Asia/Colombo": {
+                "label": "Kolkata, Colombo, Jaffna, Negombo"
+              },
+              "Europe/Guernsey": {
+                "label": "Londres, Dublin, Lisbonne"
+              },
+              "Australia/Lord_Howe": {
+                "label": "Lord Howe"
+              },
+              "America/Creston": {
+                "label": "Los Angeles, Vancouver, Hermosillo"
+              },
+              "Pacific/Marquesas": {
+                "label": "Marquises, Taiohae"
+              },
+              "America/Cayman": {
+                "label": "Mexico, Panama, Chicago"
+              },
+              "Pacific/Niue": {
+                "label": "Midway, Niue, Pago Pago"
+              },
+              "Europe/Mariehamn": {
+                "label": "Moscou, Istanbul, Qatar"
+              },
+              "Asia/Kolkata": {
+                "label": "Mumbai, Delhi, Bengaluru, Kolkata, Chennai"
+              },
+              "America/Miquelon": {
+                "label": "Noronha, Nuuk, Miquelon"
+              },
+              "America/Danmarkshavn": {
+                "label": "Reykjavik, Dakar, Casablanca"
+              },
+              "Pacific/Bougainville": {
+                "label": "Sakhaline, Norfolk, Bougainville"
+              },
+              "America/Araguaina": {
+                "label": "Sao Paulo, Buenos Aires, Montevideo"
+              },
+              "America/St_Johns": {
+                "label": "St. Johns, Mount Pearl, Corner Brook"
+              },
+              "Asia/Tehran": {
+                "label": "Téhéran, Mashhad, Ispahan, Karaj, Tabriz"
+              },
+              "Asia/Tokyo": {
+                "label": "Tokyo, Séoul, Jayapura"
+              },
+              "America/New_York": {
+                "label": "Toronto, Santiago, New York"
+              },
+              "Australia/Sydney": {
+                "label": "Vladivostok, Sydney, Brisbane"
+              },
+              "Asia/Yangon": {
+                "label": "Yangon, Cocos, Mandalay, Nay Pyi Taw, Mawlamyine"
+              },
+              "Indian/Cocos": {
+                "label": "Yangon, Cocos, West Island"
+              }
+            },
+            "breakLine": true
+          }
+        }
+      },
+      "embed_output.select_output_columns": {
+        "type": "checkbox",
+        "label": "Sélectionner les colonnes de sortie",
+        "show_if": "embed_output.custom_options=='true'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "embed_output.output_columns": {
+        "type": "fieldset",
+        "label": "Sélectionner les colonnes de sortie",
+        "show_if": "embed_output.custom_options=='true' && embed_output.select_output_columns=='true'",
+        "repeat": true,
+        "fields": {
+          "field_name": {
+            "type": "select",
+            "label": "Sélectionner une colonne",
+            "table": "options.embed_table",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "order": {
+            "type": "select",
+            "label": "Commander",
+            "options": {
+              "-": {
+                "label": "-"
+              },
+              "asc": {
+                "label": "Asc"
+              },
+              "desc": {
+                "label": "Desc"
+              }
+            },
+            "val": "-"
+          },
+          "is_rename": {
+            "type": "checkbox",
+            "label": "Renommer",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "rename": {
+            "show_if": "this.is_rename == 'true'",
+            "type": "text",
+            "required": true,
+            "minLength": 1,
+            "maxLength": 255,
+            "label": "Nouveau nom de colonne",
+            "style": "margin-left: 10px"
+          },
+          "format__category": {
+            "type": "select",
+            "label": "Format d'affichage",
+            "required": true,
+            "options": {
+              "standard": {
+                "label": "Standard"
+              },
+              "number": {
+                "label": "Numéro"
+              },
+              "percentage": {
+                "label": "Pourcentage"
+              },
+              "text": {
+                "label": "Texte"
+              },
+              "date": {
+                "label": "Date"
+              },
+              "currency": {
+                "label": "Monnaie"
+              }
+            },
+            "val": "standard"
+          },
+          "format__rounding": {
+            "type": "select",
+            "label": "Places décimales pour l'affichage",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "required": true,
+            "options": {
+              "no_rounding": {
+                "label": "Pas d'arrondi"
+              },
+              "0": {
+                "label": "0 chiffre"
+              },
+              "1": {
+                "label": "1 chiffre"
+              },
+              "2": {
+                "label": "2 chiffres"
+              },
+              "3": {
+                "label": "3 chiffres"
+              },
+              "4": {
+                "label": "4 chiffres"
+              },
+              "5": {
+                "label": "5 chiffres"
+              },
+              "6": {
+                "label": "6 chiffres"
+              },
+              "7": {
+                "label": "7 chiffres"
+              },
+              "8": {
+                "label": "8 chiffres"
+              },
+              "9": {
+                "label": "9 chiffres"
+              }
+            },
+            "val": "2"
+          },
+          "format__use_1000_separator": {
+            "type": "checkbox",
+            "label": "Utilisez le séparateur 1000(.)",
+            "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "format__currency_symbol": {
+            "type": "select",
+            "label": "Symbole",
+            "show_if": "this.format__category=='currency'",
+            "required": true,
+            "options": {
+              "dollar": {
+                "label": "$"
+              },
+              "euro": {
+                "label": "€"
+              },
+              "pound": {
+                "label": "£"
+              },
+              "yen": {
+                "label": "¥ (Yen, currency of Japan)"
+              },
+              "colon": {
+                "label": "₡ (Colón, currency of Costa Rica)"
+              },
+              "naira": {
+                "label": "₦ (Naira, currency of Nigeria)"
+              },
+              "rupee": {
+                "label": "₨ (Rupee, currency of India)"
+              },
+              "rupie": {
+                "label": "₹ (Rupee, currency of India)"
+              },
+              "won": {
+                "label": "₩ (Won, currency in South Korea and North Korea)"
+              },
+              "hebrew": {
+                "label": "₪ (Currency of Israel)"
+              },
+              "dong": {
+                "label": "₫ (Currency of Vietnam)"
+              },
+              "kip": {
+                "label": "₭ (Kip, currency of Laos)"
+              },
+              "mongolia": {
+                "label": "₮ (Currency of Mongolia)"
+              },
+              "peso": {
+                "label": "₱ (Peso, currency of the Philippines)"
+              },
+              "guarani": {
+                "label": "₲ (Guaraní, currency of Paraguay)"
+              },
+              "hryvnia": {
+                "label": "₴ (Hryvnia, currency of Ukraine)"
+              },
+              "tenge": {
+                "label": "₸ (Tenge, currency of Kazakhstan)"
+              },
+              "lira": {
+                "label": "₺ (Lira, currency of Turkey)"
+              },
+              "manat": {
+                "label": "₼ (Manat, currency of Azerbaijan)"
+              },
+              "rubles": {
+                "label": "₽ (Rubles, currency of Russia)"
+              },
+              "lari": {
+                "label": "₾ (Lari, currency of Georgia)"
+              },
+              "bitcoin": {
+                "label": "₿ (Bitcoin, crypto currency)"
+              }
+            },
+            "val": "dollar"
+          },
+          "format__date_format": {
+            "type": "select",
+            "label": "Type",
+            "show_if": "this.format__category=='date'",
+            "required": true,
+            "options": {
+              "mm/dd/yyyy": {
+                "label": "3/14/2012"
+              },
+              "D, M dd, Y": {
+                "label": "Mercredi 14 mars 2012"
+              },
+              "yyyy-mm-dd": {
+                "label": "2012-03-14"
+              },
+              "m.dd.yyyy": {
+                "label": "3.14.2012"
+              },
+              "m.dd.yy": {
+                "label": "3.14.12"
+              },
+              "dd.m.yyyy": {
+                "label": "14.3.2012"
+              },
+              "dd.m.yy": {
+                "label": "14.3.12"
+              },
+              "M dd, Y": {
+                "label": "14 mars 2012"
+              },
+              "dd-mm-yyyy": {
+                "label": "14-03-2012"
+              },
+              "mm-dd-yyyy": {
+                "label": "03-14-2012"
+              },
+              "dd-mm-yy": {
+                "label": "14-03-12"
+              },
+              "mm-dd-yy": {
+                "label": "03-14-12"
+              }
+            },
+            "val": "mm/dd/yyyy",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Supprimer",
+            "function": "DELETE_ROW"
+          }
+        },
+        "breakLine": true,
+        "style": "margin-bottom: 20px"
+      }
+    }
+  }
+}

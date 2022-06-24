@@ -1,5 +1,5 @@
 {
-  "options_box": {
+  "options": {
     "type": "fieldset",
     "label": "Options",
     "repeat": false,
@@ -73,7 +73,7 @@
             "type": "select",
             "label": "Sélectionner Colonne(s)",
             "show_if": "this.multi_column_functions__function=='sum' || this.multi_column_functions__function=='average' || this.multi_column_functions__function=='median' || this.multi_column_functions__function=='max' || this.multi_column_functions__function=='min' || this.multi_column_functions__function=='standard_deviation' || this.multi_column_functions__function=='product'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "multiple": true,
             "required": true
@@ -82,7 +82,7 @@
             "type": "select",
             "label": "Sélectionner la colonne A",
             "show_if": "this.multi_column_functions__function=='quota' || this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='compound_growth'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true
           },
@@ -90,7 +90,7 @@
             "type": "select",
             "label": "Sélectionner la colonne B",
             "show_if": "this.multi_column_functions__function=='quota' || this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='compound_growth'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true
           },
@@ -101,23 +101,41 @@
             "val": "1",
             "required": true
           },
+          "multi_column_functions__static_value__type": {
+            "type": "select",
+            "label": "Type de valeur statique",
+            "show_if": "this.multi_column_functions__function=='static_value'",
+            "required": true,
+            "options": {
+              "custom": {
+                "label": "Personnaliser"
+              },
+              "input_table_name": {
+                "label": "Nom du tableau d'entrée"
+              },
+              "output_table_name": {
+                "label": "Sortir le nom du tableau"
+              }
+            },
+            "val": "custom"
+          },
           "static_value": {
             "type": "text",
             "label": "Valeur d'entrée",
-            "show_if": "this.multi_column_functions__function=='static_value'",
+            "show_if": "this.multi_column_functions__function=='static_value' && this.multi_column_functions__static_value__type=='custom'",
             "val": "",
             "width": "100%"
           },
           "numeric_formula": {
             "type": "text",
-            "label": "Formule d'entrée, par exemple [Column1] + 2 * ([Row-1:Column3] - [Column1])",
+            "label": "Input Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
             "show_if": "this.multi_column_functions__function=='numeric_formula'",
             "val": "",
             "width": "100%"
           },
           "text_formula": {
             "type": "text",
-            "label": "Formule d'entrée, par exemple [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
+            "label": "Input Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
             "show_if": "this.multi_column_functions__function=='text_formula'",
             "val": "",
             "width": "100%"
@@ -148,7 +166,7 @@
           },
           "format__category": {
             "type": "select",
-            "label": "Format",
+            "label": "Format d'affichage",
             "required": true,
             "options": {
               "standard": {
@@ -174,7 +192,7 @@
           },
           "format__rounding": {
             "type": "select",
-            "label": "Arrondi",
+            "label": "Places décimales pour l'affichage",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
@@ -216,7 +234,7 @@
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Use 1000 Separator(.)",
+            "label": "Utilisez le séparateur 1000(.)",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -236,6 +254,63 @@
               },
               "pound": {
                 "label": "£"
+              },
+              "yen": {
+                "label": "¥ (Yen, currency of Japan)"
+              },
+              "colon": {
+                "label": "₡ (Colón, currency of Costa Rica)"
+              },
+              "naira": {
+                "label": "₦ (Naira, currency of Nigeria)"
+              },
+              "rupee": {
+                "label": "₨ (Rupee, currency of India)"
+              },
+              "rupie": {
+                "label": "₹ (Rupee, currency of India)"
+              },
+              "won": {
+                "label": "₩ (Won, currency in South Korea and North Korea)"
+              },
+              "hebrew": {
+                "label": "₪ (Currency of Israel)"
+              },
+              "dong": {
+                "label": "₫ (Currency of Vietnam)"
+              },
+              "kip": {
+                "label": "₭ (Kip, currency of Laos)"
+              },
+              "mongolia": {
+                "label": "₮ (Currency of Mongolia)"
+              },
+              "peso": {
+                "label": "₱ (Peso, currency of the Philippines)"
+              },
+              "guarani": {
+                "label": "₲ (Guaraní, currency of Paraguay)"
+              },
+              "hryvnia": {
+                "label": "₴ (Hryvnia, currency of Ukraine)"
+              },
+              "tenge": {
+                "label": "₸ (Tenge, currency of Kazakhstan)"
+              },
+              "lira": {
+                "label": "₺ (Lira, currency of Turkey)"
+              },
+              "manat": {
+                "label": "₼ (Manat, currency of Azerbaijan)"
+              },
+              "rubles": {
+                "label": "₽ (Rubles, currency of Russia)"
+              },
+              "lari": {
+                "label": "₾ (Lari, currency of Georgia)"
+              },
+              "bitcoin": {
+                "label": "₿ (Bitcoin, crypto currency)"
               }
             },
             "val": "dollar"
@@ -254,6 +329,33 @@
               },
               "yyyy-mm-dd": {
                 "label": "2012-03-14"
+              },
+              "m.dd.yyyy": {
+                "label": "3.14.2012"
+              },
+              "m.dd.yy": {
+                "label": "3.14.12"
+              },
+              "dd.m.yyyy": {
+                "label": "14.3.2012"
+              },
+              "dd.m.yy": {
+                "label": "14.3.12"
+              },
+              "M dd, Y": {
+                "label": "14 mars 2012"
+              },
+              "dd-mm-yyyy": {
+                "label": "14-03-2012"
+              },
+              "mm-dd-yyyy": {
+                "label": "03-14-2012"
+              },
+              "dd-mm-yy": {
+                "label": "14-03-12"
+              },
+              "mm-dd-yy": {
+                "label": "03-14-12"
               }
             },
             "val": "mm/dd/yyyy",
@@ -299,7 +401,7 @@
             "type": "select",
             "label": "Colonne",
             "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true
           },
@@ -374,7 +476,7 @@
             "type": "select",
             "label": "Colonne(s) de groupe",
             "show_if": "this.apply_to_group__enabled == 'true' && this.multi_column_functions__function!='static_value'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "multiple": true,
             "required": true
@@ -445,7 +547,7 @@
               "column": {
                 "type": "select",
                 "label": "Sélectionner une colonne",
-                "table": "input_table",
+                "table": "table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
@@ -454,16 +556,16 @@
                 "label": "Sélectionner un opérateur",
                 "required": true,
                 "options": {
-                  "CONTIENT": {
+                  "CONTAINS": {
                     "label": "CONTIENT"
                   },
                   "CONTAINED IN STRING": {
                     "label": "CONTENU DANS"
                   },
-                  "COMMENCE AVEC": {
+                  "STARTS WITH": {
                     "label": "COMMENCE AVEC"
                   },
-                  "SE TERMINE PAR": {
+                  "ENDS WITH": {
                     "label": "SE TERMINE PAR"
                   },
                   "=": {
@@ -487,23 +589,29 @@
                   "BLANK": {
                     "label": "EST BLANC"
                   },
-                  "EST NUL": {
+                  "IS NULL": {
                     "label": "EST NUL"
                   },
-                  "CORRESPONDANCE EXPRESSION RÉGULIÈRE": {
+                  "IS TRUE": {
+                    "label": "EST VRAI"
+                  },
+                  "IS FALSE": {
+                    "label": "EST FAUX"
+                  },
+                  "REGEX MATCH": {
                     "label": "CORRESPONDANCE EXPRESSION RÉGULIÈRE"
                   },
                   "CONTAINED IN TABLE": {
                     "label": "EN TABLE"
                   },
-                  "DANS LE TABLEAU D'EXPRESSIONS RÉGULIÈRES": {
+                  "IN REGEX TABLE": {
                     "label": "DANS LE TABLEAU D'EXPRESSIONS RÉGULIÈRES"
                   },
                   "DATE": {
                     "label": "DATE"
                   }
                 },
-                "val": "CONTIENT"
+                "val": "CONTAINS"
               },
               "date_condition": {
                 "type": "select",
@@ -529,6 +637,43 @@
                 },
                 "val": "="
               },
+              "compare_with": {
+                "type": "select",
+                "label": "Compare with",
+                "required": true,
+                "show_if": "this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<='",
+                "options": {
+                  "custom_value": {
+                    "label": "Custom value"
+                  },
+                  "column_value": {
+                    "label": "Column value"
+                  }
+                },
+                "val": "custom_value"
+              },
+              "self_compare_column": {
+                "type": "select",
+                "label": "Select Compare Column",
+                "table": "table_id",
+                "bind": "COLUMNS",
+                "show_if": "this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+                "required": true
+              },
+              "date_value": {
+                "type": "date",
+                "label": "Sélectionner une date",
+                "show_if": "this.condition=='DATE'",
+                "val": "",
+                "required": true
+              },
+              "value": {
+                "type": "text",
+                "label": "Valeur d'entrée",
+                "show_if": "this.compare_with=='custom_value' && this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'IS TRUE' && this.condition != 'IS FALSE' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "val": "",
+                "required": true
+              },
               "case_sensitive": {
                 "type": "select",
                 "label": "Sélectionner la sensibilité à la casse",
@@ -543,20 +688,6 @@
                   }
                 },
                 "val": "yes"
-              },
-              "date_value": {
-                "type": "date",
-                "label": "Sélectionner une date",
-                "show_if": "this.condition=='DATE'",
-                "val": "",
-                "required": true
-              },
-              "value": {
-                "type": "text",
-                "label": "Valeur d'entrée",
-                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
-                "val": "",
-                "required": true
               },
               "compare_table": {
                 "type": "select",
@@ -601,7 +732,7 @@
                 "label": "Sélectionner les colonnes du groupe",
                 "required": true,
                 "width": "100%",
-                "table": "input_table",
+                "table": "table_id",
                 "multiple": true,
                 "bind": "COLUMNS",
                 "breakLine": true

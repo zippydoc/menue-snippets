@@ -1,0 +1,124 @@
+{
+  "options_frame": {
+    "type": "fieldset",
+    "label": "Sélectionner les options",
+    "repeat": false,
+    "fields": {
+      "options.task_type": {
+        "type": "hidden",
+        "val": "read_email"
+      },
+      "options.all_folders": {
+        "type": "checkbox",
+        "label": "Importer tous les dossiers de courrier",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.read_folders": {
+        "type": "select",
+        "label": "Mail Folder(s) to import",
+        "show_if": "options.all_folders=='false'",
+        "required": true,
+        "multiple": true,
+        "options": {
+          "Archive": {
+            "label": "Archive"
+          },
+          "Conversation History": {
+            "label": "Histoire de la conversation"
+          },
+          "Deleted Items": {
+            "label": "Éléments supprimés"
+          },
+          "Drafts": {
+            "label": "Brouillons"
+          },
+          "Inbox": {
+            "label": "Boîte de réception"
+          },
+          "Junk Email": {
+            "label": "Courrier indésirable"
+          },
+          "Outbox": {
+            "label": "Boîte d'envoi"
+          },
+          "RSS Feeds": {
+            "label": "Flux RSS"
+          },
+          "Sent Items": {
+            "label": "Articles envoyés"
+          },
+          "Sync Issues": {
+            "label": "Problèmes de synchronisation"
+          }
+        },
+        "val": ["Inbox"],
+        "breakLine": true
+      },
+      "options.all_columns": {
+        "type": "checkbox",
+        "label": "Importer toutes les colonnes",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.import_columns": {
+        "type": "select",
+        "label": "Colonnes à importer",
+        "show_if": "options.all_columns=='false'",
+        "required": true,
+        "multiple": true,
+        "options": {
+          "CreatedAt": {
+            "label": "CreatedAt"
+          },
+          "ReceivedAt": {
+            "label": "ReceivedAt"
+          },
+          "SentAt": {
+            "label": "SentAt"
+          },
+          "Subject": {
+            "label": "Sujet"
+          },
+          "BodyPreview": {
+            "label": "BodyPreview"
+          },
+          "From": {
+            "label": "De"
+          },
+          "CC": {
+            "label": "CC"
+          },
+          "BCC": {
+            "label": "BCC"
+          },
+          "HasAttachments": {
+            "label": " HasAttachments "
+          },
+          "IsRead": {
+            "label": "IsRead"
+          },
+          "IsDraft": {
+            "label": "IsDraft"
+          },
+          "WebLink": {
+            "label": "WebLink"
+          },
+          "Body": {
+            "label": "Body"
+          }
+        },
+        "val": ["CreatedAt","Subject","BodyPreview","From","HasAttachments","WebLink"]
+      },
+      "info3": {
+        "type": "text",
+        "label": "",
+        "val": "This task only supports users logged in via Microsoft Login",
+        "disabled": true,
+        "style": "width: 100%"
+      }
+    }
+  }
+}

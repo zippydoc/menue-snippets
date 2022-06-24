@@ -1,0 +1,70 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Opções",
+    "repeat": false,
+    "fields": {
+      "options.find_col": {
+        "type": "select",
+        "label": "Coluna de suporte de lugar",
+        "table": "table_id",
+        "bind": "COLUMNS",
+        "required": true
+      },
+      "options.placeholder_type": {
+        "type": "select",
+        "label": "Tipo de espaço reservado",
+        "required": true,
+        "options": {
+          "text": {
+            "label": "Texto"
+          },
+          "regex": {
+            "label": "Expressão Regular"
+          }
+        },
+        "val": "text"
+      },
+      "options.placeholder_text": {
+        "type": "text",
+        "label": "Local de colocação",
+        "show_if": "options.placeholder_type=='text'",
+        "val": "",
+        "placeholder": "FindText",
+        "required": true,
+        "breakLine": true
+      },
+      "options.placeholder_regex": {
+        "type": "text",
+        "label": "Placeholder RegEx",
+        "show_if": "options.placeholder_type=='regex'",
+        "val": "",
+        "placeholder": "\\sFindText\\s",
+        "required": true
+      },
+      "options.case_sensitivity": {
+        "type": "select",
+        "label": "Sensível a Maiúsculas e Minúsculas",
+        "required": true,
+        "options": {
+          "yes": {
+            "label": "Sensível a Maiúsculas e Minúsculas"
+          },
+          "no": {
+            "label": "Insensível a Maiúsculas e Minúsculas"
+          }
+        },
+        "val": "yes",
+        "breakLine": true
+      },
+      "options.replace_col": {
+        "type": "select",
+        "label": "Substituir por Coluna",
+        "table": "table_id",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      }
+    }
+  }
+}

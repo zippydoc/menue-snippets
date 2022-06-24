@@ -2,126 +2,38 @@
   "options": {
     "type": "fieldset",
     "label": "オプションの選択",
+    "show_if": "$table_id.numOfHeader >= 1 || $table_id.numOfLabel >= 1",
     "repeat": false,
     "fields": {
       "transpose_type": {
         "type": "hidden",
         "val": "mirror_matrix"
       },
-      "mirror_matrix.convert_header_to_label": {
+      "mirror_matrix.exchange_label_header": {
         "type": "checkbox",
-        "label": "ヘッダからラベルへ変換",
-        "show_if": "transpose_type=='mirror_matrix'",
+        "label": "ヘッダーをラベルに、ラベルをヘッダーに変換する",
+        "show_if": "$table_id.numOfHeader >= 1 && $table_id.numOfLabel >= 1",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
         "breakLine": true
       },
-      "column_name_to_label.columns_to_label": {
-        "type": "select",
-        "label": "ラベルに変換する列を選択",
-        "show_if": "transpose_type=='column_name_to_label'",
-        "table": "input_table",
-        "multiple": true,
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
+      "mirror_matrix.convert_header_to_label": {
+        "type": "checkbox",
+        "label": "ヘッダからラベルへ変換",
+        "show_if": "$table_id.numOfHeader >= 1 && $table_id.numOfLabel < 1",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
         "breakLine": true
       },
-      "column_name_to_label.label_column_name": {
-        "type": "text",
-        "label": "列ラベルの列名",
-        "show_if": "transpose_type=='column_name_to_label'",
-        "required": true,
-        "val": "ラベル",
-        "width": "100%",
-        "breakLine": true
-      },
-      "column_name_to_label.value_column_name": {
-        "type": "text",
-        "label": "値列の列名",
-        "show_if": "transpose_type=='column_name_to_label'",
-        "required": true,
-        "val": "値",
-        "width": "100%",
-        "breakLine": true
-      },
-      "crosstab.group_data_by_these_values": {
-        "type": "select",
-        "label": "これらの値によるグループデータ",
-        "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
-        "multiple": true,
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "crosstab.change_column_headers": {
-        "type": "select",
-        "label": "列ヘッダの変更",
-        "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "crosstab.values_for_new_columns": {
-        "type": "select",
-        "label": "新しい列の値",
-        "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "crosstab.method_for_aggregating_values": {
-        "type": "select",
-        "label": "値の集計方法",
-        "show_if": "transpose_type=='crosstab'",
-        "options": {
-          "連結": {
-            "label": "連結"
-          },
-          "最初": {
-            "label": "最初"
-          },
-          "最後": {
-            "label": "最後"
-          },
-          "合計": {
-            "label": "合計"
-          },
-          "平均": {
-            "label": "平均"
-          },
-          "計算": {
-            "label": "計算"
-          },
-          "ユーザー定義": {
-            "label": "ユーザー定義"
-          }
-        },
-        "val": "連結",
-        "required": true
-      },
-      "crosstab.user_defined_str": {
-        "type": "text",
-        "label": "ユーザー定義値",
-        "show_if": "transpose_type=='crosstab' && crosstab.method_for_aggregating_values=='User Defined'",
-        "val": "x",
-        "trim": "false",
-        "breakLine": true
-      },
-      "crosstab.separator": {
-        "type": "text",
-        "label": "セパレータ",
-        "show_if": "transpose_type=='crosstab' && method_for_aggregating_values=='Concatenate'",
-        "val": ",",
-        "trim": "false",
-        "required": true,
+      "mirror_matrix.convert_label_to_header": {
+        "type": "checkbox",
+        "label": "ラベルをヘッダーに変換する",
+        "show_if": "$table_id.numOfHeader < 1 && $table_id.numOfLabel >= 1",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
         "breakLine": true
       }
     }

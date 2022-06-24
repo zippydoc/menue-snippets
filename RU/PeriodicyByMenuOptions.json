@@ -4,14 +4,13 @@
     "label": "Выбрать параметры",
     "repeat": false,
     "fields": {
-      "options.type": {
+      "options.task_symbol": {
         "type": "hidden",
-        "val": "custom"
+        "val": "periodicy_by_menu"
       },
       "options.custom.table": {
         "type": "fieldset",
         "label": "Плановая позиция",
-        "show_if": "options.type=='custom'",
         "repeat": true,
         "fields": {
           "item": {
@@ -44,26 +43,26 @@
             "label": "Частота",
             "required": true,
             "options": {
-              "разовые": {
+              "One-Off": {
                 "label": "разовые"
               },
-              "Ежедневно": {
+              "Daily": {
                 "label": "Ежедневно"
               },
-              "Еженедельно": {
+              "Weekly": {
                 "label": "Еженедельно"
               },
-              "Ежемесячно": {
+              "Monthly": {
                 "label": "Ежемесячно"
               },
-              "Ежеквартально": {
+              "Quarterly": {
                 "label": "Ежеквартально"
               },
-              "Ежегодно": {
+              "Yearly": {
                 "label": "Ежегодно"
               }
             },
-            "val": "разовые"
+            "val": "One-Off"
           },
           "growth": {
             "type": "number",
@@ -77,37 +76,40 @@
             "label": "Период роста",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "Еженедельно": {
+              "Weekly": {
                 "label": "Еженедельно"
               },
-              "Ежемесячно": {
+              "Monthly": {
                 "label": "Месяц в месяц"
               },
-              "Ежеквартально": {
+              "Quarterly": {
                 "label": "Квартал за кварталом"
               },
-              "Ежегодно": {
+              "Yearly": {
                 "label": "Год за годом"
               }
             },
-            "val": "Еженедельно"
+            "val": "Weekly"
           },
           "growth_pattern": {
             "type": "select",
             "label": "Модель роста",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "Компаундирование": {
-                "label": "Компаундирование"
-              },
-              "Линейный": {
+              "Linear": {
                 "label": "Линейный"
               },
-              "Jump-Fix": {
-                "label": "Jump-Fix"
+              "Compounding": {
+                "label": "Компаундирование"
+              },
+              "Jump-Fix Linear": {
+                "label": "Jump-Fix Linear"
+              },
+              "Jump-Fix Compounding": {
+                "label": "Jump-Fix Compounding"
               }
             },
-            "val": "Компаундирование"
+            "val": "Compounding"
           },
           "final_date": {
             "type": "date",
@@ -125,7 +127,6 @@
       "options.end_date": {
         "type": "date",
         "label": "Конечная дата таблицы",
-        "show_if": "options.type=='process' || options.type=='custom'",
         "val": "",
         "required": true,
         "style": "width: 300px"

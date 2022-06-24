@@ -1,0 +1,205 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
+      "options.script_name": {
+        "type": "hidden",
+        "val": "PdfReProByTable"
+      },
+      "options.type": {
+        "type": "hidden",
+        "val": "create"
+      },
+      "options.template_id": {
+        "type": "select",
+        "label": "Type de document",
+        "options": {
+          "id_bd7c7b52449752d78436f5aaa893abd36e96b7a9": {
+            "label": "Lettre de motivation"
+          },
+          "id_17b533f4f9c5d2960ba67455a81ef22918106d1e": {
+            "label": "Nomination ou révocation"
+          }
+        },
+        "val": "id_bd7c7b52449752d78436f5aaa893abd36e96b7a9",
+        "required": true
+      },
+      "options.lang": {
+        "type": "select",
+        "label": "Langue du document",
+        "show_if": "options.type=='create'",
+        "options": {
+          "standard": {
+            "label": "Langue standard"
+          },
+          "einsprachig": {
+            "label": "einsprachig"
+          },
+          "lt": {
+            "label": "lt"
+          },
+          "it": {
+            "label": "it"
+          },
+          "hu": {
+            "label": "hu"
+          },
+          "hr": {
+            "label": "hr"
+          },
+          "gl": {
+            "label": "gl"
+          },
+          "ga": {
+            "label": "ga"
+          },
+          "fr": {
+            "label": "fr"
+          },
+          "fi": {
+            "label": "fi"
+          },
+          "bg": {
+            "label": "bg"
+          },
+          "ca": {
+            "label": "ca"
+          },
+          "cs": {
+            "label": "cs"
+          },
+          "cy": {
+            "label": "cy"
+          },
+          "da": {
+            "label": "da"
+          },
+          "de": {
+            "label": "de"
+          },
+          "el": {
+            "label": "el"
+          },
+          "en": {
+            "label": "en"
+          },
+          "es": {
+            "label": "es"
+          },
+          "ey": {
+            "label": "et"
+          },
+          "eu": {
+            "label": "eu"
+          }
+        },
+        "val": "de",
+        "required": true,
+        "breakLine": true
+      },
+      "options.where_to_create": {
+        "type": "select",
+        "label": "Où créer",
+        "options": {
+          "only_open_in_browser": {
+            "label": "Ouvrir le PDF uniquement dans le navigateur"
+          },
+          "only_export_to_cloud": {
+            "label": "Exportation uniquement vers le cloud"
+          },
+          "both_export_to_cloud_and_open_in_browser": {
+            "label": "A la fois exporter vers le cloud et ouvrir le pdf dans le navigateur"
+          }
+        },
+        "val": "only_open_in_browser",
+        "required": true
+      },
+      "options.configure_by_table_help": {
+        "type": "text",
+        "label": "",
+        "val": "Table Structure ( Document | List Name | List Item | Field Name | Field Value )",
+        "disabled": true,
+        "width": "100%"
+      },
+      "options.input_table": {
+        "type": "select",
+        "label": "Sélectionner un tableau",
+        "show_if": "options.type=='create'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      },
+      "options.webservice": {
+        "type": "select",
+        "label": "Sélectionner un service web",
+        "show_if": "options.type=='create'",
+        "options": {
+          "ms_one_drive": {
+            "label": " Microsoft OneDrive"
+          },
+          "dropbox": {
+            "label": "Dropbox"
+          },
+          "google_drive": {
+            "label": "Google Drive"
+          }
+        },
+        "val": "ms_one_drive",
+        "required": true,
+        "breakLine": true
+      },
+      "export_link_token_frame": {
+        "type": "fieldset",
+        "label": "Exporter le lien",
+        "show_if": "options.type=='create'",
+        "repeat": false,
+        "fields": {
+          "options.github_url": {
+            "type": "text",
+            "label": "Insérer lien, p. ex. https://github.com/zippydoc/test",
+            "show_if": "options.webservice=='github'",
+            "val": "",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.export_dir": {
+            "type": "text",
+            "label": "Entrez le répertoire, par exemple /MyZippyDocFiles/SubDir/",
+            "show_if": "options.webservice!='github'",
+            "val": "",
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.github_token": {
+            "type": "text",
+            "label": "Spécifiez le jeton d'accès personnel Github qui a le droit d'écriture :",
+            "show_if": "options.webservice=='github'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.google_authorization_code": {
+            "type": "text",
+            "label": "Code d'autorisation Google OAuth avec la portée https://www.googleapis.com/auth/drive. Vous pouvez l'obtenir ici https://developers.google.com/oauthplayground/",
+            "show_if": "options.webservice=='google_drive'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.dropbox_authorization_code": {
+            "type": "text",
+            "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+            "show_if": "options.webservice=='dropbox'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}

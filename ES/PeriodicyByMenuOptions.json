@@ -4,14 +4,13 @@
     "label": "Seleccionar Opciones",
     "repeat": false,
     "fields": {
-      "options.type": {
+      "options.task_symbol": {
         "type": "hidden",
-        "val": "custom"
+        "val": "periodicy_by_menu"
       },
       "options.custom.table": {
         "type": "fieldset",
         "label": "Posición de planificación",
-        "show_if": "options.type=='custom'",
         "repeat": true,
         "fields": {
           "item": {
@@ -47,19 +46,19 @@
               "One-Off": {
                 "label": "One-Off"
               },
-              "Diario": {
+              "Daily": {
                 "label": "Diario"
               },
-              "semanal": {
+              "Weekly": {
                 "label": "semanal"
               },
-              "Mensual": {
+              "Monthly": {
                 "label": "Mensual"
               },
-              "Trimestral": {
+              "Quarterly": {
                 "label": "Trimestral"
               },
-              "Anual": {
+              "Yearly": {
                 "label": "Anual"
               }
             },
@@ -67,7 +66,7 @@
           },
           "growth": {
             "type": "number",
-            "label": "Growth in %",
+            "label": "Crecimiento en %",
             "show_if": "this.periodicy!='One-Off'",
             "val": "",
             "required": true
@@ -77,37 +76,40 @@
             "label": "Período de Crecimiento",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "semanal": {
+              "Weekly": {
                 "label": "semanal"
               },
-              "Mensual": {
+              "Monthly": {
                 "label": "Mes a Mes"
               },
-              "Trimestral": {
+              "Quarterly": {
                 "label": "Trimestre a Trimestre"
               },
-              "Anual": {
+              "Yearly": {
                 "label": "Año a Año"
               }
             },
-            "val": "semanal"
+            "val": "Weekly"
           },
           "growth_pattern": {
             "type": "select",
             "label": "Patrón de Crecimiento",
             "show_if": "this.periodicy!='One-Off'",
             "options": {
-              "Compuesto": {
-                "label": "Compuesto"
-              },
-              "Lineal": {
+              "Linear": {
                 "label": "Lineal"
               },
-              "Jump-Fix": {
-                "label": "Jump-Fix"
+              "Compounding": {
+                "label": "Compuesto"
+              },
+              "Jump-Fix Linear": {
+                "label": "Jump-Fix Linear"
+              },
+              "Jump-Fix Compounding": {
+                "label": "Compounding Jump-Fix"
               }
             },
-            "val": "Compuesto"
+            "val": "Compounding"
           },
           "final_date": {
             "type": "date",
@@ -125,7 +127,6 @@
       "options.end_date": {
         "type": "date",
         "label": "Fecha de Finalización de la Tabla",
-        "show_if": "options.type=='process' || options.type=='custom'",
         "val": "",
         "required": true,
         "style": "width: 300px"

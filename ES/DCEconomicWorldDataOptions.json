@@ -1,0 +1,187 @@
+{
+  "options_frame": {
+    "type": "fieldset",
+    "label": "Opciones",
+    "repeat": false,
+    "fields": {
+      "options.group_by": {
+        "type": "select",
+        "label": "Agrupar por",
+        "required": true,
+        "options": {
+          "Region": {
+            "label": "Región"
+          },
+          "Income Group": {
+            "label": "Grupo de ingresos"
+          }
+        },
+        "val": "Region",
+        "breakLine": true
+      },
+      "options.stat_var_name": {
+        "type": "select",
+        "label": "Datos estadísticos",
+        "required": true,
+        "options": {
+          "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
+            "label": "PIB"
+          },
+          "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
+            "label": "Tasa de crecimiento del PIB"
+          },
+          "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
+            "label": "GNI (Purchasing Power Parity)"
+          },
+          "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person": {
+            "label": "Mobile Subscriptions Per Capita"
+          },
+          "Amount_Debt_Government": {
+            "label": "Deuda con el Gobierno"
+          },
+          "Amount_Debt_Government_AsAFractionOfGrossDomesticProduction": {
+            "label": "Deuda con el gobierno como fracción de la producción interna bruta"
+          },
+          "GiniIndex_EconomicActivity": {
+            "label": "Índice de Gini de la actividad económica"
+          },
+          "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
+            "label": "Gasto militar, Gobierno"
+          },
+          "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
+            "label": "Gasto Militar, Gobierno como Fracción de la Actividad Económica Producción Interna Bruta Nominal"
+          },
+          "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government": {
+            "label": "Gasto en Educación, Gobierno como Fracción de la Actividad Económica Gasto Gobierno"
+          },
+          "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
+            "label": "Gasto en Educación, Gobierno como Fracción de la Actividad Económica Producción Interna Bruta Nominal"
+          },
+          "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person": {
+            "label": "Actividad del gasto, gasto sanitario per cápita"
+          },
+          "Amount_EconomicActivity_ExpenditureActivity_TertiaryEducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government": {
+            "label": "Gasto en Educación Terciaria, Gobierno como Fracción de la Actividad Económica Gasto en Educación Gobierno"
+          },
+          "Amount_EconomicActivity_GrossValueAdded_RealValue": {
+            "label": "Gross Value Added (Real Value)"
+          },
+          "Amount_EconomicActivity_GrossValueAdded_ISICAgricultureHuntingForestryFishing_RealValue": {
+            "label": "Gross Value Added, Agriculture, Hunting, Forestry, Fishing (Real Value)"
+          },
+          "Amount_EconomicActivity_GrossValueAdded_ISICConstruction_RealValue": {
+            "label": "Gross Value Added, Construction (Real Value)"
+          },
+          "Amount_EconomicActivity_GrossValueAdded_ISICManufacturing_RealValue": {
+            "label": "Gross Value Added, Manufacturing (Real Value)"
+          },
+          "Amount_EconomicActivity_GrossValueAdded_ISICMiningManufacturingUtilities_RealValue": {
+            "label": "Gross Value Added, Mining, Manufacturing, Utilities (Real Value)"
+          },
+          "Amount_EconomicActivity_GrossValueAdded_ISICTransportStorageCommunications_RealValue": {
+            "label": "Gross Value Added, Transport, Storage And Communications (Real Value)"
+          },
+          "Amount_EconomicActivity_GrossValueAdded_ISICWholesaleRetailTradeRestaurantsHotels_RealValue": {
+            "label": "Gross Value Added, Wholesale, Retail Trade, Restaurants And Hotels (Real Value)"
+          },
+          "Amount_Remittance_OutwardRemittance": {
+            "label": "Outward Remittance"
+          },
+          "Amount_Remittance_InwardRemittance": {
+            "label": "Remesas de entrada"
+          },
+          "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
+            "label": "Remesas entrantes como fracción de la producción interna bruta de la actividad económica nominal"
+          },
+          "Amount_Stock": {
+            "label": "Stock"
+          },
+          "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
+            "label": "Stock como Fracción de la Actividad Económica Producción Interna Bruta Nominal"
+          }
+        },
+        "val": "Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+      },
+      "options.per_capita": {
+        "type": "checkbox",
+        "label": "Per cápita",
+        "show_if": "options.stat_var_name=='Amount_EconomicActivity_GrossDomesticProduction_Nominal'||options.stat_var_name=='Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.help_1": {
+        "type": "textarea",
+        "label": "",
+        "show_if": "options.stat_var_name=='Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal'",
+        "val": "Military Expenditure, Government as Fraction of Economic Activity Gross Domestic Production Nominal",
+        "disabled": true,
+        "md_no_resize": false,
+        "rows": 2,
+        "width": "100%"
+      },
+      "options.help_2": {
+        "type": "textarea",
+        "label": "",
+        "show_if": "options.stat_var_name=='Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government'",
+        "val": "Education Expenditure, Government as Fraction of Economic Activity Expenditure Activity Government",
+        "disabled": true,
+        "md_no_resize": false,
+        "rows": 2,
+        "width": "100%"
+      },
+      "options.help_3": {
+        "type": "textarea",
+        "label": "",
+        "show_if": "options.stat_var_name=='Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal'",
+        "val": "Education Expenditure, Government as Fraction of Economic Activity Gross Domestic Production Nominal",
+        "disabled": true,
+        "md_no_resize": false,
+        "rows": 2,
+        "width": "100%"
+      },
+      "options.help_4": {
+        "type": "textarea",
+        "label": "",
+        "show_if": "options.stat_var_name=='Amount_EconomicActivity_ExpenditureActivity_TertiaryEducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government'",
+        "val": "Tertiary Education Expenditure, Government as Fraction of Economic Activity Expenditure Activity Education Expenditure Government",
+        "disabled": true,
+        "md_no_resize": false,
+        "rows": 2,
+        "width": "100%"
+      },
+      "options.all_countries": {
+        "type": "checkbox",
+        "label": "Todos los países",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.output_as_chart": {
+        "type": "checkbox",
+        "label": "Salida de un gráfico",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "options.graph_type": {
+        "type": "select",
+        "label": "Tipo de gráfico",
+        "show_if": "options.output_as_chart=='true'",
+        "required": true,
+        "options": {
+          "zoomable_sunburst": {
+            "label": "Rayo de sol"
+          },
+          "treemap": {
+            "label": "Mapa del árbol"
+          }
+        },
+        "val": "zoomable_sunburst",
+        "breakLine": true
+      }
+    }
+  }
+}

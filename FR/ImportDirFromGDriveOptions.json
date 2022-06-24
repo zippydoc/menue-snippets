@@ -1,0 +1,404 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Sélectionner les options",
+    "repeat": false,
+    "fields": {
+      "options.from": {
+        "type": "hidden",
+        "val": "web"
+      },
+      "options.webservice": {
+        "type": "hidden",
+        "val": "google_drive"
+      },
+      "options.output_format": {
+        "type": "select",
+        "label": "Sélectionner le type",
+        "options": {
+          "csv_table": {
+            "label": "Tableau CSV"
+          },
+          "line_by_line": {
+            "label": "Ligne par ligne"
+          },
+          "word_by_word": {
+            "label": "Texte"
+          },
+          "file_list": {
+            "label": "Liste de fichiers"
+          }
+        },
+        "val": "csv_table",
+        "required": true
+      },
+      "options.word_pattern_type": {
+        "type": "select",
+        "label": "Pattern de mots",
+        "show_if": "options.output_format=='word_by_word' && options.specify_word_pattern=='true'",
+        "options": {
+          "regex": {
+            "label": "Expression régulière"
+          }
+        },
+        "val": "regex",
+        "required": true
+      },
+      "options.word_pattern_regex": {
+        "type": "text",
+        "label": "Expression régulière",
+        "show_if": "options.output_format=='word_by_word' && options.specify_word_pattern=='true' && options.word_pattern_type=='regex'",
+        "required": true,
+        "val": "[a-z][1-9]",
+        "breakLine": true
+      },
+      "options.column_setting": {
+        "type": "checkbox",
+        "label": "Paramètres de la colonne",
+        "show_if": "options.output_format!='file_list'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "column_setting_frame": {
+        "type": "fieldset",
+        "label": "Paramètres de la colonne",
+        "show_if": "options.output_format!='file_list' && options.column_setting=='true'",
+        "repeat": false,
+        "fields": {
+          "options.add_row_column": {
+            "type": "checkbox",
+            "label": " Ajouter une colonne de ligne",
+            "show_if": "options.output_format=='word_by_word'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.add_word_count_column": {
+            "type": "checkbox",
+            "label": "Ajouter la colonne 'nombre de mots'",
+            "show_if": "options.output_format=='word_by_word'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.add_word_nonword_column": {
+            "type": "checkbox",
+            "label": "Ajouter la colonne 'Mot et non-mot'",
+            "show_if": "options.output_format=='word_by_word'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.add_section_column": {
+            "type": "checkbox",
+            "label": "Ajouter une colonne de section",
+            "show_if": "options.output_format=='word_by_word'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "section_column_types_frame": {
+            "type": "fieldset",
+            "label": "Types de colonnes de section",
+            "show_if": "options.output_format=='word_by_word' && options.add_section_column=='true'",
+            "repeat": false,
+            "fields": {
+              "options.section_columns.add_paragraph_section_column": {
+                "type": "checkbox",
+                "label": "Paragraphe",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false",
+                "breakLine": true
+              },
+              "options.section_columns.add_custom_section_column": {
+                "type": "checkbox",
+                "label": "Personnaliser délimiteur de section",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false"
+              },
+              "options.section_columns.custom_delimiter": {
+                "type": "text",
+                "label": "Délimiteur (1 caractère)",
+                "show_if": "options.section_columns.add_custom_section_column=='true'",
+                "maxLength": 1,
+                "required": true,
+                "breakLine": true
+              },
+              "options.section_columns.add_brackets_punctuation_section_column": {
+                "type": "checkbox",
+                "label": "Parenthèses & ponctuation",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false"
+              },
+              "options.section_columns.brackets_punctuation_section_column_type": {
+                "type": "select",
+                "label": "Type de parenthèses",
+                "show_if": "options.section_columns.add_brackets_punctuation_section_column=='true'",
+                "options": {
+                  "nesting_structure": {
+                    "label": "Structure d'imbrication"
+                  },
+                  "inner_bracket": {
+                    "label": "Parenthèse interne"
+                  },
+                  "brackets_only": {
+                    "label": "Brackets Only"
+                  },
+                  "show_all": {
+                    "label": "Tout afficher"
+                  }
+                },
+                "val": "show_all",
+                "required": true,
+                "breakLine": true
+              }
+            }
+          },
+          "options.add_filename_column": {
+            "type": "checkbox",
+            "label": "Ajouter une colonne pour le nom du fichier",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "style": "margin-top: 10px",
+            "breakLine": true
+          },
+          "options.add_filepath_column": {
+            "type": "checkbox",
+            "label": "Ajouter une colonne pour le chemin du fichier",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          }
+        }
+      },
+      "options.is_cloud_dir": {
+        "type": "hidden",
+        "val": "true"
+      },
+      "if_dir_frame": {
+        "type": "fieldset",
+        "label": "Options d'importation de répertoire",
+        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true'",
+        "repeat": false,
+        "fields": {
+          "options.unify_in_one_table": {
+            "type": "checkbox",
+            "label": "Unir en un tableau",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.suffix": {
+            "type": "select",
+            "label": "Suffixe des tables de sortie",
+            "show_if": "options.unify_in_one_table=='false'",
+            "options": {
+              "number": {
+                "label": "Numéro"
+              },
+              "filename": {
+                "label": "Nom du fichier"
+              }
+            },
+            "val": "number",
+            "required": true,
+            "breakLine": true
+          },
+          "options.include_subdir": {
+            "type": "checkbox",
+            "label": "Inclure les sous-répertoires",
+            "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true,
+            "style": "margin-top: 10px"
+          }
+        }
+      },
+      "options.file_list.include_subdir": {
+        "type": "checkbox",
+        "label": "Inclure les sous-répertoires",
+        "show_if": "options.output_format=='file_list'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true,
+        "style": "margin-top: 10px"
+      },
+      "options.file_list.add_change_date_column": {
+        "type": "checkbox",
+        "label": "Ajouter une colonne de changement de date",
+        "show_if": "options.output_format=='file_list'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  },
+  "import_link_token_frame": {
+    "type": "fieldset",
+    "label": "Lien d'importation",
+    "repeat": false,
+    "fields": {
+      "options.link_csv_file": {
+        "type": "text",
+        "label": "Insérer lien, p. ex. https://github.com/zippydoc/test/blob/main/example.csv",
+        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format=='csv_table'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.link_text_file": {
+        "type": "text",
+        "label": "Entrez le lien, par exemple https://github.com/zippydoc/test/blob/main/example.txt(json, csv, etc)",
+        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format!='csv_table' && options.output_format!='file_list'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.one_drive.file_path": {
+        "type": "text",
+        "label": "Entrez le chemin vers le fichier, par exemple ZippyDoc/Subdir1/test.txt",
+        "show_if": "options.webservice=='ms_one_drive' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox.file_path": {
+        "type": "text",
+        "label": "Entrez le chemin vers le fichier, par exemple ZippyDoc/Subdir1/test.txt",
+        "show_if": "options.webservice=='dropbox' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dir_path_filter": {
+        "type": "fieldset",
+        "label": "Chemin d'importation et filtre de fichier",
+        "show_if": "options.output_format=='file_list' || options.is_cloud_dir=='true'",
+        "repeat": true,
+        "fields": {
+          "github__link_directory": {
+            "type": "text",
+            "label": "Insérer lien, p. ex. https://github.com/zippydoc/test",
+            "show_if": "options.webservice=='github'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "one_drive__dir_path": {
+            "type": "text",
+            "label": "Entrez le chemin vers le répertoire, par exemple ZippyDoc/Subdir1",
+            "show_if": "options.webservice=='ms_one_drive'",
+            "width": "100%",
+            "breakLine": true
+          },
+          "dropbox__dir_path": {
+            "type": "text",
+            "label": "Entrez le chemin vers le répertoire, par exemple ZippyDoc/Subdir1",
+            "show_if": "options.webservice=='dropbox'",
+            "width": "100%",
+            "breakLine": true
+          },
+          "google_drive__dir_path": {
+            "type": "text",
+            "label": "Entrer le chemin vers le répertoire",
+            "show_if": "options.webservice=='google_drive'",
+            "width": "100%",
+            "breakLine": true
+          },
+          "dir_filter__filter_type": {
+            "type": "select",
+            "label": "Type de filtre",
+            "options": {
+              "all": {
+                "label": "Tout"
+              },
+              "contains": {
+                "label": "Contient"
+              },
+              "starts_with": {
+                "label": "Commence par"
+              },
+              "ends_with": {
+                "label": "Se termine par"
+              },
+              "regex": {
+                "label": "Expression régulière"
+              }
+            },
+            "val": "all",
+            "required": true
+          },
+          "dir_filter__filter_string": {
+            "type": "text",
+            "label": "Filtrer",
+            "show_if": "this.dir_filter__filter_type!='all'",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Supprimer",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.is_github_private": {
+        "type": "checkbox",
+        "label": "Le dépôt Github est privé",
+        "show_if": "options.webservice=='github'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.github_token": {
+        "type": "text",
+        "label": "Jeton d'accès personnel Github",
+        "show_if": "options.webservice=='github' && options.is_github_private=='true'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.one_drive.access_token": {
+        "type": "text",
+        "label": "Jeton d'accès à One Drive",
+        "show_if": "options.webservice=='ms_one_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox.auth_code": {
+        "type": "text",
+        "label": "Code d'autorisation Dropbox",
+        "show_if": "options.webservice=='dropbox'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.google_drive.access_token": {
+        "type": "text",
+        "label": "Jeton d'accès à Google Drive",
+        "show_if": "options.webservice=='google_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}

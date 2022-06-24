@@ -1,5 +1,5 @@
 {
-  "options_box": {
+  "options": {
     "type": "fieldset",
     "label": "Optionen",
     "repeat": false,
@@ -55,7 +55,7 @@
                 "label": "Relatives Wachstum"
               },
               "compound_growth": {
-                "label": "Compound-Wachstum"
+                "label": "Zusammengesetztes Wachstum"
               },
               "static_value": {
                 "label": "Statischer Wert"
@@ -73,7 +73,7 @@
             "type": "select",
             "label": "Spalte(n) auswählen",
             "show_if": "this.multi_column_functions__function=='sum' || this.multi_column_functions__function=='average' || this.multi_column_functions__function=='median' || this.multi_column_functions__function=='max' || this.multi_column_functions__function=='min' || this.multi_column_functions__function=='standard_deviation' || this.multi_column_functions__function=='product'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "multiple": true,
             "required": true
@@ -82,7 +82,7 @@
             "type": "select",
             "label": "Spalte A auswählen",
             "show_if": "this.multi_column_functions__function=='quota' || this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='compound_growth'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true
           },
@@ -90,7 +90,7 @@
             "type": "select",
             "label": "Spalte B auswählen",
             "show_if": "this.multi_column_functions__function=='quota' || this.multi_column_functions__function=='absolute_growth' || this.multi_column_functions__function=='relative_growth' || this.multi_column_functions__function=='compound_growth'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true
           },
@@ -101,23 +101,41 @@
             "val": "1",
             "required": true
           },
+          "multi_column_functions__static_value__type": {
+            "type": "select",
+            "label": "Statischer Werttyp",
+            "show_if": "this.multi_column_functions__function=='static_value'",
+            "required": true,
+            "options": {
+              "custom": {
+                "label": "Benutzerdefiniert"
+              },
+              "input_table_name": {
+                "label": "Name der Eingangstabelle"
+              },
+              "output_table_name": {
+                "label": "Name der Ausgabetabelle"
+              }
+            },
+            "val": "custom"
+          },
           "static_value": {
             "type": "text",
-            "label": "Eingabewert",
-            "show_if": "this.multi_column_functions__function=='static_value'",
+            "label": "Eingangswert",
+            "show_if": "this.multi_column_functions__function=='static_value' && this.multi_column_functions__static_value__type=='custom'",
             "val": "",
             "width": "100%"
           },
           "numeric_formula": {
             "type": "text",
-            "label": "Eingabeformel, z. B. [Spalte1] + 2 * ([Zeile-1:Spalte3] - [Spalte1])",
+            "label": "Input Formula, e.g. [Column1] + 2 * ([Row-1:Column3] - [Column1])",
             "show_if": "this.multi_column_functions__function=='numeric_formula'",
             "val": "",
             "width": "100%"
           },
           "text_formula": {
             "type": "text",
-            "label": "Eingabeformel, z. B. [Vorname] + ' ' + [Nachname] + ' ' + [Zeile-1:Spalte3]",
+            "label": "Input Formula, e.g. [firstName] + ' ' + [lastName] + ' ' + [Row-1:Column3]",
             "show_if": "this.multi_column_functions__function=='text_formula'",
             "val": "",
             "width": "100%"
@@ -148,7 +166,7 @@
           },
           "format__category": {
             "type": "select",
-            "label": "Format",
+            "label": "Anzeigeformat",
             "required": true,
             "options": {
               "standard": {
@@ -174,7 +192,7 @@
           },
           "format__rounding": {
             "type": "select",
-            "label": "Abrunden",
+            "label": "Dezimalstellen für die Anzeige",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "required": true,
             "options": {
@@ -216,7 +234,7 @@
           },
           "format__use_1000_separator": {
             "type": "checkbox",
-            "label": "Use 1000 Separator(.)",
+            "label": "1000 Trennzeichen(.) verwenden",
             "show_if": "this.format__category=='number' || this.format__category=='percentage' || this.format__category=='currency'",
             "val": "true",
             "isOn": "true",
@@ -236,6 +254,63 @@
               },
               "pound": {
                 "label": "£"
+              },
+              "yen": {
+                "label": "¥ (Yen, currency of Japan)"
+              },
+              "colon": {
+                "label": "₡ (Colón, currency of Costa Rica)"
+              },
+              "naira": {
+                "label": "₦ (Naira, currency of Nigeria)"
+              },
+              "rupee": {
+                "label": "₨ (Rupee, currency of India)"
+              },
+              "rupie": {
+                "label": "₹ (Rupee, currency of India)"
+              },
+              "won": {
+                "label": "₩ (Won, currency in South Korea and North Korea)"
+              },
+              "hebrew": {
+                "label": "₪ (Currency of Israel)"
+              },
+              "dong": {
+                "label": "₫ (Currency of Vietnam)"
+              },
+              "kip": {
+                "label": "₭ (Kip, currency of Laos)"
+              },
+              "mongolia": {
+                "label": "₮ (Currency of Mongolia)"
+              },
+              "peso": {
+                "label": "₱ (Peso, currency of the Philippines)"
+              },
+              "guarani": {
+                "label": "₲ (Guaraní, currency of Paraguay)"
+              },
+              "hryvnia": {
+                "label": "₴ (Hryvnia, currency of Ukraine)"
+              },
+              "tenge": {
+                "label": "₸ (Tenge, currency of Kazakhstan)"
+              },
+              "lira": {
+                "label": "₺ (Lira, currency of Turkey)"
+              },
+              "manat": {
+                "label": "₼ (Manat, currency of Azerbaijan)"
+              },
+              "rubles": {
+                "label": "₽ (Rubles, currency of Russia)"
+              },
+              "lari": {
+                "label": "₾ (Lari, currency of Georgia)"
+              },
+              "bitcoin": {
+                "label": "₿ (Bitcoin, crypto currency)"
               }
             },
             "val": "dollar"
@@ -254,6 +329,33 @@
               },
               "yyyy-mm-dd": {
                 "label": "2012-03-14"
+              },
+              "m.dd.yyyy": {
+                "label": "3.14.2012"
+              },
+              "m.dd.yy": {
+                "label": "3.14.12"
+              },
+              "dd.m.yyyy": {
+                "label": "14.3.2012"
+              },
+              "dd.m.yy": {
+                "label": "14.3.12"
+              },
+              "M dd, Y": {
+                "label": "14. März 2012"
+              },
+              "dd-mm-yyyy": {
+                "label": "14-03-2012"
+              },
+              "mm-dd-yyyy": {
+                "label": "03-14-2012"
+              },
+              "dd-mm-yy": {
+                "label": "14-03-12"
+              },
+              "mm-dd-yy": {
+                "label": "03-14-12"
               }
             },
             "val": "mm/dd/yyyy",
@@ -288,7 +390,7 @@
           },
           "group_counter__custom": {
             "type": "checkbox",
-            "label": "Selbstdefinierter Gruppenzähler",
+            "label": "Kundenspezifischer Gruppenzähler",
             "show_if": "this.task_type=='group_counter'",
             "val": "false",
             "isOn": "true",
@@ -299,7 +401,7 @@
             "type": "select",
             "label": "Spalte",
             "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "required": true
           },
@@ -326,14 +428,14 @@
           },
           "group_counter__value": {
             "type": "text",
-            "label": "Eingabewert",
+            "label": "Eingangswert",
             "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true'",
             "val": ".",
             "breakLine": true
           },
           "group_counter__label": {
             "type": "text",
-            "label": "Eingangs-Zeile",
+            "label": "Eingangsetikett",
             "show_if": "this.task_type=='group_counter' && this.group_counter__custom=='true'",
             "val": "sentence",
             "breakLine": true
@@ -374,7 +476,7 @@
             "type": "select",
             "label": "Gruppenspalte(n)",
             "show_if": "this.apply_to_group__enabled == 'true' && this.multi_column_functions__function!='static_value'",
-            "table": "input_table",
+            "table": "table_id",
             "bind": "COLUMNS",
             "multiple": true,
             "required": true
@@ -445,25 +547,25 @@
               "column": {
                 "type": "select",
                 "label": "Spalte auswählen",
-                "table": "input_table",
+                "table": "table_id",
                 "bind": "COLUMNS",
                 "required": true
               },
               "condition": {
                 "type": "select",
-                "label": "Bedingung auswählen",
+                "label": "Bediener auswählen",
                 "required": true,
                 "options": {
-                  "ENTHÄLT": {
+                  "CONTAINS": {
                     "label": "ENTHÄLT"
                   },
                   "CONTAINED IN STRING": {
                     "label": "ENTHALTEN IN"
                   },
-                  "STARTET MIT": {
+                  "STARTS WITH": {
                     "label": "STARTET MIT"
                   },
-                  "ENDET MIT": {
+                  "ENDS WITH": {
                     "label": "ENDET MIT"
                   },
                   "=": {
@@ -490,20 +592,26 @@
                   "IS NULL": {
                     "label": "IS NULL"
                   },
-                  "REGEX-MATCH": {
+                  "IS TRUE": {
+                    "label": "IST WAHR"
+                  },
+                  "IS FALSE": {
+                    "label": "IST FALSCH"
+                  },
+                  "REGEX MATCH": {
                     "label": "REGEX-MATCH"
                   },
                   "CONTAINED IN TABLE": {
                     "label": "IN TABELLE"
                   },
-                  "IN REGEX-TABELLE": {
+                  "IN REGEX TABLE": {
                     "label": "IN REGEX-TABELLE"
                   },
-                  "DATUM": {
+                  "DATE": {
                     "label": "DATUM"
                   }
                 },
-                "val": "ENTHÄLT"
+                "val": "CONTAINS"
               },
               "date_condition": {
                 "type": "select",
@@ -529,20 +637,28 @@
                 },
                 "val": "="
               },
-              "case_sensitive": {
+              "compare_with": {
                 "type": "select",
-                "label": "Wählen Sie Case Sensitive",
+                "label": "Compare with",
                 "required": true,
-                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "show_if": "this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<='",
                 "options": {
-                  "yes": {
-                    "label": "Groß-/Kleinschreibungsunterscheidung"
+                  "custom_value": {
+                    "label": "Custom value"
                   },
-                  "no": {
-                    "label": "Groß-/Kleinschreibung nicht beachten"
+                  "column_value": {
+                    "label": "Column value"
                   }
                 },
-                "val": "yes"
+                "val": "custom_value"
+              },
+              "self_compare_column": {
+                "type": "select",
+                "label": "Select Compare Column",
+                "table": "table_id",
+                "bind": "COLUMNS",
+                "show_if": "this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+                "required": true
               },
               "date_value": {
                 "type": "date",
@@ -553,10 +669,25 @@
               },
               "value": {
                 "type": "text",
-                "label": "Eingabewert",
-                "show_if": "this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
+                "label": "Eingangswert",
+                "show_if": "this.compare_with=='custom_value' && this.condition != 'DATE' && this.condition != 'EMPTY' && this.condition != 'NOT EMPTY' && this.condition != 'BLANK' && this.condition != 'NOT BLANK' && this.condition != 'IS NULL' && this.condition != 'IS NOT NULL' && this.condition != 'IS TRUE' && this.condition != 'IS FALSE' && this.condition != 'CONTAINED IN TABLE' && this.condition != 'NOT CONTAINED IN TABLE' && this.condition != 'IN REGEX TABLE' && this.condition != 'NOT IN REGEX TABLE'",
                 "val": "",
                 "required": true
+              },
+              "case_sensitive": {
+                "type": "select",
+                "label": "Wählen Sie Case Sensitive",
+                "required": true,
+                "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+                "options": {
+                  "yes": {
+                    "label": "Gehäuse empfindlich"
+                  },
+                  "no": {
+                    "label": "Groß-/Kleinschreibung nicht beachten"
+                  }
+                },
+                "val": "yes"
               },
               "compare_table": {
                 "type": "select",
@@ -601,7 +732,7 @@
                 "label": "Gruppenspalten auswählen",
                 "required": true,
                 "width": "100%",
-                "table": "input_table",
+                "table": "table_id",
                 "multiple": true,
                 "bind": "COLUMNS",
                 "breakLine": true

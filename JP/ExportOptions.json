@@ -155,19 +155,28 @@
         "isOff": "false",
         "breakLine": true
       },
-      "options.github_token": {
-        "type": "text",
-        "label": "書き込み権限のあるGithubパーソナルアクセストークンを指定：",
-        "show_if": "options.to=='file' && options.webservice=='github'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
       "options.github_url": {
         "type": "text",
         "label": "リンクを入力 例：https://github.com/zippydoc/test",
         "show_if": "options.to=='file' && options.webservice=='github'",
         "val": "https://github.com/zippydoc/public-tables",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.export_dir": {
+        "type": "text",
+        "label": "ディレクトリを入力 例：/MyZippyDocFiles/SubDir/",
+        "show_if": "options.to=='file' && options.webservice!='github'",
+        "val": "/",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.github_token": {
+        "type": "text",
+        "label": "書き込み権限のあるGithubパーソナルアクセストークンを指定：",
+        "show_if": "options.to=='file' && options.webservice=='github'",
         "required": true,
         "width": "100%",
         "breakLine": true
@@ -190,7 +199,7 @@
       },
       "options.dropbox_authorization_code": {
         "type": "text",
-        "label": "Dropboxの認証コードです。ここで取得できます https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
         "show_if": "options.to=='file' && options.webservice=='dropbox'",
         "required": true,
         "width": "100%",

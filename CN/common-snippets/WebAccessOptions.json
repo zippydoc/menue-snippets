@@ -1,0 +1,51 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "选项",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "radio",
+        "label": "",
+        "required": true,
+        "values": {
+          "embed_code": "Generate Embed-Code",
+          "api_key": "Generate API-KEY"
+        },
+        "val": "embed_code",
+        "breakLine": true
+      },
+      "options.embed_code.framework": {
+        "type": "select",
+        "label": "选择前端框架",
+        "required": true,
+        "show_if": "options.type=='embed_code'",
+        "options": {
+          "jquery": {
+            "label": "jQuery"
+          },
+          "react": {
+            "label": "React（即将推出…）"
+          },
+          "vue": {
+            "label": "Vue（即将推出…）"
+          },
+          "angular": {
+            "label": "Angular（即将推出…）"
+          }
+        },
+        "val": "jquery",
+        "style": "width: 200px"
+      },
+      "options.embed_code.use_datatable": {
+        "type": "checkbox",
+        "label": "使用主题",
+        "show_if": "options.type=='embed_code'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  }
+}

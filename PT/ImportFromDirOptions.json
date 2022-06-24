@@ -40,7 +40,7 @@
             "label": "Linha a Linha"
           },
           "word_by_word": {
-            "label": "Palavra a Palavra"
+            "label": "Texto"
           },
           "file_list": {
             "label": "Lista de Ficheiros"
@@ -70,12 +70,17 @@
         "breakLine": true
       },
       "options.column_setting": {
-        "type": "hidden",
-        "val": "true"
+        "type": "checkbox",
+        "label": "Column Settings (Definições de colunas)",
+        "show_if": "options.output_format!='file_list'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
       },
       "column_setting_frame": {
         "type": "fieldset",
-        "label": "Definições de colunas",
+        "label": "Column Settings (Definições de colunas)",
         "show_if": "options.output_format!='file_list' && options.column_setting=='true'",
         "repeat": false,
         "fields": {
@@ -99,7 +104,7 @@
           },
           "options.add_word_nonword_column": {
             "type": "checkbox",
-            "label": "Acrescentar coluna 'Palavra & Não-Palavra'",
+            "label": "Acrescentar coluna 'Palavra & Não-Palavra",
             "show_if": "options.output_format=='word_by_word'",
             "val": "false",
             "isOn": "true",
@@ -110,7 +115,7 @@
             "type": "checkbox",
             "label": "Adicionar Coluna Secção",
             "show_if": "options.output_format=='word_by_word'",
-            "val": "true",
+            "val": "false",
             "isOn": "true",
             "isOff": "false",
             "breakLine": true
@@ -162,11 +167,14 @@
                   "inner_bracket": {
                     "label": "Suporte interior"
                   },
+                  "brackets_only": {
+                    "label": "Brackets Only"
+                  },
                   "show_all": {
                     "label": "Mostrar Todos"
                   }
                 },
-                "val": "nesting_structure",
+                "val": "show_all",
                 "required": true,
                 "breakLine": true
               }
@@ -178,6 +186,7 @@
             "val": "true",
             "isOn": "true",
             "isOff": "false",
+            "style": "margin-top: 10px",
             "breakLine": true
           },
           "options.add_filepath_column": {
@@ -186,7 +195,6 @@
             "val": "false",
             "isOn": "true",
             "isOff": "false",
-            "style": "margin-top: 10px",
             "breakLine": true
           }
         }
@@ -255,15 +263,6 @@
         "isOn": "true",
         "isOff": "false",
         "breakLine": true
-      },
-      "options.use_filename_as_output_table_name": {
-        "type": "checkbox",
-        "label": "Usar nome de ficheiro como nome de tabela",
-        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
       }
     }
   },
@@ -306,7 +305,7 @@
       },
       "options.dir_path_filter": {
         "type": "fieldset",
-        "label": "Caminho de Importação e Filtro de Ficheiros",
+        "label": "Import Path and File Filter (Caminho de Importação e Filtro de Ficheiros)",
         "show_if": "options.output_format=='file_list' || options.is_cloud_dir=='true'",
         "repeat": true,
         "fields": {
@@ -389,14 +388,6 @@
         "type": "text",
         "label": "Ficha de acesso pessoal de Github",
         "show_if": "options.webservice=='github' && options.is_github_private=='true'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "options.one_drive.access_token": {
-        "type": "text",
-        "label": "Ficha de Acesso de Uma Unidade",
-        "show_if": "options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true

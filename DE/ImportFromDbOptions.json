@@ -21,47 +21,43 @@
                 "label": "PostgreSQL"
               },
               "mysql": {
-                "label": "MySQL (Demnächst...)"
+                "label": "MySQL"
               },
               "sql_server": {
-                "label": "MS SQL Server (Demnächst...)"
+                "label": "MS SQL-Server"
               },
               "oracle": {
-                "label": "Oracle (Demnächst verfügbar...)"
+                "label": "Oracle"
               }
             },
             "val": "postgresql",
             "required": true,
             "breakLine": true
           },
-          "options.postgresql_credential.user": {
-            "type": "text",
-            "label": "Benutzer",
-            "show_if": "options.dbms=='postgresql'",
-            "required": true,
-            "width": "100%",
-            "breakLine": true
-          },
-          "options.postgresql_credential.password": {
-            "type": "text",
-            "label": "Kennwort",
-            "show_if": "options.dbms=='postgresql'",
-            "required": true,
-            "width": "100%",
-            "breakLine": true
-          },
-          "options.postgresql_credential.host": {
+          "options.host": {
             "type": "text",
             "label": "Host",
-            "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
             "breakLine": true
           },
-          "options.postgresql_credential.database": {
+          "options.user": {
+            "type": "text",
+            "label": "Benutzer",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.password": {
+            "type": "password",
+            "label": "Kennwort",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.database": {
             "type": "text",
             "label": "Datenbank",
-            "show_if": "options.dbms=='postgresql'",
             "required": true,
             "width": "100%",
             "breakLine": true
@@ -71,7 +67,7 @@
       "options.schema_name_to_import": {
         "type": "text",
         "label": "Schemaname, der die zu importierende Tabelle enthält",
-        "show_if": "options.dbms=='postgresql'",
+        "show_if": "options.dbms=='postgresql' || options.dbms=='sql_server' || options.dbms=='oracle'",
         "required": true,
         "val": "public",
         "width": "100%",
@@ -80,7 +76,6 @@
       "options.table_name_to_import": {
         "type": "text",
         "label": "Zu importierender Tabellenname",
-        "show_if": "options.dbms=='postgresql'",
         "required": true,
         "width": "100%",
         "breakLine": true

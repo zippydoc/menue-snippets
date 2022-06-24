@@ -1,0 +1,136 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Chamäleon-Optionen",
+    "repeat": false,
+    "fields": {
+      "params": {
+        "type": "fieldset",
+        "label": "Parameter ändern",
+        "breakLine": true,
+        "repeat": true,
+        "fields": {
+          "attr_name": {
+            "type": "text",
+            "label": "Feldname",
+            "required": true,
+            "val": ""
+          },
+          "use_field_label": {
+            "type": "checkbox",
+            "label": "Feldbezeichnung verwenden",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "attr_instance": {
+            "type": "number",
+            "label": "Feldinstanz",
+            "required": true,
+            "val": "1"
+          },
+          "value_type": {
+            "type": "select",
+            "label": "Ersetzen durch",
+            "required": true,
+            "options": {
+              "single_value": {
+                "label": "Single Field Value"
+              },
+              "value_series": {
+                "label": "Feldwertliste"
+              },
+              "table_values": {
+                "label": "Tabellenwerte"
+              }
+            },
+            "val": "single_value"
+          },
+          "attr_value": {
+            "type": "text",
+            "label": "Feldwert",
+            "required": true,
+            "val": "",
+            "show_if": "this.value_type=='single_value'"
+          },
+          "attr_values": {
+            "type": "text",
+            "label": "Field Values ( ; - separated )",
+            "required": true,
+            "val": "",
+            "show_if": "this.value_type=='value_series'"
+          },
+          "table_id": {
+            "type": "select",
+            "label": "Tabelle auswählen",
+            "bind": "TABLES",
+            "show_if": "this.value_type=='table_values'",
+            "empty": "",
+            "required": true
+          },
+          "column": {
+            "type": "select",
+            "label": "Spalte auswählen",
+            "required": true,
+            "table": "this.table_id",
+            "bind": "COLUMNS",
+            "show_if": "this.value_type=='table_values'"
+          },
+          "use_waiting_time": {
+            "type": "checkbox",
+            "label": "Wartezeit hinzufügen",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "show_if": "this.value_type!='single_value'"
+          },
+          "waiting_period": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "show_if": "this.value_type!='single_value' && this.use_waiting_time!='false'"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "task_chain": {
+        "type": "checkbox",
+        "label": "Aufgabenkette",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "schedule_options": {
+        "type": "fieldset",
+        "label": "Zu planende Aufgaben",
+        "show_if": "task_chain == 'true'",
+        "repeat": true,
+        "fields": {
+          "input_task": {
+            "type": "select",
+            "label": "Aufgabe auswählen",
+            "bind": "TASKS",
+            "empty": "",
+            "required": true
+          },
+          "waiting_time": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Lösche",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,396 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Выбрать параметры",
+    "repeat": false,
+    "fields": {
+      "options.from": {
+        "type": "hidden",
+        "val": "web"
+      },
+      "options.webservice": {
+        "type": "hidden",
+        "val": "ms_one_drive"
+      },
+      "options.output_format": {
+        "type": "select",
+        "label": "Выбрать тип",
+        "options": {
+          "csv_table": {
+            "label": "CSV-таблица"
+          },
+          "line_by_line": {
+            "label": "Линия за линией"
+          },
+          "word_by_word": {
+            "label": "Текст"
+          },
+          "file_list": {
+            "label": "Список файлов"
+          }
+        },
+        "val": "csv_table",
+        "required": true
+      },
+      "options.word_pattern_type": {
+        "type": "select",
+        "label": "Словесный шаблон",
+        "show_if": "options.output_format=='word_by_word' && options.specify_word_pattern=='true'",
+        "options": {
+          "regex": {
+            "label": "Регулярное выражение"
+          }
+        },
+        "val": "regex",
+        "required": true
+      },
+      "options.word_pattern_regex": {
+        "type": "text",
+        "label": "Регулярное выражение",
+        "show_if": "options.output_format=='word_by_word' && options.specify_word_pattern=='true' && options.word_pattern_type=='regex'",
+        "required": true,
+        "val": "[a-z][1-9]",
+        "breakLine": true
+      },
+      "options.column_setting": {
+        "type": "checkbox",
+        "label": "Настройки колонок",
+        "show_if": "options.output_format!='file_list'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "column_setting_frame": {
+        "type": "fieldset",
+        "label": "Настройки колонок",
+        "show_if": "options.output_format!='file_list' && options.column_setting=='true'",
+        "repeat": false,
+        "fields": {
+          "options.add_row_column": {
+            "type": "checkbox",
+            "label": "Добавить строку столбца",
+            "show_if": "options.output_format=='word_by_word'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.add_word_count_column": {
+            "type": "checkbox",
+            "label": "Добавить колонку 'Word Count'",
+            "show_if": "options.output_format=='word_by_word'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.add_word_nonword_column": {
+            "type": "checkbox",
+            "label": "Добавить колонку Слово и не-слово"",
+            "show_if": "options.output_format=='word_by_word'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.add_section_column": {
+            "type": "checkbox",
+            "label": "Добавить столбец раздела",
+            "show_if": "options.output_format=='word_by_word'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "section_column_types_frame": {
+            "type": "fieldset",
+            "label": "Типы столбцов раздела",
+            "show_if": "options.output_format=='word_by_word' && options.add_section_column=='true'",
+            "repeat": false,
+            "fields": {
+              "options.section_columns.add_paragraph_section_column": {
+                "type": "checkbox",
+                "label": "Параграф",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false",
+                "breakLine": true
+              },
+              "options.section_columns.add_custom_section_column": {
+                "type": "checkbox",
+                "label": "Пользовательский разделитель",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false"
+              },
+              "options.section_columns.custom_delimiter": {
+                "type": "text",
+                "label": "Разделитель (1 символ)",
+                "show_if": "options.section_columns.add_custom_section_column=='true'",
+                "maxLength": 1,
+                "required": true,
+                "breakLine": true
+              },
+              "options.section_columns.add_brackets_punctuation_section_column": {
+                "type": "checkbox",
+                "label": "Скобки и пунктуация",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false"
+              },
+              "options.section_columns.brackets_punctuation_section_column_type": {
+                "type": "select",
+                "label": "Тип скобок",
+                "show_if": "options.section_columns.add_brackets_punctuation_section_column=='true'",
+                "options": {
+                  "nesting_structure": {
+                    "label": "Структура вложенности"
+                  },
+                  "inner_bracket": {
+                    "label": "Внутренняя скобка"
+                  },
+                  "brackets_only": {
+                    "label": "Brackets Only"
+                  },
+                  "show_all": {
+                    "label": "Показать все"
+                  }
+                },
+                "val": "show_all",
+                "required": true,
+                "breakLine": true
+              }
+            }
+          },
+          "options.add_filename_column": {
+            "type": "checkbox",
+            "label": "Добавить колонку в Название Файла",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "style": "margin-top: 10px",
+            "breakLine": true
+          },
+          "options.add_filepath_column": {
+            "type": "checkbox",
+            "label": "Добавить колонку для пути к файлу",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          }
+        }
+      },
+      "options.is_cloud_dir": {
+        "type": "hidden",
+        "val": "true"
+      },
+      "if_dir_frame": {
+        "type": "fieldset",
+        "label": "Параметры импорта каталога",
+        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true'",
+        "repeat": false,
+        "fields": {
+          "options.unify_in_one_table": {
+            "type": "checkbox",
+            "label": "Объединить в одну таблицу",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.suffix": {
+            "type": "select",
+            "label": "Суффикс выходных таблиц",
+            "show_if": "options.unify_in_one_table=='false'",
+            "options": {
+              "number": {
+                "label": "Число"
+              },
+              "filename": {
+                "label": "Название файла"
+              }
+            },
+            "val": "number",
+            "required": true,
+            "breakLine": true
+          },
+          "options.include_subdir": {
+            "type": "checkbox",
+            "label": "Включить подкаталоги",
+            "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='true'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true,
+            "style": "margin-top: 10px"
+          }
+        }
+      },
+      "options.file_list.include_subdir": {
+        "type": "checkbox",
+        "label": "Включить подкаталоги",
+        "show_if": "options.output_format=='file_list'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true,
+        "style": "margin-top: 10px"
+      },
+      "options.file_list.add_change_date_column": {
+        "type": "checkbox",
+        "label": "Добавить столбец изменения даты",
+        "show_if": "options.output_format=='file_list'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  },
+  "import_link_token_frame": {
+    "type": "fieldset",
+    "label": "Ссылка на импорт",
+    "repeat": false,
+    "fields": {
+      "options.link_csv_file": {
+        "type": "text",
+        "label": "Введите ссылку, например, https://github.com/zippydoc/test/blob/main/example.csv.",
+        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format=='csv_table'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.link_text_file": {
+        "type": "text",
+        "label": "Введите ссылку, например, https://github.com/zippydoc/test/blob/main/example.txt(json, csv, etc)",
+        "show_if": "options.webservice=='github' && options.is_cloud_dir=='false' && options.output_format!='csv_table' && options.output_format!='file_list'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.one_drive.file_path": {
+        "type": "text",
+        "label": "Введите путь к файлу, например, ZippyDoc/Subdir1/test.txt",
+        "show_if": "options.webservice=='ms_one_drive' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox.file_path": {
+        "type": "text",
+        "label": "Введите путь к файлу, например, ZippyDoc/Subdir1/test.txt",
+        "show_if": "options.webservice=='dropbox' && options.output_format!='file_list' && options.is_cloud_dir=='false'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dir_path_filter": {
+        "type": "fieldset",
+        "label": "Путь импорта и фильтр файлов",
+        "show_if": "options.output_format=='file_list' || options.is_cloud_dir=='true'",
+        "repeat": true,
+        "fields": {
+          "github__link_directory": {
+            "type": "text",
+            "label": "Введите ссылку, например, https://github.com/zippydoc/test.",
+            "show_if": "options.webservice=='github'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "one_drive__dir_path": {
+            "type": "text",
+            "label": "Введите путь к каталогу, например ZippyDoc/Subdir1",
+            "show_if": "options.webservice=='ms_one_drive'",
+            "width": "100%",
+            "breakLine": true
+          },
+          "dropbox__dir_path": {
+            "type": "text",
+            "label": "Введите путь к каталогу, например ZippyDoc/Subdir1",
+            "show_if": "options.webservice=='dropbox'",
+            "width": "100%",
+            "breakLine": true
+          },
+          "google_drive__dir_path": {
+            "type": "text",
+            "label": "Введите путь к каталогу",
+            "show_if": "options.webservice=='google_drive'",
+            "width": "100%",
+            "breakLine": true
+          },
+          "dir_filter__filter_type": {
+            "type": "select",
+            "label": "Тип фильтра",
+            "options": {
+              "all": {
+                "label": "Все"
+              },
+              "contains": {
+                "label": "Содержит"
+              },
+              "starts_with": {
+                "label": "Начинается с"
+              },
+              "ends_with": {
+                "label": "Заканчивается С"
+              },
+              "regex": {
+                "label": "Регулярное выражение"
+              }
+            },
+            "val": "all",
+            "required": true
+          },
+          "dir_filter__filter_string": {
+            "type": "text",
+            "label": "Фильтр",
+            "show_if": "this.dir_filter__filter_type!='all'",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Удалить",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.is_github_private": {
+        "type": "checkbox",
+        "label": "Репозиторий Github является личным",
+        "show_if": "options.webservice=='github'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-top: 10px",
+        "breakLine": true
+      },
+      "options.github_token": {
+        "type": "text",
+        "label": "Персональный токен доступа к Github",
+        "show_if": "options.webservice=='github' && options.is_github_private=='true'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox.auth_code": {
+        "type": "text",
+        "label": "Код авторизации Dropbox",
+        "show_if": "options.webservice=='dropbox'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.google_drive.access_token": {
+        "type": "text",
+        "label": "Токен доступа к Google Drive",
+        "show_if": "options.webservice=='google_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}

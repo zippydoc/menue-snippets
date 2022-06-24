@@ -1,0 +1,67 @@
+{
+  "options_frame": {
+    "type": "fieldset",
+    "label": "选择选项",
+    "repeat": false,
+    "fields": {
+      "options.task_type": {
+        "type": "hidden",
+        "val": "write_series"
+      },
+      "table_id": {
+        "type": "select",
+        "label": "选择表格",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true
+      },
+      "info2": {
+        "type": "text",
+        "label": "",
+        "val": "Table-Type: TO | CC | BCC | SUBJECT | BODY",
+        "disabled": true,
+        "style": "width: 100%"
+      },
+      "options.add_table": {
+        "type": "checkbox",
+        "label": "嵌入一个表格",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.embed_mode": {
+        "type": "select",
+        "label": "Table Embed Type",
+        "show_if": "options.add_table=='true'",
+        "options": {
+          "embed": {
+            "label": "Embed"
+          },
+          "attach_csv_comma_separated": {
+            "label": "Attach as csv (',' - separated)"
+          },
+          "attach_csv_semicolon_separated": {
+            "label": "Attach as csv (';' - separated)"
+          }
+        },
+        "val": "embed",
+        "breakLine": true
+      },
+      "options.embed_table_footer": {
+        "type": "text",
+        "label": "Table Footer",
+        "show_if": "options.add_table=='true'",
+        "val": "",
+        "style": "width: 100%"
+      },
+      "info3": {
+        "type": "text",
+        "label": "",
+        "val": "This task only supports users logged in via Microsoft Login",
+        "disabled": true,
+        "style": "width: 100%"
+      }
+    }
+  }
+}

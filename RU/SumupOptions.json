@@ -4,12 +4,14 @@
     "label": "Добавить действия",
     "repeat": true,
     "fields": {
-      "column": {
+      "columns": {
         "type": "select",
-        "label": "Столбец",
-        "table": "input_table",
+        "label": "Column(s)",
+        "table": "table_id",
 		"assign_selected_value_to":"this.output_column_name",
-        "bind": "COLUMNS"
+        "bind": "COLUMNS",
+        "multiple": true,
+        "required": true
       },
       "action": {
         "type": "select",
@@ -42,7 +44,8 @@
           "mathematics": {
             "label": "Математика"
           }
-        }
+        },
+        "val": "group_by"
       },
       "count_action_category": {
         "type": "select",
@@ -178,11 +181,60 @@
         "label": "Вывести название столбца",
         "val": ""
       },
+      "rounding": {
+        "type": "select",
+        "label": "Округление",
+        "show_if": "this.action=='sum' || this.action=='mathematics'",
+        "required": true,
+        "options": {
+          "no_rounding": {
+            "label": "Округление чисел"
+          },
+          "0": {
+            "label": "0 цифр"
+          },
+          "1": {
+            "label": "1 цифра"
+          },
+          "2": {
+            "label": "2 цифры"
+          },
+          "3": {
+            "label": "3 цифры"
+          },
+          "4": {
+            "label": "4 цифры"
+          },
+          "5": {
+            "label": "5 цифр"
+          },
+          "6": {
+            "label": "6 цифр"
+          },
+          "7": {
+            "label": "7 цифр"
+          },
+          "8": {
+            "label": "8 цифр"
+          },
+          "9": {
+            "label": "9 цифр"
+          }
+        },
+        "val": "no_rounding"
+      },
       "delete": {
         "type": "button",
         "label": "Удалить",
         "function": "DELETE_ROW"
       }
     }
+  },
+  "info1": {
+    "type": "textarea",
+    "label": "",
+    "val": "If more than one columns selected, Output Column Name input value should be used as suffix",
+    "disabled": true,
+    "style": "width: 100%"
   }
 }

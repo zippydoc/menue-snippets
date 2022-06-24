@@ -1,0 +1,156 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "オプションの選択",
+    "repeat": false,
+    "fields": {
+      "options.to": {
+        "type": "hidden",
+        "val": "file"
+      },
+      "options.webservice": {
+        "type": "hidden",
+        "val": "github"
+      },
+      "options.export_format": {
+        "type": "select",
+        "label": "フォーマットのエクスポート",
+        "options": {
+          "csv_file": {
+            "label": "Csvファイル(複数可)"
+          },
+          "word_by_word": {
+            "label": "単語ごと"
+          },
+          "line_by_line": {
+            "label": "行ごと"
+          }
+        },
+        "val": "csv_file",
+        "required": true,
+        "breakLine": true
+      },
+      "options.if_duplicated": {
+        "type": "select",
+        "label": "既存の場合",
+        "show_if": "options.webservice=='github'",
+        "val": "drop_if_exist",
+        "options": {
+          "drop_if_exist": {
+            "label": "作成またはドロップ（既存の場合）"
+          },
+          "error_if_exist": {
+            "label": "新規作成（既存の場合はエラーにする）"
+          },
+          "error_if_not_exist": {
+            "label": "ドロップ（存在しない場合はエラーにする）"
+          },
+          "append": {
+            "label": "追加"
+          }
+        },
+        "breakLine": true
+      },
+      "options.export_series": {
+        "type": "checkbox",
+        "label": "シリーズのエクスポート",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.file_name_column": {
+        "type": "select",
+        "label": "ファイル名列の選択",
+        "show_if": "options.export_series=='true'",
+        "table": "table_id",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      },
+      "options.set_file_path_column": {
+        "type": "checkbox",
+        "label": "指定したパスにエクスポート",
+        "show_if": "options.export_series=='true'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.file_path_column": {
+        "type": "select",
+        "label": "ファイルパスの選択欄",
+        "show_if": "options.export_series=='true' && options.set_file_path_column=='true'",
+        "table": "table_id",
+        "bind": "COLUMNS",
+        "required": true,
+        "breakLine": true
+      }
+    }
+  },
+  "export_link_token_frame": {
+    "type": "fieldset",
+    "label": "リンクをエクスポート",
+    "repeat": false,
+    "fields": {
+      "options.github_url": {
+        "type": "text",
+        "label": "リンクを入力 例：https://github.com/zippydoc/test",
+        "show_if": "options.webservice=='github'",
+        "val": "",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.export_dir": {
+        "type": "text",
+        "label": "ディレクトリを入力 例：/MyZippyDocFiles/SubDir/",
+        "show_if": "options.webservice!='github'",
+        "val": "/",
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.github_token": {
+        "type": "text",
+        "label": "書き込み権限のあるGithubパーソナルアクセストークンを指定：",
+        "show_if": "options.webservice=='github'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.github_create_pr": {
+        "type": "checkbox",
+        "label": "プルリクエストの作成",
+        "show_if": "options.webservice=='github'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.ms_one_drive_token": {
+        "type": "text",
+        "label": "Microsoft Graph APIアクセストークン。You can get it here https://ms-oauth.herokuapp.com/",
+        "show_if": "options.webservice=='ms_one_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.google_authorization_code": {
+        "type": "text",
+        "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. ここで取得できます https://developers.google.com/oauthplayground/",
+        "show_if": "options.webservice=='google_drive'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.dropbox_authorization_code": {
+        "type": "text",
+        "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+        "show_if": "options.webservice=='dropbox'",
+        "required": true,
+        "width": "100%",
+        "breakLine": true
+      }
+    }
+  }
+}

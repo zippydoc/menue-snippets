@@ -1,0 +1,136 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "カメレオンオプション",
+    "repeat": false,
+    "fields": {
+      "params": {
+        "type": "fieldset",
+        "label": "Modify Parameters",
+        "breakLine": true,
+        "repeat": true,
+        "fields": {
+          "attr_name": {
+            "type": "text",
+            "label": "フィールド名",
+            "required": true,
+            "val": ""
+          },
+          "use_field_label": {
+            "type": "checkbox",
+            "label": "Use field label",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false"
+          },
+          "attr_instance": {
+            "type": "number",
+            "label": "フィールドインスタンス",
+            "required": true,
+            "val": "1"
+          },
+          "value_type": {
+            "type": "select",
+            "label": "Replace with",
+            "required": true,
+            "options": {
+              "single_value": {
+                "label": "Single Field Value"
+              },
+              "value_series": {
+                "label": "フィールド値リスト"
+              },
+              "table_values": {
+                "label": "Table Values"
+              }
+            },
+            "val": "single_value"
+          },
+          "attr_value": {
+            "type": "text",
+            "label": "フィールド値",
+            "required": true,
+            "val": "",
+            "show_if": "this.value_type=='single_value'"
+          },
+          "attr_values": {
+            "type": "text",
+            "label": "Field Values ( ; - separated )",
+            "required": true,
+            "val": "",
+            "show_if": "this.value_type=='value_series'"
+          },
+          "table_id": {
+            "type": "select",
+            "label": "テーブルの選択",
+            "bind": "TABLES",
+            "show_if": "this.value_type=='table_values'",
+            "empty": "",
+            "required": true
+          },
+          "column": {
+            "type": "select",
+            "label": "列の選択",
+            "required": true,
+            "table": "this.table_id",
+            "bind": "COLUMNS",
+            "show_if": "this.value_type=='table_values'"
+          },
+          "use_waiting_time": {
+            "type": "checkbox",
+            "label": "待ち時間を追加",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "show_if": "this.value_type!='single_value'"
+          },
+          "waiting_period": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "show_if": "this.value_type!='single_value' && this.use_waiting_time!='false'"
+          },
+          "delete": {
+            "type": "button",
+            "label": "削除",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "task_chain": {
+        "type": "checkbox",
+        "label": "Task Chain",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "schedule_options": {
+        "type": "fieldset",
+        "label": "Tasks to schedule",
+        "show_if": "task_chain == 'true'",
+        "repeat": true,
+        "fields": {
+          "input_task": {
+            "type": "select",
+            "label": "Select Task",
+            "bind": "TASKS",
+            "empty": "",
+            "required": true
+          },
+          "waiting_time": {
+            "type": "number",
+            "label": "Waiting time (sec)",
+            "val": "0",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "削除",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}

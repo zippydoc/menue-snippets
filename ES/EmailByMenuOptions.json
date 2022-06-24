@@ -1,0 +1,112 @@
+{
+  "options_frame": {
+    "type": "fieldset",
+    "label": "Seleccionar Opciones",
+    "repeat": false,
+    "fields": {
+      "options.task_type": {
+        "type": "hidden",
+        "val": "write_email"
+      },
+      "options.to": {
+        "type": "text",
+        "label": "Para",
+        "required": true,
+        "val": "",
+        "placeholder": "user1@domain.com; user2@domain.com;",
+        "width": "100%"
+      },
+      "options.add_cc": {
+        "type": "checkbox",
+        "label": "CC",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.cc": {
+        "type": "text",
+        "label": "CC",
+        "show_if": "options.add_cc=='true'",
+        "val": "",
+        "placeholder": "ccuser1@domain.com; ccuser2@domain.com",
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.add_bcc": {
+        "type": "checkbox",
+        "label": "CCO",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.bcc": {
+        "type": "text",
+        "label": "CCO",
+        "show_if": "options.add_bcc=='true'",
+        "val": "",
+        "placeholder": "bccuser1@domain.com; bccuser1@domain.com",
+        "width": "100%",
+        "breakLine": true
+      },
+      "options.subject": {
+        "type": "text",
+        "label": "Asunto",
+        "required": true,
+        "val": "",
+        "placeholder": "Subject",
+        "width": "100%"
+      },
+      "options.body": {
+        "type": "textarea",
+        "label": "Cuerpo",
+        "val": "",
+        "placeholder": "Text",
+        "md_no_resize": true,
+        "rows": 3,
+        "width": "100%"
+      },
+      "options.add_table": {
+        "type": "checkbox",
+        "label": "Incrustar una mesa",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.embed_mode": {
+        "type": "select",
+        "label": "Tipo de incrustación de la tabla",
+        "show_if": "options.add_table=='true'",
+        "options": {
+          "embed": {
+            "label": "Embed"
+          },
+          "attach_csv_comma_separated": {
+            "label": "Attach as csv (',' - separated)"
+          },
+          "attach_csv_semicolon_separated": {
+            "label": "Attach as csv (';' - separated)"
+          }
+        },
+        "val": "embed",
+        "breakLine": true
+      },
+      "options.embed_table_footer": {
+        "type": "text",
+        "label": "Pie de tabla",
+        "show_if": "options.add_table=='true'",
+        "val": "",
+        "style": "width: 100%"
+      },
+      "info3": {
+        "type": "text",
+        "label": "",
+        "val": "This task only supports users logged in via Microsoft Login",
+        "disabled": true,
+        "style": "width: 100%"
+      }
+    }
+  }
+}

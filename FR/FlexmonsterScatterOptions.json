@@ -1,0 +1,142 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Option de rapport Flexmonster",
+    "show_if": "options.configure_manual=='true'",
+    "repeat": false,
+    "fields": {
+      "options.type": {
+        "type": "hidden",
+        "val": "scatter_chart"
+      },
+      "options.chart_type": {
+        "type": "hidden",
+        "val": "scatter"
+      },
+      "options.add_column_cols": {
+        "type": "checkbox",
+        "label": "par catégorie",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.column_cols": {
+        "type": "fieldset",
+        "label": "Category column(s)",
+        "show_if": "options.add_column_cols=='true'",
+        "repeat": true,
+        "fields": {
+          "column_col": {
+            "type": "select",
+            "label": "Colonne de catégorie",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "is_date": {
+            "type": "checkbox",
+            "label": "Est Date",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Supprimer",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.row_cols": {
+        "type": "fieldset",
+        "label": "Series column(s)",
+        "repeat": true,
+        "fields": {
+          "row_col": {
+            "type": "select",
+            "label": "Colonne de la série",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "is_date": {
+            "type": "checkbox",
+            "label": "Est Date",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Supprimer",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.measure_cols": {
+        "type": "fieldset",
+        "label": "Value column(s)",
+        "repeat": true,
+        "fields": {
+          "measure_col": {
+            "type": "select",
+            "label": "Colonne de valeurs",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "required": true
+          },
+          "aggregation": {
+            "type": "select",
+            "label": "Fonction d'agrégation",
+            "options": {
+              "sum": {
+                "label": "Somme"
+              },
+              "count": {
+                "label": "Compter"
+              },
+              "distinctcount": {
+                "label": "Compte Distinct"
+              },
+              "average": {
+                "label": "Moyenne"
+              },
+              "median": {
+                "label": "Médiane"
+              },
+              "product": {
+                "label": "Produit"
+              },
+              "min": {
+                "label": "Min"
+              },
+              "max": {
+                "label": "Max"
+              },
+              "stdevp": {
+                "label": "Écart-type de la population"
+              },
+              "stdevs": {
+                "label": "Écart-type de l'échantillon"
+              },
+              "percent": {
+                "label": "Pourcentage"
+              }
+            },
+            "val": "sum",
+            "required": true,
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Supprimer",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@
       },
       "mirror_matrix.convert_header_to_label": {
         "type": "checkbox",
-        "label": "Spaltenüberschrift in Zeilenüberschrift umwandeln",
+        "label": "Kopfzeile in Etikett umwandeln",
         "show_if": "transpose_type=='mirror_matrix'",
         "val": "true",
         "isOn": "true",
@@ -19,9 +19,9 @@
       },
       "column_name_to_label.columns_to_label": {
         "type": "select",
-        "label": "Spalten zum Konvertieren in Labels auswählen",
+        "label": "Spalten zum Konvertieren in Etiketten auswählen",
         "show_if": "transpose_type=='column_name_to_label'",
-        "table": "input_table",
+        "table": "table_id",
         "multiple": true,
         "bind": "COLUMNS",
         "required": true,
@@ -30,7 +30,7 @@
       },
       "column_name_to_label.label_column_name": {
         "type": "text",
-        "label": "Spalten-Name der Label-Spalte",
+        "label": "Spalte Name der Etikettenspalte",
         "show_if": "transpose_type=='column_name_to_label'",
         "required": true,
         "val": "Label",
@@ -39,10 +39,10 @@
       },
       "column_name_to_label.value_column_name": {
         "type": "text",
-        "label": "Spalten-Name der Wertespalte",
+        "label": "Spalte Name der Wertespalte",
         "show_if": "transpose_type=='column_name_to_label'",
         "required": true,
-        "val": "Wert",
+        "val": "Value",
         "width": "100%",
         "breakLine": true
       },
@@ -50,7 +50,7 @@
         "type": "select",
         "label": "Daten nach diesen Werten gruppieren",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "multiple": true,
         "bind": "COLUMNS",
         "required": true,
@@ -61,7 +61,7 @@
         "type": "select",
         "label": "Spaltenüberschrift ändern",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "bind": "COLUMNS",
         "required": true,
         "width": "100%",
@@ -71,7 +71,7 @@
         "type": "select",
         "label": "Werte für neue Spalten",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "bind": "COLUMNS",
         "required": true,
         "width": "100%",
@@ -82,29 +82,29 @@
         "label": "Methode zum Aggregieren von Werten",
         "show_if": "transpose_type=='crosstab'",
         "options": {
-          "Verketten": {
+          "Concatenate": {
             "label": "Verketten"
           },
-          "Erste": {
+          "First": {
             "label": "Erste"
           },
-          "Letzte": {
-            "label": "Letzte"
+          "Last": {
+            "label": "Zuletzt"
           },
-          "Summe": {
+          "Sum": {
             "label": "Summe"
           },
-          "Durchschnitt": {
+          "Average": {
             "label": "Durchschnitt"
           },
-          "Zählen": {
-            "label": "Zählen"
+          "Count": {
+            "label": "Zählen Sie"
           },
-          "Benutzerdefiniert": {
+          "User Defined": {
             "label": "Benutzerdefiniert"
           }
         },
-        "val": "Verketten",
+        "val": "Concatenate",
         "required": true
       },
       "crosstab.user_defined_str": {

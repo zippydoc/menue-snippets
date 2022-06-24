@@ -1,0 +1,205 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Opções",
+    "repeat": false,
+    "fields": {
+      "options.script_name": {
+        "type": "hidden",
+        "val": "PdfReProByTable"
+      },
+      "options.type": {
+        "type": "hidden",
+        "val": "create"
+      },
+      "options.template_id": {
+        "type": "select",
+        "label": "Tipo de Documento",
+        "options": {
+          "id_bd7c7b52449752d78436f5aaa893abd36e96b7a9": {
+            "label": "Carta de Apresentação"
+          },
+          "id_17b533f4f9c5d2960ba67455a81ef22918106d1e": {
+            "label": "Nomeação ou remoção"
+          }
+        },
+        "val": "id_bd7c7b52449752d78436f5aaa893abd36e96b7a9",
+        "required": true
+      },
+      "options.lang": {
+        "type": "select",
+        "label": "Língua do Documento",
+        "show_if": "options.type=='create'",
+        "options": {
+          "standard": {
+            "label": "Língua padrão"
+          },
+          "einsprachig": {
+            "label": "einsprachig"
+          },
+          "lt": {
+            "label": "lt"
+          },
+          "it": {
+            "label": "it"
+          },
+          "hu": {
+            "label": "hu"
+          },
+          "hr": {
+            "label": "hr"
+          },
+          "gl": {
+            "label": "gl"
+          },
+          "ga": {
+            "label": "ga"
+          },
+          "fr": {
+            "label": "fr"
+          },
+          "fi": {
+            "label": "fi"
+          },
+          "bg": {
+            "label": "bg"
+          },
+          "ca": {
+            "label": "ca"
+          },
+          "cs": {
+            "label": "cs"
+          },
+          "cy": {
+            "label": "cy"
+          },
+          "da": {
+            "label": "da"
+          },
+          "de": {
+            "label": "de"
+          },
+          "el": {
+            "label": "el"
+          },
+          "en": {
+            "label": "en"
+          },
+          "es": {
+            "label": "es"
+          },
+          "ey": {
+            "label": "et"
+          },
+          "eu": {
+            "label": "eu"
+          }
+        },
+        "val": "de",
+        "required": true,
+        "breakLine": true
+      },
+      "options.where_to_create": {
+        "type": "select",
+        "label": "Onde criar",
+        "options": {
+          "only_open_in_browser": {
+            "label": "Abrir apenas PDF no browser"
+          },
+          "only_export_to_cloud": {
+            "label": "Apenas exportar para a nuvem"
+          },
+          "both_export_to_cloud_and_open_in_browser": {
+            "label": "Ambos exportam para a nuvem e abrem pdf no browser"
+          }
+        },
+        "val": "only_open_in_browser",
+        "required": true
+      },
+      "options.configure_by_table_help": {
+        "type": "text",
+        "label": "",
+        "val": "Table Structure ( Document | List Name | List Item | Field Name | Field Value )",
+        "disabled": true,
+        "width": "100%"
+      },
+      "options.input_table": {
+        "type": "select",
+        "label": "Selecionar Tabela",
+        "show_if": "options.type=='create'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      },
+      "options.webservice": {
+        "type": "select",
+        "label": "Selecionar Serviço Web",
+        "show_if": "options.type=='create'",
+        "options": {
+          "ms_one_drive": {
+            "label": "Microsoft OneDrive"
+          },
+          "dropbox": {
+            "label": "Dropbox"
+          },
+          "google_drive": {
+            "label": "Google Drive"
+          }
+        },
+        "val": "ms_one_drive",
+        "required": true,
+        "breakLine": true
+      },
+      "export_link_token_frame": {
+        "type": "fieldset",
+        "label": "Export Link",
+        "show_if": "options.type=='create'",
+        "repeat": false,
+        "fields": {
+          "options.github_url": {
+            "type": "text",
+            "label": "Introduzir hiperligação, por exemplo https://github.com/zippydoc/test",
+            "show_if": "options.webservice=='github'",
+            "val": "",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.export_dir": {
+            "type": "text",
+            "label": "Introduza por exemplo /MeuZippyDocFiles/SubDir/",
+            "show_if": "options.webservice!='github'",
+            "val": "",
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.github_token": {
+            "type": "text",
+            "label": "Especifique o código de acesso pessoal Github que tem permissão de escrita:",
+            "show_if": "options.webservice=='github'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.google_authorization_code": {
+            "type": "text",
+            "label": "Google OAuth Authorization Code with scope https://www.googleapis.com/auth/drive. Pode obtê-lo aqui https://developers.google.com/oauthplayground/",
+            "show_if": "options.webservice=='google_drive'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          },
+          "options.dropbox_authorization_code": {
+            "type": "text",
+            "label": "Dropbox Authorization Code. You can get it here https://www.dropbox.com/oauth2/authorize?client_id=9i7woztjp94jrkw&response_type=code",
+            "show_if": "options.webservice=='dropbox'",
+            "required": true,
+            "width": "100%",
+            "breakLine": true
+          }
+        }
+      }
+    }
+  }
+}

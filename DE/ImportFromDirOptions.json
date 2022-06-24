@@ -40,7 +40,7 @@
             "label": "Zeile für Zeile"
           },
           "word_by_word": {
-            "label": "Wort für Wort"
+            "label": "Text"
           },
           "file_list": {
             "label": "Dateiliste"
@@ -55,7 +55,7 @@
         "show_if": "options.output_format=='word_by_word' && options.specify_word_pattern=='true'",
         "options": {
           "regex": {
-            "label": "Regular Expression"
+            "label": "Regulärer Ausdruck"
           }
         },
         "val": "regex",
@@ -63,15 +63,20 @@
       },
       "options.word_pattern_regex": {
         "type": "text",
-        "label": "Regular Expression",
+        "label": "Regulärer Ausdruck",
         "show_if": "options.output_format=='word_by_word' && options.specify_word_pattern=='true' && options.word_pattern_type=='regex'",
         "required": true,
         "val": "[a-z][1-9]",
         "breakLine": true
       },
       "options.column_setting": {
-        "type": "hidden",
-        "val": "true"
+        "type": "checkbox",
+        "label": "Spalteneinstellungen",
+        "show_if": "options.output_format!='file_list'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
       },
       "column_setting_frame": {
         "type": "fieldset",
@@ -81,7 +86,7 @@
         "fields": {
           "options.add_row_column": {
             "type": "checkbox",
-            "label": "Zeile hinzufügen",
+            "label": "Spalte Zeile hinzufügen",
             "show_if": "options.output_format=='word_by_word'",
             "val": "true",
             "isOn": "true",
@@ -110,7 +115,7 @@
             "type": "checkbox",
             "label": "Abschnittsspalte hinzufügen",
             "show_if": "options.output_format=='word_by_word'",
-            "val": "true",
+            "val": "false",
             "isOn": "true",
             "isOff": "false",
             "breakLine": true
@@ -162,11 +167,14 @@
                   "inner_bracket": {
                     "label": "Innere Klammer"
                   },
+                  "brackets_only": {
+                    "label": "Brackets Only"
+                  },
                   "show_all": {
                     "label": "Alles anzeigen"
                   }
                 },
-                "val": "nesting_structure",
+                "val": "show_all",
                 "required": true,
                 "breakLine": true
               }
@@ -178,6 +186,7 @@
             "val": "true",
             "isOn": "true",
             "isOff": "false",
+            "style": "margin-top: 10px",
             "breakLine": true
           },
           "options.add_filepath_column": {
@@ -186,7 +195,6 @@
             "val": "false",
             "isOn": "true",
             "isOff": "false",
-            "style": "margin-top: 10px",
             "breakLine": true
           }
         }
@@ -249,17 +257,8 @@
       },
       "options.file_list.add_change_date_column": {
         "type": "checkbox",
-        "label": "Spalte 'Änderungsdatum hinzufügen'",
+        "label": "Spalte Änderungsdatum hinzufügen",
         "show_if": "options.output_format=='file_list'",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
-      },
-      "options.use_filename_as_output_table_name": {
-        "type": "checkbox",
-        "label": "Dateiname als Tabellenname verwenden",
-        "show_if": "options.output_format!='file_list' && options.is_cloud_dir=='false'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -356,7 +355,7 @@
                 "label": "Endet mit"
               },
               "regex": {
-                "label": "Regular Expression"
+                "label": "Regulärer Ausdruck"
               }
             },
             "val": "all",
@@ -389,14 +388,6 @@
         "type": "text",
         "label": "Github persönliches Zugriffstoken",
         "show_if": "options.webservice=='github' && options.is_github_private=='true'",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
-      },
-      "options.one_drive.access_token": {
-        "type": "text",
-        "label": "Ein Drive-Zugriffstoken",
-        "show_if": "options.webservice=='ms_one_drive'",
         "required": true,
         "width": "100%",
         "breakLine": true

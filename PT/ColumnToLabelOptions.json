@@ -17,23 +17,37 @@
         "isOff": "false",
         "breakLine": true
       },
-      "column_name_to_label.columns_to_label": {
-        "type": "select",
-        "label": "Selecionar Colunas para Converter em Rótulos",
+      "column_name_to_label__columns_to_label_frame": {
+        "type": "fieldset",
+        "label": "Select columns to convert into Labels",
         "show_if": "transpose_type=='column_name_to_label'",
-        "table": "input_table",
-        "multiple": true,
-        "bind": "COLUMNS",
-        "required": true,
-        "width": "100%",
-        "breakLine": true
+        "repeat": false,
+        "fields": {
+          "column_name_to_label.reverse_col_selection": {
+            "type": "checkbox",
+            "label": "All but selected",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "column_name_to_label.columns_to_label": {
+            "type": "select",
+            "label": "Select columns",
+            "table": "table_id",
+            "multiple": true,
+            "bind": "COLUMNS",
+            "width": "100%",
+            "breakLine": true
+          }
+        }
       },
       "column_name_to_label.label_column_name": {
         "type": "text",
         "label": "Nome da Coluna de Rótulos",
         "show_if": "transpose_type=='column_name_to_label'",
         "required": true,
-        "val": "Rotular",
+        "val": "Label",
         "width": "100%",
         "breakLine": true
       },
@@ -42,15 +56,23 @@
         "label": "Noma da Coluna de Valores",
         "show_if": "transpose_type=='column_name_to_label'",
         "required": true,
-        "val": "Valor",
+        "val": "Value",
         "width": "100%",
         "breakLine": true
+      },
+      "column_name_to_label.is_one_label": {
+        "type": "checkbox",
+        "label": "Uma coluna de etiqueta",
+        "show_if": "transpose_type=='column_name_to_label'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false"
       },
       "crosstab.group_data_by_these_values": {
         "type": "select",
         "label": "Agrupar dados por estes valores",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "multiple": true,
         "bind": "COLUMNS",
         "required": true,
@@ -61,7 +83,7 @@
         "type": "select",
         "label": "Alterar Cabeçalho da Coluna",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "bind": "COLUMNS",
         "required": true,
         "width": "100%",
@@ -71,7 +93,7 @@
         "type": "select",
         "label": "Valores para Novas Colunas",
         "show_if": "transpose_type=='crosstab'",
-        "table": "input_table",
+        "table": "table_id",
         "bind": "COLUMNS",
         "required": true,
         "width": "100%",
@@ -82,29 +104,29 @@
         "label": "Método de Agregação de Valores",
         "show_if": "transpose_type=='crosstab'",
         "options": {
-          "Concatenar": {
+          "Concatenate": {
             "label": "Concatenar"
           },
-          "Primeiro": {
+          "First": {
             "label": "Primeiro"
           },
-          "Último": {
+          "Last": {
             "label": "Último"
           },
-          "Soma": {
+          "Sum": {
             "label": "Soma"
           },
-          "Média": {
+          "Average": {
             "label": "Média"
           },
-          "Contar": {
+          "Count": {
             "label": "Contar"
           },
-          "Definido pelo Utilizador": {
+          "User Defined": {
             "label": "Definido pelo Utilizador"
           }
         },
-        "val": "Concatenar",
+        "val": "Concatenate",
         "required": true
       },
       "crosstab.user_defined_str": {

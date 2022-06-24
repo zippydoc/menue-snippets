@@ -4,12 +4,14 @@
     "label": "アクションの追加",
     "repeat": true,
     "fields": {
-      "column": {
+      "columns": {
         "type": "select",
-        "label": "列",
-        "table": "input_table",
+        "label": "Column(s)",
+        "table": "table_id",
 		"assign_selected_value_to":"this.output_column_name",
-        "bind": "COLUMNS"
+        "bind": "COLUMNS",
+        "multiple": true,
+        "required": true
       },
       "action": {
         "type": "select",
@@ -42,7 +44,8 @@
           "mathematics": {
             "label": "数学"
           }
-        }
+        },
+        "val": "group_by"
       },
       "count_action_category": {
         "type": "select",
@@ -178,11 +181,60 @@
         "label": "列名の出力",
         "val": ""
       },
+      "rounding": {
+        "type": "select",
+        "label": "四捨五入",
+        "show_if": "this.action=='sum' || this.action=='mathematics'",
+        "required": true,
+        "options": {
+          "no_rounding": {
+            "label": "四捨五入無し"
+          },
+          "0": {
+            "label": "0桁"
+          },
+          "1": {
+            "label": "1桁"
+          },
+          "2": {
+            "label": "2桁"
+          },
+          "3": {
+            "label": "3桁"
+          },
+          "4": {
+            "label": "4桁"
+          },
+          "5": {
+            "label": "5桁"
+          },
+          "6": {
+            "label": "6桁"
+          },
+          "7": {
+            "label": "7桁"
+          },
+          "8": {
+            "label": "8桁"
+          },
+          "9": {
+            "label": "9桁"
+          }
+        },
+        "val": "no_rounding"
+      },
       "delete": {
         "type": "button",
         "label": "削除",
         "function": "DELETE_ROW"
       }
     }
+  },
+  "info1": {
+    "type": "textarea",
+    "label": "",
+    "val": "If more than one columns selected, Output Column Name input value should be used as suffix",
+    "disabled": true,
+    "style": "width: 100%"
   }
 }
