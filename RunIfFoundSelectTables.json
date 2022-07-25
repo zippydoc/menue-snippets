@@ -1,0 +1,90 @@
+{
+  "input_table_options": {
+    "type": "fieldset",
+    "label": "Specify Input Tables",
+    "breakLine": true,
+    "repeat": false,
+    "fields": {
+      "options.select_type": {
+        "type": "select",
+        "label": "Select Type",
+        "required": true,
+        "options": {
+          "table_selection": {
+            "label": "Table Selection"
+          },
+          "select_by_pattern": {
+            "label": "Select by Pattern"
+          }
+        },
+        "val": "table_selection"
+      },
+      "options.table_ids": {
+        "type": "select",
+        "label": "Select Tables",
+        "bind": "TABLES",
+        "empty": "",
+        "multiple": true,
+        "show_if": "options.select_type=='table_selection'",
+        "required": true
+      },
+      "options.filter_params": {
+        "type": "fieldset",
+        "label": "Match tables",
+        "show_if": "options.select_type=='select_by_pattern'",
+        "breakLine": true,
+        "repeat": true,
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "label": "Enter Keyword",
+            "required": true,
+            "val": ""
+          },
+          "filter_target": {
+            "type": "select",
+            "label": "Filter on",
+            "required": true,
+            "options": {
+              "table_name": {
+                "label": "Table Name"
+              },
+              "table_tag": {
+                "label": "Table Tag"
+              }
+            },
+            "val": "table_name"
+          },
+          "filter_type": {
+            "type": "select",
+            "label": "Filter type",
+            "required": true,
+            "options": {
+              "equal": {
+                "label": "Equal"
+              },
+              "contain": {
+                "label": "Contains"
+              },
+              "start_with": {
+                "label": "Starts With"
+              },
+              "end_with": {
+                "label": "Ends With"
+              },
+              "regex": {
+                "label": "Regular Expression"
+              }
+            },
+            "val": "equal"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      }
+    }
+  }
+}
