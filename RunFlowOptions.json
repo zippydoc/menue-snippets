@@ -1,26 +1,27 @@
 {
   "options_box": {
     "type": "fieldset",
-    "label": "Replace Tables",
+    "label": "Flow Configuration",
     "repeat": false,
     "fields": {
       "options.replace_tables": {
         "type": "fieldset",
-        "label": "Add New Columns",
+        "label": "Input Tables to replace",
         "repeat": true,
         "fields": {
           "tbl_id_to_replace": {
-            "type": "text",
-            "label": "Table ID to replace",
-            "val": "",
-            "breakLine": true
+            "type": "select",
+            "label": "Table to replace",
+            "show_if": "this.tbl_id_to_replace__by_text=='false'",
+            "bind": "TABLES",
+            "empty": "",
+            "required": true
           },
           "replace_with_tbl_id": {
             "type": "select",
-            "label": "Replace With Table ID",
+            "label": "`Replace With` table",
             "bind": "TABLES",
             "empty": "",
-            "required": true,
             "breakLine": true
           },
           "delete": {
@@ -36,6 +37,32 @@
         "val": "Ensure, that the relevant column name(s) of the target table(s) flow table(s) match",
         "disabled": true,
         "width": "100%"
+      },
+      "options.output_tables": {
+        "type": "fieldset",
+        "label": "Output Tables",
+        "repeat": true,
+        "fields": {
+          "output_table_of_flow_to_run": {
+            "type": "select",
+            "label": "Output table of flow to run",
+            "bind": "TABLES",
+            "empty": "",
+            "required": true
+          },
+          "target_output_table": {
+            "type": "select",
+            "label": "Target output table ",
+            "bind": "TABLES",
+            "empty": "",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
       }
     }
   }

@@ -1,0 +1,46 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
+      "options.add_columns": {
+        "type": "fieldset",
+        "label": "Define Columns",
+        "repeat": true,
+        "fields": {
+          "first_new_column_name": {
+            "type": "text",
+            "label": "Column Name",
+            "show_if" :  "$index == 0",
+            "val": "Welcome to ZIPPYDOC"
+          },
+          "new_column_name": {
+            "type": "text",
+            "label": "Column Name",
+            "show_if" :  "$index > 0",
+            "val": ""
+          },
+          "initial_content": {
+            "type": "text",
+            "label": "Initial Content",
+            "val": "Click to copy & paste own table",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.number_of_rows": {
+        "type": "number",
+        "label": "Number of Rows",
+        "required": true,
+        "val": "1",
+        "breakLine": true
+      }
+    }
+  }
+}

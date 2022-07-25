@@ -1,0 +1,63 @@
+{
+  "options_box": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
+      "options.input_type": {
+        "type": "select",
+        "label": "Input Type",
+        "required": true,
+        "options": {
+          "input_by_menu": {
+            "label": "Input by Menu"
+          },
+          "input_by_table": {
+            "label": "Input by Table"
+          }
+        },
+        "val": "input_by_menu",
+        "breakLine": true
+      },
+      "options.parameters": {
+        "type": "fieldset",
+        "label": "Configure task parameters",
+        "show_if": "options.input_type=='input_by_menu'",
+        "repeat": true,
+        "fields": {
+          "input_task": {
+            "type": "select",
+            "label": "Select Task",
+            "bind": "TASKS",
+            "empty": "",
+            "required": true
+          },
+          "field_name": {
+            "type": "text",
+            "label": "Field Name",
+            "val": ""
+          },
+          "field_value": {
+            "type": "text",
+            "label": "Value",
+            "val": ""
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.table_id": {
+        "type": "select",
+        "label": "Select Table",
+        "show_if": "options.input_type=='input_by_table'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true,
+        "breakLine": true
+      }
+    }
+  }
+}
