@@ -1,0 +1,51 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "Options",
+    "repeat": false,
+    "fields": {
+      "options.remove_all_tags": {
+        "type": "checkbox",
+        "label": "Remove all Tags",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.tags_config": {
+        "type": "fieldset",
+        "label": "Add/Remove tag configuration",
+        "show_if": "options.remove_all_tags == 'false'",
+        "repeat": true,
+        "fields": {
+          "operation_type": {
+            "type": "select",
+            "label": "Operation",
+            "required": true,
+            "options": {
+              "add_tag": {
+                "label": "Add Tag"
+              },
+              "remove_tag": {
+                "label": "Remove Tag"
+              }
+            },
+            "val": "add_tag"
+          },
+          "tag_text": {
+            "type": "text",
+            "label": "Tag Text",
+            "val": "",
+            "required": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        },
+        "breakLine": true
+      }
+    }
+  }
+}
