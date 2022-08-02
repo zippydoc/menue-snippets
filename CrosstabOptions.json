@@ -123,6 +123,149 @@
         "trim": "false",
         "required": true,
         "breakLine": true
+      },
+      "format__category": {
+        "type": "select",
+        "label": "Number Format",
+        "show_if": "transpose_type=='crosstab' && (method_for_aggregating_values=='Sum' || method_for_aggregating_values=='Average')",
+        "required": true,
+        "options": {
+          "standard": {
+            "label": "Standard"
+          },
+          "percentage": {
+            "label": "Percentage"
+          },
+          "currency": {
+            "label": "Currency"
+          }
+        },
+        "val": "standard"
+      },
+      "format__rounding": {
+        "type": "select",
+        "label": "Decimal Places",
+        "show_if": "transpose_type=='crosstab' && (method_for_aggregating_values=='Sum' || method_for_aggregating_values=='Average')",
+        "required": true,
+        "options": {
+          "no_rounding": {
+            "label": "No rounding"
+          },
+          "0": {
+            "label": "0 digits"
+          },
+          "1": {
+            "label": "1 digits"
+          },
+          "2": {
+            "label": "2 digits"
+          },
+          "3": {
+            "label": "3 digits"
+          },
+          "4": {
+            "label": "4 digits"
+          },
+          "5": {
+            "label": "5 digits"
+          },
+          "6": {
+            "label": "6 digits"
+          },
+          "7": {
+            "label": "7 digits"
+          },
+          "8": {
+            "label": "8 digits"
+          },
+          "9": {
+            "label": "9 digits"
+          }
+        },
+        "val": "2"
+      },
+      "format__use_1000_separator": {
+        "type": "checkbox",
+        "label": "Use 1000 Separator(.)",
+        "show_if": "transpose_type=='crosstab' && (method_for_aggregating_values=='Sum' || method_for_aggregating_values=='Average')",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "crosstab.format__currency_symbol": {
+        "type": "select",
+        "label": "Symbol",
+        "show_if": "transpose_type=='crosstab' && (method_for_aggregating_values=='Sum' || method_for_aggregating_values=='Average') && format__category=='currency'",
+        "required": true,
+        "options": {
+          "dollar": {
+            "label": "$"
+          },
+          "euro": {
+            "label": "€"
+          },
+          "pound": {
+            "label": "£"
+          },
+          "yen": {
+            "label": "¥ (Yen, currency of Japan)"
+          },
+          "colon": {
+            "label": "₡ (Colón, currency of Costa Rica)"
+          },
+          "naira": {
+            "label": "₦ (Naira, currency of Nigeria)"
+          },
+          "rupee": {
+            "label": "₨ (Rupee, currency of India)"
+          },
+          "rupie": {
+            "label": "₹ (Rupee, currency of India)"
+          },
+          "won": {
+            "label": "₩ (Won, currency in South Korea and North Korea)"
+          },
+          "hebrew": {
+            "label": "₪ (Currency of Israel)"
+          },
+          "dong": {
+            "label": "₫ (Currency of Vietnam)"
+          },
+          "kip": {
+            "label": "₭ (Kip, currency of Laos)"
+          },
+          "mongolia": {
+            "label": "₮ (Currency of Mongolia)"
+          },
+          "peso": {
+            "label": "₱ (Peso, currency of the Philippines)"
+          },
+          "guarani": {
+            "label": "₲ (Guaraní, currency of Paraguay)"
+          },
+          "hryvnia": {
+            "label": "₴ (Hryvnia, currency of Ukraine)"
+          },
+          "tenge": {
+            "label": "₸ (Tenge, currency of Kazakhstan)"
+          },
+          "lira": {
+            "label": "₺ (Lira, currency of Turkey)"
+          },
+          "manat": {
+            "label": "₼ (Manat, currency of Azerbaijan)"
+          },
+          "rubles": {
+            "label": "₽ (Rubles, currency of Russia)"
+          },
+          "lari": {
+            "label": "₾ (Lari, currency of Georgia)"
+          },
+          "bitcoin": {
+            "label": "₿ (Bitcoin, crypto currency)"
+          }
+        },
+        "val": "dollar"
       }
     }
   }
