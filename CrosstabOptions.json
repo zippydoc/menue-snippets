@@ -127,6 +127,7 @@
       "format__category": {
         "type": "select",
         "label": "Number Format",
+        "show_if": "(transpose_type=='crosstab' && method_for_aggregating_values=='Sum') || (transpose_type=='crosstab' && method_for_aggregating_values=='Average')",
         "required": true,
         "options": {
           "standard": {
@@ -144,7 +145,7 @@
       "format__rounding": {
         "type": "select",
         "label": "Decimal Places",
-        "show_if": "transpose_type=='crosstab' && (method_for_aggregating_values=='Sum' || method_for_aggregating_values=='Average')",
+        "show_if": "(transpose_type=='crosstab' && method_for_aggregating_values=='Sum') || (transpose_type=='crosstab' && method_for_aggregating_values=='Average')",
         "required": true,
         "options": {
           "no_rounding": {
@@ -186,7 +187,7 @@
       "format__use_1000_separator": {
         "type": "checkbox",
         "label": "Use 1000 Separator(.)",
-        "show_if": "transpose_type=='crosstab' && (method_for_aggregating_values=='Sum' || method_for_aggregating_values=='Average')",
+        "show_if": "(transpose_type=='crosstab' && method_for_aggregating_values=='Sum') || (transpose_type=='crosstab' && method_for_aggregating_values=='Average')",
         "val": "true",
         "isOn": "true",
         "isOff": "false"
@@ -194,7 +195,7 @@
       "crosstab.format__currency_symbol": {
         "type": "select",
         "label": "Symbol",
-        "show_if": "transpose_type=='crosstab' && (method_for_aggregating_values=='Sum' || method_for_aggregating_values=='Average') && format__category=='currency'",
+        "show_if": "(transpose_type=='crosstab' && method_for_aggregating_values=='Sum' && format__category=='currency') || (transpose_type=='crosstab' && method_for_aggregating_values=='Average' && format__category=='currency')",
         "required": true,
         "options": {
           "dollar": {
