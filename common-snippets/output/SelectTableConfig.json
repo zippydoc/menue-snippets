@@ -4,67 +4,69 @@
     "label": "Select Input Table",
     "repeat": false,
     "fields": {
+      "configure_input_tables": {
+        "type": "select",
+        "label": "Table Range",
+        "options": {
+          "zippydoc_table": {
+            "label": "ZIPPYDOC Table"
+          },
+          "excel_sheet": {
+            "label": "Excel Sheet"
+          },
+          "excel_column_and_row_range": {
+            "label": "Excel Column & Row Range"
+          },
+          "excel_range_name": {
+            "label": "Excel Range Name"
+          }
+        },
+        "val": "zippydoc_table"
+      },
       "table_id": {
         "type": "select",
         "label": "Select Table",
-        "show_if": "output.configure_input_tables=='manual_selection_of_input_table' || output.configure_input_tables=='autoconfigure_input_table'",
+        "show_if": "configure_input_tables=='zippydoc_table'",
         "bind": "TABLES",
         "empty": "",
         "required": true,
         "breakLine": true
       },
-      "active_excel_sheet__table_selection": {
-        "type": "select",
-        "label": "Table Range",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet'",
-        "options": {
-          "excel_sheet": {
-            "label": "Excel Sheet"
-          },
-          "specify_by_column_and_row_range": {
-            "label": "Specify by Column & Row Range"
-          },
-          "specify_by_range_name": {
-            "label": "Specify by Range Name"
-          }
-        },
-        "val": "excel_sheet"
-      },
-      "active_excel_sheet__table_has_header": {
+      "excel_sheet__table_has_header": {
         "type": "checkbox",
         "label": "Table has header",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet'",
+        "show_if": "configure_input_tables!='zippydoc_table'",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
         "breakLine": true
       },
-      "active_excel_sheet__active_sheet": {
+      "excel_sheet__active_sheet": {
         "type": "checkbox",
         "label": "Active Sheet",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet'",
+        "show_if": "configure_input_tables!='zippydoc_table'",
         "val": "true",
         "isOn": "true",
         "isOff": "false"
       },
-      "active_excel_sheet__sheet_name": {
+      "excel_sheet__sheet_name": {
         "type": "text",
         "label": "Sheet Name",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet' && active_excel_sheet__active_sheet=='false'",
+        "show_if": "configure_input_tables!='zippydoc_table' && excel_sheet__active_sheet=='false'",
         "val": "",
         "breakLine": true
       },
-      "active_excel_sheet__columns_from_label": {
+      "excel_sheet__columns_from_label": {
         "type": "text",
         "label": "",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet' && active_excel_sheet__table_selection=='specify_by_column_and_row_range'",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
         "val": "Columns from",
         "disabled": true
       },
-      "active_excel_sheet__from_column": {
+      "excel_sheet__from_column": {
         "type": "select",
         "label": "From Column",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet' && active_excel_sheet__table_selection=='specify_by_column_and_row_range'",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
         "options": {
           "A": {
             "label": "A"
@@ -225,17 +227,17 @@
         },
         "val": "A"
       },
-      "active_excel_sheet__columns_to_label": {
+      "excel_sheet__columns_to_label": {
         "type": "text",
         "label": "",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet' && active_excel_sheet__table_selection=='specify_by_column_and_row_range'",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
         "val": "to",
         "disabled": true
       },
-      "active_excel_sheet__to_column": {
+      "excel_sheet__to_column": {
         "type": "select",
         "label": "To Column",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet' && active_excel_sheet__table_selection=='specify_by_column_and_row_range'",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
         "options": {
           "A": {
             "label": "A"
@@ -397,39 +399,39 @@
         "val": "B",
         "breakLine": true
       },
-      "active_excel_sheet__rows_from_label": {
+      "excel_sheet__rows_from_label": {
         "type": "text",
         "label": "",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet' && active_excel_sheet__table_selection=='specify_by_column_and_row_range'",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
         "val": "Rows from",
         "disabled": true
       },
-      "active_excel_sheet__from_row": {
+      "excel_sheet__from_row": {
         "type": "number",
         "label": "From Row(1-1000)",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet' && active_excel_sheet__table_selection=='specify_by_column_and_row_range'",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
         "required": true,
         "val": "1"
       },
-      "active_excel_sheet__rows_to_label": {
+      "excel_sheet__rows_to_label": {
         "type": "text",
         "label": "",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet' && active_excel_sheet__table_selection=='specify_by_column_and_row_range'",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
         "val": "to",
         "disabled": true
       },
-      "active_excel_sheet__to_row": {
+      "excel_sheet__to_row": {
         "type": "number",
         "label": "To Row(1-1000)",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet' && active_excel_sheet__table_selection=='specify_by_column_and_row_range'",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
         "required": true,
-        "val": "3",
+        "val": "2",
         "breakLine": true
       },
-      "active_excel_sheet__named_range": {
+      "excel_sheet__named_range": {
         "type": "text",
         "label": "Named Range",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet' && active_excel_sheet__table_selection=='specify_by_range_name'",
+        "show_if": "configure_input_tables=='excel_range_name'",
         "val": ""
       },
       "remove_input_table_after_processing": {

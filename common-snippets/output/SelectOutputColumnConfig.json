@@ -26,17 +26,17 @@
       "output.output_columns": {
         "type": "select",
         "label": "Output Column(s)",
-        "show_if": "output.configure_input_tables=='manual_selection_of_input_table' || output.configure_input_tables=='autoconfigure_input_table'",
+        "show_if": "configure_input_tables=='zippydoc_table'",
         "table": "table_id",
         "bind": "COLUMNS",
         "multiple": true,
         "required": true,
         "breakLine": true
       },
-      "output.active_excel_sheet__output_columns": {
+      "output.excel_sheet__output_columns": {
         "type": "select",
         "label": "Output Column(s)",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet'",
+        "show_if": "configure_input_tables!='zippydoc_table'",
         "multiple": true,
         "options": {
           "A": {
@@ -217,15 +217,15 @@
       "field_name": {
         "type": "select",
         "label": "Select Column",
-        "show_if": "output.configure_input_tables=='manual_selection_of_input_table' || output.configure_input_tables=='autoconfigure_input_table'",
+        "show_if": "configure_input_tables=='zippydoc_table'",
         "table": "table_id",
         "bind": "COLUMNS",
         "required": true
       },
-      "active_excel_sheet__field_name": {
+      "excel_sheet__field_name": {
         "type": "select",
         "label": "Select Column",
-        "show_if": "output.configure_input_tables=='use_active_excel_sheet'",
+        "show_if": "configure_input_tables!='zippydoc_table'",
         "options": {
           "A": {
             "label": "A"
