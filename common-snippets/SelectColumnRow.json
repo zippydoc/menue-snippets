@@ -5,7 +5,7 @@
   "apply_to_all_columns": {
     "type": "checkbox",
     "label": "All Columns",
-    "show_if": "(output.configure_input_tables=='manual_selection_of_input_table' || output.configure_input_tables=='autoconfigure_input_table') && false",
+    "show_if": "false",
     "val": "false",
     "isOn": "true",
     "isOff": "false",
@@ -14,7 +14,7 @@
   "apply_columns": {
     "type": "select",
     "label": "Select Columns to Apply",
-    "show_if": "(output.configure_input_tables=='manual_selection_of_input_table' || output.configure_input_tables=='autoconfigure_input_table') && $table_id.numOfHeader >= 1",
+    "show_if": "$table_id.numOfHeader >= 1",
     "required": true,
     "table": "table_id",
     "multiple": true,
@@ -24,7 +24,7 @@
   "apply_to_all_rows": {
     "type": "checkbox",
     "label": "All Rows",
-    "show_if": "(output.configure_input_tables=='manual_selection_of_input_table' || output.configure_input_tables=='autoconfigure_input_table') && false",
+    "show_if": "false",
     "val": "false",
     "isOn": "true",
     "isOff": "false",
@@ -33,7 +33,7 @@
   "apply_rows": {
     "type": "select",
     "label": "Select Rows to Apply",
-    "show_if": "(output.configure_input_tables=='manual_selection_of_input_table' || output.configure_input_tables=='autoconfigure_input_table') && $table_id.numOfLabel >= 1",
+    "show_if": "$table_id.numOfLabel >= 1",
     "required": true,
     "table": "table_id",
     "multiple": true,
@@ -43,7 +43,7 @@
   "intersection": {
     "type": "select",
     "label": "Selection",
-    "show_if": "(output.configure_input_tables=='manual_selection_of_input_table' || output.configure_input_tables=='autoconfigure_input_table') && false",
+    "show_if": "false",
     "options": {
       "all": {
         "label": "All selected Rows & Columns"
@@ -53,190 +53,5 @@
       }
     },
     "val": "intersection"
-  },
-  "intersection": {
-    "type": "select",
-    "label": "Selection",
-    "show_if": "(output.configure_input_tables=='manual_selection_of_input_table' || output.configure_input_tables=='autoconfigure_input_table') && false",
-    "options": {
-      "all": {
-        "label": "All selected Rows & Columns"
-      },
-      "intersection": {
-        "label": "Intersection of selected Rows & Columns"
-      }
-    },
-    "val": "intersection"
-  },
-  "active_excel_sheet__apply_columns": {
-    "type": "fieldset",
-    "label": "Select Columns to Apply",
-    "show_if": "output.configure_input_tables=='use_active_excel_sheet'",
-    "repeat": true,
-    "fields": {
-      "column_cell": {
-        "type": "select",
-        "label": "Column",
-        "options": {
-          "A": {
-            "label": "A"
-          },
-          "B": {
-            "label": "B"
-          },
-          "C": {
-            "label": "C"
-          },
-          "D": {
-            "label": "D"
-          },
-          "E": {
-            "label": "E"
-          },
-          "F": {
-            "label": "F"
-          },
-          "G": {
-            "label": "G"
-          },
-          "H": {
-            "label": "H"
-          },
-          "I": {
-            "label": "I"
-          },
-          "J": {
-            "label": "J"
-          },
-          "K": {
-            "label": "K"
-          },
-          "L": {
-            "label": "L"
-          },
-          "M": {
-            "label": "M"
-          },
-          "N": {
-            "label": "N"
-          },
-          "O": {
-            "label": "O"
-          },
-          "P": {
-            "label": "P"
-          },
-          "Q": {
-            "label": "Q"
-          },
-          "R": {
-            "label": "R"
-          },
-          "S": {
-            "label": "S"
-          },
-          "T": {
-            "label": "T"
-          },
-          "U": {
-            "label": "U"
-          },
-          "V": {
-            "label": "V"
-          },
-          "W": {
-            "label": "W"
-          },
-          "X": {
-            "label": "X"
-          },
-          "Y": {
-            "label": "Y"
-          },
-          "Z": {
-            "label": "Z"
-          },
-          "AA": {
-            "label": "AA"
-          },
-          "AB": {
-            "label": "AB"
-          },
-          "AC": {
-            "label": "AC"
-          },
-          "AD": {
-            "label": "AD"
-          },
-          "AE": {
-            "label": "AE"
-          },
-          "AF": {
-            "label": "AF"
-          },
-          "AG": {
-            "label": "AG"
-          },
-          "AH": {
-            "label": "AH"
-          },
-          "AI": {
-            "label": "AI"
-          },
-          "AJ": {
-            "label": "AJ"
-          },
-          "AK": {
-            "label": "AK"
-          },
-          "AL": {
-            "label": "AL"
-          },
-          "AM": {
-            "label": "AM"
-          },
-          "AN": {
-            "label": "AN"
-          },
-          "AO": {
-            "label": "AO"
-          },
-          "AP": {
-            "label": "AP"
-          },
-          "AQ": {
-            "label": "AQ"
-          },
-          "AR": {
-            "label": "AR"
-          },
-          "AS": {
-            "label": "AS"
-          },
-          "AT": {
-            "label": "AT"
-          },
-          "AU": {
-            "label": "AU"
-          },
-          "AV": {
-            "label": "AV"
-          },
-          "AW": {
-            "label": "AW"
-          },
-          "AX": {
-            "label": "AX"
-          },
-          "AY": {
-            "label": "AY"
-          },
-          "AZ": {
-            "label": "AZ"
-          }
-        },
-        "val": ""
-      }
-    }
   }
 }
