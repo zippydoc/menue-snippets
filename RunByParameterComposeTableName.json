@@ -2,7 +2,6 @@
   "output.table_name_type": {
     "type": "select",
     "label": "Table Name",
-    "show_if": "output.output_type=='unify_output_tables'",
     "required": true,
     "options": {
       "task_name": {
@@ -21,7 +20,7 @@
   "output.custom_text": {
     "type": "text",
     "label": "Output Table Name",
-    "show_if": "output.output_type=='unify_output_tables' && output.table_name_type=='custom_name'",
+    "show_if": "output.table_name_type=='custom_name'",
     "minLength": 1,
     "val": "",
     "width": "100%",
@@ -30,7 +29,7 @@
   "compose_table_name_frame": {
     "type": "fieldset",
     "label": "Compose Output Table Name",
-    "show_if": "output.output_type=='unify_output_tables' && output.table_name_type=='compose_name'",
+    "show_if": "output.table_name_type=='compose_name'",
     "repeat": false,
     "fields": {
       "output.prefix_rule": {
