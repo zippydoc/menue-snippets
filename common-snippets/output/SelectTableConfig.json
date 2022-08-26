@@ -29,7 +29,7 @@
       "table_id": {
         "type": "select",
         "label": "Select Table",
-        "show_if": "configure_input_tables=='zippydoc_table'",
+        "show_if": "configure_input_tables=='zippydoc_table' || configure_input_tables=='search_tables'",
         "bind": "TABLES",
         "empty": "",
         "required": true
@@ -493,21 +493,6 @@
             },
             "val": "Table Name"
           },
-          "rows": {
-            "type": "select",
-            "label": "Condition",
-            "show_if": "this.type == 'Tags'",
-            "required": true,
-            "options": {
-              "All Tags": {
-                "label": "All Tags"
-              },
-              "Some Tags": {
-                "label": "Some Tags"
-              }
-            },
-            "val": "Some Tags"
-          },
           "condition": {
             "type": "select",
             "label": "Operator",
@@ -515,9 +500,6 @@
             "options": {
               "CONTAINS": {
                 "label": "CONTAINS"
-              },
-              "CONTAINED IN STRING": {
-                "label": "CONTAINED IN"
               },
               "STARTS WITH": {
                 "label": "STARTS WITH"
