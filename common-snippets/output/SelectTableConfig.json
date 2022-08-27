@@ -1,0 +1,558 @@
+{
+  "input": {
+    "type": "fieldset",
+    "label": "Select Input Table",
+    "repeat": false,
+    "fields": {
+      "configure_input_tables": {
+        "type": "select",
+        "label": "Select Source",
+        "options": {
+          "zippydoc_table": {
+            "label": "ZIPPYDOC Table"
+          },
+          "excel_sheet": {
+            "label": "Excel Sheet"
+          },
+          "excel_column_and_row_range": {
+            "label": "Excel Column & Row Range"
+          },
+          "excel_range_name": {
+            "label": "Excel Range Name"
+          },
+          "search_tables": {
+            "label": "Search Tables"
+          }
+        },
+        "val": "zippydoc_table"
+      },
+      "table_id": {
+        "type": "select",
+        "label": "Input Table",
+        "show_if": "configure_input_tables=='zippydoc_table' || configure_input_tables=='search_tables'",
+        "bind": "TABLES",
+        "empty": "",
+        "required": true
+      },
+      "excel_sheet__table_has_header": {
+        "type": "checkbox",
+        "label": "Table has header",
+        "show_if": "configure_input_tables=='excel_sheet' || configure_input_tables=='excel_column_and_row_range' || configure_input_tables=='excel_range_name'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "excel_sheet__active_sheet": {
+        "type": "checkbox",
+        "label": "Active Sheet",
+        "show_if": "configure_input_tables=='excel_sheet' || configure_input_tables=='excel_column_and_row_range' || configure_input_tables=='excel_range_name'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false"
+      },
+      "excel_sheet__sheet_name": {
+        "type": "text",
+        "label": "Sheet Name",
+        "show_if": "(configure_input_tables=='excel_sheet' || configure_input_tables=='excel_column_and_row_range' || configure_input_tables=='excel_range_name') && excel_sheet__active_sheet=='false'",
+        "val": "",
+        "style": "margin-left: 15px",
+        "breakLine": true
+      },
+      "excel_sheet__named_range": {
+        "type": "text",
+        "label": "Named Range",
+        "show_if": "configure_input_tables=='excel_range_name'",
+        "val": ""
+      },
+      "excel_sheet__columns_from_label": {
+        "type": "text",
+        "label": "",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
+        "val": "Columns from",
+        "disabled": true
+      },
+      "excel_sheet__from_column": {
+        "type": "select",
+        "label": "From Column",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
+        "options": {
+          "A": {
+            "label": "A"
+          },
+          "B": {
+            "label": "B"
+          },
+          "C": {
+            "label": "C"
+          },
+          "D": {
+            "label": "D"
+          },
+          "E": {
+            "label": "E"
+          },
+          "F": {
+            "label": "F"
+          },
+          "G": {
+            "label": "G"
+          },
+          "H": {
+            "label": "H"
+          },
+          "I": {
+            "label": "I"
+          },
+          "J": {
+            "label": "J"
+          },
+          "K": {
+            "label": "K"
+          },
+          "L": {
+            "label": "L"
+          },
+          "M": {
+            "label": "M"
+          },
+          "N": {
+            "label": "N"
+          },
+          "O": {
+            "label": "O"
+          },
+          "P": {
+            "label": "P"
+          },
+          "Q": {
+            "label": "Q"
+          },
+          "R": {
+            "label": "R"
+          },
+          "S": {
+            "label": "S"
+          },
+          "T": {
+            "label": "T"
+          },
+          "U": {
+            "label": "U"
+          },
+          "V": {
+            "label": "V"
+          },
+          "W": {
+            "label": "W"
+          },
+          "X": {
+            "label": "X"
+          },
+          "Y": {
+            "label": "Y"
+          },
+          "Z": {
+            "label": "Z"
+          },
+          "AA": {
+            "label": "AA"
+          },
+          "AB": {
+            "label": "AB"
+          },
+          "AC": {
+            "label": "AC"
+          },
+          "AD": {
+            "label": "AD"
+          },
+          "AE": {
+            "label": "AE"
+          },
+          "AF": {
+            "label": "AF"
+          },
+          "AG": {
+            "label": "AG"
+          },
+          "AH": {
+            "label": "AH"
+          },
+          "AI": {
+            "label": "AI"
+          },
+          "AJ": {
+            "label": "AJ"
+          },
+          "AK": {
+            "label": "AK"
+          },
+          "AL": {
+            "label": "AL"
+          },
+          "AM": {
+            "label": "AM"
+          },
+          "AN": {
+            "label": "AN"
+          },
+          "AO": {
+            "label": "AO"
+          },
+          "AP": {
+            "label": "AP"
+          },
+          "AQ": {
+            "label": "AQ"
+          },
+          "AR": {
+            "label": "AR"
+          },
+          "AS": {
+            "label": "AS"
+          },
+          "AT": {
+            "label": "AT"
+          },
+          "AU": {
+            "label": "AU"
+          },
+          "AV": {
+            "label": "AV"
+          },
+          "AW": {
+            "label": "AW"
+          },
+          "AX": {
+            "label": "AX"
+          },
+          "AY": {
+            "label": "AY"
+          },
+          "AZ": {
+            "label": "AZ"
+          }
+        },
+        "val": "A"
+      },
+      "excel_sheet__columns_to_label": {
+        "type": "text",
+        "label": "",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
+        "val": "to",
+        "disabled": true
+      },
+      "excel_sheet__to_column": {
+        "type": "select",
+        "label": "To Column",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
+        "options": {
+          "A": {
+            "label": "A"
+          },
+          "B": {
+            "label": "B"
+          },
+          "C": {
+            "label": "C"
+          },
+          "D": {
+            "label": "D"
+          },
+          "E": {
+            "label": "E"
+          },
+          "F": {
+            "label": "F"
+          },
+          "G": {
+            "label": "G"
+          },
+          "H": {
+            "label": "H"
+          },
+          "I": {
+            "label": "I"
+          },
+          "J": {
+            "label": "J"
+          },
+          "K": {
+            "label": "K"
+          },
+          "L": {
+            "label": "L"
+          },
+          "M": {
+            "label": "M"
+          },
+          "N": {
+            "label": "N"
+          },
+          "O": {
+            "label": "O"
+          },
+          "P": {
+            "label": "P"
+          },
+          "Q": {
+            "label": "Q"
+          },
+          "R": {
+            "label": "R"
+          },
+          "S": {
+            "label": "S"
+          },
+          "T": {
+            "label": "T"
+          },
+          "U": {
+            "label": "U"
+          },
+          "V": {
+            "label": "V"
+          },
+          "W": {
+            "label": "W"
+          },
+          "X": {
+            "label": "X"
+          },
+          "Y": {
+            "label": "Y"
+          },
+          "Z": {
+            "label": "Z"
+          },
+          "AA": {
+            "label": "AA"
+          },
+          "AB": {
+            "label": "AB"
+          },
+          "AC": {
+            "label": "AC"
+          },
+          "AD": {
+            "label": "AD"
+          },
+          "AE": {
+            "label": "AE"
+          },
+          "AF": {
+            "label": "AF"
+          },
+          "AG": {
+            "label": "AG"
+          },
+          "AH": {
+            "label": "AH"
+          },
+          "AI": {
+            "label": "AI"
+          },
+          "AJ": {
+            "label": "AJ"
+          },
+          "AK": {
+            "label": "AK"
+          },
+          "AL": {
+            "label": "AL"
+          },
+          "AM": {
+            "label": "AM"
+          },
+          "AN": {
+            "label": "AN"
+          },
+          "AO": {
+            "label": "AO"
+          },
+          "AP": {
+            "label": "AP"
+          },
+          "AQ": {
+            "label": "AQ"
+          },
+          "AR": {
+            "label": "AR"
+          },
+          "AS": {
+            "label": "AS"
+          },
+          "AT": {
+            "label": "AT"
+          },
+          "AU": {
+            "label": "AU"
+          },
+          "AV": {
+            "label": "AV"
+          },
+          "AW": {
+            "label": "AW"
+          },
+          "AX": {
+            "label": "AX"
+          },
+          "AY": {
+            "label": "AY"
+          },
+          "AZ": {
+            "label": "AZ"
+          }
+        },
+        "val": "B",
+        "breakLine": true
+      },
+      "excel_sheet__rows_from_label": {
+        "type": "text",
+        "label": "",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
+        "val": "Rows from",
+        "disabled": true
+      },
+      "excel_sheet__from_row": {
+        "type": "number",
+        "label": "From Row(1-1000)",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
+        "required": true,
+        "val": "1"
+      },
+      "excel_sheet__rows_to_label": {
+        "type": "text",
+        "label": "",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
+        "val": "to",
+        "disabled": true
+      },
+      "excel_sheet__to_row": {
+        "type": "number",
+        "label": "To Row(1-1000)",
+        "show_if": "configure_input_tables=='excel_column_and_row_range'",
+        "required": true,
+        "val": "2",
+        "breakLine": true
+      },
+      "input_table_condition": {
+        "type": "fieldset",
+        "label": "Search Tables",
+        "show_if": "configure_input_tables=='search_tables'",
+        "repeat": true,
+        "fields": {
+          "initial_op": {
+            "type": "select",
+            "label": "Logic Operator",
+            "required": true,
+            "show_if" :  "$index == 0",
+            "options": {
+              "if": {
+                "label": "IF"
+              },
+              "if_not": {
+                "label": "IF NOT"
+              }
+            },
+            "val": "if"
+          },
+          "op": {
+            "type": "select",
+            "label": "Logic Operator",
+            "required": true,
+            "show_if" :  "$index > 0",
+            "options": {
+              "and": {
+                "label": "AND"
+              },
+              "or": {
+                "label": "OR"
+              },
+              "and_not": {
+                "label": "AND NOT"
+              },
+              "or_not": {
+                "label": "OR NOT"
+              }
+            },
+            "val": "and"
+          },
+          "type": {
+            "type": "select",
+            "label": "Type",
+            "required": true,
+            "options": {
+              "Table Name": {
+                "label": "Table Name"
+              },
+              "Tags": {
+                "label": "Tags"
+              }
+            },
+            "val": "Table Name"
+          },
+          "condition": {
+            "type": "select",
+            "label": "Operator",
+            "required": true,
+            "options": {
+              "CONTAINS": {
+                "label": "CONTAINS"
+              },
+              "STARTS WITH": {
+                "label": "STARTS WITH"
+              },
+              "ENDS WITH": {
+                "label": "ENDS WITH"
+              },
+              "=": {
+                "label": "EQUAL"
+              },
+              "REGEX MATCH": {
+                "label": "REGEX MATCH"
+              }
+            },
+            "val": "CONTAINS"
+          },
+          "value": {
+            "type": "text",
+            "label": "Input Value",
+            "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+            "val": "",
+            "required": true
+          },
+          "case_sensitive": {
+            "type": "select",
+            "label": "Case Sensitive",
+            "required": true,
+            "show_if": "this.condition == 'CONTAINS' || this.condition == 'CONTAINED IN STRING' || this.condition == '=' || this.condition == 'STARTS WITH' || this.condition == 'ENDS WITH' || this.condition == 'REGEX MATCH' || this.condition == 'NOT REGEX MATCH' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+            "options": {
+              "yes": {
+                "label": "Case Sensitive"
+              },
+              "no": {
+                "label": "Case Insensitive"
+              }
+            },
+            "val": "yes"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "remove_input_table_after_processing": {
+        "type": "hidden",
+        "val": "false"
+      },
+      "is_word": {
+        "type": "hidden",
+        "val": "false"
+      }
+    }
+  }
+}

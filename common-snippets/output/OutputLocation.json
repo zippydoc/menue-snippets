@@ -1,0 +1,475 @@
+{
+  "output.location": {
+    "type": "select",
+    "label": "Output Location",
+    "options": {
+      "output_as_new_table": {
+        "label": "Output as New Table"
+      },
+      "overwrite_input_table": {
+        "label": "Overwrite Input Table"
+      },
+      "output_as_excel_sheet": {
+        "label": "Output as Excel Sheet"
+      },
+      "output_in_excel_range": {
+        "label": "Output in Excel Range"
+      },
+      "output_in_excel_named_range": {
+        "label": "Output in Excel Named Range"
+      },
+      "output_at_marked_cell_position": {
+        "label": "Output at marked cell position"
+      }
+    },
+    "val": "output_as_new_table"
+  },
+  "output_location_frame": {
+    "type": "fieldset",
+    "label": "Excel Config",
+    "show_if": "output.location=='output_as_excel_sheet' || output.location=='output_in_excel_range' || output.location=='output_in_excel_named_range' || output.location=='output_at_marked_cell_position'",
+    "repeat": false,
+    "fields": {
+      "output.location__output_sheet": {
+        "type": "select",
+        "label": "Output Sheet",
+        "show_if": "output.location=='output_as_excel_sheet' || output.location=='output_in_excel_range' || output.location=='output_in_excel_named_range'",
+        "options": {
+          "active_sheet": {
+            "label": "Active Sheet"
+          },
+          "select_sheet": {
+            "label": "Select Sheet"
+          },
+          "new_sheet": {
+            "label": "New Sheet"
+          }
+        },
+        "val": "active_sheet"
+      },
+      "output.location__sheet_name": {
+        "type": "text",
+        "label": "Sheet Name",
+        "show_if": "(output.location=='output_as_excel_sheet' || output.location=='output_in_excel_range' || output.location=='output_in_excel_named_range') && output.location__output_sheet=='select_sheet'",
+        "val": "",
+        "style": "margin-left: 15px",
+        "breakLine": true
+      },
+      "output.location__columns_from_label": {
+        "type": "text",
+        "label": "",
+        "show_if": "output.location=='output_in_excel_range'",
+        "val": "Columns from",
+        "disabled": true
+      },
+      "output.location__from_column": {
+        "type": "select",
+        "label": "From Column",
+        "show_if": "output.location=='output_in_excel_range'",
+        "options": {
+          "A": {
+            "label": "A"
+          },
+          "B": {
+            "label": "B"
+          },
+          "C": {
+            "label": "C"
+          },
+          "D": {
+            "label": "D"
+          },
+          "E": {
+            "label": "E"
+          },
+          "F": {
+            "label": "F"
+          },
+          "G": {
+            "label": "G"
+          },
+          "H": {
+            "label": "H"
+          },
+          "I": {
+            "label": "I"
+          },
+          "J": {
+            "label": "J"
+          },
+          "K": {
+            "label": "K"
+          },
+          "L": {
+            "label": "L"
+          },
+          "M": {
+            "label": "M"
+          },
+          "N": {
+            "label": "N"
+          },
+          "O": {
+            "label": "O"
+          },
+          "P": {
+            "label": "P"
+          },
+          "Q": {
+            "label": "Q"
+          },
+          "R": {
+            "label": "R"
+          },
+          "S": {
+            "label": "S"
+          },
+          "T": {
+            "label": "T"
+          },
+          "U": {
+            "label": "U"
+          },
+          "V": {
+            "label": "V"
+          },
+          "W": {
+            "label": "W"
+          },
+          "X": {
+            "label": "X"
+          },
+          "Y": {
+            "label": "Y"
+          },
+          "Z": {
+            "label": "Z"
+          },
+          "AA": {
+            "label": "AA"
+          },
+          "AB": {
+            "label": "AB"
+          },
+          "AC": {
+            "label": "AC"
+          },
+          "AD": {
+            "label": "AD"
+          },
+          "AE": {
+            "label": "AE"
+          },
+          "AF": {
+            "label": "AF"
+          },
+          "AG": {
+            "label": "AG"
+          },
+          "AH": {
+            "label": "AH"
+          },
+          "AI": {
+            "label": "AI"
+          },
+          "AJ": {
+            "label": "AJ"
+          },
+          "AK": {
+            "label": "AK"
+          },
+          "AL": {
+            "label": "AL"
+          },
+          "AM": {
+            "label": "AM"
+          },
+          "AN": {
+            "label": "AN"
+          },
+          "AO": {
+            "label": "AO"
+          },
+          "AP": {
+            "label": "AP"
+          },
+          "AQ": {
+            "label": "AQ"
+          },
+          "AR": {
+            "label": "AR"
+          },
+          "AS": {
+            "label": "AS"
+          },
+          "AT": {
+            "label": "AT"
+          },
+          "AU": {
+            "label": "AU"
+          },
+          "AV": {
+            "label": "AV"
+          },
+          "AW": {
+            "label": "AW"
+          },
+          "AX": {
+            "label": "AX"
+          },
+          "AY": {
+            "label": "AY"
+          },
+          "AZ": {
+            "label": "AZ"
+          }
+        },
+        "val": "A"
+      },
+      "output.location__columns_to_label": {
+        "type": "text",
+        "label": "",
+        "show_if": "output.location=='output_in_excel_range'",
+        "val": "to",
+        "disabled": true
+      },
+      "output.location__to_column": {
+        "type": "select",
+        "label": "To Column",
+        "show_if": "output.location=='output_in_excel_range'",
+        "options": {
+          "A": {
+            "label": "A"
+          },
+          "B": {
+            "label": "B"
+          },
+          "C": {
+            "label": "C"
+          },
+          "D": {
+            "label": "D"
+          },
+          "E": {
+            "label": "E"
+          },
+          "F": {
+            "label": "F"
+          },
+          "G": {
+            "label": "G"
+          },
+          "H": {
+            "label": "H"
+          },
+          "I": {
+            "label": "I"
+          },
+          "J": {
+            "label": "J"
+          },
+          "K": {
+            "label": "K"
+          },
+          "L": {
+            "label": "L"
+          },
+          "M": {
+            "label": "M"
+          },
+          "N": {
+            "label": "N"
+          },
+          "O": {
+            "label": "O"
+          },
+          "P": {
+            "label": "P"
+          },
+          "Q": {
+            "label": "Q"
+          },
+          "R": {
+            "label": "R"
+          },
+          "S": {
+            "label": "S"
+          },
+          "T": {
+            "label": "T"
+          },
+          "U": {
+            "label": "U"
+          },
+          "V": {
+            "label": "V"
+          },
+          "W": {
+            "label": "W"
+          },
+          "X": {
+            "label": "X"
+          },
+          "Y": {
+            "label": "Y"
+          },
+          "Z": {
+            "label": "Z"
+          },
+          "AA": {
+            "label": "AA"
+          },
+          "AB": {
+            "label": "AB"
+          },
+          "AC": {
+            "label": "AC"
+          },
+          "AD": {
+            "label": "AD"
+          },
+          "AE": {
+            "label": "AE"
+          },
+          "AF": {
+            "label": "AF"
+          },
+          "AG": {
+            "label": "AG"
+          },
+          "AH": {
+            "label": "AH"
+          },
+          "AI": {
+            "label": "AI"
+          },
+          "AJ": {
+            "label": "AJ"
+          },
+          "AK": {
+            "label": "AK"
+          },
+          "AL": {
+            "label": "AL"
+          },
+          "AM": {
+            "label": "AM"
+          },
+          "AN": {
+            "label": "AN"
+          },
+          "AO": {
+            "label": "AO"
+          },
+          "AP": {
+            "label": "AP"
+          },
+          "AQ": {
+            "label": "AQ"
+          },
+          "AR": {
+            "label": "AR"
+          },
+          "AS": {
+            "label": "AS"
+          },
+          "AT": {
+            "label": "AT"
+          },
+          "AU": {
+            "label": "AU"
+          },
+          "AV": {
+            "label": "AV"
+          },
+          "AW": {
+            "label": "AW"
+          },
+          "AX": {
+            "label": "AX"
+          },
+          "AY": {
+            "label": "AY"
+          },
+          "AZ": {
+            "label": "AZ"
+          }
+        },
+        "val": "B",
+        "breakLine": true
+      },
+      "output.location__rows_from_label": {
+        "type": "text",
+        "label": "",
+        "show_if": "output.location=='output_in_excel_range'",
+        "val": "Rows from",
+        "disabled": true
+      },
+      "output.location__from_row": {
+        "type": "number",
+        "label": "From Row(1-1000)",
+        "show_if": "output.location=='output_in_excel_range'",
+        "required": true,
+        "val": "1"
+      },
+      "output.location__rows_to_label": {
+        "type": "text",
+        "label": "",
+        "show_if": "output.location=='output_in_excel_range'",
+        "val": "to",
+        "disabled": true
+      },
+      "output.location__to_row": {
+        "type": "number",
+        "label": "To Row(1-1000)",
+        "show_if": "output.location=='output_in_excel_range'",
+        "required": true,
+        "val": "2",
+        "breakLine": true
+      },
+      "output.location__named_range": {
+        "type": "text",
+        "label": "Named Range",
+        "show_if": "output.location=='output_in_excel_named_range'",
+        "val": "",
+        "breakLine": true
+      },
+      "output.location__include_table_header": {
+        "type": "checkbox",
+        "label": "Include Table Header",
+        "show_if": "output.location=='output_as_excel_sheet' || output.location=='output_in_excel_range' || output.location=='output_in_excel_named_range' || output.location=='output_at_marked_cell_position'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "output.location__as_excel_list_table": {
+        "type": "checkbox",
+        "label": "As Excel List Table",
+        "show_if": "output.location=='output_as_excel_sheet' || output.location=='output_in_excel_range' || output.location=='output_in_excel_named_range' || output.location=='output_at_marked_cell_position'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "output.location__sustain_cell_format_of_excel": {
+        "type": "checkbox",
+        "label": "Sustain Cell Format of Excel",
+        "show_if": "output.location=='output_as_excel_sheet' || output.location=='output_in_excel_range' || output.location=='output_in_excel_named_range' || output.location=='output_at_marked_cell_position'",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "output.location__crop_if_range_is_not_matching": {
+        "type": "checkbox",
+        "label": "Crop if range is not matching",
+        "show_if": "output.location=='output_in_excel_range'",
+        "val": "true",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      }
+    }
+  }
+}
