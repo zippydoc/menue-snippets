@@ -2,7 +2,7 @@
   "columns": {
     "type": "select",
     "label": "Select column(s)",
-    "show_if": "options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells'",
+    "show_if": "(configure_input_tables=='zippydoc_table' || configure_input_tables=='search_tables') && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
     "table": "table_id",
     "multiple": true,
     "bind": "COLUMNS",
@@ -11,9 +11,338 @@
   "column_for_generate": {
     "type": "select",
     "label": "Select column",
-    "show_if": "options.task_type=='label_duplicates' || options.task_type=='generate_lookup_table'",
+    "show_if": "(configure_input_tables=='zippydoc_table' || configure_input_tables=='search_tables') && (options.task_type=='label_duplicates' || options.task_type=='generate_lookup_table')",
     "table": "table_id",
     "bind": "COLUMNS",
     "required": true
+  },
+  "excel_sheet__columns": {
+    "type": "select",
+    "label": "Select Columns to Apply",
+    "show_if": "(configure_input_tables=='excel_sheet' || configure_input_tables=='excel_column_and_row_range' || configure_input_tables=='excel_range_name') && (options.task_type=='apply_lookup_table' || options.task_type=='apply_regex_table' || options.task_type=='apply_lookup_table_to_cells' || options.task_type=='apply_regex_table_to_cells')",
+    "multiple": true,
+    "options": {
+      "A": {
+        "label": "A"
+      },
+      "B": {
+        "label": "B"
+      },
+      "C": {
+        "label": "C"
+      },
+      "D": {
+        "label": "D"
+      },
+      "E": {
+        "label": "E"
+      },
+      "F": {
+        "label": "F"
+      },
+      "G": {
+        "label": "G"
+      },
+      "H": {
+        "label": "H"
+      },
+      "I": {
+        "label": "I"
+      },
+      "J": {
+        "label": "J"
+      },
+      "K": {
+        "label": "K"
+      },
+      "L": {
+        "label": "L"
+      },
+      "M": {
+        "label": "M"
+      },
+      "N": {
+        "label": "N"
+      },
+      "O": {
+        "label": "O"
+      },
+      "P": {
+        "label": "P"
+      },
+      "Q": {
+        "label": "Q"
+      },
+      "R": {
+        "label": "R"
+      },
+      "S": {
+        "label": "S"
+      },
+      "T": {
+        "label": "T"
+      },
+      "U": {
+        "label": "U"
+      },
+      "V": {
+        "label": "V"
+      },
+      "W": {
+        "label": "W"
+      },
+      "X": {
+        "label": "X"
+      },
+      "Y": {
+        "label": "Y"
+      },
+      "Z": {
+        "label": "Z"
+      },
+      "AA": {
+        "label": "AA"
+      },
+      "AB": {
+        "label": "AB"
+      },
+      "AC": {
+        "label": "AC"
+      },
+      "AD": {
+        "label": "AD"
+      },
+      "AE": {
+        "label": "AE"
+      },
+      "AF": {
+        "label": "AF"
+      },
+      "AG": {
+        "label": "AG"
+      },
+      "AH": {
+        "label": "AH"
+      },
+      "AI": {
+        "label": "AI"
+      },
+      "AJ": {
+        "label": "AJ"
+      },
+      "AK": {
+        "label": "AK"
+      },
+      "AL": {
+        "label": "AL"
+      },
+      "AM": {
+        "label": "AM"
+      },
+      "AN": {
+        "label": "AN"
+      },
+      "AO": {
+        "label": "AO"
+      },
+      "AP": {
+        "label": "AP"
+      },
+      "AQ": {
+        "label": "AQ"
+      },
+      "AR": {
+        "label": "AR"
+      },
+      "AS": {
+        "label": "AS"
+      },
+      "AT": {
+        "label": "AT"
+      },
+      "AU": {
+        "label": "AU"
+      },
+      "AV": {
+        "label": "AV"
+      },
+      "AW": {
+        "label": "AW"
+      },
+      "AX": {
+        "label": "AX"
+      },
+      "AY": {
+        "label": "AY"
+      },
+      "AZ": {
+        "label": "AZ"
+      }
+    },
+    "breakLine": true
+  },
+  "excel_sheet__column_for_generate": {
+    "type": "select",
+    "label": "Select Columns to Apply",
+    "show_if": "(configure_input_tables=='excel_sheet' || configure_input_tables=='excel_column_and_row_range' || configure_input_tables=='excel_range_name') && (configure_input_tables=='zippydoc_table' || configure_input_tables=='search_tables') && (options.task_type=='label_duplicates' || options.task_type=='generate_lookup_table')",
+    "options": {
+      "A": {
+        "label": "A"
+      },
+      "B": {
+        "label": "B"
+      },
+      "C": {
+        "label": "C"
+      },
+      "D": {
+        "label": "D"
+      },
+      "E": {
+        "label": "E"
+      },
+      "F": {
+        "label": "F"
+      },
+      "G": {
+        "label": "G"
+      },
+      "H": {
+        "label": "H"
+      },
+      "I": {
+        "label": "I"
+      },
+      "J": {
+        "label": "J"
+      },
+      "K": {
+        "label": "K"
+      },
+      "L": {
+        "label": "L"
+      },
+      "M": {
+        "label": "M"
+      },
+      "N": {
+        "label": "N"
+      },
+      "O": {
+        "label": "O"
+      },
+      "P": {
+        "label": "P"
+      },
+      "Q": {
+        "label": "Q"
+      },
+      "R": {
+        "label": "R"
+      },
+      "S": {
+        "label": "S"
+      },
+      "T": {
+        "label": "T"
+      },
+      "U": {
+        "label": "U"
+      },
+      "V": {
+        "label": "V"
+      },
+      "W": {
+        "label": "W"
+      },
+      "X": {
+        "label": "X"
+      },
+      "Y": {
+        "label": "Y"
+      },
+      "Z": {
+        "label": "Z"
+      },
+      "AA": {
+        "label": "AA"
+      },
+      "AB": {
+        "label": "AB"
+      },
+      "AC": {
+        "label": "AC"
+      },
+      "AD": {
+        "label": "AD"
+      },
+      "AE": {
+        "label": "AE"
+      },
+      "AF": {
+        "label": "AF"
+      },
+      "AG": {
+        "label": "AG"
+      },
+      "AH": {
+        "label": "AH"
+      },
+      "AI": {
+        "label": "AI"
+      },
+      "AJ": {
+        "label": "AJ"
+      },
+      "AK": {
+        "label": "AK"
+      },
+      "AL": {
+        "label": "AL"
+      },
+      "AM": {
+        "label": "AM"
+      },
+      "AN": {
+        "label": "AN"
+      },
+      "AO": {
+        "label": "AO"
+      },
+      "AP": {
+        "label": "AP"
+      },
+      "AQ": {
+        "label": "AQ"
+      },
+      "AR": {
+        "label": "AR"
+      },
+      "AS": {
+        "label": "AS"
+      },
+      "AT": {
+        "label": "AT"
+      },
+      "AU": {
+        "label": "AU"
+      },
+      "AV": {
+        "label": "AV"
+      },
+      "AW": {
+        "label": "AW"
+      },
+      "AX": {
+        "label": "AX"
+      },
+      "AY": {
+        "label": "AY"
+      },
+      "AZ": {
+        "label": "AZ"
+      }
+    },
+    "breakLine": true
   }
 }
