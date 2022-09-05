@@ -26,177 +26,88 @@
       "output.output_columns": {
         "type": "select",
         "label": "Output Column(s)",
-        "show_if": "configure_input_tables=='zippydoc_table'",
+        "show_if": "configure_input_tables!='search_tables'",
         "table": "table_id",
         "bind": "COLUMNS",
         "multiple": true,
         "required": true,
         "breakLine": true
       },
-      "output.excel_sheet__output_columns": {
+      "output.search_tables__output_columns_text": {
+        "type": "text",
+        "label": "Output Column(s) separated by `;`",
+        "show_if": "configure_input_tables=='search_tables' && search_tables__select_columns_by=='by_name_text'",
+        "val": "Column1; Column2; ColumnN",
+        "required": true
+      },
+      "output.search_tables__output_columns_order": {
         "type": "select",
         "label": "Output Column(s)",
-        "show_if": "configure_input_tables!='zippydoc_table'",
+        "show_if": "configure_input_tables=='search_tables' && search_tables__select_columns_by=='by_order'",
         "multiple": true,
         "options": {
-          "A": {
-            "label": "A"
+          "column_1": {
+            "label": "Column 1"
           },
-          "B": {
-            "label": "B"
+          "column_2": {
+            "label": "Column 2"
           },
-          "C": {
-            "label": "C"
+          "column_3": {
+            "label": "Column 3"
           },
-          "D": {
-            "label": "D"
+          "column_4": {
+            "label": "Column 4"
           },
-          "E": {
-            "label": "E"
+          "column_5": {
+            "label": "Column 5"
           },
-          "F": {
-            "label": "F"
+          "column_6": {
+            "label": "Column 6"
           },
-          "G": {
-            "label": "G"
+          "column_7": {
+            "label": "Column 7"
           },
-          "H": {
-            "label": "H"
+          "column_8": {
+            "label": "Column 8"
           },
-          "I": {
-            "label": "I"
+          "column_9": {
+            "label": "Column 9"
           },
-          "J": {
-            "label": "J"
+          "column_10": {
+            "label": "Column 10"
           },
-          "K": {
-            "label": "K"
+          "column_11": {
+            "label": "Column 11"
           },
-          "L": {
-            "label": "L"
+          "column_12": {
+            "label": "Column 12"
           },
-          "M": {
-            "label": "M"
+          "column_13": {
+            "label": "Column 13"
           },
-          "N": {
-            "label": "N"
+          "column_14": {
+            "label": "Column 14"
           },
-          "O": {
-            "label": "O"
+          "column_15": {
+            "label": "Column 15"
           },
-          "P": {
-            "label": "P"
+          "column_16": {
+            "label": "Column 16"
           },
-          "Q": {
-            "label": "Q"
+          "column_17": {
+            "label": "Column 17"
           },
-          "R": {
-            "label": "R"
+          "column_18": {
+            "label": "Column 18"
           },
-          "S": {
-            "label": "S"
+          "column_19": {
+            "label": "Column 19"
           },
-          "T": {
-            "label": "T"
-          },
-          "U": {
-            "label": "U"
-          },
-          "V": {
-            "label": "V"
-          },
-          "W": {
-            "label": "W"
-          },
-          "X": {
-            "label": "X"
-          },
-          "Y": {
-            "label": "Y"
-          },
-          "Z": {
-            "label": "Z"
-          },
-          "AA": {
-            "label": "AA"
-          },
-          "AB": {
-            "label": "AB"
-          },
-          "AC": {
-            "label": "AC"
-          },
-          "AD": {
-            "label": "AD"
-          },
-          "AE": {
-            "label": "AE"
-          },
-          "AF": {
-            "label": "AF"
-          },
-          "AG": {
-            "label": "AG"
-          },
-          "AH": {
-            "label": "AH"
-          },
-          "AI": {
-            "label": "AI"
-          },
-          "AJ": {
-            "label": "AJ"
-          },
-          "AK": {
-            "label": "AK"
-          },
-          "AL": {
-            "label": "AL"
-          },
-          "AM": {
-            "label": "AM"
-          },
-          "AN": {
-            "label": "AN"
-          },
-          "AO": {
-            "label": "AO"
-          },
-          "AP": {
-            "label": "AP"
-          },
-          "AQ": {
-            "label": "AQ"
-          },
-          "AR": {
-            "label": "AR"
-          },
-          "AS": {
-            "label": "AS"
-          },
-          "AT": {
-            "label": "AT"
-          },
-          "AU": {
-            "label": "AU"
-          },
-          "AV": {
-            "label": "AV"
-          },
-          "AW": {
-            "label": "AW"
-          },
-          "AX": {
-            "label": "AX"
-          },
-          "AY": {
-            "label": "AY"
-          },
-          "AZ": {
-            "label": "AZ"
+          "column_20": {
+            "label": "Column 20"
           }
         },
-        "val": ""
+        "val": []
       },
       "output.all_but_selected": {
         "type": "checkbox",
@@ -222,166 +133,77 @@
         "bind": "COLUMNS",
         "required": true
       },
-      "excel_sheet__field_name": {
+      "output.search_tables__field_name_text": {
+        "type": "text",
+        "label": "Input Column Name",
+        "show_if": "configure_input_tables=='search_tables' && search_tables__select_columns_by=='by_name_text'",
+        "val": "Column1; Column2; ColumnN",
+        "required": true
+      },
+      "output.search_tables__field_name_order": {
         "type": "select",
         "label": "Select Column",
-        "show_if": "configure_input_tables!='zippydoc_table'",
+        "show_if": "configure_input_tables=='search_tables' && search_tables__select_columns_by=='by_order'",
         "options": {
-          "A": {
-            "label": "A"
+          "column_1": {
+            "label": "Column 1"
           },
-          "B": {
-            "label": "B"
+          "column_2": {
+            "label": "Column 2"
           },
-          "C": {
-            "label": "C"
+          "column_3": {
+            "label": "Column 3"
           },
-          "D": {
-            "label": "D"
+          "column_4": {
+            "label": "Column 4"
           },
-          "E": {
-            "label": "E"
+          "column_5": {
+            "label": "Column 5"
           },
-          "F": {
-            "label": "F"
+          "column_6": {
+            "label": "Column 6"
           },
-          "G": {
-            "label": "G"
+          "column_7": {
+            "label": "Column 7"
           },
-          "H": {
-            "label": "H"
+          "column_8": {
+            "label": "Column 8"
           },
-          "I": {
-            "label": "I"
+          "column_9": {
+            "label": "Column 9"
           },
-          "J": {
-            "label": "J"
+          "column_10": {
+            "label": "Column 10"
           },
-          "K": {
-            "label": "K"
+          "column_11": {
+            "label": "Column 11"
           },
-          "L": {
-            "label": "L"
+          "column_12": {
+            "label": "Column 12"
           },
-          "M": {
-            "label": "M"
+          "column_13": {
+            "label": "Column 13"
           },
-          "N": {
-            "label": "N"
+          "column_14": {
+            "label": "Column 14"
           },
-          "O": {
-            "label": "O"
+          "column_15": {
+            "label": "Column 15"
           },
-          "P": {
-            "label": "P"
+          "column_16": {
+            "label": "Column 16"
           },
-          "Q": {
-            "label": "Q"
+          "column_17": {
+            "label": "Column 17"
           },
-          "R": {
-            "label": "R"
+          "column_18": {
+            "label": "Column 18"
           },
-          "S": {
-            "label": "S"
+          "column_19": {
+            "label": "Column 19"
           },
-          "T": {
-            "label": "T"
-          },
-          "U": {
-            "label": "U"
-          },
-          "V": {
-            "label": "V"
-          },
-          "W": {
-            "label": "W"
-          },
-          "X": {
-            "label": "X"
-          },
-          "Y": {
-            "label": "Y"
-          },
-          "Z": {
-            "label": "Z"
-          },
-          "AA": {
-            "label": "AA"
-          },
-          "AB": {
-            "label": "AB"
-          },
-          "AC": {
-            "label": "AC"
-          },
-          "AD": {
-            "label": "AD"
-          },
-          "AE": {
-            "label": "AE"
-          },
-          "AF": {
-            "label": "AF"
-          },
-          "AG": {
-            "label": "AG"
-          },
-          "AH": {
-            "label": "AH"
-          },
-          "AI": {
-            "label": "AI"
-          },
-          "AJ": {
-            "label": "AJ"
-          },
-          "AK": {
-            "label": "AK"
-          },
-          "AL": {
-            "label": "AL"
-          },
-          "AM": {
-            "label": "AM"
-          },
-          "AN": {
-            "label": "AN"
-          },
-          "AO": {
-            "label": "AO"
-          },
-          "AP": {
-            "label": "AP"
-          },
-          "AQ": {
-            "label": "AQ"
-          },
-          "AR": {
-            "label": "AR"
-          },
-          "AS": {
-            "label": "AS"
-          },
-          "AT": {
-            "label": "AT"
-          },
-          "AU": {
-            "label": "AU"
-          },
-          "AV": {
-            "label": "AV"
-          },
-          "AW": {
-            "label": "AW"
-          },
-          "AX": {
-            "label": "AX"
-          },
-          "AY": {
-            "label": "AY"
-          },
-          "AZ": {
-            "label": "AZ"
+          "column_20": {
+            "label": "Column 20"
           }
         },
         "val": ""
