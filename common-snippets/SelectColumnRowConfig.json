@@ -5,7 +5,7 @@
   "apply_to_all_columns": {
     "type": "checkbox",
     "label": "All Columns",
-    "show_if": "(configure_input_tables=='zippydoc_table' || configure_input_tables=='search_tables') && false",
+    "show_if": "configure_input_tables=='zippydoc_table' && false",
     "val": "false",
     "isOn": "true",
     "isOff": "false",
@@ -14,7 +14,7 @@
   "apply_columns": {
     "type": "select",
     "label": "Select Columns to Apply",
-    "show_if": "(configure_input_tables=='zippydoc_table' || configure_input_tables=='search_tables') && $table_id.numOfHeader >= 1",
+    "show_if": "configure_input_tables=='zippydoc_table' && $table_id.numOfHeader >= 1",
     "required": true,
     "table": "table_id",
     "multiple": true,
@@ -24,7 +24,7 @@
   "apply_to_all_rows": {
     "type": "checkbox",
     "label": "All Rows",
-    "show_if": "(configure_input_tables=='zippydoc_table' || configure_input_tables=='search_tables') && false",
+    "show_if": "configure_input_tables=='zippydoc_table' && false",
     "val": "false",
     "isOn": "true",
     "isOff": "false",
@@ -33,7 +33,7 @@
   "apply_rows": {
     "type": "select",
     "label": "Select Rows to Apply",
-    "show_if": "(configure_input_tables=='zippydoc_table' || configure_input_tables=='search_tables') && $table_id.numOfLabel >= 1",
+    "show_if": "configure_input_tables=='zippydoc_table' && $table_id.numOfLabel >= 1",
     "required": true,
     "table": "table_id",
     "multiple": true,
@@ -43,7 +43,7 @@
   "intersection": {
     "type": "select",
     "label": "Selection",
-    "show_if": "(configure_input_tables=='zippydoc_table' || configure_input_tables=='search_tables') && false",
+    "show_if": "configure_input_tables=='zippydoc_table' && false",
     "options": {
       "all": {
         "label": "All selected Rows & Columns"
@@ -218,5 +218,84 @@
       }
     },
     "breakLine": true
+  },
+  "search_tables__apply_columns_text": {
+    "type": "text",
+    "label": "Column(s) to apply (separated by `;`)",
+    "show_if": "configure_input_tables=='search_tables' && search_tables__select_columns_by=='by_name_text'",
+    "val": "",
+    "placeholder": "Column1; Column2; ColumnN",
+    "required": true,
+    "style": "width: 100%"
+  },
+  "search_tables__apply_columns_order": {
+    "type": "select",
+    "label": "Column(s) to apply",
+    "required": true,
+    "show_if" :  "configure_input_tables=='search_tables' && search_tables__select_columns_by=='by_order'",
+    "options": {
+      "col1": {
+        "label": "Column 1"
+      },
+      "col2": {
+        "label": "Column 2"
+      },
+      "col3": {
+        "label": "Column 3"
+      },
+      "col4": {
+        "label": "Column 4"
+      },
+      "col5": {
+        "label": "Column 5"
+      },
+      "col6": {
+        "label": "Column 6"
+      },
+      "col7": {
+        "label": "Column 7"
+      },
+      "col8": {
+        "label": "Column 8"
+      },
+      "col9": {
+        "label": "Column 9"
+      },
+      "col10": {
+        "label": "Column 10"
+      },
+      "col11": {
+        "label": "Column 11"
+      },
+      "col12": {
+        "label": "Column 12"
+      },
+      "col13": {
+        "label": "Column 13"
+      },
+      "col14": {
+        "label": "Column 14"
+      },
+      "col15": {
+        "label": "Column 15"
+      },
+      "col16": {
+        "label": "Column 16"
+      },
+      "col17": {
+        "label": "Column 17"
+      },
+      "col18": {
+        "label": "Column 18"
+      },
+      "col19": {
+        "label": "Column 19"
+      },
+      "col20": {
+        "label": "Column 20"
+      }
+    },
+    "multiple": true,
+    "val": []
   }
 }

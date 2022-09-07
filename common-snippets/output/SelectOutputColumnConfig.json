@@ -26,7 +26,7 @@
       "output.output_columns": {
         "type": "select",
         "label": "Output Column(s)",
-        "show_if": "configure_input_tables!='search_tables'",
+        "show_if": "configure_input_tables=='zippydoc_table'",
         "table": "table_id",
         "bind": "COLUMNS",
         "multiple": true,
@@ -35,7 +35,7 @@
       "output.search_tables__output_columns_text": {
         "type": "text",
         "label": "Output Column(s) separated by `;`",
-        "show_if": "configure_input_tables=='search_tables' && search_tables__select_columns_by=='by_name_text'",
+        "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_name_text'",
         "val": "",
         "placeholder": "Column1; Column2; ColumnN",
         "required": true,
@@ -44,7 +44,7 @@
       "output.search_tables__output_columns_order": {
         "type": "select",
         "label": "Output Column(s)",
-        "show_if": "configure_input_tables=='search_tables' && search_tables__select_columns_by=='by_order'",
+        "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_order'",
         "multiple": true,
         "options": {
           "col1": {
@@ -138,14 +138,14 @@
       "search_tables__field_name_text": {
         "type": "text",
         "label": "Input Column Name",
-        "show_if": "configure_input_tables=='search_tables' && search_tables__select_columns_by=='by_name_text'",
+        "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_name_text'",
         "val": "",
         "required": true
       },
       "search_tables__field_name_order": {
         "type": "select",
         "label": "Select Column",
-        "show_if": "configure_input_tables=='search_tables' && search_tables__select_columns_by=='by_order'",
+        "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_order'",
         "options": {
           "col1": {
             "label": "Column 1"
