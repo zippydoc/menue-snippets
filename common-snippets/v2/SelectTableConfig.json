@@ -26,10 +26,42 @@
         },
         "val": "zippydoc_table"
       },
+      "search_tables__types": {
+        "type": "select",
+        "label": "Table Search Source",
+        "show_if": "configure_input_tables!='zippydoc_table'",
+        "options": {
+          "owned_tables": {
+            "label": "Owned tables"
+          },
+          "shared_tables": {
+            "label": "Shared tables"
+          },
+          "published_tables": {
+            "label": "Published tables"
+          }
+        },
+        "multiple": true,
+        "val": ["owned_tables","shared_tables","published_tables"]
+      },
+      "search_tables__select_columns_by": {
+        "type": "select",
+        "label": "Table Search Source",
+        "show_if": "configure_input_tables!='zippydoc_table'",
+        "options": {
+          "by_name_text": {
+            "label": "Select columns by name"
+          },
+          "by_order": {
+            "label": "Select columns by order"
+          }
+        },
+        "val": "by_name_text"
+      },
       "table_id": {
         "type": "select",
         "label": "Input Table",
-        "show_if": "configure_input_tables=='zippydoc_table' || configure_input_tables=='search_tables'",
+        "show_if": "configure_input_tables=='zippydoc_table'",
         "bind": "TABLES",
         "empty": "",
         "required": true
