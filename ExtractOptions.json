@@ -188,15 +188,29 @@
         "isOff": "false",
         "style": "margin-top: 10px"
       },
-      "options.section_columns": {
-        "type": "select",
-        "label": "Section column(s)",
+      "section_columns_frame": {
+        "type": "fieldset",
+        "label": "Select Section Column(s)",
         "show_if": "options.apply_section_by_section=='true'",
-        "table": "table_id",
-        "bind": "COLUMNS",
-        "multiple": true,
-        "required": true,
-        "breakLine": true
+        "repeat": false,
+        "fields": {
+          "options.section_columns__all_but_selected": {
+            "type": "checkbox",
+            "label": "All but selected",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.section_columns": {
+            "type": "select",
+            "label": "Section column(s)",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "multiple": true,
+            "breakLine": true
+          }
+        }
       }
     }
   }
