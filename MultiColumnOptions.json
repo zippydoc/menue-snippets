@@ -69,14 +69,28 @@
             },
             "val": "sum"
           },
-          "multi_column_functions__sel_columns": {
-            "type": "select",
-            "label": "Select Column(s)",
+          "multi_column_functions__sel_columns_frame": {
+            "type": "fieldset",
+            "label": "Select column(s) to apply",
             "show_if": "this.multi_column_functions__function=='sum' || this.multi_column_functions__function=='average' || this.multi_column_functions__function=='median' || this.multi_column_functions__function=='max' || this.multi_column_functions__function=='min' || this.multi_column_functions__function=='standard_deviation' || this.multi_column_functions__function=='product'",
-            "table": "table_id",
-            "bind": "COLUMNS",
-            "multiple": true,
-            "required": true
+            "repeat": false,
+            "fields": {
+              "multi_column_functions__sel_columns__all_but_selected": {
+                "type": "checkbox",
+                "label": "All but selected",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false",
+                "breakLine": true
+              },
+              "multi_column_functions__sel_columns": {
+                "type": "select",
+                "label": "Select Column(s)",
+                "table": "table_id",
+                "bind": "COLUMNS",
+                "multiple": true
+              }
+            }
           },
           "multi_column_functions__column_a": {
             "type": "select",
@@ -487,14 +501,28 @@
             "isOn": "true",
             "isOff": "false"
           },
-          "apply_to_group__group_columns": {
-            "type": "select",
-            "label": "Group Column(s)",
+          "apply_to_group__group_columns_frame": {
+            "type": "fieldset",
+            "label": "Select column(s) to apply",
             "show_if": "this.apply_to_group__enabled == 'true' && this.multi_column_functions__function!='static_value'",
-            "table": "table_id",
-            "bind": "COLUMNS",
-            "multiple": true,
-            "required": true
+            "repeat": false,
+            "fields": {
+              "apply_to_group__group_columns__all_but_selected": {
+                "type": "checkbox",
+                "label": "All but selected",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false",
+                "breakLine": true
+              },
+              "apply_to_group__group_columns": {
+                "type": "select",
+                "label": "Group Column(s)",
+                "table": "table_id",
+                "bind": "COLUMNS",
+                "multiple": true
+              }
+            }
           },
           "delete": {
             "type": "button",
@@ -742,10 +770,17 @@
             "show_if": "options.apply_to_record=='false'",
             "repeat": false,
             "fields": {
+              "options.apply_to_group_columns__all_but_selected": {
+                "type": "checkbox",
+                "label": "All but selected",
+                "val": "false",
+                "isOn": "true",
+                "isOff": "false",
+                "breakLine": true
+              },
               "options.apply_to_group_columns": {
                 "type": "select",
                 "label": "Select Group Columns",
-                "required": true,
                 "width": "100%",
                 "table": "table_id",
                 "multiple": true,
