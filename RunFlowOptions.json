@@ -4,9 +4,18 @@
     "label": "Flow Configuration",
     "repeat": false,
     "fields": {
+      "options.manual_config": {
+        "type": "checkbox",
+        "label": "Manual configuration",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
       "options.replace_tables": {
         "type": "fieldset",
         "label": "Input Tables to replace",
+        "show_if": "options.manual_config=='true'",
         "repeat": true,
         "fields": {
           "tbl_id_to_replace": {
@@ -33,6 +42,7 @@
       "note1": {
         "type": "textarea",
         "label": "",
+        "show_if": "options.manual_config=='true'",
         "val": "Ensure, that the relevant column name(s) of the target table(s) flow table(s) match",
         "disabled": true,
         "width": "100%"
@@ -40,6 +50,7 @@
       "options.output_tables": {
         "type": "fieldset",
         "label": "Output Tables",
+        "show_if": "options.manual_config=='true'",
         "repeat": true,
         "fields": {
           "output_table_of_flow_to_run": {

@@ -19,13 +19,28 @@
         "isOn": "true",
         "isOff": "false"
       },
-      "options.section_cols": {
-        "type": "select",
-        "label": "Section column(s)",
+      "section_cols_frame": {
+        "type": "fieldset",
+        "label": "Select Section Column(s)",
         "show_if": "options.apply_section_by_section=='true'",
-        "table": "table_id",
-        "bind": "COLUMNS",
-        "multiple": true
+        "repeat": false,
+        "fields": {
+          "options.section_cols__all_but_selected": {
+            "type": "checkbox",
+            "label": "All but selected",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "options.section_cols": {
+            "type": "select",
+            "label": "Section column(s)",
+            "table": "table_id",
+            "bind": "COLUMNS",
+            "multiple": true
+          }
+        }
       }
     }
   }

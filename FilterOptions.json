@@ -48,9 +48,86 @@
           "column": {
             "type": "select",
             "label": "Select Column",
+            "show_if": "configure_input_tables=='zippydoc_table'",
             "table": "table_id",
             "bind": "COLUMNS",
             "required": true
+          },
+          "search_tables__column_text": {
+            "type": "text",
+            "label": "Input Column Name",
+            "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_name_text'",
+            "val": "",
+            "required": true
+          },
+          "search_tables__column_order": {
+            "type": "select",
+            "label": "Select Column",
+            "required": true,
+            "show_if" :  "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_order'",
+            "options": {
+              "col1": {
+                "label": "Column 1"
+              },
+              "col2": {
+                "label": "Column 2"
+              },
+              "col3": {
+                "label": "Column 3"
+              },
+              "col4": {
+                "label": "Column 4"
+              },
+              "col5": {
+                "label": "Column 5"
+              },
+              "col6": {
+                "label": "Column 6"
+              },
+              "col7": {
+                "label": "Column 7"
+              },
+              "col8": {
+                "label": "Column 8"
+              },
+              "col9": {
+                "label": "Column 9"
+              },
+              "col10": {
+                "label": "Column 10"
+              },
+              "col11": {
+                "label": "Column 11"
+              },
+              "col12": {
+                "label": "Column 12"
+              },
+              "col13": {
+                "label": "Column 13"
+              },
+              "col14": {
+                "label": "Column 14"
+              },
+              "col15": {
+                "label": "Column 15"
+              },
+              "col16": {
+                "label": "Column 16"
+              },
+              "col17": {
+                "label": "Column 17"
+              },
+              "col18": {
+                "label": "Column 18"
+              },
+              "col19": {
+                "label": "Column 19"
+              },
+              "col20": {
+                "label": "Column 20"
+              }
+            },
+            "val": ""
           },
           "condition": {
             "type": "select",
@@ -158,8 +235,84 @@
             "label": "Select Compare Column",
             "table": "table_id",
             "bind": "COLUMNS",
-            "show_if": "this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+            "show_if": "configure_input_tables=='zippydoc_table' && this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
             "required": true
+          },
+          "search_tables__self_compare_column_text": {
+            "type": "text",
+            "label": "Input Compare Column Name",
+            "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_name_text' && this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+            "val": "",
+            "required": true
+          },
+          "search_tables__self_compare_column_order": {
+            "type": "select",
+            "label": "Select Compare Column",
+            "required": true,
+            "show_if" :  "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_order' && this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+            "options": {
+              "col1": {
+                "label": "Column 1"
+              },
+              "col2": {
+                "label": "Column 2"
+              },
+              "col3": {
+                "label": "Column 3"
+              },
+              "col4": {
+                "label": "Column 4"
+              },
+              "col5": {
+                "label": "Column 5"
+              },
+              "col6": {
+                "label": "Column 6"
+              },
+              "col7": {
+                "label": "Column 7"
+              },
+              "col8": {
+                "label": "Column 8"
+              },
+              "col9": {
+                "label": "Column 9"
+              },
+              "col10": {
+                "label": "Column 10"
+              },
+              "col11": {
+                "label": "Column 11"
+              },
+              "col12": {
+                "label": "Column 12"
+              },
+              "col13": {
+                "label": "Column 13"
+              },
+              "col14": {
+                "label": "Column 14"
+              },
+              "col15": {
+                "label": "Column 15"
+              },
+              "col16": {
+                "label": "Column 16"
+              },
+              "col17": {
+                "label": "Column 17"
+              },
+              "col18": {
+                "label": "Column 18"
+              },
+              "col19": {
+                "label": "Column 19"
+              },
+              "col20": {
+                "label": "Column 20"
+              }
+            },
+            "val": ""
           },
           "date_value": {
             "type": "date",
@@ -200,11 +353,87 @@
           },
           "compare_column": {
             "type": "select",
-            "label": "Select Column",
+            "label": "Select Compare Column",
             "table": "this.compare_table_id",
             "bind": "COLUMNS",
-            "show_if": "this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE'",
+            "show_if": "configure_input_tables=='zippydoc_table' && (this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE')",
             "required": true
+          },
+          "search_tables__compare_column_text": {
+            "type": "text",
+            "label": "Input Compare Column Name",
+            "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_name_text' && (this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE')",
+            "val": "",
+            "required": true
+          },
+          "search_tables__compare_column_order": {
+            "type": "select",
+            "label": "Select Compare Column",
+            "required": true,
+            "show_if" :  "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_order' && (this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE')",
+            "options": {
+              "col1": {
+                "label": "Column 1"
+              },
+              "col2": {
+                "label": "Column 2"
+              },
+              "col3": {
+                "label": "Column 3"
+              },
+              "col4": {
+                "label": "Column 4"
+              },
+              "col5": {
+                "label": "Column 5"
+              },
+              "col6": {
+                "label": "Column 6"
+              },
+              "col7": {
+                "label": "Column 7"
+              },
+              "col8": {
+                "label": "Column 8"
+              },
+              "col9": {
+                "label": "Column 9"
+              },
+              "col10": {
+                "label": "Column 10"
+              },
+              "col11": {
+                "label": "Column 11"
+              },
+              "col12": {
+                "label": "Column 12"
+              },
+              "col13": {
+                "label": "Column 13"
+              },
+              "col14": {
+                "label": "Column 14"
+              },
+              "col15": {
+                "label": "Column 15"
+              },
+              "col16": {
+                "label": "Column 16"
+              },
+              "col17": {
+                "label": "Column 17"
+              },
+              "col18": {
+                "label": "Column 18"
+              },
+              "col19": {
+                "label": "Column 19"
+              },
+              "col20": {
+                "label": "Column 20"
+              }
+            },
+            "val": ""
           },
           "delete": {
             "type": "button",
@@ -228,15 +457,102 @@
         "show_if": "apply_to_record=='false'",
         "repeat": false,
         "fields": {
+          "apply_to_group_columns__all_but_selected": {
+            "type": "checkbox",
+            "label": "All but selected",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
           "apply_to_group_columns": {
             "type": "select",
-            "label": "Select Group Columns",
+            "label": "Select Group Column(s)",
+            "show_if": "configure_input_tables=='zippydoc_table'",
             "required": true,
             "width": "100%",
             "table": "table_id",
             "multiple": true,
-            "bind": "COLUMNS",
-            "breakLine": true
+            "bind": "COLUMNS"
+          },
+          "search_tables__apply_to_group_columns_text": {
+            "type": "text",
+            "label": "Group Column(s) separated by `;`",
+            "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_name_text'",
+            "val": "",
+            "placeholder": "Column1; Column2; ColumnN",
+            "required": true,
+            "style": "width: 100%"
+          },
+          "search_tables__apply_to_group_columns_order": {
+            "type": "select",
+            "label": "Group Column(s)",
+            "required": true,
+            "show_if" :  "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_order'",
+            "options": {
+              "col1": {
+                "label": "Column 1"
+              },
+              "col2": {
+                "label": "Column 2"
+              },
+              "col3": {
+                "label": "Column 3"
+              },
+              "col4": {
+                "label": "Column 4"
+              },
+              "col5": {
+                "label": "Column 5"
+              },
+              "col6": {
+                "label": "Column 6"
+              },
+              "col7": {
+                "label": "Column 7"
+              },
+              "col8": {
+                "label": "Column 8"
+              },
+              "col9": {
+                "label": "Column 9"
+              },
+              "col10": {
+                "label": "Column 10"
+              },
+              "col11": {
+                "label": "Column 11"
+              },
+              "col12": {
+                "label": "Column 12"
+              },
+              "col13": {
+                "label": "Column 13"
+              },
+              "col14": {
+                "label": "Column 14"
+              },
+              "col15": {
+                "label": "Column 15"
+              },
+              "col16": {
+                "label": "Column 16"
+              },
+              "col17": {
+                "label": "Column 17"
+              },
+              "col18": {
+                "label": "Column 18"
+              },
+              "col19": {
+                "label": "Column 19"
+              },
+              "col20": {
+                "label": "Column 20"
+              }
+            },
+            "multiple": true,
+            "val": []
           }
         }
       }
