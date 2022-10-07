@@ -56,10 +56,31 @@
         "val": "1",
         "breakLine": true
       },
+      "options.static_value__type": {
+        "type": "select",
+        "label": "Static Value Type",
+        "show_if": "options.column_value_type=='static_value'",
+        "required": true,
+        "options": {
+          "custom": {
+            "label": "Custom"
+          },
+          "input_table_name": {
+            "label": "Input Table Name"
+          },
+          "output_table_name": {
+            "label": "Output Table Name"
+          },
+          "tags": {
+            "label": "Tags"
+          }
+        },
+        "val": "custom"
+      },
       "options.static_value": {
         "type": "text",
         "label": "Input Value",
-        "show_if": "options.column_value_type=='static_value'",
+        "show_if": "options.column_value_type=='static_value' && options.static_value__type=='custom'",
         "val": "",
         "width": "100%"
       },
