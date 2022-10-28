@@ -1,0 +1,48 @@
+{
+  "input": {
+    "type": "fieldset",
+    "label": "Select Flow",
+    "repeat": false,
+    "fields": {
+      "select_flow_by_flow_id": {
+        "type": "checkbox",
+        "label": "Select Flow by FlowID",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "flow_id": {
+        "type": "select",
+        "label": "Select Flow",
+        "show_if": "select_flow_by_flow_id=='false'",
+        "bind": "FLOWS",
+        "empty": "",
+        "required": true
+      },
+      "flow_id_manual": {
+        "type": "text",
+        "label": "Input Flow ID",
+        "show_if": "select_flow_by_flow_id=='true'",
+        "val": "",
+        "required": true,
+        "breakLine": true
+      },
+      "replace_first_table_of_selected_flow": {
+        "type": "checkbox",
+        "label": "Replace first table of selected flow",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "style": "margin-right: 20px"
+      },
+      "table_id": {
+        "type": "select",
+        "label": "Select Input Table",
+        "show_if": "options.manual_config=='false' && replace_first_table_of_selected_flow=='true'",
+        "bind": "TABLES",
+        "empty": ""
+      }
+    }
+  }
+}
