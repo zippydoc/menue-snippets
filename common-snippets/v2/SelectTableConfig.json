@@ -2,6 +2,7 @@
   "input": {
     "type": "fieldset",
     "label": "Select Input Table",
+    "show_if": "$rootScope.hostType!='Embed'",
     "repeat": false,
     "fields": {
       "configure_input_tables": {
@@ -12,7 +13,8 @@
             "label": "Flow Table"
           },
           "excel_sheet": {
-            "label": "Excel Sheet"
+            "label": "Excel Sheet",
+            "show_if": "$rootScope.hostType=='Excel'"
           },
           "excel_column_and_row_range": {
             "label": "Excel Column & Row Range"
@@ -46,7 +48,7 @@
       },
       "search_tables__select_columns_by": {
         "type": "select",
-        "label": "Table Search Source",
+        "label": "Column selection type",
         "show_if": "configure_input_tables!='zippydoc_table'",
         "options": {
           "by_name_text": {
@@ -69,7 +71,7 @@
       "excel_sheet__table_has_header": {
         "type": "checkbox",
         "label": "Table has header",
-        "show_if": "configure_input_tables=='excel_sheet' || configure_input_tables=='excel_column_and_row_range' || configure_input_tables=='excel_range_name'",
+        "show_if": "$rootScope.hostType=='Excel' && (configure_input_tables=='excel_sheet' || configure_input_tables=='excel_column_and_row_range' || configure_input_tables=='excel_range_name')",
         "val": "true",
         "isOn": "true",
         "isOff": "false",
