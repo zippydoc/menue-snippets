@@ -48,7 +48,7 @@
           "column": {
             "type": "select",
             "label": "Select Column",
-            "show_if": "configure_input_tables=='zippydoc_table'",
+            "show_if": "search_tables=='false'",
             "table": "table_id",
             "bind": "COLUMNS",
             "required": true
@@ -56,7 +56,7 @@
           "search_tables__column_text": {
             "type": "text",
             "label": "Input Column Name",
-            "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_name_text'",
+            "show_if": "search_tables=='true' && search_tables__select_columns_by=='by_name_text'",
             "val": "",
             "required": true
           },
@@ -64,7 +64,7 @@
             "type": "select",
             "label": "Select Column",
             "required": true,
-            "show_if" :  "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_order'",
+            "show_if" :  "search_tables=='true' && search_tables__select_columns_by=='by_order'",
             "options": {
               "col1": {
                 "label": "Column 1"
@@ -235,13 +235,13 @@
             "label": "Select Compare Column",
             "table": "table_id",
             "bind": "COLUMNS",
-            "show_if": "configure_input_tables=='zippydoc_table' && this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+            "show_if": "search_tables=='false' && this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
             "required": true
           },
           "search_tables__self_compare_column_text": {
             "type": "text",
             "label": "Input Compare Column Name",
-            "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_name_text' && this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+            "show_if": "search_tables=='true' && search_tables__select_columns_by=='by_name_text' && this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
             "val": "",
             "required": true
           },
@@ -249,7 +249,7 @@
             "type": "select",
             "label": "Select Compare Column",
             "required": true,
-            "show_if" :  "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_order' && this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
+            "show_if" :  "search_tables=='true' && search_tables__select_columns_by=='by_order' && this.compare_with=='column_value' && (this.condition=='CONTAINS' || this.condition=='CONTAINED IN STRING' || this.condition=='STARTS WITH' || this.condition=='ENDS WITH' || this.condition=='=' || this.condition=='>' || this.condition=='>=' || this.condition=='<' || this.condition=='<=')",
             "options": {
               "col1": {
                 "label": "Column 1"
@@ -356,13 +356,13 @@
             "label": "Select Compare Column",
             "table": "this.compare_table_id",
             "bind": "COLUMNS",
-            "show_if": "configure_input_tables=='zippydoc_table' && (this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE')",
+            "show_if": "search_tables=='false' && (this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE')",
             "required": true
           },
           "search_tables__compare_column_text": {
             "type": "text",
             "label": "Input Compare Column Name",
-            "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_name_text' && (this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE')",
+            "show_if": "search_tables=='true' && search_tables__select_columns_by=='by_name_text' && (this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE')",
             "val": "",
             "required": true
           },
@@ -370,7 +370,7 @@
             "type": "select",
             "label": "Select Compare Column",
             "required": true,
-            "show_if" :  "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_order' && (this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE')",
+            "show_if" :  "search_tables=='true' && search_tables__select_columns_by=='by_order' && (this.condition == 'CONTAINED IN TABLE' || this.condition == 'NOT CONTAINED IN TABLE' || this.condition == 'IN REGEX TABLE' || this.condition == 'NOT IN REGEX TABLE')",
             "options": {
               "col1": {
                 "label": "Column 1"
@@ -468,7 +468,7 @@
           "apply_to_group_columns": {
             "type": "select",
             "label": "Select Group Column(s)",
-            "show_if": "configure_input_tables=='zippydoc_table'",
+            "show_if": "search_tables=='false'",
             "required": true,
             "width": "100%",
             "table": "table_id",
@@ -478,7 +478,7 @@
           "search_tables__apply_to_group_columns_text": {
             "type": "text",
             "label": "Group Column(s) separated by `;`",
-            "show_if": "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_name_text'",
+            "show_if": "search_tables=='true' && search_tables__select_columns_by=='by_name_text'",
             "val": "",
             "placeholder": "Column1; Column2; ColumnN",
             "required": true,
@@ -488,7 +488,7 @@
             "type": "select",
             "label": "Group Column(s)",
             "required": true,
-            "show_if" :  "configure_input_tables!='zippydoc_table' && search_tables__select_columns_by=='by_order'",
+            "show_if" :  "search_tables=='true' && search_tables__select_columns_by=='by_order'",
             "options": {
               "col1": {
                 "label": "Column 1"
