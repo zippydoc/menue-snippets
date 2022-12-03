@@ -20,20 +20,71 @@
         "required": true,
         "breakLine": true
       },
-      "replace_first_table_of_selected_flow": {
+      "run_own_input_tables": {
         "type": "checkbox",
-        "label": "Replace first table of selected Flow",
+        "label": "Run Selected Flow with own Input Table(s)",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
         "style": "margin-right: 20px"
       },
-      "table_id": {
-        "type": "select",
-        "label": "Select Input Table",
-        "show_if": "options.manual_config=='false' && replace_first_table_of_selected_flow=='true'",
-        "bind": "TABLES",
-        "empty": ""
+      "own_input_tables": {
+        "type": "fieldset",
+        "label": "Own Input table(s)",
+        "show_if": "options.manual_config=='false' && run_own_input_tables=='true'",
+        "repeat": true,
+        "fields": {
+          "table_id": {
+            "type": "select",
+            "label": "Select Input Table",
+            "bind": "TABLES",
+            "empty": ""
+          },
+          "position": {
+            "type": "select",
+            "label": "Top Down Table Position",
+            "required": true,
+            "options": {
+              "1": {
+                "label": "Position 1"
+              },
+              "2": {
+                "label": "Position 2"
+              },
+              "3": {
+                "label": "Position 3"
+              },
+              "4": {
+                "label": "Position 4"
+              },
+              "5": {
+                "label": "Position 5"
+              },
+              "6": {
+                "label": "Position 6"
+              },
+              "7": {
+                "label": "Position 7"
+              },
+              "8": {
+                "label": "Position 8"
+              },
+              "9": {
+                "label": "Position 9"
+              },
+              "10": {
+                "label": "Position 10"
+              }
+            },
+            "val": "1",
+            "breakLine": true
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
       }
     }
   }
