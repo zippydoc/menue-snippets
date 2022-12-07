@@ -32,10 +32,61 @@
           }
         }
       },
+      "replace_null": {
+        "type": "fieldset",
+        "label": "",
+        "style": "box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);color: #2C3E50;line-height: 0.9; border-radius: 3px; font-family:montserat;font-size:13px",
+        "repeat": false,
+        "fields": {
+          "replace_null": {
+            "type": "checkbox",
+            "label": "Empty Records",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
+          "replace_null_type": {
+            "type": "select",
+            "label": "Action",
+            "style": "width:45%; float:left",
+            "show_if": "replace_null=='true'",
+            "options": {
+              "Replace Empty by Blank": {
+                "label": "Replace Empty by Blank"
+              },
+              "Replace Empty by Zero": {
+                "label": "Replace Empty by Zero"
+              },
+              "Replace Blank by Zero": {
+                "label": "Replace Blank by Zero"
+              },
+              "Replace NULL by Blank": {
+                "label": "Replace NULL by Blank"
+              },
+              "Replace NULL by Zero": {
+                "label": "Replace NULL by Zero"
+              }
+            },
+            "val": "Replace Empty by Blank",
+            "breakLine": false
+          },
+          "delete_corresponding_row": {
+            "type": "checkbox",
+            "label": "Delete corresponding row",
+            "style": "width:45%; float:right",
+            "show_if": "replace_null=='true'",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          }
+        }
+      },
       "remove_whitespace": {
         "type": "fieldset",
         "label": "",
-        "style": "box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); border: 1px solid #ccc; color: #2C3E50;line-height: 0.9;width:45%; min-height: 210px; float:left; border-radius: 3px; font-family: montserrat;font-size:13 px",
+        "style": "box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); border: 1px solid #ccc; color: #2C3E50;line-height: 0.9;width:45%; min-height: 260px; float:left; border-radius: 3px; font-family: montserrat;font-size:13 px",
         "repeat": false,
         "fields": {
           "remove_characters.all_whitespace": {
@@ -231,59 +282,10 @@
           }
         }
       },
-      "replace_null": {
-        "type": "fieldset",
-        "label": "",
-        "style": "box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);color: #2C3E50;line-height: 0.9;width:45%; float:left; border-radius: 3px; font-family:montserat;font-size:13px",
-        "repeat": false,
-        "fields": {
-          "replace_null": {
-            "type": "checkbox",
-            "label": "Empty Records",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false",
-            "breakLine": true
-          },
-          "replace_null_type": {
-            "type": "select",
-            "label": "Action",
-            "show_if": "replace_null=='true'",
-            "options": {
-              "Replace Empty by Blank": {
-                "label": "Replace Empty by Blank"
-              },
-              "Replace Empty by Zero": {
-                "label": "Replace Empty by Zero"
-              },
-              "Replace Blank by Zero": {
-                "label": "Replace Blank by Zero"
-              },
-              "Replace NULL by Blank": {
-                "label": "Replace NULL by Blank"
-              },
-              "Replace NULL by Zero": {
-                "label": "Replace NULL by Zero"
-              }
-            },
-            "val": "Replace Empty by Blank",
-            "breakLine": true
-          },
-          "delete_corresponding_row": {
-            "type": "checkbox",
-            "label": "Delete corresponding row",
-            "show_if": "replace_null=='true'",
-            "val": "false",
-            "isOn": "true",
-            "isOff": "false",
-            "breakLine": true
-          }
-        }
-      },
       "rounding": {
         "type": "fieldset",
         "label": "",
-        "style": "box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);color: #2C3E50;line-height: 0.9;width:45%; float:right; border-radius: 3px; font-family:montserat;font-size:13px",
+        "style": "box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);color: #2C3E50;line-height: 0.9; border-radius: 3px; font-family:montserat;font-size:13px",
         "repeat": false,
         "fields": {
           "is_rounding": {
@@ -292,7 +294,7 @@
             "val": "false",
             "isOn": "true",
             "isOff": "false",
-            "breakLine": true
+            "breakLine": false
           },
           "rounding": {
             "type": "select",
