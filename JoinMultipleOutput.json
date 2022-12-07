@@ -1,0 +1,65 @@
+{
+  "output.output_table_types": {
+    "type": "select",
+    "label": "Output Table Type(s)",
+    "required": true,
+    "options": {
+      "inner": {
+        "label": "Inner Join Table"
+      },
+      "all_distinct": {
+        "label": "All Distinct Tables"
+      }
+    },
+    "multiple": true,
+    "val": ["inner"],
+    "breakLine": true
+  },
+  "output.unify_output_table": {
+    "type": "checkbox",
+    "label": "Unify output tables",
+    "val": "false",
+    "isOn": "true",
+    "isOff": "false",
+    "breakLine": true
+  },
+  "output.standard_ending": {
+    "type": "checkbox",
+    "label": "Standard Ending",
+    "show_if": "output.unify_output_table == 'false'",
+    "val": "true",
+    "isOn": "true",
+    "isOff": "false",
+    "breakLine": true
+  },
+  "output.inner_ending": {
+    "show_if": "output.unify_output_table == 'false' && output.standard_ending == 'false'",
+    "type": "text",
+    "label": "Inner Ending",
+    "val": "_j",
+    "style": "margin-left: 10px"
+  },
+  "output.distinct_tables_ending": {
+    "show_if": "output.unify_output_table == 'false' && output.standard_ending == 'false'",
+    "type": "text",
+    "label": "Distinct Tables Ending",
+    "val": "_d_",
+    "style": "margin-left: 10px"
+  },
+  "output.distinct_tables_ending_suffix": {
+    "show_if": "output.unify_output_table == 'false' && output.standard_ending == 'false'",
+    "type": "select",
+    "label": "Distinct Tables Ending Suffix",
+    "options": {
+      "serial_number": {
+        "label": "Number"
+      },
+      "input_table_name": {
+        "label": "Input table name"
+      }
+    },
+    "val": "serial_number",
+    "style": "margin-left: 10px",
+    "breakLine": true
+  }
+}
