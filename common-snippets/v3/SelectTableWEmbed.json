@@ -9,6 +9,7 @@
         "type": "select",
         "label": "Input Table",
         "style": "float: left; width: 65%; align: right",
+        "show_if": "$rootScope.hostType!='Embed' && search_tables=='false'",
         "bind": "TABLES",
         "empty": "",
         "required": true
@@ -17,6 +18,7 @@
         "type": "checkbox",
         "label": "Search Table(s)",
         "style": "float: right; width: 30%",
+        "show_if": "$rootScope.hostType!='Embed'",
         "val": "false",
         "isOn": "true",
         "isOff": "false",
@@ -25,7 +27,7 @@
       "search_tables__types": {
         "type": "select",
         "label": "Table Search Source",
-        "show_if": "search_tables=='true'",
+        "show_if": "$rootScope.hostType!='Embed' && search_tables=='true'",
         "options": {
           "owned_tables": {
             "label": "Owned tables"
@@ -43,7 +45,7 @@
       "search_tables__select_columns_by": {
         "type": "select",
         "label": "Column selection type",
-        "show_if": "search_tables=='true'",
+        "show_if": "$rootScope.hostType!='Embed' && search_tables=='true'",
         "options": {
           "by_name_text": {
             "label": "Select columns by name"
@@ -57,7 +59,7 @@
       "input_table_condition": {
         "type": "fieldset",
         "label": "Search Tables",
-        "show_if": "search_tables=='true'",
+        "show_if": "$rootScope.hostType!='Embed' && search_tables=='true'",
         "repeat": true,
         "fields": {
           "initial_op": {
