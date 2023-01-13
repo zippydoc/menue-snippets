@@ -1,31 +1,26 @@
 {
   "input": {
     "type": "fieldset",
-    "label": "",
-    "style": "box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); border: 1px solid #ccc; color: #2C3E50;line-height: 0.9; border-radius: 3px; font-family: montserrat;font-size:13 px",
+    "label": "Select Input Table",
     "repeat": false,
     "fields": {
-      "table_id": {
+      "configure_input_tables": {
         "type": "select",
-        "label": "Input Table",
-        "style": "float: left; width: 65%; align: right",
-        "bind": "TABLES",
-        "empty": "",
-        "required": true
-      },
-      "search_tables": {
-        "type": "checkbox",
-        "label": "Search Table(s)",
-        "style": "float: right; width: 30%",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
+        "label": "Select Source",
+        "options": {
+          "zippydoc_table": {
+            "label": "Flow Table"
+          },
+          "search_tables": {
+            "label": "Search Tables"
+          }
+        },
+        "val": "zippydoc_table"
       },
       "search_tables__types": {
         "type": "select",
-        "label": "Table Search Source",
-        "show_if": "search_tables=='true'",
+        "label": "Select Source",
+        "show_if": "configure_input_tables=='search_tables'",
         "options": {
           "owned_tables": {
             "label": "Owned tables"
@@ -40,24 +35,28 @@
         "multiple": true,
         "val": ["owned_tables"]
       },
-      "search_tables__select_columns_by": {
-        "type": "select",
-        "label": "Column selection type",
-        "show_if": "search_tables=='true'",
-        "options": {
-          "by_name_text": {
-            "label": "Select columns by name"
+      "tables": {
+        "type": "fieldset",
+        "label": "Select Tables",
+        "show_if": "configure_input_tables=='zippydoc_table'",
+        "repeat": true,
+        "fields": {
+          "table_id": {
+            "type": "select",
+            "label": "Select Table",
+            "bind": "TABLES"
           },
-          "by_order": {
-            "label": "Select columns by order"
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
           }
-        },
-        "val": "by_name_text"
+        }
       },
       "input_table_condition": {
         "type": "fieldset",
         "label": "Search Tables",
-        "show_if": "search_tables=='true'",
+        "show_if": "configure_input_tables=='search_tables'",
         "repeat": true,
         "fields": {
           "initial_op": {
@@ -118,6 +117,9 @@
               "CONTAINS": {
                 "label": "CONTAINS"
               },
+              "CONTAINED IN STRING": {
+                "label": "CONTAINED IN"
+              },
               "STARTS WITH": {
                 "label": "STARTS WITH"
               },
@@ -161,14 +163,6 @@
             "function": "DELETE_ROW"
           }
         }
-      },
-      "remove_input_table_after_processing": {
-        "type": "hidden",
-        "val": "false"
-      },
-      "is_word": {
-        "type": "hidden",
-        "val": "false"
       }
     }
   }
