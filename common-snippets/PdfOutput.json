@@ -1,7 +1,7 @@
 {
   "output": {
     "type": "fieldset",
-    "label": "Define Output Table",
+    "label": "Define Output PDF Name",
     "show_if": "options.where_to_create!='only_open_in_browser'",
     "repeat": false,
     "fields": {
@@ -15,16 +15,12 @@
         "breakLine": true
       },
       "output.custom_options": {
-        "type": "checkbox",
-        "label": "Output Options",
-        "val": "false",
-        "isOn": "true",
-        "isOff": "false",
-        "breakLine": true
+        "type": "hidden",
+        "val": "true"
       },
       "output.compose_table_name": {
         "type": "checkbox",
-        "label": "Compose Table Name",
+        "label": "Compose PDF Name",
         "show_if": "output.custom_options=='true'",
         "val": "false",
         "isOn": "true",
@@ -33,7 +29,7 @@
       },
       "compose_table_name_frame": {
         "type": "fieldset",
-        "label": "Compose Output Table Name",
+        "label": "Compose Output PDF Name",
         "show_if": "output.custom_options=='true' && output.compose_table_name=='true'",
         "repeat": false,
         "fields": {
@@ -87,9 +83,6 @@
             "show_if": "output.compose_table_name=='true'",
             "val": "input_table_name",
             "options": {
-              "input_table_name": {
-                "label": "Input Table Name"
-              },
               "script_name": {
                 "label": "Task Name"
               },
