@@ -8,7 +8,7 @@
       "modify_case": {
         "type": "fieldset",
         "label": "",
-        "style": "float: left; width: 43%; min-height: 150px; border: 1px solid #ccc",
+        "style": "float: left; width: 43%; min-height: 155px; border: 1px solid #ccc",
         "repeat": false,
         "fields": {
           "modify_case": {
@@ -35,7 +35,7 @@
       "replace_null": {
         "type": "fieldset",
         "label": "",
-        "style": "float: right; width: 43%; min-height: 150px; border: 1px solid #ccc",
+        "style": "float: right; width: 43%; min-height: 155px; border: 1px solid #ccc",
         "repeat": false,
         "fields": {
           "replace_null": {
@@ -84,7 +84,7 @@
       "remove_whitespace": {
         "type": "fieldset",
         "label": "Remove Whitespace",
-        "style": "float: left; width: 43%; min-height: 345px; border: 1px solid #ccc",
+        "style": "float: left; width: 43%; min-height: 360px; border: 1px solid #ccc",
         "repeat": false,
         "fields": {
           "remove_characters.all_whitespace": {
@@ -154,7 +154,7 @@
       "remove_characters": {
         "type": "fieldset",
         "label": "Remove Characters",
-        "style": "float: right; width: 43%; min-height: 347px; border: 1px solid #ccc",
+        "style": "float: right; width: 43%; min-height: 362px; border: 1px solid #ccc",
         "repeat": false,
         "fields": {
           "remove_characters.letters": {
@@ -199,28 +199,12 @@
           },
           "remove_characters.custom_chars": {
             "type": "text",
-            "label": "to be deleted characters",
+            "label": "enter characters",
+            "style": "float: left; width: 45%",
             "show_if": "remove_characters.custom=='true'",
             "val": "",
             "required": true,
             "breakLine": true
-          },
-          "remove_characters.custom_mode": {
-            "type": "select",
-            "label": "Position",
-            "show_if": "remove_characters.custom=='true'",
-            "options": {
-              "all": {
-                "label": "all"
-              },
-              "leading only": {
-                "label": "leading only"
-              },
-              "trailing only": {
-                "label": "trailing only"
-              }
-            },
-            "val": "all"
           },
           "remove_characters.custom_delimiter": {
             "type": "select",
@@ -238,15 +222,40 @@
               }
             },
             "val": ","
+          },
+          "remove_characters.custom_mode": {
+            "type": "select",
+            "label": "Position",
+            "show_if": "remove_characters.custom=='true'",
+            "options": {
+              "all": {
+                "label": "all"
+              },
+              "leading only": {
+                "label": "leading only"
+              },
+              "trailing only": {
+                "label": "trailing only"
+              }
+            },
+            "val": "all"
           }
         }
       },
       "remove_duplicates": {
         "type": "fieldset",
         "label": "Remove Duplicates",
-        "style": "float: left; width: 43%; min-height: 110px; border: 1px solid #ccc",
+        "style": "float: left; width: 43%; min-height: 165px; border: 1px solid #ccc",
         "repeat": false,
         "fields": {
+          "remove_duplicates.rows": {
+            "type": "checkbox",
+            "label": "Duplicate Rows",
+            "val": "false",
+            "isOn": "true",
+            "isOff": "false",
+            "breakLine": true
+          },
           "remove_duplicates.cell": {
             "type": "checkbox",
             "label": "Duplicates in Cell",
@@ -258,23 +267,18 @@
           "remove_duplicates.delimiter": {
             "type": "text",
             "label": "Delimiter",
+            "style": "float: left; width: 30%",
             "show_if": "remove_duplicates.cell=='true'",
             "val": ";",
-            "required": true
+            "required": true,
+            "breakLine": false            
           },
           "remove_duplicates.include_whitespace": {
             "type": "checkbox",
-            "label": "(include whitespace)",
+            "label": "incl. whitespace",
+            "style": "float: right; width: 60%",
             "show_if": "remove_duplicates.cell=='true'",
             "val": "true",
-            "isOn": "true",
-            "isOff": "false",
-            "breakLine": true
-          },
-          "remove_duplicates.rows": {
-            "type": "checkbox",
-            "label": "Duplicate Rows",
-            "val": "false",
             "isOn": "true",
             "isOff": "false",
             "breakLine": true
@@ -284,7 +288,7 @@
       "rounding": {
         "type": "fieldset",
         "label": "Apply Rounding",
-        "style": "float: right; width: 43%; min-height: 112px; border: 1px solid #ccc",
+        "style": "float: right; width: 43%; min-height: 167px; border: 1px solid #ccc",
         "repeat": false,
         "fields": {
           "is_rounding": {
