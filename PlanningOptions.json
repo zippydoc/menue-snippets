@@ -2,7 +2,7 @@
   "options_frame": {
     "type": "fieldset",
     "label": "Planning Type",
-    "style": "border-radius: 3px; border: 1px solid #ccc",
+    "style": "border-radius: 3px; border: 1px solid #ccc;",
     "repeat": false,
     "fields": {
       "options.output_type": {
@@ -397,7 +397,7 @@
             "val": "Material Costs",
             "required": true
           },
-          "depretiation__sub_position": {
+          "depreciation__sub_position": {
             "type": "select",
             "label": "Sub Position",
             "show_if": "this.position=='Depreciation'",
@@ -423,8 +423,8 @@
               "Other Assets": {
                 "label": "Other Assets"
               },
-              "Other Depretiation": {
-                "label": "Other Depretiation"
+              "Other Depreciation": {
+                "label": "Other Depreciation"
               }
             },
             "val": "Material Assets",
@@ -618,9 +618,19 @@
           "no_payment": {
             "type": "checkbox",
             "label": "No Payment",
+            "show_if": "this.position!='Depreciation' && this.position!='Amortization'",
             "val": "false",
             "isOn": "true",
             "isOff": "false"
+          },
+          "no_payment_2": {
+            "type": "checkbox",
+            "label": "No Payment",
+            "show_if": "this.position=='Depreciation' || this.position=='Amortization'",
+            "val": "true",
+            "isOn": "true",
+            "isOff": "false",
+            "disabled": true
           },
           "initial_date": {
             "type": "date",
@@ -1182,8 +1192,8 @@
               "Other Assets": {
                 "label": "Other Assets"
               },
-              "Other Depretiation": {
-                "label": "Other Depretiation"
+              "Other Depreciation": {
+                "label": "Other Depreciation"
               }
             },
             "val": "Material Assets",
