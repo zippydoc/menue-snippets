@@ -1,0 +1,55 @@
+{
+  "options": {
+    "type": "fieldset",
+    "label": "",
+    "style": "border-radius: 3px; margin-right:5px; border: 1px solid #ccc",
+    "repeat": false,
+    "fields": {
+      "options.chats": {
+        "type": "fieldset",
+        "label": "Input Chats",
+        "show_if": "options.is_chat_table=='false'",
+        "style": "border-radius: 3px; border: 1px solid #ccc",
+        "repeat": true,
+        "fields": {
+          "item": {
+            "type": "textarea",
+            "label": "Chat",
+            "rows": 2,
+            "val": "",
+            "placeholder": "According to the provided data, what is the longest value in the first column?",
+            "width": "100%"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
+      "options.is_chat_table": {
+        "type": "checkbox",
+        "label": "Chat Input Table",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.chat_table.table_id": {
+        "type": "select",
+        "label": "Select Chat Input Table",
+        "show_if": "options.is_chat_table=='true'",
+        "required": true,
+        "bind": "TABLES"
+      },
+      "options.chat_table.chat_col": {
+        "type": "select",
+        "label": "Select column of Chat",
+        "show_if": "options.is_chat_table=='true'",
+        "required": true,
+        "table": "options.chat_table.table_id",
+        "bind": "COLUMNS"
+      }
+    }
+  }
+}
