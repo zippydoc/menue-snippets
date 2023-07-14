@@ -81,6 +81,34 @@
         "val": "create_new_table",
         "breakLine": true
       },
+      "options.is_custom_output_table_columns": {
+        "type": "checkbox",
+        "label": "Customize Output Table Columns Tile",
+        "val": "false",
+        "isOn": "true",
+        "isOff": "false",
+        "breakLine": true
+      },
+      "options.custom_output_table_columns": {
+        "type": "fieldset",
+        "label": "Add Output Table Columns Tile",
+        "show_if": "options.is_custom_output_table_columns=='true'",
+        "repeat": true,
+        "fields": {
+          "title": {
+            "type": "text",
+            "label": "Column Title",
+            "required": true,
+            "val": "",
+            "width": "100%"
+          },
+          "delete": {
+            "type": "button",
+            "label": "Delete",
+            "function": "DELETE_ROW"
+          }
+        }
+      },
       "options.use_own_openai_key": {
         "type": "checkbox",
         "label": "Use my own OpenAI API Key",
