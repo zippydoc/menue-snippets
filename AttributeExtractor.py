@@ -53,7 +53,7 @@ def read_files_in_directory(directory):
                 if file.endswith('.json'):
                     file_path = os.path.join(root, file)
                     #lines_with_filenames.append("{\n")
-                    lines_with_filenames.append('"' + f"{file_path}"[80:] + "/" + f"{file}" + '": ')
+                    lines_with_filenames.append('"' + f"{file_path}"[80:] + '": ')
                     with open(file_path, 'r') as f:
                         for line in f:
                             lines_with_filenames.append(f"{line}")
