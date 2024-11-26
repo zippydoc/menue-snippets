@@ -2,6 +2,6 @@
 Add menue-snippets here that can be used for various tasks
 
 
-# AttributeExtractor.py
-Run AttributeExtractor to extract all menue snippets in to one "Attribute Summary.json" file in the /menue-snippets directory
+# MenueExtractor.py
+Run "python3 MenueExtractor.py" in /basic directory to generate the menues to run debug routines and more.
 
